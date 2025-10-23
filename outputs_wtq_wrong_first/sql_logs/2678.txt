@@ -1,0 +1,183 @@
+=== Table ID ===
+csv/203-csv/738.tsv
+
+=== Question ===
+which timber tree has below 451 kg/m3 density?
+
+=== Sub-table Preview ===
+| Common name    | Binomial nomenclature           | Colour                   | Density ¹   | Location                                                                     | Characteristics, Usage and Status                                                                                                                                                                                                                              |
+|:---------------|:--------------------------------|:-------------------------|:------------|:-----------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Bamboo         | Family Poaceae, tribe Bambuseae | nan                      | nan         | Throughout India, especially Assam and Bengal                                | Not actually a tree, but a woody grass, it is flexible, very strong and durable. It is used for scaffoldings, thatched roofs, rafters, temporary bridges, and so forth.                                                                                        |
+| Casuarina      | Casuarina spp.                  | Reddish brown            | 765 kg/m³   | Andhra Pradesh, Tamil Nadu                                                   | It grows straight. It is strong and fibrous. It is, however, badly twisted. It is often used for scaffolding and posts for temporary structures.                                                                                                               |
+| Jack           | Mangifera caesia.               | Yellow, darkens with age | 595 kg/m³   | Karnataka, Maharashtra, Tamil Nadu, Kerala                                   | It is compact and even grained. It is moderately strong and easy to work. It takes a good finish and maintains its shape well. It has many uses including plain furniture, boat construction, well curbs, door panels, cabinet making and musical instruments. |
+| Lauraceae, Saj | Lauraceae                       | Dark brown               | 880 kg/m³   | Karnataka, Andhra Pradesh, Bihar, Orissa, Madhya Pradesh, Kerala, Tamil Nadu | It is strong, hard and tough. It is subject to cracking and attack by dry rot. White ants do not attack it. It takes a smooth finish. It is used for such purposes as house construction, boat construction, railway sleepers and structural work.             |
+| Mahogany       | Swietenia spp.                  | Reddish brown            | 720 kg/m³   | nan                                                                          | It takes a good polish and is easily worked. It is durable under water. It is most commonly used for furniture, pattern making and cabinet work.                                                                                                               |
+| Sundri         | Heritiera fomes                 | Dark red                 | 960 kg/m³   | Bengal                                                                       | It is hard and tough. It is difficult to season and work. It is elastic and close grained. It is strong and durable. These qualities make it suited for such uses as boat building, piles, poles, tool handles, and carriage shafts.                           |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Common name:
+   - Data type: Categorical
+   - 4 representative example values: Bamboo, Casuarina, Jack, Lauraceae, Saj
+   - Role: Descriptor
+
+2. Binomial nomenclature:
+   - Data type: Categorical
+   - 4 representative example values: Family Poaceae, tribe Bambuseae, Casuarina spp., Mangifera caesia, Lauraceae
+   - Role: Descriptor
+
+3. Colour:
+   - Data type: Categorical
+   - 4 representative example values: nan, Reddish brown, Yellow, darkens with age, Dark brown, Dark red
+   - Role: Descriptor
+
+4. Density ¹:
+   - Data type: Numeric
+   - 4 representative example values: nan, 765 kg/m³, 595 kg/m³, 880 kg/m³, 720 kg/m³
+   - Role: Measure
+
+5. Location:
+   - Data type: Categorical
+   - 4 representative example values: Throughout India, especially Assam and Bengal, Andhra Pradesh, Tamil Nadu, Karnataka, Maharashtra, Tamil Nadu, Kerala, Bengal
+   - Role: Descriptor
+
+6. Characteristics, Usage and Status:
+   - Data type: Categorical
+   - 4 representative example values: Not actually a tree, but a woody grass, It grows straight, It is compact and even grained, It is strong, hard and tough
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 17 (Sundri):
+   - The values "Heritiera fomes" for Binomial nomenclature and "Dark red" for Colour are consistent with other rows.
+   - The Density of 960 kg/m³ is higher than the other densities in the table, making it an outlier in terms of density.
+   - This row is an outlier due to the significantly higher density compared to the rest of the entries.
+
+2. Row 5 (Mahogany):
+   - The values "Swietenia spp." for Binomial nomenclature and "Reddish brown" for Colour are consistent with other rows.
+   - The Density of 720 kg/m³ is within the range of densities in the table and is not significantly different from the majority.
+   - This row is an ordinary row and does not exhibit any distinctive values that would make it an outlier.
+
+3. Row 36 (Bamboo):
+   - The values "Family Poaceae, tribe Bambuseae" for Binomial nomenclature and "nan" for Colour are consistent with other rows.
+   - The Density of nan is missing data and does not provide any distinctive information for outlier analysis.
+   - This row is an ordinary row and does not exhibit any distinctive values that would make it an outlier.
+
+=== Full Table Preview ===
+|   row_number | Common name                                 | Binomial nomenclature                  | Colour                    | Density ¹                   | Location                                                                                              | Characteristics, Usage and Status                                                                                                                                                                                                                                                                                                                                            |
+|-------------:|:--------------------------------------------|:---------------------------------------|:--------------------------|:----------------------------|:------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Aini or Aangili                             | Artocarpus hirsutus                    | Yellowish brown           | 595 kg/m³                   | Maharashtra Andhra Pradesh Tamil Nadu Karnataka Kerala                                                | Elastic close-grained and strong. It takes polish. It can be used underwater. It is used for ordinary building construction structural work paving furniture and so forth.                                                                                                                                                                                                   |
+|            1 | Arjun                                       | Terminalia arjuna Terminalia elliptica | Dark brown                | 870 kg/m³                   | Central India                                                                                         | It is heavy and strong. It has such uses as beams rafters and posts.                                                                                                                                                                                                                                                                                                         |
+|            2 | Axlewood                                    | Anogeissus latifolia                   |                           | 930 kg/m³                   | Andhra Pradesh Tamil Nadu Maharashtra Madhya Pradesh Bihar Uttar Pradesh                              | It is very strong hard and tough. It takes a smooth finish. It is subject to cracking.                                                                                                                                                                                                                                                                                       |
+|            3 | Babul                                       | Acacia nilotica subsp. indica          | Whitish red               | 835 kg/m³                   | Rajasthan Andhra Pradesh Maharashtra Madhya Pradesh Tamil Nadu Karnataka Bengal Gujarat Uttar Pradesh | It is strong hard and tough and it takes up a good polish. It is used for such products as bodies and wheels of bullock cart agricultural instruments tool handles and well curbs.                                                                                                                                                                                           |
+|            4 | Bakul                                       | Mimusops elengi Mimusops parvifolia    | Reddish brown             | 880 kg/m³                   | Some parts of North India                                                                             | It is close-grained and tough. It is used for making cabinets.                                                                                                                                                                                                                                                                                                               |
+|            5 | Bamboo                                      | Family Poaceae tribe Bambuseae         |                           |                             | Throughout India especially Assam and Bengal                                                          | Not actually a tree but a woody grass it is flexible very strong and durable. It is used for scaffoldings thatched roofs rafters temporary bridges and so forth.                                                                                                                                                                                                             |
+|            6 | Banyan                                      | Ficus benghalensis                     | Brown                     | 580 kg/m³                   | Throughout India                                                                                      | It is strong and durable only under water. The aerial roots are utilized for such items as tent poles and well curbs.                                                                                                                                                                                                                                                        |
+|            7 | Benteak                                     | Lagerstoemia parviflora                |                           | 675 kg/m³                   | Kerala Madras Maharashtra Karnataka                                                                   | It is strong and takes up a smooth surface. It may be used for building constructions boat building and furniture.                                                                                                                                                                                                                                                           |
+|            8 | Bijasal                                     | Pterocarpus marsupium                  | Light brown               | 800 kg/m³                   | Karnataka Andhra Pradesh Madhya Pradesh Maharashtra Kerala Uttar Pradesh Tamil Nadu Orissa            | It is coarse-grained durable and strong but difficult to work. Termites (also known as white ant) do not easily attack it. It is used for ordinary building construction and for cart wheels. Vulnerable                                                                                                                                                                     |
+|            9 | Casuarina                                   | Casuarina spp.                         | Reddish brown             | 765 kg/m³                   | Andhra Pradesh Tamil Nadu                                                                             | It grows straight. It is strong and fibrous. It is however badly twisted. It is often used for scaffolding and posts for temporary structures.                                                                                                                                                                                                                               |
+|           10 | Coconut                                     | Cocos nucifera                         | Reddish brown             |                             | Throughout coastal India                                                                              | Takes polish. Requires preservative treatment. Used as poles piles furniture and as formwork in concrete construction.                                                                                                                                                                                                                                                       |
+|           11 | Deodar                                      | Cedrus deodara                         | Yellowish brown           | 560 kg/m³                   | Himalayas Punjab Uttar Pradesh                                                                        | Deodar is the most important timber tree providing soft wood. It can be easily worked and it is moderately strong. It possesses distinct annual rings. It is used for making cheap furniture railway carriages railway sleepers packing boxes structural work and so forth.                                                                                                  |
+|           12 | Gambar                                      | Gmelina arborea                        | Pale yellow               | 580 kg/m³                   | Central India South India                                                                             | It can be easily worked and is strong and durable especially when used under water. It is used for such products as furniture carriage well curbs yokes and door panels.                                                                                                                                                                                                     |
+|           13 | Hopea                                       | Hopea parviflora                       | Light to deep brown       | 1010 kg/m³                  | Madras Kerala                                                                                         | Hopea is extremely strong and tough. It is difficult to work. However it can be seasoned easily and it is durable and not likely to be damaged by white ants. It has been variously used for ordinary house construction railway sleepers piles and boat building. Endangered                                                                                                |
+|           14 | Himalayan Elm Indian Elm                    | Ulmus wallichiana                      | Red                       | 960 kg/m³                   | Throughout India                                                                                      | It is moderately hard and strong. It is used for door and window frames carts and so forth.                                                                                                                                                                                                                                                                                  |
+|           15 | Ironwood Penaga Lilin\nBosneak Gangaw Mesua | Mesua ferrea                           | Reddish brown             | 960–1060 kg/m³              |                                                                                                       | Ironwood is durable though it is very hard and is not easily worked. It even resists penetration of nails. It is used for ordinary house construction bridges piles agricultural instruments railway wagons and railway sleepers.                                                                                                                                            |
+|           16 | Irul Pyinkado                               | Xylia xylocarpa                        |                           | 830–1060 kg/m³              | Karnataka Kerala Andhra Pradesh Maharashtra Orissa Tamil Nadu                                         | It is very hard heavy and durable. Difficult to work it also requires slow and careful seasoning. It is used for railway sleepers agricultural instruments paving blocks and heavy construction. Least concern                                                                                                                                                               |
+|           17 | Jack                                        | Mangifera caesia.                      | Yellow darkens with age   | 595 kg/m³                   | Karnataka Maharashtra Tamil Nadu Kerala                                                               | It is compact and even grained. It is moderately strong and easy to work. It takes a good finish and maintains its shape well. It has many uses including plain furniture boat construction well curbs door panels cabinet making and musical instruments.                                                                                                                   |
+|           18 | Jarul                                       | Lagerstroemia flos-reginae             | Light reddish gray        | 640 kg/m³                   | Assam Bengal Maharashtra                                                                              | Hard and durable it can be easily worked. It takes a good finish and is used for house construction boat building railway carriages cart making and scaffolding.                                                                                                                                                                                                             |
+|           19 | Kathal Keledang Jackfruit                   | Artocarpus heterophyllus               | Yellow to deep brown      | 800 kg/m³                   | Karnataka Andhra Pradesh Kerala Maharashtra Tamil Nadu                                                | It is heavy and hard. It is durable under water and in damp conditions however it cracks if exposed to direct sun. White ants do not attack it. It is used for piles platforms of wooden bridges door and window panels.                                                                                                                                                     |
+|           20 | Lauraceae Saj                               | Lauraceae                              | Dark brown                | 880 kg/m³                   | Karnataka Andhra Pradesh Bihar Orissa Madhya Pradesh Kerala Tamil Nadu                                | It is strong hard and tough. It is subject to cracking and attack by dry rot. White ants do not attack it. It takes a smooth finish. It is used for such purposes as house construction boat construction railway sleepers and structural work.                                                                                                                              |
+|           21 | Mahogany                                    | Swietenia spp.                         | Reddish brown             | 720 kg/m³                   |                                                                                                       | It takes a good polish and is easily worked. It is durable under water. It is most commonly used for furniture pattern making and cabinet work.                                                                                                                                                                                                                              |
+|           22 | Mango                                       | Mangifera spp                          | Deep gray                 | 560–720 kg/m³               | Throughout India                                                                                      | The mango tree is well known for its fruits. It is easy to work and it maintains its shape well. It is moderately strong. It is most often used for cheap furniture toys packing boxes cabinet work panels for doors and for windows.                                                                                                                                        |
+|           23 | Mulberry                                    | Morus spp.                             | Brown                     | 650 kg/m³                   | Punjab                                                                                                | It is strong tough and elastic. It takes up a clean finish. It can be well seasoned. It is turned and carved easily. Mulberry is typically used for baskets and sports goods like hockey sticks tennis rackets and cricket bats.                                                                                                                                             |
+|           24 | Oak                                         | Quercus spp.                           | Yellowish brown           | 865 kg/m³                   |                                                                                                       | Oak is strong and durable with straight silvery grain. It is used for preparing sporting goods.                                                                                                                                                                                                                                                                              |
+|           25 | Palm                                        | Arecaceae                              | Dark brown                | 1040 kg/m³                  | Throughout India                                                                                      | It contains ripe wood in the outer crust. The colour of this ripened wood is dark brown. It is strong durable and fibrous. Palm is used for furniture roof covering rafters and joists.                                                                                                                                                                                      |
+|           26 | Pine                                        | Pinus spp.                             |                           |                             |                                                                                                       | Pine wood is hard and tough except white pine which is soft. It decays easily if it comes into contact with soil. It is heavy and coarse grained. It is used for pattern making frames for doors and windows and for paving material. White pine is light and straight grained and is used in the manufacture of matches.                                                    |
+|           27 | Red cedar                                   |                                        | Red                       | 480 kg/m³                   | Assam Nagpur                                                                                          | It is soft and even grained. It is used for furniture door panels and well curbs.                                                                                                                                                                                                                                                                                            |
+|           28 | Rosewood                                    | Dalbergia latifolia                    | Dark                      | 850 kg/m³                   | Kerala Karnataka Maharashtra Madhya Pradesh Tamil Nadu Orrissa                                        | It is strong tough and close-grained. It is a handsome wood that takes up a high polish. It maintains its shape well and is available in large sizes. It is used for furniture of superior quality cabinet work ornamental carvings and so forth. Vulnerable                                                                                                                 |
+|           29 | Sal                                         | Shorea robusta                         | Brown                     | 880–1050 kg/m³              | Karnataka Andhra Pradesh Maharashtra Uttar Pradesh Bihar Madhya Pradesh Orissa                        | It is hard fibrous and close-grained. It does not take up a good polish. It requires slow and careful seasoning. It is durable under ground and water. It is used for railway sleepers shipbuilding and bridges.                                                                                                                                                             |
+|           30 | Sandalwood                                  | Santalum spp.                          | White or Red              | 930 kg/m³                   | Karnataka Tamil Nadu Kerala Assam Nagpur Bengal                                                       | It has a pleasant smell. It is commonly used for agricultural instruments well curbs wheels and mallets. Vulnerable                                                                                                                                                                                                                                                          |
+|           31 | Satinwood                                   | Chloroxylon swietenia                  | Yellow                    | 960 kg/m³                   | Central and Southern India                                                                            | It is very hard and durable. It is close grained. It is used for furniture and other ornamental works. Vulnerable                                                                                                                                                                                                                                                            |
+|           32 | Simul                                       | Bombax spp.                            | White                     | 450 kg/m³                   | All over India                                                                                        | It is a loose grained inferior quality wood. Light in weight it is used for packing cases the match industry well curbs and for cheap furniture.                                                                                                                                                                                                                             |
+|           33 | Siris                                       | Albizia spp.                           | Dark brown                |                             | North India                                                                                           | Hard and durable Siris wood is difficult to work. It is used for well curbs in salty water beams posts and furniture.                                                                                                                                                                                                                                                        |
+|           34 | Sissoo                                      | Dalbergia sissoo                       | Dark brown                | 770 kg/m³                   | Mysore Maharashtra Assam Bengal Uttar Pradesh Orissa                                                  | Also known as shisham or tali this wood is strong and tough. It is durable and handsome and it maintains its shape well. It can be easily seasoned. It is difficult to work but it takes a fine polish. It is used for high quality furniture plywoods bridge piles sport goods railway sleepers and so forth. It is a very good material for decorative works and carvings. |
+|           35 | Spruce                                      | Picea spp.                             |                           | 480 kg/m³                   |                                                                                                       | Spruce wood resists decay and is not affected by the attack of marine borers. It is however liable to shrink twist and warp. It is used for piles under water and (formerly) for aeroplane construction.                                                                                                                                                                     |
+|           36 | Sundri                                      | Heritiera fomes                        | Dark red                  | 960 kg/m³                   | Bengal                                                                                                | It is hard and tough. It is difficult to season and work. It is elastic and close grained. It is strong and durable. These qualities make it suited for such uses as boat building piles poles tool handles and carriage shafts.                                                                                                                                             |
+|           37 | Tamarind                                    | Tamarindus indica                      | Dark brown                | 1280 kg/m³[citation needed] | All over India                                                                                        | Tamarind is knotty and durable. It is a beautiful tree for avenue and gardens. Its development is very slow but it ultimately forms a massive appearance. Its fruit is also very useful. It is used for agricultural instruments well curbs sugar mills carts and brick burning.                                                                                             |
+|           38 | Teak                                        | Tectona grandis                        | Deep yellow to dark brown | 639 kg/m³                   | Central India and Southern India                                                                      | Moderately hard teak is durable and fire-resistant. It can be easily seasoned and worked. It takes up a good polish and is not attacked by white ants and dry rot. It does not corrode iron fastenings and it shrinks little. It is among the most valuable timber trees of the world and its use is limited to superior work only.                                          |
+|           39 | Toon Red Cedar                              | Toona ciliata                          | Reddish brown or dull red | 450 kg/m³                   | Assam                                                                                                 | It can be easily worked. It is light in weight. It is used for such products as furniture packing boxes cabinet making and door panels.                                                                                                                                                                                                                                      |
+
+Generated Reasoning SQL: Explanation: 
+The summary indicates that the "Density ¹" column is numeric and represents the density of timber trees. We need to find the timber tree with a density below 451 kg/m³. Since the density values are already in numeric format, we can directly filter the rows based on the "Density ¹" column.
+
+SQL:
+SELECT "Common name"
+FROM T
+WHERE "Density ¹" < 451;
+Generated Final SQL: SELECT "Common name" FROM T WHERE "Density ¹" < 451;
+SQL 실행 결과 셀 수: 5
+=== SQL 실행 결과 미리보기 ===
+| Common name    |
+|:---------------|
+| Hopea          |
+| Palm           |
+| Simul          |
+| Tamarind       |
+| Toon Red Cedar |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Indian timber trees
+SQL: SELECT "Common name" FROM T WHERE "Density ¹" < 451;
+
+SQL Execution Result:
+Common name
+Hopea
+Palm
+Simul
+Tamarind
+Toon Red Cedar
+
+Question: which timber tree has below 451 kg/m3 density?
+A: To find the answer to this question, let’s think step by step.
+Prediction: hopea, palm, simul, tamarind, toon red cedar
+[Gold Answer] simul
+

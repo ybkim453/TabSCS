@@ -1,0 +1,7 @@
+Distribution	x86	x86-64	ia64	ppc	ppc64	sparc32	sparc64	arm	hppa	mips	sh	s390	s390x	alpha	m68k
+Bodhi Linux	Yes	Yes	No	No	No	No	No	Yes	No	No	No	No	No	No	No
+Debian	Yes	Yes\n4.0+	Discontinued\n3.0-7.0	Yes\n2.2+	Yes	Discontinued on Lenny	Yes	Yes\n2.2+	Discontinued\n3.0-5.0	Yes\n3.0+	In progress	Discontinued\n3.0-7	Yes\n7+	Discontinued\n2.1-5.0	Discontinued\n2.0-3.1
+Frugalware	Yes	Yes	No	No	No	No	No	No	No	No	No	No	No	No	No
+OES2-Linux	Yes	Yes	No	No	No	No	No	No	No	No	No	No	No	No	No
+Red Hat Linux	Yes	No	Discontinued\n7.1-7.2	Test release\n5.1	No	Discontinued\n4.0-4.2\n5.1-6.2	Test release\n5.1	No	No	Test release\n5.1	No	Discontinued\n7.2	Discontinued\n7.1	Discontinued\n2.1-7.1	Test release\n5.1
+Distribution	x86	x86-64	ia64	ppc	ppc64	sparc32	sparc64	arm	hppa	mips	sh	s390	s390x	alpha	m68k

@@ -1,0 +1,105 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Unnamed: 0:**
+   - Data type: Categorical
+   - 4 representative example values: Africa, Asia, Europe, Latin-America & Caribbean
+   - Role of the column: Identifier for different regions
+
+2. **1980, 1975, 1975.1, 1985, 1985.1:**
+   - Data type: Numeric
+   - 4 representative example values: 469,618,000; 2,632,335,000; 692,431,000; 361,401,000
+   - Role of the column: Measure of population for each region in the respective year
+
+**Outlier Row Analysis:**
+
+1. **Latin-America & Caribbean (Row 4):**
+   - The values in the columns for 1975, 1975.1, 1985, and 1985.1 are significantly higher compared to the other regions.
+   - This row stands out due to the large population growth within a 10-year span, making it an outlier.
+
+2. **Oceania (Row 6):**
+   - The values in the columns for 1975, 1975.1, 1985, and 1985.1 are notably lower than the other regions.
+   - This row is distinct due to the relatively smaller population numbers, making it an outlier.
+
+3. **Africa (Row 0):**
+   - The values in the columns for 1975, 1975.1, 1985, and 1985.1 show a significant increase in population compared to the other regions.
+   - While the growth is substantial, it is not uncommon for a region to experience such population changes, making this an ordinary row.
+
+=== Full Table Preview ===
+|   row_number | Unnamed: 0                 |       1980 |       1975 |    1975_1 |       1985 |    1985_1 |
+|-------------:|:---------------------------|-----------:|-----------:|----------:|-----------:|----------:|
+|            0 | World                      | 4434682000 | 4068109000 | 366573000 | 4830979000 | 396297000 |
+|            1 | Africa                     |  469618000 |  408160000 |  61458000 |  541814000 |  72196000 |
+|            2 | Asia                       | 2632335000 | 2397512000 | 234823000 | 2887552000 | 255217000 |
+|            3 | Europe                     |  692431000 |  675542000 |  16889000 |  706009000 |  13578000 |
+|            4 | Latin-America\n& Caribbean |  361401000 |  321906000 |  39495000 |  401469000 |  40068000 |
+|            5 | North\nAmerica             |  256068000 |  243425000 |  12643000 |  269456000 |  13388000 |
+|            6 | Oceania                    |   22828000 |   21564000 |   1264000 |   24678000 |   1850000 |
+
+Generated Reasoning SQL: Explanation: To determine the continent with the greatest population growth between 1975 and 1985, we need to calculate the difference in population for each continent between the two years. We will exclude the outlier rows for Latin-America & Caribbean and Oceania as they may skew the results. The columns "1975" and "1985" contain the population values for the respective years.
+
+SQL:
+SELECT "Unnamed: 0" AS continent, 
+       ("1985" - "1975") AS population_growth
+FROM T
+WHERE "Unnamed: 0" NOT IN ('Latin-America\n& Caribbean', 'Oceania')
+ORDER BY population_growth DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Unnamed: 0" AS continent, ("1985" - "1975") AS population_growth FROM T WHERE "Unnamed: 0" NOT IN ('Latin-America\n& Caribbean', 'Oceania') ORDER BY population_growth DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| continent   |   population_growth |
+|:------------|--------------------:|
+| World       |           762870000 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1980
+SQL: SELECT "Unnamed: 0" AS continent, ("1985" - "1975") AS population_growth FROM T WHERE "Unnamed: 0" NOT IN ('Latin-America\n& Caribbean', 'Oceania') ORDER BY population_growth DESC LIMIT 1;
+
+SQL Execution Result:
+continent | population_growth
+World | 762870000
+
+Question: which continent has the greatest population growth between 1975 and 1985?
+A: To find the answer to this question, let’s think step by step.
+Prediction: world
+[Gold Answer] asia
+

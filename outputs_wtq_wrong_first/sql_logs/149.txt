@@ -1,0 +1,169 @@
+=== Table ID ===
+csv/203-csv/381.tsv
+
+=== Question ===
+in what year did guillermo garcia-lopez win above 10 games?
+
+=== Sub-table Preview ===
+| State\n(linked to\nsummaries below)   | Incumbent\nSenator   | Incumbent\nParty   | Incumbent\nElectoral\nhistory                                                       | Most recent election results             | 2018 intent                           | Candidates                            |
+|:--------------------------------------|:---------------------|:-------------------|:------------------------------------------------------------------------------------|:-----------------------------------------|:--------------------------------------|:--------------------------------------|
+| Maine                                 | Angus King           | Independent        | Angus King (I) 52.9%\nCharles E. Summers, Jr. (R) 30.7%\nCynthia Dill (D) 13.3%     | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+| Massachusetts                         | Elizabeth Warren     | Democratic         | Elizabeth Warren (D) 53.7%\nScott Brown (R) 46.3%                                   | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+| Minnesota                             | Amy Klobuchar        | Democratic         | Amy Klobuchar (D) 65.2%\nKurt Bills (R) 30.5%\nStephen Williams (Independence) 2.6% | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+| Utah                                  | Orrin Hatch          | Republican         | Orrin Hatch (R) 65.3%\nScott Howell (D) 30.0%\nShaun McCausland (C) 3.2%            | 1976\n1982\n1988\n1994\n2000\n2006\n2012 | Retiring                              | [Data unknown/missing. You can help!] |
+| Virginia                              | Tim Kaine            | Democratic         | Tim Kaine (D) 52.9%\nGeorge Allen (R) 47%                                           | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+| State\n(linked to\nsummaries below)   | Incumbent            | Incumbent          | Incumbent                                                                           | Most recent election results             | 2018 intent                           | Candidates                            |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. State (linked to summaries below):
+   - Data type: Categorical
+   - 4 representative example values: Maine, Massachusetts, Minnesota, Utah
+   - Role: Identifier for the state where the incumbent senator is running for re-election.
+
+2. Incumbent Senator:
+   - Data type: Categorical
+   - 4 representative example values: Angus King, Elizabeth Warren, Amy Klobuchar, Orrin Hatch
+   - Role: Descriptor for the name of the incumbent senator.
+
+3. Incumbent Party:
+   - Data type: Categorical
+   - 4 representative example values: Independent, Democratic, Republican
+   - Role: Descriptor for the political party of the incumbent senator.
+
+4. Incumbent Electoral History:
+   - Data type: Categorical
+   - 4 representative example values: Angus King (I) 52.9%, Elizabeth Warren (D) 53.7%, Amy Klobuchar (D) 65.2%, Orrin Hatch (R) 65.3%
+   - Role: Descriptor for the incumbent senator's electoral history, including party affiliation and percentage of votes received.
+
+5. Most recent election results:
+   - Data type: Categorical
+   - 4 representative example values: 2012, 2006, 1976, 2012
+   - Role: Descriptor for the year of the most recent election results.
+
+6. 2018 intent:
+   - Data type: Categorical
+   - 4 representative example values: Retiring, [Data unknown/missing. You can help!]
+   - Role: Descriptor for the incumbent senator's intention for the 2018 election.
+
+7. Candidates:
+   - Data type: Categorical
+   - 4 representative example values: [Data unknown/missing. You can help!], [Data unknown/missing. You can help!], [Data unknown/missing. You can help!], [Data unknown/missing. You can help!]
+   - Role: Descriptor for the candidates running for the senatorial seat in the state.
+
+**Outlier Row Analysis:**
+
+1. Utah:
+   - The row is an outlier because the incumbent senator, Orrin Hatch, is noted as "Retiring" in the 2018 intent column, which is different from the other incumbent senators who have intentions listed as "[Data unknown/missing. You can help!]".
+  
+2. Virginia:
+   - This row is an ordinary row as there are no distinctive values that make it an outlier. The data provided for Tim Kaine's electoral history and the most recent election results are consistent with the other entries in the table.
+
+3. State (linked to summaries below):
+   - This row is an ordinary row as it contains column headers and does not represent a candidate entry.
+
+=== Full Table Preview ===
+|   row_number | Tournament           | 2004               | 2005               | 2006               | 2007               | 2008               | 2009               | 2010               | 2011               | 2012               | 2013               | 2014   | W–L   |
+|-------------:|:---------------------|:-------------------|:-------------------|:-------------------|:-------------------|:-------------------|:-------------------|:-------------------|:-------------------|:-------------------|:-------------------|:-------|:------|
+|            0 | Australian Open      | A                  | 2R                 | 2R                 | 2R                 | 3R                 | 2R                 | 1R                 | 3R                 | 1R                 | 1R                 | 2R     | 9–10  |
+|            1 | French Open          | 2R                 | 1R                 | 1R                 | 2R                 | 2R                 | 1R                 | 2R                 | 3R                 | 1R                 | 1R                 |        | 6–10  |
+|            2 | Wimbledon            | A                  | 2R                 | 2R                 | 1R                 | 3R                 | 2R                 | 1R                 | 2R                 | 2R                 | 1R                 |        | 7–9   |
+|            3 | US Open              | A                  | 1R                 | 1R                 | 1R                 | 2R                 | 2R                 | 2R                 | 2R                 | 2R                 | 1R                 |        | 5–9   |
+|            4 | Win–Loss             | 1–1                | 2–4                | 2–4                | 2–4                | 6–4                | 3–4                | 2–4                | 6–4                | 2–4                | 0–4                | 1–1    | 27–38 |
+|            5 | Indian Wells Masters | A                  | A                  | A                  | 3R                 | 2R                 | 1R                 | 4R                 | 2R                 | 3R                 | A                  | A      | 8–6   |
+|            6 | Miami Masters        | A                  | A                  | A                  | 2R                 | 1R                 | 1R                 | 2R                 | 2R                 | 2R                 | A                  |        | 3–6   |
+|            7 | Monte-Carlo Masters  | A                  | 1R                 | A                  | 3R                 | LQ                 | A                  | 1R                 | 2R                 | A                  | A                  |        | 2–3   |
+|            8 | Rome Masters         | A                  | A                  | A                  | A                  | A                  | LQ                 | 3R                 | 1R                 | 2R                 | A                  |        | 3–3   |
+|            9 | Madrid Masters       | A                  | A                  | A                  | LQ                 | LQ                 | 1R                 | 3R                 | 3R                 | 2R                 | 1R                 |        | 5–5   |
+|           10 | Canada Masters       | A                  | A                  | A                  | A                  | A                  | 1R                 | A                  | A                  | A                  | A                  |        | 0–1   |
+|           11 | Cincinnati Masters   | A                  | A                  | A                  | LQ                 | A                  | 3R                 | A                  | 1R                 | A                  | A                  |        | 2–2   |
+|           12 | Shanghai Masters     | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series | 1R                 | QF                 | 2R                 | Q2                 | A                  |        | 4–3   |
+|           13 | Paris Masters        | A                  | A                  | A                  | LQ                 | LQ                 | A                  | A                  | 2R                 | 1R                 | 1R                 |        | 1–3   |
+|           14 | Hamburg Masters      | A                  | A                  | 2R                 | 1R                 | A                  | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series |        | 1–2   |
+|           15 | Win–Loss             | 0–0                | 0–1                | 1–1                | 4–4                | 1–2                | 2–6                | 11–6               | 5–8                | 5–5                | 0–2                |        | 29–35 |
+|           16 | Titles–Finals        | 0–0                | 0–0                | 0–0                | 0–0                | 0–0                | 1–1                | 1–2                | 0–0                | 0–0                | 0–2                |        | 2–5   |
+|           17 | Year End Ranking     | 129                | 91                 | 68                 | 90                 | 62                 | 41                 | 33                 | 39                 | 76                 | 62                 |        |       |
+
+Generated Reasoning SQL: Explanation: 
+The relevant columns for this question are the columns representing the years from 2004 to 2014 and the "W-L" column, which shows the win-loss record for each year. We need to identify the years where Guillermo García-López won more than 10 games based on the win-loss record.
+
+SQL:
+SELECT "Tournament", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "W-L"
+FROM T
+WHERE CAST(SUBSTR("W-L", 1, INSTR("W-L", '-') - 1) AS INTEGER) > 10;
+Generated Final SQL: SELECT "Tournament", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "W-L" FROM T WHERE CAST(SUBSTR("W-L", 1, INSTR("W-L", '-') - 1) AS INTEGER) > 10;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Guillermo García-López (row_number, Tournament, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, W–L)
+
+row_number | Tournament | 2004 | 2005 | 2006 | 2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | W–L
+0 | Australian Open | A | 2R | 2R | 2R | 3R | 2R | 1R | 3R | 1R | 1R | 2R | 9–10
+1 | French Open | 2R | 1R | 1R | 2R | 2R | 1R | 2R | 3R | 1R | 1R | None | 6–10
+2 | Wimbledon | A | 2R | 2R | 1R | 3R | 2R | 1R | 2R | 2R | 1R | None | 7–9
+3 | US Open | A | 1R | 1R | 1R | 2R | 2R | 2R | 2R | 2R | 1R | None | 5–9
+4 | Win–Loss | 1–1 | 2–4 | 2–4 | 2–4 | 6–4 | 3–4 | 2–4 | 6–4 | 2–4 | 0–4 | 1–1 | 27–38
+5 | Indian Wells Masters | A | A | A | 3R | 2R | 1R | 4R | 2R | 3R | A | A | 8–6
+6 | Miami Masters | A | A | A | 2R | 1R | 1R | 2R | 2R | 2R | A | None | 3–6
+7 | Monte-Carlo Masters | A | 1R | A | 3R | LQ | A | 1R | 2R | A | A | None | 2–3
+8 | Rome Masters | A | A | A | A | A | LQ | 3R | 1R | 2R | A | None | 3–3
+9 | Madrid Masters | A | A | A | LQ | LQ | 1R | 3R | 3R | 2R | 1R | None | 5–5
+10 | Canada Masters | A | A | A | A | A | 1R | A | A | A | A | None | 0–1
+11 | Cincinnati Masters | A | A | A | LQ | A | 3R | A | 1R | A | A | None | 2–2
+12 | Shanghai Masters | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series | 1R | QF | 2R | Q2 | A | None | 4–3
+13 | Paris Masters | A | A | A | LQ | LQ | A | A | 2R | 1R | 1R | None | 1–3
+14 | Hamburg Masters | A | A | 2R | 1R | A | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series | Not Masters Series | None | 1–2
+15 | Win–Loss | 0–0 | 0–1 | 1–1 | 4–4 | 1–2 | 2–6 | 11–6 | 5–8 | 5–5 | 0–2 | None | 29–35
+16 | Titles–Finals | 0–0 | 0–0 | 0–0 | 0–0 | 0–0 | 1–1 | 1–2 | 0–0 | 0–0 | 0–2 | None | 2–5
+17 | Year End Ranking | 129 | 91 | 68 | 90 | 62 | 41 | 33 | 39 | 76 | 62 | None | None
+Question: in what year did guillermo garcia-lopez win above 10 games?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate the "Win-Loss" column in the table, as it provides the number of wins for each year.  
+Then, we search for the row where the number of wins is greater than 10.  
+
+From the full table:
+- The number of wins for Guillermo Garcia-Lopez each year is:
+  - 2004: 9 wins
+  - 2005: 6 wins
+  - 2006: 7 wins
+  - 2007: 5 wins
+  - 2008: 11 wins
+  - 2009: 3 wins
+  - 2010: 11 wins
+  - 2011: 5 wins
+  - 2012: 5 wins
+  - 2013: 0 wins
+  - 2014: 1 win
+
+By examining the "Win-Loss" column, we can see that Guillermo Garcia-Lopez won above 10 games in 2008 and 2010.
+
+Final Answer: 2008, 2010
+[Fallback] Prediction: 2008, 2010
+[Gold Answer] 2010
+

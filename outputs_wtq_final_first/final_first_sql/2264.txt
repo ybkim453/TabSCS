@@ -1,0 +1,136 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Wrestler:
+   - Data type: Categorical
+   - 4 representative example values: Billyken Kid, Super Dolphin, Tigers Mask, Vacated
+   - Role: Identifier for the wrestler who held the title
+
+2. Times:
+   - Data type: Numeric
+   - 4 representative example values: 1, nan (missing data), 4
+   - Role: Measure of the number of times a wrestler held the title
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: August 8, 2004, February 13, 2005, February 12, 2007, May 19, 2013
+   - Role: Descriptor indicating the date when the title change occurred
+
+4. Location:
+   - Data type: Categorical
+   - 4 representative example values: Osaka, Japan
+   - Role: Descriptor indicating the location where the title change occurred
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan (missing data), Title vacated, Defeated Billyken Kid in the finals of a four-man tournament to win the vacant title.
+   - Role: Descriptor providing additional information about the title change
+
+**Outlier Row Analysis:**
+
+1. Row 26:
+   - The row contains the value "Vacated" in the Wrestler column, which is not a wrestler's name but indicates that the title was vacated. This makes the row an outlier as it does not follow the pattern of wrestler names in the column.
+
+2. Row 25:
+   - The row contains the value "Tigers Mask" in the Wrestler column with a Times value of "4", which is significantly higher than the other entries in the table. This makes the row an outlier as it represents a wrestler holding the title multiple times, unlike the other entries.
+
+3. Row 0:
+   - The row contains the value "Billyken Kid" in the Wrestler column, which is a wrestler's name like the other entries in the table. The Times value of "1" is also consistent with other entries. Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Wrestler:            | Times:   | Date:               | Location:   | Notes:                                                                                                                      |
+|-------------:|:---------------------|:---------|:--------------------|:------------|:----------------------------------------------------------------------------------------------------------------------------|
+|            0 | Super Delfin         | 1        | 2000-01-04 00:00:00 | Tokyo Japan | Beat Dick Togo for the championship                                                                                         |
+|            1 | Takehiro Murahama    | 1        | 2000-05-07 00:00:00 | Tokyo Japan |                                                                                                                             |
+|            2 | Super Delfin         | 2        | 2000-06-18 00:00:00 | Osaka Japan |                                                                                                                             |
+|            3 | Gamma                | 1        | 2001-06-24 00:00:00 | Osaka Japan |                                                                                                                             |
+|            4 | Super Delfin         | 3        | 2002-01-03 00:00:00 | Osaka Japan |                                                                                                                             |
+|            5 | Takehiro Murahama    | 2        | 2003-07-06 00:00:00 | Osaka Japan |                                                                                                                             |
+|            6 | Daio QUALLT          | 1        | 2004-04-17 00:00:00 | Osaka Japan |                                                                                                                             |
+|            7 | Billyken Kid         | 1        | 2004-08-08 00:00:00 | Osaka Japan |                                                                                                                             |
+|            8 | “Big Boss” MA-G-MA   | 1        | 2004-10-02 00:00:00 | Osaka Japan |                                                                                                                             |
+|            9 | Super Dolphin        | 1        | 2005-02-13 00:00:00 | Osaka Japan |                                                                                                                             |
+|           10 | Super Delfin         | 4        | 2006-02-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           11 | Billyken Kid         | 2        | 2006-08-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           12 | Tigers Mask          | 1        | 2007-02-12 00:00:00 | Osaka Japan |                                                                                                                             |
+|           13 | Hideyoshi            | 1        | 2008-07-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           14 | Billyken Kid         | 3        | 2009-02-15 00:00:00 | Osaka Japan |                                                                                                                             |
+|           15 | Dick Togo            | 1        | 2009-07-25 00:00:00 | Osaka Japan |                                                                                                                             |
+|           16 | Billyken Kid         | 4        | 2010-02-11 00:00:00 | Osaka Japan |                                                                                                                             |
+|           17 | CIMA                 | 1        | 2010-06-18 00:00:00 | Osaka Japan |                                                                                                                             |
+|           18 | Tigers Mask          | 2        | 2010-07-29 00:00:00 | Osaka Japan |                                                                                                                             |
+|           19 | Asian Cougar / Kuuga | 1        | 2010-08-28 00:00:00 | Osaka Japan | Asian Cougar renamed himself Kuuga during his reign.                                                                        |
+|           20 | Tigers Mask          | 3        | 2011-04-29 00:00:00 | Osaka Japan |                                                                                                                             |
+|           21 | Billyken Kid         | 5        | 2011-08-14 00:00:00 | Osaka Japan |                                                                                                                             |
+|           22 | Daisuke Harada       | 1        | 2012-02-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           23 | Black Buffalo        | 1        | 2012-03-25 00:00:00 | Osaka Japan |                                                                                                                             |
+|           24 | Daisuke Harada       | 2        | 2012-07-22 00:00:00 | Osaka Japan |                                                                                                                             |
+|           25 | Vacated              | N/A      | 2013-03-30 00:00:00 | Osaka Japan | Title vacated after Harada announced that he was not re-signing with Osaka Pro after his contract ran out on April 29 2013. |
+|           26 | Tigers Mask          | 4        | 2013-05-19 00:00:00 | Osaka Japan | Defeated Billyken Kid in the finals of a four-man tournament to win the vacant title.                                       |
+|           27 | Quiet Storm          | 1        | 2013-07-21 00:00:00 | Osaka Japan |                                                                                                                             |
+|           28 | Zeus                 | 1        | 2014-01-19 00:00:00 | Osaka Japan |                                                                                                                             |
+
+Generated Reasoning SQL: Explanation: To find the difference between the most and least times a wrestler held the championship title, we need to identify the maximum and minimum values in the "Times" column. Outliers such as the row where the title was vacated should be excluded from this calculation as they do not represent a wrestler holding the title. We will focus on the ordinary rows where wrestlers actually held the title.
+
+SQL: 
+SELECT MAX(CAST("Times:" AS INTEGER)) - MIN(CAST("Times:" AS INTEGER)) AS time_difference
+FROM T
+WHERE "Wrestler:" NOT LIKE '%Vacated%';
+Generated Final SQL: SELECT MAX(CAST("Times:" AS INTEGER)) - MIN(CAST("Times:" AS INTEGER)) AS time_difference FROM T WHERE "Wrestler:" NOT LIKE '%Vacated%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   time_difference |
+|------------------:|
+|                 4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Osaka Pro Wrestling Championship
+SQL: SELECT MAX(CAST("Times:" AS INTEGER)) - MIN(CAST("Times:" AS INTEGER)) AS time_difference FROM T WHERE "Wrestler:" NOT LIKE '%Vacated%';
+
+SQL Execution Result:
+time_difference
+4
+
+Question: what is the difference between most and least times?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

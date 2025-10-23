@@ -1,0 +1,25 @@
+### Column Analysis:
+
+1. **ZOOM:**
+   - Data type: Categorical
+   - 4 representative example values: Season 2 (2000), Season 3 (2001), Season 4 (2002), Season 5 (2003)
+   - Role: Identifier for the season of the show
+
+2. **Cast Member 1, Cast Member 2, Cast Member 3, Cast Member 4, Cast Member 5, Cast Member 6, Cast Member 7:**
+   - Data type: Categorical
+   - 4 representative example values: Raymond "Ray" MacMore, Caroline Botelho, Claudio Schwartz, Alisa Besher
+   - Role: Descriptors for the cast members in each season
+
+### Outlier Row Analysis:
+
+1. **Season 2 (2000):**
+   - Raymond "Ray" MacMore, Caroline Botelho, Claudio Schwartz, Alisa Besher, Jessica "Jessie" Ogungbadero, Kenneth "Kenny" Yates, Zoe Costello
+   - This row is an ordinary row as the cast members listed are consistent with the other seasons.
+
+2. **Season 5 (2003):**
+   - Caroline Botelho, Aline Toupi, Estuardo Alvizures, Garrett DiBona, Michael "Mike" Hansen, Kortney Sumner, Elena "Shing Ying" Shieh
+   - This row is an ordinary row as the cast members listed are consistent with the other seasons.
+
+3. **Season 3 (2001):**
+   - Frances Domond, Kenneth "Kenny" Yates, Rachel Redd, Eric Rollins, Kaleigh Cronin, Kevin "Buzz" Barrette, Caroline Botelho
+   - This row is an ordinary row as the cast members listed are consistent with the other seasons.

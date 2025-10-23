@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Outcome:
+   - Data type: Categorical
+   - 4 representative example values: Runner-up, Winner
+   - Role: Describes the outcome of the match for the player
+
+2. No.:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4
+   - Role: Identifier for the match number
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: 19 June 2010, 18 June 2011
+   - Role: Describes the date of the match
+
+4. Tournament:
+   - Data type: Categorical
+   - 4 representative example values: UNICEF Open, Aegon International
+   - Role: Describes the name of the tournament
+
+5. Surface:
+   - Data type: Categorical
+   - 4 representative example values: Grass, Hard (i)
+   - Role: Describes the type of surface the match was played on
+
+6. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Sergiy Stakhovsky, Andreas Seppi
+   - Role: Describes the name of the opponent player
+
+7. Score:
+   - Data type: Categorical
+   - 4 representative example values: 3–6, 0–6, 6–7(5–7), 6–3, 3–5 ret.
+   - Role: Describes the score of the match
+
+**Outlier Row Analysis:**
+
+1. Row 4:
+   - The values for Tournament being "Kremlin Cup, Russia" and Surface being "Hard (i)" are not common in the table.
+   - This row is an outlier due to the unique combination of tournament location and surface type.
+
+2. Row 1:
+   - The values for Tournament being "UNICEF Open, Netherlands" and Surface being "Grass" are not common in the table.
+   - This row is an outlier due to the unique combination of tournament location and surface type.
+
+3. Row 3:
+   - The values for Tournament being "Malaysian Open, Malaysia" and Surface being "Hard (i)" are not common in the table.
+   - This row is an outlier due to the unique combination of tournament location and surface type.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                                       | Surface   | Opponent              | Score                      |
+|-------------:|:----------|------:|:--------------------|:-------------------------------------------------|:----------|:----------------------|:---------------------------|
+|            0 | Runner-up |     1 | 2009-10-25 00:00:00 | Kremlin Cup Russia                               | Hard (i)  | Mikhail Youzhny       | 7–6(7–5) 0–6 4–6           |
+|            1 | Runner-up |     2 | 2010-06-19 00:00:00 | UNICEF Open Netherlands                          | Grass     | Sergiy Stakhovsky     | 3–6 0–6                    |
+|            2 | Runner-up |     3 | 2011-02-27 00:00:00 | International Tennis Championships United States | Hard      | Juan Martín del Potro | 4–6 4–6                    |
+|            3 | Runner-up |     4 | 2011-06-18 00:00:00 | Aegon International United Kingdom               | Grass     | Andreas Seppi         | 6–7(5–7) 6–3 3–5 ret.      |
+|            4 | Winner    |     1 | 2011-10-02 00:00:00 | Malaysian Open Malaysia                          | Hard (i)  | Marcos Baghdatis      | 6–4 7–5                    |
+|            5 | Winner    |     2 | 2011-10-23 00:00:00 | Kremlin Cup Russia                               | Hard (i)  | Viktor Troicki        | 6–4 6–2                    |
+|            6 | Runner-up |     5 | 2011-10-30 00:00:00 | St. Petersburg Open Russia                       | Hard (i)  | Marin Čilić           | 3–6 6–3 2–6                |
+|            7 | Runner-up |     6 | 2012-01-08 00:00:00 | Chennai Open India                               | Hard      | Milos Raonic          | 7–6(7–4) 6–7(4–7) 6–7(4–7) |
+|            8 | Winner    |     3 | 2012-07-15 00:00:00 | Stuttgart Open Germany                           | Clay      | Juan Mónaco           | 6–4 5–7 6–3                |
+|            9 | Runner-up |     7 | 2012-07-22 00:00:00 | Swiss Open Switzerland                           | Clay      | Thomaz Bellucci       | 7–6(8–6) 4–6 2–6           |
+|           10 | Winner    |     4 | 2013-01-06 00:00:00 | Chennai Open India                               | Hard      | Roberto Bautista-Agut | 3–6 6–1 6–3                |
+
+Generated Reasoning SQL: The summary indicates that the "Date" column is of type Date and provides example values. To answer the question, we need to filter rows where the year in the "Date" column is greater than 2011. We can extract the year from the date using the strftime function in SQLite.
+SQL: select count("Tournament") from T where strftime('%Y', "Date") > '2011';
+Generated Final SQL: select count("Tournament") from T where strftime('%Y', "Date") > '2011';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Tournament") |
+|----------------------:|
+|                     4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Janko Tipsarević
+SQL: select count("Tournament") from T where strftime('%Y', "Date") > '2011';
+
+count("Tournament")
+4
+Question: how many of these tournaments occurred after the year 2011?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

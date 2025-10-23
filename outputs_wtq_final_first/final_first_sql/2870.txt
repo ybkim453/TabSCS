@@ -1,0 +1,150 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: nan, 8, 23, 31
+   - Role: Identifier
+
+2. Pair:
+   - Data type: Numeric
+   - 4 representative example values: 21, 18, 14, 1
+   - Role: Descriptor
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: Erben Wennemars, Stefan Groothuis, Even Wetten, Pekka Koskela
+   - Role: Descriptor
+
+4. Country:
+   - Data type: Categorical
+   - 4 representative example values: Netherlands, Norway, Finland, Poland
+   - Role: Descriptor
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 1:09.32, 1:09.57, 1:10.57, 1:11.45
+   - Role: Measure
+
+6. Time behind:
+   - Data type: Categorical
+   - 4 representative example values: +0.43, +0.68, +1.68, +2.56
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The Rank value is "nan", which is not a typical numerical value for ranking.
+   - This row is an outlier due to the unusual Rank value.
+
+2. Row 38:
+   - The Time value is "DQ", which is not a typical time measurement.
+   - This row is an outlier due to the unusual Time value.
+
+3. Row 22:
+   - The Time behind value is "-", which is not a typical value for time difference.
+   - This row is an outlier due to the unusual Time behind value.
+
+=== Full Table Preview ===
+|   row_number | Rank   |   Pair | Name                     | Country       | Time    | Time behind   |
+|-------------:|:-------|-------:|:-------------------------|:--------------|:--------|:--------------|
+|            0 |        |     19 | Shani Davis              | United States | 1:08.89 |               |
+|            1 |        |     20 | Joey Cheek               | United States | 1:09.16 | +0.27         |
+|            2 |        |     21 | Erben Wennemars          | Netherlands   | 1:09.32 | +0.43         |
+|            3 | 4      |     20 | Lee Kyou-hyuk            | South Korea   | 1:09.37 | +0.48         |
+|            4 | 5      |     21 | Jan Bos                  | Netherlands   | 1:09.42 | +0.53         |
+|            5 | 6      |      4 | Chad Hedrick             | United States | 1:09.45 | +0.56         |
+|            6 | 7      |     16 | Yevgeny Lalenkov         | Russia        | 1:09.46 | +0.57         |
+|            7 | 8      |     18 | Stefan Groothuis         | Netherlands   | 1:09.57 | +0.68         |
+|            8 | 9      |     18 | Casey FitzRandolph       | United States | 1:09.59 | +0.70         |
+|            9 | 10     |      6 | Dmitry Dorofeyev         | Russia        | 1:09.74 | +0.85         |
+|           10 | 11     |     19 | Jeremy Wotherspoon       | Canada        | 1:09.76 | +0.87         |
+|           11 | 12     |      9 | Beorn Nijenhuis          | Netherlands   | 1:09.85 | +0.96         |
+|           12 | 13     |      4 | Konrad Niedźwiedzki      | Poland        | 1:09.95 | +1.06         |
+|           13 | 14     |     16 | Mikael Flygind Larsen    | Norway        | 1:10.13 | +1.24         |
+|           14 | 15     |     13 | Alexey Proshin           | Russia        | 1:10.14 | +1.25         |
+|           15 | 16     |      7 | François-Olivier Roberge | Canada        | 1:10.20 | +1.31         |
+|           16 | 17     |     11 | Choi Jae-bong            | South Korea   | 1:10.23 | +1.34         |
+|           17 | 18     |     12 | Petter Andersen          | Norway        | 1:10.38 | +1.38         |
+|           18 | 19     |     17 | Denny Morrison           | Canada        | 1:10.44 | +1.44         |
+|           19 | 20     |     15 | Yusuke Imai              | Japan         | 1:10.48 | +1.59         |
+|           20 | 21     |     15 | Aleksandr Kibalko        | Russia        | 1:10.50 | +1.61         |
+|           21 | 22     |     10 | Lee Kang-seok            | South Korea   | 1:10.52 | +1.63         |
+|           22 | 23     |     14 | Even Wetten              | Norway        | 1:10.57 | +1.68         |
+|           23 | 24     |     17 | Mun Jun                  | South Korea   | 1:10.66 | +1.77         |
+|           24 | 25     |     10 | Janne Hänninen           | Finland       | 1:10.83 | +1.94         |
+|           25 | 26     |      2 | Mika Poutala             | Finland       | 1:11.03 | +2.14         |
+|           26 | 27     |     14 | Takaharu Nakajima        | Japan         | 1:11.10 | +2.21         |
+|           27 | 28     |      3 | Takahiro Ushiyama        | Japan         | 1:11.21 | +2.32         |
+|           28 | 29     |     12 | Steven Elm               | Canada        | 1:11.36 | +2.47         |
+|           29 | 30     |      8 | Maurizio Carnino         | Italy         | 1:11.44 | +2.55         |
+|           30 | 31     |      1 | Pekka Koskela            | Finland       | 1:11.45 | +2.56         |
+|           31 | 32     |      1 | Keiichiro Nagashima      | Japan         | 1:11.78 | +2.89         |
+|           32 | 33     |      1 | An Weijiang              | China         | 1:11.80 | +2.91         |
+|           33 | 34     |      1 | Yu Fengtong              | China         | 1:11.90 | +3.01         |
+|           34 | 35     |      7 | Zhang Zhongqi            | China         | 1:12.29 | +3.40         |
+|           35 | 36     |      8 | Aleksandr Zhigin         | Kazakhstan    | 1:12.36 | +3.47         |
+|           36 | 37     |      9 | Risto Rosendahl          | Finland       | 1:12.60 | +3.71         |
+|           37 | 38     |      5 | Lu Zhuo                  | China         | 1:12.69 | +3.80         |
+|           38 | –      |      5 | Maciej Ustynowicz        | Poland        | DQ      | –             |
+|           39 | –      |      2 | Ermanno Ioriatti         | Italy         | DQ      | –             |
+|           40 | –      |      6 | Erik Zachrisson          | Sweden        | DQ      | –             |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Country" column contains categorical values representing the country of each contestant. To find the number of contestants from the United States, we count the rows where "Country" = 'United States'. We do not need to exclude any outlier rows as the summary does not mention any specific exclusions.
+SQL: select count("Name") from T where "Country" = 'United States';
+Generated Final SQL: select count("Name") from T where "Country" = 'United States';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Name") |
+|----------------:|
+|               4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Speed skating at the 2006 Winter Olympics – Men's 1000 metres
+SQL: select count("Name") from T where "Country" = 'United States';
+
+count("Name")
+4
+Question: what is the number of contestants from the united states?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

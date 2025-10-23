@@ -1,0 +1,374 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: euro, lArr, sim, perp
+   - Role: Identifier
+
+2. Character
+   - Data type: Categorical
+   - 4 representative example values: €, ⇐, ∼, ⊥
+   - Role: Descriptor
+
+3. Unicode code point (decimal)
+   - Data type: Numeric
+   - 4 representative example values: 8364, 8656, 8764, 8869
+   - Role: Descriptor
+
+4. Standard
+   - Data type: Categorical
+   - 4 representative example values: HTML 4.0, HTML 5.0
+   - Role: Descriptor
+
+5. DTD
+   - Data type: Categorical
+   - 4 representative example values: HTMLspecial, HTMLsymbol
+   - Role: Descriptor
+
+6. Old ISO subset
+   - Data type: Categorical
+   - 4 representative example values: NEW, ISOtech
+   - Role: Descriptor
+
+7. Description
+   - Data type: Descriptor
+   - 4 representative example values: euro sign, leftwards double arrow, tilde operator, up tack
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2)
+   - The values for Standard (HTML 4.0) and DTD (HTMLsymbol) are different from the majority of the table.
+   - These values make the row distinctive as it deviates from the common pattern seen in other rows.
+
+2. Row 242 (Index 242)
+   - The values for Standard (HTML 5.0) and DTD (?) are different from the majority of the table.
+   - The ambiguous value for DTD makes this row stand out, indicating it as an outlier.
+
+3. Row 187 (Index 187)
+   - The values for Standard (HTML 4.0) and Old ISO subset (?) are different from the majority of the table.
+   - The presence of an ambiguous value for Old ISO subset makes this row unique compared to the rest.
+
+=== Full Table Preview ===
+|   row_number | Name     | Character   |   Unicode code point (decimal) | Standard   | DTD         | Old ISO subset   | Description                                                             |
+|-------------:|:---------|:------------|-------------------------------:|:-----------|:------------|:-----------------|:------------------------------------------------------------------------|
+|            0 | quot     | "           |                             22 | HTML 2.0   | HTMLspecial | ISOnum           | quotation mark (APL quote)                                              |
+|            1 | amp      | &           |                             26 | HTML 2.0   | HTMLspecial | ISOnum           | ampersand                                                               |
+|            2 | apos     | '           |                             27 | XHTML 1.0  | HTMLspecial | ISOnum           | apostrophe (apostrophe-quote); see below                                |
+|            3 | lt       | <           |                              3 | HTML 2.0   | HTMLspecial | ISOnum           | less-than sign                                                          |
+|            4 | gt       | >           |                              3 | HTML 2.0   | HTMLspecial | ISOnum           | greater-than sign                                                       |
+|            5 | nbsp     |             |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | no-break space (non-breaking space)                                     |
+|            6 | iexcl    | ¡           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | inverted exclamation mark                                               |
+|            7 | cent     | ¢           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | cent sign                                                               |
+|            8 | pound    | £           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | pound sign                                                              |
+|            9 | curren   | ¤           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | currency sign                                                           |
+|           10 | yen      | ¥           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | yen sign (yuan sign)                                                    |
+|           11 | brvbar   | ¦           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | broken bar (broken vertical bar)                                        |
+|           12 | sect     | §           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | section sign                                                            |
+|           13 | uml      | ¨           |                              0 | HTML 3.2   | HTMLlat1    | ISOdia           | diaeresis (spacing diaeresis); see Germanic umlaut                      |
+|           14 | copy     | ©           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | copyright symbol                                                        |
+|           15 | ordf     | ª           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | feminine ordinal indicator                                              |
+|           16 | laquo    | «           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | left-pointing double angle quotation mark (left pointing guillemet)     |
+|           17 | not      | ¬           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | not sign                                                                |
+|           18 | shy      |             |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | soft hyphen (discretionary hyphen)                                      |
+|           19 | reg      | ®           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | registered sign (registered trademark symbol)                           |
+|           20 | macr     | ¯           |                              0 | HTML 3.2   | HTMLlat1    | ISOdia           | macron (spacing macron overline APL overbar)                            |
+|           21 | deg      | °           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | degree symbol                                                           |
+|           22 | plusmn   | ±           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | plus-minus sign (plus-or-minus sign)                                    |
+|           23 | sup2     | ²           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | superscript two (superscript digit two squared)                         |
+|           24 | sup3     | ³           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | superscript three (superscript digit three cubed)                       |
+|           25 | acute    | ´           |                              0 | HTML 3.2   | HTMLlat1    | ISOdia           | acute accent (spacing acute)                                            |
+|           26 | micro    | µ           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | micro sign                                                              |
+|           27 | para     | ¶           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | pilcrow sign (paragraph sign)                                           |
+|           28 | middot   | ·           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | middle dot (Georgian comma Greek middle dot)                            |
+|           29 | cedil    | ¸           |                              0 | HTML 3.2   | HTMLlat1    | ISOdia           | cedilla (spacing cedilla)                                               |
+|           30 | sup1     | ¹           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | superscript one (superscript digit one)                                 |
+|           31 | ordm     | º           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | masculine ordinal indicator                                             |
+|           32 | raquo    | »           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | right-pointing double angle quotation mark (right pointing guillemet)   |
+|           33 | frac14   | ¼           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | vulgar fraction one quarter (fraction one quarter)                      |
+|           34 | frac12   | ½           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | vulgar fraction one half (fraction one half)                            |
+|           35 | frac34   | ¾           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | vulgar fraction three quarters (fraction three quarters)                |
+|           36 | iquest   | ¿           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | inverted question mark (turned question mark)                           |
+|           37 | Agrave   | À           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter A with grave accent (Latin capital letter A grave) |
+|           38 | Aacute   | Á           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter A with acute accent                                |
+|           39 | Acirc    | Â           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter A with circumflex                                  |
+|           40 | Atilde   | Ã           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter A with tilde                                       |
+|           41 | Auml     | Ä           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter A with diaeresis                                   |
+|           42 | Aring    | Å           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter A with ring above (Latin capital letter A ring)    |
+|           43 | AElig    | Æ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter AE (Latin capital ligature AE)                     |
+|           44 | Ccedil   | Ç           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter C with cedilla                                     |
+|           45 | Egrave   | È           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter E with grave accent                                |
+|           46 | Eacute   | É           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter E with acute accent                                |
+|           47 | Ecirc    | Ê           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter E with circumflex                                  |
+|           48 | Euml     | Ë           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter E with diaeresis                                   |
+|           49 | Igrave   | Ì           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter I with grave accent                                |
+|           50 | Iacute   | Í           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter I with acute accent                                |
+|           51 | Icirc    | Î           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter I with circumflex                                  |
+|           52 | Iuml     | Ï           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter I with diaeresis                                   |
+|           53 | ETH      | Ð           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter Eth                                                |
+|           54 | Ntilde   | Ñ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter N with tilde                                       |
+|           55 | Ograve   | Ò           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter O with grave accent                                |
+|           56 | Oacute   | Ó           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter O with acute accent                                |
+|           57 | Ocirc    | Ô           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter O with circumflex                                  |
+|           58 | Otilde   | Õ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter O with tilde                                       |
+|           59 | Ouml     | Ö           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter O with diaeresis                                   |
+|           60 | times    | ×           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | multiplication sign                                                     |
+|           61 | Oslash   | Ø           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter O with stroke (Latin capital letter O slash)       |
+|           62 | Ugrave   | Ù           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter U with grave accent                                |
+|           63 | Uacute   | Ú           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter U with acute accent                                |
+|           64 | Ucirc    | Û           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter U with circumflex                                  |
+|           65 | Uuml     | Ü           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter U with diaeresis                                   |
+|           66 | Yacute   | Ý           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter Y with acute accent                                |
+|           67 | THORN    | Þ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin capital letter THORN                                              |
+|           68 | szlig    | ß           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter sharp s (ess-zed); see German Eszett                 |
+|           69 | agrave   | à           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter a with grave accent                                  |
+|           70 | aacute   | á           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter a with acute accent                                  |
+|           71 | acirc    | â           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter a with circumflex                                    |
+|           72 | atilde   | ã           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter a with tilde                                         |
+|           73 | auml     | ä           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter a with diaeresis                                     |
+|           74 | aring    | å           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter a with ring above                                    |
+|           75 | aelig    | æ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter ae (Latin small ligature ae)                         |
+|           76 | ccedil   | ç           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter c with cedilla                                       |
+|           77 | egrave   | è           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter e with grave accent                                  |
+|           78 | eacute   | é           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter e with acute accent                                  |
+|           79 | ecirc    | ê           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter e with circumflex                                    |
+|           80 | euml     | ë           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter e with diaeresis                                     |
+|           81 | igrave   | ì           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter i with grave accent                                  |
+|           82 | iacute   | í           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter i with acute accent                                  |
+|           83 | icirc    | î           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter i with circumflex                                    |
+|           84 | iuml     | ï           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter i with diaeresis                                     |
+|           85 | eth      | ð           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter eth                                                  |
+|           86 | ntilde   | ñ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter n with tilde                                         |
+|           87 | ograve   | ò           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter o with grave accent                                  |
+|           88 | oacute   | ó           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter o with acute accent                                  |
+|           89 | ocirc    | ô           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter o with circumflex                                    |
+|           90 | otilde   | õ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter o with tilde                                         |
+|           91 | ouml     | ö           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter o with diaeresis                                     |
+|           92 | divide   | ÷           |                              0 | HTML 3.2   | HTMLlat1    | ISOnum           | division sign (obelus)                                                  |
+|           93 | oslash   | ø           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter o with stroke (Latin small letter o slash)           |
+|           94 | ugrave   | ù           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter u with grave accent                                  |
+|           95 | uacute   | ú           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter u with acute accent                                  |
+|           96 | ucirc    | û           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter u with circumflex                                    |
+|           97 | uuml     | ü           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter u with diaeresis                                     |
+|           98 | yacute   | ý           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter y with acute accent                                  |
+|           99 | thorn    | þ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter thorn                                                |
+|          100 | yuml     | ÿ           |                              0 | HTML 2.0   | HTMLlat1    | ISOlat1          | Latin small letter y with diaeresis                                     |
+|          101 | OElig    | Œ           |                            152 | HTML 4.0   | HTMLspecial | ISOlat2          | Latin capital ligature oe                                               |
+|          102 | oelig    | œ           |                            153 | HTML 4.0   | HTMLspecial | ISOlat2          | Latin small ligature oe                                                 |
+|          103 | Scaron   | Š           |                            160 | HTML 4.0   | HTMLspecial | ISOlat2          | Latin capital letter s with caron                                       |
+|          104 | scaron   | š           |                            161 | HTML 4.0   | HTMLspecial | ISOlat2          | Latin small letter s with caron                                         |
+|          105 | Yuml     | Ÿ           |                            178 | HTML 4.0   | HTMLspecial | ISOlat2          | Latin capital letter y with diaeresis                                   |
+|          106 | fnof     | ƒ           |                            192 | HTML 4.0   | HTMLsymbol  | ISOtech          | Latin small letter f with hook (function florin)                        |
+|          107 | circ     | ˆ           |                              2 | HTML 4.0   | HTMLspecial | ISOpub           | modifier letter circumflex accent                                       |
+|          108 | tilde    | ˜           |                              2 | HTML 4.0   | HTMLspecial | ISOdia           | small tilde                                                             |
+|          109 | Alpha    | Α           |                            391 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Alpha                                              |
+|          110 | Beta     | Β           |                            392 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Beta                                               |
+|          111 | Gamma    | Γ           |                            393 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Gamma                                              |
+|          112 | Delta    | Δ           |                            394 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Delta                                              |
+|          113 | Epsilon  | Ε           |                            395 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Epsilon                                            |
+|          114 | Zeta     | Ζ           |                            396 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Zeta                                               |
+|          115 | Eta      | Η           |                            397 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Eta                                                |
+|          116 | Theta    | Θ           |                            398 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Theta                                              |
+|          117 | Iota     | Ι           |                            399 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Iota                                               |
+|          118 | Kappa    | Κ           |                             39 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Kappa                                              |
+|          119 | Lambda   | Λ           |                             39 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Lambda                                             |
+|          120 | Mu       | Μ           |                             39 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Mu                                                 |
+|          121 | Nu       | Ν           |                             39 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Nu                                                 |
+|          122 | Xi       | Ξ           |                             39 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Xi                                                 |
+|          123 | Omicron  | Ο           |                             39 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Omicron                                            |
+|          124 | Pi       | Π           |                              3 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Pi                                                 |
+|          125 | Rho      | Ρ           |                              3 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Rho                                                |
+|          126 | Sigma    | Σ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Sigma                                              |
+|          127 | Tau      | Τ           |                              3 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Tau                                                |
+|          128 | Upsilon  | Υ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Upsilon                                            |
+|          129 | Phi      | Φ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Phi                                                |
+|          130 | Chi      | Χ           |                              3 | HTML 4.0   | HTMLsymbol  |                  | Greek capital letter Chi                                                |
+|          131 | Psi      | Ψ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Psi                                                |
+|          132 | Omega    | Ω           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek capital letter Omega                                              |
+|          133 | alpha    | α           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter alpha                                                |
+|          134 | beta     | β           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter beta                                                 |
+|          135 | gamma    | γ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter gamma                                                |
+|          136 | delta    | δ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter delta                                                |
+|          137 | epsilon  | ε           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter epsilon                                              |
+|          138 | zeta     | ζ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter zeta                                                 |
+|          139 | eta      | η           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter eta                                                  |
+|          140 | theta    | θ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter theta                                                |
+|          141 | iota     | ι           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter iota                                                 |
+|          142 | kappa    | κ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter kappa                                                |
+|          143 | lambda   | λ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter lambda                                               |
+|          144 | mu       | μ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter mu                                                   |
+|          145 | nu       | ν           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter nu                                                   |
+|          146 | xi       | ξ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter xi                                                   |
+|          147 | omicron  | ο           |                              3 | HTML 4.0   | HTMLsymbol  | NEW              | Greek small letter omicron                                              |
+|          148 | pi       | π           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter pi                                                   |
+|          149 | rho      | ρ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter rho                                                  |
+|          150 | sigmaf   | ς           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter final sigma                                          |
+|          151 | sigma    | σ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter sigma                                                |
+|          152 | tau      | τ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter tau                                                  |
+|          153 | upsilon  | υ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter upsilon                                              |
+|          154 | phi      | φ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter phi                                                  |
+|          155 | chi      | χ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter chi                                                  |
+|          156 | psi      | ψ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter psi                                                  |
+|          157 | omega    | ω           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek small letter omega                                                |
+|          158 | thetasym | ϑ           |                              3 | HTML 4.0   | HTMLsymbol  | NEW              | Greek theta symbol                                                      |
+|          159 | upsih    | ϒ           |                              3 | HTML 4.0   | HTMLsymbol  | NEW              | Greek Upsilon with hook symbol                                          |
+|          160 | piv      | ϖ           |                              3 | HTML 4.0   | HTMLsymbol  | ISOgrk3          | Greek pi symbol                                                         |
+|          161 | ensp     |             |                           2002 | HTML 4.0   | HTMLspecial | ISOpub           | en space                                                                |
+|          162 | emsp     |             |                           2003 | HTML 4.0   | HTMLspecial | ISOpub           | em space                                                                |
+|          163 | thinsp   |             |                           2009 | HTML 4.0   | HTMLspecial | ISOpub           | thin space                                                              |
+|          164 | zwnj     |             |                            200 | HTML 4.0   | HTMLspecial | NEW RFC 2070     | zero-width non-joiner                                                   |
+|          165 | zwj      |             |                            200 | HTML 4.0   | HTMLspecial | NEW RFC 2070     | zero-width joiner                                                       |
+|          166 | lrm      |             |                            200 | HTML 4.0   | HTMLspecial | NEW RFC 2070     | left-to-right mark                                                      |
+|          167 | rlm      |             |                            200 | HTML 4.0   | HTMLspecial | NEW RFC 2070     | right-to-left mark                                                      |
+|          168 | ndash    | –           |                           2013 | HTML 4.0   | HTMLspecial | ISOpub           | en dash                                                                 |
+|          169 | mdash    | —           |                           2014 | HTML 4.0   | HTMLspecial | ISOpub           | em dash                                                                 |
+|          170 | lsquo    | ‘           |                           2018 | HTML 4.0   | HTMLspecial | ISOnum           | left single quotation mark                                              |
+|          171 | rsquo    | ’           |                           2019 | HTML 4.0   | HTMLspecial | ISOnum           | right single quotation mark                                             |
+|          172 | sbquo    | ‚           |                            201 | HTML 4.0   | HTMLspecial | NEW              | single low-9 quotation mark                                             |
+|          173 | ldquo    | “           |                            201 | HTML 4.0   | HTMLspecial | ISOnum           | left double quotation mark                                              |
+|          174 | rdquo    | ”           |                            201 | HTML 4.0   | HTMLspecial | ISOnum           | right double quotation mark                                             |
+|          175 | bdquo    | „           |                            201 | HTML 4.0   | HTMLspecial | NEW              | double low-9 quotation mark                                             |
+|          176 | dagger   | †           |                           2020 | HTML 4.0   | HTMLspecial | ISOpub           | dagger obelisk                                                          |
+|          177 | Dagger   | ‡           |                           2021 | HTML 4.0   | HTMLspecial | ISOpub           | double dagger double obelisk                                            |
+|          178 | bull     | •           |                           2022 | HTML 4.0   | HTMLspecial | ISOpub           | bullet (black small circle)                                             |
+|          179 | hellip   | …           |                           2026 | HTML 4.0   | HTMLsymbol  | ISOpub           | horizontal ellipsis (three dot leader)                                  |
+|          180 | permil   | ‰           |                           2030 | HTML 4.0   | HTMLspecial | ISOtech          | per mille sign                                                          |
+|          181 | prime    | ′           |                           2032 | HTML 4.0   | HTMLsymbol  | ISOtech          | prime (minutes feet)                                                    |
+|          182 | Prime    | ″           |                           2033 | HTML 4.0   | HTMLsymbol  | ISOtech          | double prime (seconds inches)                                           |
+|          183 | lsaquo   | ‹           |                           2039 | HTML 4.0   | HTMLspecial | ISO proposed     | single left-pointing angle quotation mark                               |
+|          184 | rsaquo   | ›           |                            203 | HTML 4.0   | HTMLspecial | ISO proposed     | single right-pointing angle quotation mark                              |
+|          185 | oline    | ‾           |                            203 | HTML 4.0   | HTMLsymbol  | NEW              | overline (spacing overscore)                                            |
+|          186 | frasl    | ⁄           |                           2044 | HTML 4.0   | HTMLsymbol  | NEW              | fraction slash (solidus)                                                |
+|          187 | euro     | €           |                             20 | HTML 4.0   | HTMLspecial | NEW              | euro sign                                                               |
+|          188 | image    | ℑ           |                           2111 | HTML 4.0   | HTMLsymbol  | ISOamso          | black-letter capital I (imaginary part)                                 |
+|          189 | weierp   | ℘           |                           2118 | HTML 4.0   | HTMLsymbol  | ISOamso          | script capital P (power set Weierstrass p)                              |
+|          190 | real     | ℜ           |                            211 | HTML 4.0   | HTMLsymbol  | ISOamso          | black-letter capital R (real part symbol)                               |
+|          191 | trade    | ™           |                           2122 | HTML 4.0   | HTMLsymbol  | ISOnum           | trademark symbol                                                        |
+|          192 | alefsym  | ℵ           |                           2135 | HTML 4.0   | HTMLsymbol  | NEW              | alef symbol (first transfinite cardinal)                                |
+|          193 | larr     | ←           |                           2190 | HTML 4.0   | HTMLsymbol  | ISOnum           | leftwards arrow                                                         |
+|          194 | uarr     | ↑           |                           2191 | HTML 4.0   | HTMLsymbol  | ISOnum           | upwards arrow                                                           |
+|          195 | rarr     | →           |                           2192 | HTML 4.0   | HTMLsymbol  | ISOnum           | rightwards arrow                                                        |
+|          196 | darr     | ↓           |                           2193 | HTML 4.0   | HTMLsymbol  | ISOnum           | downwards arrow                                                         |
+|          197 | harr     | ↔           |                           2194 | HTML 4.0   | HTMLsymbol  | ISOamsa          | left right arrow                                                        |
+|          198 | crarr    | ↵           |                             21 | HTML 4.0   | HTMLsymbol  | NEW              | downwards arrow with corner leftwards (carriage return)                 |
+|          199 | lArr     | ⇐           |                             21 | HTML 4.0   | HTMLsymbol  | ISOtech          | leftwards double arrow                                                  |
+|          200 | uArr     | ⇑           |                             21 | HTML 4.0   | HTMLsymbol  | ISOamsa          | upwards double arrow                                                    |
+|          201 | rArr     | ⇒           |                             21 | HTML 4.0   | HTMLsymbol  | ISOnum           | rightwards double arrow                                                 |
+|          202 | dArr     | ⇓           |                             21 | HTML 4.0   | HTMLsymbol  | ISOamsa          | downwards double arrow                                                  |
+|          203 | hArr     | ⇔           |                             21 | HTML 4.0   | HTMLsymbol  | ISOamsa          | left right double arrow                                                 |
+|          204 | forall   | ∀           |                           2200 | HTML 4.0   | HTMLsymbol  | ISOtech          | for all                                                                 |
+|          205 | part     | ∂           |                           2202 | HTML 4.0   | HTMLsymbol  | ISOtech          | partial differential                                                    |
+|          206 | exist    | ∃           |                           2203 | HTML 4.0   | HTMLsymbol  | ISOtech          | there exists                                                            |
+|          207 | empty    | ∅           |                           2205 | HTML 4.0   | HTMLsymbol  | ISOamso          | empty set (null set); see also U+8960 ⌀                                 |
+|          208 | nabla    | ∇           |                           2207 | HTML 4.0   | HTMLsymbol  | ISOtech          | del or nabla (vector differential operator)                             |
+|          209 | isin     | ∈           |                           2208 | HTML 4.0   | HTMLsymbol  | ISOtech          | element of                                                              |
+|          210 | notin    | ∉           |                           2209 | HTML 4.0   | HTMLsymbol  | ISOtech          | not an element of                                                       |
+|          211 | ni       | ∋           |                            220 | HTML 4.0   | HTMLsymbol  | ISOtech          | contains as member                                                      |
+|          212 | prod     | ∏           |                            220 | HTML 4.0   | HTMLsymbol  | ISOamsb          | n-ary product (product sign)                                            |
+|          213 | sum      | ∑           |                           2211 | HTML 4.0   | HTMLsymbol  | ISOamsb          | n-ary summation                                                         |
+|          214 | minus    | −           |                           2212 | HTML 4.0   | HTMLsymbol  | ISOtech          | minus sign                                                              |
+|          215 | lowast   | ∗           |                           2217 | HTML 4.0   | HTMLsymbol  | ISOtech          | asterisk operator                                                       |
+|          216 | radic    | √           |                            221 | HTML 4.0   | HTMLsymbol  | ISOtech          | square root (radical sign)                                              |
+|          217 | prop     | ∝           |                            221 | HTML 4.0   | HTMLsymbol  | ISOtech          | proportional to                                                         |
+|          218 | infin    | ∞           |                            221 | HTML 4.0   | HTMLsymbol  | ISOtech          | infinity                                                                |
+|          219 | ang      | ∠           |                           2220 | HTML 4.0   | HTMLsymbol  | ISOamso          | angle                                                                   |
+|          220 | and      | ∧           |                           2227 | HTML 4.0   | HTMLsymbol  | ISOtech          | logical and (wedge)                                                     |
+|          221 | or       | ∨           |                           2228 | HTML 4.0   | HTMLsymbol  | ISOtech          | logical or (vee)                                                        |
+|          222 | cap      | ∩           |                           2229 | HTML 4.0   | HTMLsymbol  | ISOtech          | intersection (cap)                                                      |
+|          223 | cup      | ∪           |                            222 | HTML 4.0   | HTMLsymbol  | ISOtech          | union (cup)                                                             |
+|          224 | int      | ∫           |                            222 | HTML 4.0   | HTMLsymbol  | ISOtech          | integral                                                                |
+|          225 | there4   | ∴           |                           2234 | HTML 4.0   | HTMLsymbol  | ISOtech          | therefore sign                                                          |
+|          226 | sim      | ∼           |                            223 | HTML 4.0   | HTMLsymbol  | ISOtech          | tilde operator (varies with similar to)                                 |
+|          227 | cong     | ≅           |                           2245 | HTML 4.0   | HTMLsymbol  | ISOtech          | congruent to                                                            |
+|          228 | asymp    | ≈           |                           2248 | HTML 4.0   | HTMLsymbol  | ISOamsr          | almost equal to (asymptotic to)                                         |
+|          229 | ne       | ≠           |                           2260 | HTML 4.0   | HTMLsymbol  | ISOtech          | not equal to                                                            |
+|          230 | equiv    | ≡           |                           2261 | HTML 4.0   | HTMLsymbol  | ISOtech          | identical to; sometimes used for 'equivalent to'                        |
+|          231 | le       | ≤           |                           2264 | HTML 4.0   | HTMLsymbol  | ISOtech          | less-than or equal to                                                   |
+|          232 | ge       | ≥           |                           2265 | HTML 4.0   | HTMLsymbol  | ISOtech          | greater-than or equal to                                                |
+|          233 | sub      | ⊂           |                           2282 | HTML 4.0   | HTMLsymbol  | ISOtech          | subset of                                                               |
+|          234 | sup      | ⊃           |                           2283 | HTML 4.0   | HTMLsymbol  | ISOtech          | superset of                                                             |
+|          235 | nsub     | ⊄           |                           2284 | HTML 4.0   | HTMLsymbol  | ISOamsn          | not a subset of                                                         |
+|          236 | sube     | ⊆           |                           2286 | HTML 4.0   | HTMLsymbol  | ISOtech          | subset of or equal to                                                   |
+|          237 | supe     | ⊇           |                           2287 | HTML 4.0   | HTMLsymbol  | ISOtech          | superset of or equal to                                                 |
+|          238 | oplus    | ⊕           |                           2295 | HTML 4.0   | HTMLsymbol  | ISOamsb          | circled plus (direct sum)                                               |
+|          239 | otimes   | ⊗           |                           2297 | HTML 4.0   | HTMLsymbol  | ISOamsb          | circled times (vector product)                                          |
+|          240 | perp     | ⊥           |                             22 | HTML 4.0   | HTMLsymbol  | ISOtech          | up tack (orthogonal to perpendicular)                                   |
+|          241 | sdot     | ⋅           |                             22 | HTML 4.0   | HTMLsymbol  | ISOamsb          | dot operator                                                            |
+|          242 | vellip   | ⋮           |                             22 | HTML 5.0   | ?           | ?                | vertical ellipsis                                                       |
+|          243 | lceil    | ⌈           |                           2308 | HTML 4.0   | HTMLsymbol  | ISOamsc          | left ceiling (APL upstile)                                              |
+|          244 | rceil    | ⌉           |                           2309 | HTML 4.0   | HTMLsymbol  | ISOamsc          | right ceiling                                                           |
+|          245 | lfloor   | ⌊           |                            230 | HTML 4.0   | HTMLsymbol  | ISOamsc          | left floor (APL downstile)                                              |
+|          246 | rfloor   | ⌋           |                            230 | HTML 4.0   | HTMLsymbol  | ISOamsc          | right floor                                                             |
+|          247 | lang     | 〈          |                           2329 | HTML 4.0   | HTMLsymbol  | ISOtech          | left-pointing angle bracket (bra)                                       |
+|          248 | rang     | 〉          |                            232 | HTML 4.0   | HTMLsymbol  | ISOtech          | right-pointing angle bracket (ket)                                      |
+|          249 | loz      | ◊           |                             25 | HTML 4.0   | HTMLsymbol  | ISOpub           | lozenge                                                                 |
+|          250 | spades   | ♠           |                           2660 | HTML 4.0   | HTMLsymbol  | ISOpub           | black spade suit                                                        |
+|          251 | clubs    | ♣           |                           2663 | HTML 4.0   | HTMLsymbol  | ISOpub           | black club suit (shamrock)                                              |
+|          252 | hearts   | ♥           |                           2665 | HTML 4.0   | HTMLsymbol  | ISOpub           | black heart suit (valentine)                                            |
+|          253 | diams    | ♦           |                           2666 | HTML 4.0   | HTMLsymbol  | ISOpub           | black diamond suit                                                      |
+
+Generated Reasoning SQL: Explanation: To find the last symbol listed in the table, we need to consider the order of rows based on the row_number column. Since the row_number column represents the index of each row, we can sort the table in descending order based on this column and select the symbol from the first row after sorting.
+
+SQL: 
+SELECT "Name" as last_symbol_listed
+FROM T
+ORDER BY "row_number" DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Name" as last_symbol_listed FROM T ORDER BY "row_number" DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| last_symbol_listed   |
+|:---------------------|
+| diams                |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of XML and HTML character entity references
+SQL: SELECT "Name" as last_symbol_listed FROM T ORDER BY "row_number" DESC LIMIT 1;
+
+SQL Execution Result:
+last_symbol_listed
+diams
+
+Question: what is the last symbol listed?
+A: To find the answer to this question, let’s think step by step.
+Prediction: diams
+[Gold Answer] diams
+

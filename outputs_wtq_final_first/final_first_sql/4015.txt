@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Site
+   - Data type: Categorical
+   - 4 representative example values: Former Mantoku-in Gardens, Itsukushima, Shukkei-en, Jōdo-ji Gardens
+   - Role: Descriptor
+
+2. Municipality
+   - Data type: Categorical
+   - 4 representative example values: Kitahiroshima, Hatsukaichi, Hiroshima, Onomichi
+   - Role: Descriptor
+
+3. Comments
+   - Data type: Categorical
+   - 4 representative example values: nan (missing data), also a Special Historic Site, nan, nan
+   - Role: Descriptor
+
+4. Coordinates
+   - Data type: Categorical
+   - 4 representative example values: 34°43′27″N 132°28′22″E, 34°16′16″N 132°18′22″E, 34°24′02″N 132°28′04″E, 34°24′44″N 133°12′36″E
+   - Role: Descriptor
+
+5. Type
+   - Data type: Categorical
+   - 4 representative example values: 1, 8, 1, 1, 1, 8
+   - Role: Descriptor
+
+6. Ref.
+   - Data type: Categorical
+   - 4 representative example values: [2], [3], [5], [6], [9]
+   - Role: Identifier
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The value "8" in the Type column is different from the majority of the entries which have a Type value of "1".
+   - This makes the row an outlier as it deviates from the common Type value in the table.
+
+2. Row 8 (Index 8):
+   - The Type column has values "1, 8" which is different from the majority of entries having only "1" in the Type column.
+   - This deviation in the Type value makes this row an outlier.
+
+3. Row 1 (Index 0):
+   - The Site value "Former Mantoku-in Gardens" is different from the other entries in the table.
+   - However, without additional context, this value alone does not make the row an outlier as it could be a valid entry in the dataset.
+
+=== Full Table Preview ===
+|   row_number | Site                                                                                              | Municipality         | Comments                                                                                       | Coordinates                                           | Type   | Ref.   |
+|-------------:|:--------------------------------------------------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------------------------------|:------------------------------------------------------|:-------|:-------|
+|            0 | Kikkawa Motoharu Fortified Residence Gardens\n吉川元春館跡庭園\nKikkawa Motoharu yakata ato teien | Kitahiroshima        |                                                                                                | 34°43′01″N 132°27′58″E﻿ / ﻿34.71697004°N 132.46599393°E | 1      | [1]    |
+|            1 | Former Mantoku-in Gardens\n旧万徳院庭園\nkyū-Mantokuin teien                                      | Kitahiroshima        |                                                                                                | 34°43′27″N 132°28′22″E﻿ / ﻿34.72423174°N 132.47265069°E | 1      | [2]    |
+|            2 | *Itsukushima\n厳島\nItsukushima                                                                   | Hatsukaichi          | also a Special Historic Site; Itsukushima Jinja is inscribed on the UNESCO World Heritage List | 34°16′16″N 132°18′22″E﻿ / ﻿34.27116774°N 132.30612348°E | 8      | [3]    |
+|            3 | *Sandan-kyō\n三段峡\nSandan-kyō                                                                   | Akiōta/Kitahiroshima |                                                                                                | 34°36′57″N 132°11′44″E﻿ / ﻿34.61573328°N 132.19561853°E | 3 5 6  | [4]    |
+|            4 | Shukkei-en\n縮景園\nShukukei-en                                                                   | Hiroshima            |                                                                                                | 34°24′02″N 132°28′04″E﻿ / ﻿34.40050182°N 132.46770735°E | 1      | [5]    |
+|            5 | Jōdo-ji Gardens\n浄土寺庭園\nJōdoji teien                                                         | Onomichi             |                                                                                                | 34°24′44″N 133°12′36″E﻿ / ﻿34.41222952°N 133.21012266°E | 1      | [6]    |
+|            6 | Taishaku-kyō\n帝釈川の谷 (帝釈峡)\nTaishaku-gawa no tani (Taishaku-kyō)                           | Shōbara/Jinsekikōgen |                                                                                                | 34°50′58″N 133°13′23″E﻿ / ﻿34.8493628°N 133.2231609°E   | 5 6    | [7]    |
+|            7 | Peace Memorial Park\n平和記念公園\nHeiwa kinen kōen                                               | Hiroshima            | the Hiroshima Peace Memorial (Genbaku Dome) is inscribed on the UNESCO World Heritage List     | 34°23′34″N 132°27′09″E﻿ / ﻿34.39284707°N 132.45251203°E | 1      | [8]    |
+|            8 | Tomo Park\n鞆公園\nTomo kōen                                                                      | Fukuyama             |                                                                                                | 34°23′01″N 133°23′48″E﻿ / ﻿34.3835209°N 133.39662133°E  | 1 8    | [9]    |
+
+Generated Reasoning SQL: Explanation: To determine the number of scenic places that have pictures, we need to look at the "Ref." column, which likely contains references to pictures or other related information. We should count the rows where the "Ref." column is not NULL, indicating the presence of a reference to pictures.
+SQL: SELECT COUNT(*) AS scenic_places_with_pictures FROM T WHERE "Ref." IS NOT NULL;
+Generated Final SQL: SELECT COUNT(*) AS scenic_places_with_pictures FROM T WHERE "Ref." IS NOT NULL;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   scenic_places_with_pictures |
+|------------------------------:|
+|                             9 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Places of Scenic Beauty of Japan (Hiroshima)
+SQL: SELECT COUNT(*) AS scenic_places_with_pictures FROM T WHERE "Ref." IS NOT NULL;
+
+SQL Execution Result:
+scenic_places_with_pictures
+9
+
+Question: how many scenic places have pictures?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 9
+[Gold Answer] 6
+

@@ -1,0 +1,201 @@
+=== Table ID ===
+csv/203-csv/101.tsv
+
+=== Question ===
+what is the difference in racting number for malibu grand prix and marty hinze racing?
+
+=== Sub-table Preview ===
+|   Rnd | Circuit      | GTP Winning Team\nGTP Winning Drivers   | GTO Winning Team\nGTO Winning Drivers   | GTU Winning Team\nGTU Winning Drivers   | Results   |
+|------:|:-------------|:----------------------------------------|:----------------------------------------|:----------------------------------------|:----------|
+|     2 | Miami        | Doc Bundy\n Brian Redman                | Walt Bohren                             | Chris Cord                              | Results   |
+|     7 | Charlotte    | #56 Blue Thunder Racing                 | #4 Stratagraph Inc.                     | #99 All American Racers                 | Results   |
+|     8 | Lime Rock    | Sarel van der Merwe                     | Roger Mandeville                        | Jack Baldwin                            | Results   |
+|    10 | Watkins Glen | #14 Holbert Racing                      | #91 Electrodyne                         | #87 Performance Motorsports             | Results   |
+|    12 | Sears Point  | Bill Whittington                        | John Bauer                              | Dennis Aase                             | Results   |
+|    16 | Watkins Glen | #57 Blue Thunder Racing                 | #91 Electrodyne                         | #84 Dole Racing                         | Results   |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rnd
+   - Data type: Numeric
+   - 4 representative example values: 2, 7, 8, 10
+   - Role: Identifier for the round of the race
+
+2. Circuit
+   - Data type: Categorical
+   - 4 representative example values: Miami, Charlotte, Lime Rock, Watkins Glen
+   - Role: Descriptor for the circuit where the race took place
+
+3. GTP Winning Team\nGTP Winning Drivers
+   - Data type: Categorical
+   - 4 representative example values: Doc Bundy\n Brian Redman, #56 Blue Thunder Racing, Sarel van der Merwe, #14 Holbert Racing
+   - Role: Descriptor for the winning team and drivers in the GTP category
+
+4. GTO Winning Team\nGTO Winning Drivers
+   - Data type: Categorical
+   - 4 representative example values: Walt Bohren, #4 Stratagraph Inc., Roger Mandeville, #91 Electrodyne
+   - Role: Descriptor for the winning team and drivers in the GTO category
+
+5. GTU Winning Team\nGTU Winning Drivers
+   - Data type: Categorical
+   - 4 representative example values: Chris Cord, #99 All American Racers, Jack Baldwin, #87 Performance Motorsports
+   - Role: Descriptor for the winning team and drivers in the GTU category
+
+6. Results
+   - Data type: Categorical
+   - 4 representative example values: Results, Results, Results, Results
+   - Role: Descriptor for the overall results of the race
+
+**Outlier Row Analysis:**
+
+1. Row 15
+   - The values in this row are consistent with the rest of the table and do not contain any distinctive or atypical values. This row is an ordinary entry and does not require special handling.
+
+2. Row 23
+   - The values in this row are also ordinary and do not stand out as atypical compared to the majority of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 3
+   - The values in this row, including the winning teams and drivers, are consistent with the format and content of the other rows in the table. There are no distinctive or atypical values that would make this row an outlier. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rnd | Circuit      | GTP Winning Team\nGTP Winning Drivers              | GTO Winning Team\nGTO Winning Drivers     | GTU Winning Team\nGTU Winning Drivers          | Results   |
+|-------------:|------:|:-------------|:---------------------------------------------------|:------------------------------------------|:-----------------------------------------------|:----------|
+|            0 |     1 | Daytona      | #00 Kreepy Krauly Racing                           | #4 Stratagraph Inc.                       | #76 Malibu Grand Prix                          | Results   |
+|            1 |     1 | Daytona      | Sarel van der Merwe\n Graham Duxbury\n Tony Martin | Terry Labonte\n Billy Hagan\n Gene Felton | Jack Baldwin\n Jim Cook\n Ira Young\n Bob Reed | Results   |
+|            2 |     2 | Miami        | #04 Group 44                                       | #47 Dingman Bros. Racing                  | #99 All American Racers                        | Results   |
+|            3 |     2 | Miami        | Doc Bundy\n Brian Redman                           | Walt Bohren                               | Chris Cord                                     | Results   |
+|            4 |     3 | Sebring      | #48 DeNarvaez Enterprises                          | #4 Stratagraph Inc.                       | #76 Malibu Grand Prix                          | Results   |
+|            5 |     3 | Sebring      | Mauricio DeNarvaez\n Hans Heyer\n Stefan Johansson | Terry Labonte\n Billy Hagan\n Gene Felton | Jack Baldwin\n Bob Reed\n Ira Young            | Results   |
+|            6 |     4 | Road Atlanta | #16 Marty Hinze Racing                             | #4 Stratagraph Inc.                       | #76 Malibu Grand Prix                          | Results   |
+|            7 |     4 | Road Atlanta | Don Whittington                                    | Billy Hagan\n Gene Felton                 | Jack Baldwin\n Bob Reed                        | Results   |
+|            8 |     5 | Riverside    | #56 Blue Thunder Racing                            | #38 Mandeville Auto Tech                  | #87 Performance Motorsports                    | Results   |
+|            9 |     5 | Riverside    | Don Whittington\n Randy Lanier                     | Roger Mandeville\n Amos Johnson           | Elliot Forbes-Robinson\n John Schneider        | Results   |
+|           10 |     6 | Laguna Seca  | #56 Blue Thunder Racing                            | #77 Brooks Racing                         | #99 All American Racers                        | Results   |
+|           11 |     6 | Laguna Seca  | Randy Lanier                                       | John Bauer                                | Jim Adams                                      | Results   |
+|           12 |     7 | Charlotte    | #56 Blue Thunder Racing                            | #4 Stratagraph Inc.                       | #99 All American Racers                        | Results   |
+|           13 |     7 | Charlotte    | Bill Whittington\n Randy Lanier                    | Billy Hagan\n Gene Felton                 | Chris Cord\n Jim Adams                         | Results   |
+|           14 |     8 | Lime Rock    | #00 Kreepy Krauly Racing                           | #38 Mandeville Auto Tech                  | #76 Malibu Grand Prix                          | Results   |
+|           15 |     8 | Lime Rock    | Sarel van der Merwe                                | Roger Mandeville                          | Jack Baldwin                                   | Results   |
+|           16 |     9 | Mid-Ohio     | #14 Holbert Racing                                 | #91 Electrodyne                           | #66 Mike Meyer Racing                          | Results   |
+|           17 |     9 | Mid-Ohio     | Al Holbert\n Derek Bell                            | Chester Vincentz\n Dave White             | Jack Dunham\n Jeff Kline                       | Results   |
+|           18 |    10 | Watkins Glen | #14 Holbert Racing                                 | #91 Electrodyne                           | #87 Performance Motorsports                    | Results   |
+|           19 |    10 | Watkins Glen | Al Holbert\n Jim Adams\n Derek Bell                | Chester Vincentz\n Jim Mullen             | Elliot Forbes-Robinson\n John Schneider        | Results   |
+|           20 |    11 | Portland     | #56 Blue Thunder Racing                            | #51 Corvette                              | #76 Malibu Grand Prix                          | Results   |
+|           21 |    11 | Portland     | Bill Whittington\n Randy Lanier                    | David Schroeder\n Tom Hendrickson         | Jack Baldwin                                   | Results   |
+|           22 |    12 | Sears Point  | #56 Blue Thunder Racing                            | #77 Brooks Racing                         | #98 All American Racers                        | Results   |
+|           23 |    12 | Sears Point  | Bill Whittington                                   | John Bauer                                | Dennis Aase                                    | Results   |
+|           24 |    13 | Road America | #14 Holbert Racing                                 | #91 Electrodyne                           | #66 Mike Meyer Racing                          | Results   |
+|           25 |    13 | Road America | Al Holbert\n Derek Bell                            | Chester Vincentz\n Jim Mullen             | Jack Dunham\n Jeff Kline                       | Results   |
+|           26 |    14 | Pocono       | #14 Holbert Racing                                 | #65 English Enterprises                   | #87 Performance Motorsports                    | Results   |
+|           27 |    14 | Pocono       | Al Holbert\n Derek Bell                            | Gene Felton                               | Elliot Forbes-Robinson\n John Schneider        | Results   |
+|           28 |    15 | Michigan     | #56 Blue Thunder Racing                            | #91 Electrodyne                           | #84 Dole Racing                                | Results   |
+|           29 |    15 | Michigan     | Bill Whittington\n Randy Lanier                    | Chester Vincentz\n Jim Mullen             | Clay Young                                     | Results   |
+|           30 |    16 | Watkins Glen | #57 Blue Thunder Racing                            | #91 Electrodyne                           | #84 Dole Racing                                | Results   |
+|           31 |    16 | Watkins Glen | Dale Whittington\n Randy Lanier                    | Chester Vincentz\n Jim Mullen             | Clay Young                                     | Results   |
+|           32 |    17 | Daytona      | #14 Holbert Racing                                 | #67 Roush Racing                          | #87 Performance Motorsports                    | Results   |
+|           33 |    17 | Daytona      | Al Holbert\n Derek Bell                            | Wally Dallenbach Jr.\n Willy T. Ribbs     | Elliot Forbes-Robinson\n John Schneider        | Results   |
+
+Generated Reasoning SQL: Explanation: To find the difference in the racing number for Malibu Grand Prix and Marty Hinze Racing, we need to extract the racing numbers from the "GTP Winning Team\nGTP Winning Drivers" column for these two teams. The racing number is typically included in the team name format. We will filter rows where the team name contains either "Malibu Grand Prix" or "Marty Hinze Racing" and extract the racing numbers for comparison.
+
+SQL: 
+SELECT 
+    ABS(CAST(SUBSTR("GTP Winning Team\nGTP Winning Drivers", INSTR("GTP Winning Team\nGTP Winning Drivers", '#') + 1, INSTR("GTP Winning Team\nGTP Winning Drivers", ' ') - INSTR("GTP Winning Team\nGTP Winning Drivers", '#') - 1) AS INTEGER)) AS malibu_racing_number,
+    ABS(CAST(SUBSTR("GTP Winning Team\nGTP Winning Drivers", INSTR("GTP Winning Team\nGTP Winning Drivers", '#') + 1, INSTR("GTP Winning Team\nGTP Winning Drivers", ' ', INSTR("GTP Winning Team\nGTP Winning Drivers", '#')) - INSTR("GTP Winning Team\nGTP Winning Drivers", '#') - 1) AS INTEGER)) AS hinze_racing_number
+FROM T
+WHERE "GTP Winning Team\nGTP Winning Drivers" LIKE '%Malibu Grand Prix%' OR "GTP Winning Team\nGTP Winning Drivers" LIKE '%Marty Hinze Racing%';
+Generated Final SQL: SELECT ABS(CAST(SUBSTR("GTP Winning Team\nGTP Winning Drivers", INSTR("GTP Winning Team\nGTP Winning Drivers", '#') + 1, INSTR("GTP Winning Team\nGTP Winning Drivers", ' ') - INSTR("GTP Winning Team\nGTP Winning Drivers", '#') - 1) AS INTEGER)) AS malibu_racing_number, ABS(CAST(SUBSTR("GTP Winning Team\nGTP Winning Drivers", INSTR("GTP Winning Team\nGTP Winning Drivers", '#') + 1, INSTR("GTP Winning Team\nGTP Winning Drivers", ' ', INSTR("GTP Winning Team\nGTP Winning Drivers", '#')) - INSTR("GTP Winning Team\nGTP Winning Drivers", '#') - 1) AS INTEGER)) AS hinze_racing_number FROM T WHERE "GTP Winning Team\nGTP Winning Drivers" LIKE '%Malibu Grand Prix%' OR "GTP Winning Team\nGTP Winning Drivers" LIKE '%Marty Hinze Racing%';
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT ABS(CAST(SUBSTR("GTP Winning Team\nGTP Winning Drivers", INSTR("GTP Winning Team\nGTP Winning Drivers", '#') + 1, INSTR("GTP Winning Team\nGTP Winning Drivers", ' ') - INSTR("GTP Winning Team\nGTP Winning Drivers", '#') - 1) AS INTEGER)) AS malibu_racing_number, ABS(CAST(SUBSTR("GTP Winning Team\nGTP Winning Drivers", INSTR("GTP Winning Team\nGTP Winning Drivers", '#') + 1, INSTR("GTP Winning Team\nGTP Winning Drivers", ' ', INSTR("GTP Winning Team\nGTP Winning Drivers", '#')) - INSTR("GTP Winning Team\nGTP Winning Drivers", '#') - 1) AS INTEGER)) AS hinze_racing_number FROM T WHERE "GTP Winning Team\nGTP Winning Drivers" LIKE '%Malibu Grand Prix%' OR "GTP Winning Team\nGTP Winning Drivers" LIKE '%Marty Hinze Racing%';': wrong number of arguments to function INSTR()
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1984 IMSA GT Championship season (row_number, Rnd, Circuit, GTP Winning Team\nGTP Winning Drivers, GTO Winning Team\nGTO Winning Drivers, GTU Winning Team\nGTU Winning Drivers, Results)
+
+row_number | Rnd | Circuit | GTP Winning Team\nGTP Winning Drivers | GTO Winning Team\nGTO Winning Drivers | GTU Winning Team\nGTU Winning Drivers | Results
+0 | 1 | Daytona | #00 Kreepy Krauly Racing | #4 Stratagraph Inc. | #76 Malibu Grand Prix | Results
+1 | 1 | Daytona | Sarel van der Merwe\n Graham Duxbury\n Tony Martin | Terry Labonte\n Billy Hagan\n Gene Felton | Jack Baldwin\n Jim Cook\n Ira Young\n Bob Reed | Results
+2 | 2 | Miami | #04 Group 44 | #47 Dingman Bros. Racing | #99 All American Racers | Results
+3 | 2 | Miami | Doc Bundy\n Brian Redman | Walt Bohren | Chris Cord | Results
+4 | 3 | Sebring | #48 DeNarvaez Enterprises | #4 Stratagraph Inc. | #76 Malibu Grand Prix | Results
+5 | 3 | Sebring | Mauricio DeNarvaez\n Hans Heyer\n Stefan Johansson | Terry Labonte\n Billy Hagan\n Gene Felton | Jack Baldwin\n Bob Reed\n Ira Young | Results
+6 | 4 | Road Atlanta | #16 Marty Hinze Racing | #4 Stratagraph Inc. | #76 Malibu Grand Prix | Results
+7 | 4 | Road Atlanta | Don Whittington | Billy Hagan\n Gene Felton | Jack Baldwin\n Bob Reed | Results
+8 | 5 | Riverside | #56 Blue Thunder Racing | #38 Mandeville Auto Tech | #87 Performance Motorsports | Results
+9 | 5 | Riverside | Don Whittington\n Randy Lanier | Roger Mandeville\n Amos Johnson | Elliot Forbes-Robinson\n John Schneider | Results
+10 | 6 | Laguna Seca | #56 Blue Thunder Racing | #77 Brooks Racing | #99 All American Racers | Results
+11 | 6 | Laguna Seca | Randy Lanier | John Bauer | Jim Adams | Results
+12 | 7 | Charlotte | #56 Blue Thunder Racing | #4 Stratagraph Inc. | #99 All American Racers | Results
+13 | 7 | Charlotte | Bill Whittington\n Randy Lanier | Billy Hagan\n Gene Felton | Chris Cord\n Jim Adams | Results
+14 | 8 | Lime Rock | #00 Kreepy Krauly Racing | #38 Mandeville Auto Tech | #76 Malibu Grand Prix | Results
+15 | 8 | Lime Rock | Sarel van der Merwe | Roger Mandeville | Jack Baldwin | Results
+16 | 9 | Mid-Ohio | #14 Holbert Racing | #91 Electrodyne | #66 Mike Meyer Racing | Results
+17 | 9 | Mid-Ohio | Al Holbert\n Derek Bell | Chester Vincentz\n Dave White | Jack Dunham\n Jeff Kline | Results
+18 | 10 | Watkins Glen | #14 Holbert Racing | #91 Electrodyne | #87 Performance Motorsports | Results
+19 | 10 | Watkins Glen | Al Holbert\n Jim Adams\n Derek Bell | Chester Vincentz\n Jim Mullen | Elliot Forbes-Robinson\n John Schneider | Results
+20 | 11 | Portland | #56 Blue Thunder Racing | #51 Corvette | #76 Malibu Grand Prix | Results
+21 | 11 | Portland | Bill Whittington\n Randy Lanier | David Schroeder\n Tom Hendrickson | Jack Baldwin | Results
+22 | 12 | Sears Point | #56 Blue Thunder Racing | #77 Brooks Racing | #98 All American Racers | Results
+23 | 12 | Sears Point | Bill Whittington | John Bauer | Dennis Aase | Results
+24 | 13 | Road America | #14 Holbert Racing | #91 Electrodyne | #66 Mike Meyer Racing | Results
+25 | 13 | Road America | Al Holbert\n Derek Bell | Chester Vincentz\n Jim Mullen | Jack Dunham\n Jeff Kline | Results
+26 | 14 | Pocono | #14 Holbert Racing | #65 English Enterprises | #87 Performance Motorsports | Results
+27 | 14 | Pocono | Al Holbert\n Derek Bell | Gene Felton | Elliot Forbes-Robinson\n John Schneider | Results
+28 | 15 | Michigan | #56 Blue Thunder Racing | #91 Electrodyne | #84 Dole Racing | Results
+29 | 15 | Michigan | Bill Whittington\n Randy Lanier | Chester Vincentz\n Jim Mullen | Clay Young | Results
+30 | 16 | Watkins Glen | #57 Blue Thunder Racing | #91 Electrodyne | #84 Dole Racing | Results
+31 | 16 | Watkins Glen | Dale Whittington\n Randy Lanier | Chester Vincentz\n Jim Mullen | Clay Young | Results
+32 | 17 | Daytona | #14 Holbert Racing | #67 Roush Racing | #87 Performance Motorsports | Results
+33 | 17 | Daytona | Al Holbert\n Derek Bell | Wally Dallenbach Jr.\n Willy T. Ribbs | Elliot Forbes-Robinson\n John Schneider | Results
+Question: what is the difference in racting number for malibu grand prix and marty hinze racing?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, let's locate the rows for Malibu Grand Prix and Marty Hinze Racing in the table based on the GTP Winning Team or GTO Winning Team columns:
+
+- Malibu Grand Prix:
+  - Rows: 0, 4, 14, 20
+- Marty Hinze Racing:
+  - Rows: 6
+
+Next, we need to find the corresponding row_numbers for the entries related to Malibu Grand Prix and Marty Hinze Racing. 
+
+- Malibu Grand Prix: row_numbers = 0, 4, 14, 20
+- Marty Hinze Racing: row_number = 6
+
+Now, we can calculate the differences in row numbers between Malibu Grand Prix and Marty Hinze Racing:
+
+- For Malibu Grand Prix: 20 - 0 = 20
+- For Marty Hinze Racing: 6
+
+Finally, to find the difference in row numbers between Malibu Grand Prix and Marty Hinze Racing, we subtract the row number of Marty Hinze Racing from the maximum row number associated with Malibu Grand Prix:
+
+Difference = 20 - 6 = 14
+
+Therefore, the difference in row numbers for Malibu Grand Prix and Marty Hinze Racing is 14.
+
+Final Answer: 14
+[Fallback] Prediction: 14
+[Gold Answer] 60
+

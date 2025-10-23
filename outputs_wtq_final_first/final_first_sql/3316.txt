@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 7, 10, 11, 12
+   - Role of the column: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: November 1, 1987, November 22, 1987, November 26, 1987, December 6, 1987
+   - Role of the column: Descriptor for the date of the game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Chicago Bears, Green Bay Packers, Detroit Lions, Cincinnati Bengals
+   - Role of the column: Descriptor for the opposing team
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: L 31–28, L 23–3, W 27–20, L 30–27
+   - Role of the column: Measure indicating the outcome of the game
+
+5. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 63,498, 34,611, 43,820, 46,489
+   - Role of the column: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The result "L 23–3" is significantly different from the other results in the table, which are closer games with higher scores. This makes the row an outlier.
+
+2. Row 10 (Index 10):
+   - The attendance of 75,053 is much higher compared to the other attendance values in the table. This makes the row an outlier.
+
+3. Row 7 (Index 7):
+   - The opponent "at Denver Broncos" is not a distinctive value that would make this row an outlier. This row contains ordinary data and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Week   | Date                | Opponent               | Result   |   Attendance |
+|-------------:|:-------|:--------------------|:-----------------------|:---------|-------------:|
+|            0 | 1      | 1987-09-13 00:00:00 | San Diego Chargers     | W 20–13  |        56940 |
+|            1 | 2      | 1987-09-20 00:00:00 | at Seattle Seahawks    | L 43–14  |        61667 |
+|            2 | –      | 1987-09-27 00:00:00 | Minnesota Vikings      | canceled |          nan |
+|            3 | 3      | 1987-10-04 00:00:00 | at Los Angeles Raiders | L 35–17  |        10708 |
+|            4 | 4      | 1987-10-11 00:00:00 | at Miami Dolphins      | L 42–0   |        25867 |
+|            5 | 5      | 1987-10-18 00:00:00 | Denver Broncos         | L 26–17  |        20296 |
+|            6 | 6      | 1987-10-25 00:00:00 | at San Diego Chargers  | L 42–21  |        47972 |
+|            7 | 7      | 1987-11-01 00:00:00 | at Chicago Bears       | L 31–28  |        63498 |
+|            8 | 8      | 1987-11-08 00:00:00 | Pittsburgh Steelers    | L 17–16  |        45249 |
+|            9 | 9      | 1987-11-15 00:00:00 | New York Jets          | L 16–9   |        40718 |
+|           10 | 10     | 1987-11-22 00:00:00 | Green Bay Packers      | L 23–3   |        34611 |
+|           11 | 11     | 1987-11-26 00:00:00 | at Detroit Lions       | W 27–20  |        43820 |
+|           12 | 12     | 1987-12-06 00:00:00 | at Cincinnati Bengals  | L 30–27  |        46489 |
+|           13 | 13     | 1987-12-13 00:00:00 | Los Angeles Raiders    | W 16–10  |        63834 |
+|           14 | 14     | 1987-12-19 00:00:00 | at Denver Broncos      | L 20–17  |        75053 |
+|           15 | 15     | 1987-12-27 00:00:00 | Seattle Seahawks       | W 41–20  |        20370 |
+
+Generated Reasoning SQL: Explanation: To calculate the total number of wins for the season, we need to sum the wins from the "Result" column where the result indicates a win. The "Result" column contains categorical values denoting the outcome of each game. We need to filter rows where the result starts with 'W' to identify wins. Outlier rows with canceled games or missing values should be excluded from the calculation.
+
+SQL: select count("Result") from T where "Result" like 'W%';
+Generated Final SQL: select count("Result") from T where "Result" like 'W%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Result") |
+|------------------:|
+|                 4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1987 Kansas City Chiefs season
+SQL: select count("Result") from T where "Result" like 'W%';
+
+count("Result")
+4
+Question: what is the total number wins for the season ?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

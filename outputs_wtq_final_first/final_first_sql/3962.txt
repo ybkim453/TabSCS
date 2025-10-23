@@ -1,0 +1,266 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date of Incident
+   - Data type: Categorical (Date)
+   - 4 representative example values: December 20, 2011, January 14, 2012, January 22, 2012, April 14, 2012
+   - Role: Descriptor
+
+2. Offender
+   - Data type: Categorical (Text)
+   - 4 representative example values: Deryk Engelland, Dane Byers, Alex Ovechkin, Matt Carkner
+   - Role: Identifier
+
+3. Team
+   - Data type: Categorical (Text)
+   - 4 representative example values: Pittsburgh Penguins, Columbus Blue Jackets, Washington Capitals, Ottawa Senators
+   - Role: Descriptor
+
+4. Offense
+   - Data type: Categorical (Text)
+   - 4 representative example values: Illegal hit to the head of Marcus Kruger, Charging Zbynek Michalek, Aggressing an unwilling Brian Boyle, Late charge to the head of Marian Hossa
+   - Role: Descriptor
+
+5. Date of Action
+   - Data type: Categorical (Date)
+   - 4 representative example values: December 22, 2011, January 16, 2012, January 23, 2012, April 15, 2012
+   - Role: Descriptor
+
+6. Length
+   - Data type: Categorical (Text)
+   - 4 representative example values: 3 games, 1 game‡ (1 post-season), 25 games\nreduced to 21 games‡ (13 post-season)*
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 52:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not stand out as outliers.
+
+2. Row 8:
+   - The value "1 game‡ (1 post-season)" in the Length column is different from the typical format of the Length values in the table. This makes the row an outlier.
+
+3. Row 46:
+   - The value "25 games\nreduced to 21 games‡ (13 post-season)*" in the Length column is significantly different from the other Length values in the table. This makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Date of Incident    | Offender                      | Team                  | Offense                                                | Date of Action      | Length                                           |
+|-------------:|:--------------------|:------------------------------|:----------------------|:-------------------------------------------------------|:--------------------|:-------------------------------------------------|
+|            0 | 2011-09-20 00:00:00 | Pierre-Luc Letourneau-Leblond | Calgary Flames        | Boarding Matt Clackson.                                | 2011-09-22 00:00:00 | 5 games† (4 pre-season 1 regular season)         |
+|            1 | 2011-09-21 00:00:00 | Jody Shelley                  | Philadelphia Flyers   | Boarding Darryl Boyce.                                 | 2011-09-22 00:00:00 | 10 games† (5 pre-season 5 regular season)        |
+|            2 | 2011-09-23 00:00:00 | James Wisniewski              | Columbus Blue Jackets | Illegal hit to the head of Cal Clutterbuck.            | 2011-09-24 00:00:00 | 12 games† (4 pre-season 8 regular season)        |
+|            3 | 2011-09-23 00:00:00 | Brad Staubitz                 | Minnesota Wild        | Checking Cody Bass from behind.                        | 2011-09-26 00:00:00 | 7 games† (4 pre-season 3 regular season)         |
+|            4 | 2011-09-24 00:00:00 | Brad Boyes                    | Buffalo Sabres        | Illegal hit to the head of Joe Colborne.               | 2011-09-25 00:00:00 | 2 games† (2 pre-season)                          |
+|            5 | 2011-09-24 00:00:00 | Jean-Francois Jacques         | Anaheim Ducks         | Leaving bench to initiate a fight with Mike Duco.      | 2011-09-27 00:00:00 | 9 games† (4 pre-season 5 regular season)         |
+|            6 | 2011-09-26 00:00:00 | Tom Sestito                   | Philadelphia Flyers   | Checking Andre Deveaux from behind.                    | 2011-09-28 00:00:00 | 4 games† (2 pre-season 2 regular season)         |
+|            7 | 2011-09-28 00:00:00 | Brendan Smith                 | Detroit Red Wings     | Illegal hit to the head of Ben Smith.                  | 2011-09-30 00:00:00 | 8 games† (3 pre-season 5 regular season)         |
+|            8 | 2011-09-30 00:00:00 | Clarke MacArthur              | Toronto Maple Leafs   | Illegal hit to the head of Justin Abdelkader.          | 2011-10-01 00:00:00 | 3 games† (1 pre-season 2 regular season)         |
+|            9 | 2011-10-08 00:00:00 | Pierre-Marc Bouchard          | Minnesota Wild        | High sticking Matt Calvert.                            | 2011-10-09 00:00:00 | 2 games                                          |
+|           10 | 2011-10-17 00:00:00 | Kris Letang                   | Pittsburgh Penguins   | Boarding Alexander Burmistrov.                         | 2011-10-18 00:00:00 | 2 games                                          |
+|           11 | 2011-10-28 00:00:00 | Andy Sutton                   | Edmonton Oilers       | Elbowing Gabriel Landeskog.                            | 2011-11-01 00:00:00 | 5 games                                          |
+|           12 | 2011-10-28 00:00:00 | Daniel Carcillo               | Chicago Blackhawks    | Hit from behind on Joni Pitkanen.                      | 2011-10-29 00:00:00 | 2 games                                          |
+|           13 | 2011-11-02 00:00:00 | Patrick Kaleta                | Buffalo Sabres        | Headbutt on Jakub Voracek.                             | 2011-11-03 00:00:00 | 4 games                                          |
+|           14 | 2011-11-17 00:00:00 | Chris Stewart                 | St. Louis Blues       | Checking Niklas Kronwall from behind.                  | 2011-11-18 00:00:00 | 3 games                                          |
+|           15 | 2011-11-23 00:00:00 | Andre Deveaux                 | New York Rangers      | Illegal hit to the head of Tomas Fleischmann.          | 2011-11-23 00:00:00 | 3 games                                          |
+|           16 | 2011-11-26 00:00:00 | Max Pacioretty                | Montreal Canadiens    | Illegal hit to the head of Kris Letang.                | 2011-11-28 00:00:00 | 3 games                                          |
+|           17 | 2011-12-03 00:00:00 | Jordin Tootoo                 | Nashville Predators   | Charging goaltender Ryan Miller.                       | 2011-12-06 00:00:00 | 2 games                                          |
+|           18 | 2011-12-03 00:00:00 | Mark Fistric                  | Dallas Stars          | Charging Nino Niederreiter.                            | 2011-12-07 00:00:00 | 3 games                                          |
+|           19 | 2011-12-06 00:00:00 | Kevin Porter                  | Colorado Avalanche    | Kneeing David Booth.                                   | 2011-12-08 00:00:00 | 4 games                                          |
+|           20 | 2011-12-07 00:00:00 | Ville Leino                   | Buffalo Sabres        | Elbowing Matt Read.                                    | 2011-12-08 00:00:00 | 1 game                                           |
+|           21 | 2011-12-07 00:00:00 | Andy Sutton                   | Edmonton Oilers       | Charging Alexei Ponikarovsky.                          | 2011-12-08 00:00:00 | 8 games                                          |
+|           22 | 2011-12-17 00:00:00 | Milan Lucic                   | Boston Bruins         | Checking Zac Rinaldo from behind.                      | 2011-12-19 00:00:00 | 1 game                                           |
+|           23 | 2011-12-18 00:00:00 | Rene Bourque                  | Calgary Flames        | Checking Brent Seabrook from behind.                   | 2011-12-19 00:00:00 | 2 games                                          |
+|           24 | 2011-12-20 00:00:00 | Deryk Engelland               | Pittsburgh Penguins   | Illegal hit to the head of Marcus Kruger.              | 2011-12-22 00:00:00 | 3 games                                          |
+|           25 | 2011-12-31 00:00:00 | Ian Cole                      | St. Louis Blues       | Illegal hit to the head of Justin Abdelkader.          | 2012-01-01 00:00:00 | 3 games                                          |
+|           26 | 2011-12-31 00:00:00 | Krys Barch                    | Florida Panthers      | Insensitive comments directed at P.K. Subban           | 2012-01-05 00:00:00 | 1 game                                           |
+|           27 | 2011-12-31 00:00:00 | Raffi Torres                  | Phoenix Coyotes       | Charging Nate Prosser                                  | 2012-01-02 00:00:00 | 2 games                                          |
+|           28 | 2012-01-02 00:00:00 | Daniel Carcillo               | Chicago Blackhawks    | Boarding Tom Gilbert                                   | 2012-01-04 00:00:00 | 7 games                                          |
+|           29 | 2012-01-03 00:00:00 | Rene Bourque                  | Calgary Flames        | Elbowing Nicklas Backstrom.                            | 2012-01-04 00:00:00 | 5 games                                          |
+|           30 | 2012-01-07 00:00:00 | Brad Marchand                 | Boston Bruins         | Clipping Sami Salo.                                    | 2012-01-09 00:00:00 | 5 games                                          |
+|           31 | 2012-01-08 00:00:00 | Jean-Francois Jacques         | Anaheim Ducks         | Illegal hit to the head of R.J. Umberger.              | 2012-01-09 00:00:00 | 3 games                                          |
+|           32 | 2012-01-14 00:00:00 | Dane Byers                    | Columbus Blue Jackets | Illegal hit to the head of Andrew Desjardins.          | 2012-01-16 00:00:00 | 3 games                                          |
+|           33 | 2012-01-21 00:00:00 | Andrew Ference                | Boston Bruins         | Boarding Ryan McDonagh.                                | 2012-01-22 00:00:00 | 3 games                                          |
+|           34 | 2012-01-22 00:00:00 | Alex Ovechkin                 | Washington Capitals   | Charging Zbynek Michalek.                              | 2012-01-23 00:00:00 | 3 games                                          |
+|           35 | 2012-02-12 00:00:00 | Zac Rinaldo                   | Philadelphia Flyers   | Charging Jonathan Ericsson.                            | 2012-02-13 00:00:00 | 2 games                                          |
+|           36 | 2012-02-18 00:00:00 | Warren Peters                 | Minnesota Wild        | Cross-checking David Backes.                           | 2012-02-19 00:00:00 | 1 game                                           |
+|           37 | 2012-03-08 00:00:00 | Mike Green                    | Washington Capitals   | Illegal hit to the head of Brett Connolly.             | 2012-03-09 00:00:00 | 3 games                                          |
+|           38 | 2012-03-12 00:00:00 | Tyler Myers                   | Buffalo Sabres        | Boarding Scott Gomez.                                  | 2012-03-13 00:00:00 | 3 games                                          |
+|           39 | 2012-03-15 00:00:00 | Jeff Skinner                  | Carolina Hurricanes   | Kicking Scott Nichol.                                  | 2012-03-16 00:00:00 | 2 games                                          |
+|           40 | 2012-03-20 00:00:00 | Shane Doan                    | Phoenix Coyotes       | Elbowing Jamie Benn.                                   | 2012-03-21 00:00:00 | 3 games                                          |
+|           41 | 2012-03-21 00:00:00 | Duncan Keith                  | Chicago Blackhawks    | Elbowing Daniel Sedin.                                 | 2012-03-23 00:00:00 | 5 games                                          |
+|           42 | 2012-04-01 00:00:00 | Kyle Quincey                  | Detroit Red Wings     | Charging Tomas Kopecky.                                | 2012-04-02 00:00:00 | 1 game                                           |
+|           43 | 2012-04-05 00:00:00 | Nate Prosser                  | Minnesota Wild        | Head-butting Jamal Mayers.                             | 2012-04-06 00:00:00 | 1 game                                           |
+|           44 | 2012-04-11 00:00:00 | Byron Bitz                    | Vancouver Canucks     | Boarding Kyle Clifford.                                | 2012-04-12 00:00:00 | 2 games‡ (2 post-season)                         |
+|           45 | 2012-04-14 00:00:00 | Carl Hagelin                  | New York Rangers      | Elbowing Daniel Alfredsson.                            | 2012-04-15 00:00:00 | 3 games‡ (3 post-season)                         |
+|           46 | 2012-04-14 00:00:00 | Matt Carkner                  | Ottawa Senators       | Aggressing an unwilling Brian Boyle.                   | 2012-04-15 00:00:00 | 1 game‡ (1 post-season)                          |
+|           47 | 2012-04-14 00:00:00 | Andrew Shaw                   | Chicago Blackhawks    | Charging goaltender Mike Smith.                        | 2012-04-17 00:00:00 | 3 games‡ (3 post-season)                         |
+|           48 | 2012-04-15 00:00:00 | Craig Adams                   | Pittsburgh Penguins   | Instigator penalty in the last five minutes of a game. | 2012-04-16 00:00:00 | 1 game‡ (1 post-season)                          |
+|           49 | 2012-04-15 00:00:00 | James Neal                    | Pittsburgh Penguins   | Charging Claude Giroux.                                | 2012-04-17 00:00:00 | 1 game‡ (1 post-season)                          |
+|           50 | 2012-04-15 00:00:00 | Arron Asham                   | Pittsburgh Penguins   | Cross-checking Brayden Schenn.                         | 2012-04-17 00:00:00 | 4 games‡ (3 post-season)*                        |
+|           51 | 2012-04-14 00:00:00 | Nicklas Backstrom             | Washington Capitals   | Cross-checking Rich Peverley.                          | 2012-04-17 00:00:00 | 1 game‡ (1 post-season)                          |
+|           52 | 2012-04-17 00:00:00 | Raffi Torres                  | Phoenix Coyotes       | Late charge to the head of Marian Hossa.               | 2012-04-21 00:00:00 | 25 games\nreduced to 21 games‡ (13 post-season)* |
+|           53 | 2012-05-04 00:00:00 | Rostislav Klesla              | Phoenix Coyotes       | Boarding Matt Halischuk.                               | 2012-05-06 00:00:00 | 1 game‡ (1 post-season)                          |
+|           54 | 2012-05-06 00:00:00 | Claude Giroux                 | Philadelphia Flyers   | Illegal hit to the head of Dainius Zubrus.             | 2012-05-07 00:00:00 | 1 game‡ (1 post-season)                          |
+|           55 | 2012-05-15 00:00:00 | Martin Hanzal                 | Phoenix Coyotes       | Boarding Dustin Brown.                                 | 2012-05-16 00:00:00 | 1 game‡ (1 post-season)                          |
+|           56 | 2012-05-20 00:00:00 | Brandon Prust                 | New York Rangers      | Elbowing Anton Volchenkov.                             | 2012-05-20 00:00:00 | 1 game‡ (1 post-season)                          |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to consider the "Length" column, which represents the duration of the action taken against the offenders. We are interested in offenders who had an action lasting more than 9 games. Outlier rows 8 and 46 have unusual formats in the "Length" column, so we should exclude them from our analysis. We will filter the rows based on the length of the action.
+
+SQL: 
+SELECT "Offender"
+FROM T
+WHERE "Length" NOT LIKE '%game‡%' -- Exclude outlier rows
+AND CAST(SUBSTR("Length", 1, INSTR("Length", ' ') - 1) AS INTEGER) > 9;
+Generated Final SQL: SELECT "Offender" FROM T WHERE "Length" NOT LIKE '%game‡%' -- Exclude outlier rows AND CAST(SUBSTR("Length", 1, INSTR("Length", ' ') - 1) AS INTEGER) > 9;
+SQL 실행 결과 셀 수: 49
+=== SQL 실행 결과 미리보기 ===
+| Offender                      |
+|:------------------------------|
+| Pierre-Luc Letourneau-Leblond |
+| Jody Shelley                  |
+| James Wisniewski              |
+| Brad Staubitz                 |
+| Brad Boyes                    |
+| Jean-Francois Jacques         |
+| Tom Sestito                   |
+| Brendan Smith                 |
+| Clarke MacArthur              |
+| Pierre-Marc Bouchard          |
+| Kris Letang                   |
+| Andy Sutton                   |
+| Daniel Carcillo               |
+| Patrick Kaleta                |
+| Chris Stewart                 |
+| Andre Deveaux                 |
+| Max Pacioretty                |
+| Jordin Tootoo                 |
+| Mark Fistric                  |
+| Kevin Porter                  |
+| Ville Leino                   |
+| Andy Sutton                   |
+| Milan Lucic                   |
+| Rene Bourque                  |
+| Deryk Engelland               |
+| Ian Cole                      |
+| Krys Barch                    |
+| Raffi Torres                  |
+| Daniel Carcillo               |
+| Rene Bourque                  |
+| Brad Marchand                 |
+| Jean-Francois Jacques         |
+| Dane Byers                    |
+| Andrew Ference                |
+| Alex Ovechkin                 |
+| Zac Rinaldo                   |
+| Warren Peters                 |
+| Mike Green                    |
+| Tyler Myers                   |
+| Jeff Skinner                  |
+| Shane Doan                    |
+| Duncan Keith                  |
+| Kyle Quincey                  |
+| Nate Prosser                  |
+| Byron Bitz                    |
+| Carl Hagelin                  |
+| Andrew Shaw                   |
+| Arron Asham                   |
+| Raffi Torres                  |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2011–12 NHL suspensions and fines
+SQL: SELECT "Offender" FROM T WHERE "Length" NOT LIKE '%game‡%' -- Exclude outlier rows AND CAST(SUBSTR("Length", 1, INSTR("Length", ' ') - 1) AS INTEGER) > 9;
+
+SQL Execution Result:
+Offender
+Pierre-Luc Letourneau-Leblond
+Jody Shelley
+James Wisniewski
+Brad Staubitz
+Brad Boyes
+Jean-Francois Jacques
+Tom Sestito
+Brendan Smith
+Clarke MacArthur
+Pierre-Marc Bouchard
+Kris Letang
+Andy Sutton
+Daniel Carcillo
+Patrick Kaleta
+Chris Stewart
+Andre Deveaux
+Max Pacioretty
+Jordin Tootoo
+Mark Fistric
+Kevin Porter
+Ville Leino
+Andy Sutton
+Milan Lucic
+Rene Bourque
+Deryk Engelland
+Ian Cole
+Krys Barch
+Raffi Torres
+Daniel Carcillo
+Rene Bourque
+Brad Marchand
+Jean-Francois Jacques
+Dane Byers
+Andrew Ference
+Alex Ovechkin
+Zac Rinaldo
+Warren Peters
+Mike Green
+Tyler Myers
+Jeff Skinner
+Shane Doan
+Duncan Keith
+Kyle Quincey
+Nate Prosser
+Byron Bitz
+Carl Hagelin
+Andrew Shaw
+Arron Asham
+Raffi Torres
+
+Question: which offenders had an action taken against them that lasted more than 9 games?
+A: To find the answer to this question, let’s think step by step.
+Prediction: pierre-luc letourneau-leblond, jody shelley, james wisniewski, brad staubitz, brad boyes, jean-francois jacques, tom sestito, brendan smith, clarke macarthur, pierre-marc bouchard, kris letang, daniel carcillo, patrick kaleta, chris stewart, andre deveaux, max pacioretty, jordin tootoo, mark fistric, kevin porter, ville leino, milan lucic, rene bourque, deryk engelland, ian cole, krys barch, raffi torres, brad marchand, dane byers, andrew ference, alex ovechkin, zac rinaldo, warren peters, mike green, tyler myers, jeff skinner, shane doan, duncan keith, kyle quincey, nate prosser, byron bitz, carl hagelin, andrew shaw, arron asham
+[Gold Answer] jody shelley,james wisniewski,raffi torres
+

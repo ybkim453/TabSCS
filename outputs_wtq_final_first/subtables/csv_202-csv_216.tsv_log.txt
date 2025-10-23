@@ -1,0 +1,16 @@
+
+JSONL 파일에서 인덱스 4003 처리 중: datasets/wtq.jsonl
+  테이블 크기: 43행 5열
+  컬럼 'Alpha-numeric Code' 분석 중...
+  컬럼 'Station name\nEnglish' 분석 중...
+  컬럼 'Station name\nChinese' 분석 중...
+  컬럼 'Station name\nTamil' 분석 중...
+  컬럼 'Opening' 분석 중...
+  특이값 행 선택: 행 35 (컬럼 'Station name\nTamil', 유사도: 0.6529)
+  특이값 행 선택: 행 1 (컬럼 'Station name\nChinese', 유사도: 0.6214)
+  특이값 행 선택: 행 20 (컬럼 'Opening', 유사도: 0.6174)
+  정상값 행 선택: 행 4 (평균 유사도: 0.7322)
+  정상값 행 선택: 행 6 (평균 유사도: 0.7287)
+  정상값 행 선택: 행 30 (평균 유사도: 0.7241)
+  최종 선택된 행 (원본 순서): [1, 4, 6, 20, 30, 35] (총 6개)
+  서브테이블 크기: 7줄

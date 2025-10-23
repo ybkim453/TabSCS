@@ -1,0 +1,203 @@
+=== Table ID ===
+csv/204-csv/528.tsv
+
+=== Question ===
+how long did air force go without a win?
+
+=== Sub-table Preview ===
+| Date               | Site             | Winning team   |   Winning team.1 | Losing team    |   Losing team.1 | Series      |
+|:-------------------|:-----------------|:---------------|-----------------:|:---------------|----------------:|:------------|
+| September 6, 1980  | Fort Collins     | Colorado State |               21 | Air Force      |               9 | AFA 11–7–1  |
+| October 3, 1981    | Colorado Springs | Air Force      |               28 | Colorado State |              14 | AFA 12–7–1  |
+| September 26, 1987 | Fort Collins     | Air Force      |               27 | Colorado State |              19 | AFA 17–8–1  |
+| September 30, 1989 | Fort Collins     | Air Force      |               46 | Colorado State |              21 | AFA 19–8–1  |
+| September 16, 1995 | Colorado Springs | Colorado State |               27 | Air Force      |              20 | AFA 20–13–1 |
+| November 30, 2013  | Fort Collins     | Colorado State |               58 | Air Force      |              13 | AFA 31–20–1 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: September 6, 1980, October 3, 1981, September 26, 1987, November 30, 2013
+   - Role: Identifier for the specific game date
+
+2. Site
+   - Data type: Categorical
+   - 4 representative example values: Fort Collins, Colorado Springs
+   - Role: Descriptor for the location of the game
+
+3. Winning team
+   - Data type: Categorical
+   - 4 representative example values: Colorado State, Air Force
+   - Role: Descriptor for the team that won the game
+
+4. Winning team.1
+   - Data type: Numeric
+   - 4 representative example values: 21, 28, 27, 58
+   - Role: Measure for the points scored by the winning team
+
+5. Losing team
+   - Data type: Categorical
+   - 4 representative example values: Air Force, Colorado State
+   - Role: Descriptor for the team that lost the game
+
+6. Losing team.1
+   - Data type: Numeric
+   - 4 representative example values: 9, 14, 19, 13
+   - Role: Measure for the points scored by the losing team
+
+7. Series
+   - Data type: Categorical
+   - 4 representative example values: AFA 11–7–1, AFA 12–7–1, AFA 17–8–1, AFA 31–20–1
+   - Role: Descriptor for the series outcome between the two teams
+
+**Outlier Row Analysis:**
+
+1. Row 7 (September 30, 1989 | Fort Collins | Air Force | 46 | Colorado State | 21 | AFA 19–8–1)
+   - The winning team (Air Force) scored 46 points, which is significantly higher compared to the other winning team scores in the table.
+   - The winning margin of 25 points is also notably larger than the margins in other games.
+   - This row is an outlier due to the unusually high winning score and margin.
+
+2. Row 33 (N/A)
+   - As this row is missing, it cannot be analyzed for outlier characteristics.
+
+3. Row 0 (September 6, 1980 | Fort Collins | Colorado State | 21 | Air Force | 9 | AFA 11–7–1)
+   - The winning team (Colorado State) scored 21 points, which is within the range of winning scores in the table.
+   - The winning margin of 12 points is not significantly different from other games.
+   - This row contains ordinary values and is not a distinctive outlier.
+
+=== Full Table Preview ===
+|   row_number | Date                | Site             | Winning team   |   Winning team_1 | Losing team    |   Losing team_1 | Series      |
+|-------------:|:--------------------|:-----------------|:---------------|-----------------:|:---------------|----------------:|:------------|
+|            0 | 1980-09-06 00:00:00 | Fort Collins     | Colorado State |               21 | Air Force      |               9 | AFA 11–7–1  |
+|            1 | 1981-10-03 00:00:00 | Colorado Springs | Air Force      |               28 | Colorado State |              14 | AFA 12–7–1  |
+|            2 | 1982-10-16 00:00:00 | Colorado Springs | Colorado State |               21 | Air Force      |              11 | AFA 12–8–1  |
+|            3 | 1983-09-03 00:00:00 | Fort Collins     | Air Force      |               34 | Colorado State |              13 | AFA 13–8–1  |
+|            4 | 1984-09-29 00:00:00 | Colorado Springs | Air Force      |               52 | Colorado State |              10 | AFA 14–8–1  |
+|            5 | 1985-10-19 00:00:00 | Fort Collins     | #10 Air Force  |               35 | Colorado State |              19 | AFA 15–8–1  |
+|            6 | 1986-09-27 00:00:00 | Colorado Springs | Air Force      |               24 | Colorado State |               7 | AFA 16–8–1  |
+|            7 | 1987-09-26 00:00:00 | Fort Collins     | Air Force      |               27 | Colorado State |              19 | AFA 17–8–1  |
+|            8 | 1988-09-03 00:00:00 | Fort Collins     | Air Force      |               29 | Colorado State |              23 | AFA 18–8–1  |
+|            9 | 1989-09-30 00:00:00 | Fort Collins     | Air Force      |               46 | Colorado State |              21 | AFA 19–8–1  |
+|           10 | 1990-09-01 00:00:00 | Colorado Springs | Colorado State |               35 | Air Force      |              33 | AFA 19–9–1  |
+|           11 | 1991-09-07 00:00:00 | Fort Collins     | Air Force      |               31 | Colorado State |              26 | AFA 20–9–1  |
+|           12 | 1992-10-17 00:00:00 | Colorado Springs | Colorado State |               32 | Air Force      |              28 | AFA 20–10–1 |
+|           13 | 1993-09-11 00:00:00 | Fort Collins     | Colorado State |                8 | Air Force      |               5 | AFA 20–11–1 |
+|           14 | 1994-09-03 00:00:00 | Colorado Springs | Colorado State |               34 | Air Force      |              21 | AFA 20–12–1 |
+|           15 | 1995-09-16 00:00:00 | Colorado Springs | Colorado State |               27 | Air Force      |              20 | AFA 20–13–1 |
+|           16 | 1996-11-02 00:00:00 | Colorado Springs | Colorado State |               42 | Air Force      |              41 | AFA 20–14–1 |
+|           17 | 1997-09-20 00:00:00 | Fort Collins     | Air Force      |               24 | Colorado State |               0 | AFA 21–14–1 |
+|           18 | 1998-09-17 00:00:00 | Colorado Springs | Air Force      |               30 | Colorado State |              27 | AFA 22–14–1 |
+|           19 | 1999-11-18 00:00:00 | Fort Collins     | Colorado State |               41 | Air Force      |              21 | AFA 22–15–1 |
+|           20 | 2000-11-11 00:00:00 | Colorado Springs | Air Force      |               44 | Colorado State |              40 | AFA 23–15–1 |
+|           21 | 2001-11-08 00:00:00 | Fort Collins     | Colorado State |               28 | Air Force      |              21 | AFA 23–16–1 |
+|           22 | 2002-10-31 00:00:00 | Colorado Springs | Colorado State |               31 | Air Force      |              12 | AFA 23–17–1 |
+|           23 | 2003-10-16 00:00:00 | Fort Collins     | Colorado State |               30 | Air Force      |              20 | AFA 23–18–1 |
+|           24 | 2004-11-20 00:00:00 | Colorado Springs | Air Force      |               47 | Colorado State |              17 | AFA 24–18–1 |
+|           25 | 2005-09-29 00:00:00 | Fort Collins     | Colorado State |               41 | Air Force      |              23 | AFA 24–19–1 |
+|           26 | 2006-10-12 00:00:00 | Colorado Springs | Air Force      |               24 | Colorado State |              21 | AFA 25–19–1 |
+|           27 | 2007-10-13 00:00:00 | Fort Collins     | Air Force      |               45 | Colorado State |              21 | AFA 26–19–1 |
+|           28 | 2008-11-08 00:00:00 | Colorado Springs | Air Force      |               38 | Colorado State |              17 | AFA 27–19–1 |
+|           29 | 2009-10-31 00:00:00 | Fort Collins     | Air Force      |               34 | Colorado State |              16 | AFA 28–19–1 |
+|           30 | 2010-10-09 00:00:00 | Colorado Springs | Air Force      |               49 | Colorado State |              27 | AFA 29–19–1 |
+|           31 | 2011-11-26 00:00:00 | Fort Collins     | Air Force      |               45 | Colorado State |              21 | AFA 30–19–1 |
+|           32 | 2012-09-29 00:00:00 | Colorado Springs | Air Force      |               42 | Colorado State |              21 | AFA 31–19–1 |
+|           33 | 2013-11-30 00:00:00 | Fort Collins     | Colorado State |               58 | Air Force      |              13 | AFA 31–20–1 |
+
+Generated Reasoning SQL: Explanation: To determine how long Air Force went without a win, we need to identify consecutive games where Air Force was the losing team. This involves finding the dates of the games where Air Force lost and calculating the difference in days between consecutive losses. We will focus on the "Date" and "Losing team" columns to filter and calculate the required information.
+
+SQL: 
+WITH ranked_games AS (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "Date") AS game_rank
+    FROM T
+    WHERE "Losing team" = 'Air Force'
+)
+SELECT MIN(DATEDIFF('day', prev."Date", curr."Date")) AS days_without_win
+FROM ranked_games curr
+JOIN ranked_games prev ON curr.game_rank = prev.game_rank + 1;
+Generated Final SQL: WITH ranked_games AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Date") AS game_rank FROM T WHERE "Losing team" = 'Air Force' ) SELECT MIN(DATEDIFF('day', prev."Date", curr."Date")) AS days_without_win FROM ranked_games curr JOIN ranked_games prev ON curr.game_rank = prev.game_rank + 1;
+[Error] Final SQL 실행 실패: Execution failed on sql 'WITH ranked_games AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Date") AS game_rank FROM T WHERE "Losing team" = 'Air Force' ) SELECT MIN(DATEDIFF('day', prev."Date", curr."Date")) AS days_without_win FROM ranked_games curr JOIN ranked_games prev ON curr.game_rank = prev.game_rank + 1;': no such function: DATEDIFF
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Air Force–Colorado State football rivalry (row_number, Date, Site, Winning team, Winning team_1, Losing team, Losing team_1, Series)
+
+row_number | Date | Site | Winning team | Winning team_1 | Losing team | Losing team_1 | Series
+0 | 1980-09-06 00:00:00 | Fort Collins | Colorado State | 21 | Air Force | 9 | AFA 11–7–1
+1 | 1981-10-03 00:00:00 | Colorado Springs | Air Force | 28 | Colorado State | 14 | AFA 12–7–1
+2 | 1982-10-16 00:00:00 | Colorado Springs | Colorado State | 21 | Air Force | 11 | AFA 12–8–1
+3 | 1983-09-03 00:00:00 | Fort Collins | Air Force | 34 | Colorado State | 13 | AFA 13–8–1
+4 | 1984-09-29 00:00:00 | Colorado Springs | Air Force | 52 | Colorado State | 10 | AFA 14–8–1
+5 | 1985-10-19 00:00:00 | Fort Collins | #10 Air Force | 35 | Colorado State | 19 | AFA 15–8–1
+6 | 1986-09-27 00:00:00 | Colorado Springs | Air Force | 24 | Colorado State | 7 | AFA 16–8–1
+7 | 1987-09-26 00:00:00 | Fort Collins | Air Force | 27 | Colorado State | 19 | AFA 17–8–1
+8 | 1988-09-03 00:00:00 | Fort Collins | Air Force | 29 | Colorado State | 23 | AFA 18–8–1
+9 | 1989-09-30 00:00:00 | Fort Collins | Air Force | 46 | Colorado State | 21 | AFA 19–8–1
+10 | 1990-09-01 00:00:00 | Colorado Springs | Colorado State | 35 | Air Force | 33 | AFA 19–9–1
+11 | 1991-09-07 00:00:00 | Fort Collins | Air Force | 31 | Colorado State | 26 | AFA 20–9–1
+12 | 1992-10-17 00:00:00 | Colorado Springs | Colorado State | 32 | Air Force | 28 | AFA 20–10–1
+13 | 1993-09-11 00:00:00 | Fort Collins | Colorado State | 8 | Air Force | 5 | AFA 20–11–1
+14 | 1994-09-03 00:00:00 | Colorado Springs | Colorado State | 34 | Air Force | 21 | AFA 20–12–1
+15 | 1995-09-16 00:00:00 | Colorado Springs | Colorado State | 27 | Air Force | 20 | AFA 20–13–1
+16 | 1996-11-02 00:00:00 | Colorado Springs | Colorado State | 42 | Air Force | 41 | AFA 20–14–1
+17 | 1997-09-20 00:00:00 | Fort Collins | Air Force | 24 | Colorado State | 0 | AFA 21–14–1
+18 | 1998-09-17 00:00:00 | Colorado Springs | Air Force | 30 | Colorado State | 27 | AFA 22–14–1
+19 | 1999-11-18 00:00:00 | Fort Collins | Colorado State | 41 | Air Force | 21 | AFA 22–15–1
+20 | 2000-11-11 00:00:00 | Colorado Springs | Air Force | 44 | Colorado State | 40 | AFA 23–15–1
+21 | 2001-11-08 00:00:00 | Fort Collins | Colorado State | 28 | Air Force | 21 | AFA 23–16–1
+22 | 2002-10-31 00:00:00 | Colorado Springs | Colorado State | 31 | Air Force | 12 | AFA 23–17–1
+23 | 2003-10-16 00:00:00 | Fort Collins | Colorado State | 30 | Air Force | 20 | AFA 23–18–1
+24 | 2004-11-20 00:00:00 | Colorado Springs | Air Force | 47 | Colorado State | 17 | AFA 24–18–1
+25 | 2005-09-29 00:00:00 | Fort Collins | Colorado State | 41 | Air Force | 23 | AFA 24–19–1
+26 | 2006-10-12 00:00:00 | Colorado Springs | Air Force | 24 | Colorado State | 21 | AFA 25–19–1
+27 | 2007-10-13 00:00:00 | Fort Collins | Air Force | 45 | Colorado State | 21 | AFA 26–19–1
+28 | 2008-11-08 00:00:00 | Colorado Springs | Air Force | 38 | Colorado State | 17 | AFA 27–19–1
+29 | 2009-10-31 00:00:00 | Fort Collins | Air Force | 34 | Colorado State | 16 | AFA 28–19–1
+30 | 2010-10-09 00:00:00 | Colorado Springs | Air Force | 49 | Colorado State | 27 | AFA 29–19–1
+31 | 2011-11-26 00:00:00 | Fort Collins | Air Force | 45 | Colorado State | 21 | AFA 30–19–1
+32 | 2012-09-29 00:00:00 | Colorado Springs | Air Force | 42 | Colorado State | 21 | AFA 31–19–1
+33 | 2013-11-30 00:00:00 | Fort Collins | Colorado State | 58 | Air Force | 13 | AFA 31–20–1
+Question: how long did air force go without a win?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the winning team in each row. We can see that the winning team is listed under the "Winning team" column.
+
+Next, we need to find the rows where the winning team is Air Force. This indicates the years in which Air Force won the game against Colorado State.
+
+After identifying these rows, we need to look for the longest streak where Air Force did not win. This can be determined by finding the consecutive rows where Air Force did not win and calculating the duration of this streak.
+
+Let's now examine the full table to determine the duration of the longest period where Air Force did not win a game against Colorado State.
+[Fallback] Prediction: first, we need to identify the winning team in each row. we can see that the winning team is listed under the "winning team" column.
+
+next, we need to find the rows where the winning team is air force. this indicates the years in which air force won the game against colorado state.
+
+after identifying these rows, we need to look for the longest streak where air force did not win. this can be determined by finding the consecutive rows where air force did not win and calculating the duration of this streak.
+
+let's now examine the full table to determine the duration of the longest period where air force did not win a game against colorado state.
+[Gold Answer] 5 games
+

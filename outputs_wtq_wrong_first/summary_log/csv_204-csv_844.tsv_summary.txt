@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 8, 15, 16
+   - Role: Identifier for the athlete's ranking in the competition.
+
+2. Athlete:
+   - Data type: Categorical
+   - 4 representative example values: Yaroslav Rybakov, Andrey Tereshin, Linus Thörnblad, Robert Wolski
+   - Role: Descriptor for the athlete's name.
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: Russia, Sweden, Poland, Czech Republic
+   - Role: Descriptor for the athlete's nationality.
+
+4. 2.15, 2.20, 2.24, 2.27:
+   - Data type: Categorical (o, xo, xxx, nan)
+   - 4 representative example values: o, xo, xxx, nan
+   - Role: Measures representing the athlete's performance in clearing specific heights.
+
+5. Result:
+   - Data type: Numeric
+   - 4 representative example values: 2.27, 2.24, 2.2, nan
+   - Role: Measure representing the final result achieved by the athlete.
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: q, nan
+   - Role: Descriptor for any additional notes or qualifiers related to the athlete's performance.
+
+**Outlier Row Analysis:**
+
+1. Row 15 (Svatoslav Ton - Czech Republic):
+   - The values xo, xxx, and nan in the 2.15, 2.20, and 2.27 columns are different from the majority of the table where athletes mostly have o or x values. This makes the row an outlier as the performance pattern is atypical.
+
+2. Row 7 (Robert Wolski - Poland):
+   - The values xo, o, o, and xxx in the 2.15, 2.20, 2.24, and 2.27 columns are different from the majority of the table where athletes mostly have o or x values. This makes the row an outlier as the performance pattern is atypical.
+
+3. Row 14 (Adam Shunk - United States):
+   - The values o, xxx, nan, and 2.15 in the 2.15, 2.20, 2.24, and Result columns are not significantly different from the majority of the table. These values are ordinary within the context of the table, so this row is an ordinary entry and does not require special handling.

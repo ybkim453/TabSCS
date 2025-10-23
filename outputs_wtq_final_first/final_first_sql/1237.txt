@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1982, 1984, 1986, 1987
+   - Role: Identifier for the year the data was recorded
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Thanks to You, Thin Line, Say It Again, Send It C.O.D.
+   - Role: Descriptor for the name of the song
+
+3. Label:
+   - Data type: Categorical
+   - 4 representative example values: Becket, Power House, Spring, New Image
+   - Role: Descriptor for the record label associated with the song
+
+4. Hot Black Singles:
+   - Data type: Categorical
+   - 4 representative example values: #44, ―
+   - Role: Measure of the song's ranking on the Hot Black Singles chart
+
+5. Club Play Singles:
+   - Data type: Categorical
+   - 4 representative example values: #1, ―
+   - Role: Measure of the song's ranking on the Club Play Singles chart
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Index 1):
+   - The values in the Hot Black Singles and Club Play Singles columns are different from the majority of the table.
+   - These values (#44 and #1) indicate that this song had a high ranking on the Club Play Singles chart, making it an outlier.
+
+2. Row 3 (Index 3):
+   - The values in the Hot Black Singles and Club Play Singles columns are missing (―), which is different from the majority of the table.
+   - However, missing values are common in these columns, so this row is an ordinary entry and not a special outlier.
+
+3. Row 6 (Index 6):
+   - The values in the Hot Black Singles and Club Play Singles columns are missing (―), which is consistent with other rows in the table.
+   - This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Name                       | Label       | Hot Black Singles   | Club Play Singles   |
+|-------------:|-------:|:---------------------------|:------------|:--------------------|:--------------------|
+|            0 |   1982 | "He's Gonna Take You Home" | Becket      | ―                   | ―                   |
+|            1 |   1982 | "Thanks to You"            | Becket      | #44                 | #1                  |
+|            2 |   1983 | "I Need You Now"           | Jive        | ―                   | ―                   |
+|            3 |   1984 | "Thin Line"                | Power House | ―                   | ―                   |
+|            4 |   1986 | "Say It Again"             | Spring      | ―                   | ―                   |
+|            5 |   1986 | "Say It Again"             | Spring      | ―                   | ―                   |
+|            6 |   1987 | "Send It C.O.D."           | New Image   | ―                   | ―                   |
+
+Generated Reasoning SQL: Explanation: To determine which single is newer between "Thin Line" and "Say It Again", we need to compare the years in which these songs were released. The "Year" column contains the release year of each single, and we can filter the rows corresponding to these two songs based on their names. We will then compare the years to identify the newer single.
+
+SQL:
+SELECT "Name", "Year"
+FROM T
+WHERE "Name" LIKE '%Thin Line%' OR "Name" LIKE '%Say It Again%';
+Generated Final SQL: SELECT "Name", "Year" FROM T WHERE "Name" LIKE '%Thin Line%' OR "Name" LIKE '%Say It Again%';
+SQL 실행 결과 셀 수: 6
+=== SQL 실행 결과 미리보기 ===
+| Name           |   Year |
+|:---------------|-------:|
+| "Thin Line"    |   1984 |
+| "Say It Again" |   1986 |
+| "Say It Again" |   1986 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Sinnamon
+SQL: SELECT "Name", "Year" FROM T WHERE "Name" LIKE '%Thin Line%' OR "Name" LIKE '%Say It Again%';
+
+SQL Execution Result:
+Name | Year
+"Thin Line" | 1984
+"Say It Again" | 1986
+"Say It Again" | 1986
+
+Question: which singles are newer? "thin line" or "say it again"?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1986
+[Gold Answer] "thin line"
+

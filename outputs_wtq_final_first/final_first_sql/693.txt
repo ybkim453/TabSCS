@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Ship
+   - Data type: Categorical
+   - 4 representative example values: Benjamin Isherwood, Walter S. Diehl, John Ericsson, Kanawha
+   - Role: Identifier
+
+2. Hull No.
+   - Data type: Categorical
+   - 4 representative example values: T-AO-191, T-AO-193, T-AO-194, T-AO-196
+   - Role: Descriptor
+
+3. Status
+   - Data type: Categorical
+   - 4 representative example values: Cancelled when 95.3% complete, Active
+   - Role: Descriptor
+
+4. Years Active
+   - Data type: Categorical
+   - 4 representative example values: Launched 1988, 1988–present, 1991–present, 1992–present
+   - Role: Measure
+
+5. NVR Page
+   - Data type: Categorical
+   - 4 representative example values: AO191, AO193, AO194, AO196
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Kanawha | T-AO-196 | Active | 1991–present | AO196
+   - This row is not an outlier as it contains typical values that are consistent with the majority of the table.
+
+2. Big Horn | T-AO-198 | Active | 1992–present | AO198
+   - This row is not an outlier as it contains typical values that are consistent with the majority of the table.
+
+3. (Missing Row)
+   - Since there is a missing row in the provided data, it cannot be analyzed for outlier status.
+
+=== Full Table Preview ===
+|   row_number | Ship               | Hull No.   | Status                                                                                                                                                                                                                                   | Years Active                                   | NVR\nPage   |
+|-------------:|:-------------------|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:------------|
+|            0 | Henry J. Kaiser    | T-AO-187   | Active—Southern California Duty Oiler                                                                                                                                                                                                    | 1986–present                                   | AO187       |
+|            1 | Joshua Humphreys   | T-AO-188   | Inactivated 1996 returned to service 2005                                                                                                                                                                                                | 1987-1996; 2005-2006; 2010-present             | AO188       |
+|            2 | John Lenthall      | T-AO-189   | Active                                                                                                                                                                                                                                   | 1987-1996; 1998–present                        | AO189       |
+|            3 | Andrew J. Higgins  | T-AO-190   | Inactivated May 1996. Sold to the Chilean Navy May 2009. Towed to Atlantic Marine Alabama shipyard Mobile Alabama September 2009 for three-month refit. Commissioned in Chilean Navy on 10 February 2010 and renamed Almirante Montt.[1] | 1987-1996 (USA); 2010–present (Chile)          | AO190       |
+|            4 | Benjamin Isherwood | T-AO-191   | Cancelled when 95.3% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011                                                                                                    | Launched 1988 christened 1991 never in service | AO191       |
+|            5 | Henry Eckford      | T-AO-192   | Cancelled when 84% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011                                                                                                      | Launched 1989 never in service                 | AO192       |
+|            6 | Walter S. Diehl    | T-AO-193   | Active                                                                                                                                                                                                                                   | 1988–present                                   | AO193       |
+|            7 | John Ericsson      | T-AO-194   | Active                                                                                                                                                                                                                                   | 1991–present                                   | AO194       |
+|            8 | Leroy Grumman      | T-AO-195   | Active                                                                                                                                                                                                                                   | 1989–present                                   | AO195       |
+|            9 | Kanawha            | T-AO-196   | Active                                                                                                                                                                                                                                   | 1991–present                                   | AO196       |
+|           10 | Pecos              | T-AO-197   | Active                                                                                                                                                                                                                                   | 1990–present                                   | AO197       |
+|           11 | Big Horn           | T-AO-198   | Active                                                                                                                                                                                                                                   | 1992–present                                   | AO198       |
+|           12 | Tippecanoe         | T-AO-199   | Active                                                                                                                                                                                                                                   | 1993–present                                   | AO199       |
+|           13 | Guadalupe          | T-AO-200   | Active                                                                                                                                                                                                                                   | 1992–present                                   | AO200       |
+|           14 | Patuxent           | T-AO-201   | Active                                                                                                                                                                                                                                   | 1995–present                                   | AO201       |
+|           15 | Yukon              | T-AO-202   | Active                                                                                                                                                                                                                                   | 1994–present                                   | AO202       |
+|           16 | Laramie            | T-AO-203   | Active                                                                                                                                                                                                                                   | 1996–present                                   | AO203       |
+|           17 | Rappahannock       | T-AO-204   | Active                                                                                                                                                                                                                                   | 1995–present                                   | AO204       |
+
+Generated Reasoning SQL: The summary provides information about the columns in the table, including the "Ship" column which is categorical and serves as an identifier. The "NVR Page" column is also categorical and contains representative example values. To find the ship on the NVR page before Henry Eckford, we need to select the ship where the NVR Page is alphabetically before "AO187".
+
+SQL: 
+SELECT "Ship" 
+FROM T 
+WHERE "NVR\nPage" < 'AO187'
+ORDER BY "NVR\nPage" DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Ship" FROM T WHERE "NVR\nPage" < 'AO187' ORDER BY "NVR\nPage" DESC LIMIT 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Henry J. Kaiser-class oiler (row_number, Ship, Hull No., Status, Years Active, NVR\nPage)
+
+row_number | Ship | Hull No. | Status | Years Active | NVR\nPage
+0 | Henry J. Kaiser | T-AO-187 | Active—Southern California Duty Oiler | 1986–present | AO187
+1 | Joshua Humphreys | T-AO-188 | Inactivated 1996 returned to service 2005 | 1987-1996; 2005-2006; 2010-present | AO188
+2 | John Lenthall | T-AO-189 | Active | 1987-1996; 1998–present | AO189
+3 | Andrew J. Higgins | T-AO-190 | Inactivated May 1996. Sold to the Chilean Navy May 2009. Towed to Atlantic Marine Alabama shipyard Mobile Alabama September 2009 for three-month refit. Commissioned in Chilean Navy on 10 February 2010 and renamed Almirante Montt.[1] | 1987-1996 (USA); 2010–present (Chile) | AO190
+4 | Benjamin Isherwood | T-AO-191 | Cancelled when 95.3% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011 | Launched 1988 christened 1991 never in service | AO191
+5 | Henry Eckford | T-AO-192 | Cancelled when 84% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011 | Launched 1989 never in service | AO192
+6 | Walter S. Diehl | T-AO-193 | Active | 1988–present | AO193
+7 | John Ericsson | T-AO-194 | Active | 1991–present | AO194
+8 | Leroy Grumman | T-AO-195 | Active | 1989–present | AO195
+9 | Kanawha | T-AO-196 | Active | 1991–present | AO196
+10 | Pecos | T-AO-197 | Active | 1990–present | AO197
+11 | Big Horn | T-AO-198 | Active | 1992–present | AO198
+12 | Tippecanoe | T-AO-199 | Active | 1993–present | AO199
+13 | Guadalupe | T-AO-200 | Active | 1992–present | AO200
+14 | Patuxent | T-AO-201 | Active | 1995–present | AO201
+15 | Yukon | T-AO-202 | Active | 1994–present | AO202
+16 | Laramie | T-AO-203 | Active | 1996–present | AO203
+17 | Rappahannock | T-AO-204 | Active | 1995–present | AO204
+Question: which ship is on the nvr page before henry eckford?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate the "Henry Eckford" ship in the table. According to the full table, "Henry Eckford" is listed as the 5th ship with the NVR Page "AO192".
+
+Next, we need to find the ship listed before "Henry Eckford" in the NVR Page sequence. By scanning the table, we can see that the ship listed before "Henry Eckford" (NVR Page "AO192") is "Benjamin Isherwood" with the NVR Page "AO191".
+
+Therefore, the ship on the NVR Page before "Henry Eckford" is "Benjamin Isherwood".
+
+Final Answer: Benjamin Isherwood
+[Fallback] Prediction: benjamin isherwood
+[Gold Answer] benjamin isherwood
+

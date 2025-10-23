@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1997, 1998, 2001, 2003
+   - Role: Identifier for the year in which the song was released.
+
+2. Song:
+   - Data type: Categorical
+   - 4 representative example values: Pacifier, One Thing, Defaced, Bleeder
+   - Role: Descriptor for the title of the song.
+
+3. US Hot 100:
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, -
+   - Role: Measure of the song's ranking on the US Hot 100 chart.
+
+4. U.S. Modern Rock:
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, -
+   - Role: Measure of the song's ranking on the U.S. Modern Rock chart.
+
+5. U.S. Mainstream Rock:
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, 32
+   - Role: Measure of the song's ranking on the U.S. Mainstream Rock chart.
+
+6. Album:
+   - Data type: Categorical
+   - 4 representative example values: Pacifier, An Audio Guide To Everyday Atrocity, Violence, Skeletons
+   - Role: Descriptor for the album to which the song belongs.
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The value "32" in the U.S. Mainstream Rock column is significantly different from the "-" values in the other rows for the same column.
+   - This row is an outlier due to the distinct value in the U.S. Mainstream Rock column.
+
+2. Row 6:
+   - The row contains missing values ("-") in all columns except for the Year and Album columns.
+   - These missing values are not distinctive and are common in the table, making this row an ordinary entry.
+
+3. Row 4:
+   - The row contains missing values ("-") in all columns except for the Year and Album columns.
+   - These missing values are not distinctive and are common in the table, making this row an ordinary entry.

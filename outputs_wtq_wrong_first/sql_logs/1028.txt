@@ -1,0 +1,138 @@
+=== Table ID ===
+csv/202-csv/93.tsv
+
+=== Question ===
+which popular gordon ramsey cape town, south africa restaurant also has branches in doha, qatar and melbourne, australia?
+
+=== Sub-table Preview ===
+| Date       | Venue        | Opponents   | Score   | Competition                       |
+|:-----------|:-------------|:------------|:--------|:----------------------------------|
+| 20 March   | Fukuoka (A)  | Japan       | 2–0     | Sanix Cup                         |
+| 20 March   | Fukuoka (A)  | China PR    | 1–0     | Sanix Cup                         |
+| 9 August   | Toyota (A)   | Japan       | 2–2     | Toyota Cup                        |
+| 4 October  | Tashkent (N) | India       | 5–2     | AFC U-16 Championship (Group B)   |
+| 6 October  | Tashkent (N) | Indonesia   | 9–0     | AFC U-16 Championship (Group B)   |
+| 15 October | Tashkent (N) | Japan       | 2–1     | AFC U-16 Championship (Semifinal) |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 20 March, 9 August, 4 October, 15 October
+   - Role: Identifier for the specific date of the match
+
+2. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Fukuoka (A), Toyota (A), Tashkent (N)
+   - Role: Descriptor for the location of the match
+
+3. Opponents:
+   - Data type: Categorical
+   - 4 representative example values: Japan, China PR, India, Indonesia
+   - Role: Descriptor for the opposing team in the match
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 2–0, 1–0, 2–2, 5–2
+   - Role: Measure of the score outcome of the match
+
+5. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Sanix Cup, Toyota Cup, AFC U-16 Championship (Group B), AFC U-16 Championship (Semifinal)
+   - Role: Descriptor for the competition in which the match took place
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The match score of 2–2 against Japan in the Toyota Cup is different from the majority of the table where there are clear wins or losses. This draw result makes this row an outlier.
+
+2. Row 1 (Index 1):
+   - The match score of 2–0 against Japan in the Sanix Cup is a clear win, which is consistent with the majority of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 0 (Index 0):
+   - The match score of 2–0 against Japan in the Sanix Cup is a clear win, which is consistent with the majority of the table. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Restaurant                         | Location                                  | Date Opened   | Date Closed   |
+|-------------:|:-----------------------------------|:------------------------------------------|:--------------|:--------------|
+|            0 | Verre at the Hilton Dubai Creek    | Dubai United Arab Emirates                |               | October 2011  |
+|            1 | Maze by Gordon Ramsay              | The Pearl-Qatar Doha Qatar                | 2010          | March 2012    |
+|            2 | Gordon Ramsay at Conrad Tokyo      | Conrad Tokyo Tokyo Japan                  |               | -             |
+|            3 | Cerise by Gordon Ramsay            | Minato Tokyo Japan                        |               | -             |
+|            4 | Maze by Gordon Ramsay              | One and Only Hotel Cape Town South Africa | April 2009    | July 2010     |
+|            5 | Maze / Maze Grill by Gordon Ramsay | Crown Metropol Melbourne Australia        | March 2010    | August 2011   |
+
+Generated Reasoning SQL: Explanation: To find the Gordon Ramsay restaurant in Cape Town, South Africa, that also has branches in Doha, Qatar, and Melbourne, Australia, we need to filter the rows based on the "Location" column. We are looking for the restaurant that has branches in all three locations, so we need to find the common restaurant name among these locations.
+
+SQL: 
+SELECT "Restaurant" 
+FROM T 
+WHERE "Location" LIKE '%Cape Town South Africa%' 
+AND "Restaurant" IN (
+    SELECT "Restaurant" 
+    FROM T 
+    WHERE "Location" LIKE '%Doha Qatar%' 
+    INTERSECT 
+    SELECT "Restaurant" 
+    FROM T 
+    WHERE "Location" LIKE '%Melbourne Australia%'
+);
+Generated Final SQL: SELECT "Restaurant" FROM T WHERE "Location" LIKE '%Cape Town South Africa%' AND "Restaurant" IN ( SELECT "Restaurant" FROM T WHERE "Location" LIKE '%Doha Qatar%' INTERSECT SELECT "Restaurant" FROM T WHERE "Location" LIKE '%Melbourne Australia%' );
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Gordon Ramsay (row_number, Restaurant, Location, Date Opened, Date Closed)
+
+row_number | Restaurant | Location | Date Opened | Date Closed
+0 | Verre at the Hilton Dubai Creek | Dubai United Arab Emirates | None | October 2011
+1 | Maze by Gordon Ramsay | The Pearl-Qatar Doha Qatar | 2010 | March 2012
+2 | Gordon Ramsay at Conrad Tokyo | Conrad Tokyo Tokyo Japan | None | -
+3 | Cerise by Gordon Ramsay | Minato Tokyo Japan | None | -
+4 | Maze by Gordon Ramsay | One and Only Hotel Cape Town South Africa | April 2009 | July 2010
+5 | Maze / Maze Grill by Gordon Ramsay | Crown Metropol Melbourne Australia | March 2010 | August 2011
+Question: which popular gordon ramsey cape town, south africa restaurant also has branches in doha, qatar and melbourne, australia?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: 1. Identify the Gordon Ramsay restaurant in Cape Town, South Africa:
+- From the full table:
+  - Restaurant: Maze by Gordon Ramsay
+  - Location: One and Only Hotel Cape Town South Africa
+
+2. Find the restaurants with branches in Doha, Qatar, and Melbourne, Australia:
+- From the full table:
+  - Restaurant: Maze by Gordon Ramsay
+  - Location: The Pearl-Qatar Doha Qatar
+  - Restaurant: Maze / Maze Grill by Gordon Ramsay
+  - Location: Crown Metropol Melbourne Australia
+
+3. Based on the above information, the popular Gordon Ramsay restaurant in Cape Town, South Africa, that also has branches in Doha, Qatar, and Melbourne, Australia is **Maze by Gordon Ramsay**.
+
+Final Answer: Maze by Gordon Ramsay
+[Fallback] Prediction: maze by gordon ramsay
+[Gold Answer] maze
+

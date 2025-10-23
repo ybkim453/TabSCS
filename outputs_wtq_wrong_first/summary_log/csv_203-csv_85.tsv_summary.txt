@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 7, 9
+   - Role: Identifier for each row
+
+2. **Title**
+   - Data type: Categorical
+   - 4 representative example values: That's How You Know, Colors of the Wind, Kiss the Girl, Happy Working Song
+   - Role: Descriptor of the song title
+
+3. **Performer(s)**
+   - Data type: Categorical
+   - 4 representative example values: Demi Lovato, Vanessa Hudgens, Colbie Caillat, Raven-Symoné
+   - Role: Descriptor of the performer(s) of the song
+
+4. **Film**
+   - Data type: Categorical
+   - 4 representative example values: Enchanted, Pocahontas, The Little Mermaid
+   - Role: Descriptor of the film the song is from
+
+5. **Length**
+   - Data type: Numeric
+   - 4 representative example values: 3:12, 3:58, 3:16, 2:09
+   - Role: Measure of the length of the song
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The values for Performer(s) (Vanessa Hudgens) and Film (Pocahontas) are different from the majority of the table.
+   - This row is an outlier due to the unique combination of performer and film compared to the other entries.
+
+2. Row 9:
+   - The values for Performer(s) (Raven-Symoné) and Length (3:15) are not significantly different from the majority of the table.
+   - This row contains ordinary values and does not stand out as an outlier.
+
+3. Row 11:
+   - The values for Title (Happy Working Song) and Length (2:09) are consistent with other entries in the table.
+   - This row is an ordinary entry and does not require special handling.

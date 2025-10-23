@@ -1,0 +1,37 @@
+### Column Analysis:
+
+1. **Num:**
+   - Data type: Numeric
+   - 4 representative example values: 24, 27, 29, 36
+   - Role of the column: Identifier for each experiment
+
+2. **Pod Color:**
+   - Data type: Categorical
+   - 4 representative example values: Purple, nan, Yellow and Purple
+   - Role of the column: Descriptor for the color of the experiment's pod
+
+3. **Nickname:**
+   - Data type: Categorical
+   - 4 representative example values: Hamlette, Plushy, Checkers, Poki
+   - Role of the column: Descriptor for the experiment's nickname
+
+4. **Short Description:**
+   - Data type: Text
+   - 4 representative example values: An experiment designed to turn objects into ham..., nan, A yellow centipede-like experiment that sits curled up like a crown..., A small yellow and brown opossum-like experiment with a spiked tail...
+   - Role of the column: Descriptor for a brief explanation of the experiment
+
+5. **Episode:**
+   - Data type: Categorical
+   - 4 representative example values: 215, 220, Leroy & Stitch, 203
+   - Role of the column: Descriptor for the episodes where the experiment appeared
+
+### Outlier Row Analysis:
+
+1. **Row 35:**
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and requires no special handling.
+
+2. **Row 28:**
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and requires no special handling.
+
+3. **Row 23:**
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and requires no special handling.

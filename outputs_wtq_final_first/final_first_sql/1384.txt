@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name:
+   - Data type: Categorical
+   - 4 representative example values: Awesome Library, HackMath.net, HyperPhysics, IXL
+   - Role: Identifier for the educational resources
+
+2. Topic:
+   - Data type: Categorical
+   - 4 representative example values: All, Mathematics, Physics, Multidisciplinary
+   - Role: Descriptor of the subject matter covered by the resource
+
+3. Cost:
+   - Data type: Numeric
+   - 4 representative example values: Free, Free, Free, $80/year
+   - Role: Measure of the cost of accessing the resource
+
+4. Target age:
+   - Data type: Categorical
+   - 4 representative example values: All, 9-18, 15+, 4-12
+   - Role: Descriptor of the age group the resource is intended for
+
+5. Advertising:
+   - Data type: Categorical
+   - 4 representative example values: Yes - large, None, None, ?
+   - Role: Descriptor of the advertising strategy used for the resource
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values for Name, Topic, Cost, Target age, and Advertising are all missing or ambiguous ("?").
+   - These values do not provide any clear distinction from the majority of the table and are likely just missing data. This row is an ordinary row and does not require special handling.
+
+2. Row 2:
+   - The values for Name, Topic, and Advertising are all "Mathematics" and "None", which are not significantly different from other rows in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row and does not require special handling.
+
+3. Row 13:
+   - The values for Name, Topic, and Advertising are all "Multidisciplinary" and "Yes", which are consistent with other rows in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Name                                | Topic                                                                                                                                                                                              | Cost            | Target age   | Advertising     |
+|-------------:|:------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|:-------------|:----------------|
+|            0 | Ask A Biologist                     | Biology                                                                                                                                                                                            | Free            | 5+           | None            |
+|            1 | Archimedes-lab.org                  | Mathematics                                                                                                                                                                                        | Free            | 10+          | Yes - limited   |
+|            2 | Awesome Library                     | All                                                                                                                                                                                                | Free            | All          | Yes - large     |
+|            3 | Bitesize by the BBC                 | Art & Design Business Studies Design & Technology DiDA Drama English English Literature French Geography German History ICT Irish Maths Music Physical Education Religious Studies Science Spanish | Free            | 5-16         | None            |
+|            4 | BrainPop                            | Science Social studies English Maths Art & Music Health Technology                                                                                                                                 | from US$75/year | 4-17         | None            |
+|            5 | Cut-the-Knot                        | Maths                                                                                                                                                                                              | Free            | 8+           | Yes - extensive |
+|            6 | Fact Monster                        | World & News U.S. People English Science Math & Money Sports                                                                                                                                       | Free            | 4-14 (K-8)   | Yes             |
+|            7 | Geometry from the Land of the Incas | Geometry                                                                                                                                                                                           | Free            | 12+          | Yes - extensive |
+|            8 | HackMath.net                        | Mathematics                                                                                                                                                                                        | Free            | 9-18         | None            |
+|            9 | HyperPhysics                        | Physics                                                                                                                                                                                            | Free            | 15+          | None            |
+|           10 | IXL                                 | Math                                                                                                                                                                                               | $80/year        | 4-12         | ?               |
+|           11 | Le Patron                           | French                                                                                                                                                                                             | Free            | 12+          | Yes             |
+|           12 | LearnAlberta.ca                     | Everything (mainly aimed at teachers)                                                                                                                                                              | Free            | 5-18         | No              |
+|           13 | Nafham                              | Multidisciplinary 5-20min K-12 school video lessons for Arabic students                                                                                                                            | Free            | 6-18         | Yes             |
+|           14 | Starfall.com                        | Reading                                                                                                                                                                                            | Free            | 2-9          | None            |
+|           15 | Smartygames.com                     | Math Games Reading Art Word Scramble Spanish Puzzles Kids Sudoku and more                                                                                                                          | Free            | 2-9          | None            |
+|           16 | WatchKnowLearn                      | All                                                                                                                                                                                                | Free            | 2-17         | None            |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Topic" column contains categorical values such as Biology. To find a site that only offers Biology, we need to select a row where the "Topic" is specifically Biology and not any other subject.
+SQL: select "Name" from T where "Topic" = 'Biology' and "Topic" not in (select "Topic" from T where "Topic" <> 'Biology');
+Generated Final SQL: select "Name" from T where "Topic" = 'Biology' and "Topic" not in (select "Topic" from T where "Topic" <> 'Biology');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Name            |
+|:----------------|
+| Ask A Biologist |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Comparison of educational websites for children
+SQL: select "Name" from T where "Topic" = 'Biology' and "Topic" not in (select "Topic" from T where "Topic" <> 'Biology');
+
+Name
+Ask A Biologist
+Question: name a site that only offers biology.
+A: To find the answer to this question, let’s think step by step.
+Prediction: ask a biologist
+[Gold Answer] ask a biologist
+

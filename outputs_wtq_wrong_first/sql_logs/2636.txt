@@ -1,0 +1,155 @@
+=== Table ID ===
+csv/204-csv/931.tsv
+
+=== Question ===
+which athletes records were more than eddie hart?
+
+=== Sub-table Preview ===
+|   Hand |   Auto |   Wind | Athlete                | Nationality    | Birthdate   | Location   | Date       |
+|-------:|-------:|-------:|:-----------------------|:---------------|:------------|:-----------|:-----------|
+|  nan   |  10.6  |  nan   | Bill Collins           | United States  | 20.11.1950  | nan        | 06.06.1992 |
+|  nan   |  10.84 |    1.8 | Erik Oostweegel        | Netherlands    | 29.04.1960  | Tilburg    | 10.06.2000 |
+|  nan   |  10.87 |  nan   | Eddie Hart             | United States  | 24.04.1949  | Eugene     | 03.08.1989 |
+|  nan   |  10.9  |  nan   | Thaddeus Bell          | United States  | 28.11.1942  | Raleigh    | 01.05.1988 |
+|   10.7 | nan    |  nan   | Klaus Jürgen Schneider | Germany        | 02.03.1942  | Stuttgart  | 07.07.1982 |
+|  nan   |  10.95 |  nan   | George McNeill         | United Kingdom | 19.02.1947  | Melbourne  | 31.11.1987 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Hand
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, 10.7
+   - Role: Measure
+
+2. Auto
+   - Data type: Numeric
+   - 4 representative example values: 10.6, 10.84, 10.87, nan
+   - Role: Measure
+
+3. Wind
+   - Data type: Numeric
+   - 4 representative example values: nan, 1.8, nan, nan
+   - Role: Measure
+
+4. Athlete
+   - Data type: Categorical
+   - 4 representative example values: Bill Collins, Erik Oostweegel, Eddie Hart, Klaus Jürgen Schneider
+   - Role: Descriptor
+
+5. Nationality
+   - Data type: Categorical
+   - 4 representative example values: United States, Netherlands, United States, Germany
+   - Role: Descriptor
+
+6. Birthdate
+   - Data type: Date
+   - 4 representative example values: 20.11.1950, 29.04.1960, 24.04.1949, 02.03.1942
+   - Role: Descriptor
+
+7. Location
+   - Data type: Categorical
+   - 4 representative example values: nan, Tilburg, Eugene, Stuttgart
+   - Role: Descriptor
+
+8. Date
+   - Data type: Date
+   - 4 representative example values: 06.06.1992, 10.06.2000, 03.08.1989, 07.07.1982
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The values in the "Wind" column are significantly different from the majority of the table, where it has a value of 1.8 while others have "nan". This makes the row an outlier.
+
+2. Row 7:
+   - The value in the "Auto" column is 10.95, which is higher than the rest of the values in that column. This makes the row an outlier.
+
+3. Row 10:
+   - The value in the "Nationality" column is "United Kingdom", which is different from the majority of "United States" entries. This makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Hand |   Auto |   Wind | Athlete                | Nationality    | Birthdate   | Location   | Date       |
+|-------------:|-------:|-------:|-------:|:-----------------------|:---------------|:------------|:-----------|:-----------|
+|            0 |  nan   |  10.26 |    2.3 | Troy Douglas           | Netherlands    | 30.11.1962  | Utrecht    | 10.07.2004 |
+|            1 |  nan   |  10.29 |    1.9 | Troy Douglas           | Netherlands    | 30.11.1962  | Leiden     | 07.06.2003 |
+|            2 |  nan   |  10.6  |  nan   | Bill Collins           | United States  | 20.11.1950  |            | 06.06.1992 |
+|            3 |  nan   |  10.84 |    1.8 | Erik Oostweegel        | Netherlands    | 29.04.1960  | Tilburg    | 10.06.2000 |
+|            4 |  nan   |  10.87 |  nan   | Eddie Hart             | United States  | 24.04.1949  | Eugene     | 03.08.1989 |
+|            5 |  nan   |  10.9  |  nan   | Thaddeus Bell          | United States  | 28.11.1942  | Raleigh    | 01.05.1988 |
+|            6 |  nan   |  10.93 |    0.6 | Gilles Echevin         | France         | 01.09.1948  | Grenoble   | 07.05.1989 |
+|            7 |   10.7 | nan    |  nan   | Klaus Jürgen Schneider | Germany        | 02.03.1942  | Stuttgart  | 07.07.1982 |
+|            8 |   10.7 | nan    |  nan   | Walt Butler            | United States  | 21.03.1941  | Northridge | 16.05.1981 |
+|            9 |   10.7 | nan    |  nan   | Thane Baker            | United States  | 04.10.1931  | Elkhart    | 13.09.1972 |
+|           10 |  nan   |  10.95 |  nan   | George McNeill         | United Kingdom | 19.02.1947  | Melbourne  | 31.11.1987 |
+|           11 |  nan   |  10.95 |  nan   | Karl Heinz Schröder    | Germany        | 17.06.1939  | Hannover   | 28.07.1979 |
+
+Generated Reasoning SQL: Explanation: To find the athletes whose records were more than Eddie Hart's, we need to compare the values in the "Auto" column for each athlete. We will exclude the outlier rows mentioned in the summary (Row 3, Row 7, Row 10) as they do not represent typical data points for comparison.
+
+SQL: 
+SELECT "Athlete"
+FROM T
+WHERE "Auto" > (SELECT "Auto" FROM T WHERE "Athlete" = 'Eddie Hart')
+AND "row_number" NOT IN (2, 7, 10);
+Generated Final SQL: SELECT "Athlete" FROM T WHERE "Auto" > (SELECT "Auto" FROM T WHERE "Athlete" = 'Eddie Hart') AND "row_number" NOT IN (2, 7, 10);
+SQL 실행 결과 셀 수: 3
+=== SQL 실행 결과 미리보기 ===
+| Athlete             |
+|:--------------------|
+| Thaddeus Bell       |
+| Gilles Echevin      |
+| Karl Heinz Schröder |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Masters M40 100 metres world record progression
+SQL: SELECT "Athlete" FROM T WHERE "Auto" > (SELECT "Auto" FROM T WHERE "Athlete" = 'Eddie Hart') AND "row_number" NOT IN (2, 7, 10);
+
+SQL Execution Result:
+Athlete
+Thaddeus Bell
+Gilles Echevin
+Karl Heinz Schröder
+
+Question: which athletes records were more than eddie hart?
+A: To find the answer to this question, let’s think step by step.
+Prediction: thaddeus bell, gilles echevin, karl heinz schröder
+[Gold Answer] thaddeus bell,gilles echevin,klaus jürgen schneider,walt butler,thane baker,george mcneill,karl heinz schröder
+

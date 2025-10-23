@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1906, 1922, 1924, 1930
+   - Role: Identifier for the year the title was published
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Spirit of the Border, The Day of the Beast, The Call of the Canyon, The Thundering Herd
+   - Role: Descriptor for the title of the book
+
+3. Genre:
+   - Data type: Categorical
+   - 4 representative example values: Historical, Fiction, Western
+   - Role: Descriptor for the genre of the book
+
+4. Publisher:
+   - Data type: Categorical
+   - 4 representative example values: A. L. Burt & Company, Harper & Brothers, Walter J. Black
+   - Role: Descriptor for the publisher of the book
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: Sequel to Betty Zane, nan
+   - Role: Additional information or notes about the book
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The value "Spirit of the Border" in the Title column is a distinctive title compared to the other titles in the table.
+   - The value "Historical" in the Genre column is not common among the majority of Western genre entries.
+   - The value "A. L. Burt & Company" in the Publisher column is different from the more common "Harper & Brothers" publishers.
+   - Overall, the combination of these unique values makes this row an outlier.
+
+2. Row 91:
+   - No specific distinctive values were mentioned in the provided table preview for this row, so it is considered an ordinary row and does not require special handling.
+
+3. Row 24:
+   - The value "The Camp Robber and other Stories" in the Title column is different from the typical single-title entries in the table.
+   - The value "Walter J. Black" in the Publisher column is not as common as "Harper & Brothers" publishers.
+   - Since these values are not significantly different from the majority of the table entries, this row is considered an ordinary row.

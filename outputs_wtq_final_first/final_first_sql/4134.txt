@@ -1,0 +1,149 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team 1
+   - Data type: Categorical
+   - 4 representative example values: Alcalá, Burgos, Osasuna, Tenerife
+   - Role: Identifier for the first team in each match
+
+2. Agg.
+   - Data type: Numeric
+   - 4 representative example values: 1–10, 4–1, 2–1
+   - Role: Measure representing the aggregate score of the match
+
+3. Team 2
+   - Data type: Categorical
+   - 4 representative example values: Valencia, Huesca, Guadalajara, Malgrat
+   - Role: Identifier for the second team in each match
+
+4. 1st leg
+   - Data type: Numeric
+   - 4 representative example values: 1–3, 2–0
+   - Role: Measure representing the score of the first leg of the match
+
+5. 2nd leg
+   - Data type: Numeric
+   - 4 representative example values: 0–7, 2–1
+   - Role: Measure representing the score of the second leg of the match
+
+**Outlier Row Analysis:**
+
+1. Row 6 (index 6):
+   - The aggregate score of 1–10 is significantly higher compared to the other rows, making this row an outlier.
+
+2. Row 2 (index 2):
+   - The aggregate score of 4–1 is different from the majority of the table, making this row an outlier.
+
+3. Row 38 (index 38):
+   - The values in this row are consistent with ordinary entries in the table, so it is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Team 1               |   Agg. | Team 2                 |   1st leg |   2nd leg |
+|-------------:|:---------------------|-------:|:-----------------------|----------:|----------:|
+|            0 | Valladolid Promesas  |      1 | Elche                  |         0 |         1 |
+|            1 | Peña Sport           |      0 | Valladolid             |         0 |         0 |
+|            2 | Algeciras            |      2 | Real Madrid            |         0 |         2 |
+|            3 | Real Madrid Castilla |      5 | Sabadell               |         4 |         1 |
+|            4 | Leganés              |      1 | Eldense                |         1 |         0 |
+|            5 | Ciempozuelos         |      3 | Lleida                 |         2 |         1 |
+|            6 | Alcalá               |      1 | Valencia               |         1 |         0 |
+|            7 | Burgos               |      4 | Huesca                 |         2 |         2 |
+|            8 | Ceuta                |      1 | Espanyol               |         1 |         0 |
+|            9 | Atlético Baleares    |      2 | Cádiz                  |         1 |         1 |
+|           10 | Tudelano             |      3 | Sporting Gijón         |         2 |         1 |
+|           11 | Figueres             |      3 | Racing Santander       |         1 |         2 |
+|           12 | Carabanchel          |      5 | Calvo Sotelo           |         4 |         1 |
+|           13 | Almansa              |      1 | Rayo Vallecano         |         0 |         1 |
+|           14 | Osasuna              |      4 | Guadalajara            |         2 |         2 |
+|           15 | Deportivo            |      5 | Plasencia              |         3 |         2 |
+|           16 | Europa               |      3 | Málaga                 |         3 |         0 |
+|           17 | Jaén                 |      1 | Real Unión             |         1 |         0 |
+|           18 | Ontinyent            |      1 | Torrejón               |         1 |         0 |
+|           19 | Girona               |      5 | Alcoyano               |         3 |         2 |
+|           20 | Valencia Mestalla    |      4 | Sevilla Atlético       |         3 |         1 |
+|           21 | Español Raspeig      |      0 | Mirandés               |         0 |         0 |
+|           22 | Toledo               |      3 | Badajoz                |         2 |         1 |
+|           23 | Talavera             |      2 | Arosa                  |         2 |         0 |
+|           24 | Sariñena             |      1 | Rayo Cantabria         |         0 |         1 |
+|           25 | San Fernando         |      5 | Nàstic Tarragona       |         4 |         1 |
+|           26 | Sevilla              |      4 | Sant Andreu            |         2 |         2 |
+|           27 | Orihuela             |      0 | Alavés                 |         0 |         0 |
+|           28 | Oviedo               |      4 | Cultural Leonesa       |         2 |         2 |
+|           29 | Langreo              |      1 | Granada                |         1 |         0 |
+|           30 | Racing Ferrol        |      3 | Real Murcia            |         2 |         1 |
+|           31 | Levante              |      9 | Moscardó               |         5 |         4 |
+|           32 | Real Sociedad        |      3 | Xerez                  |         1 |         2 |
+|           33 | Marbella             |      4 | Gimnástica Torrelavega |         4 |         0 |
+|           34 | Córdoba              |      3 | Bilbao Athletic        |         1 |         2 |
+|           35 | Recreativo           |      4 | Linense                |         2 |         2 |
+|           36 | Reus                 |      0 | Zaragoza               |         0 |         0 |
+|           37 | Celta                |      2 | Cartagena              |         2 |         0 |
+|           38 | Tenerife             |      2 | Malgrat                |         2 |         0 |
+|           39 | La Cava              |      2 | Linares                |         1 |         1 |
+|           40 | Gavà                 |      2 | Castellón              |         1 |         1 |
+|           41 | Fabril               |      0 | Hércules               |         0 |         0 |
+
+Generated Reasoning SQL: Explanation: To find the number of occurrences of Team 2 values that are listed in bold, we need to identify the bold values from the provided summary and count the rows where "Team 2" matches those values. Since the summary does not explicitly mention which values are in bold, we will assume that the bold values are the ones provided as representative examples for the "Team 2" column.
+
+SQL: 
+SELECT COUNT("Team 2") 
+FROM T 
+WHERE "Team 2" IN ('Valencia', 'Huesca', 'Guadalajara', 'Malgrat');
+Generated Final SQL: SELECT COUNT("Team 2") FROM T WHERE "Team 2" IN ('Valencia', 'Huesca', 'Guadalajara', 'Malgrat');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Team 2") |
+|------------------:|
+|                 4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1977–78 Copa del Rey
+SQL: SELECT COUNT("Team 2") FROM T WHERE "Team 2" IN ('Valencia', 'Huesca', 'Guadalajara', 'Malgrat');
+
+SQL Execution Result:
+COUNT("Team 2")
+4
+
+Question: how many team 2's are listed and in bold?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 22
+

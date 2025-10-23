@@ -1,0 +1,48 @@
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 6, 17, 23
+   - Role: Identifier for each row
+
+2. Stadium:
+   - Data type: Categorical
+   - 4 representative example values: Grand Stade Lille Métropole, Stade Gerland, MMArena, Stade de l'Aube
+   - Role: Descriptor for the stadium where the matches are held
+
+3. Capacity:
+   - Data type: Numeric
+   - 4 representative example values: 50,186, 41,044, 25,000, 20,400
+   - Role: Measure of the maximum number of spectators the stadium can hold
+
+4. City:
+   - Data type: Categorical
+   - 4 representative example values: Villeneuve-d'Ascq, Lyon, Le Mans, Troyes
+   - Role: Descriptor for the city where the stadium is located
+
+5. Region:
+   - Data type: Categorical
+   - 4 representative example values: Nord-Pas-de-Calais, Rhône-Alpes, Pays de la Loire, Champagne-Ardenne
+   - Role: Descriptor for the region where the city is located
+
+6. Home Team:
+   - Data type: Categorical
+   - 4 representative example values: Lille OSC, Olympique Lyonnais, Le Mans UC, Troyes AC
+   - Role: Descriptor for the team that uses the stadium as their home ground
+
+7. Opened:
+   - Data type: Numeric
+   - 4 representative example values: 2012, 1926, 2011, 1956
+   - Role: Measure of the year the stadium was opened
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - Stade de l'Aube in Troyes, Champagne-Ardenne, with a capacity of 20,400 opened in 1956.
+   - This row is an outlier because it has a lower capacity compared to the other stadiums in the list, which have capacities ranging from 25,000 to 50,186.
+
+2. Row 16:
+   - This row is not an outlier as it is not part of the candidate outlier list.
+
+3. Row 2:
+   - This row is not an outlier as it is not part of the candidate outlier list.

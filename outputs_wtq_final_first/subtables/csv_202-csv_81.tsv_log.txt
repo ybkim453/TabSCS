@@ -1,0 +1,15 @@
+
+JSONL 파일에서 인덱스 1556 처리 중: datasets/wtq.jsonl
+  테이블 크기: 297행 4열
+  컬럼 'Comet' 분석 중...
+  컬럼 'Discoverer(s) or namesake(s)' 분석 중...
+  컬럼 'Orbital period (years)' 분석 중...
+  컬럼 'Spacecraft encounter(s)' 분석 중...
+  특이값 행 선택: 행 66 (컬럼 'Spacecraft encounter(s)', 유사도: 0.6106)
+  특이값 행 선택: 행 275 (컬럼 'Discoverer(s) or namesake(s)', 유사도: 0.5919)
+  특이값 행 선택: 행 272 (컬럼 'Orbital period (years)', 유사도: 0.6276)
+  정상값 행 선택: 행 276 (평균 유사도: 0.7569)
+  정상값 행 선택: 행 236 (평균 유사도: 0.7551)
+  정상값 행 선택: 행 216 (평균 유사도: 0.7551)
+  최종 선택된 행 (원본 순서): [66, 216, 236, 272, 275, 276] (총 6개)
+  서브테이블 크기: 7줄

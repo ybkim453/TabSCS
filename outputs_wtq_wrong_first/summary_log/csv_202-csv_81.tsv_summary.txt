@@ -1,0 +1,35 @@
+**Column Analysis:**
+
+1. Comet
+   - Data type: Categorical
+   - 4 representative example values: 67P/Churyumov–Gerasimenko, 217P/LINEAR, 237P/LINEAR, 273P/Pons–Gambart
+   - Role: Identifier
+
+2. Discoverer(s) or namesake(s)
+   - Data type: Categorical
+   - 4 representative example values: Churyumov & Gerasimenko, LINEAR, Pons & Gambart, Vorobjov
+   - Role: Descriptor
+
+3. Orbital period (years)
+   - Data type: Numeric
+   - 4 representative example values: 6.45, 7.83, 6.57, 188
+   - Role: Measure
+
+4. Spacecraft encounter(s)
+   - Data type: Categorical
+   - 4 representative example values: Rosetta (orbiter 2014), nan
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 66:
+   - The values in this row are not provided, indicated by "nan" in all columns.
+   - This row is an outlier due to missing data in all columns, making it distinct from the majority of the table.
+
+2. Row 275:
+   - The values in this row are not provided, indicated by "nan" in all columns.
+   - This row is an outlier due to missing data in all columns, making it distinct from the majority of the table.
+
+3. Row 272:
+   - The values in this row are not provided, indicated by "nan" in all columns.
+   - This row is an outlier due to missing data in all columns, making it distinct from the majority of the table.

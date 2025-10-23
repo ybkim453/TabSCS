@@ -1,0 +1,141 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative values: 5, 6, 8, 9
+   - Role: Identifier for each row
+
+2. Score
+   - Data type: Categorical
+   - 4 representative values: 108*, 134*, 150*, 107
+   - Role: Measure of the player's score in a match
+
+3. Player
+   - Data type: Categorical
+   - 4 representative values: Salman Butt, Graeme Smith, Gautam Gambhir, Virat Kohli
+   - Role: Descriptor for the player's name
+
+4. Team
+   - Data type: Categorical
+   - 4 representative values: Pakistan, South Africa, India, Ireland
+   - Role: Descriptor for the player's team
+
+5. Balls
+   - Data type: Numeric
+   - 4 representative values: 130, 124, 137, 114
+   - Role: Measure of the number of balls faced by the player
+
+6. Inns.
+   - Data type: Numeric
+   - 4 representative values: 2, 2, 2, 2
+   - Role: Measure of the innings played by the player
+
+7. Opposing team
+   - Data type: Categorical
+   - 4 representative values: India, India, Sri Lanka, Netherlands
+   - Role: Descriptor for the opposing team
+
+8. Date
+   - Data type: Categorical
+   - 4 representative values: 13 November 2004, 25 November 2005, 24 December 2009, 18 March 2011
+   - Role: Descriptor for the date of the match
+
+9. Result
+   - Data type: Categorical
+   - 4 representative values: Won, Won, Won, Won
+   - Role: Measure of the match result
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values for No. (10), Score (119), Player (Shikhar Dhawan), and Team (India) are not significantly different from other rows in the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 5:
+   - The Score value of 108* for Salman Butt is a high score compared to the other entries in the table. This makes the row an outlier in terms of the player's exceptional performance in that match.
+
+3. Row 0:
+   - The No. value of 0 is not a valid identifier and seems to be a data entry error. This row should be treated as an outlier and removed from the analysis.
+
+=== Full Table Preview ===
+|   row_number |   No. | Score   | Player             | Team         |   Balls |   Inns. | Opposing team   | Date                | Result   |
+|-------------:|------:|:--------|:-------------------|:-------------|--------:|--------:|:----------------|:--------------------|:---------|
+|            0 |     1 | 123     | Kris Srikkanth     | India        |     103 |       1 | Pakistan        | 1987-02-18 00:00:00 | Lost     |
+|            1 |     2 | 107*    | Desmond Haynes     | West Indies  |     137 |       1 | Pakistan        | 1989-11-01 00:00:00 | Lost     |
+|            2 |     3 | 100*    | Sachin Tendulkar   | India        |     103 |       2 | Kenya           | 1998-05-31 00:00:00 | Won      |
+|            3 |     4 | 121     | Marcus Trescothick | England      |     109 |       2 | India           | 2002-01-19 00:00:00 | Lost     |
+|            4 |     5 | 108*    | Salman Butt        | Pakistan     |     130 |       2 | India           | 2004-11-13 00:00:00 | Won      |
+|            5 |     6 | 134*    | Graeme Smith       | South Africa |     124 |       2 | India           | 2005-11-25 00:00:00 | Won      |
+|            6 |     7 | 118     | Upul Tharanga      | Sri Lanka    |     128 |       1 | India           | 2009-12-24 00:00:00 | Lost     |
+|            7 |     8 | 150*    | Gautam Gambhir     | India        |     137 |       2 | Sri Lanka       | 2009-12-24 00:00:00 | Won      |
+|            8 |     9 | 107     | Virat Kohli        | India        |     114 |       2 | Sri Lanka       | 2009-12-24 00:00:00 | Won      |
+|            9 |    10 | 106     | Ryan ten Doeschate | Netherlands  |     108 |       1 | Ireland         | 2011-03-18 00:00:00 | Lost     |
+|           10 |    11 | 101     | Paul Stirling      | Ireland      |      72 |       2 | Netherlands     | 2011-03-18 00:00:00 | Won      |
+|           11 |    12 | 106     | Nasir Jamshed      | Pakistan     |     124 |       1 | India           | 2013-01-03 00:00:00 | Won      |
+
+Generated Reasoning SQL: Explanation: To determine the day on which the most points were scored in a single match-up, we need to consider the "Score" column, which represents the points scored by a player in a match. Since the "Score" column contains categorical values, we should focus on finding the highest numerical score. We will need to aggregate the data based on the "Date" column to identify the day with the highest total points scored.
+
+SQL: 
+SELECT "Date", MAX(CAST(SUBSTR("Score", 1, LENGTH("Score") - 1) AS INTEGER)) AS max_points_scored
+FROM T
+GROUP BY "Date"
+ORDER BY max_points_scored DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Date", MAX(CAST(SUBSTR("Score", 1, LENGTH("Score") - 1) AS INTEGER)) AS max_points_scored FROM T GROUP BY "Date" ORDER BY max_points_scored DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Date                |   max_points_scored |
+|:--------------------|--------------------:|
+| 2009-12-24 00:00:00 |                 150 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of international cricket centuries at Eden Gardens
+SQL: SELECT "Date", MAX(CAST(SUBSTR("Score", 1, LENGTH("Score") - 1) AS INTEGER)) AS max_points_scored FROM T GROUP BY "Date" ORDER BY max_points_scored DESC LIMIT 1;
+
+SQL Execution Result:
+Date | max_points_scored
+2009-12-24 00:00:00 | 150
+
+Question: during which day was the most points scored in a single match-up?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2009-12-24
+[Gold Answer] 24 december 2009
+

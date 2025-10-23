@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Aircraft:
+   - Data type: Categorical
+   - 4 representative example values: Beechcraft Super King Air 350, Cessna 404 Titan, Cessna 421C Golden Eagle, Partenvia P.68 Observer
+   - Role: Identifier
+
+2. Origin:
+   - Data type: Categorical
+   - 4 representative example values: USA, Italy
+   - Role: Descriptor
+
+3. Type:
+   - Data type: Categorical
+   - 4 representative example values: Light transport, Light transport aircraft
+   - Role: Descriptor
+
+4. In service:
+   - Data type: Numeric
+   - 4 representative example values: 1, 0
+   - Role: Measure
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: in service since 2004, 1 in service with the Air Wing from 1991 to 2008
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values in this row are different from the majority of the table as the aircraft "Piper PA-31 Navajo" is not in service, unlike the other entries. This makes it an outlier.
+
+2. Row 1:
+   - The values in this row are not significantly different from the majority of the table. The aircraft "Beechcraft Super King Air 350" is in service, which is a common occurrence in the table. This row is an ordinary entry.
+
+3. Row 0:
+   - The values in this row are not significantly different from the majority of the table. The aircraft "Beechcraft Super King Air 350" is in service, which is a common occurrence in the table. This row is an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Aircraft                      | Origin   | Type                     |   In service | Notes                                            |
+|-------------:|:------------------------------|:---------|:-------------------------|-------------:|:-------------------------------------------------|
+|            0 | Aero Commander 500            | USA      | Light utility transport  |            0 | 3 in service with the Air Wing from 1976 to 1990 |
+|            1 | Beechcraft Super King Air 350 | USA      | Light transport          |            1 | in service since 2004                            |
+|            2 | Cessna 208 Caravan            | USA      | Light transport          |            1 | in service since 2007                            |
+|            3 | Cessna 404 Titan              | USA      | Light transport          |            0 | 1 in service with the Air Wing from 1991 to 2008 |
+|            4 | Cessna 421C Golden Eagle      | USA      | Light transport          |            0 | 1 in service with the Air Wing from 1988 to 2002 |
+|            5 | Partenvia P.68 Observer       | Italy    | Light transport aircraft |            1 | in service since 2009                            |
+|            6 | Piper PA-31 Navajo            | USA      | Light transport          |            0 | in service since 1993                            |
+
+Generated Reasoning SQL: Explanation: To calculate the total number of aircraft that were in service, we need to sum the values in the "In service" column. Since the summary indicates that the "In service" column is Numeric, we can directly sum this column to get the total count of aircraft in service. We do not need to exclude any outlier rows as the question pertains to the total count of aircraft in service.
+
+SQL: SELECT SUM("In service") AS total_aircraft_in_service FROM T;
+Generated Final SQL: SELECT SUM("In service") AS total_aircraft_in_service FROM T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_aircraft_in_service |
+|----------------------------:|
+|                           3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Royal Bahamas Defence Force
+SQL: SELECT SUM("In service") AS total_aircraft_in_service FROM T;
+
+SQL Execution Result:
+total_aircraft_in_service
+3
+
+Question: what is the total amount of aircrafts that were in service?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 9
+

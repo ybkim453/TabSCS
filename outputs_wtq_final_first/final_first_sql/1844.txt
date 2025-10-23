@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Goal
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 5, 6
+   - Role: Measure of the number of goals scored in a match
+
+2. Date
+   - Data type: Date
+   - 4 representative example values: 2011-6-4, 2011-9-2, 2011-10-7, 2012-2-29
+   - Role: Descriptor indicating the date of the match
+
+3. Venue
+   - Data type: Categorical
+   - 4 representative example values: Petrovsky Stadium, Estadi Comunal d'Aixovall, Hanrapetakan Stadium, Tsirion Stadium
+   - Role: Descriptor indicating the location of the match
+
+4. Opponent
+   - Data type: Categorical
+   - 4 representative example values: Russia, Andorra, Macedonia, Canada
+   - Role: Descriptor indicating the opposing team
+
+5. Score
+   - Data type: Categorical
+   - 4 representative example values: 0-1, 1-0, 1-1, 1-2
+   - Role: Descriptor indicating the score of the match
+
+6. Result
+   - Data type: Categorical
+   - 4 representative example values: 3-1, 0-3, 4-1, 1-3
+   - Role: Descriptor indicating the final result of the match
+
+7. Competition
+   - Data type: Categorical
+   - 4 representative example values: Euro 2012 Q, Friendly match
+   - Role: Descriptor indicating the type of competition
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values for Score (1-1) and Result (1-3) are different from the majority of the table.
+   - This row is an outlier due to the discrepancy between the score during the match and the final result.
+
+2. Row 3:
+   - The values for Score (1-0) and Result (4-1) are different from the majority of the table.
+   - This row is an outlier due to the high goal difference between the score and the final result.
+
+3. Row 0:
+   - The values for Goal (3) and Result (3-1) are not significantly different from the majority of the table.
+   - This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Goal | Date       | Venue                                              | Opponent   | Score   | Result   | Competition    |
+|-------------:|-------:|:-----------|:---------------------------------------------------|:-----------|:--------|:---------|:---------------|
+|            0 |      1 | 2008-5-28  | Sheriff Stadium Tiraspol Moldova                   | Moldova    | 0-1     | 2–2      | Friendly match |
+|            1 |      2 | 2010-10-12 | Hanrapetakan Stadium Yerevan Armenia               | Andorra    | 4–0     | 4–0      | Euro 2012 Q    |
+|            2 |      3 | 2011-6-4   | Petrovsky Stadium Saint Petersburg Russia          | Russia     | 0-1     | 3–1      | Euro 2012 Q    |
+|            3 |      4 | 2011-9-2   | Estadi Comunal d'Aixovall Andorra la Vella Andorra | Andorra    | 0-1     | 0-3      | Euro 2012 Q    |
+|            4 |      5 | 2011-10-7  | Hanrapetakan Stadium Yerevan Armenia               | Macedonia  | 1-0     | 4-1      | Euro 2012 Q    |
+|            5 |      6 | 2012-2-29  | Tsirion Stadium Limassol Cyprus                    | Canada     | 1-1     | 1-3      | Friendly match |
+|            6 |      7 | 2012-2-29  | Tsirion Stadium Limassol Cyprus                    | Canada     | 1-2     | 1-3      | Friendly match |
+
+Generated Reasoning SQL: To determine who Marcos Pizzelli scored his last international goal against, we need to identify the row where the "Goal" value is the highest (representing his last goal) and then retrieve the corresponding "Opponent" value.
+
+SQL: 
+SELECT "Opponent" 
+FROM T 
+WHERE "Goal" = (SELECT MAX("Goal") FROM T);
+Generated Final SQL: SELECT "Opponent" FROM T WHERE "Goal" = (SELECT MAX("Goal") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Opponent   |
+|:-----------|
+| Canada     |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Marcos Pizzelli
+SQL: SELECT "Opponent" FROM T WHERE "Goal" = (SELECT MAX("Goal") FROM T);
+
+Opponent
+Canada
+Question: who did marcos pizzelli score his last international goal against?
+A: To find the answer to this question, let’s think step by step.
+Prediction: canada
+[Gold Answer] canada
+

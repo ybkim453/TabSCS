@@ -1,0 +1,109 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 8, 9
+   - Role: Identifier for the ranking of nations based on total medal count.
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: South Korea (KOR), Chinese Taipei (TPE), Mongolia (MGL), Guam (GUM)
+   - Role: Descriptor for the name of the nation.
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 32, 12, 1, 0
+   - Role: Measures representing the number of gold, silver, bronze, and total medals won by each nation.
+
+**Outlier Row Analysis:**
+
+1. South Korea (KOR):
+   - The values for Gold (32), Silver (48), and Bronze (65) are significantly higher compared to the other nations in the table.
+   - These values make this row an outlier as South Korea has a much higher total medal count than most other nations.
+
+2. Chinese Taipei (TPE):
+   - The values for Gold (12), Silver (34), and Bronze (26) are relatively high compared to the other nations in the table.
+   - While not as extreme as South Korea, these values still make this row an outlier in terms of total medal count.
+
+3. Mongolia (MGL):
+   - The values for Gold (1), Silver (1), and Bronze (6) are lower compared to the other nations in the table.
+   - This row is an outlier due to its lower total medal count compared to the majority of the nations.
+
+4. Guam (GUM):
+   - The values for Gold (0), Silver (0), and Bronze (1) are the lowest in the table.
+   - While Guam has the lowest total medal count, these values are not significantly different from other nations with low medal counts, making this an ordinary row.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation               |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:---------------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | China (CHN)          |    127 |       63 |       33 |     223 |
+|            1 | 2      | Japan (JPN)          |     46 |       56 |       77 |     179 |
+|            2 | 3      | South Korea (KOR)    |     32 |       48 |       65 |     145 |
+|            3 | 4      | Chinese Taipei (TPE) |     12 |       34 |       26 |      72 |
+|            4 | 5      | Macau (MAC)          |     11 |       16 |       17 |      44 |
+|            5 | 6      | North Korea (PRK)    |      6 |       10 |       20 |      36 |
+|            6 | 7      | Hong Kong (HKG)      |      2 |        2 |        9 |      13 |
+|            7 | 8      | Mongolia (MGL)       |      1 |        1 |        6 |       8 |
+|            8 | 9      | Guam (GUM)           |      0 |        0 |        1 |       1 |
+|            9 | Total  | Total                |    237 |      230 |      254 |     721 |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Silver" column is numeric and represents the number of silver medals won by each nation. To find the number of nations that earned zero silver medals, we need to count the rows where "Silver" = 0. No outlier rows are mentioned in the summary, so all rows are valid for this calculation.
+
+SQL: select count("Nation") from T where "Silver" = 0;
+Generated Final SQL: select count("Nation") from T where "Silver" = 0;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Nation") |
+|------------------:|
+|                 1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2005 East Asian Games
+SQL: select count("Nation") from T where "Silver" = 0;
+
+count("Nation")
+1
+Question: how many nations earned zero silver medals?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 1
+

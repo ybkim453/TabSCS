@@ -1,0 +1,95 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - 4 representative example values: Notre Dame-Cathedral Latin, Saint Anselm School, Saint Helen's School, Saint Mary's School
+   - Role of the column: Identifier for the educational institutions
+
+2. Location
+   - Data type: Categorical
+   - 4 representative example values: Munson Township, Chester Township, Newbury, Chardon
+   - Role of the column: Descriptor indicating the geographical location of the schools
+
+3. Communities served
+   - Data type: Categorical
+   - 4 representative example values: Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not, Roman Catholic Diocese of Cleveland K - 8th grade; preschool, Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners, Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners
+   - Role of the column: Descriptor specifying the communities served by each school
+
+**Outlier Row Analysis:**
+
+1. Saint Anselm School | Chester Township, Ohio | Roman Catholic Diocese of Cleveland K - 8th grade; preschool
+   - This row is not an outlier as it contains typical values for the location and communities served columns.
+
+2. Saint Mary's School | Chardon, Ohio | Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners
+   - This row is not an outlier as it contains typical values for the location and communities served columns.
+
+=== Full Table Preview ===
+|   row_number | District                                        | Location                                    | Communities served                                                                                                                     |
+|-------------:|:------------------------------------------------|:--------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Agape Christian Academy                         | Burton Township Ohio and Troy Township Ohio | Accepts applications prior to the start of each school year                                                                            |
+|            1 | Hawken School                                   | Gates Mills Ohio                            | College preparatory day school: online application site visit and testing                                                              |
+|            2 | Hershey Montessori Farm School                  | Huntsburg Township Ohio                     | parent-owned and chartered by Ohio Department of Education: application deadline January each year                                     |
+|            3 | Notre Dame-Cathedral Latin                      | Munson Township Ohio                        | Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not |
+|            4 | Solon/Bainbridge Montessori School of Languages | Bainbridge Township Ohio                    | nonsectarian Montessori School: quarterly enrollment periods                                                                           |
+|            5 | Saint Anselm School                             | Chester Township Ohio                       | Roman Catholic Diocese of Cleveland K - 8th grade; preschool                                                                           |
+|            6 | Saint Helen's School                            | Newbury Ohio                                | Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners                                                   |
+|            7 | Saint Mary's School                             | Chardon Ohio                                | Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners                                           |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Communities served" column contains categorical values specifying the grades served by each school. To determine the grades served by Saint Mary's School, we need to filter the row where "District" = Saint Mary's School and retrieve the corresponding value in the "Communities served" column.
+
+SQL: SELECT "Communities served" FROM T WHERE "District" = 'Saint Mary\'s School';
+Generated Final SQL: SELECT "Communities served" FROM T WHERE "District" = 'Saint Mary\'s School';
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT "Communities served" FROM T WHERE "District" = 'Saint Mary\'s School';': near "s": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Geauga County, Ohio (row_number, District, Location, Communities served)
+
+row_number | District | Location | Communities served
+0 | Agape Christian Academy | Burton Township Ohio and Troy Township Ohio | Accepts applications prior to the start of each school year
+1 | Hawken School | Gates Mills Ohio | College preparatory day school: online application site visit and testing
+2 | Hershey Montessori Farm School | Huntsburg Township Ohio | parent-owned and chartered by Ohio Department of Education: application deadline January each year
+3 | Notre Dame-Cathedral Latin | Munson Township Ohio | Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not
+4 | Solon/Bainbridge Montessori School of Languages | Bainbridge Township Ohio | nonsectarian Montessori School: quarterly enrollment periods
+5 | Saint Anselm School | Chester Township Ohio | Roman Catholic Diocese of Cleveland K - 8th grade; preschool
+6 | Saint Helen's School | Newbury Ohio | Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners
+7 | Saint Mary's School | Chardon Ohio | Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners
+Question: what grades does saint mary's school serve?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we need to focus on the "Communities served" column in the table. 
+
+From the table:
+- Saint Mary's School, located in Chardon, Ohio, serves preschool through 8th grade students.
+- This information is explicitly stated in the "Communities served" column for row 7.
+
+Therefore, the grades served by Saint Mary's School are preschool through 8th grade.
+
+Final Answer: Preschool - 8th grade
+[Fallback] Prediction: preschool - 8th grade
+[Gold Answer] preschool - 8th grade
+

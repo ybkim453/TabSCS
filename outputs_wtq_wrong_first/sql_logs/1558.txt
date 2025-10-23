@@ -1,0 +1,142 @@
+=== Table ID ===
+csv/204-csv/972.tsv
+
+=== Question ===
+how long is the time frame in years of the table?
+
+=== Sub-table Preview ===
+|   Year |   Division | League     | Regular Season      | Playoffs        | Open Cup        |
+|-------:|-----------:|:-----------|:--------------------|:----------------|:----------------|
+|   1998 |          4 | USISL PDSL | 4th, Central        | Division Finals | 1st Round       |
+|   2000 |          4 | USL PDL    | 4th, Rocky Mountain | Did not qualify | Did not qualify |
+|   2002 |          4 | USL PDL    | 5th, Heartland      | Did not qualify | Did not qualify |
+|   2008 |          4 | USL PDL    | 5th, Heartland      | Did not qualify | Did not qualify |
+|   2012 |          4 | USL PDL    | 5th, Heartland      | Did not qualify | Did not qualify |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 2000, 2002, 2008
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Division:
+   - Data type: Numeric
+   - 4 representative example values: 4, 4, 4, 4
+   - Role: Descriptor indicating the division in which the team competed.
+
+3. League:
+   - Data type: Categorical
+   - 4 representative example values: USISL PDSL, USL PDL, USL PDL, USL PDL
+   - Role: Descriptor specifying the league in which the team participated.
+
+4. Regular Season:
+   - Data type: Categorical
+   - 4 representative example values: 4th, Rocky Mountain, 5th, Heartland
+   - Role: Measure indicating the team's performance in the regular season.
+
+5. Playoffs:
+   - Data type: Categorical
+   - 4 representative example values: Division Finals, Did not qualify, Did not qualify, Did not qualify
+   - Role: Measure indicating the team's performance in the playoffs.
+
+6. Open Cup:
+   - Data type: Categorical
+   - 4 representative example values: 1st Round, Did not qualify, Did not qualify, Did not qualify
+   - Role: Measure indicating the team's performance in the Open Cup.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "USISL PDSL" in the League column and "4th, Central" in the Regular Season column make this row distinctive.
+   - These values are different from the majority of the table, as they represent a specific league and a relatively high ranking in the regular season.
+   - Therefore, this row can be considered an outlier.
+
+2. Row 2:
+   - The values "USL PDL" in the League column and "5th, Heartland" in the Regular Season column are not significantly different from other rows in the table.
+   - These values are ordinary within the context of the table, so this row is not an outlier and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year |   Division | League     | Regular Season     | Playoffs        | Open Cup        |
+|-------------:|-------:|-----------:|:-----------|:-------------------|:----------------|:----------------|
+|            0 |   1998 |          4 | USISL PDSL | 4th Central        | Division Finals | 1st Round       |
+|            1 |   1999 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            2 |   2000 |          4 | USL PDL    | 4th Rocky Mountain | Did not qualify | Did not qualify |
+|            3 |   2001 |          4 | USL PDL    | 5th Rocky Mountain | Did not qualify | Did not qualify |
+|            4 |   2002 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            5 |   2003 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            6 |   2004 |          4 | USL PDL    | 6th Heartland      | Did not qualify | Did not qualify |
+|            7 |   2005 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | Did not qualify |
+|            8 |   2006 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | Did not qualify |
+|            9 |   2007 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | 1st Round       |
+|           10 |   2008 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|           11 |   2009 |          4 | USL PDL    | 6th Heartland      | Did not qualify | Did not qualify |
+|           12 |   2010 |          4 | USL PDL    | 7th Heartland      | Did not qualify | Did not qualify |
+|           13 |   2011 |          4 | USL PDL    | 4th Heartland      | Did not qualify | Did not qualify |
+|           14 |   2012 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|           15 |   2013 |          4 | USL PDL    | 4th Heartland      | Did not qualify | Did not qualify |
+
+Generated Reasoning SQL: To determine the time frame in years covered by the table, we need to find the difference between the earliest and latest years present in the data. The "Year" column is numeric and represents the year in which the data was recorded. We will calculate this by subtracting the minimum year from the maximum year.
+
+SQL: 
+SELECT MAX("Year") - MIN("Year") AS time_frame_years
+FROM T;
+Generated Final SQL: SELECT MAX("Year") - MIN("Year") AS time_frame_years FROM T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   time_frame_years |
+|-------------------:|
+|                 15 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Kansas City Brass
+SQL: SELECT MAX("Year") - MIN("Year") AS time_frame_years FROM T;
+
+SQL Execution Result:
+time_frame_years
+15
+
+Question: how long is the time frame in years of the table?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 15
+[Gold Answer] 16
+

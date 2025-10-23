@@ -1,0 +1,165 @@
+=== Table ID ===
+csv/204-csv/285.tsv
+
+=== Question ===
+what is the largest number of consecutive tournaments won by tommy robredo?
+
+=== Sub-table Preview ===
+| Town name    | County         | Established   | Disestablished                                     | Current Status                                                                                             | Remarks                                                                                                                         |
+|:-------------|:---------------|:--------------|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
+| Eminence     | Finney County  | 1886          | Post office closed in 1943.                        | Nothing remains of the townsite.                                                                           | Battled with Ravanna for county seat of Garfield County, which ended in 1893 when Garfield County was annexed to Finney County. |
+| Paris        | Linn County    | 1854          | nan                                                | Nothing remains of the townsite.                                                                           | nan                                                                                                                             |
+| Strawn       | Coffey County  | 1870s         | 1961                                               | Old Strawn is now located underneath the John Redmond Reservoir while New Strawn is located along U.S. 75. | nan                                                                                                                             |
+| Salem        | Jewell County  | 1871          | nan                                                | Nothing remains of the townsite.                                                                           | nan                                                                                                                             |
+| Camchester   | Harper County  | late 1880s    | Post office moved to Manchester, Oklahoma in 1903. | Nothing remains of the townsite.                                                                           | Originally named Cameron until 1900.                                                                                            |
+| Williamsport | Shawnee County | 1857          | nan                                                | Nothing remains of the townsite.                                                                           | nan                                                                                                                             |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Town name:
+   - Data type: Categorical
+   - 4 representative example values: Eminence, Paris, Strawn, Salem
+   - Role: Identifier
+
+2. County:
+   - Data type: Categorical
+   - 4 representative example values: Finney County, Linn County, Coffey County, Jewell County
+   - Role: Descriptor
+
+3. Established:
+   - Data type: Numeric (Year)
+   - 4 representative example values: 1886, 1854, 1870s, 1871
+   - Role: Descriptor
+
+4. Disestablished:
+   - Data type: Categorical (Year or event)
+   - 4 representative example values: Post office closed in 1943, nan, 1961
+   - Role: Descriptor
+
+5. Current Status:
+   - Data type: Categorical
+   - 4 representative example values: Nothing remains of the townsite, Old Strawn is now located underneath the John Redmond Reservoir while New Strawn is located along U.S. 75
+   - Role: Descriptor
+
+6. Remarks:
+   - Data type: Categorical
+   - 4 representative example values: Battled with Ravanna for county seat of Garfield County, which ended in 1893 when Garfield County was annexed to Finney County, nan, Originally named Cameron until 1900
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 79:
+   - The Disestablished column has a value of "nan", which is not a specific year or event like the majority of the table.
+   - This makes the row an outlier as it does not provide clear information on when the town was disestablished.
+
+2. Row 155:
+   - The Established column has a value of "1857", which is different from the majority of the table where years are specified.
+   - This makes the row an outlier as it stands out in terms of data format compared to the rest of the table.
+
+3. Row 115:
+   - The Current Status column has a unique description that is longer and more detailed compared to the majority of the table.
+   - This makes the row an outlier as it contains more information than the typical entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                                | Surface   | Opponent          | Score               |
+|-------------:|:----------|------:|:--------------------|:------------------------------------------|:----------|:------------------|:--------------------|
+|            0 | Runner-up |     1 | 2001-04-15 00:00:00 | Grand Prix Hassan II Casablanca Morocco   | Clay      | Guillermo Cañas   | 5–7 2–6             |
+|            1 | Winner    |     1 | 2001-07-29 00:00:00 | Orange Warsaw Open Sopot Poland           | Clay      | Albert Portas     | 1–6 7–5 7–6(7–2)    |
+|            2 | Runner-up |     2 | 2003-07-20 00:00:00 | Mercedes Cup Stuttgart Germany            | Clay      | Guillermo Coria   | 2–6 2–6 1–6         |
+|            3 | Winner    |     2 | 2004-05-02 00:00:00 | Torneo Godó Barcelona Spain               | Clay      | Gastón Gaudio     | 6–3 4–6 6–2 3–6 6–3 |
+|            4 | Runner-up |     3 | 2005-05-01 00:00:00 | Estoril Open Estoril Portugal             | Clay      | Gastón Gaudio     | 1–6 6–2 1–6         |
+|            5 | Runner-up |     4 | 2006-04-30 00:00:00 | Torneo Godó Barcelona Spain               | Clay      | Rafael Nadal      | 4–6 4–6 0–6         |
+|            6 | Winner    |     3 | 2006-05-21 00:00:00 | Hamburg Masters Hamburg Germany           | Clay      | Radek Štěpánek    | 6–1 6–3 6–3         |
+|            7 | Winner    |     4 | 2006-07-16 00:00:00 | Swedish Open Båstad Sweden                | Clay      | Nikolay Davydenko | 6–2 6–1             |
+|            8 | Runner-up |     5 | 2007-01-14 00:00:00 | Heineken Open Auckland New Zealand        | Hard      | David Ferrer      | 4–6 2–6             |
+|            9 | Winner    |     5 | 2007-08-05 00:00:00 | Orange Warsaw Open Sopot Poland (2)       | Clay      | José Acasuso      | 7–5 6–0             |
+|           10 | Runner-up |     6 | 2007-09-16 00:00:00 | China Open Beijing China                  | Hard (i)  | Fernando González | 1–6 6–3 1–6         |
+|           11 | Winner    |     6 | 2007-10-07 00:00:00 | Open de Moselle Metz France               | Hard (i)  | Andy Murray       | 0–6 6–2 6–3         |
+|           12 | Runner-up |     7 | 2008-06-15 00:00:00 | Orange Warsaw Open Warsaw Poland          | Clay      | Nikolay Davydenko | 3–6 3–6             |
+|           13 | Winner    |     7 | 2008-07-13 00:00:00 | Swedish Open Båstad Sweden (2)            | Clay      | Tomáš Berdych     | 6–4 6–1             |
+|           14 | Winner    |     8 | 2009-02-14 00:00:00 | Brasil Open Costa do Sauípe Brazil        | Clay      | Thomaz Bellucci   | 6–3 3–6 6–4         |
+|           15 | Winner    |     9 | 2009-02-22 00:00:00 | Copa Telmex Buenos Aires Argentina        | Clay      | Juan Mónaco       | 7–5 2–6 7–6(7–5)    |
+|           16 | Winner    |    10 | 2011-02-06 00:00:00 | Chile Open Santiago Chile                 | Clay      | Santiago Giraldo  | 6–2 2–6 7–6(7–5)    |
+|           17 | Winner    |    11 | 2013-04-14 00:00:00 | Grand Prix Hassan II Casablanca Morocco   | Clay      | Kevin Anderson    | 7–6(8–6) 4–6 6–3    |
+|           18 | Winner    |    12 | 2013-07-28 00:00:00 | ATP Vegeta Croatia Open Umag Umag Croatia | Clay      | Fabio Fognini     | 6–0 6–3             |
+
+Generated Reasoning SQL: Explanation: To determine the largest number of consecutive tournaments won by Tommy Robredo, we need to identify consecutive wins by comparing the "Outcome" column for each row. The "Outcome" column contains values like "Winner" and "Runner-up" that indicate the result of each tournament. We must consider consecutive wins where the "Outcome" is "Winner" in consecutive rows. Outlier rows do not affect this calculation as they do not impact the consecutive win streaks.
+
+SQL: 
+WITH consec_wins AS (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "Date") - ROW_NUMBER() OVER (PARTITION BY "Outcome" ORDER BY "Date") AS grp
+    FROM T
+    WHERE "Outcome" = 'Winner'
+)
+SELECT MAX(COUNT(*)) AS max_consecutive_wins
+FROM consec_wins
+GROUP BY grp;
+Generated Final SQL: WITH consec_wins AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Date") - ROW_NUMBER() OVER (PARTITION BY "Outcome" ORDER BY "Date") AS grp FROM T WHERE "Outcome" = 'Winner' ) SELECT MAX(COUNT(*)) AS max_consecutive_wins FROM consec_wins GROUP BY grp;
+[Error] Final SQL 실행 실패: Execution failed on sql 'WITH consec_wins AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Date") - ROW_NUMBER() OVER (PARTITION BY "Outcome" ORDER BY "Date") AS grp FROM T WHERE "Outcome" = 'Winner' ) SELECT MAX(COUNT(*)) AS max_consecutive_wins FROM consec_wins GROUP BY grp;': misuse of aggregate function COUNT()
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Tommy Robredo career statistics (row_number, Outcome, No., Date, Tournament, Surface, Opponent, Score)
+
+row_number | Outcome | No. | Date | Tournament | Surface | Opponent | Score
+0 | Runner-up | 1.0 | 2001-04-15 00:00:00 | Grand Prix Hassan II Casablanca Morocco | Clay | Guillermo Cañas | 5–7 2–6
+1 | Winner | 1.0 | 2001-07-29 00:00:00 | Orange Warsaw Open Sopot Poland | Clay | Albert Portas | 1–6 7–5 7–6(7–2)
+2 | Runner-up | 2.0 | 2003-07-20 00:00:00 | Mercedes Cup Stuttgart Germany | Clay | Guillermo Coria | 2–6 2–6 1–6
+3 | Winner | 2.0 | 2004-05-02 00:00:00 | Torneo Godó Barcelona Spain | Clay | Gastón Gaudio | 6–3 4–6 6–2 3–6 6–3
+4 | Runner-up | 3.0 | 2005-05-01 00:00:00 | Estoril Open Estoril Portugal | Clay | Gastón Gaudio | 1–6 6–2 1–6
+5 | Runner-up | 4.0 | 2006-04-30 00:00:00 | Torneo Godó Barcelona Spain | Clay | Rafael Nadal | 4–6 4–6 0–6
+6 | Winner | 3.0 | 2006-05-21 00:00:00 | Hamburg Masters Hamburg Germany | Clay | Radek Štěpánek | 6–1 6–3 6–3
+7 | Winner | 4.0 | 2006-07-16 00:00:00 | Swedish Open Båstad Sweden | Clay | Nikolay Davydenko | 6–2 6–1
+8 | Runner-up | 5.0 | 2007-01-14 00:00:00 | Heineken Open Auckland New Zealand | Hard | David Ferrer | 4–6 2–6
+9 | Winner | 5.0 | 2007-08-05 00:00:00 | Orange Warsaw Open Sopot Poland (2) | Clay | José Acasuso | 7–5 6–0
+10 | Runner-up | 6.0 | 2007-09-16 00:00:00 | China Open Beijing China | Hard (i) | Fernando González | 1–6 6–3 1–6
+11 | Winner | 6.0 | 2007-10-07 00:00:00 | Open de Moselle Metz France | Hard (i) | Andy Murray | 0–6 6–2 6–3
+12 | Runner-up | 7.0 | 2008-06-15 00:00:00 | Orange Warsaw Open Warsaw Poland | Clay | Nikolay Davydenko | 3–6 3–6
+13 | Winner | 7.0 | 2008-07-13 00:00:00 | Swedish Open Båstad Sweden (2) | Clay | Tomáš Berdych | 6–4 6–1
+14 | Winner | 8.0 | 2009-02-14 00:00:00 | Brasil Open Costa do Sauípe Brazil | Clay | Thomaz Bellucci | 6–3 3–6 6–4
+15 | Winner | 9.0 | 2009-02-22 00:00:00 | Copa Telmex Buenos Aires Argentina | Clay | Juan Mónaco | 7–5 2–6 7–6(7–5)
+16 | Winner | 10.0 | 2011-02-06 00:00:00 | Chile Open Santiago Chile | Clay | Santiago Giraldo | 6–2 2–6 7–6(7–5)
+17 | Winner | 11.0 | 2013-04-14 00:00:00 | Grand Prix Hassan II Casablanca Morocco | Clay | Kevin Anderson | 7–6(8–6) 4–6 6–3
+18 | Winner | 12.0 | 2013-07-28 00:00:00 | ATP Vegeta Croatia Open Umag Umag Croatia | Clay | Fabio Fognini | 6–0 6–3
+Question: what is the largest number of consecutive tournaments won by tommy robredo?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify all the tournaments that Tommy Robredo won in the table. From the Outcome column, we can see that he either won or was the runner-up in each row. 
+
+Next, we need to determine the consecutive tournaments won by Tommy Robredo. To do this, we can look at the Date column to see the chronological order of the tournaments he participated in. 
+
+By examining the Date column, we can see the following sequence of tournament wins:
+1. 2006-05-21 - Hamburg Masters Hamburg Germany
+2. 2006-07-16 - Swedish Open Båstad Sweden
+
+Therefore, the largest number of consecutive tournaments won by Tommy Robredo is 2.
+
+Final Answer: 2
+[Fallback] Prediction: 2
+[Gold Answer] 6
+

@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Aircraft:
+   - Data type: Categorical
+   - 4 representative example values: Beechcraft Super King Air 350, Cessna 404 Titan, Cessna 421C Golden Eagle, Partenvia P.68 Observer
+   - Role: Identifier
+
+2. Origin:
+   - Data type: Categorical
+   - 4 representative example values: USA, Italy
+   - Role: Descriptor
+
+3. Type:
+   - Data type: Categorical
+   - 4 representative example values: Light transport, Light transport aircraft
+   - Role: Descriptor
+
+4. In service:
+   - Data type: Numeric
+   - 4 representative example values: 1, 0
+   - Role: Measure
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: in service since 2004, 1 in service with the Air Wing from 1991 to 2008
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values in this row are different from the majority of the table as the aircraft "Piper PA-31 Navajo" is not in service, unlike the other entries. This makes it an outlier.
+
+2. Row 1:
+   - The values in this row are not significantly different from the majority of the table. The aircraft "Beechcraft Super King Air 350" is in service, which is a common occurrence in the table. This row is an ordinary entry.
+
+3. Row 0:
+   - The values in this row are not significantly different from the majority of the table. The aircraft "Beechcraft Super King Air 350" is in service, which is a common occurrence in the table. This row is an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Aircraft                      | Origin   | Type                     |   In service | Notes                                            |
+|-------------:|:------------------------------|:---------|:-------------------------|-------------:|:-------------------------------------------------|
+|            0 | Aero Commander 500            | USA      | Light utility transport  |            0 | 3 in service with the Air Wing from 1976 to 1990 |
+|            1 | Beechcraft Super King Air 350 | USA      | Light transport          |            1 | in service since 2004                            |
+|            2 | Cessna 208 Caravan            | USA      | Light transport          |            1 | in service since 2007                            |
+|            3 | Cessna 404 Titan              | USA      | Light transport          |            0 | 1 in service with the Air Wing from 1991 to 2008 |
+|            4 | Cessna 421C Golden Eagle      | USA      | Light transport          |            0 | 1 in service with the Air Wing from 1988 to 2002 |
+|            5 | Partenvia P.68 Observer       | Italy    | Light transport aircraft |            1 | in service since 2009                            |
+|            6 | Piper PA-31 Navajo            | USA      | Light transport          |            0 | in service since 1993                            |
+
+Generated Reasoning SQL: Explanation: To find the next aircraft that came into service after the Cessna 404 Titan, we need to look for the row where the "Aircraft" is after "Cessna 404 Titan" and the "In service" value is 1. We will order the rows by the row_number to ensure we get the immediate next entry.
+We will exclude the outlier row 5 (Piper PA-31 Navajo) as it is not in service.
+SQL: 
+SELECT "Aircraft" 
+FROM T 
+WHERE "Aircraft" > 'Cessna 404 Titan' 
+AND "In service" = 1 
+AND row_number > (SELECT row_number FROM T WHERE "Aircraft" = 'Cessna 404 Titan') 
+ORDER BY row_number 
+LIMIT 1;
+Generated Final SQL: SELECT "Aircraft" FROM T WHERE "Aircraft" > 'Cessna 404 Titan' AND "In service" = 1 AND row_number > (SELECT row_number FROM T WHERE "Aircraft" = 'Cessna 404 Titan') ORDER BY row_number LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Aircraft                |
+|:------------------------|
+| Partenvia P.68 Observer |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Royal Bahamas Defence Force
+SQL: SELECT "Aircraft" FROM T WHERE "Aircraft" > 'Cessna 404 Titan' AND "In service" = 1 AND row_number > (SELECT row_number FROM T WHERE "Aircraft" = 'Cessna 404 Titan') ORDER BY row_number LIMIT 1;
+
+SQL Execution Result:
+Aircraft
+Partenvia P.68 Observer
+
+Question: which was the next aircraft that came in service after cessna 404 titan?
+A: To find the answer to this question, let’s think step by step.
+Prediction: partenvia p.68 observer
+[Gold Answer] piper pa-31 navajo
+

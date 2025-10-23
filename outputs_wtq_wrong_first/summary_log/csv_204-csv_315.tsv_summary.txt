@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1987, 1989, 1990
+   - Role: Identifier for the year in which the song was released
+
+2. Song:
+   - Data type: Categorical
+   - 4 representative example values: Summergirls, 24/7, I Like It, Sunshine
+   - Role: Descriptor for the title of the song
+
+3. Album:
+   - Data type: Categorical
+   - 4 representative example values: 24/7, Swingin'
+   - Role: Descriptor for the album to which the song belongs
+
+4. Position:
+   - Data type: Numeric
+   - 4 representative example values: 50, 42, 7, 6
+   - Role: Measure indicating the position of the song on the chart
+
+5. Chart:
+   - Data type: Categorical
+   - 4 representative example values: Billboard Hot 100, Hot Dance Club Play
+   - Role: Descriptor for the type of chart on which the song appeared
+
+**Outlier Row Analysis:**
+
+1. Row 4:
+   - The values for Song (Sunshine) and Position (23) are not significantly different from other rows in the table.
+   - This row is an ordinary row and does not require special handling.
+
+2. Row 7:
+   - The values for Song (Romeo) and Position (6) are not significantly different from other rows in the table.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 0:
+   - The values for Song (Summergirls) and Position (50) are not significantly different from other rows in the table.
+   - This row is an ordinary row and does not require special handling.

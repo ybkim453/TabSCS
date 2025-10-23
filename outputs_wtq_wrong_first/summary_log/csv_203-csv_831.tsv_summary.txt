@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Political lieutenant
+   - Data type: Categorical
+   - 4 representative example values: Léon Balcer, Marcel Faribault, Claude Wagner, Lucien Bouchard
+   - Role: Descriptor
+
+2. District (Area)
+   - Data type: Categorical
+   - 4 representative example values: Trois-Rivières (Mauricie), Saint-Hyacinthe (Montérégie), Lac-Saint-Jean (Saguenay-Lac-Saint-Jean), Roberval (Saguenay-Lac-Saint-Jean)
+   - Role: Descriptor
+
+3. Took Office
+   - Data type: Numeric
+   - 4 representative example values: 1957, 1967, 1972, 1988
+   - Role: Measure
+
+4. Left Office
+   - Data type: Numeric
+   - 4 representative example values: 1965, 1968, 1978, 1990
+   - Role: Measure
+
+5. Party leader
+   - Data type: Categorical
+   - 4 representative example values: John George Diefenbaker, Robert Stanfield, Brian Mulroney, Kim Campbell
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Marcel Faribault
+   - District (Area) is "none", which is not a typical district name.
+   - This row is an outlier because the district is not specified, unlike the other rows.
+
+2. Claude Wagner
+   - Party leader is listed as "Robert Stanfield\nJoe Clark", which is a joint leadership.
+   - This row is an outlier because it has two party leaders listed, unlike the other rows with a single party leader.
+
+3. Monique Landry
+   - Left Office is listed as 1993, the same year as Benoît Bouchard.
+   - This row is an ordinary row as having the same year as another lieutenant is not unusual in this context.

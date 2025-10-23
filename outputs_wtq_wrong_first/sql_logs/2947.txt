@@ -1,0 +1,179 @@
+=== Table ID ===
+csv/204-csv/825.tsv
+
+=== Question ===
+who won after miss world did?
+
+=== Sub-table Preview ===
+|   Year | Winner          | Jockey            | Trainer             | Owner                       | Distance\n(Miles)   | Time    | Win $    |
+|-------:|:----------------|:------------------|:--------------------|:----------------------------|:--------------------|:--------|:---------|
+|   2011 | Winter Memories | Javier Castellano | James J. Toner      | Phillips Racing Partnership | 1-1/8               | 1:51.06 | $150,000 |
+|   2008 | Backseat Rhythm | Javier Castellano | Patrick L. Reynolds | Paul P. Pompa Jr.           | 1-1/8               | 1:51.82 | $150,000 |
+|   2002 | Wonder Again    | Edgar Prado       | James J. Toner      | Joan G. & John W. Phillips  | 1-1/8               | 1:47.33 | $150,000 |
+|   2001 | Voodoo Dancer   | Corey Nakatani    | Christophe Clement  | Green Hills Farms           | 1-1/8               | 1:47.69 | $150,000 |
+|   1996 | True Flare      | Gary L. Stevens   | Robert J. Frankel   | Juddmonte Farms             | 1-1/16              | 1:42.58 | $128,460 |
+|   1978 | Late Bloomer    | Jorge Velasquez   | John M. Gaver, Jr.  | Greentree Stable            | 1-1/16              | 1:41.60 | nan      |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **Year:**
+   - Data type: Numeric
+   - 4 representative values: 2011, 2008, 2002, 2001
+   - Role: Identifier for the year the race took place
+
+2. **Winner:**
+   - Data type: Categorical
+   - 4 representative values: Winter Memories, Backseat Rhythm, Wonder Again, Voodoo Dancer
+   - Role: Descriptor for the winning horse
+
+3. **Jockey:**
+   - Data type: Categorical
+   - 4 representative values: Javier Castellano, Edgar Prado, Corey Nakatani, Gary L. Stevens
+   - Role: Descriptor for the jockey who rode the winning horse
+
+4. **Trainer:**
+   - Data type: Categorical
+   - 4 representative values: James J. Toner, Patrick L. Reynolds, Christophe Clement, Robert J. Frankel
+   - Role: Descriptor for the trainer of the winning horse
+
+5. **Owner:**
+   - Data type: Categorical
+   - 4 representative values: Phillips Racing Partnership, Paul P. Pompa Jr., Joan G. & John W. Phillips, Green Hills Farms
+   - Role: Descriptor for the owner of the winning horse
+
+6. **Distance (Miles):**
+   - Data type: Numeric
+   - 4 representative values: 1-1/8, 1-1/16
+   - Role: Measure of the distance of the race in miles
+
+7. **Time:**
+   - Data type: Categorical
+   - 4 representative values: 1:51.06, 1:47.33, 1:42.58, 1:41.60
+   - Role: Measure of the time taken to complete the race
+
+8. **Win $:**
+   - Data type: Numeric
+   - 4 representative values: $150,000, $128,460
+   - Role: Measure of the prize money won by the winner
+
+### Outlier Row Analysis:
+
+1. **Row 17:**
+   - The row with Year 1978, Winner Late Bloomer, Jockey Jorge Velasquez, Trainer John M. Gaver, Jr., Owner Greentree Stable, Distance 1-1/16, Time 1:41.60, Win $ nan is an outlier.
+   - The values in this row are significantly different from the majority of the table, especially the missing value for Win $.
+  
+2. **Row 35:**
+   - The row with Year 1996, Winner True Flare, Jockey Gary L. Stevens, Trainer Robert J. Frankel, Owner Juddmonte Farms, Distance 1-1/16, Time 1:42.58, Win $ 128,460 is an outlier.
+   - The prize money won in this row is significantly lower compared to the other entries in the table.
+
+3. **Row 11:**
+   - The row with Year 1978, Winner Late Bloomer, Jockey Jorge Velasquez, Trainer John M. Gaver, Jr., Owner Greentree Stable, Distance 1-1/16, Time 1:41.60, Win $ nan is an outlier.
+   - The missing value for Win $ in this row makes it stand out from the rest of the data.
+
+=== Full Table Preview ===
+|   row_number |   Year | Winner            | Jockey             | Trainer                 | Owner                       | Distance\n(Miles)   | Time    | Win $   |
+|-------------:|-------:|:------------------|:-------------------|:------------------------|:----------------------------|:--------------------|:--------|:--------|
+|            0 |   2013 | Alterlite (FR)    | John R. Velazquez  | Chad C. Brown           | Martin S. Schwartz          | 1-1/8               | 1:50.55 | $500000 |
+|            1 |   2012 | Samitar           | Ramon Dominguez    | Chad C. Brown           | Martin S. Schwartz          | 1-1/8               | 1:48.74 | $180000 |
+|            2 |   2011 | Winter Memories   | Javier Castellano  | James J. Toner          | Phillips Racing Partnership | 1-1/8               | 1:51.06 | $150000 |
+|            3 |   2010 | Check the Label   | Ramon Dominguez    | H. Graham Motion        | Lael Stables                | 1-1/8               | 1:51.41 | $150000 |
+|            4 |   2009 | Miss World        | Cornelio Velasquez | Christophe Clement      | Waratah Thoroughbreds       | 1-1/8               | 1:53.55 | $180000 |
+|            5 |   2008 | Backseat Rhythm   | Javier Castellano  | Patrick L. Reynolds     | Paul P. Pompa Jr.           | 1-1/8               | 1:51.82 | $150000 |
+|            6 |   2007 | Alexander Tango   | Shaun Bridgmohan   | Tommy Stack             | Noel O' Callaghan           | 1-1/8               | 1:48.97 | $120000 |
+|            7 |   2006 | Magnificent Song  | Garrett Gomez      | Todd A. Pletcher        | ParrishMalcolmEdward        | 1-1/8               | 1:48.48 | $150000 |
+|            8 |   2005 | Luas Line         | John Velazquez     | David Wachman           | Evelyn M. Stockwell         | 1-1/8               | 1:45.62 | $180000 |
+|            9 |   2004 | Lucifer's Stone   | Jose A. Santos     | Linda L. Rice           | Team Solaris Stable         | 1-1/8               | 1:48.88 | $180000 |
+|           10 |   2003 | Indy Five Hundred | Pat Day            | Robert Barbara          | Georgica Stable             | 1-1/8               | 1:48.44 | $150000 |
+|           11 |   2002 | Wonder Again      | Edgar Prado        | James J. Toner          | Joan G. & John W. Phillips  | 1-1/8               | 1:47.33 | $150000 |
+|           12 |   2001 | Voodoo Dancer     | Corey Nakatani     | Christophe Clement      | Green Hills Farms           | 1-1/8               | 1:47.69 | $150000 |
+|           13 |   2000 | Gaviola           | Jerry D. Bailey    | William H. Turner Jr.   | Twilite Farms               | 1-1/8               | 1:48.89 | $150000 |
+|           14 |   1999 | Perfect Sting     | Pat Day            | Joseph Orseno           | Stronach Stable             | 1-1/8               | 1:49.41 | $129900 |
+|           15 |   1998 | Pharatta-IR       | Corey Nakatani     | Carlos Laffon-Parias    | Hinojosa Dario              | 1-1/8               | 1:47.10 | $129720 |
+|           16 |   1997 | Auntie Mame       | Jerry D. Bailey    | Angel Penna Jr.         | Lazy F Ranch                | 1-1/8               | 1:48.49 | $128040 |
+|           17 |   1996 | True Flare        | Gary L. Stevens    | Robert J. Frankel       | Juddmonte Farms             | 1-1/16              | 1:42.58 | $128460 |
+|           18 |   1995 | Perfect Arc       | John Velazquez     | Angel Penna Jr.         | Brazil Stables              | 1-1/16              | 1:42.35 | $101070 |
+|           19 |   1994 | Jade Flush        | Robbie Davis       | Nicholas P. Zito        | Condren et al.              | 1-1/16              | 1:46.79 | $67140  |
+|           20 |   1993 | Sky Beauty        | Mike E. Smith      | H. Allen Jerkens        | Georgia E. Hofmann          | 1                   | 1:35.76 | $68400  |
+|           21 |   1992 | November Snow     | Chris Antley       | H. Allen Jerkens        | Earle I. Mack               | 1                   | 1:35.91 | $66480  |
+|           22 |   1991 | Dazzle Me Jolie   | Jose A. Santos     | Willard J. Thompson     | Jolie Stanzione             | 1                   | 1:35.61 | $72000  |
+|           23 |   1990 | Aishah            | Jose A. Santos     | Flint S. Schulhofer     | Helen K. Groves             | 1                   | 1:35.40 | $57690  |
+|           24 |   1989 | Highest Glory     | Jose A. Santos     | D. Wayne Lukas          | H. Joseph Allen             | 1                   | 1:37.20 | $70440  |
+|           25 |   1988 | Topicount         | Angel Cordero Jr.  | H. Allen Jerkens        | Centennial Farms            | 1                   | 1:38.00 | $82260  |
+|           26 |   1987 | Personal Ensign   | Randy Romero       | Claude R. McGaughey III | Ogden Phipps                | 1                   | 1:36.60 | $82140  |
+|           27 |   1986 | Life At The Top   | Chris McCarron     | D. Wayne Lukas          | Lloyd R. French             | 1                   | 1:34.40 | $51210  |
+|           28 |   1985 | Kamikaze Rick     | Angel Cordero Jr.  | John Parisella          | Theodore M. Sabarese        | 1                   | 1:36.00 | $50490  |
+|           29 |   1984 | Given             | Matthew Vigliotti  | Alfino Pepino           | Ronald S. Green             | 1-1/16              | 1:43.40 | $42960  |
+|           30 |   1983 | Pretty Sensible   | Alfredo Smith Jr.  | George Travers          | John Zervas                 | 1                   | 1:37.80 | $33600  |
+|           31 |   1982 | Nafees            | Jorge Velasquez    | Richard T. DeStasio     | Albert Fried Jr.            | 1                   | 1:38.40 | $33120  |
+|           32 |   1981 | Banner Gala       | Angel Cordero Jr.  | Angel Penna Sr.         | Ogden Phipps                | 1                   | 1:35.60 | $33900  |
+|           33 |   1980 | Mitey Lively      | Jorge Velasquez    | Douglas R. Peterson     | Tayhill Stable              | 1                   | 1:36.40 | $33480  |
+|           34 |   1979 | Danielle B.       | Ruben Hernandez    | John O. Hertler         | Our Precious Stable         | 1-1/16              | 1:45.40 | $33000  |
+|           35 |   1978 | Late Bloomer      | Jorge Velasquez    | John M. Gaver Jr.       | Greentree Stable            | 1-1/16              | 1:41.60 |         |
+
+Generated Reasoning SQL: Explanation: To find the winner after Miss World, we need to identify the row corresponding to Miss World and then select the row with the next chronological year as the winner after Miss World. We will use the "Year" column to determine the chronological order of winners.
+
+SQL: 
+SELECT "Winner"
+FROM T
+WHERE "Year" > (SELECT "Year" FROM T WHERE "Winner" = 'Miss World')
+ORDER BY "Year"
+LIMIT 1;
+Generated Final SQL: SELECT "Winner" FROM T WHERE "Year" > (SELECT "Year" FROM T WHERE "Winner" = 'Miss World') ORDER BY "Year" LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Winner          |
+|:----------------|
+| Check the Label |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Garden City Handicap
+SQL: SELECT "Winner" FROM T WHERE "Year" > (SELECT "Year" FROM T WHERE "Winner" = 'Miss World') ORDER BY "Year" LIMIT 1;
+
+SQL Execution Result:
+Winner
+Check the Label
+
+Question: who won after miss world did?
+A: To find the answer to this question, let’s think step by step.
+Prediction: check the label
+[Gold Answer] check the label
+

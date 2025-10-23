@@ -1,0 +1,112 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - Representative values: 1995, 1998, 1999, 2000
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Rider:
+   - Data type: Categorical
+   - Representative values: Carl Fogarty, Troy Bayliss, (Colin Edwards)
+   - Role: Descriptor for the rider's name.
+
+3. Victories:
+   - Data type: Numeric
+   - Representative values: 13, 3, 11, 7
+   - Role: Measure of the number of victories achieved by the rider in a particular year.
+
+4. Bike:
+   - Data type: Categorical
+   - Representative values: Ducati 916, Ducati 996, Honda RC51
+   - Role: Descriptor for the type of bike used by the rider.
+
+5. Manufacturer's Championship:
+   - Data type: Categorical
+   - Representative values: Ducati
+   - Role: Descriptor for the manufacturer that won the championship in a particular year.
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for Rider, Victories, and Bike are different from the majority of the table.
+   - The Manufacturer's Championship value is consistent with the majority.
+   - This row is an outlier due to the different combination of Rider, Victories, and Bike compared to other rows.
+
+2. Row 1:
+   - The values for Rider, Victories, and Bike are different from the majority of the table.
+   - The Manufacturer's Championship value is consistent with the majority.
+   - This row is an outlier due to the different combination of Rider, Victories, and Bike compared to other rows.
+
+3. Row 6:
+   - The values for Rider, Victories, and Bike are different from the majority of the table.
+   - The Manufacturer's Championship value is consistent with the majority.
+   - This row is an outlier due to the different combination of Rider, Victories, and Bike compared to other rows.
+
+=== Full Table Preview ===
+|   row_number |   Year | Rider           | Victories   | Bike         | Manufacturer's Championship   |
+|-------------:|-------:|:----------------|:------------|:-------------|:------------------------------|
+|            0 |   1994 | Carl Fogarty    | 11          | Ducati 916   | Ducati                        |
+|            1 |   1995 | Carl Fogarty    | 13          | Ducati 916   | Ducati                        |
+|            2 |   1996 | Troy Corser     | 7           | Ducati 916   | Ducati                        |
+|            3 |   1998 | Carl Fogarty    | 3           | Ducati 916   | Ducati                        |
+|            4 |   1999 | Carl Fogarty    | 11          | Ducati 996   | Ducati                        |
+|            5 |   2000 | (Colin Edwards) | (7)         | (Honda RC51) | Ducati                        |
+|            6 |   2001 | Troy Bayliss    | 6           | Ducati 996   | Ducati                        |
+
+Generated Reasoning SQL: To determine the rider who did not ride a Ducati in the championship, we need to find the rider whose Manufacturer's Championship value is not Ducati. 
+We can achieve this by selecting the distinct Rider values where Manufacturer's Championship is not Ducati.
+SQL: select distinct "Rider" from T where "Manufacturer's Championship" != 'Ducati';
+Generated Final SQL: select distinct "Rider" from T where "Manufacturer's Championship" != 'Ducati';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Ducati 916 (row_number, Year, Rider, Victories, Bike, Manufacturer's Championship)
+
+row_number | Year | Rider | Victories | Bike | Manufacturer's Championship
+0 | 1994 | Carl Fogarty | 11 | Ducati 916 | Ducati
+1 | 1995 | Carl Fogarty | 13 | Ducati 916 | Ducati
+2 | 1996 | Troy Corser | 7 | Ducati 916 | Ducati
+3 | 1998 | Carl Fogarty | 3 | Ducati 916 | Ducati
+4 | 1999 | Carl Fogarty | 11 | Ducati 996 | Ducati
+5 | 2000 | (Colin Edwards) | (7) | (Honda RC51) | Ducati
+6 | 2001 | Troy Bayliss | 6 | Ducati 996 | Ducati
+Question: which rider listed is the only one not to ride a ducati in the championship?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: 1. Start by looking at the "Rider" column in the full table to identify the rider who did not ride a Ducati in the championship.
+2. From the data provided:
+- Carl Fogarty rode a Ducati 916 in 1994, 1995, and 1998, and a Ducati 996 in 1999.
+- Troy Corser rode a Ducati 916 in 1996.
+- Colin Edwards rode a Honda RC51 in 2000.
+- Troy Bayliss rode a Ducati 996 in 2001.
+3. Based on the information above, the only rider who did not ride a Ducati in the championship is Colin Edwards, who rode a Honda RC51 in 2000.
+
+Final Answer: Colin Edwards
+[Fallback] Prediction: colin edwards
+[Gold Answer] colin edwards
+

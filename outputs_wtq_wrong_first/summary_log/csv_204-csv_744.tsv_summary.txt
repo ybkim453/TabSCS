@@ -1,0 +1,36 @@
+**Column Analysis:**
+
+1. Player
+   - Data type: Categorical
+   - 4 representative example values: Gregory Nelson, Stanislav Kostov, Kostadin Stoyanov, Tomislav Kostadinov
+   - Role: Identifier
+
+2. League
+   - Data type: Numeric
+   - 4 representative example values: 3, 1, 1, 0
+   - Role: Measure
+
+3. Cup
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 0, 0
+   - Role: Measure
+
+4. Europa League
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 0, 1
+   - Role: Measure
+
+5. Total
+   - Data type: Numeric
+   - 4 representative example values: 4, 1, 1, 1
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 17:
+   - The values for League (53) and Total (78) are significantly higher compared to the rest of the table.
+   - These values are not typical for the dataset, making this row an outlier.
+
+2. Row 5:
+   - The values for League (11) and Total (14) are higher than most other rows but not as extreme as in Row 17.
+   - While these values are higher, they are not as extreme as in Row 17, so this row may not be considered a clear outlier.

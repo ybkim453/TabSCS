@@ -1,0 +1,133 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team:
+   - Data type: Categorical
+   - 4 representative example values: Est. Ahvaz, Foolad, Malavan, Mes Kerman
+   - Role: Identifier for each team in the table
+
+2. City:
+   - Data type: Categorical
+   - 4 representative example values: Ahvaz, Anzali, Kerman, Karaj
+   - Role: Descriptor indicating the city where the team is located
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Takhti Ahvaz, Takhti Anzali, Shahid Bahonar, Enghelab Karaj
+   - Role: Descriptor specifying the stadium where the team plays
+
+4. Capacity:
+   - Data type: Numeric
+   - 4 representative example values: 30,000, 15,000, 8,000
+   - Role: Measure indicating the seating capacity of the venue
+
+5. Head Coach:
+   - Data type: Categorical
+   - 4 representative example values: Khodadad Azizi, Majid Jalali, Mohammad Ahmadzadeh, Parviz Mazloomi
+   - Role: Descriptor identifying the head coach of the team
+
+6. Team Captain:
+   - Data type: Categorical
+   - 4 representative example values: Afshin Komaei, Ali Badavi, Masoud Gholamalizad, Farzad Hosseinkhani
+   - Role: Descriptor specifying the team captain
+
+7. Past Season:
+   - Data type: Categorical
+   - 4 representative example values: 8th, Qualifier, 16th, 10th
+   - Role: Descriptor indicating the team's performance in the past season
+
+**Outlier Row Analysis:**
+
+1. Row 6 (index 6):
+   - The team "Sepahan" is missing from the table, which is unusual as it is a well-known team in the league.
+   - This row is an outlier as it does not follow the pattern of the other rows in terms of team representation.
+
+2. Row 15 (index 15):
+   - The team "Tractor" is missing from the table, which is another prominent team in the league.
+   - This row is an outlier due to the absence of a significant team that is expected to be included.
+
+3. Row 2 (index 2):
+   - The team "Foolad" has a "Qualifier" status in the past season, which is different from the typical rankings mentioned in the table.
+   - This row is an outlier as it deviates from the usual performance descriptions provided in the table.
+
+=== Full Table Preview ===
+|   row_number | Team         | City     | Venue          |   Capacity | Head Coach               | Team Captain            | Past Season   |
+|-------------:|:-------------|:---------|:---------------|-----------:|:-------------------------|:------------------------|:--------------|
+|            0 | Aboomoslem   | Mashhad  | Samen          |      35000 | Ali Hanteh               | Saeed Khani             | 4th           |
+|            1 | Bargh Shiraz | Shiraz   | Hafezieh       |      20000 | Rasoul Korbekandi        | Sattar Zare             | 7th           |
+|            2 | Damash Gilan | Rasht    | Sardar Jangal  |      15000 | Stanko Poklepović        | Mohammad Reza Mahdavi   | 15th          |
+|            3 | Est. Ahvaz   | Ahvaz    | Takhti Ahvaz   |      30000 | Khodadad Azizi           | Afshin Komaei           | 8th           |
+|            4 | Esteghlal    | Tehran   | Azadi          |      90000 | Amir Ghalenoei           | Farhad Majidi           | 13th          |
+|            5 | Foolad       | Ahvaz    | Takhti Ahvaz   |      15000 | Majid Jalali             | Ali Badavi              | Qualifier     |
+|            6 | Malavan      | Anzali   | Takhti Anzali  |       8000 | Mohammad Ahmadzadeh      | Masoud Gholamalizad     | 16th          |
+|            7 | Mes Kerman   | Kerman   | Shahid Bahonar |      15000 | Parviz Mazloomi          | Farzad Hosseinkhani     | 10th          |
+|            8 | Moghavemat   | Shiraz   | Hafezieh       |      20000 | Gholam Hossein Peyrovani | Mostafa Sabri           | 14th          |
+|            9 | Pas Hamedan  | Hamedan  | Ghods          |       5000 | Vinko Begovic            | Omid Khouraj            | 5th           |
+|           10 | Paykan       | Qazvin   | Shahid Rajaei  |       5000 | Ali Asghar Modir Roosta  | Mohammad Reza Tahmasebi | 9th           |
+|           11 | Payam        | Mashhad  | Samen          |      35000 | Kazem Ghiyasiyan         | Mehdi Hasheminasab      | Qualifier     |
+|           12 | Persepolis   | Tehran   | Azadi          |      90000 | Nelo Vingada             | Karim Bagheri           | Champion      |
+|           13 | Rah Ahan     | Rey Iran | Rah Ahan       |      15000 | Mehdi Tartar             | Ahmad Taghavi           | 12th          |
+|           14 | Saba Qom     | Qom      | Yadegar Emam   |      15000 | Firouz Karimi            | Yahya Golmohammadi      | 3rd           |
+|           15 | Saipa        | Karaj    | Enghelab Karaj |      15000 | Mohammad Mayeli Kohan    | Ebrahim Sadeghi         | 11th          |
+|           16 | Sepahan      | Esfahan  | Foolad Shahr   |      25000 | Farhad Kazemi            | Moharram Navidkia       | 2nd           |
+|           17 | Zob Ahan     | Esfahan  | Foolad Shahr   |      25000 | Mansour Ebrahimzadeh     | Mohammad Salsali        | 6th           |
+
+Generated Reasoning SQL: To answer the question, we need to count the number of teams where the "Capacity" is at least 10000. The summary indicates that the "Capacity" column is Numeric, and we can directly filter rows based on this condition.
+
+SQL: select count("Team") from T where cast("Capacity" as integer) >= 10000;
+Generated Final SQL: select count("Team") from T where cast("Capacity" as integer) >= 10000;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Team") |
+|----------------:|
+|              15 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2008–09 Iran Pro League
+SQL: select count("Team") from T where cast("Capacity" as integer) >= 10000;
+
+count("Team")
+15
+Question: how many teams have at least 10000 capacity?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 15
+[Gold Answer] 15
+

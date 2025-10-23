@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 2013, 2014, 2015, 2016
+   - Role: Identifier for the year in which the event took place
+
+2. Date
+   - Data type: Date
+   - 4 representative example values: 30 Nov 2012, 1 Mar 2013, 7 Dec 2013, 22 Dec 2013
+   - Role: Descriptor indicating the specific date of the event
+
+3. Location
+   - Data type: Categorical
+   - 4 representative example values: Lake Louise, Canada, Garmisch, Germany, Val-d'Isère, France, Cortina d'Ampezzo, Italy
+   - Role: Descriptor specifying the location of the event
+
+4. Discipline
+   - Data type: Categorical
+   - 4 representative example values: Downhill, Super-G, Giant slalom
+   - Role: Descriptor indicating the type of skiing discipline
+
+5. Place
+   - Data type: Categorical
+   - 4 representative example values: 1st, 2nd, 3rd
+   - Role: Measure representing the final ranking achieved in the event
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values "Val-d'Isère, France" in the Location column and "Giant slalom" in the Discipline column make this row distinctive.
+   - This row is an outlier because the combination of location and discipline is different from the majority of the table.
+
+2. Row 12:
+   - The values "Cortina d'Ampezzo, Italy" in the Location column and "Downhill" in the Discipline column make this row distinctive.
+   - This row is an outlier due to the unique combination of location and discipline compared to the rest of the table.
+
+3. Row 6:
+   - The values "Lake Louise, Canada" in the Location column and "Downhill" in the Discipline column make this row distinctive.
+   - These values are ordinary within the context of the table, so this row is not an outlier and requires no special handling.

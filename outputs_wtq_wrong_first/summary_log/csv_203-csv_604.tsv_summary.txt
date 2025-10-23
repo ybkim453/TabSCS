@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. Callsign:
+   - Data type: Categorical
+   - 4 representative example values: 7CAE, 7EX, 7HO, 7HT
+   - Role: Identifier for the radio station
+
+2. Area served:
+   - Data type: Categorical
+   - 4 representative example values: Hobart, Launceston, Ulverstone
+   - Role: Descriptor for the geographical area served by the radio station
+
+3. Frequency:
+   - Data type: Numeric
+   - 4 representative example values: 92.1, 1008, 864, 1080
+   - Role: Measure of the frequency at which the radio station broadcasts
+
+4. Band:
+   - Data type: Categorical
+   - 4 representative example values: FM, AM
+   - Role: Descriptor for the frequency band used by the radio station
+
+5. Fate:
+   - Data type: Categorical
+   - 4 representative example values: Changed call to 7THE ca. 1980, Moved to FM in 2008 as 7EXX, Moved to FM in 1990 as 7HHO, Moved to FM in 1998 as 7XXX
+   - Role: Descriptor of the historical fate or changes of the radio station
+
+6. Freq currently:
+   - Data type: Categorical
+   - 4 representative example values: 7THE, silent, 7RPH, 7TAB (HPON)
+   - Role: Descriptor of the current frequency or status of the radio station
+
+7. Purpose:
+   - Data type: Categorical
+   - 4 representative example values: Community, Commercial
+   - Role: Descriptor of the purpose or type of radio station
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The value "7CAE" in the Callsign column is different from the other rows.
+   - This row is an outlier due to the unique callsign compared to the rest of the table.
+
+2. Row 9:
+   - The value "nan" in the Frequency column indicates missing data.
+   - This row is an outlier due to the missing frequency value, which is not typical in the table.
+
+3. Row 4:
+   - The value "silent" in the Freq currently column is different from the other rows.
+   - This row is an outlier due to the unique status of being "silent" compared to the other radio stations.

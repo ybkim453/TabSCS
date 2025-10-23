@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season:
+   - Data type: Numeric
+   - 4 representative example values: 1994, 1995, 1996, 1997
+   - Role: Identifier for the year in which the event took place
+
+2. Date:
+   - Data type: Date
+   - 4 representative example values: 12 Dec 1993, 29 Dec 1993, 12 Mar 1994, 13 Mar 1994
+   - Role: Descriptor indicating the specific date of the event
+
+3. Location:
+   - Data type: Categorical
+   - 4 representative example values: Val-d'Isère, France, Bormio, Italy, Whistler, BC, Canada, Vail, CO, USA
+   - Role: Descriptor specifying the location where the event occurred
+
+4. Discipline:
+   - Data type: Categorical
+   - 4 representative example values: Super G, Downhill
+   - Role: Descriptor indicating the type of skiing discipline for the event
+
+5. Place:
+   - Data type: Categorical
+   - 4 representative example values: 1st, 3rd
+   - Role: Measure representing the final ranking achieved by the participant in the event
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values that make it distinctive are "Val-d'Isère, France" for Location and "3rd" for Place.
+   - This row is an outlier because it has the same Place value as Row 4, but a different Location, making it unique compared to the majority of the table.
+
+2. Row 4:
+   - The values that make it distinctive are "Vail, CO, USA" for Location and "3rd" for Place.
+   - This row is an outlier because it has the same Place value as Row 0, but a different Location, making it unique compared to the majority of the table.
+
+3. Row 1:
+   - The values that make it distinctive are "Bormio, Italy" for Location and "3rd" for Place.
+   - This row is an outlier because it has the same Place value as Rows 0 and 4, but a different Location, making it unique compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number |   Season | Date                | Location           | Discipline   | Place   |
+|-------------:|---------:|:--------------------|:-------------------|:-------------|:--------|
+|            0 |     1993 | 1993-02-27 00:00:00 | Whistler BC Canada | Downhill     | 2nd     |
+|            1 |     1994 | 1993-12-12 00:00:00 | Val-d'Isère France | Super G      | 3rd     |
+|            2 |     1994 | 1993-12-29 00:00:00 | Bormio Italy       | Downhill     | 3rd     |
+|            3 |     1994 | 1994-03-12 00:00:00 | Whistler BC Canada | Downhill     | 3rd     |
+|            4 |     1994 | 1994-03-13 00:00:00 | Whistler BC Canada | Super G      | 1st     |
+|            5 |     1994 | 1994-03-16 00:00:00 | Vail CO USA        | Downhill     | 3rd     |
+|            6 |     1995 | 1994-12-11 00:00:00 | Tignes France      | Super G      | 2nd     |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Discipline" column is categorical, with values such as Super G and Downhill representing different skiing disciplines. To find out how many races were downhill, we count the number of rows where "Discipline" = 'Downhill'.
+SQL: select count("Discipline") from T where "Discipline" = 'Downhill';
+Generated Final SQL: select count("Discipline") from T where "Discipline" = 'Downhill';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Discipline") |
+|----------------------:|
+|                     4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tommy Moe
+SQL: select count("Discipline") from T where "Discipline" = 'Downhill';
+
+count("Discipline")
+4
+Question: how many of the discipline races were downhill?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

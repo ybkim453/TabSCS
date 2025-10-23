@@ -1,0 +1,144 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Game
+   - Data type: Numeric
+   - 4 representative example values: 7, 9, 12, 13
+   - Role: Identifier for each game
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: February 11, 2007, February 24, 2007, March 24, 2007, March 31, 2007
+   - Role: Descriptor for the date of the game
+
+3. Opponent
+   - Data type: Categorical
+   - 4 representative example values: Chicago Shamrox, Philadelphia Wings, Colorado Mammoth, Rochester Knighthawks
+   - Role: Descriptor for the opposing team
+
+4. Location
+   - Data type: Categorical
+   - 4 representative example values: Sears Centre, HSBC Arena
+   - Role: Descriptor for the venue of the game
+
+5. Score
+   - Data type: Categorical
+   - 4 representative example values: W 12–11, W 13–12, W 19–15, W 15–10
+   - Role: Measure of the game score
+
+6. OT
+   - Data type: Numeric
+   - 4 representative example values: nan
+   - Role: Descriptor for overtime status
+
+7. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 5,010, 14,882, 15,156, 16,228
+   - Role: Measure of the attendance at the game
+
+8. Record
+   - Data type: Categorical
+   - 4 representative example values: 3–4, 5–4, 8–4, 9–4
+   - Role: Measure of the team's record after the game
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The opponent is listed as "Chicago Shamrox" and the location is "Sears Centre".
+   - These values are not significantly different from other rows in the table, so this row is an ordinary row.
+
+2. Row 11:
+   - The opponent is listed as "Rochester Knighthawks" and the score is "L 10–14".
+   - These values are consistent with other rows in the table, so this row is an ordinary row.
+
+3. Row 6:
+   - The opponent is listed as "Philadelphia Wings" and the attendance is "14,882".
+   - These values are not significantly different from other rows in the table, so this row is an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Game | Date                | Opponent                | Location              | Score   | OT   |   Attendance | Record   |
+|-------------:|-------:|:--------------------|:------------------------|:----------------------|:--------|:-----|-------------:|:---------|
+|            0 |      1 | 2007-12-30 00:00:00 | @ Portland LumberJax    | Rose Garden           | L 10–11 | OT   |         8437 | 0–1      |
+|            1 |      2 | 2007-01-12 00:00:00 | New York Titans         | HSBC Arena            | W 16–14 |      |        18690 | 1–1      |
+|            2 |      3 | 2007-01-13 00:00:00 | @ Colorado Mammoth      | Pepsi Center          | L 10–11 | OT   |        16523 | 1–2      |
+|            3 |      4 | 2007-01-20 00:00:00 | Minnesota Swarm         | HSBC Arena            | W 22–13 |      |        12883 | 2–2      |
+|            4 |      5 | 2007-02-02 00:00:00 | Toronto Rock            | HSBC Arena            | L 10–14 |      |        13659 | 2–3      |
+|            5 |      6 | 2007-02-03 00:00:00 | @ Toronto Rock          | Air Canada Centre     | L 8–13  |      |        15471 | 2–4      |
+|            6 |      7 | 2007-02-11 00:00:00 | @ Chicago Shamrox       | Sears Centre          | W 12–11 |      |         5010 | 3–4      |
+|            7 |      8 | 2007-02-17 00:00:00 | @ Philadelphia Wings    | Wachovia Center       | W 12–8  |      |        12688 | 4–4      |
+|            8 |      9 | 2007-02-24 00:00:00 | Philadelphia Wings      | HSBC Arena            | W 13–12 |      |        14882 | 5–4      |
+|            9 |     10 | 2007-03-04 00:00:00 | @ Minnesota Swarm       | Xcel Energy Center    | W 16–15 |      |         7504 | 6–4      |
+|           10 |     11 | 2007-03-17 00:00:00 | @ New York Titans       | Madison Square Garden | W 11–8  |      |         7012 | 7–4      |
+|           11 |     12 | 2007-03-24 00:00:00 | Colorado Mammoth        | HSBC Arena            | W 19–15 |      |        15156 | 8–4      |
+|           12 |     13 | 2007-03-31 00:00:00 | Chicago Shamrox         | HSBC Arena            | W 15–10 |      |        16228 | 9–4      |
+|           13 |     14 | 2007-04-07 00:00:00 | Arizona Sting           | HSBC Arena            | W 15–5  |      |        13492 | 10–4     |
+|           14 |     15 | 2007-04-13 00:00:00 | Rochester Knighthawks   | HSBC Arena            | L 10–14 |      |        15334 | 10–5     |
+|           15 |     16 | 2007-04-14 00:00:00 | @ Rochester Knighthawks | Blue Cross Arena      | L 8–14  |      |        11200 | 10–6     |
+
+Generated Reasoning SQL: To determine the total number of wins and losses the team had, we need to sum the wins and losses recorded in the "Record" column. The "Record" column represents the team's wins and losses in the format "wins-losses" after each game.
+
+We will extract the wins and losses separately by splitting the "Record" column values and summing them up.
+
+SQL:
+SELECT 
+    SUM(CAST(SUBSTR("Record", 1, INSTR("Record", '-') - 1) AS INTEGER)) AS total_wins,
+    SUM(CAST(SUBSTR("Record", INSTR("Record", '-') + 1) AS INTEGER)) AS total_losses
+FROM T;
+Generated Final SQL: SELECT SUM(CAST(SUBSTR("Record", 1, INSTR("Record", '-') - 1) AS INTEGER)) AS total_wins, SUM(CAST(SUBSTR("Record", INSTR("Record", '-') + 1) AS INTEGER)) AS total_losses FROM T;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   total_wins |   total_losses |
+|-------------:|---------------:|
+|            0 |             80 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2007 Buffalo Bandits season
+SQL: SELECT SUM(CAST(SUBSTR("Record", 1, INSTR("Record", '-') - 1) AS INTEGER)) AS total_wins, SUM(CAST(SUBSTR("Record", INSTR("Record", '-') + 1) AS INTEGER)) AS total_losses FROM T;
+
+SQL Execution Result:
+total_wins | total_losses
+0 | 80
+
+Question: how many wins and loses did the team have?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0 wins, 80 losses
+[Gold Answer] 10-6
+

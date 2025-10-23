@@ -1,0 +1,163 @@
+=== Table ID ===
+csv/203-csv/143.tsv
+
+=== Question ===
+which game had the highest attendance?
+
+=== Sub-table Preview ===
+| Team 1    | Agg.   | Team 2           | 1st leg   | 2nd leg   |
+|:----------|:-------|:-----------------|:----------|:----------|
+| Algeciras | 2–10   | Real Madrid      | 0–6       | 2–4       |
+| Alcalá    | 1–10   | Valencia         | 1–3       | 0–7       |
+| Burgos    | 4–1    | Huesca           | 2–0       | 2–1       |
+| Osasuna   | 4–1    | Guadalajara      | 2–0       | 2–1       |
+| Oviedo    | 4–1    | Cultural Leonesa | 2–0       | 2–1       |
+| Tenerife  | 2–1    | Malgrat          | 2–0       | 0–1       |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team 1
+   - Data type: Categorical
+   - 4 representative example values: Algeciras, Alcalá, Burgos, Osasuna
+   - Role of the column: Identifier for the first team in each match
+
+2. Agg.
+   - Data type: Numeric
+   - 4 representative example values: 2-10, 1-10, 4-1, 2-1
+   - Role of the column: Measure representing the aggregate score of the match
+
+3. Team 2
+   - Data type: Categorical
+   - 4 representative example values: Real Madrid, Valencia, Huesca, Guadalajara
+   - Role of the column: Identifier for the second team in each match
+
+4. 1st leg
+   - Data type: Numeric
+   - 4 representative example values: 0-6, 1-3, 2-0, 2-0
+   - Role of the column: Measure representing the score of the first leg of the match
+
+5. 2nd leg
+   - Data type: Numeric
+   - 4 representative example values: 2-4, 0-7, 2-1, 0-1
+   - Role of the column: Measure representing the score of the second leg of the match
+
+**Outlier Row Analysis:**
+
+1. Row 6 (Tenerife vs. Malgrat)
+   - The 2nd leg score of 0-1 for Malgrat is significantly different from the other 2nd leg scores in the table.
+   - This makes the row an outlier as it deviates from the typical scoring pattern seen in the other matches.
+
+2. Row 2 (Alcalá vs. Valencia)
+   - The aggregate score of 1-10 is much higher compared to the other aggregate scores in the table.
+   - This makes the row an outlier as it represents a particularly one-sided match compared to the rest.
+
+3. Row 38 (Not specified)
+   - Since the row is not specified, it is not possible to determine the exact values that make it distinctive.
+   - Without specific information, it is not possible to classify this row as an outlier or an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Date                | Opponent             | Venue                      | Result   |   Attendance | Scorers             |
+|-------------:|:--------------------|:---------------------|:---------------------------|:---------|-------------:|:--------------------|
+|            0 | 2005-08-13 00:00:00 | Charlton Athletic    | Stadium of Light           | 1–3      |        34446 | Gray                |
+|            1 | 2005-08-20 00:00:00 | Liverpool            | Anfield                    | 0–1      |        44913 |                     |
+|            2 | 2005-08-23 00:00:00 | Manchester City      | Stadium of Light           | 1–2      |        33357 | Le Tallec           |
+|            3 | 2005-08-27 00:00:00 | Wigan Athletic       | JJB Stadium                | 0–1      |        17223 |                     |
+|            4 | 2005-09-10 00:00:00 | Chelsea              | Stamford Bridge            | 0–2      |        41969 |                     |
+|            5 | 2005-09-17 00:00:00 | West Bromwich Albion | Stadium of Light           | 1–1      |        31657 | Breen               |
+|            6 | 2005-09-25 00:00:00 | Middlesbrough        | Riverside Stadium          | 2–0      |        29583 | Miller Arca         |
+|            7 | 2005-10-01 00:00:00 | West Ham United      | Stadium of Light           | 1–1      |        31212 | Miller              |
+|            8 | 2005-10-15 00:00:00 | Manchester United    | Stadium of Light           | 1–3      |        39085 | Elliott             |
+|            9 | 2005-10-23 00:00:00 | Newcastle United     | St James' Park             | 2–3      |        52302 | Lawrence Elliott    |
+|           10 | 2005-10-29 00:00:00 | Portsmouth           | Stadium of Light           | 1–4      |        34926 | Whitehead (pen)     |
+|           11 | 2005-11-05 00:00:00 | Arsenal              | Highbury                   | 1–3      |        38210 | Stubbs              |
+|           12 | 2005-11-19 00:00:00 | Aston Villa          | Stadium of Light           | 1–3      |        39707 | Whitehead (pen)     |
+|           13 | 2005-11-26 00:00:00 | Birmingham City      | Stadium of Light           | 0–1      |        32442 |                     |
+|           14 | 2005-11-30 00:00:00 | Liverpool            | Stadium of Light           | 0–2      |        32697 |                     |
+|           15 | 2005-12-03 00:00:00 | Tottenham Hotspur    | White Hart Lane            | 2–3      |        36244 | Whitehead Le Tallec |
+|           16 | 2005-12-10 00:00:00 | Charlton Athletic    | The Valley                 | 0–2      |        26065 |                     |
+|           17 | 2005-12-26 00:00:00 | Bolton Wanderers     | Stadium of Light           | 0–0      |        32232 |                     |
+|           18 | 2005-12-31 00:00:00 | Everton              | Stadium of Light           | 0–1      |        30567 |                     |
+|           19 | 2006-01-02 00:00:00 | Fulham               | Craven Cottage             | 1–2      |        19372 | Lawrence            |
+|           20 | 2006-01-15 00:00:00 | Chelsea              | Stadium of Light           | 1–2      |        32420 | Lawrence            |
+|           21 | 2006-01-21 00:00:00 | West Bromwich Albion | The Hawthorns              | 1–0      |        26464 | Watson (own goal)   |
+|           22 | 2006-01-31 00:00:00 | Middlesbrough        | Stadium of Light           | 0–3      |        31675 |                     |
+|           23 | 2006-02-04 00:00:00 | West Ham United      | Boleyn Ground              | 0–2      |        34745 |                     |
+|           24 | 2006-02-12 00:00:00 | Tottenham Hotspur    | Stadium of Light           | 1–1      |        34700 | Murphy              |
+|           25 | 2006-02-15 00:00:00 | Blackburn Rovers     | Ewood Park                 | 0–2      |        18220 |                     |
+|           26 | 2006-02-25 00:00:00 | Birmingham City      | St. Andrew's               | 0–1      |        29257 |                     |
+|           27 | 2006-03-03 00:00:00 | Manchester City      | City of Manchester Stadium | 1–2      |        42200 | Kyle                |
+|           28 | 2006-03-11 00:00:00 | Wigan Athletic       | Stadium of Light           | 0–1      |        31194 |                     |
+|           29 | 2006-03-18 00:00:00 | Bolton Wanderers     | Reebok Stadium             | 0–2      |        23568 |                     |
+|           30 | 2006-03-25 00:00:00 | Blackburn Rovers     | Stadium of Light           | 0–1      |        29593 |                     |
+|           31 | 2006-04-01 00:00:00 | Everton              | Goodison Park              | 2–2      |        38093 | Stead Delap         |
+|           32 | 2006-04-14 00:00:00 | Manchester United    | Old Trafford               | 0–0      |        72519 |                     |
+|           33 | 2006-04-17 00:00:00 | Newcastle United     | Stadium of Light           | 1–4      |        40032 | Hoyte               |
+|           34 | 2006-04-22 00:00:00 | Portsmouth           | Fratton Park               | 1–2      |        20078 | Miller              |
+|           35 | 2006-05-01 00:00:00 | Arsenal              | Stadium of Light           | 0–3      |        44003 |                     |
+|           36 | 2006-05-04 00:00:00 | Fulham               | Stadium of Light           | 2–1      |        28226 | Le Tallec Brown     |
+|           37 | 2006-05-07 00:00:00 | Aston Villa          | Villa Park                 | 1–2      |        33820 | D. Collins          |
+
+Generated Reasoning SQL: Explanation: To find the game with the highest attendance, we need to consider the "Attendance" column, which is a numeric measure representing the number of attendees at each match. We are looking for the row where the "Attendance" value is the highest. Outlier rows are not relevant to this question as we are solely interested in the attendance figures for each game.
+
+SQL: SELECT * 
+FROM T 
+WHERE "Attendance" = (SELECT MAX("Attendance") FROM T);
+Generated Final SQL: SELECT * FROM T WHERE "Attendance" = (SELECT MAX("Attendance") FROM T);
+SQL 실행 결과 셀 수: 7
+=== SQL 실행 결과 미리보기 ===
+|   row_number | Date                | Opponent          | Venue        | Result   |   Attendance | Scorers   |
+|-------------:|:--------------------|:------------------|:-------------|:---------|-------------:|:----------|
+|           32 | 2006-04-14 00:00:00 | Manchester United | Old Trafford | 0–0      |        72519 |           |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2005–06 Sunderland A.F.C. season
+SQL: SELECT * FROM T WHERE "Attendance" = (SELECT MAX("Attendance") FROM T);
+
+SQL Execution Result:
+row_number | Date | Opponent | Venue | Result | Attendance | Scorers
+32 | 2006-04-14 00:00:00 | Manchester United | Old Trafford | 0–0 | 72519 | None
+
+Question: which game had the highest attendance?
+A: To find the answer to this question, let’s think step by step.
+Prediction: manchester united
+[Gold Answer] 14 april 2006
+

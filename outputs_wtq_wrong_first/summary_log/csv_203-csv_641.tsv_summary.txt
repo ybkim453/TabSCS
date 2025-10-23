@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1982, 1984, 1987, 2003
+   - Role: Identifier for the year the film was released.
+
+2. Film:
+   - Data type: Categorical
+   - 4 representative example values: Images of Liberation, The Element of Crime, Epidemic, Dogville
+   - Role: Descriptor for the title of the film.
+
+3. Rotten Tomatoes:
+   - Data type: Numeric (percentage)
+   - 4 representative example values: nan, 77%, 33%, 70%
+   - Role: Measure of the film's rating on Rotten Tomatoes.
+
+4. Metacritic:
+   - Data type: Numeric (percentage)
+   - 4 representative example values: nan, nan, 66%, 59%
+   - Role: Measure of the film's rating on Metacritic.
+
+5. IMDb:
+   - Data type: Categorical (rating)
+   - 4 representative example values: 5.1/10, 6.9/10, 6.1/10, 8.0/10
+   - Role: Measure of the film's rating on IMDb.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Images of Liberation):
+   - The Rotten Tomatoes and Metacritic ratings are marked as "nan", which indicates missing data. This is not a distinctive value and is common in datasets. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 2 (Epidemic):
+   - The Rotten Tomatoes rating of 33% is significantly lower compared to the other films in the table. This lower rating makes this row an outlier in terms of Rotten Tomatoes ratings.
+
+3. Row 1 (The Element of Crime):
+   - The Metacritic rating is marked as "nan", which is a common occurrence in datasets and not a distinctive value. Therefore, this row is an ordinary row and does not require special handling.

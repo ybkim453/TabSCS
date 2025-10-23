@@ -1,0 +1,135 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Outcome:
+   - Data type: Categorical
+   - 4 representative example values: Winner, Runner-up, Semifinalist, Quarterfinalist
+   - Role of the column: Describes the outcome of the match for the player(s) in the row.
+
+2. No.:
+   - Data type: Numeric
+   - 4 representative example values: 1, 3, 4, 5
+   - Role of the column: Identifier for the specific match in the table.
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: 13 February 2011, 23 January 2012, 30 January 2012, 12 November 2012
+   - Role of the column: Describes the date when the match took place.
+
+4. Tournament:
+   - Data type: Categorical
+   - 4 representative example values: Rancho Mirage, Andrézieux-Bouthéon, Grenoble, Zawada
+   - Role of the column: Describes the name of the tournament where the match was played.
+
+5. Surface:
+   - Data type: Categorical
+   - 4 representative example values: Hard, Hard (i), Carpet (i)
+   - Role of the column: Describes the type of surface on which the match was played.
+
+6. Partner:
+   - Data type: Categorical
+   - 4 representative example values: Karolína Plíšková, Naomi Broady, Serena Williams, Maria Sharapova
+   - Role of the column: Describes the partner of the player in the row.
+
+7. Opponents:
+   - Data type: Categorical
+   - 4 representative example values: Nadejda Guskova\n Sandra Zaniewska, Julie Coin\n Eva Hrdinová, Valentyna Ivakhnenko\n Maryna Zanevska, Kristina Barrois\n Sandra Klemenschits
+   - Role of the column: Describes the opponents faced by the player(s) in the row.
+
+8. Score:
+   - Data type: Categorical
+   - 4 representative example values: 6–7(6–8), 6–1, 6–4, 6–4, 4–6, [10–5]
+   - Role of the column: Describes the score of the match for the player(s) in the row.
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or atypical values. This row is an ordinary entry and does not require special handling.
+
+2. Row 8:
+   - The values in this row are also consistent with the majority of the table and do not contain any distinctive or atypical values. This row is an ordinary entry and does not require special handling.
+
+3. Row 0:
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or atypical values. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                  | Surface    | Partner           | Opponents                              | Score                |
+|-------------:|:----------|------:|:--------------------|:----------------------------|:-----------|:------------------|:---------------------------------------|:---------------------|
+|            0 | Runner-up |     1 | 2010-05-16 00:00:00 | Kurume Japan                | Clay       | Karolína Plíšková | Sun Shengnan\n Xu Yifan                | 0–6 3–6              |
+|            1 | Winner    |     1 | 2011-02-13 00:00:00 | Rancho Mirage United States | Hard       | Karolína Plíšková | Nadejda Guskova\n Sandra Zaniewska     | 6–7(6–8) 6–1 6–4     |
+|            2 | Winner    |     2 | 2011-08-07 00:00:00 | Vancouver Canada            | Hard       | Karolína Plíšková | Jamie Hampton\n N. Lertcheewakarn      | 5–7 6–2 6–4          |
+|            3 | Runner-up |     2 | 2011-11-06 00:00:00 | Taipei 5 Taiwan             | Hard       | Karolína Plíšková | Chan Yung-jan\n Zheng Jie              | 6–7(5–7) 7–5 3–6     |
+|            4 | Runner-up |     3 | 2011-11-20 00:00:00 | Bratislava Slovakia         | Hard       | Karolína Plíšková | Naomi Broady\n Kristina Mladenovic     | 7–5 4–6 [2–10]       |
+|            5 | Winner    |     3 | 2012-01-23 00:00:00 | Andrézieux-Bouthéon France  | Hard (i)   | Karolína Plíšková | Julie Coin\n Eva Hrdinová              | 6–4 4–6 [10–5]       |
+|            6 | Winner    |     4 | 2012-01-30 00:00:00 | Grenoble France             | Hard (i)   | Karolína Plíšková | Valentyna Ivakhnenko\n Maryna Zanevska | 6–1 6–3              |
+|            7 | Runner-up |     4 | 2012-09-17 00:00:00 | Shrewsbury United Kingdom   | Hard (i)   | Karolína Plíšková | Vesna Dolonc\n Stefanie Vögele         | 1–6 7–6(7–3) [13–15] |
+|            8 | Winner    |     5 | 2012-11-12 00:00:00 | Zawada Poland               | Carpet (i) | Karolína Plíšková | Kristina Barrois\n Sandra Klemenschits | 6–3 6–1              |
+|            9 | Winner    |     6 | 2013-10-28 00:00:00 | Barnstaple United Kingdom   | Hard (i)   | Naomi Broady      | Raluca Olaru\n Tamira Paszek           | 6–3 3–6 [10–5]       |
+
+Generated Reasoning SQL: Explanation: To determine the number of doubles tournaments won by Kristýna Plíšková in North America, we need to filter the rows where the "Partner" column includes Kristýna Plíšková and the "Tournament" column specifies a location in North America. The "Outcome" column should indicate a win to count the tournaments won.
+We will consider the categorical values in the "Partner" and "Tournament" columns to identify the relevant rows for the query.
+
+SQL: 
+SELECT COUNT(DISTINCT "Tournament") 
+FROM T 
+WHERE "Partner" = 'Karolína Plíšková' 
+AND "Outcome" = 'Winner' 
+AND "Tournament" LIKE '%United States%' OR "Tournament" LIKE '%Canada%';
+Generated Final SQL: SELECT COUNT(DISTINCT "Tournament") FROM T WHERE "Partner" = 'Karolína Plíšková' AND "Outcome" = 'Winner' AND "Tournament" LIKE '%United States%' OR "Tournament" LIKE '%Canada%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(DISTINCT "Tournament") |
+|-------------------------------:|
+|                              2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Kristýna Plíšková
+SQL: SELECT COUNT(DISTINCT "Tournament") FROM T WHERE "Partner" = 'Karolína Plíšková' AND "Outcome" = 'Winner' AND "Tournament" LIKE '%United States%' OR "Tournament" LIKE '%Canada%';
+
+SQL Execution Result:
+COUNT(DISTINCT "Tournament")
+2
+
+Question: how many doubles tournaments has kristyna pliskova won in north america?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. Fence:
+   - Data type: Numeric
+   - 4 representative example values: 18, 03, 17, ?
+   - Role of the column: Identifier for the fence number at the race track.
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Leedsy, Ronald's Boy, Bold Biri, Blonde Warrior
+   - Role of the column: Descriptor for the name of the horse.
+
+3. Jockey:
+   - Data type: Categorical
+   - 4 representative example values: George Robinson, Mr Gay Kindersley, Michael Scudamore, Mr D Crossley-Cooke
+   - Role of the column: Descriptor for the name of the jockey.
+
+4. Age:
+   - Data type: Numeric
+   - 4 representative example values: 7, 8, 9, 13
+   - Role of the column: Measure for the age of the horse.
+
+5. Handicap (st-lb):
+   - Data type: Categorical
+   - 4 representative example values: 10-13, 11-1, 10-13, 10-13
+   - Role of the column: Descriptor for the handicap weight of the horse.
+
+6. Starting price:
+   - Data type: Categorical
+   - 4 representative example values: 18/1, 100/1, 100/1, 100/1
+   - Role of the column: Descriptor for the starting price odds of the horse.
+
+7. Fate:
+   - Data type: Categorical
+   - 4 representative example values: Fell, Fell, Fell, Pulled Up
+   - Role of the column: Descriptor for the outcome of the race for the horse.
+
+**Outlier Row Analysis:**
+
+1. Row 9 (Blonde Warrior):
+   - The fence number is missing, which is not a distinctive value and is an ordinary occurrence in the table. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 8 (Black Spot):
+   - The fence number is missing, which is not a distinctive value and is an ordinary occurrence in the table. Therefore, this row is an ordinary row and does not require special handling.
+
+3. Row 10 (Mr McTaffy):
+   - The fence number is missing, which is not a distinctive value and is an ordinary occurrence in the table. Additionally, the outcome "Pulled Up" is a common occurrence in horse racing. Therefore, this row is an ordinary row and does not require special handling.

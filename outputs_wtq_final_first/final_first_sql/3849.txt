@@ -1,0 +1,151 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Bob Hesford, George Howe, Donald Hunter, Johnny McKenna
+   - Role: Identifier
+
+2. Nation
+   - Data type: Categorical
+   - 4 representative example values: England, Northern Ireland
+   - Role: Descriptor
+
+3. Position
+   - Data type: Categorical
+   - 4 representative example values: GK, DF, MF
+   - Role: Descriptor
+
+4. League Apps
+   - Data type: Numeric
+   - 4 representative example values: 6, 5, 7, 40
+   - Role: Measure
+
+5. League Goals
+   - Data type: Numeric
+   - 4 representative example values: 0, 3
+   - Role: Measure
+
+6. FA Cup Apps
+   - Data type: Numeric
+   - 4 representative example values: 0, 1
+   - Role: Measure
+
+7. FA Cup Goals
+   - Data type: Numeric
+   - 4 representative example values: 0
+   - Role: Measure
+
+8. Total Apps
+   - Data type: Numeric
+   - 4 representative example values: 6, 5, 7, 41
+   - Role: Measure
+
+9. Total Goals
+   - Data type: Numeric
+   - 4 representative example values: 0, 3
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 16 (National Cup = Semifinals)
+   - The value "National Cup = Semifinals" is not present in the majority of the table, indicating that this player has reached a significant stage in the cup competition. This makes the row an outlier.
+
+2. Row 5 (Reg. Season = 5th?)
+   - The ambiguous marker "5th?" is not a common value in the table and suggests uncertainty or uniqueness in the player's performance. This makes the row an outlier.
+
+3. Row 10 (Ordinary row)
+   - This row contains ordinary values that are consistent with the majority of the table. There are no distinctive or unusual values present, so it is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Name               | Nation              | Position   |   League Apps |   League Goals |   FA Cup Apps |   FA Cup Goals |   Total Apps |   Total Goals |
+|-------------:|:-------------------|:--------------------|:-----------|--------------:|---------------:|--------------:|---------------:|-------------:|--------------:|
+|            0 | John Battye        | England             | DF         |            22 |              0 |             0 |              0 |           22 |             0 |
+|            1 | Eddie Boot         | England             | DF         |            38 |              0 |             1 |              0 |           39 |             0 |
+|            2 | Tom Briggs         | England             | DF         |             4 |              0 |             0 |              0 |            4 |             0 |
+|            3 | Ronnie Burke       | England             | FW         |            12 |              5 |             0 |              0 |           12 |             5 |
+|            4 | Ian Duthie         | Scotland            | MF         |             1 |              0 |             0 |              0 |            1 |             0 |
+|            5 | Charlie Gallogly   | Northern Ireland    | DF         |            15 |              0 |             0 |              0 |           15 |             0 |
+|            6 | Jimmy Glazzard     | England             | FW         |            21 |              5 |             1 |              0 |           22 |             5 |
+|            7 | Harold Hassall     | England             | FW         |            10 |              4 |             1 |              0 |           11 |             4 |
+|            8 | Bill Hayes         | Republic of Ireland | DF         |            17 |              0 |             1 |              0 |           18 |             0 |
+|            9 | George Hepplewhite | England             | DF         |            36 |              0 |             1 |              0 |           37 |             0 |
+|           10 | Bob Hesford        | England             | GK         |             6 |              0 |             0 |              0 |            6 |             0 |
+|           11 | George Howe        | England             | DF         |             5 |              0 |             0 |              0 |            5 |             0 |
+|           12 | Jack Howe          | England             | DF         |            20 |              1 |             1 |              0 |           21 |             1 |
+|           13 | Donald Hunter      | England             | DF         |             7 |              0 |             0 |              0 |            7 |             0 |
+|           14 | Joe Lynn           | England             | MF         |             5 |              0 |             0 |              0 |            5 |             0 |
+|           15 | Don McEvoy         | England             | DF         |             5 |              2 |             0 |              0 |            5 |             2 |
+|           16 | Johnny McKenna     | Northern Ireland    | MF         |            40 |              3 |             1 |              0 |           41 |             3 |
+|           17 | Vic Metcalfe       | England             | MF         |            41 |             11 |             1 |              0 |           42 |            11 |
+|           18 | Harry Mills        | England             | GK         |            34 |              0 |             1 |              0 |           35 |             0 |
+|           19 | Lol Morgan         | England             | DF         |             6 |              0 |             0 |              0 |            6 |             0 |
+|           20 | Albert Nightingale | England             | MF         |            39 |              7 |             1 |              0 |           40 |             7 |
+|           21 | Jack Percival      | England             | DF         |             7 |              0 |             0 |              0 |            7 |             0 |
+|           22 | Arnold Rodgers     | England             | FW         |             4 |              2 |             0 |              0 |            4 |             2 |
+|           23 | Conway Smith       | England             | MF         |            10 |              0 |             0 |              0 |           10 |             0 |
+|           24 | Henry Stewart      | England             | DF         |            15 |              0 |             0 |              0 |           15 |             0 |
+|           25 | Jeff Taylor        | England             | FW         |            21 |             11 |             0 |              0 |           21 |            11 |
+|           26 | Ray Taylor         | England             | MF         |             2 |              0 |             0 |              0 |            2 |             0 |
+|           27 | Jack Wheeler       | England             | GK         |             2 |              0 |             0 |              0 |            2 |             0 |
+|           28 | Bill Whittaker     | England             | DF         |            16 |              0 |             0 |              0 |           16 |             0 |
+|           29 | Harry Yates        | England             | MF         |             1 |              0 |             0 |              0 |            1 |             0 |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Total Apps" and "Total Goals" columns are Numeric and can be used to filter rows based on the given criteria. To find the player who had 37 appearances and no goals, we need to match the values in these columns accordingly.
+SQL: select "Name" from T where "Total Apps" = 37 and "Total Goals" = 0;
+Generated Final SQL: select "Name" from T where "Total Apps" = 37 and "Total Goals" = 0;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Name               |
+|:-------------------|
+| George Hepplewhite |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1949–50 Huddersfield Town F.C. season
+SQL: select "Name" from T where "Total Apps" = 37 and "Total Goals" = 0;
+
+Name
+George Hepplewhite
+Question: who had 37 appearances and no goals?
+A: To find the answer to this question, let’s think step by step.
+Prediction: george hepplewhite
+[Gold Answer] george hepplewhite
+

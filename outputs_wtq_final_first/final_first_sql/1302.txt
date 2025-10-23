@@ -1,0 +1,179 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: 10 December 2005, 31 December 2005, 25 March 2006, 1 April 2006
+   - Role: Identifier for the specific match date
+
+2. Opponent
+   - Data type: Categorical
+   - 4 representative example values: Charlton Athletic, Everton, Blackburn Rovers, Newcastle United
+   - Role: Descriptor for the opposing team
+
+3. Venue
+   - Data type: Categorical
+   - 4 representative example values: The Valley, Stadium of Light, Goodison Park
+   - Role: Descriptor for the location of the match
+
+4. Result
+   - Data type: Categorical
+   - 4 representative example values: 0–2, 0–1, 2–2, 1–4
+   - Role: Measure of the match outcome
+
+5. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 26,065, 30,567, 29,593, 38,093
+   - Role: Measure of the number of spectators at the match
+
+6. Scorers
+   - Data type: Categorical
+   - 4 representative example values: nan, Stead, Delap, Hoyte
+   - Role: Descriptor for the players who scored in the match
+
+**Outlier Row Analysis:**
+
+1. Row 16
+   - The values in this row are ordinary and consistent with the majority of the table. It does not contain any distinctive values that would make it an outlier. This row is an ordinary entry and requires no special handling.
+
+2. Row 31
+   - The values in this row are also ordinary and do not stand out as distinctive compared to the rest of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 33
+   - Similar to the previous outlier rows, the values in this row are typical and do not deviate significantly from the majority of the table. This row is an ordinary entry and does not need special treatment.
+
+=== Full Table Preview ===
+|   row_number | Date                | Opponent             | Venue                      | Result   |   Attendance | Scorers             |
+|-------------:|:--------------------|:---------------------|:---------------------------|:---------|-------------:|:--------------------|
+|            0 | 2005-08-13 00:00:00 | Charlton Athletic    | Stadium of Light           | 1–3      |        34446 | Gray                |
+|            1 | 2005-08-20 00:00:00 | Liverpool            | Anfield                    | 0–1      |        44913 |                     |
+|            2 | 2005-08-23 00:00:00 | Manchester City      | Stadium of Light           | 1–2      |        33357 | Le Tallec           |
+|            3 | 2005-08-27 00:00:00 | Wigan Athletic       | JJB Stadium                | 0–1      |        17223 |                     |
+|            4 | 2005-09-10 00:00:00 | Chelsea              | Stamford Bridge            | 0–2      |        41969 |                     |
+|            5 | 2005-09-17 00:00:00 | West Bromwich Albion | Stadium of Light           | 1–1      |        31657 | Breen               |
+|            6 | 2005-09-25 00:00:00 | Middlesbrough        | Riverside Stadium          | 2–0      |        29583 | Miller Arca         |
+|            7 | 2005-10-01 00:00:00 | West Ham United      | Stadium of Light           | 1–1      |        31212 | Miller              |
+|            8 | 2005-10-15 00:00:00 | Manchester United    | Stadium of Light           | 1–3      |        39085 | Elliott             |
+|            9 | 2005-10-23 00:00:00 | Newcastle United     | St James' Park             | 2–3      |        52302 | Lawrence Elliott    |
+|           10 | 2005-10-29 00:00:00 | Portsmouth           | Stadium of Light           | 1–4      |        34926 | Whitehead (pen)     |
+|           11 | 2005-11-05 00:00:00 | Arsenal              | Highbury                   | 1–3      |        38210 | Stubbs              |
+|           12 | 2005-11-19 00:00:00 | Aston Villa          | Stadium of Light           | 1–3      |        39707 | Whitehead (pen)     |
+|           13 | 2005-11-26 00:00:00 | Birmingham City      | Stadium of Light           | 0–1      |        32442 |                     |
+|           14 | 2005-11-30 00:00:00 | Liverpool            | Stadium of Light           | 0–2      |        32697 |                     |
+|           15 | 2005-12-03 00:00:00 | Tottenham Hotspur    | White Hart Lane            | 2–3      |        36244 | Whitehead Le Tallec |
+|           16 | 2005-12-10 00:00:00 | Charlton Athletic    | The Valley                 | 0–2      |        26065 |                     |
+|           17 | 2005-12-26 00:00:00 | Bolton Wanderers     | Stadium of Light           | 0–0      |        32232 |                     |
+|           18 | 2005-12-31 00:00:00 | Everton              | Stadium of Light           | 0–1      |        30567 |                     |
+|           19 | 2006-01-02 00:00:00 | Fulham               | Craven Cottage             | 1–2      |        19372 | Lawrence            |
+|           20 | 2006-01-15 00:00:00 | Chelsea              | Stadium of Light           | 1–2      |        32420 | Lawrence            |
+|           21 | 2006-01-21 00:00:00 | West Bromwich Albion | The Hawthorns              | 1–0      |        26464 | Watson (own goal)   |
+|           22 | 2006-01-31 00:00:00 | Middlesbrough        | Stadium of Light           | 0–3      |        31675 |                     |
+|           23 | 2006-02-04 00:00:00 | West Ham United      | Boleyn Ground              | 0–2      |        34745 |                     |
+|           24 | 2006-02-12 00:00:00 | Tottenham Hotspur    | Stadium of Light           | 1–1      |        34700 | Murphy              |
+|           25 | 2006-02-15 00:00:00 | Blackburn Rovers     | Ewood Park                 | 0–2      |        18220 |                     |
+|           26 | 2006-02-25 00:00:00 | Birmingham City      | St. Andrew's               | 0–1      |        29257 |                     |
+|           27 | 2006-03-03 00:00:00 | Manchester City      | City of Manchester Stadium | 1–2      |        42200 | Kyle                |
+|           28 | 2006-03-11 00:00:00 | Wigan Athletic       | Stadium of Light           | 0–1      |        31194 |                     |
+|           29 | 2006-03-18 00:00:00 | Bolton Wanderers     | Reebok Stadium             | 0–2      |        23568 |                     |
+|           30 | 2006-03-25 00:00:00 | Blackburn Rovers     | Stadium of Light           | 0–1      |        29593 |                     |
+|           31 | 2006-04-01 00:00:00 | Everton              | Goodison Park              | 2–2      |        38093 | Stead Delap         |
+|           32 | 2006-04-14 00:00:00 | Manchester United    | Old Trafford               | 0–0      |        72519 |                     |
+|           33 | 2006-04-17 00:00:00 | Newcastle United     | Stadium of Light           | 1–4      |        40032 | Hoyte               |
+|           34 | 2006-04-22 00:00:00 | Portsmouth           | Fratton Park               | 1–2      |        20078 | Miller              |
+|           35 | 2006-05-01 00:00:00 | Arsenal              | Stadium of Light           | 0–3      |        44003 |                     |
+|           36 | 2006-05-04 00:00:00 | Fulham               | Stadium of Light           | 2–1      |        28226 | Le Tallec Brown     |
+|           37 | 2006-05-07 00:00:00 | Aston Villa          | Villa Park                 | 1–2      |        33820 | D. Collins          |
+
+Generated Reasoning SQL: To find the difference in goals scored in the game played on 1 October 2005, we need to extract the goals scored by each team from the "Result" column. Since the "Result" column contains the score in the format "home team goals - away team goals", we can calculate the goal difference by subtracting the two values. We will filter the row where the "Date" is '2005-10-01' and perform the calculation.
+SQL: 
+SELECT 
+  ABS(SUBSTR("Result", 1, INSTR("Result", '–') - 1) - SUBSTR("Result", INSTR("Result", '–') + 1)) AS goal_difference
+FROM T
+WHERE "Date" = '2005-10-01';
+Generated Final SQL: SELECT ABS(SUBSTR("Result", 1, INSTR("Result", '–') - 1) - SUBSTR("Result", INSTR("Result", '–') + 1)) AS goal_difference FROM T WHERE "Date" = '2005-10-01';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2005–06 Sunderland A.F.C. season (row_number, Date, Opponent, Venue, Result, Attendance, Scorers)
+
+row_number | Date | Opponent | Venue | Result | Attendance | Scorers
+0 | 2005-08-13 00:00:00 | Charlton Athletic | Stadium of Light | 1–3 | 34446 | Gray
+1 | 2005-08-20 00:00:00 | Liverpool | Anfield | 0–1 | 44913 | None
+2 | 2005-08-23 00:00:00 | Manchester City | Stadium of Light | 1–2 | 33357 | Le Tallec
+3 | 2005-08-27 00:00:00 | Wigan Athletic | JJB Stadium | 0–1 | 17223 | None
+4 | 2005-09-10 00:00:00 | Chelsea | Stamford Bridge | 0–2 | 41969 | None
+5 | 2005-09-17 00:00:00 | West Bromwich Albion | Stadium of Light | 1–1 | 31657 | Breen
+6 | 2005-09-25 00:00:00 | Middlesbrough | Riverside Stadium | 2–0 | 29583 | Miller Arca
+7 | 2005-10-01 00:00:00 | West Ham United | Stadium of Light | 1–1 | 31212 | Miller
+8 | 2005-10-15 00:00:00 | Manchester United | Stadium of Light | 1–3 | 39085 | Elliott
+9 | 2005-10-23 00:00:00 | Newcastle United | St James' Park | 2–3 | 52302 | Lawrence Elliott
+10 | 2005-10-29 00:00:00 | Portsmouth | Stadium of Light | 1–4 | 34926 | Whitehead (pen)
+11 | 2005-11-05 00:00:00 | Arsenal | Highbury | 1–3 | 38210 | Stubbs
+12 | 2005-11-19 00:00:00 | Aston Villa | Stadium of Light | 1–3 | 39707 | Whitehead (pen)
+13 | 2005-11-26 00:00:00 | Birmingham City | Stadium of Light | 0–1 | 32442 | None
+14 | 2005-11-30 00:00:00 | Liverpool | Stadium of Light | 0–2 | 32697 | None
+15 | 2005-12-03 00:00:00 | Tottenham Hotspur | White Hart Lane | 2–3 | 36244 | Whitehead Le Tallec
+16 | 2005-12-10 00:00:00 | Charlton Athletic | The Valley | 0–2 | 26065 | None
+17 | 2005-12-26 00:00:00 | Bolton Wanderers | Stadium of Light | 0–0 | 32232 | None
+18 | 2005-12-31 00:00:00 | Everton | Stadium of Light | 0–1 | 30567 | None
+19 | 2006-01-02 00:00:00 | Fulham | Craven Cottage | 1–2 | 19372 | Lawrence
+20 | 2006-01-15 00:00:00 | Chelsea | Stadium of Light | 1–2 | 32420 | Lawrence
+21 | 2006-01-21 00:00:00 | West Bromwich Albion | The Hawthorns | 1–0 | 26464 | Watson (own goal)
+22 | 2006-01-31 00:00:00 | Middlesbrough | Stadium of Light | 0–3 | 31675 | None
+23 | 2006-02-04 00:00:00 | West Ham United | Boleyn Ground | 0–2 | 34745 | None
+24 | 2006-02-12 00:00:00 | Tottenham Hotspur | Stadium of Light | 1–1 | 34700 | Murphy
+25 | 2006-02-15 00:00:00 | Blackburn Rovers | Ewood Park | 0–2 | 18220 | None
+26 | 2006-02-25 00:00:00 | Birmingham City | St. Andrew's | 0–1 | 29257 | None
+27 | 2006-03-03 00:00:00 | Manchester City | City of Manchester Stadium | 1–2 | 42200 | Kyle
+28 | 2006-03-11 00:00:00 | Wigan Athletic | Stadium of Light | 0–1 | 31194 | None
+29 | 2006-03-18 00:00:00 | Bolton Wanderers | Reebok Stadium | 0–2 | 23568 | None
+30 | 2006-03-25 00:00:00 | Blackburn Rovers | Stadium of Light | 0–1 | 29593 | None
+31 | 2006-04-01 00:00:00 | Everton | Goodison Park | 2–2 | 38093 | Stead Delap
+32 | 2006-04-14 00:00:00 | Manchester United | Old Trafford | 0–0 | 72519 | None
+33 | 2006-04-17 00:00:00 | Newcastle United | Stadium of Light | 1–4 | 40032 | Hoyte
+34 | 2006-04-22 00:00:00 | Portsmouth | Fratton Park | 1–2 | 20078 | Miller
+35 | 2006-05-01 00:00:00 | Arsenal | Stadium of Light | 0–3 | 44003 | None
+36 | 2006-05-04 00:00:00 | Fulham | Stadium of Light | 2–1 | 28226 | Le Tallec Brown
+37 | 2006-05-07 00:00:00 | Aston Villa | Villa Park | 1–2 | 33820 | D. Collins
+Question: what was the difference of goals scored in the game played on 1 october 2005?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the game played on 1 October 2005. From the summary, we see that the game played on that date was against West Ham United at the Stadium of Light, which ended in a 1-1 draw.
+
+Next, we need to determine the goals scored by each team to find the goal difference. From the full table entry for that match:
+- Sunderland scored 1 goal.
+- West Ham United also scored 1 goal.
+
+To calculate the goal difference, we subtract the number of goals scored by West Ham United from the number of goals scored by Sunderland:
+1 (Sunderland) - 1 (West Ham United) = 0
+
+Therefore, the goal difference in the game played on 1 October 2005 was 0.
+
+Final Answer: 0
+[Fallback] Prediction: 0
+[Gold Answer] 0
+

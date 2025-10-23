@@ -1,0 +1,130 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Representative
+   - Data type: Categorical
+   - 4 representative example values: John C. Leary, E. William Crotty, James A. Daley, Brent Hardt
+   - Role of the column: Identifier for the individual representing the diplomatic mission
+
+2. Title
+   - Data type: Categorical
+   - 4 representative example values: Chargé d'Affaires, Ambassador Extraordinary and Plenipotentiary
+   - Role of the column: Describes the official title of the representative
+
+3. Presentation of Credentials
+   - Data type: Date
+   - 4 representative example values: January 9, 1987, January 30, 1999, October 17, 2000, January 1, 2009
+   - Role of the column: Indicates the date when the representative presented their credentials
+
+4. Termination of Mission
+   - Data type: Date
+   - 4 representative example values: May 1988, October 10, 1999, March 1, 2001, June 19, 2011
+   - Role of the column: Indicates the date when the representative's mission was terminated
+
+5. Appointed by
+   - Data type: Categorical
+   - 4 representative example values: Ronald Reagan, Bill Clinton
+   - Role of the column: Indicates the President who appointed the representative
+
+**Outlier Row Analysis:**
+
+1. Row 18 (Representative: nan, Title: nan, Presentation of Credentials: nan, Termination of Mission: nan, Appointed by: nan)
+   - This row contains missing values (nan) in all columns, making it an outlier as it does not provide any information about the representative or their mission. It should be treated as an outlier and excluded from analysis.
+
+2. Row 7 (Representative: Brent Hardt, Title: Chargé d'Affaires ad interim, Presentation of Credentials: January 1, 2009, Termination of Mission: June 19, 2011, Appointed by: nan)
+   - This row has a specific title "Chargé d'Affaires ad interim" which is different from the other rows where the title is either "Chargé d'Affaires" or "Ambassador Extraordinary and Plenipotentiary". This unique title makes this row an outlier.
+
+3. Row 19 (Representative: Christopher Sandrolini, Title: Chargé d'Affaires ad interim, Presentation of Credentials: June 19, 2011, Termination of Mission: 2012, Appointed by: nan)
+   - The termination date "2012" in this row is different from the other rows where specific months are mentioned. This ambiguity makes this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Representative          | Title                                        | Presentation\nof Credentials   | Termination\nof Mission   | Appointed by      |
+|-------------:|:------------------------|:---------------------------------------------|:-------------------------------|:--------------------------|:------------------|
+|            0 | Theodore R. Britton Jr. | Ambassador Extraordinary and Plenipotentiary | 1975-02-25 00:00:00            | April 22 1977             | Gerald Ford       |
+|            1 | Frank V. Ortiz Jr.      | Ambassador Extraordinary and Plenipotentiary | 1977-07-29 00:00:00            | May 15 1979               | Jimmy Carter      |
+|            2 | Sally Shelton-Colby     | Ambassador Extraordinary and Plenipotentiary | 1979-07-23 00:00:00            | February 24 1981          | Jimmy Carter      |
+|            3 | Charles A. Gillespie    | Chargé d'Affaires ad interim                 | 1984-02-02 00:00:00            | March 1984                | Ronald Reagan     |
+|            4 | Loren E. Lawrence       | Chargé d'Affaires ad interim                 | 1984-03-01 00:00:00            | December 1984             | Ronald Reagan     |
+|            5 | Roy T. Haverkamp        | Chargé d'Affaires ad interim                 | 1984-12-01 00:00:00            | March 1986                | Ronald Reagan     |
+|            6 | John C. Leary           | Chargé d'Affaires ad interim                 | 1986-03-01 00:00:00            | January 9 1987            | Ronald Reagan     |
+|            7 | John C. Leary           | Chargé d'Affaires                            | 1987-01-09 00:00:00            | May 1988                  | Ronald Reagan     |
+|            8 | James Ford Cooper       | Chargé d'Affaires                            | 1988-06-01 00:00:00            | January 1991              | Ronald Reagan     |
+|            9 | Annette T. Veler        | Chargé d'Affaires                            | 1991-07-01 00:00:00            | July 1993                 | George H. W. Bush |
+|           10 | Ollie P. Anderson Jr.   | Chargé d'Affaires                            | 1993-09-01 00:00:00            | September 1994            | Bill Clinton      |
+|           11 | Dennis F. Carter        | Chargé d'Affaires                            | 1994-12-01 00:00:00            | March 1995                | Bill Clinton      |
+|           12 | Jeanette W. Hyde        | Ambassador Extraordinary and Plenipotentiary | 1995-04-04 00:00:00            | January 31 1998           | Bill Clinton      |
+|           13 | E. William Crotty       | Ambassador Extraordinary and Plenipotentiary | 1999-01-30 00:00:00            | October 10 1999           | Bill Clinton      |
+|           14 | James A. Daley          | Ambassador Extraordinary and Plenipotentiary | 2000-10-17 00:00:00            | March 1 2001              | Bill Clinton      |
+|           15 | Earl Norfleet Phillips  | Ambassador Extraordinary and Plenipotentiary | 2002-03-26 00:00:00            | June 1 2003               | George W. Bush    |
+|           16 | Mary Kramer             | Ambassador Extraordinary and Plenipotentiary | 2004-02-05 00:00:00            | October 30 2006           | George W. Bush    |
+|           17 | Mary Martin Ourisman    | Ambassador Extraordinary and Plenipotentiary | 2007-01-18 00:00:00            | 2008                      | George W. Bush    |
+|           18 | Brent Hardt             | Chargé d'Affaires ad interim                 | 2009-01-01 00:00:00            | June 19 2011              |                   |
+|           19 | Christopher Sandrolini  | Chargé d'Affaires ad interim                 | 2011-06-19 00:00:00            | 2012                      |                   |
+|           20 | Larry Leon Palmer       | Ambassador Extraordinary and Plenipotentiary | 2012-01-01 00:00:00            | incumbent                 | Barack Obama      |
+
+Generated Reasoning SQL: Explanation: To find the ambassador who served after Jeanette W. Hyde, we need to look for the row that comes after Jeanette W. Hyde in terms of the "Presentation of Credentials" date. This means we should filter rows where the "Presentation of Credentials" date is greater than the date for Jeanette W. Hyde.
+
+SQL:
+SELECT "Representative" 
+FROM T 
+WHERE "Presentation\nof Credentials" > '1998-01-31 00:00:00'
+ORDER BY "Presentation\nof Credentials"
+LIMIT 1;
+Generated Final SQL: SELECT "Representative" FROM T WHERE "Presentation\nof Credentials" > '1998-01-31 00:00:00' ORDER BY "Presentation\nof Credentials" LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Representative    |
+|:------------------|
+| E. William Crotty |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States Ambassador to Grenada
+SQL: SELECT "Representative" FROM T WHERE "Presentation\nof Credentials" > '1998-01-31 00:00:00' ORDER BY "Presentation\nof Credentials" LIMIT 1;
+
+SQL Execution Result:
+Representative
+E. William Crotty
+
+Question: who was ambassador after jeanette w. hyde?
+A: To find the answer to this question, let’s think step by step.
+Prediction: e. william crotty
+[Gold Answer] e. william crotty
+

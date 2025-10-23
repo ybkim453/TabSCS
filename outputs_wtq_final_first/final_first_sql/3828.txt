@@ -1,0 +1,117 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Character
+   - Data type: Categorical
+   - 4 representative example values: Green Lantern, Earth-Man, Glorith II, Dragonwing
+   - Role: Identifier for each superhero character
+
+2. Real name
+   - Data type: Categorical
+   - 4 representative example values: Rond Vidar, Kirt Niedrigh, Glorith, Marya Pai
+   - Role: Descriptor providing the real name of each superhero character
+
+3. Home world
+   - Data type: Categorical
+   - 4 representative example values: Earth, Unknown
+   - Role: Descriptor indicating the home world of each superhero character
+
+4. Membership notes
+   - Data type: Text
+   - 4 representative example values: Various membership details for each character
+   - Role: Descriptor providing information about the character's membership in the superhero group
+
+5. Powers
+   - Data type: Text
+   - 4 representative example values: Possesses a Green Lantern power ring, Super-power absorption and duplication, Manipulation of mystical energies, Fire breath and acid absorption
+   - Role: Descriptor listing the powers possessed by each superhero character
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Green Lantern):
+   - The character is the last remaining member of the Green Lantern Corps and was killed by Superboy-Prime.
+   - These unique circumstances make this row an outlier compared to the other superhero characters who are alive and not the last of their kind.
+
+2. Row 3 (Dragonwing):
+   - The character has the powers of fire breath and acid absorption.
+   - While these powers are unique compared to the other characters, they are not extraordinary within the context of superhero abilities, so this row is an ordinary entry.
+
+3. Row 9 (Ordinary row):
+   - This row does not contain any distinctive values that would make it an outlier. It provides information about Harmonia's powers and membership notes, which are consistent with the other entries.
+
+=== Full Table Preview ===
+|   row_number | Character      | Real name      | Home world   | Membership notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Powers                                      |
+|-------------:|:---------------|:---------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------|
+|            0 | Night Girl     | Lydda Jath     | Kathoon      | Pre-Crisis version first appeared in Adventure Comics #306 (March 1963).\nLegion membership first mentioned by Starman in Justice Society of America vol. 3 #6 (July 2007) and confirmed in Action Comics #860 (February 2008).                                                                                                                                                                                                                                                            | Super-strength when not in direct sunlight. |
+|            1 | Chameleon Girl | Yera Allon     | Durla        | Pre-Crisis version first appeared (impersonating Shrinking Violet) in Legion of Super-Heroes vol. 2 #286 (April 1982).\nTrue form and identity revealed in Legion of Super-Heroes vol. 2 #305 (November 1983).\nLegion membership first revealed in Action Comics #861 (March 2008).                                                                                                                                                                                                       | Shapeshifting.                              |
+|            2 | Karate Kid II  | Myg            | Lythyl       | Joined as a replacement for Val Armorr as revealed in Final Crisis: Legion of 3 Worlds #1 (October 2008) unlike his counterpart who did not join the original team prior to Crisis on Infinite Earths.\nKilled by Radiation Roy in Final Crisis: Legion of 3 Worlds #3 (April 2009).                                                                                                                                                                                                       | Mastery of all known martial arts.          |
+|            3 | Green Lantern  | Rond Vidar     | Earth        | Pre-Crisis version first appeared in Adventure Comics #349 (October 1966); granted honorary membership in Adventure Comics #360 (September 1967).\nLast remaining member of the Green Lantern Corps as revealed in Final Crisis: Legion of 3 Worlds #2 (November 2008).\nKilled in the same issue by Superboy-Prime.                                                                                                                                                                       | Possesses a Green Lantern power ring.       |
+|            4 | XS             | Jenni Ognats   | Aarok        | First appeared in Legionnaires #0 (October 1994); granddaughter of Barry Allen and first cousin of Bart Allen.\nNative of the same universe as the post-Infinite Crisis team as revealed in Final Crisis: Legion of 3 Worlds #3 (April 2009).\nJoined the Earth-247 team in Legion of Super-Heroes vol. 4 #62 (November 1994).\nJoined the post-Infinite Crisis team in Final Crisis: Legion of 3 Worlds #5 (September 2009).\nPost-Flashpoint no longer listed as a member of the Legion. | Superspeed.                                 |
+|            5 | Gates          | Ti'julk Mr'asz | Vyrga        | First appeared in Legion of Super-Heroes vol. 4 #66 (March 1995).\nJoined the Earth-247 team in Legion of Super-Heroes vol. 4 #76 (January 1996).\nJoined the post-Infinite Crisis team in Final Crisis: Legion of 3 Worlds #5 (September 2009).                                                                                                                                                                                                                                           | Creation of teleportation "gates".          |
+|            6 | Earth-Man      | Kirt Niedrigh  | Earth        | Pre-Crisis version first appeared (as "Absorbency Boy") in Superboy and the Legion of Super-Heroes #218 (July 1976).\nJoined in Legion of Super-Heroes vol. 6 #2 (August 2010).\nDied battling the Adversary in Legion of Super-Heroes vol. 6 #16 (October 2011).                                                                                                                                                                                                                          | Super-power absorption and duplication.     |
+|            7 | Comet Queen    | Grava          | Extal Colony | Pre-Crisis version first appeared in Legion of Super-Heroes vol. 2 #304 (October 1983) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                          | Space flight comet gas extrusion.           |
+|            8 | Chemical Kid   | Hadru Jamik    | Phlon        | First appeared in Legion of Super-Heroes vol. 6 #6 (December 2010) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                              | Catalyze chemical reactions.                |
+|            9 | Glorith II     | Glorith        | Unknown      | First appeared in Adventure Comics #523 (April 2011) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                                            | Manipulation of mystical energies.          |
+|           10 | Dragonwing     | Marya Pai      | Earth        | First appeared in Legion of Super-Heroes vol. 6 #6 (December 2010) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                              | Fire breath and acid absorption.            |
+|           11 | Harmonia       | Harmonia Li    | Earth        | First appeared in Legion of Super-Heroes vol. 6 #1 (July 2010).\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                                                                     | Elemental.                                  |
+
+Generated Reasoning SQL: To determine the total number of characters from the home world of Earth, we need to count the rows where the "Home world" column contains the value "Earth". The summary indicates that the "Home world" column is categorical, and the representative example values include "Earth". We will filter the rows based on this condition to count the total number of characters from Earth.
+
+SQL: 
+select count("Character") from T where "Home world" like '%Earth%';
+Generated Final SQL: select count("Character") from T where "Home world" like '%Earth%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Character") |
+|---------------------:|
+|                    4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Legion of Super-Heroes members
+SQL: select count("Character") from T where "Home world" like '%Earth%';
+
+count("Character")
+4
+Question: what is the total number of characters from the home world of earth?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

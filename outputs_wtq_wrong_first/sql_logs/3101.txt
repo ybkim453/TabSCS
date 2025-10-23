@@ -1,0 +1,142 @@
+=== Table ID ===
+csv/203-csv/85.tsv
+
+=== Question ===
+which disney movie has the most songs listed?
+
+=== Sub-table Preview ===
+|   # | Title               | Performer(s)    | Film               | Length   |
+|----:|:--------------------|:----------------|:-------------------|:---------|
+|   2 | That's How You Know | Demi Lovato     | Enchanted          | 3:12     |
+|   4 | Colors of the Wind  | Vanessa Hudgens | Pocahontas         | 3:58     |
+|   7 | Kiss the Girl       | Colbie Caillat  | The Little Mermaid | 3:16     |
+|   9 | Under the Sea       | Raven-Symoné    | The Little Mermaid | 3:15     |
+|  10 | Ever Ever After     | Jordan Pruitt   | Enchanted          | 3:12     |
+|  12 | Happy Working Song  | Amy Adams       | Enchanted          | 2:09     |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 7, 9
+   - Role: Identifier for each row
+
+2. **Title**
+   - Data type: Categorical
+   - 4 representative example values: That's How You Know, Colors of the Wind, Kiss the Girl, Happy Working Song
+   - Role: Descriptor of the song title
+
+3. **Performer(s)**
+   - Data type: Categorical
+   - 4 representative example values: Demi Lovato, Vanessa Hudgens, Colbie Caillat, Raven-Symoné
+   - Role: Descriptor of the performer(s) of the song
+
+4. **Film**
+   - Data type: Categorical
+   - 4 representative example values: Enchanted, Pocahontas, The Little Mermaid
+   - Role: Descriptor of the film the song is from
+
+5. **Length**
+   - Data type: Numeric
+   - 4 representative example values: 3:12, 3:58, 3:16, 2:09
+   - Role: Measure of the length of the song
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The values for Performer(s) (Vanessa Hudgens) and Film (Pocahontas) are different from the majority of the table.
+   - This row is an outlier due to the unique combination of performer and film compared to the other entries.
+
+2. Row 9:
+   - The values for Performer(s) (Raven-Symoné) and Length (3:15) are not significantly different from the majority of the table.
+   - This row contains ordinary values and does not stand out as an outlier.
+
+3. Row 11:
+   - The values for Title (Happy Working Song) and Length (2:09) are consistent with other entries in the table.
+   - This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   # | Title                                | Performer(s)           | Film                            | Length   |
+|-------------:|----:|:-------------------------------------|:-----------------------|:--------------------------------|:---------|
+|            0 |   1 | "Once Upon a Dream"                  | Emily Osment           | Sleeping Beauty                 | 3:32     |
+|            1 |   2 | "That's How You Know"                | Demi Lovato            | Enchanted                       | 3:12     |
+|            2 |   3 | "Some Day My Prince Will Come"       | Ashley Tisdale         | Snow White and the Seven Dwarfs | 3:30     |
+|            3 |   4 | "Colors of the Wind"                 | Vanessa Hudgens        | Pocahontas                      | 3:58     |
+|            4 |   5 | "Reflection"                         | Christina Aguilera     | Mulan                           | 3:33     |
+|            5 |   6 | "So This Is Love"                    | The Cheetah Girls      | Cinderella                      | 3:40     |
+|            6 |   7 | "Kiss the Girl"                      | Colbie Caillat         | The Little Mermaid              | 3:16     |
+|            7 |   8 | "It's Not Just Make Believe"         | Kari Kimmel            | Ella Enchanted                  | 3:06     |
+|            8 |   9 | "Under the Sea"                      | Raven-Symoné           | The Little Mermaid              | 3:15     |
+|            9 |  10 | "Ever Ever After"                    | Jordan Pruitt          | Enchanted                       | 3:12     |
+|           10 |  11 | "True to Your Heart"                 | Keke Palmer            | Mulan                           | 3:22     |
+|           11 |  12 | "Happy Working Song"                 | Amy Adams              | Enchanted                       | 2:09     |
+|           12 |  13 | "Part of Your World"                 | Original Broadway Cast | The Little Mermaid              | 3:23     |
+|           13 |  14 | "A Dream Is a Wish Your Heart Makes" | Disney Channel Stars   | Cinderella                      | 3:46     |
+
+Generated Reasoning SQL: Explanation: To determine which Disney movie has the most songs listed, we need to count the number of songs for each movie in the "Film" column and then find the movie with the highest count. We will group the rows by the "Film" column and use the COUNT function to calculate the number of songs for each movie.
+
+SQL: 
+SELECT "Film", COUNT("Title") AS song_count
+FROM T
+GROUP BY "Film"
+ORDER BY song_count DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Film", COUNT("Title") AS song_count FROM T GROUP BY "Film" ORDER BY song_count DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Film               |   song_count |
+|:-------------------|-------------:|
+| The Little Mermaid |            3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Princess Disneymania
+SQL: SELECT "Film", COUNT("Title") AS song_count FROM T GROUP BY "Film" ORDER BY song_count DESC LIMIT 1;
+
+SQL Execution Result:
+Film | song_count
+The Little Mermaid | 3
+
+Question: which disney movie has the most songs listed?
+A: To find the answer to this question, let’s think step by step.
+Prediction: the little mermaid
+[Gold Answer] the little mermaid,enchanted
+

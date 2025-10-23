@@ -1,0 +1,155 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Material:
+   - Data type: Categorical
+   - 4 representative example values: Liquid helium, Acetone, Cytop, Acrylic glass
+   - Role of the column: Identifier for different materials
+
+2. λ (nm):
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, 390
+   - Role of the column: Measure of wavelength in nanometers
+
+3. n:
+   - Data type: Numeric
+   - 4 representative example values: 1.025, 1.36, 1.34, 1.490 - 1.492
+   - Role of the column: Measure of refractive index
+
+**Outlier Row Analysis:**
+
+1. Row 57:
+   - The values are all "nan" for both Material and λ (nm).
+   - This row is an outlier because it contains missing data for both Material and wavelength, which is not typical for the majority of the table.
+
+2. Row 0:
+   - The values are all "nan" for λ (nm).
+   - This row is an outlier because it contains missing data for the wavelength, which is not typical for the majority of the table.
+
+3. Row 32:
+   - The value for Material is "Acrylic glass" and the value for n is "1.490 - 1.492".
+   - This row is an outlier because it has a range of values for the refractive index, which is not a typical format compared to the other entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Material                                          |   λ (nm) | n                 |
+|-------------:|:--------------------------------------------------|---------:|:------------------|
+|            0 | Vacuum                                            |   nan    | 1 (by definition) |
+|            1 | Air at STP                                        |   nan    | 1.000277          |
+|            2 | Air                                               |   589.29 | 1.000293          |
+|            3 | Carbon dioxide                                    |   589.29 | 1.00045           |
+|            4 | Helium                                            |   589.29 | 1.000036          |
+|            5 | Hydrogen                                          |   589.29 | 1.000132          |
+|            6 | Arsenic trisulfide and sulfur in methylene iodide |   nan    | 1.9               |
+|            7 | Benzene                                           |   589.29 | 1.501             |
+|            8 | Carbon disulfide                                  |   589.29 | 1.628             |
+|            9 | Carbon tetrachloride                              |   589.29 | 1.461             |
+|           10 | Ethyl alcohol (ethanol)                           |   589.29 | 1.361             |
+|           11 | Silicone oil                                      |   nan    | 1.336-1.582       |
+|           12 | Water                                             |   589.29 | 1.3330            |
+|           13 | 10% Glucose solution in water                     |   589.29 | 1.3477            |
+|           14 | 20% Glucose solution in water                     |   589.29 | 1.3635            |
+|           15 | 60% Glucose solution in water                     |   589.29 | 1.4394            |
+|           16 | Titanium dioxide (Rutile phase )                  |   589.29 | 2.496             |
+|           17 | Diamond                                           |   589.29 | 2.419             |
+|           18 | Strontium titanate                                |   589.29 | 2.41              |
+|           19 | Amber                                             |   589.29 | 1.55              |
+|           20 | Fused silica (also called Fused Quartz)           |   589.29 | 1.458             |
+|           21 | Sodium chloride                                   |   589.29 | 1.544             |
+|           22 | Liquid helium                                     |   nan    | 1.025             |
+|           23 | Water ice                                         |   nan    | 1.31              |
+|           24 | Cornea (human)                                    |   nan    | 1.373/1.380/1.401 |
+|           25 | Lens (human)                                      |   nan    | 1.386 - 1.406     |
+|           26 | Acetone                                           |   nan    | 1.36              |
+|           27 | Ethanol                                           |   nan    | 1.36              |
+|           28 | Glycerol                                          |   nan    | 1.4729            |
+|           29 | Bromine                                           |   nan    | 1.661             |
+|           30 | Teflon AF                                         |   nan    | 1.315             |
+|           31 | Teflon                                            |   nan    | 1.35 - 1.38       |
+|           32 | Cytop                                             |   nan    | 1.34              |
+|           33 | Sylgard 184 (Polydimethylsiloxane)                |   nan    | 1.4118            |
+|           34 | PLA                                               |   nan    | 1.46              |
+|           35 | Acrylic glass                                     |   nan    | 1.490 - 1.492     |
+|           36 | Polycarbonate                                     |   nan    | 1.584 - 1.586     |
+|           37 | PMMA                                              |   nan    | 1.4893 - 1.4899   |
+|           38 | PETg                                              |   nan    | 1.57              |
+|           39 | PET                                               |   nan    | 1.5750            |
+|           40 | Crown glass (pure)                                |   nan    | 1.50 - 1.54       |
+|           41 | Flint glass (pure)                                |   nan    | 1.60 - 1.62       |
+|           42 | Crown glass (impure)                              |   nan    | 1.485 - 1.755     |
+|           43 | Flint glass (impure)                              |   nan    | 1.523 - 1.925     |
+|           44 | Pyrex (a borosilicate glass)                      |   nan    | 1.470             |
+|           45 | Cryolite                                          |   nan    | 1.338             |
+|           46 | Rock salt                                         |   nan    | 1.516             |
+|           47 | Sapphire                                          |   nan    | 1.762–1.778       |
+|           48 | Sugar Solution 25%                                |   nan    | 1.3723            |
+|           49 | Sugar Solution 50%                                |   nan    | 1.4200            |
+|           50 | Sugar Solution 75%                                |   nan    | 1.4774            |
+|           51 | Cubic zirconia                                    |   nan    | 2.15 - 2.18       |
+|           52 | Potassium Niobate (KNbO3)                         |   nan    | 2.28              |
+|           53 | Silicon carbide                                   |   nan    | 2.65 - 2.69       |
+|           54 | Cinnabar (Mercury sulfide)                        |   nan    | 3.02              |
+|           55 | Gallium(III) phosphide                            |   nan    | 3.5               |
+|           56 | Gallium(III) arsenide                             |   nan    | 3.927             |
+|           57 | Zinc Oxide                                        |   390    | 2.4               |
+|           58 | Germanium                                         |   nan    | 4.01              |
+|           59 | Silicon                                           |   590    | 3.962             |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Material" column is categorical and the "λ (nm)" column is numeric, representing the wavelength in nanometers. To find the material that does not have a wavelength above 500nm, we need to filter rows where the wavelength is less than or equal to 500nm.
+
+SQL: select "Material" from T where "λ (nm)" <= 500;
+Generated Final SQL: select "Material" from T where "λ (nm)" <= 500;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Material   |
+|:-----------|
+| Zinc Oxide |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of refractive indices
+SQL: select "Material" from T where "λ (nm)" <= 500;
+
+Material
+Zinc Oxide
+Question: which material does not have a wavelength above 500nm?
+A: To find the answer to this question, let’s think step by step.
+Prediction: zinc oxide
+[Gold Answer] zinc oxide
+

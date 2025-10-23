@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. Event:
+   - Data type: Categorical
+   - 4 representative example values: K-1 200 m, K-1 500 m, K-1 1000 m, K-1 5000 m
+   - Role: Identifier for the type of canoeing event
+
+2. Gold:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Lisa Carrington (NZL), Nicole Reinhardt (GER), Tamara Csipes (HUN), Yvonne Schuring (Austria)
+   - Role: Descriptor for the gold medalist in each event
+
+3. Time:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 39.998, 1:47.066, 4:11.388, 1:37.071
+   - Role: Measure of the time taken to complete the event
+
+4. Silver:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Marta Walczykiewicz (POL), Danuta Kozák (HUN), Krisztina Fazekas Zur (USA), Franziska Weber (Germany)
+   - Role: Descriptor for the silver medalist in each event
+
+5. Time.1:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 40.472, 1:47.396, 4:13.470, 1:37.275
+   - Role: Measure of the time taken to complete the event
+
+6. Bronze:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Inna Osypenko-Radomska (UKR), Inna Osypenko-Radomska (UKR), Naomi Flood (AUS), Beata Mikołajczyk (Poland)
+   - Role: Descriptor for the bronze medalist in each event
+
+7. Time.2:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 40.670, 1:48.668, 4:14.124, 1:37.803
+   - Role: Measure of the time taken to complete the event
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Index 1):
+   - Distinctive values: Yvonne Schuring and Viktoria Schwarz winning gold in K-2 500 m with a world best time of 1:37.071
+   - Explanation: The world best time and the joint winners make this row stand out as an outlier.
+
+2. Row 3 (Index 0):
+   - Distinctive values: Lisa Carrington winning gold in K-1 200 m with a time of 39.998
+   - Explanation: The exceptionally fast time by Lisa Carrington makes this row an outlier.
+
+3. Row 2 (Index 3):
+   - Distinctive values: Tamara Csipes winning gold in both K-1 1000 m and K-1 5000 m
+   - Explanation: Winning gold in multiple events is not common and makes this row an outlier.

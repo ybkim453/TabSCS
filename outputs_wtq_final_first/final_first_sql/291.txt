@@ -1,0 +1,106 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Match
+   - Data type: Categorical
+   - 4 representative example values: GL-B-3, GL-B-4, GL-B-6, Quarterfinals-1
+   - Role: Identifier for each match
+
+2. Date
+   - Data type: Numeric
+   - 4 representative example values: 2008, 2008, 2008, 2008
+   - Role: Descriptor indicating the year of the match
+
+3. Venue
+   - Data type: Categorical
+   - 4 representative example values: [[]], [[]], [[]], [[]]
+   - Role: Descriptor indicating the location of the match
+
+4. Opponents
+   - Data type: Categorical
+   - 4 representative example values: [[]], [[]], [[]], [[]]
+   - Role: Descriptor indicating the opposing team in the match
+
+5. Score
+   - Data type: Categorical
+   - 4 representative example values: -, -, -, -
+   - Role: Measure indicating the score of the match
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values in this row are all empty (represented as [[]]), which is different from the majority of the table where there are actual values present. This makes the row an outlier as it does not provide any information about the match.
+
+2. Row 0:
+   - The values in this row are all placeholders (e.g., [[]], -) and do not contain any specific information about the match. These values are not distinctive or special within the context of the table, making this row an ordinary entry and not an outlier.
+
+=== Full Table Preview ===
+|   row_number | Match           |   Date | Venue   | Opponents   | Score   |
+|-------------:|:----------------|-------:|:--------|:------------|:--------|
+|            0 | GL-B-1          |   2008 | [[]]    | [[]]        | -       |
+|            1 | GL-B-2          |   2008 | [[]]    | [[]]        | -       |
+|            2 | GL-B-3          |   2008 | [[]]    | [[]]        | -       |
+|            3 | GL-B-4          |   2008 | [[]]    | [[]]        | -       |
+|            4 | GL-B-5          |   2008 | [[]]    | [[]]        | -       |
+|            5 | GL-B-6          |   2008 | [[]]    | [[]]        | -       |
+|            6 | Quarterfinals-1 |   2008 | [[]]    | [[]]        | -       |
+|            7 | Quarterfinals-2 |   2008 | [[]]    | [[]]        | -       |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Opponents" column contains categorical values representing the opposing team in each match, and the "Score" column contains categorical values representing the score of the match. To count the number of opponents who had their score listed, we need to exclude rows where the score is missing ("-") and then count the distinct opponents. It is important to note that we should not use DISTINCT when counting opponents, as each row represents a unique match with an opponent.
+SQL: select count(distinct "Opponents") from T where "Score" != '-';
+Generated Final SQL: select count(distinct "Opponents") from T where "Score" != '-';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(distinct "Opponents") |
+|------------------------------:|
+|                             0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2008 F.C. Tokyo season
+SQL: select count(distinct "Opponents") from T where "Score" != '-';
+
+count(distinct "Opponents")
+0
+Question: how many opponents had his/her score listed?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 0
+

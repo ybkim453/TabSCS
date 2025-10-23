@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Round:
+   - Data type: Numeric
+   - 4 representative example values: 7, 8, 11, 20
+   - Role: Identifier for the round of the match
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: October 19, 2008, October 25, 2008, November 15, 2008, February 15, 2009
+   - Role: Descriptor for the date of the match
+
+3. Home/Away:
+   - Data type: Categorical
+   - 4 representative example values: Home, Away
+   - Role: Descriptor indicating whether the match was played at home or away
+
+4. Opponent team:
+   - Data type: Categorical
+   - 4 representative example values: KS Dinamo Tirana, KS Shkumbini Peqin, KS Lushnja, KS Besa Kavaje
+   - Role: Descriptor for the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: 2–1, 0–0, 1–0, 1–3
+   - Role: Measure indicating the final score of the match
+
+6. Scorers:
+   - Data type: Categorical
+   - 4 representative example values: Migen Memelli 32', Gjergji Muzaka 51', Laert Ndoni (O.G) 13', Daniel Xhafa 29'
+   - Role: Descriptor listing the scorers and the minute they scored
+
+**Outlier Row Analysis:**
+
+1. Row 19:
+   - The opponent team is listed as "KS Bylis Ballsh" which is different from the majority of the table.
+   - This makes the row an outlier as the opponent team is not a common name in the dataset.
+
+2. Row 24:
+   - The score is listed as "1–2" which is different from the majority of the table.
+   - This makes the row an outlier as the score is not consistent with the other scores in the dataset.
+
+3. Row 10:
+   - The opponent team is listed as "KS Vllaznia Shkoder" which is different from the majority of the table.
+   - This makes the row an outlier as the opponent team is not a common name in the dataset.

@@ -1,0 +1,122 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 6, 7
+   - Role: Identifier for each row in the table
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: 8 September 1999, 26 January 2000
+   - Role: Descriptor indicating the date of the match
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Vivero, Badajoz, Spain; Cartagonova, Cartagena, Spain
+   - Role: Descriptor specifying the location of the match
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Cyprus, Poland
+   - Role: Descriptor identifying the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: 1–0, 2–0
+   - Role: Measure indicating the score of the match
+
+6. Result:
+   - Data type: Categorical
+   - 4 representative example values: 8–0, 3–0
+   - Role: Measure indicating the result of the match
+
+7. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Euro 2000 qualifying, Friendly
+   - Role: Descriptor specifying the competition type of the match
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values for Score (4–0) and Result (8–0) are significantly different from the majority of the table, where the scores are mostly 1–0 or 2–0 and the results are 8–0 or 3–0. This makes Row 6 an outlier.
+
+2. Row 2:
+   - The values for Score (2–0) and Result (8–0) are consistent with other rows in the table. Therefore, Row 2 is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   # | Date                | Venue                          | Opponent   | Score   | Result   | Competition          |
+|-------------:|----:|:--------------------|:-------------------------------|:-----------|:--------|:---------|:---------------------|
+|            0 |   1 | 1999-03-27 00:00:00 | Mestalla Valencia Spain        | Austria    | 3–0     | 9–0      | Euro 2000 qualifying |
+|            1 |   2 | 1999-03-27 00:00:00 | Mestalla Valencia Spain        | Austria    | 5–0     | 9–0      | Euro 2000 qualifying |
+|            2 |   3 | 1999-03-31 00:00:00 | Olimpico Serravalle San Marino | San Marino | 0–3     | 0–6      | Euro 2000 qualifying |
+|            3 |   4 | 1999-09-08 00:00:00 | Vivero Badajoz Spain           | Cyprus     | 1–0     | 8–0      | Euro 2000 qualifying |
+|            4 |   5 | 1999-09-08 00:00:00 | Vivero Badajoz Spain           | Cyprus     | 2–0     | 8–0      | Euro 2000 qualifying |
+|            5 |   6 | 1999-09-08 00:00:00 | Vivero Badajoz Spain           | Cyprus     | 4–0     | 8–0      | Euro 2000 qualifying |
+|            6 |   7 | 2000-01-26 00:00:00 | Cartagonova Cartagena Spain    | Poland     | 2–0     | 3–0      | Friendly             |
+|            7 |   8 | 2000-01-26 00:00:00 | Cartagonova Cartagena Spain    | Poland     | 3–0     | 3–0      | Friendly             |
+
+Generated Reasoning SQL: Explanation: To determine where Ismael Urzaiz scored his first international goal, we need to look for the row where the "Score" column contains the score of his first goal. Since the question is specific to his first goal, we should consider the row with the lowest value in the "#"" column, which serves as an identifier for each match.
+
+SQL: 
+SELECT "Venue"
+FROM T
+WHERE "#"" = (SELECT MIN("#") FROM T)
+AND "Result" LIKE '%0–3%';
+Generated Final SQL: SELECT "Venue" FROM T WHERE "#"" = (SELECT MIN("#") FROM T) AND "Result" LIKE '%0–3%';
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT "Venue" FROM T WHERE "#"" = (SELECT MIN("#") FROM T) AND "Result" LIKE '%0–3%';': unrecognized token: "#"
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Ismael Urzaiz (row_number, #, Date, Venue, Opponent, Score, Result, Competition)
+
+row_number | # | Date | Venue | Opponent | Score | Result | Competition
+0 | 1.0 | 1999-03-27 00:00:00 | Mestalla Valencia Spain | Austria | 3–0 | 9–0 | Euro 2000 qualifying
+1 | 2.0 | 1999-03-27 00:00:00 | Mestalla Valencia Spain | Austria | 5–0 | 9–0 | Euro 2000 qualifying
+2 | 3.0 | 1999-03-31 00:00:00 | Olimpico Serravalle San Marino | San Marino | 0–3 | 0–6 | Euro 2000 qualifying
+3 | 4.0 | 1999-09-08 00:00:00 | Vivero Badajoz Spain | Cyprus | 1–0 | 8–0 | Euro 2000 qualifying
+4 | 5.0 | 1999-09-08 00:00:00 | Vivero Badajoz Spain | Cyprus | 2–0 | 8–0 | Euro 2000 qualifying
+5 | 6.0 | 1999-09-08 00:00:00 | Vivero Badajoz Spain | Cyprus | 4–0 | 8–0 | Euro 2000 qualifying
+6 | 7.0 | 2000-01-26 00:00:00 | Cartagonova Cartagena Spain | Poland | 2–0 | 3–0 | Friendly
+7 | 8.0 | 2000-01-26 00:00:00 | Cartagonova Cartagena Spain | Poland | 3–0 | 3–0 | Friendly
+Question: where did he score his first international goal?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we need to identify the row where Ismael Urzaiz scored his first international goal. This can be determined by looking at the "Score" column in the full table and finding the first goal he scored.
+
+From the table:
+- Ismael Urzaiz scored goals in the following matches:
+  1. Match 1: Spain vs. Austria - Scored 3 goals
+  2. Match 2: Spain vs. San Marino - Did not score
+  3. Match 3: Spain vs. Cyprus - Scored 3 goals
+  4. Match 4: Spain vs. Poland - Did not score
+
+By examining the "Score" column, we can see that Ismael Urzaiz scored his first international goal in Match 1 against Austria.
+
+Final Answer: Spain vs. Austria
+[Fallback] Prediction: spain vs. austria
+[Gold Answer] mestalla, valencia, spain
+

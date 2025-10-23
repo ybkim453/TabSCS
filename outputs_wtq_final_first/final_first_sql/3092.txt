@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 11, 12, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Kyrgyzstan (KGZ), North Korea (PRK), Total
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 45, 136
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 15 (North Korea (PRK)):
+   - The values for Gold, Silver, and Bronze are all 0, which is significantly lower than the majority of the table where countries have won medals.
+   - This row is an outlier because it represents a country with no medals, which is unusual compared to the other countries in the table.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation             |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:-------------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | China (CHN)        |     14 |       14 |       13 |      41 |
+|            1 | 2      | India (IND)        |      7 |        6 |        4 |      17 |
+|            2 | 3      | Saudi Arabia (KSA) |      7 |        1 |        0 |       8 |
+|            3 | 4      | Kazakhstan (KAZ)   |      3 |        4 |        5 |      12 |
+|            4 | 5      | South Korea (KOR)  |      3 |        2 |        1 |       6 |
+|            5 | 6      | Japan (JPN)        |      2 |       13 |        8 |      23 |
+|            6 | 7      | Bahrain (BRN)      |      2 |        1 |        1 |       4 |
+|            7 | 8      | Sri Lanka (SRI)    |      2 |        0 |        2 |       4 |
+|            8 | 9      | Qatar (QAT)        |      1 |        4 |        3 |       8 |
+|            9 | 10     | Thailand (THA)     |      1 |        1 |        2 |       4 |
+|           10 | 11     | Kyrgyzstan (KGZ)   |      1 |        1 |        0 |       2 |
+|           11 | 12     | Kuwait (KUW)       |      1 |        0 |        0 |       1 |
+|           12 | 12     | North Korea (PRK)  |      1 |        0 |        0 |       1 |
+|           13 | 14     | Uzbekistan (UZB)   |      0 |        1 |        3 |       4 |
+|           14 | 15     | Iran (IRI)         |      0 |        1 |        0 |       1 |
+|           15 | Total  | Total              |     45 |       49 |       42 |     136 |
+
+Generated Reasoning SQL: Explanation: To find the difference in the number of gold medals between China and India, we need to retrieve the gold medal counts for each country and calculate the variance. The "Nation" column contains categorical values representing countries, and the "Gold" column contains the count of gold medals won by each country.
+
+SQL: 
+SELECT 
+    (SELECT "Gold" FROM T WHERE "Nation" = 'China (CHN)') - 
+    (SELECT "Gold" FROM T WHERE "Nation" = 'India (IND)') as gold_medal_difference;
+Generated Final SQL: SELECT (SELECT "Gold" FROM T WHERE "Nation" = 'China (CHN)') - (SELECT "Gold" FROM T WHERE "Nation" = 'India (IND)') as gold_medal_difference;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| gold_medal_difference   |
+|:------------------------|
+|                         |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Athletics at the 2002 Asian Games (row_number, Rank, Nation, Gold, Silver, Bronze, Total)
+
+row_number | Rank | Nation | Gold | Silver | Bronze | Total
+0 | 1 | China (CHN) | 14 | 14 | 13 | 41
+1 | 2 | India (IND) | 7 | 6 | 4 | 17
+2 | 3 | Saudi Arabia (KSA) | 7 | 1 | 0 | 8
+3 | 4 | Kazakhstan (KAZ) | 3 | 4 | 5 | 12
+4 | 5 | South Korea (KOR) | 3 | 2 | 1 | 6
+5 | 6 | Japan (JPN) | 2 | 13 | 8 | 23
+6 | 7 | Bahrain (BRN) | 2 | 1 | 1 | 4
+7 | 8 | Sri Lanka (SRI) | 2 | 0 | 2 | 4
+8 | 9 | Qatar (QAT) | 1 | 4 | 3 | 8
+9 | 10 | Thailand (THA) | 1 | 1 | 2 | 4
+10 | 11 | Kyrgyzstan (KGZ) | 1 | 1 | 0 | 2
+11 | 12 | Kuwait (KUW) | 1 | 0 | 0 | 1
+12 | 12 | North Korea (PRK) | 1 | 0 | 0 | 1
+13 | 14 | Uzbekistan (UZB) | 0 | 1 | 3 | 4
+14 | 15 | Iran (IRI) | 0 | 1 | 0 | 1
+15 | Total | Total | 45 | 49 | 42 | 136
+Question: how many more gold metals did china have than india
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will focus on the relevant columns in the table, which are "Nation" and "Gold."
+
+From the table:
+- China won 14 gold medals.
+- India won 7 gold medals.
+
+Calculating the difference:
+14 (China's gold medals) - 7 (India's gold medals) = 7
+
+Therefore, China had 7 more gold medals than India.
+
+Final Answer: 7
+[Fallback] Prediction: 7
+[Gold Answer] 7
+

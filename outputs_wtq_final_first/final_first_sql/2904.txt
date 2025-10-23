@@ -1,0 +1,133 @@
+=== Table Summary ===
+### Column Analysis:
+
+1. **Rank:**
+   - Data type: Numeric
+   - 4 representative values: 1, 8, 15, 16
+   - Role: Identifier for the athlete's ranking in the competition.
+
+2. **Athlete:**
+   - Data type: Categorical
+   - 4 representative values: Andrey Tereshin, Linus Thörnblad, Robert Wolski, Svatoslav Ton
+   - Role: Descriptor for the athlete's name.
+
+3. **Nationality:**
+   - Data type: Categorical
+   - 4 representative values: Russia, Sweden, Poland, Czech Republic
+   - Role: Descriptor for the athlete's nationality.
+
+4. **2.15, 2.20, 2.24, 2.27:**
+   - Data type: Categorical (o, xo, xxx, nan)
+   - 4 representative values: o, xo, xxx, nan
+   - Role: Measures representing the athlete's performance in high jump.
+
+5. **Result:**
+   - Data type: Numeric
+   - 4 representative values: 2.27, 2.24, 2.2, nan
+   - Role: Measure representing the final result of the athlete in high jump.
+
+6. **Notes:**
+   - Data type: Categorical
+   - 4 representative values: q, nan
+   - Role: Descriptor for any additional notes related to the athlete's performance.
+
+### Outlier Row Analysis:
+
+1. **Row 15 (Svatoslav Ton, Czech Republic):**
+   - The values xo, xxx, nan in the high jump columns make this row distinctive.
+   - This row is an outlier due to the unusual pattern of performance results compared to the majority of the table.
+
+2. **Row 7 (Not included in the provided table):**
+   - Since this row is not part of the provided table, it cannot be analyzed for outlier status.
+
+3. **Row 14 (Not included in the provided table):**
+   - Since this row is not part of the provided table, it cannot be analyzed for outlier status.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Athlete            | Nationality    | 2.15   | 2.20   | 2.24   | 2.27   |   Result | Notes   |
+|-------------:|-------:|:-------------------|:---------------|:-------|:-------|:-------|:-------|---------:|:--------|
+|            0 |      1 | Yaroslav Rybakov   | Russia         | o      | o      | o      | o      |     2.27 | q       |
+|            1 |      1 | Andriy Sokolovskyy | Ukraine        | o      | o      | o      | o      |     2.27 | q       |
+|            2 |      1 | Stefan Holm        | Sweden         | o      | o      | o      | o      |     2.27 | q       |
+|            3 |      1 | Andrey Tereshin    | Russia         | o      | o      | o      | o      |     2.27 | q       |
+|            4 |      1 | Víctor Moya        | Cuba           | o      | o      | o      | o      |     2.27 | q PB    |
+|            5 |      1 | Linus Thörnblad    | Sweden         | o      | o      | o      | o      |     2.27 | q       |
+|            6 |      7 | Giulio Ciotti      | Italy          | o      | o      | o      | xxx    |     2.24 | q       |
+|            7 |      8 | Robert Wolski      | Poland         | xo     | o      | o      | xxx    |     2.24 | q       |
+|            8 |      9 | Ramsay Carelse     | South Africa   | xo     | xo     | o      | xxx    |     2.24 |         |
+|            9 |     10 | Tora Harris        | United States  | o      | o      | xo     | xxx    |     2.24 |         |
+|           10 |     10 | Nicola Ciotti      | Italy          | o      | o      | xo     | xxx    |     2.24 |         |
+|           11 |     10 | Wojciech Theiner   | Poland         | o      | o      | xo     | xxx    |     2.24 |         |
+|           12 |     13 | Tomáš Janku        | Czech Republic | o      | o      | xxo    | xxx    |     2.24 |         |
+|           13 |     13 | Mustapha Raifak    | France         | o      | o      | xxo    | xxx    |     2.24 |         |
+|           14 |     15 | Svatoslav Ton      | Czech Republic | o      | xo     | xxx    |        |     2.2  |         |
+|           15 |     16 | Adam Shunk         | United States  | o      | xxx    |        | 2.15   |   nan    |         |
+|           16 |     16 | Roman Fricke       | Germany        | o      | xxx    |        | 2.15   |   nan    |         |
+
+Generated Reasoning SQL: Since the "Rank" column represents the athlete's ranking in the competition, we can find the athlete who came after Stefan Holm by selecting the row with a rank of 2 after Stefan Holm's rank.
+To achieve this, we need to filter the rows where "Rank" = 2 after filtering the rows where "Athlete" = 'Stefan Holm'.
+SQL: 
+SELECT "Athlete" 
+FROM T 
+WHERE "Rank" = (SELECT "Rank" FROM T WHERE "Athlete" = 'Stefan Holm') + 2;
+Generated Final SQL: SELECT "Athlete" FROM T WHERE "Rank" = (SELECT "Rank" FROM T WHERE "Athlete" = 'Stefan Holm') + 2;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2006 IAAF World Indoor Championships – Men's high jump (row_number, Rank, Athlete, Nationality, 2.15, 2.20, 2.24, 2.27, Result, Notes)
+
+row_number | Rank | Athlete | Nationality | 2.15 | 2.20 | 2.24 | 2.27 | Result | Notes
+0 | 1.0 | Yaroslav Rybakov | Russia | o | o | o | o | 2.27 | q
+1 | 1.0 | Andriy Sokolovskyy | Ukraine | o | o | o | o | 2.27 | q
+2 | 1.0 | Stefan Holm | Sweden | o | o | o | o | 2.27 | q
+3 | 1.0 | Andrey Tereshin | Russia | o | o | o | o | 2.27 | q
+4 | 1.0 | Víctor Moya | Cuba | o | o | o | o | 2.27 | q PB
+5 | 1.0 | Linus Thörnblad | Sweden | o | o | o | o | 2.27 | q
+6 | 7.0 | Giulio Ciotti | Italy | o | o | o | xxx | 2.24 | q
+7 | 8.0 | Robert Wolski | Poland | xo | o | o | xxx | 2.24 | q
+8 | 9.0 | Ramsay Carelse | South Africa | xo | xo | o | xxx | 2.24 | None
+9 | 10.0 | Tora Harris | United States | o | o | xo | xxx | 2.24 | None
+10 | 10.0 | Nicola Ciotti | Italy | o | o | xo | xxx | 2.24 | None
+11 | 10.0 | Wojciech Theiner | Poland | o | o | xo | xxx | 2.24 | None
+12 | 13.0 | Tomáš Janku | Czech Republic | o | o | xxo | xxx | 2.24 | None
+13 | 13.0 | Mustapha Raifak | France | o | o | xxo | xxx | 2.24 | None
+14 | 15.0 | Svatoslav Ton | Czech Republic | o | xo | xxx | None | 2.2 | None
+15 | 16.0 | Adam Shunk | United States | o | xxx | None | 2.15 | nan | None
+16 | 16.0 | Roman Fricke | Germany | o | xxx | None | 2.15 | nan | None
+Question: who came in after stefan holm?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate Stefan Holm in the table. According to the full table, Stefan Holm is ranked first. 
+
+Next, we need to look for the athlete who came after Stefan Holm. After Stefan Holm, the next athlete listed in the table is Andrey Tereshin, who is also ranked first.
+
+Therefore, the athlete who came in after Stefan Holm is Andrey Tereshin.
+
+Final Answer: Andrey Tereshin
+[Fallback] Prediction: andrey tereshin
+[Gold Answer] andrey tereshin
+

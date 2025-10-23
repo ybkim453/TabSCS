@@ -1,0 +1,117 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Frequency:
+   - Data type: Categorical
+   - 4 representative example values: 93.1 FM, 94.3 FM, 104.1 FM, 106.3 FM
+   - Role: Identifier for the radio station frequency
+
+2. Call sign:
+   - Data type: Categorical
+   - 4 representative example values: KKYA, KDAM, WNAX-FM, KVHT
+   - Role: Identifier for the radio station call sign
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: KK93, The Dam, The Wolf 104.1, Classic Hits 106.3
+   - Role: Descriptor for the radio station name
+
+4. Format:
+   - Data type: Categorical
+   - 4 representative example values: Country, Mainstream Rock, Classic Hits, Country
+   - Role: Descriptor for the radio station format
+
+5. Owner:
+   - Data type: Categorical
+   - 4 representative example values: Riverfront Broadcasting LLC, Riverfront Broadcasting LLC, Saga Communications, Cullhane Communications, Inc.
+   - Role: Descriptor for the radio station owner
+
+6. Target city/market:
+   - Data type: Categorical
+   - 4 representative example values: Yankton/Vermillion, Yankton/Vermillion, Yankton/Vermillion, Yankton/Vermillion
+   - Role: Descriptor for the target city or market of the radio station
+
+7. City of license:
+   - Data type: Categorical
+   - 4 representative example values: Yankton, Hartington, Yankton, Vermillion
+   - Role: Descriptor for the city of license of the radio station
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Frequency: 93.1 FM, Call sign: KKYA, Name: KK93, Format: Country, Owner: Riverfront Broadcasting LLC, Target city/market: Yankton/Vermillion, City of license: Yankton):
+   - This row does not have any distinctive values that make it an outlier. All the values are common and consistent with the majority of the table. Therefore, this is an ordinary row and does not require special handling.
+
+2. Row 2 (Frequency: 104.1 FM, Call sign: WNAX-FM, Name: The Wolf 104.1, Format: Country, Owner: Saga Communications, Target city/market: Yankton/Vermillion, City of license: Yankton):
+   - This row also does not have any distinctive values that make it an outlier. All the values are common and consistent with the majority of the table. Therefore, this is an ordinary row and does not require special handling.
+
+3. Row 3 (Frequency: 106.3 FM, Call sign: KVHT, Name: Classic Hits 106.3, Format: Classic Hits, Owner: Cullhane Communications, Inc., Target city/market: Yankton/Vermillion, City of license: Vermillion):
+   - This row does not have any distinctive values that make it an outlier. All the values are common and consistent with the majority of the table. Therefore, this is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Frequency   | Call sign   | Name                             | Format          | Owner                                                    | Target city/market   | City of license   |
+|-------------:|:------------|:------------|:---------------------------------|:----------------|:---------------------------------------------------------|:---------------------|:------------------|
+|            0 | 89.7 FM     | KUSD        | South Dakota Public Broadcasting | NPR             | SD Board of Directors for Educational Telecommunications | Yankton/Vermillion   | Vermillion        |
+|            1 | 93.1 FM     | KKYA        | KK93                             | Country         | Riverfront Broadcasting LLC                              | Yankton/Vermillion   | Yankton           |
+|            2 | 94.3 FM     | KDAM        | The Dam                          | Mainstream Rock | Riverfront Broadcasting LLC                              | Yankton/Vermillion   | Hartington        |
+|            3 | 104.1 FM    | WNAX-FM     | The Wolf 104.1                   | Country         | Saga Communications                                      | Yankton/Vermillion   | Yankton           |
+|            4 | 106.3 FM    | KVHT        | Classic Hits 106.3               | Classic Hits    | Cullhane Communications Inc.                             | Yankton/Vermillion   | Vermillion        |
+
+Generated Reasoning SQL: To determine the number of choices for listening to country music, we need to count the rows where the "Format" column is equal to "Country". The summary indicates that the "Format" column is categorical and contains descriptors for the radio station format. We can filter the rows based on this condition to find the total count of radio stations playing country music.
+
+SQL: select count("Format") from T where "Format" = 'Country';
+Generated Final SQL: select count("Format") from T where "Format" = 'Country';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Format") |
+|------------------:|
+|                 2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Yankton, South Dakota
+SQL: select count("Format") from T where "Format" = 'Country';
+
+count("Format")
+2
+Question: if you wanted to listen to country music how many choices to you have?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

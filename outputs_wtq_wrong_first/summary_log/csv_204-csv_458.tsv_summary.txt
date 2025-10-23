@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. **Poll Source:**
+   - Data type: Categorical
+   - 4 representative example values: Rasmussen Reports, Survey USA
+   - Role: Identifier for the source of the poll data
+
+2. **Sample Size:**
+   - Data type: Numeric
+   - 4 representative example values: 500, 543, nan (missing data)
+   - Role: Measure indicating the number of participants in the poll
+
+3. **Margin of Error:**
+   - Data type: Numeric
+   - 4 representative example values: 4.5, nan (missing data)
+   - Role: Measure indicating the margin of error for the poll results
+
+4. **Date:**
+   - Data type: Categorical
+   - 4 representative example values: Mar 31, 2008, Jan 4-6, 2008
+   - Role: Descriptor indicating the date of the poll
+
+5. **Democrat (%):**
+   - Data type: Numeric
+   - 4 representative example values: 36, 47, 44
+   - Role: Measure indicating the percentage of support for the Democratic candidate
+
+6. **Republican (%):**
+   - Data type: Numeric
+   - 4 representative example values: 51, 45, 48
+   - Role: Measure indicating the percentage of support for the Republican candidate
+
+**Outlier Row Analysis:**
+
+1. **Row 0 (Rasmussen Reports, Mar 31, 2008):**
+   - The values for Democrat (%) and Republican (%) are 36 and 51, respectively, which are significantly different from the other rows in the table.
+   - These values make the row an outlier as they deviate from the typical percentages seen in other rows.
+
+2. **Row 4 (Survey USA, Dec. 17, 2007):**
+   - The values for Democrat (%) and Republican (%) are 46 and 45, respectively, which are not significantly different from the other rows in the table.
+   - These values are ordinary within the context of the table and do not make the row an outlier.
+
+3. **Row 16 (Survey USA, Nov 9-11, 2007):**
+   - The values for Democrat (%) and Republican (%) are 44 and 48, respectively, which are not significantly different from the other rows in the table.
+   - These values are ordinary within the context of the table and do not make the row an outlier.

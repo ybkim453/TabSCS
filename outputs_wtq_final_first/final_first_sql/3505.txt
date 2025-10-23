@@ -1,0 +1,127 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2009, 2006, 2005, 2001
+   - Role: Identifier for the year in which the title was released.
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Infinito, La Vida Inmune, Cuentos De Pelos, Perros Patinadores
+   - Role: Descriptor for the title of the film or series.
+
+3. Rol:
+   - Data type: Categorical
+   - 4 representative example values: nan, Malhora, Differentes personajes en "No es Justo" y "Ponte Bizbo"
+   - Role: Descriptor for the role played by the individual in the production.
+
+4. Format:
+   - Data type: Categorical
+   - 4 representative example values: Short Film, Feature Film, Serie, Capsulas
+   - Role: Descriptor for the format of the production.
+
+5. Related Links:
+   - Data type: Categorical (URL)
+   - 4 representative example values: nan, https://www.youtube.com/watch?v=PQt4RU3usnw, nan, https://www.youtube.com/watch?v=M7YCuvFbFJ0
+   - Role: Descriptor for related links to the production.
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+2. Row 0:
+   - The values in this row are all related to the production "Infinito" and are consistent with the other entries in the table. This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+3. Row 9:
+   - The values in this row are all related to the production "Cuentos De Pelos" and are consistent with the other entries in the table. This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+=== Full Table Preview ===
+|   row_number | Year      | Title                          | Rol                                                     | Format       | Related Links                                               |
+|-------------:|:----------|:-------------------------------|:--------------------------------------------------------|:-------------|:------------------------------------------------------------|
+|            0 | 2010      | Niñas mal (telenovela)         | Piti                                                    | Telenovela   | http://www.novelamtv.com/                                   |
+|            1 | 2010      | Soy tu fan (México)            | Actor                                                   | Serie        | https://www.youtube.com/watch?v=hnCb5GG0E2U                 |
+|            2 | 2010      | Yo Te Estaré Cuidando          | Camilo                                                  | Short Film   |                                                             |
+|            3 | 2009      | Infinito                       |                                                         | Short Film   |                                                             |
+|            4 | 2009      | Me Mueves 2° Temporada         | Arturo                                                  | Serie        | https://www.youtube.com/watch?v=fNE5WHZ_tt8&feature=related |
+|            5 | 2008      | Me Mueves 1° Temporada         | Arturo                                                  | Serie        | https://www.youtube.com/watch?v=lj2Q6rrOK1k                 |
+|            6 | 2008      | La Carretera Es Blanca Y Llana | Peru                                                    | Short Film   | https://www.youtube.com/watch?v=GKehxHZ16rs                 |
+|            7 | 2007      | La Zona                        | Alejandro                                               | Feature Film | https://www.youtube.com/watch?v=W5SzXJe-NMk                 |
+|            8 | 2006–2008 | Skimo                          | Fito                                                    | Serie        | https://www.youtube.com/watch?v=w_6cn3BajE0&feature=related |
+|            9 | 2006      | La Vida Inmune                 | Malhora                                                 | Feature Film | https://www.youtube.com/watch?v=PQt4RU3usnw                 |
+|           10 | 2005      | Cuentos De Pelos               |                                                         | Serie        |                                                             |
+|           11 | 2005      | Quinceañera                    |                                                         | Feature Film |                                                             |
+|           12 | 2004      | El Divan De Valentina          | Dj                                                      | Serie        |                                                             |
+|           13 | 2001      | Perros Patinadores             |                                                         | Short Film   |                                                             |
+|           14 | 1997–2001 | Bizbirije                      | Differentes personajes en "No es Justo" y "Ponte Bizbo" | Capsulas     | https://www.youtube.com/watch?v=M7YCuvFbFJ0                 |
+
+Generated Reasoning SQL: Explanation: To retrieve the distinct formats present in the table, we need to select unique values from the "Format" column. Since the "Format" column is categorical, we can directly query it to list all unique formats without any aggregation or calculation.
+
+SQL: SELECT DISTINCT "Format" FROM T;
+Generated Final SQL: SELECT DISTINCT "Format" FROM T;
+SQL 실행 결과 셀 수: 5
+=== SQL 실행 결과 미리보기 ===
+| Format       |
+|:-------------|
+| Telenovela   |
+| Serie        |
+| Short Film   |
+| Feature Film |
+| Capsulas     |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Daniel Tovar
+SQL: SELECT DISTINCT "Format" FROM T;
+
+SQL Execution Result:
+Format
+Telenovela
+Serie
+Short Film
+Feature Film
+Capsulas
+
+Question: nameeach of the formats in the table.
+A: To find the answer to this question, let’s think step by step.
+Prediction: telenovela, serie, short film, feature film, capsulas
+[Gold Answer] telenovela,serie,short film,feature film,capsulas
+

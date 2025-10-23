@@ -1,0 +1,158 @@
+=== Table ID ===
+csv/203-csv/170.tsv
+
+=== Question ===
+in what event did nadia franchini end the season ranked the most often?
+
+=== Sub-table Preview ===
+| Chord   | Root   | Minor Third   | Perfect Fifth   | Major Seventh   |
+|:--------|:-------|:--------------|:----------------|:----------------|
+| C♯mM7   | C♯     | E             | G♯              | B♯ (C)          |
+| D♭mM7   | D♭     | F♭ (E)        | A♭              | C               |
+| DmM7    | D      | F             | A               | C♯              |
+| EmM7    | E      | G             | B               | D♯              |
+| A♭mM7   | A♭     | C♭ (B)        | E♭              | G               |
+| BmM7    | B      | D             | F♯              | A♯              |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Chord:
+   - Data type: Categorical
+   - 4 representative example values: C♯mM7, D♭mM7, DmM7, EmM7
+   - Role: Identifier for the type of chord being described
+
+2. Root:
+   - Data type: Categorical
+   - 4 representative example values: C♯, D♭, D, E
+   - Role: Descriptor indicating the root note of the chord
+
+3. Minor Third:
+   - Data type: Categorical
+   - 4 representative example values: E, F♭ (E), F, G
+   - Role: Descriptor indicating the minor third note of the chord
+
+4. Perfect Fifth:
+   - Data type: Categorical
+   - 4 representative example values: G♯, A♭, A, B
+   - Role: Descriptor indicating the perfect fifth note of the chord
+
+5. Major Seventh:
+   - Data type: Categorical
+   - 4 representative example values: B♯ (C), C, C♯, D♯
+   - Role: Descriptor indicating the major seventh note of the chord
+
+**Outlier Row Analysis:**
+
+1. Row 3 (DmM7):
+   - The values for the chord DmM7 are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+2. Row 16 (BmM7):
+   - The values for the chord BmM7 are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+3. Row 6 (A♭mM7):
+   - The values for the chord A♭mM7 are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Season |   Age | Overall                 | Slalom                  | Giant\nSlalom           | Super G                 | Downhill                | Combined                |
+|-------------:|---------:|------:|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|
+|            0 |     2004 |    17 | 112                     | –                       | –                       | 51                      | –                       | —                       |
+|            1 |     2005 |    18 | 37                      | –                       | 27                      | 18                      | 49                      | —                       |
+|            2 |     2006 |    19 | 22                      | –                       | 18                      | 37                      | 15                      | —                       |
+|            3 |     2007 |    20 | 33                      | –                       | 50                      | 15                      | 23                      | —                       |
+|            4 |     2008 |    21 | 38                      | –                       | –                       | 35                      | 13                      | —                       |
+|            5 |     2009 |    22 | 9                       | –                       | 40                      | 2                       | 5                       | 50                      |
+|            6 |     2010 |    23 | 28                      | –                       | –                       | 13                      | 23                      | —                       |
+|            7 |     2011 |    24 | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete |
+|            8 |     2012 |    25 | 75                      | –                       | 28                      | –                       | –                       | —                       |
+|            9 |     2013 |    26 | 37                      | –                       | 17                      | 28                      | 30                      | —                       |
+
+Generated Reasoning SQL: Explanation: To determine the event in which Nadia Fanchini ended the season ranked the most often, we need to analyze the columns related to her rankings. The "Overall", "Slalom", "Giant Slalom", "Super G", "Downhill", and "Combined" columns represent different events where she competed. We should identify the event where she achieved the highest ranking the most number of times.
+
+SQL: 
+SELECT 
+    CASE
+        WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Overall" THEN 'Overall'
+        WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Slalom" THEN 'Slalom'
+        WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Giant\nSlalom" THEN 'Giant Slalom'
+        WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Super G" THEN 'Super G'
+        WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Downhill" THEN 'Downhill'
+        ELSE 'Combined'
+    END AS most_ranked_event
+FROM T;
+Generated Final SQL: SELECT CASE WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Overall" THEN 'Overall' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Slalom" THEN 'Slalom' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Giant\nSlalom" THEN 'Giant Slalom' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Super G" THEN 'Super G' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Downhill" THEN 'Downhill' ELSE 'Combined' END AS most_ranked_event FROM T;
+SQL 실행 결과 셀 수: 10
+=== SQL 실행 결과 미리보기 ===
+| most_ranked_event   |
+|:--------------------|
+| Combined            |
+| Combined            |
+| Combined            |
+| Combined            |
+| Combined            |
+| Slalom              |
+| Combined            |
+| Overall             |
+| Combined            |
+| Combined            |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Nadia Fanchini
+SQL: SELECT CASE WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Overall" THEN 'Overall' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Slalom" THEN 'Slalom' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Giant\nSlalom" THEN 'Giant Slalom' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Super G" THEN 'Super G' WHEN MAX("Overall", "Slalom", "Giant\nSlalom", "Super G", "Downhill", "Combined") = "Downhill" THEN 'Downhill' ELSE 'Combined' END AS most_ranked_event FROM T;
+
+SQL Execution Result:
+most_ranked_event
+Combined
+Combined
+Combined
+Combined
+Combined
+Slalom
+Combined
+Overall
+Combined
+Combined
+
+Question: in what event did nadia franchini end the season ranked the most often?
+A: To find the answer to this question, let’s think step by step.
+Prediction: slalom
+[Gold Answer] super g
+

@@ -1,0 +1,18 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Categorical
+   - 4 representative example values: 1903-04, 1904-05, 1905-06, 1937-38
+   - Role: Identifier for the specific year the data corresponds to
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Mr B. Owen- Jones, Mr G. Constable, Mr W.Pearce, Mr Ben Steyn
+   - Role: Descriptor for the individual associated with the data
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values that make it distinctive are Mr B. Owen- Jones for Name, Mr W.Pearce for Name.1, and Mr J.F.Serfontein for Name.2
+   - These values are different from the majority of the table as they are unique combinations of names for each respective year
+   - This row is an outlier due to the distinctiveness of the names compared to the other rows in the table

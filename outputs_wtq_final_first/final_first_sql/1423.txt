@@ -1,0 +1,149 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Conference
+   - Data type: Categorical
+   - 4 representative example values: Big Ten, Atlantic Coast, Missouri Valley, Big Sky
+   - Role: Identifier for the conference each team belongs to
+
+2. # of Bids
+   - Data type: Numeric
+   - 4 representative example values: 5, 3, 2, 1
+   - Role: Measure of the number of bids each conference received
+
+3. Record
+   - Data type: Categorical
+   - 4 representative example values: 9-5, 9-2, 2-2, 1-2
+   - Role: Descriptor of the win-loss record for each conference
+
+4. Win %
+   - Data type: Numeric
+   - 4 representative example values: .643, .818, .500, .333
+   - Role: Measure of the winning percentage for each conference
+
+5. Round of 32
+   - Data type: Numeric
+   - 4 representative example values: 4, 3, 2, 1
+   - Role: Measure of the number of teams from each conference that made it to the Round of 32
+
+6. Sweet Sixteen
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 0, 0
+   - Role: Measure of the number of teams from each conference that made it to the Sweet Sixteen
+
+7. Elite Eight
+   - Data type: Numeric
+   - 4 representative example values: 2, 1, 0, 0
+   - Role: Measure of the number of teams from each conference that made it to the Elite Eight
+
+8. Final Four
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 0, 0
+   - Role: Measure of the number of teams from each conference that made it to the Final Four
+
+9. Championship Game
+   - Data type: Categorical
+   - 4 representative example values: -, 1, -, -
+   - Role: Descriptor of whether a team from each conference made it to the Championship Game
+
+**Outlier Row Analysis:**
+
+1. Row 5 (West Coast)
+   - The values for Win %, Round of 32, Sweet Sixteen, Elite Eight, Final Four, and Championship Game are all missing or marked as "-".
+   - This row is an outlier as it does not have any data for these important metrics, making it distinct from the other rows in the table.
+
+2. Row 0 (Big Ten)
+   - The Win % is .643, which is lower than the Win % of the Atlantic Coast conference (Row 1) with .818.
+   - This row is an outlier as it has a lower Win % compared to the conference with the second-highest number of bids.
+
+3. Row 1 (Atlantic Coast)
+   - The Win % is .818, which is higher than the Win % of the Big Ten conference (Row 0) with .643.
+   - This row is an outlier as it has a higher Win % compared to the conference with the highest number of bids.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them outliers that may require special handling in the analysis.
+
+=== Full Table Preview ===
+|   row_number | Conference       |   # of Bids | Record   | Win %   | Round\nof 32   | Sweet\nSixteen   | Elite\nEight   | Final\nFour   | Championship\nGame   |
+|-------------:|:-----------------|------------:|:---------|:--------|:---------------|:-----------------|:---------------|:--------------|:---------------------|
+|            0 | Southeastern     |           6 | 10–6     | .625    | 5              | 3                | 1              | 1             | –                    |
+|            1 | Big Ten          |           5 | 9–5      | .643    | 4              | 2                | 2              | 1             | –                    |
+|            2 | Pacific-10       |           5 | 8–5      | .615    | 4              | 2                | 2              | –             | –                    |
+|            3 | Southwest        |           4 | 5–4      | .556    | 3              | 2                | –              | –             | –                    |
+|            4 | Big Eight        |           4 | 3–4      | .429    | 2              | 1                | –              | –             | –                    |
+|            5 | Atlantic Coast   |           3 | 9–2      | .818    | 3              | 2                | 1              | 1             | 1                    |
+|            6 | Atlantic 10      |           3 | 1–3      | .250    | 1              | –                | –              | –             | –                    |
+|            7 | Sun Belt         |           2 | 6–2      | .750    | 2              | 1                | 1              | 1             | 1                    |
+|            8 | Big East         |           2 | 5–2      | .714    | 2              | 2                | 1              | –             | –                    |
+|            9 | Metro            |           2 | 2–2      | .500    | 1              | 1                | –              | –             | –                    |
+|           10 | Missouri Valley  |           2 | 2–2      | .500    | 2              | –                | –              | –             | –                    |
+|           11 | Big Sky          |           2 | 1–2      | .333    | 1              | –                | –              | –             | –                    |
+|           12 | Big West         |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           13 | Great Midwest    |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           14 | Mid-Continent    |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           15 | West Coast       |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           16 | Colonial         |           1 | 1–1      | .500    | 1              | –                | –              | –             | –                    |
+|           17 | Western Athletic |           1 | 1–1      | .500    | 1              | –                | –              | –             | –                    |
+
+Generated Reasoning SQL: To determine which conference has had at least 6 bids, we need to filter the rows based on the "# of Bids" column and count the occurrences of each conference. The summary indicates that the "# of Bids" column is numeric, and we are interested in conferences with a value of 6 or higher in this column.
+
+SQL: 
+SELECT "Conference", COUNT("Conference") 
+FROM T 
+WHERE CAST("# of Bids" AS INTEGER) >= 6 
+GROUP BY "Conference";
+Generated Final SQL: SELECT "Conference", COUNT("Conference") FROM T WHERE CAST("# of Bids" AS INTEGER) >= 6 GROUP BY "Conference";
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Conference   |   COUNT("Conference") |
+|:-------------|----------------------:|
+| Southeastern |                     1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1994 NCAA Women's Division I Basketball Tournament
+SQL: SELECT "Conference", COUNT("Conference") FROM T WHERE CAST("# of Bids" AS INTEGER) >= 6 GROUP BY "Conference";
+
+Conference | COUNT("Conference")
+Southeastern | 1
+Question: which conference has had at least 6 bids?
+A: To find the answer to this question, let’s think step by step.
+Prediction: southeastern
+[Gold Answer] southeastern
+

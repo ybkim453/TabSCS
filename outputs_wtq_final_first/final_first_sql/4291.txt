@@ -1,0 +1,157 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Title:
+   - Data type: Categorical
+   - 4 representative example values: I Got the Feeling, Just Us, It's Raining Men, Well-A-Wiggy
+   - Role: Descriptor
+
+2. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1980, 1982, 1985, 1993
+   - Role: Identifier
+
+3. Peak chart positions (US):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, 107, 75
+   - Role: Measure
+
+4. Peak chart positions (US Dance):
+   - Data type: Numeric
+   - 4 representative example values: 2, 1, —, 2
+   - Role: Measure
+
+5. Peak chart positions (US Pop):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, 107, —
+   - Role: Measure
+
+6. Peak chart positions (US R&B):
+   - Data type: Numeric
+   - 4 representative example values: —, 34, 76, —
+   - Role: Measure
+
+7. Peak chart positions (GER):
+   - Data type: Numeric
+   - 4 representative example values: —, 43, —, 75
+   - Role: Measure
+
+8. Peak chart positions (NL):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, —, —
+   - Role: Measure
+
+9. Peak chart positions (NOR):
+   - Data type: Numeric
+   - 4 representative example values: —, 8, —, —
+   - Role: Measure
+
+10. Peak chart positions (NZ):
+    - Data type: Numeric
+    - 4 representative example values: —, 13, —, —
+    - Role: Measure
+
+11. Peak chart positions (SWI):
+    - Data type: Numeric
+    - 4 representative example values: —, 95, —, —
+    - Role: Measure
+
+12. Peak chart positions (UK):
+    - Data type: Numeric
+    - 4 representative example values: —, 2, —, —
+    - Role: Measure
+
+13. Album:
+    - Data type: Categorical
+    - 4 representative example values: nan, nan, nan, nan
+    - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The peak chart position for US Pop is 107, which is significantly higher than the other values in the column.
+   - This row is an outlier due to the unusually high peak chart position in the US Pop category.
+
+2. Row 6 (Index 6):
+   - The peak chart position for GER is 43, which is notably higher than the other values in the column.
+   - This row is an outlier due to the relatively high peak chart position in the GER category.
+
+3. Row 5 (Index 5):
+   - The peak chart position for US R&B is 76, which stands out compared to the other values in the column.
+   - This row is an outlier due to the higher peak chart position in the US R&B category.
+
+=== Full Table Preview ===
+|   row_number |   Title | Year                               | Peak chart positions\nUS   | Peak chart positions\nUS Dance   | Peak chart positions\nUS Pop   | Peak chart positions\nUS R&B   | Peak chart positions\nGER   | Peak chart positions\nNL   | Peak chart positions\nNOR   | Peak chart positions\nNZ   | Peak chart positions\nSWI   | Peak chart positions\nUK   |   Album |
+|-------------:|--------:|:-----------------------------------|:---------------------------|:---------------------------------|:-------------------------------|:-------------------------------|:----------------------------|:---------------------------|:----------------------------|:---------------------------|:----------------------------|:---------------------------|--------:|
+|            0 |    1980 | "Earth Can Be Just Like Heaven"    | —                          | 2                                | —                              | —                              | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|            1 |    1980 | "I Got the Feeling"                | —                          | 2                                | —                              | —                              | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|            2 |    1980 | "Just Us"                          | —                          | 2                                | —                              | 29                             | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|            3 |    1982 | "It's Raining Men"                 | 46                         | 1                                | 46                             | 34                             | 43                          | 46                         | 8                           | 13                         | 95                          | 2                          |     nan |
+|            4 |    1985 | "No One Can Love You More Than Me" | —                          | 26                               | —                              | —                              | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|            5 |    1985 | "Well-A-Wiggy"                     | —                          | —                                | 107                            | 76                             | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|            6 |    1993 | "Can You Feel It"                  | —                          | 2                                | —                              | —                              | 75                          | —                          | —                           | —                          | —                           | —                          |     nan |
+
+Generated Reasoning SQL: Explanation: To determine the song that reached the highest position on the US Dance chart, we need to find the maximum value in the "Peak chart positions (US Dance)" column. Since we are interested in the song title associated with this peak position, we will also include the "Title" column in the query.
+
+SQL: 
+SELECT "Title" 
+FROM T 
+WHERE "Peak chart positions\nUS Dance" = (SELECT MAX(CAST("Peak chart positions\nUS Dance" AS INTEGER)) FROM T);
+Generated Final SQL: SELECT "Title" FROM T WHERE "Peak chart positions\nUS Dance" = (SELECT MAX(CAST("Peak chart positions\nUS Dance" AS INTEGER)) FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Title |
+|--------:|
+|    1985 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: The Weather Girls
+SQL: SELECT "Title" FROM T WHERE "Peak chart positions\nUS Dance" = (SELECT MAX(CAST("Peak chart positions\nUS Dance" AS INTEGER)) FROM T);
+
+SQL Execution Result:
+Title
+1985
+
+Question: which song reached the highest position on the us dance chart?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1985
+[Gold Answer] "it's raining men"
+

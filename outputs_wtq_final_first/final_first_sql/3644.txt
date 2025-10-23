@@ -1,0 +1,144 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 7, 8, 9, 12
+   - Role: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical (Date)
+   - 4 representative example values: October 29, November 5, November 12, December 3
+   - Role: Descriptor for the date of the game
+
+3. Opponent:
+   - Data type: Categorical (Text)
+   - 4 representative example values: Green Bay Packers, New Orleans Saints, Detroit Lions, Chicago Bears
+   - Role: Descriptor for the opposing team
+
+4. Results\nFinal score:
+   - Data type: Categorical (Text)
+   - 4 representative example values: W 27–13, W 37–6, W 16–14, W 23–10
+   - Role: Measure of the final score with the result (Win/Loss) for the team
+
+5. Results\nTeam record:
+   - Data type: Categorical (Text)
+   - 4 representative example values: 3–4, 4–4, 5–4, 7–5
+   - Role: Measure of the team's record after the game
+
+6. Venue:
+   - Data type: Categorical (Text)
+   - 4 representative example values: Lambeau Field, Metropolitan Stadium, Candlestick Park
+   - Role: Descriptor for the location of the game
+
+7. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 56,263, 49,784, 61,214
+   - Role: Measure of the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 13:
+   - The values for Week, Date, Opponent, Results\nFinal score, Results\nTeam record, Venue, and Attendance are all missing.
+   - This row is an outlier due to missing data in all columns, making it distinct from the rest of the table.
+
+2. Row 6:
+   - The Results\nTeam record value is 7–7, which is different from the majority of the team records in the table.
+   - This row is an outlier based on the team record being different from the typical winning or losing records.
+
+3. Row 3:
+   - The Results\nFinal score value is L 20–17, indicating a loss, which is different from the majority of the winning results in the table.
+   - This row is an outlier due to the result being a loss compared to the majority of winning results in the table.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date         | Opponent               | Results\nFinal score   | Results\nTeam record   | Venue                         |   Attendance |
+|-------------:|-------:|:-------------|:-----------------------|:-----------------------|:-----------------------|:------------------------------|-------------:|
+|            0 |      1 | September 18 | Washington Redskins    | L 24–21                | 0–1                    | Metropolitan Stadium          |        47900 |
+|            1 |      2 | September 24 | at Detroit Lions       | W 34–10                | 1–1                    | Tiger Stadium                 |        54418 |
+|            2 |      3 | October 1    | Miami Dolphins         | L 16–14                | 1–2                    | Metropolitan Stadium          |        47900 |
+|            3 |      4 | October 8    | St. Louis Cardinals    | L 19–17                | 1–3                    | Metropolitan Stadium          |        49687 |
+|            4 |      5 | October 15   | at Denver Broncos      | W 23–20                | 2–3                    | Mile High Stadium             |        51656 |
+|            5 |      6 | October 23   | at Chicago Bears       | L 13–10                | 2–4                    | Soldier Field                 |        55701 |
+|            6 |      7 | October 29   | at Green Bay Packers   | W 27–13                | 3–4                    | Lambeau Field                 |        56263 |
+|            7 |      8 | November 5   | New Orleans Saints     | W 37–6                 | 4–4                    | Metropolitan Stadium          |        49784 |
+|            8 |      9 | November 12  | Detroit Lions          | W 16–14                | 5–4                    | Metropolitan Stadium          |        49784 |
+|            9 |     10 | November 19  | at Los Angeles Rams    | W 45–41                | 6–4                    | Los Angeles Memorial Coliseum |        77982 |
+|           10 |     11 | November 26  | at Pittsburgh Steelers | L 23–10                | 6–5                    | Three Rivers Stadium          |        50348 |
+|           11 |     12 | December 3   | Chicago Bears          | W 23–10                | 7–5                    | Metropolitan Stadium          |        49784 |
+|           12 |     13 | December 10  | Green Bay Packers      | L 23–7                 | 7–6                    | Metropolitan Stadium          |        49784 |
+|           13 |     14 | December 16  | at San Francisco 49ers | L 20–17                | 7–7                    | Candlestick Park              |        61214 |
+
+Generated Reasoning SQL: Explanation: To find the most number of games the Vikings consecutively won, we need to identify the streak of consecutive wins in the "Results\nTeam record" column. We will look for sequences of consecutive wins and determine the maximum length of such a streak.
+
+SQL: 
+WITH streaks AS (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "Week") - ROW_NUMBER() OVER (PARTITION BY "Results\nTeam record" ORDER BY "Week") AS grp
+    FROM T
+)
+SELECT MAX(COUNT(*)) AS max_consecutive_wins
+FROM streaks
+WHERE "Results\nTeam record" LIKE 'W%'
+GROUP BY grp
+ORDER BY max_consecutive_wins DESC
+LIMIT 1;
+Generated Final SQL: WITH streaks AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Week") - ROW_NUMBER() OVER (PARTITION BY "Results\nTeam record" ORDER BY "Week") AS grp FROM T ) SELECT MAX(COUNT(*)) AS max_consecutive_wins FROM streaks WHERE "Results\nTeam record" LIKE 'W%' GROUP BY grp ORDER BY max_consecutive_wins DESC LIMIT 1;
+[Error] Final SQL 실행 실패: Execution failed on sql 'WITH streaks AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Week") - ROW_NUMBER() OVER (PARTITION BY "Results\nTeam record" ORDER BY "Week") AS grp FROM T ) SELECT MAX(COUNT(*)) AS max_consecutive_wins FROM streaks WHERE "Results\nTeam record" LIKE 'W%' GROUP BY grp ORDER BY max_consecutive_wins DESC LIMIT 1;': misuse of aggregate function COUNT()
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1972 Minnesota Vikings season (row_number, Week, Date, Opponent, Results\nFinal score, Results\nTeam record, Venue, Attendance)
+
+row_number | Week | Date | Opponent | Results\nFinal score | Results\nTeam record | Venue | Attendance
+0 | 1 | September 18 | Washington Redskins | L 24–21 | 0–1 | Metropolitan Stadium | 47900
+1 | 2 | September 24 | at Detroit Lions | W 34–10 | 1–1 | Tiger Stadium | 54418
+2 | 3 | October 1 | Miami Dolphins | L 16–14 | 1–2 | Metropolitan Stadium | 47900
+3 | 4 | October 8 | St. Louis Cardinals | L 19–17 | 1–3 | Metropolitan Stadium | 49687
+4 | 5 | October 15 | at Denver Broncos | W 23–20 | 2–3 | Mile High Stadium | 51656
+5 | 6 | October 23 | at Chicago Bears | L 13–10 | 2–4 | Soldier Field | 55701
+6 | 7 | October 29 | at Green Bay Packers | W 27–13 | 3–4 | Lambeau Field | 56263
+7 | 8 | November 5 | New Orleans Saints | W 37–6 | 4–4 | Metropolitan Stadium | 49784
+8 | 9 | November 12 | Detroit Lions | W 16–14 | 5–4 | Metropolitan Stadium | 49784
+9 | 10 | November 19 | at Los Angeles Rams | W 45–41 | 6–4 | Los Angeles Memorial Coliseum | 77982
+10 | 11 | November 26 | at Pittsburgh Steelers | L 23–10 | 6–5 | Three Rivers Stadium | 50348
+11 | 12 | December 3 | Chicago Bears | W 23–10 | 7–5 | Metropolitan Stadium | 49784
+12 | 13 | December 10 | Green Bay Packers | L 23–7 | 7–6 | Metropolitan Stadium | 49784
+13 | 14 | December 16 | at San Francisco 49ers | L 20–17 | 7–7 | Candlestick Park | 61214
+Question: what is the most number of games the vikings consecutively won?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the consecutive wins in the "Results\nTeam record" column from the full table. From the provided data, we can see that the Vikings had the following consecutive wins:
+- Weeks 2 to 4: 1 win
+- Weeks 5 to 6: 1 win
+- Weeks 7 to 9: 2 wins
+- Weeks 11 to 12: 2 wins
+
+The maximum number of consecutive wins for the Vikings in the 1972 season is 2.
+
+Final Answer: 2
+[Fallback] Prediction: 2
+[Gold Answer] 4
+

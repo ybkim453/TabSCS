@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1962, 1965, 1966, 1968
+   - Role: Identifier for the year in which the single was released.
+
+2. Single:
+   - Data type: Categorical
+   - 4 representative example values: Callin' Dr. Casey, That Ain't All, Silver Cloud Talkin' Blues, You're the Guilty One
+   - Role: Descriptor for the title of the single.
+
+3. Chart Positions US Country:
+   - Data type: Numeric
+   - 4 representative example values: — (missing data), 20, — (missing data), — (missing data)
+   - Role: Measure indicating the chart position on the US Country charts.
+
+4. Chart Positions US:
+   - Data type: Numeric
+   - 4 representative example values: 83, — (missing data), — (missing data), — (missing data)
+   - Role: Measure indicating the chart position on the overall US charts.
+
+5. Album:
+   - Data type: Categorical
+   - 4 representative example values: singles only, A Bizarre Collection of the Most Unusual Songs
+   - Role: Descriptor for the album associated with the single.
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The values for Chart Positions US Country and Chart Positions US are both missing (—), which is different from the majority of the table where these values are typically numbers. This makes the row an outlier.
+
+2. Row 2:
+   - The value for Chart Positions US Country is 20, which is a specific number and different from the missing values in other rows. This makes the row an outlier.
+
+3. Row 9:
+   - The values for Chart Positions US Country and Chart Positions US are both missing (—), similar to Row 8. This indicates that this row is an outlier as well.
+
+=== Full Table Preview ===
+|   row_number |   Year | Single                                        | Chart Positions\nUS Country   | Chart Positions\nUS   | Album                                          |
+|-------------:|-------:|:----------------------------------------------|:------------------------------|:----------------------|:-----------------------------------------------|
+|            0 |   1957 | "Sittin' in the Balcony"                      | —                             | 38                    | single only                                    |
+|            1 |   1961 | "Language of Love"                            | —                             | 32                    | Language of Love                               |
+|            2 |   1962 | "Thou Shalt Not Steal"                        | —                             | 73                    | singles only                                   |
+|            3 |   1962 | "Callin' Dr. Casey"                           | —                             | 83                    | singles only                                   |
+|            4 |   1962 | "Road Hog"                                    | —                             | 65                    | Twelve Sides                                   |
+|            5 |   1963 | "Bad News" (b/w "Guitar Player(Her and Him)") | 23                            | —                     | singles only                                   |
+|            6 |   1964 | "Blue Train (Of the Heartbreak Line)"         | 44                            | 132                   | singles only                                   |
+|            7 |   1964 | "Th' Wife"                                    | 45                            | —                     | singles only                                   |
+|            8 |   1965 | "That Ain't All"                              | 20                            | —                     | singles only                                   |
+|            9 |   1966 | "Silver Cloud Talkin' Blues"                  | —                             | —                     | A Bizarre Collection of the Most Unusual Songs |
+|           10 |   1966 | "You're the Guilty One"                       | —                             | —                     | single only                                    |
+|           11 |   1967 | "It's My Time"                                | 51                            | —                     | Suburban Attitudes in Country Verse            |
+|           12 |   1968 | "Odd Folks of Okracoke"                       | —                             | —                     | single only                                    |
+|           13 |   1969 | "Brown Girl"                                  | —                             | —                     | The Open Mind of John D. Loudermilk            |
+|           14 |   1971 | "Lord Have Mercy"                             | —                             | —                     | Volume 1-Elloree                               |
+|           15 |   1979 | "Every Day I Learn a Little More About Love"  | —                             | —                     | Just Passing Through                           |
+
+Generated Reasoning SQL: Explanation: To find the oldest album that wasn't a single only, we need to filter out rows where the album is not "single only" and then identify the minimum value in the "Year" column to determine the oldest album among those that weren't singles only. We must exclude rows with missing values in the "Year" column to ensure accurate results.
+
+SQL: 
+select "Album" 
+from T 
+where "Album" != 'single only' and "Year" = (select min(cast("Year" as integer)) from T where "Album" != 'single only' and "Year" is not null);
+Generated Final SQL: select "Album" from T where "Album" != 'single only' and "Year" = (select min(cast("Year" as integer)) from T where "Album" != 'single only' and "Year" is not null);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Album            |
+|:-----------------|
+| Language of Love |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: John D. Loudermilk
+SQL: select "Album" from T where "Album" != 'single only' and "Year" = (select min(cast("Year" as integer)) from T where "Album" != 'single only' and "Year" is not null);
+
+Album
+Language of Love
+Question: what is the oldest album that wasn't a single only?
+A: To find the answer to this question, let’s think step by step.
+Prediction: language of love
+[Gold Answer] "language of love"
+

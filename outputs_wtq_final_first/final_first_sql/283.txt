@@ -1,0 +1,132 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Position:
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 7, 9
+   - Role of the column: Identifier for the position of the yacht in the race.
+
+2. Sail Number:
+   - Data type: Categorical
+   - 4 representative example values: AUS70, COK1, 6606, 8338
+   - Role of the column: Unique identifier for each yacht.
+
+3. Yacht:
+   - Data type: Categorical
+   - 4 representative example values: Ragamuffin, Nokia, Quest, Aspect Computing
+   - Role of the column: Descriptor for the name of the yacht.
+
+4. State/Country:
+   - Data type: Categorical
+   - 4 representative example values: NSW, CI
+   - Role of the column: Descriptor for the state or country the yacht represents.
+
+5. Yacht Type:
+   - Data type: Categorical
+   - 4 representative example values: Farr 50, Farr Ketch Maxi, Nelson Marek 46, Radford 16.5 Sloop
+   - Role of the column: Descriptor for the type of yacht.
+
+6. LOA (Metres):
+   - Data type: Numeric
+   - 4 representative example values: 15.15, 25.2, 14.12, 16.5
+   - Role of the column: Measure for the length overall of the yacht in meters.
+
+7. Skipper:
+   - Data type: Categorical
+   - 4 representative example values: Syd Fischer, David Witt, Bob Steel, David Pescud
+   - Role of the column: Descriptor for the name of the skipper.
+
+8. Elapsed Time (d:hh:mm:ss):
+   - Data type: Categorical
+   - 4 representative example values: 3:06:11:29, 3:09:19:00, 3:14:41:28, 3:15:28:24
+   - Role of the column: Measure for the elapsed time in days, hours, minutes, and seconds.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Position = 4):
+   - The yacht "Ragamuffin" with sail number "AUS70" has an elapsed time of 3 days, 6 hours, 11 minutes, and 29 seconds, which is significantly faster than the other yachts in the table. This makes it an outlier in terms of performance.
+
+2. Row 1 (Position = 1):
+   - No specific distinctive values were mentioned in the provided preview, so it is assumed to be an ordinary row unless further details are provided.
+
+3. Row 8 (Position = 8):
+   - The yacht "Wild Oats XI" with sail number "10001" is missing from the outlier list, which could indicate that it is an ordinary row and not truly atypical compared to the other entries.
+
+Overall, the outlier rows are determined based on the distinctive values that set them apart from the majority of the table entries, such as exceptional elapsed times or unique yacht names.
+
+=== Full Table Preview ===
+|   row_number |   Position | Sail Number   | Yacht                | State/Country   | Yacht Type         |   LOA\n(Metres) | Skipper                | Elapsed Time\nd:hh:mm:ss   |
+|-------------:|-----------:|:--------------|:---------------------|:----------------|:-------------------|----------------:|:-----------------------|:---------------------------|
+|            0 |          1 | US17          | Sayonara             | USA             | Farr ILC Maxi      |           24.13 | Larry Ellison          | 2:19:03:32                 |
+|            1 |          2 | C1            | Brindabella          | NSW             | Jutson 79          |           24.07 | George Snow            | 2:21:55:06                 |
+|            2 |          3 | YC1000        | Ausmaid              | SA              | Farr 47            |           14.24 | Kevan Pearce           | 3:06:02:29                 |
+|            3 |          4 | AUS70         | Ragamuffin           | NSW             | Farr 50            |           15.15 | Syd Fischer            | 3:06:11:29                 |
+|            4 |          5 | COK1          | Nokia                | CI              | Farr Ketch Maxi    |           25.2  | David Witt             | 3:09:19:00                 |
+|            5 |          6 | SM1           | Fudge                | VIC             | Elliot 56          |           17.07 | Peter Hansen           | 3:11:00:26                 |
+|            6 |          7 | 6606          | Quest                | NSW             | Nelson Marek 46    |           14.12 | Bob Steel              | 3:14:41:28                 |
+|            7 |          8 | 9090          | Industrial Quest     | QLD             | Nelson Marek 43    |           13.11 | Kevin Miller           | 3:14:58:46                 |
+|            8 |          9 | 4826          | Aspect Computing     | NSW             | Radford 16.5 Sloop |           16.5  | David Pescud           | 3:15:28:24                 |
+|            9 |         10 | 8338          | AFR Midnight Rambler | NSW             | Hick 35            |           10.66 | Ed Psaltis\nBob Thomas | 3:16:04:40                 |
+
+Generated Reasoning SQL: To determine the yacht type that placed in last position, we need to identify the row with the maximum position value, which represents the last place in the race. The "Position" column is numeric and serves as an identifier for the position of the yacht in the race.
+
+SQL:
+select "Yacht Type" 
+from T 
+where "Position" = (select max("Position") from T);
+Generated Final SQL: select "Yacht Type" from T where "Position" = (select max("Position") from T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Yacht Type   |
+|:-------------|
+| Hick 35      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1998 Sydney to Hobart Yacht Race
+SQL: select "Yacht Type" from T where "Position" = (select max("Position") from T);
+
+Yacht Type
+Hick 35
+Question: what yacht type placed in last place?
+A: To find the answer to this question, let’s think step by step.
+Prediction: hick 35
+[Gold Answer] hick 35
+

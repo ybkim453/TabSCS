@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2004, 2005, 2006
+   - Role: Identifier for the year in which the premiership was won
+
+2. Premiers:
+   - Data type: Categorical
+   - 4 representative example values: Centrals Trinity Beach Bulldogs, Port Douglas Crocs, Manunda Hawks, South Cairns Cutters
+   - Role: Descriptor for the team that won the premiership
+
+3. Score:
+   - Data type: Categorical (combination of numeric and text)
+   - 4 representative example values: 14.11 (95), 17.13 (115), 19.14 (128), 11.11 (77)
+   - Role: Measure of the score achieved by the premiership-winning team
+
+4. Runners Up:
+   - Data type: Categorical
+   - 4 representative example values: North Cairns, Cairns Saints, Centrals Trinity Beach Bulldogs, North Cairns Tigers
+   - Role: Descriptor for the team that finished as runners-up
+
+5. Score.1:
+   - Data type: Categorical (combination of numeric and text)
+   - 4 representative example values: 6.7 (43), 8.9 (57), 4.11 (35), 10.9 (69)
+   - Role: Measure of the score achieved by the runners-up team
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 2):
+   - The score for Port Douglas Crocs in 2005 is significantly higher compared to the other scores in the table.
+   - This row is an outlier due to the unusually high score achieved by the premiership-winning team.
+
+2. Row 6 (Index 5):
+   - The score for Cairns Saints in 2012 is notably higher than the scores of other premiership-winning teams.
+   - This row is an outlier because of the exceptional score achieved by the winning team.
+
+3. Row 2 (Index 1):
+   - The score for Port Douglas Crocs in 2004 is considerably higher than the typical scores in the table.
+   - This row is an outlier due to the significantly higher score achieved by the premiership-winning team.

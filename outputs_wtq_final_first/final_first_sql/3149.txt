@@ -1,0 +1,150 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Language
+   - Data type: Categorical
+   - 4 representative example values: Hindi, Konkani, Meitei (Manipuri), Khasi
+   - Role of the column: Identifier for the language spoken
+
+2. 2001 census[1] (total population 1,004.59 million)
+   - Data type: Numeric
+   - 4 representative example values: 422,048,642, 2,489,015, 1,466,705*, 1,128,575
+   - Role of the column: Measure of the population speaking the language based on the 2001 census
+
+3. 1991 censusIndian Census [2] (total population 838.14 million)
+   - Data type: Numeric
+   - 4 representative example values: 337,272,114, 1,760,607, 0.14%, 0.112%
+   - Role of the column: Measure of the population speaking the language based on the 1991 census
+
+4. 1991 censusIndian Census [2] (total population 838.14 million).1
+   - Data type: Numeric
+   - 4 representative example values: 40.0%, 0.210%, 1,270,216, nan
+   - Role of the column: Measure of the percentage of the population speaking the language based on the 1991 census
+
+**Outlier Row Analysis:**
+
+1. Row 26:
+   - The values in this row are significantly different from the majority of the table, with the language being "Khasi" and the population count being 1,128,575. This makes it an outlier as it stands out in terms of the population count compared to other languages.
+
+2. Row 0:
+   - The values in this row are not significantly different from the majority of the table. The language is "Hindi" with a population count of 422,048,642, which is a common language with a high population count. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Language          | 2001 census[1]\n(total population 1,004.59 million)   | 1991 censusIndian Census [2]\n(total population 838.14 million)   | 1991 censusIndian Census [2]\n(total population 838.14 million)_1   | Unnamed: 4   |
+|-------------:|:------------------|:------------------------------------------------------|:------------------------------------------------------------------|:--------------------------------------------------------------------|:-------------|
+|            0 |                   | Speakers                                              | Speakers                                                          | Percentage                                                          |              |
+|            1 | Hindi             | 422048642                                             | 337272114                                                         | 40.0%                                                               | 336 M        |
+|            2 | Bengali           | 230000000                                             | 200595738                                                         | 28.30%                                                              | 320 M        |
+|            3 | Punjabi           | 130000000                                             | 100017615                                                         | 20.87%                                                              | 113 M        |
+|            4 | Telugu            | 70002856                                              | 65595738                                                          | 8.30%                                                               | 70 M         |
+|            5 | Marathi           | 71936894                                              | 62481681                                                          | 7.45%                                                               | 68.0 M       |
+|            6 | Tamil             | 60793814                                              | 53006368                                                          | 6.32%                                                               | 66.0 M       |
+|            7 | Urdu              | 51536111                                              | 43406932                                                          | 5.18%                                                               | 60.3 M       |
+|            8 | Gujarati          | 46091617                                              | 40673814                                                          | 4.85%                                                               | 46.1 M       |
+|            9 | Kannada           | 37924011                                              | 32753676                                                          | 3.91%                                                               | 40.3 M       |
+|           10 | Malayalam         | 33066392                                              | 30377176                                                          | 3.62%                                                               | 35.7 M       |
+|           11 | Oriya             | 33017446                                              | 28061313                                                          | 3.35%                                                               | 32.3 M       |
+|           12 | Sindhi            | 25535485                                              | 25122848                                                          | 0.248%                                                              | 32.3 M       |
+|           13 | Nepali            | 23017446                                              | 28061313                                                          | 3.35%                                                               | 32.3 M       |
+|           14 | Sinhalese         | 19017446                                              | 28061313                                                          | 3.35%                                                               | 32.3 M       |
+|           15 | Assamese          | 13168484                                              | 13079696                                                          | 1.56%                                                               | 15.4 M       |
+|           16 | Maithili          | 12179122                                              | 1.18%                                                             |                                                                     |              |
+|           17 | Bhili/Bhilodi     | 9582957                                               | 5572308                                                           | 0.665%                                                              |              |
+|           18 | Santali           | 6469600                                               | 5216325                                                           | 0.622%                                                              |              |
+|           19 | Kashmiri          | 5527698                                               | 0.54%                                                             |                                                                     |              |
+|           20 | Gondi             | 2713790                                               | 2124852                                                           | 0.253%                                                              |              |
+|           21 | Konkani           | 2489015                                               | 1760607                                                           | 0.210%                                                              |              |
+|           22 | Dogri             | 2282589[dubious – discuss]                            | 0.22%                                                             |                                                                     |              |
+|           23 | Khandeshi         | 2075258                                               | 0.21%                                                             |                                                                     |              |
+|           24 | Kurukh            | 1751489                                               | 0.17%                                                             | 1426618                                                             | 0.170%       |
+|           25 | Tulu              | 1722768                                               | 0.17%                                                             | 1552259                                                             | 0.185%       |
+|           26 | Meitei (Manipuri) | 1466705*                                              | 0.14%                                                             | 1270216                                                             | 0.151%       |
+|           27 | Bodo              | 1350478                                               | 0.13%                                                             | 1221881                                                             | 0.146%       |
+|           28 | Khasi             | 1128575                                               | 0.112%                                                            |                                                                     |              |
+|           29 | Mundari           | 1061352                                               | 0.105%                                                            |                                                                     |              |
+|           30 | Ho                | 1042724                                               | 0.103%                                                            |                                                                     |              |
+
+Generated Reasoning SQL: Explanation: To determine which language had the most speakers, we need to consider the "2001 census[1]" column, which represents the total population speaking each language based on the 2001 census. We should exclude any outlier rows that significantly deviate from the typical population counts. Since we are looking for the language with the highest number of speakers, we need to find the maximum value in the "2001 census[1]" column.
+
+SQL: select "Language" from T where "2001 census[1]" = (select max(cast("2001 census[1]" as integer)) from T);
+Generated Final SQL: select "Language" from T where "2001 census[1]" = (select max(cast("2001 census[1]" as integer)) from T);
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Languages of South Asia (row_number, Language, 2001 census[1]\n(total population 1,004.59 million), 1991 censusIndian Census [2]\n(total population 838.14 million), 1991 censusIndian Census [2]\n(total population 838.14 million)_1, Unnamed: 4)
+
+row_number | Language | 2001 census[1]\n(total population 1,004.59 million) | 1991 censusIndian Census [2]\n(total population 838.14 million) | 1991 censusIndian Census [2]\n(total population 838.14 million)_1 | Unnamed: 4
+0 | None | Speakers | Speakers | Percentage | None
+1 | Hindi | 422048642 | 337272114 | 40.0% | 336 M
+2 | Bengali | 230000000 | 200595738 | 28.30% | 320 M
+3 | Punjabi | 130000000 | 100017615 | 20.87% | 113 M
+4 | Telugu | 70002856 | 65595738 | 8.30% | 70 M
+5 | Marathi | 71936894 | 62481681 | 7.45% | 68.0 M
+6 | Tamil | 60793814 | 53006368 | 6.32% | 66.0 M
+7 | Urdu | 51536111 | 43406932 | 5.18% | 60.3 M
+8 | Gujarati | 46091617 | 40673814 | 4.85% | 46.1 M
+9 | Kannada | 37924011 | 32753676 | 3.91% | 40.3 M
+10 | Malayalam | 33066392 | 30377176 | 3.62% | 35.7 M
+11 | Oriya | 33017446 | 28061313 | 3.35% | 32.3 M
+12 | Sindhi | 25535485 | 25122848 | 0.248% | 32.3 M
+13 | Nepali | 23017446 | 28061313 | 3.35% | 32.3 M
+14 | Sinhalese | 19017446 | 28061313 | 3.35% | 32.3 M
+15 | Assamese | 13168484 | 13079696 | 1.56% | 15.4 M
+16 | Maithili | 12179122 | 1.18% | None | None
+17 | Bhili/Bhilodi | 9582957 | 5572308 | 0.665% | None
+18 | Santali | 6469600 | 5216325 | 0.622% | None
+19 | Kashmiri | 5527698 | 0.54% | None | None
+20 | Gondi | 2713790 | 2124852 | 0.253% | None
+21 | Konkani | 2489015 | 1760607 | 0.210% | None
+22 | Dogri | 2282589[dubious – discuss] | 0.22% | None | None
+23 | Khandeshi | 2075258 | 0.21% | None | None
+24 | Kurukh | 1751489 | 0.17% | 1426618 | 0.170%
+25 | Tulu | 1722768 | 0.17% | 1552259 | 0.185%
+26 | Meitei (Manipuri) | 1466705* | 0.14% | 1270216 | 0.151%
+27 | Bodo | 1350478 | 0.13% | 1221881 | 0.146%
+28 | Khasi | 1128575 | 0.112% | None | None
+29 | Mundari | 1061352 | 0.105% | None | None
+30 | Ho | 1042724 | 0.103% | None | None
+Question: which language had the most speakers?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the language with the most speakers, we need to look at the columns related to the number of speakers in both the 2001 and 1991 censuses.
+
+From the summary:
+- The **Language** column contains the names of the languages.
+- The **2001 census[1]** and **1991 censusIndian Census [2]** columns have the total number of speakers for each language in the respective years.
+
+From the full table:
+- The language with the most speakers in the 2001 census is Hindi with 422,048,642 speakers.
+- The language with the most speakers in the 1991 census is also Hindi with 337,272,114 speakers.
+
+Therefore, the language with the most speakers overall is **Hindi**.
+
+Final Answer: Hindi
+[Fallback] Prediction: hindi
+[Gold Answer] hindi
+

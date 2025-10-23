@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Event:
+   - Data type: Categorical
+   - 4 representative example values: 800 m, 2000 m, 3000 m, 5000 m
+   - Role: Descriptor, specifies the type of athletic event
+
+2. Record:
+   - Data type: Numeric
+   - 4 representative example values: 1:45.88, 5:03.4+, 7:35.71, 13:07.79
+   - Role: Measure, represents the record time or distance achieved in the event
+
+3. Athlete:
+   - Data type: Categorical
+   - 4 representative example values: James Eichberger, Arturo Barrios
+   - Role: Identifier, specifies the name of the athlete who achieved the record
+
+4. Date:
+   - Data type: Date
+   - 4 representative example values: 27 July 2013, 10 July 1989, 30 March 1991
+   - Role: Descriptor, indicates the date when the record was achieved
+
+5. Meet:
+   - Data type: Categorical
+   - 4 representative example values: Memorial Rasschaert – Flanders Cup, Nice, France
+   - Role: Descriptor, specifies the name of the competition where the record was achieved
+
+6. Place:
+   - Data type: Categorical
+   - 4 representative example values: Ninove, Belgium, London, United Kingdom
+   - Role: Descriptor, indicates the location where the record was achieved
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The record for the 2000 m event is marked with "5:03.4+", which is different from the typical format of time records.
+   - This unique format makes the row an outlier as it deviates from the standard representation of record times.
+
+2. Row 16 (Index 37):
+   - The record for the Decathlon event includes detailed measurements for each component, which is not present in other rows.
+   - This level of detail makes the row an outlier as it contains more specific information compared to the rest of the table.
+
+3. Row 7 (Index 16):
+   - The record for the 5000 m event is marked with "nan" for the Meet column, which indicates missing data.
+   - This missing information makes the row an outlier as it lacks a crucial descriptor that is present in other rows.

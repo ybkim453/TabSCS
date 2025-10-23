@@ -1,0 +1,7 @@
+Name	Character	Unicode code point (decimal)	Standard	DTD	Old ISO subset	Description
+apos	'	U+0027 (39)	XHTML 1.0	HTMLspecial	ISOnum	apostrophe (apostrophe-quote); see below
+euro	€	U+20AC (8364)	HTML 4.0	HTMLspecial	NEW	euro sign
+lArr	⇐	U+21D0 (8656)	HTML 4.0	HTMLsymbol	ISOtech	leftwards double arrow
+sim	∼	U+223C (8764)	HTML 4.0	HTMLsymbol	ISOtech	tilde operator (varies with, similar to)
+perp	⊥	U+22A5 (8869)	HTML 4.0	HTMLsymbol	ISOtech	up tack (orthogonal to, perpendicular)
+vellip	⋮	U+22EE (8942)	HTML 5.0	?	?	vertical ellipsis

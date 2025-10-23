@@ -1,0 +1,174 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Categorical
+   - 4 representative example values: Ret, DNS, DNQ, DNPQ
+   - Role: Descriptor indicating the position status of the driver in the race.
+
+2. No:
+   - Data type: Numeric
+   - 4 representative example values: 11, 15, 14, 7
+   - Role: Identifier for the driver's number.
+
+3. Driver:
+   - Data type: Categorical
+   - 4 representative example values: Derek Warwick, Maurício Gugelmin, Olivier Grouillard, David Brabham
+   - Role: Descriptor identifying the driver's name.
+
+4. Constructor:
+   - Data type: Categorical
+   - 4 representative example values: Lotus-Lamborghini, Leyton House-Judd, Osella-Ford, Brabham-Judd
+   - Role: Descriptor indicating the constructor of the car.
+
+5. Laps:
+   - Data type: Numeric
+   - 4 representative example values: 46, 0, nan, nan
+   - Role: Measure representing the number of laps completed by the driver.
+
+6. Time/Retired:
+   - Data type: Categorical
+   - 4 representative example values: Engine, Fuel Pump, nan, nan
+   - Role: Descriptor indicating the reason for retirement or time taken in the race.
+
+7. Grid:
+   - Data type: Numeric
+   - 4 representative example values: 16, 15, nan, nan
+   - Role: Measure representing the starting grid position of the driver.
+
+8. Points:
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, nan
+   - Role: Measure representing the points earned by the driver in the race.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "Ret" and "Lotus-Lamborghini" in the Pos and Constructor columns respectively are not common in the majority of the table.
+   - These distinctive values make this row an outlier.
+
+2. Row 25:
+   - The values "DNPQ" and "AGS-Ford" in the Pos and Constructor columns respectively are not typical in the dataset.
+   - These unique values contribute to making this row an outlier.
+
+3. Row 17:
+   - The values "DNQ" and "Osella-Ford" in the Pos and Constructor columns respectively are not standard entries in the table.
+   - These specific values make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Pos   |   No | Driver             | Constructor       |   Laps | Time/Retired   |   Grid |   Points |
+|-------------:|:------|-----:|:-------------------|:------------------|-------:|:---------------|-------:|---------:|
+|            0 | 1     |    1 | Alain Prost        | Ferrari           |     64 | 1:18:30.999    |      5 |        9 |
+|            1 | 2     |    5 | Thierry Boutsen    | Williams-Renault  |     64 | + 39.092       |      4 |        6 |
+|            2 | 3     |   27 | Ayrton Senna       | McLaren-Honda     |     64 | + 43.088       |      2 |        4 |
+|            3 | 4     |   29 | Éric Bernard       | Lola-Lamborghini  |     64 | + 1:15.302     |      8 |        3 |
+|            4 | 5     |   20 | Nelson Piquet      | Benetton-Ford     |     64 | + 1:24.003     |     11 |        2 |
+|            5 | 6     |   30 | Aguri Suzuki       | Lola-Lamborghini  |     63 | + 1 Lap        |      9 |        1 |
+|            6 | 7     |   10 | Alex Caffi         | Arrows-Ford       |     63 | + 1 Lap        |     17 |      nan |
+|            7 | 8     |    4 | Jean Alesi         | Tyrrell-Ford      |     63 | + 1 Lap        |      6 |      nan |
+|            8 | 9     |    8 | Stefano Modena     | Brabham-Judd      |     62 | + 2 Laps       |     20 |      nan |
+|            9 | 10    |   25 | Nicola Larini      | Ligier-Ford       |     62 | + 2 Laps       |     21 |      nan |
+|           10 | 11    |   21 | Emanuele Pirro     | Dallara-Ford      |     62 | + 2 Laps       |     19 |      nan |
+|           11 | 12    |   24 | Paolo Barilla      | Minardi-Ford      |     62 | + 2 Laps       |     24 |      nan |
+|           12 | 13    |   26 | Philippe Alliot    | Ligier-Ford       |     61 | + 3 Laps       |     22 |      nan |
+|           13 | 14    |   28 | Gerhard Berger     | McLaren-Honda     |     60 | Throttle       |      3 |      nan |
+|           14 | Ret   |    2 | Nigel Mansell      | Ferrari           |     55 | Gearbox        |      1 |      nan |
+|           15 | Ret   |   16 | Ivan Capelli       | Leyton House-Judd |     48 | Fuel Leak      |     10 |      nan |
+|           16 | Ret   |   12 | Martin Donnelly    | Lotus-Lamborghini |     48 | Engine         |     14 |      nan |
+|           17 | Ret   |   11 | Derek Warwick      | Lotus-Lamborghini |     46 | Engine         |     16 |      nan |
+|           18 | Ret   |   17 | Gabriele Tarquini  | AGS-Ford          |     41 | Engine         |     26 |      nan |
+|           19 | Ret   |    9 | Michele Alboreto   | Arrows-Ford       |     37 | Engine         |     25 |      nan |
+|           20 | Ret   |    6 | Riccardo Patrese   | Williams-Renault  |     26 | Chassis        |      7 |      nan |
+|           21 | Ret   |    3 | Satoru Nakajima    | Tyrrell-Ford      |     20 | Electrical     |     12 |      nan |
+|           22 | Ret   |   19 | Alessandro Nannini | Benetton-Ford     |     15 | Collision      |     13 |      nan |
+|           23 | Ret   |   22 | Andrea de Cesaris  | Dallara-Ford      |     12 | Fuel System    |     23 |      nan |
+|           24 | Ret   |   23 | Pierluigi Martini  | Minardi-Ford      |      3 | Alternator     |     18 |      nan |
+|           25 | DNS   |   15 | Maurício Gugelmin  | Leyton House-Judd |      0 | Fuel Pump      |     15 |      nan |
+|           26 | DNQ   |   14 | Olivier Grouillard | Osella-Ford       |    nan |                |    nan |      nan |
+|           27 | DNQ   |    7 | David Brabham      | Brabham-Judd      |    nan |                |    nan |      nan |
+|           28 | DNQ   |   36 | JJ Lehto           | Onyx-Ford         |    nan |                |    nan |      nan |
+|           29 | DNQ   |   35 | Gregor Foitek      | Onyx-Ford         |    nan |                |    nan |      nan |
+|           30 | DNPQ  |   33 | Roberto Moreno     | EuroBrun-Judd     |    nan |                |    nan |      nan |
+|           31 | DNPQ  |   18 | Yannick Dalmas     | AGS-Ford          |    nan |                |    nan |      nan |
+|           32 | DNPQ  |   34 | Claudio Langes     | EuroBrun-Judd     |    nan |                |    nan |      nan |
+|           33 | DNPQ  |   31 | Bertrand Gachot    | Coloni-Subaru     |    nan |                |    nan |      nan |
+|           34 | DNPQ  |   39 | Bruno Giacomelli   | Life              |    nan |                |    nan |      nan |
+
+Generated Reasoning SQL: Explanation: To determine which country had the most competitors, we need to count the number of unique drivers from each country. The "country" information is not directly available in the table preview, but we can infer it from the "Driver" column. We will extract the country information from the "Driver" column by splitting the values and then count the unique occurrences for each country.
+
+SQL: 
+WITH country_extract AS (
+    SELECT DISTINCT "Driver",
+           CASE
+               WHEN "Driver" LIKE '%Derek Warwick%' THEN 'UK'
+               WHEN "Driver" LIKE '%Maurício Gugelmin%' THEN 'Brazil'
+               WHEN "Driver" LIKE '%Olivier Grouillard%' THEN 'France'
+               WHEN "Driver" LIKE '%David Brabham%' THEN 'Australia'
+               ELSE 'Other'
+           END AS country
+    FROM T
+)
+SELECT country, COUNT(DISTINCT "Driver") AS competitor_count
+FROM country_extract
+WHERE country != 'Other'
+GROUP BY country
+ORDER BY competitor_count DESC
+LIMIT 1;
+Generated Final SQL: WITH country_extract AS ( SELECT DISTINCT "Driver", CASE WHEN "Driver" LIKE '%Derek Warwick%' THEN 'UK' WHEN "Driver" LIKE '%Maurício Gugelmin%' THEN 'Brazil' WHEN "Driver" LIKE '%Olivier Grouillard%' THEN 'France' WHEN "Driver" LIKE '%David Brabham%' THEN 'Australia' ELSE 'Other' END AS country FROM T ) SELECT country, COUNT(DISTINCT "Driver") AS competitor_count FROM country_extract WHERE country != 'Other' GROUP BY country ORDER BY competitor_count DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| country   |   competitor_count |
+|:----------|-------------------:|
+| UK        |                  1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1990 British Grand Prix
+SQL: WITH country_extract AS ( SELECT DISTINCT "Driver", CASE WHEN "Driver" LIKE '%Derek Warwick%' THEN 'UK' WHEN "Driver" LIKE '%Maurício Gugelmin%' THEN 'Brazil' WHEN "Driver" LIKE '%Olivier Grouillard%' THEN 'France' WHEN "Driver" LIKE '%David Brabham%' THEN 'Australia' ELSE 'Other' END AS country FROM T ) SELECT country, COUNT(DISTINCT "Driver") AS competitor_count FROM country_extract WHERE country != 'Other' GROUP BY country ORDER BY competitor_count DESC LIMIT 1;
+
+SQL Execution Result:
+country | competitor_count
+UK | 1
+
+Question: which country had the most competitors?
+A: To find the answer to this question, let’s think step by step.
+Prediction: uk
+[Gold Answer] italy
+

@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2007, 2009, 2010, 2011
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: All-Africa Games, World Championships, African Championships, Commonwealth Games
+   - Role: Descriptor for the name of the competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Algiers, Algeria, Berlin, Germany, Nairobi, Kenya, Delhi, India
+   - Role: Descriptor for the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 1st, 36th (h), 7th, 12th (h)
+   - Role: Measure indicating the athlete's position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 800 m
+   - Role: Descriptor for the type of event (e.g., distance race).
+
+6. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 2:02.83, 2:06.72, 2:08.45, DNF
+   - Role: Measure providing additional information or performance details.
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The row with Year 2010, Competition Commonwealth Games, and Position "-" is an outlier.
+   - The Position "-" is not a typical numerical position and indicates a missing or incomplete result, making this row distinctive.
+
+2. Row 7:
+   - The row with Year 2011, Competition All-Africa Games, and Position 12th (h) is an outlier.
+   - The Position 12th (h) is different from the typical numerical positions and includes a qualifier "(h)" which suggests a heat result, making this row distinctive.
+
+3. Row 0:
+   - The row with Year 2007, Competition All-Africa Games, and Position 1st is not an outlier.
+   - The values in this row are typical and consistent with the majority of the table, indicating an ordinary row that does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition           | Venue                | Position   | Event   | Notes   |
+|-------------:|-------:|:----------------------|:---------------------|:-----------|:--------|:--------|
+|            0 |   2003 | All-Africa Games      | Abuja Nigeria        | 11th (h)   | 800 m   | 2:05.19 |
+|            1 |   2006 | Commonwealth Games    | Melbourne Australia  | 9th (sf)   | 800 m   | 2:01.84 |
+|            2 |   2006 | African Championships | Bambous Mauritius    | 13th (h)   | 800 m   | 2:10.50 |
+|            3 |   2006 | Lusophony Games       | Macau                | 1st        | 800 m   | 2:07.34 |
+|            4 |   2007 | All-Africa Games      | Algiers Algeria      | 1st        | 800 m   | 2:02.83 |
+|            5 |   2008 | African Championships | Addis Ababa Ethiopia | 6th        | 800 m   | 2:05.95 |
+|            6 |   2009 | Lusophony Games       | Lisbon Portugal      | 4th        | 800 m   | 2:07.48 |
+|            7 |   2009 | World Championships   | Berlin Germany       | 36th (h)   | 800 m   | 2:06.72 |
+|            8 |   2010 | African Championships | Nairobi Kenya        | 7th        | 800 m   | 2:08.45 |
+|            9 |   2010 | Commonwealth Games    | Delhi India          | –          | 800 m   | DNF     |
+|           10 |   2011 | All-Africa Games      | Maputo Mozambique    | 12th (h)   | 800 m   | 2:06.72 |
+
+Generated Reasoning SQL: The summary indicates that the "Year" column is numeric and represents the year of the competition. To find the year of the first competition, we need to select the minimum value in the "Year" column.
+SQL: select min(cast("Year" as integer)) as first_competition_year from T;
+Generated Final SQL: select min(cast("Year" as integer)) as first_competition_year from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   first_competition_year |
+|-------------------------:|
+|                     2003 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Leonor Piuza
+SQL: select min(cast("Year" as integer)) as first_competition_year from T;
+
+first_competition_year
+2003
+Question: in what year was the first competition?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2003
+[Gold Answer] 2003
+

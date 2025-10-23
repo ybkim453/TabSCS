@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 230, 235, 245, 253
+   - Role: Identifier, indicating the ranking of the islands based on area.
+
+2. Island:
+   - Data type: Categorical
+   - 4 representative example values: Austra, Mykonos, Rebbenesøya, Hertsön
+   - Role: Descriptor, identifying the name of the island.
+
+3. Area (km²):
+   - Data type: Numeric
+   - 4 representative example values: 88, 86, 82, 73
+   - Role: Measure, quantifying the area of the island in square kilometers.
+
+4. Area (sq mi):
+   - Data type: Numeric
+   - 4 representative example values: 34, 32, 28, 24
+   - Role: Measure, quantifying the area of the island in square miles.
+
+5. Country/Countries/Region:
+   - Data type: Categorical
+   - 4 representative example values: Norway, Greece, Sweden, Guernsey
+   - Role: Descriptor, identifying the country or region to which the island belongs.
+
+**Outlier Row Analysis:**
+
+1. Row 59:
+   - The values for Rank, Island, Area (km²), Area (sq mi), and Country are not provided.
+   - These missing values make this row an outlier as it does not contain complete information like the other rows.
+
+2. Row 36:
+   - The values for Rank, Island, Area (km²), Area (sq mi), and Country are not provided.
+   - Similar to Row 59, the missing values make this row an outlier.
+
+3. Row 44:
+   - The values for Rank, Island, Area (km²), Area (sq mi), and Country are not provided.
+   - Once again, the missing values in this row make it an outlier.
+
+In summary, the outlier rows 59, 36, and 44 are all characterized by missing values, which deviate from the complete and structured data present in the majority of the table. These rows are outliers due to their incomplete nature and should be treated as such in the analysis.

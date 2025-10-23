@@ -1,0 +1,52 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1978, 1998, 1999, 2006
+   - Role of the column: Identifier for the year in which the matches took place
+
+2. Matches:
+   - Data type: Numeric
+   - 4 representative example values: 4, 8, 9, 6
+   - Role of the column: Measure indicating the number of matches played in a particular year
+
+3. Winner:
+   - Data type: Categorical
+   - 4 representative example values: Pakistan win
+   - Role of the column: Descriptor indicating the winner of the matches
+
+4. Results:
+   - Data type: Categorical
+   - 4 representative example values: 3 - 1, 4 - 3, 5 - 3, 3 - 1
+   - Role of the column: Descriptor showing the results of the matches
+
+5. Pakistan Captain:
+   - Data type: Categorical
+   - 4 representative example values: Islahuddin Siddique, Tahir Zaman, Atif Bashir, Mohammad Saqlain
+   - Role of the column: Descriptor indicating the captain of the Pakistan team
+
+6. Pakistan Coach:
+   - Data type: Categorical
+   - 4 representative example values: Sayad A. Hussain, Islahuddin Siddique, Shahnaz Shaikh, Asif Bajwa
+   - Role of the column: Descriptor indicating the coach of the Pakistan team
+
+7. India Captain:
+   - Data type: Categorical
+   - 4 representative example values: V. J. Philips, Dhanraj Pillay, Anil Aldrin, Ignace Tirkey
+   - Role of the column: Descriptor indicating the captain of the India team
+
+8. India Coach:
+   - Data type: Categorical
+   - 4 representative example values: R. S. Gentle, V Bhaskaran, V Bhaskaran, Rajinder Singh Jr.
+   - Role of the column: Descriptor indicating the coach of the India team
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The row with index 8 has "TBA" values for all columns, indicating that the data for the year 2013 is missing.
+   - This row is an outlier as it does not provide any information about the matches, winners, captains, or coaches for the year 2013.
+
+2. Row 5:
+   - The row with index 5 has "TBA" values for the Matches, Winner, and Results columns, indicating missing data for the year 2013.
+   - While the missing data may make this row stand out, it is not truly special as it is consistent with the missing information in row 8.
+   - Therefore, row 5 is an ordinary row and does not require special handling.

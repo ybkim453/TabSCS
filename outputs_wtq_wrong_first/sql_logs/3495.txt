@@ -1,0 +1,162 @@
+=== Table ID ===
+csv/204-csv/67.tsv
+
+=== Question ===
+which stadiums have a capacity above 60,000?
+
+=== Sub-table Preview ===
+|   # | Stadium                     | Capacity   | City              | Region             | Home Team          |   Opened |
+|----:|:----------------------------|:-----------|:------------------|:-------------------|:-------------------|---------:|
+|   3 | Grand Stade Lille Métropole | 50,186     | Villeneuve-d'Ascq | Nord-Pas-de-Calais | Lille OSC          |     2012 |
+|   6 | Stade Gerland               | 41,044     | Lyon              | Rhône-Alpes        | Olympique Lyonnais |     1926 |
+|  17 | MMArena                     | 25,000     | Le Mans           | Pays de la Loire   | Le Mans UC         |     2011 |
+|  23 | Stade de l'Aube             | 20,400     | Troyes            | Champagne-Ardenne  | Troyes AC          |     1956 |
+|  24 | Stade Marcel Picot          | 20,087     | Tomblaine         | Lorraine           | AS Nancy           |     1926 |
+|  27 | Stade Sébastien Charléty    | 20,000     | Paris             | Île-de-France      | Paris FC           |     1938 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 6, 17, 23
+   - Role: Identifier for each row
+
+2. Stadium:
+   - Data type: Categorical
+   - 4 representative example values: Grand Stade Lille Métropole, Stade Gerland, MMArena, Stade de l'Aube
+   - Role: Descriptor for the stadium where the matches are held
+
+3. Capacity:
+   - Data type: Numeric
+   - 4 representative example values: 50,186, 41,044, 25,000, 20,400
+   - Role: Measure of the maximum number of spectators the stadium can hold
+
+4. City:
+   - Data type: Categorical
+   - 4 representative example values: Villeneuve-d'Ascq, Lyon, Le Mans, Troyes
+   - Role: Descriptor for the city where the stadium is located
+
+5. Region:
+   - Data type: Categorical
+   - 4 representative example values: Nord-Pas-de-Calais, Rhône-Alpes, Pays de la Loire, Champagne-Ardenne
+   - Role: Descriptor for the region where the city is located
+
+6. Home Team:
+   - Data type: Categorical
+   - 4 representative example values: Lille OSC, Olympique Lyonnais, Le Mans UC, Troyes AC
+   - Role: Descriptor for the team that uses the stadium as their home ground
+
+7. Opened:
+   - Data type: Numeric
+   - 4 representative example values: 2012, 1926, 2011, 1956
+   - Role: Measure of the year the stadium was opened
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - Stade de l'Aube in Troyes, Champagne-Ardenne, with a capacity of 20,400 opened in 1956.
+   - This row is an outlier because it has a lower capacity compared to the other stadiums in the list, which have capacities ranging from 25,000 to 50,186.
+
+2. Row 16:
+   - This row is not an outlier as it is not part of the candidate outlier list.
+
+3. Row 2:
+   - This row is not an outlier as it is not part of the candidate outlier list.
+
+=== Full Table Preview ===
+|   row_number |   # | Stadium                          |   Capacity | City              | Region                     | Home Team                     |   Opened |
+|-------------:|----:|:---------------------------------|-----------:|:------------------|:---------------------------|:------------------------------|---------:|
+|            0 |   1 | Stade de France                  |      81338 | Paris             | Île-de-France              | France national football team |     1998 |
+|            1 |   2 | Stade Vélodrome                  |      60013 | Marseille         | Provence-Alpes-Côte d'Azur | Olympique de Marseille        |     1937 |
+|            2 |   3 | Grand Stade Lille Métropole      |      50186 | Villeneuve-d'Ascq | Nord-Pas-de-Calais         | Lille OSC                     |     2012 |
+|            3 |   4 | Parc des Princes                 |      48712 | Paris             | Île-de-France              | Paris Saint-Germain FC        |     1897 |
+|            4 |   5 | Stade Félix Bollaert             |      41233 | Lens              | Nord-Pas-de-Calais         | RC Lens                       |     1932 |
+|            5 |   6 | Stade Gerland                    |      41044 | Lyon              | Rhône-Alpes                | Olympique Lyonnais            |     1926 |
+|            6 |   7 | Stade de la Beaujoire            |      38285 | Nantes            | Pays de la Loire           | FC Nantes Atlantique          |     1984 |
+|            7 |   8 | Stade Geoffroy-Guichard          |      37587 | Saint-Étienne     | Rhône-Alpes                | AS Saint-Étienne              |     1931 |
+|            8 |   9 | Allianz Riviera                  |      35624 | Nice              | Provence-Alpes-Côte d'Azur | OGC Nice                      |     2013 |
+|            9 |  10 | Stadium Municipal                |      35575 | Toulouse          | Midi-Pyrénées              | Toulouse FC                   |     1937 |
+|           10 |  11 | Stade Chaban-Delmas              |      34462 | Bordeaux          | Aquitaine                  | FC Girondins de Bordeaux      |     1938 |
+|           11 |  12 | Stade de la Mosson               |      32939 | Montpellier       | Languedoc-Roussillon       | Montpellier HSC               |     1972 |
+|           12 |  13 | Stade de la Route de Lorient     |      31127 | Rennes            | Brittany                   | Stade Rennais FC              |     1912 |
+|           13 |  14 | Stade de la Meinau               |      29230 | Strasbourg        | Alsace                     | RC Strasbourg                 |     1914 |
+|           14 |  15 | Stade Municipal Saint-Symphorien |      26700 | Metz              | Lorraine                   | FC Metz                       |     1923 |
+|           15 |  16 | Grand Stade du Havre             |      25178 | Le Havre          | Upper Normandy             | Le Havre AC                   |     2012 |
+|           16 |  17 | MMArena                          |      25000 | Le Mans           | Pays de la Loire           | Le Mans UC                    |     2011 |
+|           17 |  18 | Stade du Hainaut                 |      24926 | Valenciennes      | Nord-Pas-de-Calais         | Valenciennes FC               |     2011 |
+|           18 |  19 | Stade de l'Abbé-Deschamps        |      23467 | Auxerre           | Bourgogne                  | AJ Auxerre                    |     1918 |
+|           19 |  20 | Stade Louis Dugauguez            |      23189 | Sedan             | Champagne-Ardenne          | Club Sportif Sedan Ardennes   |     2000 |
+|           20 |  21 | Stade Auguste-Delaune            |      21684 | Reims             | Champagne-Ardenne          | Stade Reims                   |     1935 |
+|           21 |  22 | Stade Michel d'Ornano            |      21500 | Caen              | Lower Normandy             | Stade Malherbe Caen           |     1993 |
+|           22 |  23 | Stade de l'Aube                  |      20400 | Troyes            | Champagne-Ardenne          | Troyes AC                     |     1956 |
+|           23 |  24 | Stade Marcel Picot               |      20087 | Tomblaine         | Lorraine                   | AS Nancy                      |     1926 |
+|           24 |  25 | Stade des Alpes                  |      20068 | Grenoble          | Rhône-Alpes                | Grenoble Foot 38              |     2008 |
+|           25 |  26 | Stade Auguste Bonal              |      20025 | Montbéliard       | Franche-Comté              | FC Sochaux-Montbéliard        |     2000 |
+|           26 |  27 | Stade Sébastien Charléty         |      20000 | Paris             | Île-de-France              | Paris FC                      |     1938 |
+
+Generated Reasoning SQL: Explanation: To identify the stadiums with a capacity above 60,000, we need to consider the "Capacity" column, which is of Numeric data type. We will filter the rows where the capacity is greater than 60,000. Outlier rows are not relevant to this question, so we will include all ordinary rows in the query.
+
+SQL: SELECT "Stadium" 
+FROM T 
+WHERE CAST("Capacity" AS INTEGER) > 60000;
+Generated Final SQL: SELECT "Stadium" FROM T WHERE CAST("Capacity" AS INTEGER) > 60000;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Stadium         |
+|:----------------|
+| Stade de France |
+| Stade Vélodrome |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of football stadiums in France
+SQL: SELECT "Stadium" FROM T WHERE CAST("Capacity" AS INTEGER) > 60000;
+
+SQL Execution Result:
+Stadium
+Stade de France
+Stade Vélodrome
+
+Question: which stadiums have a capacity above 60,000?
+A: To find the answer to this question, let’s think step by step.
+Prediction: stade de france, stade vélodrome
+[Gold Answer] stade de france,stade vélodrome
+

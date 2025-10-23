@@ -1,0 +1,146 @@
+=== Table ID ===
+csv/204-csv/827.tsv
+
+=== Question ===
+who was the first person to be voted out?
+
+=== Sub-table Preview ===
+|   Year | Competition           | Venue              | Position   | Event   | Notes   |
+|-------:|:----------------------|:-------------------|:-----------|:--------|:--------|
+|   2003 | All-Africa Games      | Abuja, Nigeria     | 11th (h)   | 800 m   | 2:05.19 |
+|   2007 | All-Africa Games      | Algiers, Algeria   | 1st        | 800 m   | 2:02.83 |
+|   2009 | World Championships   | Berlin, Germany    | 36th (h)   | 800 m   | 2:06.72 |
+|   2010 | African Championships | Nairobi, Kenya     | 7th        | 800 m   | 2:08.45 |
+|   2010 | Commonwealth Games    | Delhi, India       | –          | 800 m   | DNF     |
+|   2011 | All-Africa Games      | Maputo, Mozambique | 12th (h)   | 800 m   | 2:06.72 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2007, 2009, 2010
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: All-Africa Games, World Championships, African Championships, Commonwealth Games
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Abuja, Nigeria, Algiers, Algeria, Berlin, Germany, Nairobi, Kenya
+   - Role: Descriptor of the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 11th (h), 1st, 36th (h), 7th
+   - Role: Measure of the athlete's position in the race.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 800 m
+   - Role: Descriptor of the type of event (800 meters race in this case).
+
+6. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 2:05.19, 2:02.83, 2:06.72, DNF
+   - Role: Measure of the athlete's performance or outcome in the event.
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The row with the Year 2010 and Competition Commonwealth Games has a Note value of DNF (Did Not Finish), which is different from the typical timing values in the Notes column. This makes the row an outlier as it represents a non-completion of the race.
+
+2. Row 7:
+   - The row with the Year 2011 and Competition All-Africa Games has a Position value of 12th (h), which is different from the typical top positions seen in the Position column. This makes the row an outlier as it represents a lower ranking compared to the majority of the table.
+
+3. Row 0:
+   - The row with the Year 2003 and Competition All-Africa Games has a Position value of 11th (h), which is different from the typical top positions seen in the Position column. However, the Note value of 2:05.19 is within the range of typical timing values in the Notes column. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Contestant                              | Original Tribe   | Switched Tribe   | Merged Tribe   | Finish                                  |   Total Votes |
+|-------------:|:----------------------------------------|:-----------------|:-----------------|:---------------|:----------------------------------------|--------------:|
+|            0 | Yelena Kondulaynen\n44.the actress      | Pelicans         |                  |                | 1st Voted Out\nDay 3                    |             5 |
+|            1 | Kris Kelmi\n47.the singer               | Barracudas       |                  |                | 2nd Voted Out\nDay 6                    |             1 |
+|            2 | Aleksandr Pashutin\n60.the actor        | Barracudas       |                  |                | 3rd Voted Out\nDay 9                    |             7 |
+|            3 | Igor' Livanov\n49.the actor             | Pelicans         |                  |                | Eliminated\nDay 11                      |             0 |
+|            4 | Dana Borisova\n26.the TV presenter      | Pelicans         | Barracudas       |                | 4th Voted Out\nDay 12                   |             5 |
+|            5 | Aleksandr Byalko\n50.the physicist      | Pelicans         | Barracudas       |                | 5th Voted Out\nDay 15                   |             6 |
+|            6 | Tatyana Dogileva\n45.the actress        | Pelicans         | Barracudas       |                | 6th Voted Out\nDay 18                   |             3 |
+|            7 | Tat'yana Ovsiyenko\n36.the singer       | Barracudas       | Pelicans         |                | Eliminated\nDay 19                      |             1 |
+|            8 | Viktor Gusev\n47.the sport commentator  | Pelicans         | Pelicans         | Crocodiles     | 7th Voted Out\n1st Jury Member\nDay 21  |             6 |
+|            9 | Ivan Demidov\n39.the TV presenter       | Barracudas       | Pelicans         | Crocodiles     | Eliminated\n2nd Jury Member\nDay 23     |             3 |
+|           10 | Yelena Proklova\n49.the TV presenter    | Pelicans         | Barracudas       | Crocodiles     | 8th Voted Out\n3rd Jury Member\nDay 24  |             4 |
+|           11 | Marina Aleksandrova\n20.the actress     | Barracudas       | Pelicans         | Crocodiles     | 9th Voted Out\n4th Jury Member\nDay 27  |             6 |
+|           12 | Ivar Kalnynsh\n54.the actor             |                  |                  | Crocodiles     | 10th Voted Out\n5th Jury Member\nDay 30 |             3 |
+|           13 | Vera Glagoleva\n46.the actress          |                  |                  | Crocodiles     | 11th Voted Out\n6th Jury Member\nDay 33 |             4 |
+|           14 | Larisa Verbitskaya\n43.the TV presenter | Barracudas       | Pelicans         | Crocodiles     | 12th Voted Out\n7th Jury Member\nDay 36 |            11 |
+|           15 | Aleksandr Lykov\n41.the actor           | Barracudas       | Barracudas       | Crocodiles     | 13th Voted Out\n8th Jury Member\nDay 37 |             6 |
+|           16 | Olga Orlova\n25.the singer              | Barracudas       | Baracudas        | Crocodiles     | Eliminated\n9th Jury Member\nDay 38     |            10 |
+|           17 | Yelena Perova\n26.the singer            | Pelicans         | Pelicans         | Crocodiles     | Runner-Up                               |             2 |
+|           18 | Vladimir Presnyakov Jr.\n34.the singer  | Pelicans         | Pelicans         | Crocodiles     | Sole Survivor                           |             6 |
+
+Generated Reasoning SQL: Explanation: To determine the first person to be voted out, we need to look for the contestant who finished in the "1st Voted Out" position. The "Finish" column contains this information, and we should filter for the row where "Finish" = '1st Voted Out\nDay 3'.
+
+SQL: SELECT "Contestant" 
+FROM T 
+WHERE "Finish" = '1st Voted Out\nDay 3';
+Generated Final SQL: SELECT "Contestant" FROM T WHERE "Finish" = '1st Voted Out\nDay 3';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Contestant                         |
+|:-----------------------------------|
+| Yelena Kondulaynen\n44.the actress |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Last Hero 3
+SQL: SELECT "Contestant" FROM T WHERE "Finish" = '1st Voted Out\nDay 3';
+
+SQL Execution Result:
+Contestant
+Yelena Kondulaynen\n44.the actress
+
+Question: who was the first person to be voted out?
+A: To find the answer to this question, let’s think step by step.
+Prediction: yelena kondulaynen
+[Gold Answer] yelena kondulaynen 44.the actress
+

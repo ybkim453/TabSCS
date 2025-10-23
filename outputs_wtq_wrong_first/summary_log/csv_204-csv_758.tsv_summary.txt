@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2004, 2005, 2008
+   - Role of the column: Identifier for the year in which the data was recorded.
+
+2. Division:
+   - Data type: Numeric
+   - 4 representative example values: 2, 1, 1, 1
+   - Role of the column: Descriptor indicating the division number of the team.
+
+3. League:
+   - Data type: Categorical
+   - 4 representative example values: USL W-League
+   - Role of the column: Descriptor specifying the league in which the team participated.
+
+4. Reg. Season:
+   - Data type: Categorical
+   - 4 representative example values: 5th, Western, 6th, Western
+   - Role of the column: Measure indicating the team's position in the regular season within their division.
+
+5. Playoffs:
+   - Data type: Categorical
+   - 4 representative example values: nan, Did not qualify
+   - Role of the column: Descriptor indicating the team's performance in the playoffs.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "2003", "2", "USL W-League", and "5th, Western" are not significantly different from other rows in the table. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 1:
+   - The values "2004", "1", "USL W-League", and "8th, Western" are within the range of values seen in other rows. This row is an ordinary row and does not require special handling.
+
+3. Row 2:
+   - The values "2005", "1", "USL W-League", and "6th, Western" are typical of the data in the table. This row is an ordinary row and does not require special handling.

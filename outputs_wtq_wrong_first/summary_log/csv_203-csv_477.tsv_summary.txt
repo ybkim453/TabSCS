@@ -1,0 +1,57 @@
+**Column Analysis:**
+
+1. Game
+   - Data type: Numeric
+   - 4 representative example values: 33, 36, 41, 42
+   - Role: Identifier for each game
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: January 2, January 6, January 16, January 20
+   - Role: Descriptor indicating the date of the game
+
+3. Team
+   - Data type: Categorical
+   - 4 representative example values: @ Detroit, @ Chicago, Milwaukee, @ Denver
+   - Role: Descriptor indicating the team played against or location of the game
+
+4. Score
+   - Data type: Categorical
+   - 4 representative example values: L 92–98, L 94–99, L 122–129, L 99–118
+   - Role: Measure indicating the final score of the game
+
+5. High points
+   - Data type: Categorical
+   - 4 representative example values: Brad Miller (25), Kevin Martin (29), John Salmons, Kevin Martin (24), Kevin Martin (25)
+   - Role: Descriptor indicating the player with the highest points in the game
+
+6. High rebounds
+   - Data type: Categorical
+   - 4 representative example values: Brad Miller (16), Brad Miller (12), Jason Thompson (11), Jason Thompson (11)
+   - Role: Descriptor indicating the player with the highest rebounds in the game
+
+7. High assists
+   - Data type: Categorical
+   - 4 representative example values: John Salmons (4), Beno Udrih (5), John Salmons (6), John Salmons, Beno Udrih (5)
+   - Role: Descriptor indicating the player with the highest assists in the game
+
+8. Location/Attendance
+   - Data type: Categorical
+   - 4 representative example values: The Palace of Auburn Hills\n22,076, United Center\n18,060, ARCO Arena\n11,663, Pepsi Center\n15,164
+   - Role: Descriptor indicating the location and attendance of the game
+
+9. Record
+   - Data type: Categorical
+   - 4 representative example values: 8–25, 8–28, 10–31, 10–32
+   - Role: Measure indicating the team's record after the game
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Game 33, @ Detroit, L 92–98)
+   - The values in this row are not significantly different from the majority of the table. They represent a typical game entry with no distinct outliers.
+
+2. Row 10 (Game 45, @ Toronto, L 97–113)
+   - The values in this row are also ordinary and consistent with the rest of the table. There are no distinctive outliers present in this row.
+
+3. Row 12 (Game 47, @ New York, L 97–106)
+   - Similar to the previous rows, the values in this row are typical and do not stand out as outliers. This row is an ordinary entry in the table.

@@ -1,0 +1,130 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Pick #**
+   - Data type: Numeric
+   - 4 representative example values: 150, 153, 154, 160
+   - Role of the column: Identifier for the draft pick number of the player
+
+2. **Player**
+   - Data type: Categorical
+   - 4 representative example values: Derek Langille, Milan Tichy, Jon Pratt, Greg Spenrath
+   - Role of the column: Descriptor for the name of the player
+
+3. **Position**
+   - Data type: Categorical
+   - 4 representative example values: Defense, Left Wing
+   - Role of the column: Descriptor for the player's position in the game
+
+4. **Nationality**
+   - Data type: Categorical
+   - 4 representative example values: Canada, Czechoslovakia, United States
+   - Role of the column: Descriptor for the player's nationality
+
+5. **NHL team**
+   - Data type: Categorical
+   - 4 representative example values: Toronto Maple Leafs, Chicago Blackhawks, Minnesota North Stars, New York Rangers
+   - Role of the column: Descriptor for the NHL team the player is associated with
+
+6. **College/junior/club team**
+   - Data type: Categorical
+   - 4 representative example values: North Bay Centennials (OHL), Prince Albert Raiders (WHL), Pingree High School (USHS-MA), Tri-City Americans (WHL)
+   - Role of the column: Descriptor for the college, junior, or club team the player is associated with
+
+**Outlier Row Analysis:**
+
+1. **Row 5 (Rick Allain)**
+   - The values for NHL team (Boston Bruins) and College/junior/club team (Kitchener Rangers (OHL)) are different from the majority of the table.
+   - These values are distinctive as they are not common among the other entries in the table, making this row an outlier.
+
+2. **Row 0 (Derek Langille)**
+   - The values for Pick # (150) and Nationality (Canada) are not unique in the table.
+   - These values are ordinary and not special, so this row is an ordinary entry and does not require special handling.
+
+3. **Row 6 (Greg Spenrath)**
+   - The values for Position (Defense) and College/junior/club team (Tri-City Americans (WHL)) are consistent with other entries in the table.
+   - These values are ordinary and not distinctive, so this row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Pick # | Player          | Position   | Nationality    | NHL team              | College/junior/club team                 |
+|-------------:|---------:|:----------------|:-----------|:---------------|:----------------------|:-----------------------------------------|
+|            0 |      148 | Paul Krake      | Goalie     | Canada         | Quebec Nordiques      | University of Alaska Anchorage (NCAA)    |
+|            1 |      149 | Phil Huber      | Center     | Canada         | New York Islanders    | Kamloops Blazers (WHL)                   |
+|            2 |      150 | Derek Langille  | Defense    | Canada         | Toronto Maple Leafs   | North Bay Centennials (OHL)              |
+|            3 |      151 | Jim Solly       | Left Wing  | Canada         | Winnipeg Jets         | Bowling Green State University (NCAA)    |
+|            4 |      152 | Sergei Starikov | Defense    | Soviet Union   | New Jersey Devils     | CSKA Moscow (USSR)                       |
+|            5 |      153 | Milan Tichy     | Defense    | Czechoslovakia | Chicago Blackhawks    | Prince Albert Raiders (WHL)              |
+|            6 |      154 | Jon Pratt       | Left Wing  | United States  | Minnesota North Stars | Pingree High School (USHS-MA)            |
+|            7 |      155 | Rob Sangster    | Left Wing  | Canada         | Vancouver Canucks     | Kitchener Rangers (OHL)                  |
+|            8 |      156 | Kevin Plager    | Right Wing | United States  | St. Louis Blues       | Parkway North High School (USHS-MO)      |
+|            9 |      157 | Raymond Saumier | Right Wing | Canada         | Hartford Whalers      | Trois Rivieres Draveurs (QMJHL)          |
+|           10 |      158 | Andy Suhy       | Defense    | United States  | Detroit Red Wings     | Western Michigan University (NCAA)       |
+|           11 |      159 | Sverre Sears    | Defense    | United States  | Philadelphia Flyers   | Princeton University (NCAA)              |
+|           12 |      160 | Greg Spenrath   | Defense    | Canada         | New York Rangers      | Tri-City Americans (WHL)                 |
+|           13 |      161 | Derek Plante    | Center     | United States  | Buffalo Sabres        | Cloquet High School (USHS-MN)            |
+|           14 |      162 | Darcy Martini   | Defense    | Canada         | Edmonton Oilers       | Michigan Technological University (NCAA) |
+|           15 |      163 | David Shute     | Left Wing  | United States  | Pittsburgh Penguins   | Victoria Cougars (WHL)                   |
+|           16 |      164 | Rick Allain     | Defense    | Canada         | Boston Bruins         | Kitchener Rangers (OHL)                  |
+|           17 |      165 | Sean Whyte      | Right Wing | Canada         | Los Angeles Kings     | Guelph Platers (OHL)                     |
+|           18 |      166 | Dean Holoien    | Right Wing | Canada         | Washington Capitals   | Saskatoon Blades (WHL)                   |
+|           19 |      167 | Patrick Lebeau  | Left Wing  | Canada         | Montreal Canadiens    | St-Jean Lynx (QMJHL)                     |
+|           20 |      168 | Kevin Wortman   | Defense    | United States  | Calgary Flames        | American International College (NCAA)    |
+
+Generated Reasoning SQL: Explanation: To determine the total amount of right wings drafted, we need to count the number of rows where the "Position" column is equal to "Right Wing". The summary indicates that the "Position" column is categorical and contains descriptors for the player's position in the game. We will filter the rows based on this condition to calculate the total.
+SQL: select count("Position") from T where "Position" = 'Right Wing';
+Generated Final SQL: select count("Position") from T where "Position" = 'Right Wing';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Position") |
+|--------------------:|
+|                   4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1989 NHL Entry Draft
+SQL: select count("Position") from T where "Position" = 'Right Wing';
+
+count("Position")
+4
+Question: what is the total amount of right wings drafted?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

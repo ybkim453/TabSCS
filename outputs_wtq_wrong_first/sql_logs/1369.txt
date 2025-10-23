@@ -1,0 +1,152 @@
+=== Table ID ===
+csv/204-csv/653.tsv
+
+=== Question ===
+what is the last major seventh listed?
+
+=== Sub-table Preview ===
+| Result   | Record   | Opponent                | Method   | Date        |   Round | Location                 |
+|:---------|:---------|:------------------------|:---------|:------------|--------:|:-------------------------|
+| Loss     | 31-3-0   | J.H. Isbell             | KO       | 1934 Mar 31 |       2 | Cambridge, Massachusetts |
+| Win      | 28-1-0   | Frankie Hagan           | PTS      | 1934 Jan 30 |       3 | Cambridge, Massachusetts |
+| Win      | 24-0-0   | Herman Zeinman          | KO       | 1933        |       1 | Cambridge, Massachusetts |
+| Win      | 23-0-0   | William Beltran         | KO       | 1933        |       1 | Cambridge, Massachusetts |
+| Win      | 21-0-0   | Lawrence "Larry" O'Neil | KO       | 1933        |       1 | Cambridge, Massachusetts |
+| Exch     | 16-0-0   | Irish Tommy Mitchell    | KO       | 1933 May 21 |       1 | Cambridge, Massachusetts |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Result:
+   - Data type: Categorical
+   - 4 representative example values: Loss, Win, Exch, Draw
+   - Role: Describes the outcome of the match for the boxer
+
+2. Record:
+   - Data type: Categorical
+   - 4 representative example values: 31-3-0, 28-1-0, 24-0-0, 23-0-0
+   - Role: Identifier for the boxer's record
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: J.H. Isbell, Frankie Hagan, Herman Zeinman, William Beltran
+   - Role: Describes the opponent the boxer faced
+
+4. Method:
+   - Data type: Categorical
+   - 4 representative example values: KO, PTS, TKO, DQ
+   - Role: Describes the method by which the match was won or lost
+
+5. Date:
+   - Data type: Date
+   - 4 representative example values: 1934 Mar 31, 1934 Jan 30, 1933, 1933 May 21
+   - Role: Indicates the date of the match
+
+6. Round:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 1, 1
+   - Role: Indicates the round in which the match ended
+
+7. Location:
+   - Data type: Categorical
+   - 4 representative example values: Cambridge, Massachusetts
+   - Role: Describes the location where the match took place
+
+**Outlier Row Analysis:**
+
+1. Row 18:
+   - The record value of 16-0-0 for Irish Tommy Mitchell is significantly lower than the other records in the table, making it an outlier.
+
+2. Row 5:
+   - The method value of KO for Lawrence "Larry" O'Neil is consistent with other rows in the table, so this row is an ordinary entry and not an outlier.
+
+3. Row 0:
+   - The result value of Loss for J.H. Isbell is consistent with other rows in the table, so this row is an ordinary entry and not an outlier.
+
+=== Full Table Preview ===
+|   row_number | Chord   | Root   | Minor Third   | Perfect Fifth   | Major Seventh   |
+|-------------:|:--------|:-------|:--------------|:----------------|:----------------|
+|            0 | CmM7    | C      | E♭            | G               | B               |
+|            1 | C♯mM7   | C♯     | E             | G♯              | B♯ (C)          |
+|            2 | D♭mM7   | D♭     | F♭ (E)        | A♭              | C               |
+|            3 | DmM7    | D      | F             | A               | C♯              |
+|            4 | D♯mM7   | D♯     | F♯            | A♯              | C (D)           |
+|            5 | E♭mM7   | E♭     | G♭            | B♭              | D               |
+|            6 | EmM7    | E      | G             | B               | D♯              |
+|            7 | FmM7    | F      | A♭            | C               | E               |
+|            8 | F♯mM7   | F♯     | A             | C♯              | E♯ (F)          |
+|            9 | G♭mM7   | G♭     | B (A)         | D♭              | F               |
+|           10 | GmM7    | G      | B♭            | D               | F♯              |
+|           11 | G♯mM7   | G♯     | B             | D♯              | F (G)           |
+|           12 | A♭mM7   | A♭     | C♭ (B)        | E♭              | G               |
+|           13 | AmM7    | A      | C             | E               | G♯              |
+|           14 | A♯mM7   | A♯     | C♯            | E♯ (F)          | G (A)           |
+|           15 | B♭mM7   | B♭     | D♭            | F               | A               |
+|           16 | BmM7    | B      | D             | F♯              | A♯              |
+
+Generated Reasoning SQL: Explanation: To find the last major seventh listed, we need to consider the "Chord" column, which contains the major seventh chords. The major seventh chords are represented by the "Chord" values in the table. We should look for the last entry in the table that represents a major seventh chord.
+Since the table is already ordered by the row_number, we can simply select the last row to get the last major seventh listed.
+
+SQL: 
+SELECT "Chord" as last_major_seventh 
+FROM T 
+ORDER BY row_number DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Chord" as last_major_seventh FROM T ORDER BY row_number DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| last_major_seventh   |
+|:---------------------|
+| BmM7                 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Minor major seventh chord
+SQL: SELECT "Chord" as last_major_seventh FROM T ORDER BY row_number DESC LIMIT 1;
+
+SQL Execution Result:
+last_major_seventh
+BmM7
+
+Question: what is the last major seventh listed?
+A: To find the answer to this question, let’s think step by step.
+Prediction: bmm7
+[Gold Answer] a♯
+

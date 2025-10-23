@@ -1,0 +1,138 @@
+=== Table ID ===
+csv/204-csv/744.tsv
+
+=== Question ===
+how many goalscorers were brazilian?
+
+=== Sub-table Preview ===
+| Player              |   League |   Cup |   Europa\nLeague |   Total |
+|:--------------------|---------:|------:|-----------------:|--------:|
+| Gregory Nelson      |        3 |     0 |                1 |       4 |
+| Stanislav Kostov    |        1 |     0 |                0 |       1 |
+| Kostadin Stoyanov   |        1 |     0 |                0 |       1 |
+| Tomislav Kostadinov |        0 |     0 |                1 |       1 |
+| Total               |       53 |    11 |               14 |      78 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Player
+   - Data type: Categorical
+   - 4 representative example values: Gregory Nelson, Stanislav Kostov, Kostadin Stoyanov, Tomislav Kostadinov
+   - Role: Identifier
+
+2. League
+   - Data type: Numeric
+   - 4 representative example values: 3, 1, 1, 0
+   - Role: Measure
+
+3. Cup
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 0, 0
+   - Role: Measure
+
+4. Europa League
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 0, 1
+   - Role: Measure
+
+5. Total
+   - Data type: Numeric
+   - 4 representative example values: 4, 1, 1, 1
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 17:
+   - The values for League (53) and Total (78) are significantly higher compared to the rest of the table.
+   - These values are not typical for the dataset, making this row an outlier.
+
+2. Row 5:
+   - The values for League (11) and Total (14) are higher than most other rows but not as extreme as in Row 17.
+   - While these values are higher, they are not as extreme as in Row 17, so this row may not be considered a clear outlier.
+
+=== Full Table Preview ===
+|   row_number | Player              |   League |   Cup |   Europa\nLeague |   Total |
+|-------------:|:--------------------|---------:|------:|-----------------:|--------:|
+|            0 | Spas Delev          |       13 |     7 |                2 |      22 |
+|            1 | Marquinhos          |        9 |     1 |                3 |      13 |
+|            2 | Michel Platini      |       10 |     0 |                0 |      10 |
+|            3 | Cillian Sheridan    |        4 |     2 |                1 |       7 |
+|            4 | Giuseppe Aquaro     |        3 |     0 |                2 |       5 |
+|            5 | Gregory Nelson      |        3 |     0 |                1 |       4 |
+|            6 | Rumen Trifonov      |        2 |     0 |                1 |       3 |
+|            7 | Aleksandar Tonev    |        2 |     0 |                0 |       2 |
+|            8 | Apostol Popov       |        2 |     0 |                0 |       2 |
+|            9 | Emil Gargorov       |        2 |     0 |                0 |       2 |
+|           10 | Todor Yanchev       |        0 |     1 |                1 |       2 |
+|           11 | Stanislav Kostov    |        1 |     0 |                0 |       1 |
+|           12 | Kostadin Stoyanov   |        1 |     0 |                0 |       1 |
+|           13 | Boris Galchev       |        1 |     0 |                0 |       1 |
+|           14 | Pavel Vidanov       |        0 |     0 |                1 |       1 |
+|           15 | Tomislav Kostadinov |        0 |     0 |                1 |       1 |
+|           16 | Christian Tiboni    |        0 |     0 |                1 |       1 |
+|           17 | Total               |       53 |    11 |               14 |      78 |
+
+Generated Reasoning SQL: Explanation: To determine the number of goalscorers who were Brazilian, we need to filter the rows where the "Player" column contains Brazilian names. The "Player" column is categorical, and we can use it to identify the nationality of the goalscorers.
+
+SQL: SELECT COUNT("Player") 
+FROM T 
+WHERE "Player" LIKE '%Brazil%';
+Generated Final SQL: SELECT COUNT("Player") FROM T WHERE "Player" LIKE '%Brazil%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Player") |
+|------------------:|
+|                 0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2010–11 PFC CSKA Sofia season
+SQL: SELECT COUNT("Player") FROM T WHERE "Player" LIKE '%Brazil%';
+
+SQL Execution Result:
+COUNT("Player")
+0
+
+Question: how many goalscorers were brazilian?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 2
+

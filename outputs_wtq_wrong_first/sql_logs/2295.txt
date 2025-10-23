@@ -1,0 +1,172 @@
+=== Table ID ===
+csv/204-csv/280.tsv
+
+=== Question ===
+what ferry was delivered directly after princess teguise?
+
+=== Sub-table Preview ===
+| Hull   | Type    | Original Name   | Original Operator     | Delivery   | Disposition (2012)   | 2nd name      | 2nd operator          | 3rd Name   | 3rd operator       |
+|:-------|:--------|:----------------|:----------------------|:-----------|:---------------------|:--------------|:----------------------|:-----------|:-------------------|
+| № 6    | 929-117 | Beetle          | JR Kyushu Jet Ferries | Jul 1990   | Active               | Rocket        | Cosmo Line            | Rocket 3   | Tane Yaku Jetfoils |
+| № 8    | 929-117 | Beetle 2        | JR Kyushu Jet Ferries | Feb 1991   | Active               | nan           | nan                   | nan        | nan                |
+| № 12   | 929-117 | Toppy 2         | Tane Yaku Jetfoils    | Apr 1992   | Active               | nan           | nan                   | nan        | nan                |
+| № 13   | 929-117 | Toppy 3         | Tane Yaku Jetfoils    | Mar 1995   | Active               | nan           | nan                   | nan        | nan                |
+| № 14   | 929-117 | Crystal Wing    | Kaijo Access Co.      | Jun 1994   | Active               | 2002 Beetle 5 | JR Kyushu Jet Ferries | nan        | nan                |
+| № 15   | 929-117 | Emerald Wing    | Kaijo Access Co.      | Jun 1994   | Active               | 2004 Rocket 1 | Cosmo Line            | -          | Tane Yaku Jetfoil  |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Hull**
+   - Data type: Categorical
+   - 4 representative example values: № 6, № 8, № 12, № 13
+   - Role: Identifier for the specific hull of the ferry.
+
+2. **Type**
+   - Data type: Categorical
+   - 4 representative example values: 929-117, nan
+   - Role: Descriptor of the type of ferry.
+
+3. **Original Name**
+   - Data type: Categorical
+   - 4 representative example values: Beetle, Toppy 2, Crystal Wing, Emerald Wing
+   - Role: Descriptor of the original name of the ferry.
+
+4. **Original Operator**
+   - Data type: Categorical
+   - 4 representative example values: JR Kyushu Jet Ferries, Tane Yaku Jetfoils, Kaijo Access Co., Cosmo Line
+   - Role: Descriptor of the original operator of the ferry.
+
+5. **Delivery**
+   - Data type: Date
+   - 4 representative example values: Jul 1990, Feb 1991, Apr 1992, Mar 1995
+   - Role: Measure of the delivery date of the ferry.
+
+6. **Disposition (2012)**
+   - Data type: Categorical
+   - 4 representative example values: Active, nan
+   - Role: Descriptor of the disposition status of the ferry in 2012.
+
+7. **2nd name**
+   - Data type: Categorical
+   - 4 representative example values: Rocket, nan, 2002 Beetle 5, 2004 Rocket 1
+   - Role: Descriptor of the second name of the ferry.
+
+8. **2nd operator**
+   - Data type: Categorical
+   - 4 representative example values: Cosmo Line, nan, JR Kyushu Jet Ferries
+   - Role: Descriptor of the second operator of the ferry.
+
+9. **3rd Name**
+   - Data type: Categorical
+   - 4 representative example values: Rocket 3, nan
+   - Role: Descriptor of the third name of the ferry.
+
+10. **3rd operator**
+    - Data type: Categorical
+    - 4 representative example values: Tane Yaku Jetfoils, nan
+    - Role: Descriptor of the third operator of the ferry.
+
+**Outlier Row Analysis:**
+
+1. **Row 5 (Index 5)**
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: The presence of a different naming convention (2002 Beetle 5) and operator (JR Kyushu Jet Ferries) compared to the majority of the table makes this row an outlier.
+
+2. **Row 14 (Index 14)**
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: Similar to Row 5, the different naming convention (2002 Beetle 5) and operator (JR Kyushu Jet Ferries) set this row apart from the rest of the data, making it an outlier.
+
+3. **Row 13 (Index 13)**
+   - Distinctive values: nan, nan
+   - Explanation: The presence of missing values in both the 2nd name and 2nd operator columns is not unusual in the context of the table, making this row an ordinary entry and not a special outlier.
+
+=== Full Table Preview ===
+|   row_number | Hull   | Type    | Original Name    | Original Operator      | Delivery   | Disposition (2012)   | 2nd name      | 2nd operator           | 3rd Name   | 3rd operator       |
+|-------------:|:-------|:--------|:-----------------|:-----------------------|:-----------|:---------------------|:--------------|:-----------------------|:-----------|:-------------------|
+|            0 | № 1    | 929-117 | Tsubasa          | Sado Kisen             | Mar 1998   | Active               |               |                        |            |                    |
+|            1 | № 2    | 929-117 | Pegasus          | Kyusyu Shosen Co. Ltd. | Jun 1989   | Active               | Toppy 1       | Tane Yaku Jetfoils     |            |                    |
+|            2 | № 3    | 929-117 | Toppy 1          | Tane Yaku Jetfoils     | Sep 1989   | Active               | Beetle 3      | JR Kyushu Jet Ferries  |            |                    |
+|            3 | № 4    | 929-117 | Princess Dacil   | Trasmediterranea       | Mar 1990   | Active               | Pegasus       | Kyusyu Shosen Co. Ltd. |            |                    |
+|            4 | № 5    | 929-117 | Nagasaki         | JR Kyushu Jet Ferries  | Apr 1990   | Active               | Beetle 1      | JR Kyushu Jet Ferries  |            |                    |
+|            5 | № 6    | 929-117 | Beetle           | JR Kyushu Jet Ferries  | Jul 1990   | Active               | Rocket        | Cosmo Line             | Rocket 3   | Tane Yaku Jetfoils |
+|            6 | № 7    | 929-117 | Unicorn          | Kyusyu Shosen Co. Ltd. | Oct 1990   | Active               | Pegasus 2     | Kyusyu Shosen Co. Ltd. |            |                    |
+|            7 | № 8    | 929-117 | Beetle 2         | JR Kyushu Jet Ferries  | Feb 1991   | Active               |               |                        |            |                    |
+|            8 | № 9    | 929-117 | Venus            | Kyushu Yusen           | Mar 1991   | Active               |               |                        |            |                    |
+|            9 | № 10   | 929-117 | Suisei           | Sado Kisen             | Apr 1991   | Active               |               |                        |            |                    |
+|           10 | № 11   | 929-117 | Princess Teguise | Trasmediterranea       | Jun 1991   | Active               | 2007 Toppy 5  | Tane Yaku Jetfoils     |            |                    |
+|           11 | № 12   | 929-117 | Toppy 2          | Tane Yaku Jetfoils     | Apr 1992   | Active               |               |                        |            |                    |
+|           12 | № 13   | 929-117 | Toppy 3          | Tane Yaku Jetfoils     | Mar 1995   | Active               |               |                        |            |                    |
+|           13 | № 14   | 929-117 | Crystal Wing     | Kaijo Access Co.       | Jun 1994   | Active               | 2002 Beetle 5 | JR Kyushu Jet Ferries  |            |                    |
+|           14 | № 15   | 929-117 | Emerald Wing     | Kaijo Access Co.       | Jun 1994   | Active               | 2004 Rocket 1 | Cosmo Line             | -          | Tane Yaku Jetfoil  |
+
+Generated Reasoning SQL: Explanation: To find the ferry delivered directly after Princess Teguise, we need to identify the row corresponding to Princess Teguise and then select the row immediately following it based on the delivery dates. The "Original Name" column contains the names of the ferries, and the "Delivery" column provides the delivery dates. We will use these columns to determine the ferry delivered after Princess Teguise.
+
+SQL: 
+SELECT "Original Name" 
+FROM T 
+WHERE "Delivery" = (SELECT MIN("Delivery") 
+                    FROM T 
+                    WHERE "Delivery" > (SELECT "Delivery" 
+                                        FROM T 
+                                        WHERE "Original Name" = 'Princess Teguise'));
+Generated Final SQL: SELECT "Original Name" FROM T WHERE "Delivery" = (SELECT MIN("Delivery") FROM T WHERE "Delivery" > (SELECT "Delivery" FROM T WHERE "Original Name" = 'Princess Teguise'));
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Original Name   |
+|:----------------|
+| Crystal Wing    |
+| Emerald Wing    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Boeing 929
+SQL: SELECT "Original Name" FROM T WHERE "Delivery" = (SELECT MIN("Delivery") FROM T WHERE "Delivery" > (SELECT "Delivery" FROM T WHERE "Original Name" = 'Princess Teguise'));
+
+SQL Execution Result:
+Original Name
+Crystal Wing
+Emerald Wing
+
+Question: what ferry was delivered directly after princess teguise?
+A: To find the answer to this question, let’s think step by step.
+Prediction: crystal wing, emerald wing
+[Gold Answer] toppy 2
+

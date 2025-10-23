@@ -1,0 +1,149 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Poll Source:**
+   - Data type: Categorical
+   - 4 representative example values: Rasmussen Reports, Survey USA
+   - Role: Identifier for the source of the poll data
+
+2. **Sample Size:**
+   - Data type: Numeric
+   - 4 representative example values: 500, 543, nan (missing data)
+   - Role: Measure indicating the number of participants in the poll
+
+3. **Margin of Error:**
+   - Data type: Numeric
+   - 4 representative example values: nan (missing data), 4.3
+   - Role: Measure indicating the margin of error for the poll results
+
+4. **Date:**
+   - Data type: Categorical
+   - 4 representative example values: Feb 18, 2008, Jan 4-6, 2008
+   - Role: Descriptor indicating the date of the poll
+
+5. **Democrat (%):**
+   - Data type: Numeric
+   - 4 representative example values: 37, 47, 44, 46
+   - Role: Measure indicating the percentage of support for the Democratic candidate
+
+6. **Republican (%):**
+   - Data type: Numeric
+   - 4 representative example values: 47, 45, 48
+   - Role: Measure indicating the percentage of support for the Republican candidate
+
+**Outlier Row Analysis:**
+
+1. **Row 0 (Rasmussen Reports):**
+   - The values for Democrat (%) and Republican (%) are 37 and 47, respectively.
+   - These values are not significantly different from the other rows in terms of percentages.
+   - Therefore, this row is an ordinary row and does not require special handling.
+
+2. **Row 4 (Survey USA - Nov 9-11, 2007):**
+   - The values for Democrat (%) and Republican (%) are 44 and 48, respectively.
+   - These values are not significantly different from the other rows in terms of percentages.
+   - Therefore, this row is an ordinary row and does not require special handling.
+
+3. **Row 16 (Survey USA):**
+   - The sample size and margin of error values are missing (nan).
+   - This missing data does not make the row distinctive as missing values are common in datasets.
+   - Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Poll Source       |   Sample Size |   Margin of Error | Date                | Democrat        |   % | Republican    |   %_1 |
+|-------------:|:------------------|--------------:|------------------:|:--------------------|:----------------|----:|:--------------|------:|
+|            0 | Rasmussen Reports |           500 |               4.5 | 2008-03-31 00:00:00 | Hillary Clinton |  36 | John McCain   |    51 |
+|            1 | Rasmussen Reports |           500 |               4.5 | 2008-03-31 00:00:00 | Barack Obama    |  46 | John McCain   |    42 |
+|            2 | Survey USA        |           517 |               4.4 | 2016-03-14 20:08:00 | Hillary Clinton |  44 | John McCain   |    48 |
+|            3 | Survey USA        |           517 |               4.4 | 2016-03-14 20:08:00 | Barack Obama    |  50 | John McCain   |    44 |
+|            4 | Rasmussen Reports |           500 |             nan   | 2008-02-18 00:00:00 | Hillary Clinton |  37 | John McCain   |    47 |
+|            5 | Rasmussen Reports |           500 |             nan   | 2008-02-18 00:00:00 | Barack Obama    |  44 | John McCain   |    41 |
+|            6 | Survey USA        |           563 |               4.2 | 2017-02-15 20:08:00 | Hillary Clinton |  41 | John McCain   |    52 |
+|            7 | Survey USA        |           563 |               4.2 | 2017-02-15 20:08:00 | Barack Obama    |  51 | John McCain   |    41 |
+|            8 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Hillary Clinton |  51 | Rudy Giuliani |    35 |
+|            9 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Hillary Clinton |  47 | Mike Huckabee |    45 |
+|           10 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Hillary Clinton |  44 | John McCain   |    48 |
+|           11 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Hillary Clinton |  48 | Mitt Romney   |    40 |
+|           12 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Barack Obama    |  66 | Rudy Giuliani |    26 |
+|           13 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Barack Obama    |  58 | Mike Huckabee |    35 |
+|           14 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Barack Obama    |  55 | John McCain   |    38 |
+|           15 | Survey USA        |           543 |               4.3 | 2006-01-04 20:08:00 | Barack Obama    |  59 | Mitt Romney   |    33 |
+|           16 | Survey USA        |           nan |             nan   | 2007-12-17 00:00:00 | Hillary Clinton |  46 | Mike Huckabee |    45 |
+|           17 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Hillary Clinton |  47 | Rudy Giuliani |    43 |
+|           18 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Hillary Clinton |  49 | Mike Huckabee |    43 |
+|           19 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Hillary Clinton |  44 | John McCain   |    48 |
+|           20 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Hillary Clinton |  49 | Mitt Romney   |    43 |
+|           21 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Barack Obama    |  52 | Rudy Giuliani |    39 |
+|           22 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Barack Obama    |  56 | Mike Huckabee |    35 |
+|           23 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Barack Obama    |  50 | John McCain   |    42 |
+|           24 | Survey USA        |           546 |               4.3 | 2011-11-09 20:07:00 | Barack Obama    |  53 | Mitt Romney   |    39 |
+|           25 | Survey USA        |           513 |               4.4 | 2014-10-12 20:07:00 | Hillary Clinton |  48 | Rudy Giuliani |    43 |
+|           26 | Survey USA        |           506 |               4.3 | 2014-10-12 20:07:00 | Hillary Clinton |  51 | Mike Huckabee |    41 |
+|           27 | Survey USA        |           502 |               4.5 | 2014-10-12 20:07:00 | Hillary Clinton |  49 | John McCain   |    44 |
+|           28 | Survey USA        |           498 |               4.5 | 2014-10-12 20:07:00 | Hillary Clinton |  52 | Ron Paul      |    36 |
+|           29 | Survey USA        |           506 |               4.4 | 2014-10-12 20:07:00 | Hillary Clinton |  50 | Mitt Romney   |    42 |
+|           30 | Survey USA        |           509 |               4.4 | 2014-10-12 20:07:00 | Hillary Clinton |  50 | Fred Thompson |    42 |
+
+Generated Reasoning SQL: To determine if Hillary Clinton or John McCain won 51% of the vote in the March 31, 2008 Rasmussen Reports poll, we need to check the row where "Poll Source" is 'Rasmussen Reports', "Date" is '2008-03-31 00:00:00', and the percentage for each candidate.
+We will filter the rows based on these conditions and check if either candidate received 51% of the vote.
+SQL: 
+SELECT *
+FROM T
+WHERE "Poll Source" = 'Rasmussen Reports' 
+AND "Date" = '2008-03-31 00:00:00' 
+AND ("Democrat" = 'Hillary Clinton' AND "%" = 51 OR "Republican" = 'John McCain' AND "%_1" = 51);
+Generated Final SQL: SELECT * FROM T WHERE "Poll Source" = 'Rasmussen Reports' AND "Date" = '2008-03-31 00:00:00' AND ("Democrat" = 'Hillary Clinton' AND "%" = 51 OR "Republican" = 'John McCain' AND "%_1" = 51);
+SQL 실행 결과 셀 수: 9
+=== SQL 실행 결과 미리보기 ===
+|   row_number | Poll Source       |   Sample Size |   Margin of Error | Date                | Democrat        |   % | Republican   |   %_1 |
+|-------------:|:------------------|--------------:|------------------:|:--------------------|:----------------|----:|:-------------|------:|
+|            0 | Rasmussen Reports |           500 |               4.5 | 2008-03-31 00:00:00 | Hillary Clinton |  36 | John McCain  |    51 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Opinion polling by state for the United States presidential election, 2008 (Iowa)
+SQL: SELECT * FROM T WHERE "Poll Source" = 'Rasmussen Reports' AND "Date" = '2008-03-31 00:00:00' AND ("Democrat" = 'Hillary Clinton' AND "%" = 51 OR "Republican" = 'John McCain' AND "%_1" = 51);
+
+row_number | Poll Source | Sample Size | Margin of Error | Date | Democrat | % | Republican | %_1
+0 | Rasmussen Reports | 500.0 | 4.5 | 2008-03-31 00:00:00 | Hillary Clinton | 36 | John McCain | 51
+Question: did hillary clinton or john mccain win 51% of the vote in the march 31, 2008 rasmussen reports poll?
+A: To find the answer to this question, let’s think step by step.
+Prediction: john mccain
+[Gold Answer] john mccain
+

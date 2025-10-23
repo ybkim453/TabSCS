@@ -1,0 +1,44 @@
+**Column Analysis:**
+
+1. Season:
+   - Data type: Numeric
+   - 4 representative example values: 2004, 2005, 2006, 2010
+   - Role: Identifier for the season in which the data was recorded
+
+2. Team:
+   - Data type: Categorical
+   - 4 representative example values: Shandong Luneng, Chengdu Wuniu, Jiangsu Sainty
+   - Role: Descriptor for the name of the football team
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: China
+   - Role: Descriptor for the country in which the team is located
+
+4. Division:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2
+   - Role: Descriptor for the division in which the team is playing
+
+5. Apps:
+   - Data type: Numeric
+   - 4 representative example values: 0, 1, 17
+   - Role: Measure for the number of appearances made by the player
+
+6. Goals:
+   - Data type: Numeric
+   - 4 representative example values: 0
+   - Role: Measure for the number of goals scored by the player
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 2):
+   - The team "Chengdu Wuniu" is different from the majority of entries which have "Shandong Luneng" or "Jiangsu Sainty".
+   - The division value of 2 is also different from the majority of entries with division 1.
+   - These distinctive values make this row an outlier.
+
+2. Row 7 (Index 6):
+   - The team "Jiangsu Sainty" is consistent with other entries, so this row is an ordinary entry and not an outlier.
+
+3. Row 2 (Index 1):
+   - The team "Shandong Luneng" is consistent with other entries, so this row is an ordinary entry and not an outlier.

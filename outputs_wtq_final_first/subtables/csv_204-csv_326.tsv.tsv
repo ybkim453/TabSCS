@@ -1,0 +1,7 @@
+decimal32	decimal64	decimal128	decimal(32k)	Format
+1	1	1	1	Sign field (bits)
+5	5	5	5	Combination field (bits)
+6	8	12	w = 2×k + 4	Exponent continuation field (bits)
+96	384	6144	Emax = 3×2w−1	Largest value is 9.99...×10Emax
+−95	−383	−6143	Emin = 1−Emax	Smallest normalized value is 1.00...×10Emin
+−101	−398	−6176	Etiny = 2−p−Emax	Smallest non-zero value is 1×10Etiny

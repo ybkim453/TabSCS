@@ -1,0 +1,172 @@
+=== Table ID ===
+csv/204-csv/331.tsv
+
+=== Question ===
+what is the previous date before 7 august 2011?
+
+=== Sub-table Preview ===
+| Hull   | Type    | Original Name   | Original Operator     | Delivery   | Disposition (2012)   | 2nd name      | 2nd operator          | 3rd Name   | 3rd operator       |
+|:-------|:--------|:----------------|:----------------------|:-----------|:---------------------|:--------------|:----------------------|:-----------|:-------------------|
+| № 6    | 929-117 | Beetle          | JR Kyushu Jet Ferries | Jul 1990   | Active               | Rocket        | Cosmo Line            | Rocket 3   | Tane Yaku Jetfoils |
+| № 8    | 929-117 | Beetle 2        | JR Kyushu Jet Ferries | Feb 1991   | Active               | nan           | nan                   | nan        | nan                |
+| № 12   | 929-117 | Toppy 2         | Tane Yaku Jetfoils    | Apr 1992   | Active               | nan           | nan                   | nan        | nan                |
+| № 13   | 929-117 | Toppy 3         | Tane Yaku Jetfoils    | Mar 1995   | Active               | nan           | nan                   | nan        | nan                |
+| № 14   | 929-117 | Crystal Wing    | Kaijo Access Co.      | Jun 1994   | Active               | 2002 Beetle 5 | JR Kyushu Jet Ferries | nan        | nan                |
+| № 15   | 929-117 | Emerald Wing    | Kaijo Access Co.      | Jun 1994   | Active               | 2004 Rocket 1 | Cosmo Line            | -          | Tane Yaku Jetfoil  |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Hull
+   - Data type: Categorical
+   - 4 representative example values: № 6, № 8, № 12, № 13
+   - Role: Identifier for the specific hull of the ferry
+
+2. Type
+   - Data type: Categorical
+   - 4 representative example values: 929-117, Beetle, Toppy 2, Crystal Wing
+   - Role: Descriptor of the type of ferry
+
+3. Original Name
+   - Data type: Categorical
+   - 4 representative example values: Beetle, Beetle 2, Toppy 2, Crystal Wing
+   - Role: Descriptor of the original name of the ferry
+
+4. Original Operator
+   - Data type: Categorical
+   - 4 representative example values: JR Kyushu Jet Ferries, Tane Yaku Jetfoils, Kaijo Access Co., Cosmo Line
+   - Role: Descriptor of the original operator of the ferry
+
+5. Delivery
+   - Data type: Date
+   - 4 representative example values: Jul 1990, Feb 1991, Apr 1992, Mar 1995
+   - Role: Measure of the delivery date of the ferry
+
+6. Disposition (2012)
+   - Data type: Categorical
+   - 4 representative example values: Active, nan
+   - Role: Descriptor of the disposition status of the ferry in 2012
+
+7. 2nd name
+   - Data type: Categorical
+   - 4 representative example values: Rocket, nan, 2002 Beetle 5, 2004 Rocket 1
+   - Role: Descriptor of the second name of the ferry
+
+8. 2nd operator
+   - Data type: Categorical
+   - 4 representative example values: Cosmo Line, nan, JR Kyushu Jet Ferries, Tane Yaku Jetfoils
+   - Role: Descriptor of the second operator of the ferry
+
+9. 3rd Name
+   - Data type: Categorical
+   - 4 representative example values: Rocket 3, nan
+   - Role: Descriptor of the third name of the ferry
+
+10. 3rd operator
+    - Data type: Categorical
+    - 4 representative example values: Tane Yaku Jetfoils, nan
+    - Role: Descriptor of the third operator of the ferry
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: The presence of a different name and operator compared to the majority of the table makes this row an outlier.
+
+2. Row 14 (Index 14):
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: Similar to Row 5, the different name and operator make this row stand out from the rest.
+
+3. Row 13 (Index 13):
+   - Distinctive values: nan, nan
+   - Explanation: The presence of missing values in both the 2nd and 3rd name and operator columns is not unusual in this table, making this row an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                  | Surface    | Partner           | Opponents                              | Score                |
+|-------------:|:----------|------:|:--------------------|:----------------------------|:-----------|:------------------|:---------------------------------------|:---------------------|
+|            0 | Runner-up |     1 | 2010-05-16 00:00:00 | Kurume Japan                | Clay       | Karolína Plíšková | Sun Shengnan\n Xu Yifan                | 0–6 3–6              |
+|            1 | Winner    |     1 | 2011-02-13 00:00:00 | Rancho Mirage United States | Hard       | Karolína Plíšková | Nadejda Guskova\n Sandra Zaniewska     | 6–7(6–8) 6–1 6–4     |
+|            2 | Winner    |     2 | 2011-08-07 00:00:00 | Vancouver Canada            | Hard       | Karolína Plíšková | Jamie Hampton\n N. Lertcheewakarn      | 5–7 6–2 6–4          |
+|            3 | Runner-up |     2 | 2011-11-06 00:00:00 | Taipei 5 Taiwan             | Hard       | Karolína Plíšková | Chan Yung-jan\n Zheng Jie              | 6–7(5–7) 7–5 3–6     |
+|            4 | Runner-up |     3 | 2011-11-20 00:00:00 | Bratislava Slovakia         | Hard       | Karolína Plíšková | Naomi Broady\n Kristina Mladenovic     | 7–5 4–6 [2–10]       |
+|            5 | Winner    |     3 | 2012-01-23 00:00:00 | Andrézieux-Bouthéon France  | Hard (i)   | Karolína Plíšková | Julie Coin\n Eva Hrdinová              | 6–4 4–6 [10–5]       |
+|            6 | Winner    |     4 | 2012-01-30 00:00:00 | Grenoble France             | Hard (i)   | Karolína Plíšková | Valentyna Ivakhnenko\n Maryna Zanevska | 6–1 6–3              |
+|            7 | Runner-up |     4 | 2012-09-17 00:00:00 | Shrewsbury United Kingdom   | Hard (i)   | Karolína Plíšková | Vesna Dolonc\n Stefanie Vögele         | 1–6 7–6(7–3) [13–15] |
+|            8 | Winner    |     5 | 2012-11-12 00:00:00 | Zawada Poland               | Carpet (i) | Karolína Plíšková | Kristina Barrois\n Sandra Klemenschits | 6–3 6–1              |
+|            9 | Winner    |     6 | 2013-10-28 00:00:00 | Barnstaple United Kingdom   | Hard (i)   | Naomi Broady      | Raluca Olaru\n Tamira Paszek           | 6–3 3–6 [10–5]       |
+
+Generated Reasoning SQL: Explanation: To find the previous date before 7 August 2011, we need to consider the "Delivery" column, which contains dates. We should filter for dates that are earlier than 7 August 2011 and then select the maximum date from those filtered rows to get the immediate previous date.
+
+SQL: 
+SELECT MAX("Delivery") AS previous_date 
+FROM T 
+WHERE "Delivery" < '2011-08-07';
+Generated Final SQL: SELECT MAX("Delivery") AS previous_date FROM T WHERE "Delivery" < '2011-08-07';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| previous_date   |
+|:----------------|
+|                 |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Kristýna Plíšková (row_number, Outcome, No., Date, Tournament, Surface, Partner, Opponents, Score)
+
+row_number | Outcome | No. | Date | Tournament | Surface | Partner | Opponents | Score
+0 | Runner-up | 1.0 | 2010-05-16 00:00:00 | Kurume Japan | Clay | Karolína Plíšková | Sun Shengnan\n Xu Yifan | 0–6 3–6
+1 | Winner | 1.0 | 2011-02-13 00:00:00 | Rancho Mirage United States | Hard | Karolína Plíšková | Nadejda Guskova\n Sandra Zaniewska | 6–7(6–8) 6–1 6–4
+2 | Winner | 2.0 | 2011-08-07 00:00:00 | Vancouver Canada | Hard | Karolína Plíšková | Jamie Hampton\n N. Lertcheewakarn | 5–7 6–2 6–4
+3 | Runner-up | 2.0 | 2011-11-06 00:00:00 | Taipei 5 Taiwan | Hard | Karolína Plíšková | Chan Yung-jan\n Zheng Jie | 6–7(5–7) 7–5 3–6
+4 | Runner-up | 3.0 | 2011-11-20 00:00:00 | Bratislava Slovakia | Hard | Karolína Plíšková | Naomi Broady\n Kristina Mladenovic | 7–5 4–6 [2–10]
+5 | Winner | 3.0 | 2012-01-23 00:00:00 | Andrézieux-Bouthéon France | Hard (i) | Karolína Plíšková | Julie Coin\n Eva Hrdinová | 6–4 4–6 [10–5]
+6 | Winner | 4.0 | 2012-01-30 00:00:00 | Grenoble France | Hard (i) | Karolína Plíšková | Valentyna Ivakhnenko\n Maryna Zanevska | 6–1 6–3
+7 | Runner-up | 4.0 | 2012-09-17 00:00:00 | Shrewsbury United Kingdom | Hard (i) | Karolína Plíšková | Vesna Dolonc\n Stefanie Vögele | 1–6 7–6(7–3) [13–15]
+8 | Winner | 5.0 | 2012-11-12 00:00:00 | Zawada Poland | Carpet (i) | Karolína Plíšková | Kristina Barrois\n Sandra Klemenschits | 6–3 6–1
+9 | Winner | 6.0 | 2013-10-28 00:00:00 | Barnstaple United Kingdom | Hard (i) | Naomi Broady | Raluca Olaru\n Tamira Paszek | 6–3 3–6 [10–5]
+Question: what is the previous date before 7 august 2011?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: Step 1: Examine the information provided in the summary:
+- The **Date** column in the table represents the dates of the tournaments.
+- No special or atypical rows were mentioned, so each row represents a standard entry.
+- There are no preprocessing artifacts mentioned in the summary that would affect the date interpretation.
+
+Step 2: Examine the relevant entries in the full table:
+- The dates listed in the table are as follows:
+  1. 2010-05-16
+  2. 2011-02-13
+  3. 2011-08-07
+
+Step 3: Use the information to determine the previous date before 7 August 2011:
+- The date listed before 7 August 2011 is 2011-02-13.
+
+By combining the information from the summary (indicating the Date column contains tournament dates and no atypical rows) with the specific dates in the full table, we can confidently determine the previous date before 7 August 2011.
+
+Final Answer: 2011-02-13
+[Fallback] Prediction: 2011-02-13
+[Gold Answer] 13 february 2011
+

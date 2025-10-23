@@ -1,0 +1,134 @@
+=== Table Summary ===
+### Column Analysis:
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative values: 21, 22, 24, 32
+   - Role: Identifier
+
+2. **Name**
+   - Data type: Categorical
+   - 4 representative values: Artem Wallace, Justin Holiday, Quincy Pondexter, Joe Wolfinger
+   - Role: Descriptor
+
+3. **Height**
+   - Data type: Categorical
+   - 4 representative values: 6'8", 6'6", 7'0"
+   - Role: Measure
+
+4. **Weight (lbs.)**
+   - Data type: Numeric
+   - 4 representative values: 250, 170, 210, 255
+   - Role: Measure
+
+5. **Position**
+   - Data type: Categorical
+   - 4 representative values: C, F
+   - Role: Descriptor
+
+6. **Class**
+   - Data type: Categorical
+   - 4 representative values: Jr., Fr., So., RS So.
+   - Role: Descriptor
+
+7. **Hometown**
+   - Data type: Categorical
+   - 4 representative values: Toledo, WA, U.S., Chatsworth, CA, U.S., Fresno, CA, U.S., Portland, OR, U.S.
+   - Role: Descriptor
+
+8. **Previous Team(s)**
+   - Data type: Categorical
+   - 4 representative values: Toledo HS, Campbell Hall School, San Joaquin Memorial HS, Northfield Mount Hermon School
+   - Role: Descriptor
+
+### Outlier Row Analysis:
+
+1. **Row 8:**
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or atypical values. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. **Row 6:**
+   - The values in this row are also ordinary and not significantly different from the rest of the table. This row is an ordinary entry and does not qualify as an outlier.
+
+3. **Row 9:**
+   - The values in this row are typical and do not stand out as distinctive compared to the other entries. This row is an ordinary entry and does not need special treatment.
+
+=== Full Table Preview ===
+|   row_number |   # | Name                  | Height   |   Weight (lbs.) | Position   | Class   | Hometown            | Previous Team(s)               |
+|-------------:|----:|:----------------------|:---------|----------------:|:-----------|:--------|:--------------------|:-------------------------------|
+|            0 |   0 | Joel Smith            | 6'4"     |             210 | G          | RS Jr.  | Lompoc CA U.S.      | Brewster Academy               |
+|            1 |   1 | Venoy Overton         | 5'11"    |             180 | G          | Fr.     | Seattle WA U.S.     | Franklin HS                    |
+|            2 |   4 | Tim Morris            | 6'4"     |             210 | G          | Sr.     | Spokane Wa U.S.     | Central Valley HS              |
+|            3 |   5 | Justin Dentmon        | 5'11"    |             185 | G          | Jr.     | Carbondale IL U.S.  | Winchendon School              |
+|            4 |  11 | Matthew Bryan-Amaning | 6'9"     |             235 | F          | Fr.     | London England U.K. | South Kent School              |
+|            5 |  20 | Ryan Appleby          | 6'3"     |             170 | G          | Sr.     | Stanwood WA U.S.    | Florida                        |
+|            6 |  21 | Artem Wallace         | 6'8"     |             250 | C          | Jr.     | Toledo WA U.S.      | Toledo HS                      |
+|            7 |  22 | Justin Holiday        | 6'6"     |             170 | F          | Fr.     | Chatsworth CA U.S.  | Campbell Hall School           |
+|            8 |  24 | Quincy Pondexter      | 6'6"     |             210 | F          | So.     | Fresno CA U.S.      | San Joaquin Memorial HS        |
+|            9 |  32 | Joe Wolfinger         | 7'0"     |             255 | C          | RS So.  | Portland OR U.S.    | Northfield Mount Hermon School |
+|           10 |  40 | Jon Brockman          | 6'7"     |             255 | F          | Jr.     | Snohomish WA U.S.   | Snohomish Sr. HS               |
+|           11 |  44 | Darnell Gant          | 6'8"     |             215 | F          | Fr.     | Los Angeles CA U.S. | Crenshaw HS                    |
+
+Generated Reasoning SQL: Explanation: To find the name listed before Justin Holiday, we need to order the rows based on the "#" column and select the row with the highest "#" value that is less than the "#" value for Justin Holiday. This will give us the name listed before Justin Holiday in the table.
+
+SQL: 
+SELECT "Name" 
+FROM T 
+WHERE "#" = (SELECT MAX("#") FROM T WHERE "#" < (SELECT "#" FROM T WHERE "Name" = 'Justin Holiday'));
+Generated Final SQL: SELECT "Name" FROM T WHERE "#" = (SELECT MAX("#") FROM T WHERE "#" < (SELECT "#" FROM T WHERE "Name" = 'Justin Holiday'));
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Name          |
+|:--------------|
+| Artem Wallace |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2007–08 Washington Huskies men's basketball team
+SQL: SELECT "Name" FROM T WHERE "#" = (SELECT MAX("#") FROM T WHERE "#" < (SELECT "#" FROM T WHERE "Name" = 'Justin Holiday'));
+
+SQL Execution Result:
+Name
+Artem Wallace
+
+Question: whose name is listed before justin holiday?
+A: To find the answer to this question, let’s think step by step.
+Prediction: artem wallace
+[Gold Answer] artem wallace
+

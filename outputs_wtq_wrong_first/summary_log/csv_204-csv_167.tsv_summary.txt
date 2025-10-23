@@ -1,0 +1,57 @@
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative values: 1, 5, 6, 8
+   - Role: Identifier for each row
+
+2. Score
+   - Data type: Numeric
+   - 4 representative values: 123, 108*, 134*, 150*
+   - Role: Measure of the player's score in a match
+
+3. Player
+   - Data type: Categorical
+   - 4 representative values: Kris Srikkanth, Salman Butt, Graeme Smith, Gautam Gambhir
+   - Role: Descriptor for the player's name
+
+4. Team
+   - Data type: Categorical
+   - 4 representative values: India, Pakistan, South Africa, Ireland
+   - Role: Descriptor for the player's team
+
+5. Balls
+   - Data type: Numeric
+   - 4 representative values: 103, 130, 124, 137
+   - Role: Measure of the number of balls faced by the player
+
+6. Inns.
+   - Data type: Numeric
+   - 4 representative values: 1, 2
+   - Role: Descriptor for the innings played by the player
+
+7. Opposing team
+   - Data type: Categorical
+   - 4 representative values: Pakistan, India, South Africa, Sri Lanka
+   - Role: Descriptor for the opposing team
+
+8. Date
+   - Data type: Categorical
+   - 4 representative values: 18 February 1987, 13 November 2004, 25 November 2005, 24 December 2009
+   - Role: Descriptor for the date of the match
+
+9. Result
+   - Data type: Categorical
+   - 4 representative values: Lost, Won
+   - Role: Descriptor for the result of the match
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 5:
+   - The score value "108*" is different from the majority of the table where scores are whole numbers. This makes the row an outlier.
+
+3. Row 0:
+   - The No. value "1" is not significantly different from the other row identifiers. This row is an ordinary row and does not require special handling.

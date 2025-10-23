@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Network name:**
+   - Data type: Categorical
+   - 4 representative example values: Canal 5, Azteca 13, Independent
+   - Role: Identifier
+
+2. **Flagship:**
+   - Data type: Categorical
+   - 4 representative example values: XHGC 5, XHDF 13, nan
+   - Role: Descriptor
+
+3. **Programming type:**
+   - Data type: Categorical
+   - 4 representative example values: cartoons, movies, series, news
+   - Role: Descriptor
+
+4. **Owner:**
+   - Data type: Categorical
+   - 4 representative example values: Televisa, TV Azteca, Independent
+   - Role: Descriptor
+
+5. **Affiliates:**
+   - Data type: Numeric
+   - 4 representative example values: 4, 3
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+- The outlier row (index 6) has a missing value "nan" in the Flagship column, which is different from the other rows where actual flagship names are listed. This makes the row an outlier as it does not follow the pattern of the rest of the table.
+
+=== Full Table Preview ===
+|   row_number | Network name           | Flagship   | Programming type                    | Owner                          |   Affiliates |
+|-------------:|:-----------------------|:-----------|:------------------------------------|:-------------------------------|-------------:|
+|            0 | Canal de las Estrellas | XEW 2      | soap operas retro movies and sports | Televisa                       |           10 |
+|            1 | Canal 5                | XHGC 5     | cartoons movies and series          | Televisa                       |            4 |
+|            2 | Azteca 7               | XHIMT 7    | sports series and movies            | TV Azteca                      |            5 |
+|            3 | Galavisión             | XEQ 9      | retro programming and sports        | Televisa                       |            1 |
+|            4 | TV 10 Chiapas          | XHTTG      | educational                         | Gobierno del Estado de Chiapas |            7 |
+|            5 | Azteca 13              | XHDF 13    | news soap operas and sports         | TV Azteca                      |            4 |
+|            6 | Independent            |            | varies                              | Independent                    |            3 |
+
+Generated Reasoning SQL: The relevant columns for this question are "Network name" and "Programming type". We need to find the network that has the least amount of unique programming types.
+
+To achieve this, we will count the distinct programming types for each network and then select the network with the minimum count of unique programming types.
+
+SQL:
+SELECT "Network name"
+FROM T
+GROUP BY "Network name"
+ORDER BY COUNT(DISTINCT "Programming type")
+LIMIT 1;
+Generated Final SQL: SELECT "Network name" FROM T GROUP BY "Network name" ORDER BY COUNT(DISTINCT "Programming type") LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Network name   |
+|:---------------|
+| Azteca 13      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Television stations in Chiapas
+SQL: SELECT "Network name" FROM T GROUP BY "Network name" ORDER BY COUNT(DISTINCT "Programming type") LIMIT 1;
+
+SQL Execution Result:
+Network name
+Azteca 13
+
+Question: which network has the least amount of programming types?
+A: To find the answer to this question, let’s think step by step.
+Prediction: azteca 13
+[Gold Answer] tv 10 chiapas
+

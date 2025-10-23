@@ -1,0 +1,112 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2005, 2006, 2008
+   - Role: Identifier for the year of the competition
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: European U23 Championships, European Championships, Olympic Games
+   - Role: Descriptor for the type of competition
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Bydgoszcz, Poland, Erfurt, Germany, Gothenburg, Sweden
+   - Role: Descriptor for the location of the competition
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 13th (q), 7th, 5th, 11th
+   - Role: Measure of the athlete's performance in the competition
+
+5. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 5.20 m, 5.50 m, 5.65 m, NM (No Mark)
+   - Role: Measure of the athlete's performance in terms of height cleared
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The position value "–" indicates that the athlete did not compete in the event, which is different from the other rows where a specific position is mentioned. This makes the row an outlier.
+
+2. Row 9:
+   - The position value "NM" indicates that the athlete did not achieve a mark in the competition, which is different from the other rows where a specific position is mentioned. This makes the row an outlier.
+
+3. Row 0:
+   - The position value "13th (q)" with a qualifier "(q)" indicates that the athlete qualified for the next round, which is different from the other rows where a simple position is mentioned. This makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition                   | Venue                     | Position   | Notes   |
+|-------------:|-------:|:------------------------------|:--------------------------|:-----------|:--------|
+|            0 |   1999 | World Youth Championships     | Bydgoszcz Poland          | 13th (q)   | 4.60 m  |
+|            1 |   2001 | European Junior Championships | Grosseto Italy            | 7th        | 5.15 m  |
+|            2 |   2002 | World Junior Championships    | Kingston Jamaica          | 8th        | 5.30 m  |
+|            3 |   2003 | European U23 Championships    | Bydgoszcz Poland          | 13th (q)   | 5.20 m  |
+|            4 |   2005 | European U23 Championships    | Erfurt Germany            | 7th        | 5.50 m  |
+|            5 |   2005 | Universiade                   | Izmir Turkey              | 5th        | 5.50 m  |
+|            6 |   2006 | World Indoor Championships    | Moscow Russia             | 10th (q)   | 5.65 m  |
+|            7 |   2006 | European Championships        | Gothenburg Sweden         | 5th        | 5.65 m  |
+|            8 |   2007 | European Indoor Championships | Birmingham United Kingdom | 16th (q)   | 5.40 m  |
+|            9 |   2008 | Olympic Games                 | Beijing China             | 11th       | 5.45 m  |
+|           10 |   2010 | European Championships        | Barcelona Spain           | 3rd        | 5.75 m  |
+|           11 |   2012 | European Championships        | Helsinki Finland          | –          | NM      |
+
+Generated Reasoning SQL: Since the summary does not contain a column for the venue name, we cannot directly determine the name of the next venue listed after Moscow, Russia. To find the name of the next venue, we would need additional information or context outside of the provided table.
+Generated Final SQL: 
+[Error] Final SQL 실행 실패: 'NoneType' object is not iterable
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Przemysław Czerwiński (row_number, Year, Competition, Venue, Position, Notes)
+
+row_number | Year | Competition | Venue | Position | Notes
+0 | 1999 | World Youth Championships | Bydgoszcz Poland | 13th (q) | 4.60 m
+1 | 2001 | European Junior Championships | Grosseto Italy | 7th | 5.15 m
+2 | 2002 | World Junior Championships | Kingston Jamaica | 8th | 5.30 m
+3 | 2003 | European U23 Championships | Bydgoszcz Poland | 13th (q) | 5.20 m
+4 | 2005 | European U23 Championships | Erfurt Germany | 7th | 5.50 m
+5 | 2005 | Universiade | Izmir Turkey | 5th | 5.50 m
+6 | 2006 | World Indoor Championships | Moscow Russia | 10th (q) | 5.65 m
+7 | 2006 | European Championships | Gothenburg Sweden | 5th | 5.65 m
+8 | 2007 | European Indoor Championships | Birmingham United Kingdom | 16th (q) | 5.40 m
+9 | 2008 | Olympic Games | Beijing China | 11th | 5.45 m
+10 | 2010 | European Championships | Barcelona Spain | 3rd | 5.75 m
+11 | 2012 | European Championships | Helsinki Finland | – | NM
+Question: what is the name of the next venue listed after moscow, russia?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the row that corresponds to the venue listed after Moscow, Russia in the table.  
+From the summary, we know that the **Venue** column contains the names of the venues where the competitions took place.  
+In the full table, we find that the row with the **Venue** listed after Moscow, Russia is row number 7, which corresponds to the European Championships in Gothenburg, Sweden.  
+
+Therefore, the name of the next venue listed after Moscow, Russia is Gothenburg, Sweden.
+
+Final Answer: Gothenburg, Sweden
+[Fallback] Prediction: gothenburg, sweden
+[Gold Answer] gothenburg, sweden
+

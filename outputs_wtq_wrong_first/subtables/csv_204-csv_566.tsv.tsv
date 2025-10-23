@@ -1,0 +1,7 @@
+Location	Reactor type	Status	Net\nCapacity\n(MWe)	Gross\nCapacity\n(MWe)
+Chernobyl-1	RBMK-1000	shut down in 1996	740	800
+Chernobyl-4	RBMK-1000	destroyed in the 1986 accident	925	1,000
+Kursk-1	RBMK-1000	operational until 2021	925	1,000
+Kursk-2	RBMK-1000	operational until 2024	925	1,000
+Kursk-5	MKER-1000	construction begin was 1985, since then shelved	925	1,000
+Leningrad-2	RBMK-1000	operational until 2021	925	1,000

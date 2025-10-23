@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name:
+   - Data type: Categorical
+   - 4 representative example values: Esther Shahamorov, Yehuda Weissenstein, Henry Hershkowitz, Gad Tsobari
+   - Role: Identifier
+
+2. Sport:
+   - Data type: Categorical
+   - 4 representative example values: Athletics, Fencing, Shooting, Wrestling
+   - Role: Descriptor
+
+3. Event:
+   - Data type: Categorical
+   - 4 representative example values: Women's 100 m hurdles, Men's foil, 50 metre rifle prone, Freestyle — Light Flyweight <48 kg
+   - Role: Descriptor
+
+4. Placing:
+   - Data type: Categorical
+   - 4 representative example values: Semifinal, Second round, 23, Group stage
+   - Role: Descriptor
+
+5. Performance:
+   - Data type: Categorical
+   - 4 representative example values: Did not start (left Munich before the semifinal), W2–L8 (1R 2-3, 2R 0-5), 593/600, 0W–2L
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Esther Shahamorov):
+   - The value "Did not start (left Munich before the semifinal)" in the Performance column is distinctive as it indicates a unique situation where the athlete did not compete in the event.
+   - This row is an outlier as the reason for not starting the event is not a common occurrence among the other athletes.
+
+2. Row 17 (Yehuda Weissenstein):
+   - The value "W2–L8 (1R 2-3, 2R 0-5)" in the Performance column is distinctive as it shows a specific win-loss record in the competition.
+   - This row is an outlier as the detailed performance breakdown is not typical for the other athletes listed.
+
+3. Row 2 (Henry Hershkowitz):
+   - The value "593/600" in the Performance column is distinctive as it represents a high score in the shooting event.
+   - This row is an outlier as the high score sets it apart from the other athletes' performances.
+
+Overall, the outlier rows have unique values in the Performance column that distinguish them from the majority of the table, making them stand out as atypical entries.
+
+=== Full Table Preview ===
+|   row_number | Name                | Sport         | Event                              | Placing         | Performance                                                  |
+|-------------:|:--------------------|:--------------|:-----------------------------------|:----------------|:-------------------------------------------------------------|
+|            0 | Shaul Ladani        | Athletics     | Men's 50 km walk                   | 19              | 4:24:38.6\n(also entered for 20 km walk but did not start)   |
+|            1 | Esther Shahamorov   | Athletics     | Women's 100 m                      | Semifinal (5th) | 11.49                                                        |
+|            2 | Esther Shahamorov   | Athletics     | Women's 100 m hurdles              | Semifinal       | Did not start (left Munich before the semifinal)             |
+|            3 | Dan Alon            | Fencing       | Men's foil                         | Second round    | W5–L5 (1R 3-2 2R 2-3)                                        |
+|            4 | Yehuda Weissenstein | Fencing       | Men's foil                         | Second round    | W2–L8 (1R 2-3 2R 0-5)                                        |
+|            5 | Yair Michaeli       | Sailing       | Flying Dutchman                    | 23              | 28-22-22-19-25-19-DNS = 171 pts\n(left Kiel before 7th race) |
+|            6 | Itzhak Nir          | Sailing       | Flying Dutchman                    | 23              | 28-22-22-19-25-19-DNS = 171 pts\n(left Kiel before 7th race) |
+|            7 | Henry Hershkowitz   | Shooting      | 50 metre rifle prone               | 23              | 593/600                                                      |
+|            8 | Henry Hershkowitz   | Shooting      | 50 metre rifle three positions     | 46              | 1114/1200                                                    |
+|            9 | Zelig Stroch        | Shooting      | 50 metre rifle prone               | 57              | 589/600                                                      |
+|           10 | Shlomit Nir         | Swimming      | Women's 100 m breaststroke         | Heats (8th)     | 1:20.90                                                      |
+|           11 | Shlomit Nir         | Swimming      | Women's 200 m breaststroke         | Heats (6th)     | 2:53.60                                                      |
+|           12 | David Berger        | Weightlifting | Light-heavyweight <82.5 kg         | —               | J:132.5 C:122.5 S:— T:—                                      |
+|           13 | Ze'ev Friedman      | Weightlifting | Bantamweight <56 kg                | 12              | J:102.5 C:102.5 S:125 T:330                                  |
+|           14 | Yossef Romano       | Weightlifting | Middleweight <75 kg                | —               | (retired injured on third attempt to press 137.5kg)          |
+|           15 | Gad Tsobari         | Wrestling     | Freestyle — Light Flyweight <48 kg | Group stage     | 0W–2L                                                        |
+|           16 | Eliezer Halfin      | Wrestling     | Freestyle — Lightweight <68 kg     | Group stage     | 1W–2L                                                        |
+|           17 | Mark Slavin         | Wrestling     | Greco-Roman — Middleweight <82 kg  | —               | (taken hostage before his scheduled event)                   |
+
+Generated Reasoning SQL: Explanation: To determine the place Shaul Ladani took in the Men's 50 km walk event, we need to filter the row where the athlete is Shaul Ladani and the event is Men's 50 km walk. The Placing column contains this information.
+We will filter the row based on the athlete's name and the event name to retrieve the specific placing for Shaul Ladani in that event.
+
+SQL: SELECT "Placing" 
+FROM T 
+WHERE "Name" = 'Shaul Ladani' 
+AND "Event" = 'Men''s 50 km walk';
+Generated Final SQL: SELECT "Placing" FROM T WHERE "Name" = 'Shaul Ladani' AND "Event" = 'Men''s 50 km walk';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Placing |
+|----------:|
+|        19 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Israel at the 1972 Summer Olympics
+SQL: SELECT "Placing" FROM T WHERE "Name" = 'Shaul Ladani' AND "Event" = 'Men''s 50 km walk';
+
+SQL Execution Result:
+Placing
+19
+
+Question: what place did shaul ladani take in the men's 50 km walk?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 19
+[Gold Answer] 19
+

@@ -1,0 +1,145 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - Representative values: Jan. 25, 1964, March 12, 1964, nan
+   - Role: Identifier for the specific game date
+
+2. Opponent:
+   - Data type: Categorical
+   - Representative values: Michigan Tech, nan
+   - Role: Descriptor for the opposing team
+
+3. Score:
+   - Data type: Numeric
+   - Representative values: 5–3, 4–3, 217–80
+   - Role: Measure of the game score
+
+4. Result:
+   - Data type: Categorical
+   - Representative values: Win, 24–4–1
+   - Role: Descriptor for the outcome of the game
+
+5. Location:
+   - Data type: Categorical
+   - Representative values: Coliseum, Ann Arbor, MI, nan
+   - Role: Descriptor for the game venue
+
+**Outlier Row Analysis:**
+
+- Row 29:
+   - The values in this row are 217–80 for the Score and 24–4–1 for the Result, which are significantly different from the typical game scores and results in the table.
+   - These values indicate a very high-scoring game and an unusual result, making this row an outlier in terms of game statistics.
+   - Therefore, this row is considered an outlier and may require further investigation or verification.
+
+=== Full Table Preview ===
+|   row_number | Date                | Opponent          | Score   | Result   | Location              |
+|-------------:|:--------------------|:------------------|:--------|:---------|:----------------------|
+|            0 | 1963-11-29 00:00:00 | Queen's           | 9–5     | Win      | Coliseum Ann Arbor MI |
+|            1 | 1963-11-30 00:00:00 | Queen's           | 9–5     | Win      | Coliseum Ann Arbor MI |
+|            2 | 1963-12-13 00:00:00 | Toronto           | 3–5     | Loss     | Coliseum Ann Arbor MI |
+|            3 | 1963-12-14 00:00:00 | Toronto           | 10–0    | Win      | Coliseum Ann Arbor MI |
+|            4 | 1964-01-07 00:00:00 | Minn-Duluth       | 8–4     | Win      | Duluth MN             |
+|            5 | 1964-01-08 00:00:00 | Minn-Duluth       | 7–2     | Win      | Duluth MN             |
+|            6 | 1964-01-10 00:00:00 | Minnesota         | 5–1     | Win      | Minneapolis MN        |
+|            7 | 1964-01-11 00:00:00 | Minnesota         | 5–6     | Loss     | Minneapolis MN        |
+|            8 | 1964-01-17 00:00:00 | Loyola (Montreal) | 12–1    | Win      | Coliseum Ann Arbor MI |
+|            9 | 1964-01-18 00:00:00 | Loyola (Montreal) | 14–2    | Win      | Coliseum Ann Arbor MI |
+|           10 | 1964-01-24 00:00:00 | Michigan Tech     | 6–2     | Win      | Coliseum Ann Arbor MI |
+|           11 | 1964-01-25 00:00:00 | Michigan Tech     | 5–3     | Win      | Coliseum Ann Arbor MI |
+|           12 | 1964-01-31 00:00:00 | Colorado College  | 7–0     | Win      | Coliseum Ann Arbor MI |
+|           13 | 1964-02-01 00:00:00 | Colorado College  | 12–4    | Win      | Coliseum Ann Arbor MI |
+|           14 | 1964-02-07 00:00:00 | Ohio              | 14–0    | Win      | Athens OH             |
+|           15 | 1964-02-08 00:00:00 | Ohio State        | 21–0    | Win      | Columbus OH           |
+|           16 | 1964-02-14 00:00:00 | Michigan State    | 2–0     | Win      | East Lansing MI       |
+|           17 | 1964-02-15 00:00:00 | Michigan State    | 7–2     | Win      | Coliseum Ann Arbor MI |
+|           18 | 1964-02-21 00:00:00 | Minnesota         | 6–3     | Win      | Coliseum Ann Arbor MI |
+|           19 | 1964-02-22 00:00:00 | Minnesota         | 8–2     | Win      | Coliseum Ann Arbor MI |
+|           20 | 1964-02-28 00:00:00 | Michigan Tech     | 1–3     | Loss     | Houghton MI           |
+|           21 | 1964-02-29 00:00:00 | Michigan Tech     | 4–3     | Win      | Houghton MI           |
+|           22 | 1964-03-06 00:00:00 | Michigan State    | 9–4     | Win      | East Lansing MI       |
+|           23 | 1964-03-07 00:00:00 | Michigan State    | 13–4    | Win      | Coliseum Ann Arbor MI |
+|           24 | 1964-03-12 00:00:00 | Michigan Tech     | 4–3     | Win      | Coliseum Ann Arbor MI |
+|           25 | 1964-03-13 00:00:00 | Michigan Tech     | 5–5     | Tie      | Coliseum Ann Arbor MI |
+|           26 | 1964-03-14 00:00:00 | Denver            | 2–6     | Loss     | Coliseum Ann Arbor MI |
+|           27 | 1964-03-20 00:00:00 | Providence        | 3–2     | Win      | Denver CO             |
+|           28 | 1964-03-21 00:00:00 | Denver            | 6–3     | Win      | Denver CO             |
+|           29 | NaT                 |                   | 217–80  | 24–4–1   |                       |
+
+Generated Reasoning SQL: Explanation: To determine the number of consecutive wins for the Michigan Wolverines in the 1964 season, we need to identify the sequence of wins without any losses or ties in between. This requires analyzing the "Result" column to find consecutive "Win" entries. The "Date" column will help us order the games chronologically to identify consecutive wins. 
+
+We will exclude outlier row 29 from our analysis as it contains unusual game statistics that do not align with typical scores and results. 
+
+SQL: 
+WITH game_sequence AS (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "Date") AS game_order
+    FROM T
+    WHERE "Result" = 'Win' AND "row_number" <> 29
+)
+SELECT MAX(game_order) AS consecutive_wins
+FROM (
+    SELECT game_order,
+           game_order - ROW_NUMBER() OVER (ORDER BY "Date") AS grp
+    FROM game_sequence
+) 
+GROUP BY grp;
+Generated Final SQL: WITH game_sequence AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Date") AS game_order FROM T WHERE "Result" = 'Win' AND "row_number" <> 29 ) SELECT MAX(game_order) AS consecutive_wins FROM ( SELECT game_order, game_order - ROW_NUMBER() OVER (ORDER BY "Date") AS grp FROM game_sequence ) GROUP BY grp;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   consecutive_wins |
+|-------------------:|
+|                 24 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1963–64 Michigan Wolverines men's ice hockey season
+SQL: WITH game_sequence AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Date") AS game_order FROM T WHERE "Result" = 'Win' AND "row_number" <> 29 ) SELECT MAX(game_order) AS consecutive_wins FROM ( SELECT game_order, game_order - ROW_NUMBER() OVER (ORDER BY "Date") AS grp FROM game_sequence ) GROUP BY grp;
+
+SQL Execution Result:
+consecutive_wins
+24
+
+Question: how many consecutive wins did the michigan wolverines accumulate in the 1964 season?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 24
+[Gold Answer] 12
+

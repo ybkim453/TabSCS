@@ -1,0 +1,137 @@
+=== Table ID ===
+csv/203-csv/423.tsv
+
+=== Question ===
+which candidate listed had the highest percentage?
+
+=== Sub-table Preview ===
+| District   | Incumbent       | Party      |   First\nelected | Result                                       | Candidates                                               |
+|:-----------|:----------------|:-----------|-----------------:|:---------------------------------------------|:---------------------------------------------------------|
+| Maryland 1 | Wayne Gilchrest | Republican |             1990 | Re-elected                                   | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%        |
+| Maryland 2 | Robert Ehrlich  | Republican |             1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57% |
+| Maryland 3 | Ben Cardin      | Democratic |             1986 | Re-elected                                   | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%          |
+| Maryland 4 | Albert Wynn     | Democratic |             1992 | Re-elected                                   | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%           |
+| Maryland 5 | Steny Hoyer     | Democratic |             1981 | Re-elected                                   | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%       |
+| Maryland 6 | Roscoe Bartlett | Republican |             1992 | Re-elected                                   | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%    |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - Representative values: Maryland 1, Maryland 2, Maryland 3, Maryland 4
+   - Role: Identifier for the district where the election took place
+
+2. Incumbent
+   - Data type: Categorical
+   - Representative values: Wayne Gilchrest, Robert Ehrlich, Ben Cardin, Albert Wynn
+   - Role: Descriptor for the incumbent candidate in the election
+
+3. Party
+   - Data type: Categorical
+   - Representative values: Republican, Democratic
+   - Role: Descriptor for the political party of the candidate
+
+4. First elected
+   - Data type: Numeric
+   - Representative values: 1990, 1994, 1986, 1981
+   - Role: Descriptor for the year the candidate was first elected
+
+5. Result
+   - Data type: Categorical
+   - Representative values: Re-elected, Retired to run for Governor
+   - Role: Descriptor for the outcome of the election
+
+6. Candidates
+   - Data type: Categorical
+   - Representative values: Wayne Gilchrest (R) 76.67%, Dutch Ruppersberger (D) 54.16%, Ben Cardin (D) 65.72%, Steny Hoyer (D) 69.27%
+   - Role: Descriptor for the candidates running in the election and their respective percentage of votes
+
+**Outlier Row Analysis:**
+
+1. Maryland 2 - Robert Ehrlich (Republican)
+   - The row is an outlier because the incumbent, Robert Ehrlich, retired to run for Governor, resulting in a Democratic gain. This outcome is different from the majority of the table where incumbents were re-elected.
+
+2. Maryland 4 - Albert Wynn (Democratic)
+   - The row is an outlier because Albert Wynn received a significantly higher percentage of votes (78.57%) compared to the other candidates in the table. This makes it distinctive as an outlier.
+
+3. Maryland 1 - Wayne Gilchrest (Republican)
+   - The row is an outlier because Wayne Gilchrest received a very high percentage of votes (76.67%), which is notably higher than the other candidates in the table. This makes it stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number | District   | Incumbent       | Party      |   First\nelected | Result                                       | Candidates                                                                         |
+|-------------:|:-----------|:----------------|:-----------|-----------------:|:---------------------------------------------|:-----------------------------------------------------------------------------------|
+|            0 | Maryland 1 | Wayne Gilchrest | Republican |             1990 | Re-elected                                   | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%                                  |
+|            1 | Maryland 2 | Robert Ehrlich  | Republican |             1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%                           |
+|            2 | Maryland 3 | Ben Cardin      | Democratic |             1986 | Re-elected                                   | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%                                    |
+|            3 | Maryland 4 | Albert Wynn     | Democratic |             1992 | Re-elected                                   | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%                                     |
+|            4 | Maryland 5 | Steny Hoyer     | Democratic |             1981 | Re-elected                                   | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%                                 |
+|            5 | Maryland 6 | Roscoe Bartlett | Republican |             1992 | Re-elected                                   | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%                              |
+|            6 | Maryland 7 | Elijah Cummings | Democratic |             1996 | Re-elected                                   | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%                                 |
+|            7 | Maryland 8 | Connie Morella  | Republican |             1986 | Lost re-election\nDemocratic gain            | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73% |
+
+Generated Reasoning SQL: Explanation: To find the candidate with the highest percentage of votes, we need to extract the percentage values from the "Candidates" column and compare them. Since the percentage values are part of the candidate's name in the "Candidates" column, we will need to extract and compare these values to determine the candidate with the highest percentage.
+
+SQL: 
+SELECT "Candidates"
+FROM T
+ORDER BY CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Candidates" FROM T ORDER BY CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Candidates                                        |
+|:--------------------------------------------------|
+| Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16% |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States House of Representatives elections, 2002
+SQL: SELECT "Candidates" FROM T ORDER BY CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) DESC LIMIT 1;
+
+SQL Execution Result:
+Candidates
+Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%
+
+Question: which candidate listed had the highest percentage?
+A: To find the answer to this question, let’s think step by step.
+Prediction: wayne gilchrest
+[Gold Answer] albert wynn
+

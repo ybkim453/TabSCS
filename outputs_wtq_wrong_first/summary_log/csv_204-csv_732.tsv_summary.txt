@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1975, 1978, 1984, 1992
+   - Role: Identifier for the year in which the competition took place.
+
+2. Winners:
+   - Data type: Categorical
+   - 4 representative example values: Real Zaragoza, Videoton SC, Club Nacional de Football, FC Twente
+   - Role: Describes the team that won the competition in a particular year.
+
+3. Runners-up:
+   - Data type: Categorical
+   - 4 representative example values: Club Atlético Boca Juniors, Universidad Católica, Fútbol Club Barcelona, FC Twente
+   - Role: Describes the team that finished in second place in the competition in a particular year.
+
+4. Third:
+   - Data type: Categorical
+   - 4 representative example values: FK Vojvodina, PFC Sliven, Real Zaragoza, -
+   - Role: Describes the team that finished in third place in the competition in a particular year.
+
+5. Fourth:
+   - Data type: Categorical
+   - 4 representative example values: Boavista Futebol Clube, FK Trepca Mitrovica, Defensor Sporting Club, -
+   - Role: Describes the team that finished in fourth place in the competition in a particular year.
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The third and fourth place columns have missing values ("-").
+   - This row is an outlier because it does not provide complete information on the teams that finished in the lower positions, unlike other rows.
+
+2. Row 4:
+   - The third and fourth place columns have missing values ("-").
+   - This row is an outlier because it does not provide complete information on the teams that finished in the lower positions, unlike other rows.
+
+3. Row 13:
+   - The third and fourth place columns have missing values ("-").
+   - This row is an outlier because it does not provide complete information on the teams that finished in the lower positions, unlike other rows.

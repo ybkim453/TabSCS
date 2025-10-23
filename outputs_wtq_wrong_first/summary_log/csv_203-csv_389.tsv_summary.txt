@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. **Date introduced:**
+   - Data type: Categorical
+   - 4 representative example values: 9 December 2003, 23 July 2004, 16 August 2004, 14 June 2005
+   - Role: Identifier for when the toll rates were introduced
+
+2. **Class 1 (e.g. Motorbike):**
+   - Data type: Numeric
+   - 4 representative example values: £1.00, £1.00, £2.00, £2.50
+   - Role: Measure of toll rate for Class 1 vehicles
+
+3. **Class 2 (e.g. Car):**
+   - Data type: Numeric
+   - 4 representative example values: £2.00, £2.00, £3.00, £3.50
+   - Role: Measure of toll rate for Class 2 vehicles
+
+4. **Class 3 (e.g. Car with trailer):**
+   - Data type: Numeric
+   - 4 representative example values: £5.00, £5.00, £6.00, £7.00
+   - Role: Measure of toll rate for Class 3 vehicles
+
+5. **Class 4 (e.g. Van):**
+   - Data type: Numeric
+   - 4 representative example values: £5.00, £5.00, £6.00, £7.00
+   - Role: Measure of toll rate for Class 4 vehicles
+
+6. **Class 5 (e.g. HGV):**
+   - Data type: Numeric
+   - 4 representative example values: £10.00, £6.00, £6.00, £7.00
+   - Role: Measure of toll rate for Class 5 vehicles
+
+**Outlier Row Analysis:**
+
+1. **Row 5:**
+   - The values for Class 1, Class 2, Class 3, Class 4, and Class 5 toll rates are significantly higher compared to the surrounding rows.
+   - These higher toll rates make this row an outlier.
+
+2. **Row 8:**
+   - The values for Class 1, Class 2, Class 3, Class 4, and Class 5 toll rates are also notably higher compared to the neighboring rows.
+   - These elevated toll rates make this row an outlier.
+
+3. **Row 3:**
+   - The values for Class 1, Class 2, Class 3, Class 4, and Class 5 toll rates are higher than the previous rows but not as extreme as in Rows 5 and 8.
+   - These moderately higher toll rates do not make this row a significant outlier; it is an ordinary row.
+
+In summary, Rows 5 and 8 are outliers due to their exceptionally high toll rates, while Row 3 is an ordinary row with slightly higher toll rates.

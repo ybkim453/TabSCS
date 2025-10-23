@@ -1,0 +1,132 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Orion, Neptune, Amphion, Apollo
+   - Role: Identifier for the ship
+
+2. Pennant
+   - Data type: Numeric
+   - 4 representative example values: 85, 20, 29, 63
+   - Role: Measure indicating the pennant number of the ship
+
+3. Namesake
+   - Data type: Categorical
+   - 4 representative example values: Orion the Hunter, Neptune, Amphion of Thebes, Apollo, God of Light
+   - Role: Descriptor providing information on the namesake of the ship
+
+4. Builder
+   - Data type: Categorical
+   - 4 representative example values: HM Dockyard, Devonport, HM Dockyard, Portsmouth, Swan Hunter
+   - Role: Descriptor indicating the builder of the ship
+
+5. Ordered
+   - Data type: Categorical
+   - 4 representative example values: 24 March 1931, 2 March 1931, 1 December 1932, 1 March 1933
+   - Role: Descriptor indicating the date the ship was ordered
+
+6. Laid down
+   - Data type: Categorical
+   - 4 representative example values: 26 September 1931, 24 September 1931, 22 June 1933, 15 August 1933
+   - Role: Descriptor indicating the date the ship was laid down
+
+7. Launched
+   - Data type: Categorical
+   - 4 representative example values: 24 November 1932, 31 January 1933, 27 July 1934, 9 October 1934
+   - Role: Descriptor indicating the date the ship was launched
+
+8. Commissioned
+   - Data type: Categorical
+   - 4 representative example values: 18 January 1934, 23 February 1934, 15 June 1936, 13 January 1936
+   - Role: Descriptor indicating the date the ship was commissioned
+
+9. Fate
+   - Data type: Categorical
+   - 4 representative example values: Broken up at Dalmuir, 1949, Sunk in minefield off Tripoli, 19 December 1941, Sold to Royal Australian Navy as HMAS Perth, 1939, Sunk in torpedo attack, 1 March 1942
+   - Role: Descriptor indicating the fate of the ship
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Sydney\n(ex-Phaeton))
+   - The ship name includes "(ex-Phaeton)", which is not present in any other ship names.
+   - This row is an outlier due to the additional information in the ship name that distinguishes it from the other ships.
+
+2. Row 0 (Orion)
+   - The fate of the ship is "Broken up at Dalmuir, 1949", which is different from the fates of the other ships.
+   - This row is an outlier based on the unique fate of the ship compared to the rest.
+
+3. Row 5 (Amphion)
+   - The ship was sold to the Royal Australian Navy as HMAS Perth and later sunk in a torpedo attack, which is different from the fates of the other ships.
+   - This row is an outlier due to the distinct fate of the ship compared to the majority.
+
+=== Full Table Preview ===
+|   row_number | Name                 |   Pennant | Namesake               | Builder                | Ordered             | Laid down           | Launched            | Commissioned        | Fate                                                                                                      |
+|-------------:|:---------------------|----------:|:-----------------------|:-----------------------|:--------------------|:--------------------|:--------------------|:--------------------|:----------------------------------------------------------------------------------------------------------|
+|            0 | Leander              |        75 | Leander of Abydos      | HM Dockyard Devonport  | 1928-02-18 00:00:00 | 1928-08-01 00:00:00 | 1929-07-13 00:00:00 | 1931-07-23 00:00:00 | Transferred to Royal New Zealand Navy as HMNZS Leander 1941-1945\nBroken up at Blyth 1950                 |
+|            1 | Orion                |        85 | Orion the Hunter       | HM Dockyard Devonport  | 1931-03-24 00:00:00 | 1931-09-26 00:00:00 | 1932-11-24 00:00:00 | 1934-01-18 00:00:00 | Broken up at Dalmuir 1949                                                                                 |
+|            2 | Neptune              |        20 | Neptune God of the Sea | HM Dockyard Portsmouth | 1931-03-02 00:00:00 | 1931-09-24 00:00:00 | 1933-01-31 00:00:00 | 1934-02-23 00:00:00 | Sunk in minefield off Tripoli 19 December 1941                                                            |
+|            3 | Ajax                 |        22 | Ajax the Great         | Vickers Armstrong      | 1932-10-01 00:00:00 | 1933-02-07 00:00:00 | 1934-03-01 00:00:00 | 1935-04-12 00:00:00 | Broken up at Newport 1949                                                                                 |
+|            4 | Achilles             |        70 | Achilles               | Cammell Laird          | 1931-02-16 00:00:00 | 1931-06-11 00:00:00 | 1932-09-01 00:00:00 | 1936-03-24 00:00:00 | Transferred to Royal New Zealand Navy as HMNZS Achilles 1941-1946\nSold to Indian Navy as HIMS Delhi 1948 |
+|            5 | Amphion              |        29 | Amphion of Thebes      | HM Dockyard Portsmouth | 1932-12-01 00:00:00 | 1933-06-22 00:00:00 | 1934-07-27 00:00:00 | 1936-06-15 00:00:00 | Sold to Royal Australian Navy as HMAS Perth 1939\nSunk in torpedo attack 1 March 1942                     |
+|            6 | Apollo               |        63 | Apollo God of Light    | HM Dockyard Devonport  | 1933-03-01 00:00:00 | 1933-08-15 00:00:00 | 1934-10-09 00:00:00 | 1936-01-13 00:00:00 | Sold to Royal Australian Navy as HMAS Hobart 1938\nBroken up at Osaka 1962                                |
+|            7 | Sydney\n(ex-Phaeton) |        48 | City of Sydney         | Swan Hunter            | 1933-02-10 00:00:00 | 1933-07-08 00:00:00 | 1934-09-22 00:00:00 | 1935-09-24 00:00:00 | Sunk in surface action 19 November 1941                                                                   |
+
+Generated Reasoning SQL: To determine the total number of names on the chart, we need to count the distinct values in the "Name" column, which serves as an identifier for each ship. The "Name" column is categorical, and each row represents a unique ship name.
+SQL: select count(distinct "Name") from T;
+Generated Final SQL: select count(distinct "Name") from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(distinct "Name") |
+|-------------------------:|
+|                        8 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Leander-class cruiser (1931)
+SQL: select count(distinct "Name") from T;
+
+count(distinct "Name")
+8
+Question: how many names are on the chart?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 8
+[Gold Answer] 8
+

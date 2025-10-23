@@ -1,0 +1,135 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - Representative values: September 17, October 1, October 8, October 22
+   - Role: Identifier for the date of the game
+
+2. Opponent#:
+   - Data type: Categorical
+   - Representative values: Arkansas, Georgia, Southern Miss, Ole Miss
+   - Role: Descriptor for the opposing team
+
+3. Rank#:
+   - Data type: Categorical
+   - Representative values: #12, #11, #8, #6
+   - Role: Descriptor for the ranking of the team
+
+4. Site:
+   - Data type: Categorical
+   - Representative values: Razorback Stadium, Bryant–Denny Stadium, Georgia Dome
+   - Role: Descriptor for the location of the game
+
+5. TV:
+   - Data type: Categorical
+   - Representative values: ABC, ESPN, nan
+   - Role: Descriptor for the television network broadcasting the game
+
+6. Result:
+   - Data type: Categorical
+   - Representative values: W 13–6, W 29–28, W 14–6, W 21–10
+   - Role: Descriptor for the outcome of the game
+
+7. Attendance:
+   - Data type: Numeric
+   - Representative values: 52,089, 70,123, 74,751
+   - Role: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The opponent is ranked #12, which is different from the other opponents who are ranked lower.
+   - This row is an outlier because it features a game against a higher-ranked opponent.
+
+2. Row 11:
+   - The opponent is ranked #6, which is different from the other opponents who are ranked lower.
+   - This row is an outlier because it features a game against a significantly higher-ranked opponent.
+
+3. Row 2:
+   - The TV network is listed as "nan", which is not a typical value seen in the other rows.
+   - This row is an outlier due to the unusual TV network entry.
+
+=== Full Table Preview ===
+|   row_number | Date           | Opponent#                | Rank#   | Site                                                       | TV   | Result   |   Attendance |
+|-------------:|:---------------|:-------------------------|:--------|:-----------------------------------------------------------|:-----|:---------|-------------:|
+|            0 | September 3    | Tennessee–Chattanooga*   | #11     | Legion Field • Birmingham AL                               |      | W 42–13  |        82109 |
+|            1 | September 10   | Vanderbilt               | #11     | Bryant–Denny Stadium • Tuscaloosa AL                       | JPS  | W 17–7   |        70123 |
+|            2 | September 17   | at Arkansas              | #12     | Razorback Stadium • Fayetteville AR                        | ABC  | W 13–6   |        52089 |
+|            3 | September 24   | Tulane*                  | #11     | Legion Field • Birmingham AL                               |      | W 20–10  |        81421 |
+|            4 | October 1      | Georgia                  | #11     | Bryant–Denny Stadium • Tuscaloosa AL                       | ESPN | W 29–28  |        70123 |
+|            5 | October 8      | Southern Miss*           | #11     | Bryant–Denny Stadium • Tuscaloosa AL                       |      | W 14–6   |        70123 |
+|            6 | October 15     | at Tennessee             | #10     | Neyland Stadium • Knoxville TN (Third Saturday in October) | ESPN | W 17–13  |        96856 |
+|            7 | October 22     | Ole Miss                 | #8      | Bryant–Denny Stadium • Tuscaloosa AL (Rivalry)             | ABC  | W 21–10  |        70123 |
+|            8 | November 5     | at LSU                   | #6      | Tiger Stadium • Baton Rouge LA (Rivalry)                   | ESPN | W 35–17  |        75453 |
+|            9 | November 12    | at #20 Mississippi State | #6      | Scott Field • Starkville MS (Rivalry)                      | ABC  | W 29–25  |        41358 |
+|           10 | November 19    | #6 Auburn                | #4      | Legion Field • Birmingham AL (Iron Bowl)                   | ABC  | W 21–14  |        83091 |
+|           11 | December 3     | vs. #6 Florida           | #3      | Georgia Dome • Atlanta GA (SEC Championship Game)          | ABC  | L 23–24  |        74751 |
+|           12 | January 2 1995 | vs. #13 Ohio State*      | #6      | Citrus Bowl • Orlando FL (Florida Citrus Bowl)             | ABC  | W 24–17  |        71195 |
+
+Generated Reasoning SQL: Explanation: To determine which stadium had the highest attendance, we need to consider the "Site" column, which represents the location of the game, and the "Attendance" column, which provides the number of attendees. We should focus on regular game entries and exclude outlier rows that do not represent typical game scenarios. Outlier rows with unusual opponents or TV networks should be excluded from the analysis.
+
+SQL: 
+SELECT "Site", MAX(CAST("Attendance" AS INTEGER)) AS max_attendance
+FROM T
+WHERE "Opponent#" NOT LIKE '%Ohio State%' -- Exclude outlier row with Ohio State
+AND "TV" NOT LIKE '%nan%' -- Exclude outlier row with TV network as "nan"
+GROUP BY "Site";
+Generated Final SQL: SELECT "Site", MAX(CAST("Attendance" AS INTEGER)) AS max_attendance FROM T WHERE "Opponent#" NOT LIKE '%Ohio State%' -- Exclude outlier row with Ohio State AND "TV" NOT LIKE '%nan%' -- Exclude outlier row with TV network as "nan" GROUP BY "Site";
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Site                                                       |   max_attendance |
+|:-----------------------------------------------------------|-----------------:|
+| Neyland Stadium • Knoxville TN (Third Saturday in October) |            96856 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1994 Alabama Crimson Tide football team
+SQL: SELECT "Site", MAX(CAST("Attendance" AS INTEGER)) AS max_attendance FROM T WHERE "Opponent#" NOT LIKE '%Ohio State%' -- Exclude outlier row with Ohio State AND "TV" NOT LIKE '%nan%' -- Exclude outlier row with TV network as "nan" GROUP BY "Site";
+
+SQL Execution Result:
+Site | max_attendance
+Neyland Stadium • Knoxville TN (Third Saturday in October) | 96856
+
+Question: which stadium had the highest attendance?
+A: To find the answer to this question, let’s think step by step.
+Prediction: neyland stadium
+[Gold Answer] neyland stadium
+

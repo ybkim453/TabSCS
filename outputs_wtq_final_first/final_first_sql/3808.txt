@@ -1,0 +1,155 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 7, 13
+   - Role: Identifier for the week number of the NFL game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: September 14, 1986, October 12, 1986, October 19, 1986, November 27, 1986
+   - Role: Descriptor for the date of the NFL game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Detroit Lions, Washington Redskins, Philadelphia Eagles, Seattle Seahawks
+   - Role: Descriptor for the opposing team in the NFL game
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: W 31–7, W 30–6, W 17–14, L 14–31
+   - Role: Measure indicating the outcome of the NFL game
+
+5. Game site:
+   - Data type: Categorical
+   - 4 representative example values: Pontiac Silverdome, Texas Stadium, Veterans Stadium
+   - Role: Descriptor for the location of the NFL game
+
+6. NFL Recap:
+   - Data type: Categorical
+   - 4 representative example values: [2], [6], [7], [13]
+   - Role: Descriptor for the recap reference of the NFL game
+
+7. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 73,812, 63,264, 68,572, 58,020
+   - Role: Measure indicating the number of attendees at the NFL game
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The Week value of 2 is lower than the other weeks in the candidate list, making it an outlier.
+   - The Date value of September 14, 1986 is consistent with other dates in the table, so it is an ordinary value.
+   - The Result value of W 31–7 is a typical outcome, not making this row an outlier.
+   - The Opponent value of Detroit Lions is a regular opponent, so it is not a distinctive marker.
+   - The Game site of Pontiac Silverdome is a common location, not contributing to the outlier status.
+   - The NFL Recap value of [2] is similar to other recaps, so it is not a unique identifier.
+   - The Attendance value of 73,812 is within the range of other attendance values, making this row an ordinary entry.
+
+2. Row 0:
+   - The Week value of 6 is within the range of other weeks, so it is not a distinctive outlier.
+   - The Date value of October 12, 1986 is a standard date, not contributing to the outlier status.
+   - The Result value of W 30–6 is a typical outcome, not making this row an outlier.
+   - The Opponent value of Washington Redskins is a regular opponent, so it is not a distinctive marker.
+   - The Game site of Texas Stadium is a common location, not contributing to the outlier status.
+   - The NFL Recap value of [6] is similar to other recaps, so it is not a unique identifier.
+   - The Attendance value of 63,264 is within the range of other attendance values, making this row an ordinary entry.
+
+3. Row 6:
+   - The Week value of 7 is within the range of other weeks, so it is not a distinctive outlier.
+   - The Date value of October 19, 1986 is a standard date, not contributing to the outlier status.
+   - The Result value of W 17–14 is a typical outcome, not making this row an outlier.
+   - The Opponent value of Philadelphia Eagles is a regular opponent, so it is not a distinctive marker.
+   - The Game site of Veterans Stadium is a common location, not contributing to the outlier status.
+   - The NFL Recap value of [7] is similar to other recaps, so it is not a unique identifier.
+   - The Attendance value of 68,572 is within the range of other attendance values, making this row an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date                | Opponent               | Result   | Game site              | NFL Recap   |   Attendance |
+|-------------:|-------:|:--------------------|:-----------------------|:---------|:-----------------------|:------------|-------------:|
+|            0 |      1 | 1986-09-08 00:00:00 | New York Giants        | W 31–28  | Texas Stadium          | [1]         |        59804 |
+|            1 |      2 | 1986-09-14 00:00:00 | at Detroit Lions       | W 31–7   | Pontiac Silverdome     | [2]         |        73812 |
+|            2 |      3 | 1986-09-21 00:00:00 | Atlanta Falcons        | L 35–37  | Texas Stadium          | [3]         |        62880 |
+|            3 |      4 | 1986-09-29 00:00:00 | at St. Louis Cardinals | W 31–7   | Busch Memorial Stadium | [4]         |        49077 |
+|            4 |      5 | 1986-10-05 00:00:00 | at Denver Broncos      | L 14–29  | Mile High Stadium      | [5]         |        76082 |
+|            5 |      6 | 1986-10-12 00:00:00 | Washington Redskins    | W 30–6   | Texas Stadium          | [6]         |        63264 |
+|            6 |      7 | 1986-10-19 00:00:00 | at Philadelphia Eagles | W 17–14  | Veterans Stadium       | [7]         |        68572 |
+|            7 |      8 | 1986-10-26 00:00:00 | St. Louis Cardinals    | W 37–6   | Texas Stadium          | [8]         |        60756 |
+|            8 |      9 | 1986-11-02 00:00:00 | at New York Giants     | L 14–17  | Giants Stadium         | [9]         |        74871 |
+|            9 |     10 | 1986-11-09 00:00:00 | Los Angeles Raiders    | L 13–17  | Texas Stadium          | [10]        |        61706 |
+|           10 |     11 | 1986-11-16 00:00:00 | at San Diego Chargers  | W 24–21  | Jack Murphy Stadium    | [11]        |        55622 |
+|           11 |     12 | 1986-11-23 00:00:00 | at Washington Redskins | L 14–41  | RFK Stadium            | [12]        |        55642 |
+|           12 |     13 | 1986-11-27 00:00:00 | Seattle Seahawks       | L 14–31  | Texas Stadium          | [13]        |        58020 |
+|           13 |     14 | 1986-12-07 00:00:00 | at Los Angeles Rams    | L 10–29  | Anaheim Stadium        | [14]        |        64949 |
+|           14 |     15 | 1986-12-14 00:00:00 | Philadelphia Eagles    | L 21–23  | Texas Stadium          | [15]        |        46117 |
+|           15 |     16 | 1986-12-21 00:00:00 | Chicago Bears          | L 10–24  | Texas Stadium          | [16]        |        57256 |
+
+Generated Reasoning SQL: The summary indicates that the "Date" column is categorical and contains specific dates of NFL games. To find the number of attendees at the game played on November 2, 1986, we need to filter the row where "Date" = 'November 2, 1986' and retrieve the value in the "Attendance" column.
+It is important to note that the "Date" column values are in a specific format, so we need to match the exact date string to get the correct row.
+
+SQL: select "Attendance" from T where "Date" = 'November 2, 1986';
+Generated Final SQL: select "Attendance" from T where "Date" = 'November 2, 1986';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1986 Dallas Cowboys season (row_number, Week, Date, Opponent, Result, Game site, NFL Recap, Attendance)
+
+row_number | Week | Date | Opponent | Result | Game site | NFL Recap | Attendance
+0 | 1 | 1986-09-08 00:00:00 | New York Giants | W 31–28 | Texas Stadium | [1] | 59804
+1 | 2 | 1986-09-14 00:00:00 | at Detroit Lions | W 31–7 | Pontiac Silverdome | [2] | 73812
+2 | 3 | 1986-09-21 00:00:00 | Atlanta Falcons | L 35–37 | Texas Stadium | [3] | 62880
+3 | 4 | 1986-09-29 00:00:00 | at St. Louis Cardinals | W 31–7 | Busch Memorial Stadium | [4] | 49077
+4 | 5 | 1986-10-05 00:00:00 | at Denver Broncos | L 14–29 | Mile High Stadium | [5] | 76082
+5 | 6 | 1986-10-12 00:00:00 | Washington Redskins | W 30–6 | Texas Stadium | [6] | 63264
+6 | 7 | 1986-10-19 00:00:00 | at Philadelphia Eagles | W 17–14 | Veterans Stadium | [7] | 68572
+7 | 8 | 1986-10-26 00:00:00 | St. Louis Cardinals | W 37–6 | Texas Stadium | [8] | 60756
+8 | 9 | 1986-11-02 00:00:00 | at New York Giants | L 14–17 | Giants Stadium | [9] | 74871
+9 | 10 | 1986-11-09 00:00:00 | Los Angeles Raiders | L 13–17 | Texas Stadium | [10] | 61706
+10 | 11 | 1986-11-16 00:00:00 | at San Diego Chargers | W 24–21 | Jack Murphy Stadium | [11] | 55622
+11 | 12 | 1986-11-23 00:00:00 | at Washington Redskins | L 14–41 | RFK Stadium | [12] | 55642
+12 | 13 | 1986-11-27 00:00:00 | Seattle Seahawks | L 14–31 | Texas Stadium | [13] | 58020
+13 | 14 | 1986-12-07 00:00:00 | at Los Angeles Rams | L 10–29 | Anaheim Stadium | [14] | 64949
+14 | 15 | 1986-12-14 00:00:00 | Philadelphia Eagles | L 21–23 | Texas Stadium | [15] | 46117
+15 | 16 | 1986-12-21 00:00:00 | Chicago Bears | L 10–24 | Texas Stadium | [16] | 57256
+Question: what was the number of attendees at the game played november 2, 1986?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: Step 1: Examine the summary
+- The **Date** column contains the date of each game.
+- The **Attendance** column specifies the number of attendees at each game.
+
+Step 2: Use the full table to confirm the attendance for the game played on November 2, 1986.
+- Row with index 8 corresponds to the game played on November 2, 1986.
+- The attendance for this game is listed as 74,871.
+
+Step 3: Combine information from the summary (identifying the relevant date and attendance columns) with the specific data from the full table to give the final answer.
+
+Final Answer: 74,871
+[Fallback] Prediction: 74,871
+[Gold Answer] 74,871
+

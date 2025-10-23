@@ -1,0 +1,138 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Categorical
+   - 4 representative example values: 1997–1999, 1999–2004, 2008–, 2011–2013
+   - Role: Identifier
+
+2. Kit Manufacturer
+   - Data type: Categorical
+   - 4 representative example values: Errea
+   - Role: Descriptor
+
+3. Shirt Sponsor
+   - Data type: Categorical
+   - 4 representative example values: Endsleigh Insurance, Towergate Insurance, Mira Showers
+   - Role: Descriptor
+
+4. Back of Shirt Sponsor
+   - Data type: Categorical
+   - 4 representative example values: nan, Barr Stadia, Gloucestershire College
+   - Role: Descriptor
+
+5. Short Sponsor
+   - Data type: Categorical
+   - 4 representative example values: nan, Gloucestershire Echo
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 16:
+   - Distinctive values: Year = 2013–, Kit Manufacturer = Errea, Shirt Sponsor = Mira Showers, Back of Shirt Sponsor = Gloucestershire College, Short Sponsor = Gloucestershire Echo
+   - Explanation: This row is not an outlier as it contains values that are consistent with other entries in the table.
+
+2. Row 15:
+   - Distinctive values: Year = 2011–2013, Kit Manufacturer = Errea, Shirt Sponsor = Mira Showers, Back of Shirt Sponsor = Barr Stadia, Short Sponsor = Gloucestershire Echo
+   - Explanation: This row is not an outlier as it contains values that are consistent with other entries in the table.
+
+3. Row 3:
+   - Distinctive values: Year = 2008–, Kit Manufacturer = Errea, Shirt Sponsor = Mira Showers
+   - Explanation: This row is not an outlier as it contains values that are consistent with other entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Year      | Kit Manufacturer   | Shirt Sponsor            | Back of Shirt Sponsor   | Short Sponsor        |
+|-------------:|:----------|:-------------------|:-------------------------|:------------------------|:---------------------|
+|            0 | 1977–1978 |                    | National Express         |                         |                      |
+|            1 | 1982–1985 | Umbro              |                          |                         |                      |
+|            2 | 1985–1986 | Umbro              | Whitbread                |                         |                      |
+|            3 | 1986–1988 | Henson             | Duraflex                 |                         |                      |
+|            4 | 1988–1989 |                    | Gulf Oil                 |                         |                      |
+|            5 | 1991–1993 | Technik            | Gulf Oil                 |                         |                      |
+|            6 | 1993–1994 | Club Sport         | Gulf Oil                 |                         |                      |
+|            7 | 1994–1995 | Klūb Sport         | Empress                  |                         |                      |
+|            8 | 1995–1996 | Matchwinner        | Empress                  |                         |                      |
+|            9 | 1996–1997 | UK                 | Endsleigh Insurance      |                         |                      |
+|           10 | 1997–1999 | Errea              | Endsleigh Insurance      |                         |                      |
+|           11 | 1999–2004 | Errea              | Towergate Insurance      |                         |                      |
+|           12 | 2004–2008 | Errea              | Bence Building Merchants |                         |                      |
+|           13 | 2008–     | Errea              | Mira Showers             |                         |                      |
+|           14 | 2009–2011 | Errea              | Mira Showers             | PSU Technology Group    |                      |
+|           15 | 2011–2013 | Errea              | Mira Showers             | Barr Stadia             | Gloucestershire Echo |
+|           16 | 2013–     | Errea              | Mira Showers             | Gloucestershire College | Gloucestershire Echo |
+
+Generated Reasoning SQL: Explanation: To find the kit manufacturer that came after Umbro, we need to look for the next distinct value in the "Kit Manufacturer" column after Umbro. We can achieve this by selecting the distinct "Kit Manufacturer" values that are greater than Umbro and then ordering them by "Kit Manufacturer" to find the next one in line.
+
+SQL: 
+select distinct "Kit Manufacturer" 
+from T 
+where "Kit Manufacturer" > 'Umbro' 
+order by "Kit Manufacturer" 
+limit 1;
+Generated Final SQL: select distinct "Kit Manufacturer" from T where "Kit Manufacturer" > 'Umbro' order by "Kit Manufacturer" limit 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Cheltenham Town F.C. (row_number, Year, Kit Manufacturer, Shirt Sponsor, Back of Shirt Sponsor, Short Sponsor)
+
+row_number | Year | Kit Manufacturer | Shirt Sponsor | Back of Shirt Sponsor | Short Sponsor
+0 | 1977–1978 | None | National Express | None | None
+1 | 1982–1985 | Umbro | None | None | None
+2 | 1985–1986 | Umbro | Whitbread | None | None
+3 | 1986–1988 | Henson | Duraflex | None | None
+4 | 1988–1989 | None | Gulf Oil | None | None
+5 | 1991–1993 | Technik | Gulf Oil | None | None
+6 | 1993–1994 | Club Sport | Gulf Oil | None | None
+7 | 1994–1995 | Klūb Sport | Empress | None | None
+8 | 1995–1996 | Matchwinner | Empress | None | None
+9 | 1996–1997 | UK | Endsleigh Insurance | None | None
+10 | 1997–1999 | Errea | Endsleigh Insurance | None | None
+11 | 1999–2004 | Errea | Towergate Insurance | None | None
+12 | 2004–2008 | Errea | Bence Building Merchants | None | None
+13 | 2008– | Errea | Mira Showers | None | None
+14 | 2009–2011 | Errea | Mira Showers | PSU Technology Group | None
+15 | 2011–2013 | Errea | Mira Showers | Barr Stadia | Gloucestershire Echo
+16 | 2013– | Errea | Mira Showers | Gloucestershire College | Gloucestershire Echo
+Question: which kit manufacturer came next after umbro?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the kit manufacturer that came after Umbro, we need to look at the Year column to identify the row where Umbro was listed. 
+
+From the full table:
+- Umbro was listed in rows 1 and 2.
+
+Next, we need to look at the row immediately following Umbro to determine the kit manufacturer that came next.
+
+From the full table:
+- The kit manufacturer that came after Umbro in row 2 is Henson.
+
+Therefore, the kit manufacturer that came next after Umbro is Henson.
+
+Final Answer: Henson
+[Fallback] Prediction: henson
+[Gold Answer] henson
+

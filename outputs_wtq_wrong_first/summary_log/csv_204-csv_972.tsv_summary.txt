@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 2000, 2002, 2008
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Division:
+   - Data type: Numeric
+   - 4 representative example values: 4, 4, 4, 4
+   - Role: Descriptor indicating the division in which the team competed.
+
+3. League:
+   - Data type: Categorical
+   - 4 representative example values: USISL PDSL, USL PDL, USL PDL, USL PDL
+   - Role: Descriptor specifying the league in which the team participated.
+
+4. Regular Season:
+   - Data type: Categorical
+   - 4 representative example values: 4th, Rocky Mountain, 5th, Heartland
+   - Role: Measure indicating the team's performance in the regular season.
+
+5. Playoffs:
+   - Data type: Categorical
+   - 4 representative example values: Division Finals, Did not qualify, Did not qualify, Did not qualify
+   - Role: Measure indicating the team's performance in the playoffs.
+
+6. Open Cup:
+   - Data type: Categorical
+   - 4 representative example values: 1st Round, Did not qualify, Did not qualify, Did not qualify
+   - Role: Measure indicating the team's performance in the Open Cup.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "USISL PDSL" in the League column and "4th, Central" in the Regular Season column make this row distinctive.
+   - These values are different from the majority of the table, as they represent a specific league and a relatively high ranking in the regular season.
+   - Therefore, this row can be considered an outlier.
+
+2. Row 2:
+   - The values "USL PDL" in the League column and "5th, Heartland" in the Regular Season column are not significantly different from other rows in the table.
+   - These values are ordinary within the context of the table, so this row is not an outlier and does not require special handling.

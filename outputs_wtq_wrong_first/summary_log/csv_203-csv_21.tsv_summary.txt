@@ -1,0 +1,43 @@
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 4, 8, 12, 15
+   - Role of the column: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: September 27, 1998, November 22, 1998, December 13, 1998, December 20, 1998
+   - Role of the column: Descriptor for the date of the game
+
+3. TV Time:
+   - Data type: Categorical
+   - 4 representative example values: FOX 10:00 am MT, FOX 11:00 am MT, FOX 2:05 pm MT
+   - Role of the column: Descriptor for the TV broadcast time of the game
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: St. Louis Rams, Washington Redskins, Philadelphia Eagles, New Orleans Saints
+   - Role of the column: Descriptor for the opposing team in the game
+
+5. Result:
+   - Data type: Categorical
+   - 4 representative example values: W 20–17, W 45–42, W 19–17
+   - Role of the column: Measure for the outcome of the game
+
+6. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 55,832, 63,435, 62,176, 51,617
+   - Role of the column: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The row with Week 8 and "Bye" in all other columns is an outlier.
+   - The "Bye" value in all columns is distinctive as it indicates that there was no game played during that week.
+   - This row is an outlier due to the absence of a game compared to the other rows.
+
+2. Row 15:
+   - The row with Week 16 and "New Orleans Saints" as the opponent is an outlier.
+   - The values in this row are consistent with the other rows in terms of TV Time, Result, and Attendance.
+   - The only distinctive aspect is the opponent being the New Orleans Saints, which makes this row an outlier in terms of the opponent team.

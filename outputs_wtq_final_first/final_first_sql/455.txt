@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Player:
+   - Data type: Categorical
+   - 4 representative example values: Jozy Altidore, Bruce Murray, Eddie Johnson, Earnie Stewart
+   - Role: Identifier
+
+2. Goals:
+   - Data type: Numeric
+   - 4 representative example values: 21, 19, 17, 17
+   - Role: Measure
+
+3. Caps:
+   - Data type: Numeric
+   - 4 representative example values: 67, 86, 62, 101
+   - Role: Measure
+
+4. Career:
+   - Data type: Categorical
+   - 4 representative example values: 2007–present, 1985–1993, 2004–present, 1990–2004
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Bruce Murray):
+   - The Caps value of 86 is higher than the majority of the Caps values in the table.
+   - This makes the row an outlier as it has a significantly higher number of Caps compared to the other players.
+
+2. Row 7 (Earnie Stewart):
+   - The Caps value of 101 is higher than the majority of the Caps values in the table.
+   - This makes the row an outlier as it has a significantly higher number of Caps compared to the other players.
+
+3. Row 6 (DaMarcus Beasley):
+   - The Caps value of 114 is higher than the majority of the Caps values in the table.
+   - This makes the row an outlier as it has a significantly higher number of Caps compared to the other players.
+
+=== Full Table Preview ===
+|   row_number | #   | Player           |   Goals |   Caps | Career       |
+|-------------:|:----|:-----------------|--------:|-------:|:-------------|
+|            0 | 1   | Landon Donovan   |      57 |    155 | 2000–present |
+|            1 | 2   | Clint Dempsey    |      36 |    103 | 2004–present |
+|            2 | 3   | Eric Wynalda     |      34 |    106 | 1990–2000    |
+|            3 | 4   | Brian McBride    |      30 |     95 | 1993–2006    |
+|            4 | 5   | Joe-Max Moore    |      24 |    100 | 1992–2002    |
+|            5 | 6T  | Jozy Altidore    |      21 |     67 | 2007–present |
+|            6 | 6T  | Bruce Murray     |      21 |     86 | 1985–1993    |
+|            7 | 8   | Eddie Johnson    |      19 |     62 | 2004–present |
+|            8 | 9T  | Earnie Stewart   |      17 |    101 | 1990–2004    |
+|            9 | 9T  | DaMarcus Beasley |      17 |    114 | 2001–present |
+
+Generated Reasoning SQL: Explanation: To find the number of goals Earnie Stewart scored, we need to filter the row where "Player" = 'Earnie Stewart' and retrieve the value in the "Goals" column.
+The summary provides the representative example values for the "Player" column, including 'Earnie Stewart', which is a categorical identifier.
+We can directly query the row where "Player" = 'Earnie Stewart' to get the number of goals scored by him.
+SQL: select "Goals" from T where "Player" = 'Earnie Stewart';
+Generated Final SQL: select "Goals" from T where "Player" = 'Earnie Stewart';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Goals |
+|--------:|
+|      17 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States men's national soccer team
+SQL: select "Goals" from T where "Player" = 'Earnie Stewart';
+
+Goals
+17
+Question: how many goals did earnie stewart score?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 17
+[Gold Answer] 17
+

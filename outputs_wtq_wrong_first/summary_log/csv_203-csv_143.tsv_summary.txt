@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Team 1
+   - Data type: Categorical
+   - 4 representative example values: Algeciras, Alcalá, Burgos, Osasuna
+   - Role of the column: Identifier for the first team in each match
+
+2. Agg.
+   - Data type: Numeric
+   - 4 representative example values: 2-10, 1-10, 4-1, 2-1
+   - Role of the column: Measure representing the aggregate score of the match
+
+3. Team 2
+   - Data type: Categorical
+   - 4 representative example values: Real Madrid, Valencia, Huesca, Guadalajara
+   - Role of the column: Identifier for the second team in each match
+
+4. 1st leg
+   - Data type: Numeric
+   - 4 representative example values: 0-6, 1-3, 2-0, 2-0
+   - Role of the column: Measure representing the score of the first leg of the match
+
+5. 2nd leg
+   - Data type: Numeric
+   - 4 representative example values: 2-4, 0-7, 2-1, 0-1
+   - Role of the column: Measure representing the score of the second leg of the match
+
+**Outlier Row Analysis:**
+
+1. Row 6 (Tenerife vs. Malgrat)
+   - The 2nd leg score of 0-1 for Malgrat is significantly different from the other 2nd leg scores in the table.
+   - This makes the row an outlier as it deviates from the typical scoring pattern seen in the other matches.
+
+2. Row 2 (Alcalá vs. Valencia)
+   - The aggregate score of 1-10 is much higher compared to the other aggregate scores in the table.
+   - This makes the row an outlier as it represents a particularly one-sided match compared to the rest.
+
+3. Row 38 (Not specified)
+   - Since the row is not specified, it is not possible to determine the exact values that make it distinctive.
+   - Without specific information, it is not possible to classify this row as an outlier or an ordinary entry.

@@ -1,0 +1,143 @@
+=== Table ID ===
+csv/204-csv/900.tsv
+
+=== Question ===
+how many golfers from the us participated on june 18, 1995?
+
+=== Sub-table Preview ===
+| Place   | Player         | Country       | Score           | To par   | Money ($)   |
+|:--------|:---------------|:--------------|:----------------|:---------|:------------|
+| 1       | Corey Pavin    | United States | 72-69-71-68=280 | E        | 350,000     |
+| 2       | Greg Norman    | Australia     | 68-67-74-73=282 | +2       | 207,000     |
+| T4      | Jay Haas       | United States | 70-73-72-69=284 | +4       | 66,633      |
+| T4      | Jeff Maggert   | United States | 69-72-77-66=284 | +4       | 66,633      |
+| T4      | Phil Mickelson | United States | 68-70-72-74=284 | +4       | 66,633      |
+| T10     | Vijay Singh    | Fiji          | 70-71-72-72=285 | +5       | 44,184      |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: 1, 2, T4, T10
+   - Role: Identifier for the ranking of players in the tournament
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Corey Pavin, Greg Norman, Jay Haas, Vijay Singh
+   - Role: Descriptor for the name of the player
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: United States, Australia, Fiji
+   - Role: Descriptor for the country the player represents
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 72-69-71-68=280, 68-67-74-73=282, 70-73-72-69=284, 70-71-72-72=285
+   - Role: Measure of the total score of the player in the tournament
+
+5. To par:
+   - Data type: Categorical
+   - 4 representative example values: E, +2, +4, +5
+   - Role: Descriptor for the player's score relative to par
+
+6. Money ($):
+   - Data type: Numeric
+   - 4 representative example values: 350,000, 207,000, 66,633, 44,184
+   - Role: Measure of the amount of money won by the player in the tournament
+
+**Outlier Row Analysis:**
+
+1. Row 10 (Vijay Singh):
+   - The values for Score (+5) and To par (+5) are different from the majority of the table where most players have scores closer to par or below.
+   - These values make the row an outlier as Vijay Singh's performance was not as strong as the top players in the tournament.
+
+2. Row 0 (Corey Pavin):
+   - The values for Place (1) and To par (E) are not extreme or unusual compared to the rest of the table.
+   - These values are ordinary within the context of the table, so this row is not an outlier.
+
+3. Row 1 (Greg Norman):
+   - The values for Score (68-67-74-73=282) and To par (+2) are consistent with the majority of the table.
+   - These values are ordinary entries and do not make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Place   | Player         | Country       | Score           | To par   |   Money ($) |
+|-------------:|:--------|:---------------|:--------------|:----------------|:---------|------------:|
+|            0 | 1       | Corey Pavin    | United States | 72-69-71-68=280 | E        |      350000 |
+|            1 | 2       | Greg Norman    | Australia     | 68-67-74-73=282 | +2       |      207000 |
+|            2 | 3       | Tom Lehman     | United States | 70-72-67-74=283 | +3       |      131974 |
+|            3 | T4      | Bill Glasson   | United States | 69-70-76-69=284 | +4       |       66633 |
+|            4 | T4      | Jay Haas       | United States | 70-73-72-69=284 | +4       |       66633 |
+|            5 | T4      | Neal Lancaster | United States | 70-72-77-65=284 | +4       |       66633 |
+|            6 | T4      | Davis Love III | United States | 72-68-73-71=284 | +4       |       66633 |
+|            7 | T4      | Jeff Maggert   | United States | 69-72-77-66=284 | +4       |       66633 |
+|            8 | T4      | Phil Mickelson | United States | 68-70-72-74=284 | +4       |       66633 |
+|            9 | T10     | Frank Nobilo   | New Zealand   | 72-72-70-71=285 | +5       |       44184 |
+|           10 | T10     | Vijay Singh    | Fiji          | 70-71-72-72=285 | +5       |       44184 |
+|           11 | T10     | Bob Tway       | United States | 69-69-72-75=285 | +5       |       44184 |
+
+Generated Reasoning SQL: Explanation: To determine the number of golfers from the US who participated on June 18, 1995, we need to filter the rows based on the date of the tournament and the country of the player. The "Country" column contains the nationality of the players, and the "Date" column is not explicitly mentioned in the summary but can be inferred from the context of the question.
+
+SQL: SELECT COUNT("Player") 
+FROM T 
+WHERE "Country" = 'United States' 
+AND "Date" = 'June 18, 1995';
+Generated Final SQL: SELECT COUNT("Player") FROM T WHERE "Country" = 'United States' AND "Date" = 'June 18, 1995';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Player") |
+|------------------:|
+|                 0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1995 U.S. Open (golf)
+SQL: SELECT COUNT("Player") FROM T WHERE "Country" = 'United States' AND "Date" = 'June 18, 1995';
+
+SQL Execution Result:
+COUNT("Player")
+0
+
+Question: how many golfers from the us participated on june 18, 1995?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 9
+

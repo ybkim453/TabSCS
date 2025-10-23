@@ -1,0 +1,142 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. №
+   - Data type: Numeric
+   - 4 representative example values: 2, 10, 13, 14
+   - Role of the column: Identifier for the episode number
+
+2. #
+   - Data type: Numeric
+   - 4 representative example values: 2, 10, 13, 14
+   - Role of the column: Identifier for the episode number
+
+3. Title
+   - Data type: Categorical
+   - 4 representative example values: The Green Room, Isn't it Romantic?, Slumber Party, East Side Story
+   - Role of the column: Descriptor for the title of the episode
+
+4. Directed by
+   - Data type: Categorical
+   - 4 representative example values: Michael Uno, Nancy Malone, Charles Braverman, Dan Attias
+   - Role of the column: Descriptor for the director of the episode
+
+5. Written by
+   - Data type: Categorical
+   - 4 representative example values: David Stenn, Charles Rosin, Darren Star, Charles Rosin
+   - Role of the column: Descriptor for the writer of the episode
+
+6. Original air date
+   - Data type: Categorical
+   - 4 representative example values: October 11, 1990, January 3, 1991, January 31, 1991, February 14, 1991
+   - Role of the column: Descriptor for the original air date of the episode
+
+7. Production code
+   - Data type: Numeric
+   - 4 representative example values: 2190001, 2190009, 2190012, 2190013
+   - Role of the column: Identifier for the production code of the episode
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 1:
+   - The values in this row are also not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+3. Row 9:
+   - The values in this row are consistent with the rest of the table and do not stand out as atypical. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   № |   # | Title                             | Directed by       | Written by                      | Original air date   | Production\ncode   |
+|-------------:|----:|----:|:----------------------------------|:------------------|:--------------------------------|:--------------------|:-------------------|
+|            0 |   1 |   1 | "Class of Beverly Hills"          | Tim Hunter        | Darren Star                     | 1990-10-04 00:00:00 | –                  |
+|            1 |   2 |   2 | "The Green Room"                  | Michael Uno       | David Stenn                     | 1990-10-11 00:00:00 | 2190001            |
+|            2 |   3 |   3 | "Every Dream Has Its Price (Tag)" | Catlin Adams      | Amy Spies                       | 1990-10-18 00:00:00 | 2190002            |
+|            3 |   4 |   4 | "The First Time"                  | Bethany Rooney    | Darren Star                     | 1990-10-25 00:00:00 | 2190003            |
+|            4 |   5 |   5 | "One on One"                      | Artie Mandelberg  | Charles Rosin                   | 1990-11-01 00:00:00 | 2190004            |
+|            5 |   6 |   6 | "Higher Education"                | Artie Mandelberg  | Jordan Budde                    | 1990-11-15 00:00:00 | 2190005            |
+|            6 |   7 |   7 | "Perfect Mom"                     | Bethany Rooney    | Darren Star                     | 1990-11-22 00:00:00 | 2190006            |
+|            7 |   8 |   8 | "The 17-Year Itch"                | Jefferson Kibbee  | Amy Spies                       | 1990-11-29 00:00:00 | 2190007            |
+|            8 |   9 |   9 | "The Gentle Art of Listening"     | Dan Attias        | Charles Rosin                   | 1990-12-06 00:00:00 | 2190008            |
+|            9 |  10 |  10 | "Isn't it Romantic?"              | Nancy Malone      | Charles Rosin                   | 1991-01-03 00:00:00 | 2190009            |
+|           10 |  11 |  11 | "B.Y.O.B."                        | Miles Watkins     | Jordan Budde                    | 1991-01-10 00:00:00 | 2190010            |
+|           11 |  12 |  12 | "One Man and a Baby"              | Burt Brinckerhoff | Amy Spies                       | 1991-01-24 00:00:00 | 2190011            |
+|           12 |  13 |  13 | "Slumber Party"                   | Charles Braverman | Darren Star                     | 1991-01-31 00:00:00 | 2190012            |
+|           13 |  14 |  14 | "East Side Story"                 | Dan Attias        | Charles Rosin                   | 1991-02-14 00:00:00 | 2190013            |
+|           14 |  15 |  15 | "A Fling in Palm Springs"         | Jefferson Kibbee  | Jordan Budde                    | 1991-02-21 00:00:00 | 2190014            |
+|           15 |  16 |  16 | "Fame is Where You Find It"       | Paul Schneider    | Charles Rosin & Karen Rosin     | 1991-02-28 00:00:00 | 2190015            |
+|           16 |  17 |  17 | "Stand (Up) and Deliver"          | Burt Brinckerhoff | Amy Spies                       | 1991-03-07 00:00:00 | 2190016            |
+|           17 |  18 |  18 | "It's Only a Test"                | Charles Braverman | Darren Star                     | 1991-03-28 00:00:00 | 2190017            |
+|           18 |  19 |  19 | "April is the Cruelest Month"     | Dan Attias        | Steve Wasserman & Jessica Klein | 1991-04-11 00:00:00 | 2190018            |
+|           19 |  20 |  20 | "Spring Training"                 | Burt Brinckerhoff | Charles Rosin                   | 1991-04-25 00:00:00 | 2190019            |
+|           20 |  21 |  21 | "Spring Dance"                    | Darren Star       | Darren Star                     | 1991-05-02 00:00:00 | 2190020            |
+|           21 |  22 |  22 | "Home Again"                      | Charles Braverman | Amy Spies                       | 1991-05-09 00:00:00 | 2190021            |
+
+Generated Reasoning SQL: Explanation: To find the episode that came before "B.Y.O.B", we need to look at the "Title" column to identify the episode that precedes it. The "Title" column contains categorical values representing the title of each episode. We can order the episodes by the episode number to determine the episode that came before "B.Y.O.B".
+SQL: SELECT "Title" FROM T WHERE "№" = (SELECT "№" FROM T WHERE "Title" = 'B.Y.O.B') - 1;
+Generated Final SQL: SELECT "Title" FROM T WHERE "№" = (SELECT "№" FROM T WHERE "Title" = 'B.Y.O.B') - 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: List of Beverly Hills, 90210 episodes (row_number, №, #, Title, Directed by, Written by, Original air date, Production\ncode)
+
+row_number | № | # | Title | Directed by | Written by | Original air date | Production\ncode
+0 | 1 | 1 | "Class of Beverly Hills" | Tim Hunter | Darren Star | 1990-10-04 00:00:00 | –
+1 | 2 | 2 | "The Green Room" | Michael Uno | David Stenn | 1990-10-11 00:00:00 | 2190001
+2 | 3 | 3 | "Every Dream Has Its Price (Tag)" | Catlin Adams | Amy Spies | 1990-10-18 00:00:00 | 2190002
+3 | 4 | 4 | "The First Time" | Bethany Rooney | Darren Star | 1990-10-25 00:00:00 | 2190003
+4 | 5 | 5 | "One on One" | Artie Mandelberg | Charles Rosin | 1990-11-01 00:00:00 | 2190004
+5 | 6 | 6 | "Higher Education" | Artie Mandelberg | Jordan Budde | 1990-11-15 00:00:00 | 2190005
+6 | 7 | 7 | "Perfect Mom" | Bethany Rooney | Darren Star | 1990-11-22 00:00:00 | 2190006
+7 | 8 | 8 | "The 17-Year Itch" | Jefferson Kibbee | Amy Spies | 1990-11-29 00:00:00 | 2190007
+8 | 9 | 9 | "The Gentle Art of Listening" | Dan Attias | Charles Rosin | 1990-12-06 00:00:00 | 2190008
+9 | 10 | 10 | "Isn't it Romantic?" | Nancy Malone | Charles Rosin | 1991-01-03 00:00:00 | 2190009
+10 | 11 | 11 | "B.Y.O.B." | Miles Watkins | Jordan Budde | 1991-01-10 00:00:00 | 2190010
+11 | 12 | 12 | "One Man and a Baby" | Burt Brinckerhoff | Amy Spies | 1991-01-24 00:00:00 | 2190011
+12 | 13 | 13 | "Slumber Party" | Charles Braverman | Darren Star | 1991-01-31 00:00:00 | 2190012
+13 | 14 | 14 | "East Side Story" | Dan Attias | Charles Rosin | 1991-02-14 00:00:00 | 2190013
+14 | 15 | 15 | "A Fling in Palm Springs" | Jefferson Kibbee | Jordan Budde | 1991-02-21 00:00:00 | 2190014
+15 | 16 | 16 | "Fame is Where You Find It" | Paul Schneider | Charles Rosin & Karen Rosin | 1991-02-28 00:00:00 | 2190015
+16 | 17 | 17 | "Stand (Up) and Deliver" | Burt Brinckerhoff | Amy Spies | 1991-03-07 00:00:00 | 2190016
+17 | 18 | 18 | "It's Only a Test" | Charles Braverman | Darren Star | 1991-03-28 00:00:00 | 2190017
+18 | 19 | 19 | "April is the Cruelest Month" | Dan Attias | Steve Wasserman & Jessica Klein | 1991-04-11 00:00:00 | 2190018
+19 | 20 | 20 | "Spring Training" | Burt Brinckerhoff | Charles Rosin | 1991-04-25 00:00:00 | 2190019
+20 | 21 | 21 | "Spring Dance" | Darren Star | Darren Star | 1991-05-02 00:00:00 | 2190020
+21 | 22 | 22 | "Home Again" | Charles Braverman | Amy Spies | 1991-05-09 00:00:00 | 2190021
+Question: what episode came before b.y.o.b?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, identify the row for the episode "B.Y.O.B." by looking at the Title column in the full table.  
+Based on the provided data, the row with the Title "B.Y.O.B." is row number 10 in the table.  
+Next, go one row above that to find the episode that came before "B.Y.O.B."  
+By looking at row number 9 in the table, we find the episode before "B.Y.O.B." is "Isn't it Romantic?".  
+
+Final Answer: Isn't it Romantic?
+[Fallback] Prediction: isn't it romantic?
+[Gold Answer] "isn't it romantic?"
+

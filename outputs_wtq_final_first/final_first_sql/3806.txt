@@ -1,0 +1,147 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 7, 13
+   - Role: Identifier for the week number of the NFL game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: September 14, 1986, October 12, 1986, October 19, 1986, November 27, 1986
+   - Role: Descriptor for the date of the NFL game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Detroit Lions, Washington Redskins, Philadelphia Eagles, Seattle Seahawks
+   - Role: Descriptor for the opposing team in the NFL game
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: W 31–7, W 30–6, W 17–14, L 14–31
+   - Role: Measure indicating the outcome of the NFL game
+
+5. Game site:
+   - Data type: Categorical
+   - 4 representative example values: Pontiac Silverdome, Texas Stadium, Veterans Stadium
+   - Role: Descriptor for the location of the NFL game
+
+6. NFL Recap:
+   - Data type: Categorical
+   - 4 representative example values: [2], [6], [7], [13]
+   - Role: Descriptor for the recap reference of the NFL game
+
+7. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 73,812, 63,264, 68,572, 58,020
+   - Role: Measure indicating the number of attendees at the NFL game
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The Week value of 2 is lower than the other weeks in the candidate list, making it an outlier.
+   - The Date value of September 14, 1986 is consistent with other dates in the table, so it is an ordinary value.
+   - The Result value of W 31–7 is a typical outcome, not making this row an outlier.
+   - The Opponent value of Detroit Lions is a regular opponent, so it is not a distinctive marker.
+   - The Game site of Pontiac Silverdome is a common location, not contributing to the outlier status.
+   - The NFL Recap value of [2] is similar to other recaps, so it is not a unique identifier.
+   - The Attendance value of 73,812 is within the range of other attendance values, making this row an ordinary entry.
+
+2. Row 0:
+   - The Week value of 6 is within the range of other weeks, so it is not a distinctive outlier.
+   - The Date value of October 12, 1986 is a standard date, not contributing to the outlier status.
+   - The Result value of W 30–6 is a typical outcome, not making this row an outlier.
+   - The Opponent value of Washington Redskins is a regular opponent, so it is not a distinctive marker.
+   - The Game site of Texas Stadium is a common location, not contributing to the outlier status.
+   - The NFL Recap value of [6] is similar to other recaps, so it is not a unique identifier.
+   - The Attendance value of 63,264 is within the range of other attendance values, making this row an ordinary entry.
+
+3. Row 6:
+   - The Week value of 7 is within the range of other weeks, so it is not a distinctive outlier.
+   - The Date value of October 19, 1986 is a standard date, not contributing to the outlier status.
+   - The Result value of W 17–14 is a typical outcome, not making this row an outlier.
+   - The Opponent value of Philadelphia Eagles is a regular opponent, so it is not a distinctive marker.
+   - The Game site of Veterans Stadium is a common location, not contributing to the outlier status.
+   - The NFL Recap value of [7] is similar to other recaps, so it is not a unique identifier.
+   - The Attendance value of 68,572 is within the range of other attendance values, making this row an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date                | Opponent               | Result   | Game site              | NFL Recap   |   Attendance |
+|-------------:|-------:|:--------------------|:-----------------------|:---------|:-----------------------|:------------|-------------:|
+|            0 |      1 | 1986-09-08 00:00:00 | New York Giants        | W 31–28  | Texas Stadium          | [1]         |        59804 |
+|            1 |      2 | 1986-09-14 00:00:00 | at Detroit Lions       | W 31–7   | Pontiac Silverdome     | [2]         |        73812 |
+|            2 |      3 | 1986-09-21 00:00:00 | Atlanta Falcons        | L 35–37  | Texas Stadium          | [3]         |        62880 |
+|            3 |      4 | 1986-09-29 00:00:00 | at St. Louis Cardinals | W 31–7   | Busch Memorial Stadium | [4]         |        49077 |
+|            4 |      5 | 1986-10-05 00:00:00 | at Denver Broncos      | L 14–29  | Mile High Stadium      | [5]         |        76082 |
+|            5 |      6 | 1986-10-12 00:00:00 | Washington Redskins    | W 30–6   | Texas Stadium          | [6]         |        63264 |
+|            6 |      7 | 1986-10-19 00:00:00 | at Philadelphia Eagles | W 17–14  | Veterans Stadium       | [7]         |        68572 |
+|            7 |      8 | 1986-10-26 00:00:00 | St. Louis Cardinals    | W 37–6   | Texas Stadium          | [8]         |        60756 |
+|            8 |      9 | 1986-11-02 00:00:00 | at New York Giants     | L 14–17  | Giants Stadium         | [9]         |        74871 |
+|            9 |     10 | 1986-11-09 00:00:00 | Los Angeles Raiders    | L 13–17  | Texas Stadium          | [10]        |        61706 |
+|           10 |     11 | 1986-11-16 00:00:00 | at San Diego Chargers  | W 24–21  | Jack Murphy Stadium    | [11]        |        55622 |
+|           11 |     12 | 1986-11-23 00:00:00 | at Washington Redskins | L 14–41  | RFK Stadium            | [12]        |        55642 |
+|           12 |     13 | 1986-11-27 00:00:00 | Seattle Seahawks       | L 14–31  | Texas Stadium          | [13]        |        58020 |
+|           13 |     14 | 1986-12-07 00:00:00 | at Los Angeles Rams    | L 10–29  | Anaheim Stadium        | [14]        |        64949 |
+|           14 |     15 | 1986-12-14 00:00:00 | Philadelphia Eagles    | L 21–23  | Texas Stadium          | [15]        |        46117 |
+|           15 |     16 | 1986-12-21 00:00:00 | Chicago Bears          | L 10–24  | Texas Stadium          | [16]        |        57256 |
+
+Generated Reasoning SQL: The summary provides information about the "Date" column, which is categorical and represents the date of the NFL game. To find the attendance difference between two specific dates, we need to filter rows based on the dates and calculate the attendance for each game. We then subtract the attendance for the game on September 8, 1986, from the attendance for the game on September 29, 1986.
+
+SQL: 
+select (select "Attendance" from T where "Date" = '1986-09-08 00:00:00') - (select "Attendance" from T where "Date" = '1986-09-29 00:00:00');
+Generated Final SQL: select (select "Attendance" from T where "Date" = '1986-09-08 00:00:00') - (select "Attendance" from T where "Date" = '1986-09-29 00:00:00');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   (select "Attendance" from T where "Date" = '1986-09-08 00:00:00') - (select "Attendance" from T where "Date" = '1986-09-29 00:00:00') |
+|----------------------------------------------------------------------------------------------------------------------------------------:|
+|                                                                                                                                   10727 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1986 Dallas Cowboys season
+SQL: select (select "Attendance" from T where "Date" = '1986-09-08 00:00:00') - (select "Attendance" from T where "Date" = '1986-09-29 00:00:00');
+
+(select "Attendance" from T where "Date" = '1986-09-08 00:00:00') - (select "Attendance" from T where "Date" = '1986-09-29 00:00:00')
+10727
+Question: what is the difference in attendance between the game in september 8, 1986 and the game in september 29, 1986?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 10,727
+[Gold Answer] 10727
+

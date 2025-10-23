@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 1, 3, 4, 7
+   - Role: Identifier for each song in the table
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Intro, Out Here, It Ain't A Thang, They Pray with Snakes
+   - Role: Descriptor for the title of each song
+
+3. Time:
+   - Data type: Numeric
+   - 4 representative example values: 1:16, 3:18, 3:45, 3:56
+   - Role: Measure of the duration of each song
+
+4. Lyrics:
+   - Data type: Categorical
+   - 4 representative example values: nan, Boondox
+   - Role: Descriptor for the lyrics of each song
+
+5. Music:
+   - Data type: Categorical
+   - 4 representative example values: nan, Mike E. Clark, Kuma
+   - Role: Descriptor for the music of each song
+
+6. Producer(s):
+   - Data type: Categorical
+   - 4 representative example values: nan, Boondox
+   - Role: Descriptor for the producer(s) of each song
+
+7. Performer(s):
+   - Data type: Categorical
+   - 4 representative example values: nan, Boondox
+   - Role: Descriptor for the performer(s) of each song
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Index 1 - Intro):
+   - The values for Lyrics, Music, Producer(s), and Performer(s) are all "nan", which is different from the other rows where these columns have specific values.
+   - This row is an outlier due to the lack of specific information compared to the other rows.
+
+2. Row 6 (Index 7 - They Pray with Snakes):
+   - The Music column has "Kuma" as the value, which is different from the majority of the rows where Mike E. Clark is the music producer.
+   - This row is an outlier due to the unique music producer compared to the other rows.
+
+3. Row 2 (Index 4 - It Ain't A Thang):
+   - The Music column has "Mike E. Clark" as the value, which is consistent with other rows.
+   - This row is an ordinary row and does not require special handling.

@@ -1,0 +1,136 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: October 6, October 27, November 17, December 1
+   - Role: Descriptor
+
+2. Time
+   - Data type: Categorical
+   - 4 representative example values: 2:30 PM, 7:00 PM, 4:10 PM
+   - Role: Descriptor
+
+3. Opponent#
+   - Data type: Categorical
+   - 4 representative example values: Illinois, Michigan State, Ohio State, vs. #14 Nebraska
+   - Role: Descriptor
+
+4. Rank#
+   - Data type: Categorical
+   - 4 representative example values: nan, #25, #23, #8
+   - Role: Descriptor
+
+5. Site
+   - Data type: Categorical
+   - 4 representative example values: Camp Randall Stadium • Madison, WI, Lucas Oil Stadium • Indianapolis, IN, Rose Bowl • Pasadena, CA
+   - Role: Descriptor
+
+6. TV
+   - Data type: Categorical
+   - 4 representative example values: ABC/ESPN2, FOX, ESPN
+   - Role: Descriptor
+
+7. Result
+   - Data type: Categorical
+   - 4 representative example values: W 31–14, L 13–16 OT, L 14–21 OT, W 70–31
+   - Role: Measure
+
+8. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 80,096, 80,538, 80,112, 41,260
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Index 1):
+   - The Opponent# is "Illinois" and the Rank# is "nan".
+   - This row is an outlier because the opponent is different from the other rows and the rank is missing, making it stand out.
+
+2. Row 13 (Index 12):
+   - The Opponent# is "vs. #14 Nebraska" and the Rank# is "nan".
+   - This row is an outlier because the opponent is a specific ranking team and the rank is missing, making it unique compared to the other rows.
+
+3. Row 12 (Index 13):
+   - The Opponent# is "vs. #8 Stanford" and the Rank# is "#23".
+   - This row is an outlier because the opponent is a ranked team and the rank is different from the majority of the table, making it distinctive.
+
+=== Full Table Preview ===
+|   row_number | Date           | Time                | Opponent#               | Rank#   | Site                                                            | TV        | Result     |   Attendance |
+|-------------:|:---------------|:--------------------|:------------------------|:--------|:----------------------------------------------------------------|:----------|:-----------|-------------:|
+|            0 | September 1    | 2025-09-25 14:30:00 | #9 (FCS) Northern Iowa* | #12     | Camp Randall Stadium • Madison WI                               | BTN       | W 26–21    |        79568 |
+|            1 | September 8    | 2025-09-25 15:00:00 | at Oregon State*        | #13     | Reser Stadium • Corvallis OR                                    | FX        | L 7–10     |        42189 |
+|            2 | September 15   | 2025-09-25 19:00:00 | Utah State*             | #22     | Camp Randall Stadium • Madison WI                               | BTN       | W 16–14    |        79332 |
+|            3 | September 22   | 2025-09-25 11:00:00 | UTEP*                   | #24     | Camp Randall Stadium • Madison WI                               | ESPN2     | W 37–26    |        79806 |
+|            4 | September 29   | 2025-09-25 19:00:00 | at #20 Nebraska         | #23     | Memorial Stadium • Lincoln NE                                   | ABC       | L 27–30    |        85962 |
+|            5 | October 6      | 2025-09-25 14:30:00 | Illinois                |         | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | W 31–14    |        80096 |
+|            6 | October 13     | 2025-09-25 11:00:00 | at Purdue               |         | Ross-Ade Stadium • West Lafayette IN                            | BTN       | W 38–14    |        46007 |
+|            7 | October 20     | 2025-09-25 11:00:00 | Minnesota               |         | Camp Randall Stadium • Madison WI (Paul Bunyan's Axe)           | ESPNU     | W 38–13    |        80587 |
+|            8 | October 27     | 2025-09-25 14:30:00 | Michigan State          | #25     | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | L 13–16 OT |        80538 |
+|            9 | November 10    | 2025-09-25 11:00:00 | at Indiana              |         | Memorial Stadium • Bloomington IN                               | ESPN2     | W 62–14    |        43240 |
+|           10 | November 17    | 2025-09-25 14:30:00 | Ohio State              |         | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | L 14–21 OT |        80112 |
+|           11 | November 24    | 2025-09-25 14:30:00 | at Penn State           |         | Beaver Stadium • University Park PA                             | ESPN2     | L 21–24 OT |        93505 |
+|           12 | December 1     | 2025-09-25 19:00:00 | vs. #14 Nebraska        |         | Lucas Oil Stadium • Indianapolis IN (Big Ten Championship Game) | FOX       | W 70–31    |        41260 |
+|           13 | January 1 2013 | 2025-09-25 16:10:00 | vs. #8 Stanford         | #23     | Rose Bowl • Pasadena CA (Rose Bowl)                             | ESPN      | L 14–20    |        93259 |
+
+Generated Reasoning SQL: Explanation: To determine the number of games where the result was a tie, we need to filter rows where the "Result" column contains the string 'T'. The "Result" column is categorical and contains values like 'W 31-14', 'L 13-16 OT', 'L 14-21 OT', 'W 70-31', where 'T' indicates a tie. We will count the rows where the "Result" column includes 'T'.
+
+SQL: SELECT COUNT("Result") FROM T WHERE "Result" LIKE '%T%';
+Generated Final SQL: SELECT COUNT("Result") FROM T WHERE "Result" LIKE '%T%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Result") |
+|------------------:|
+|                 3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2012 Wisconsin Badgers football team
+SQL: SELECT COUNT("Result") FROM T WHERE "Result" LIKE '%T%';
+
+SQL Execution Result:
+COUNT("Result")
+3
+
+Question: how many games did they tie?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 0
+

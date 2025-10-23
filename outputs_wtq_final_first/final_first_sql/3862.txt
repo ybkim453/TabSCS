@@ -1,0 +1,152 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Ivan Ivanovich Ilyichev, Andrey Andreyevich Smirnov, Sergey Georgyevich Lapin, Viktor Ivanovich Avilov
+   - Role: Identifier
+
+2. Title
+   - Data type: Categorical
+   - 4 representative example values: Supreme Commissar of the USSR/Ambassador Extraordinary and Plenipotentiary, Ambassador Extraordinary and Plenipotentiary
+   - Role: Descriptor
+
+3. Date from
+   - Data type: Date
+   - 4 representative example values: 13 June 1953, 31 March 1956, 19 October 1956, 16 June 1960
+   - Role: Descriptor
+
+4. Date until
+   - Data type: Date
+   - 4 representative example values: 31 March 1956, 14 October 1956, 16 June 1960, 13 June 1965
+   - Role: Descriptor
+
+5. Russian state
+   - Data type: Categorical
+   - 4 representative example values: Soviet Union, Russian Federation
+   - Role: Descriptor
+
+6. Austrian state
+   - Data type: Categorical
+   - 4 representative example values: Republic of Austria
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 31:
+   - The values in this row are missing, which is not distinctive as missing data is common in tables. Therefore, this row is an ordinary row and requires no special handling.
+
+2. Row 0:
+   - The values in this row are the earliest in terms of "Date from" compared to the rest of the table. This makes it an outlier as it stands out from the majority of the entries in terms of the starting date.
+
+3. Row 22:
+   - The values in this row are missing, which is not distinctive as missing data is common in tables. Therefore, this row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Name                                 | Title                                                                      | Date from           | Date until        | Russian state                   | Austrian state                    |
+|-------------:|:-------------------------------------|:---------------------------------------------------------------------------|:--------------------|:------------------|:--------------------------------|:----------------------------------|
+|            0 | Dmitry Mikhailovich Golitsyn         | Ambassador                                                                 | 1761-10-01 00:00:00 | April 1792        | Russian Empire                  | Holy Roman Empire                 |
+|            1 | Andrey Kirillovich Razumovsky        | Ambassador                                                                 | 1801-10-05 00:00:00 | 7 September 1806  | Russian Empire                  | Holy Roman Empire/Austrian Empire |
+|            2 | Gustav Ernst Graf von Stackelberg    | Ambassador                                                                 | 1810-05-14 00:00:00 | 9 November 1818   | Russian Empire                  | Austrian Empire                   |
+|            3 | Yury Aleksandrovich Golovkin         | Envoy                                                                      | 1818-11-09 00:00:00 | 16 September 1822 | Russian Empire                  | Austrian Empire                   |
+|            4 | Dmitry Pavlovich Tatishchev          | Ambassador                                                                 | 1826-08-22 00:00:00 | 11 September 1841 | Russian Empire                  | Austrian Empire                   |
+|            5 | Pavel Ivanovich Medem                | Envoy                                                                      | 1848-12-24 00:00:00 | 31 August 1850    | Russian Empire                  | Austrian Empire                   |
+|            6 | Peter von Meyendorff                 | Envoy                                                                      | 1850-08-31 00:00:00 | 7 January 1854    | Russian Empire                  | Austrian Empire                   |
+|            7 | Aleksandr Mikhailovich Gorchakov     | Envoy Extraordinary and Minister Plenipotentiary                           | 1854-05-06 00:00:00 | 15 April 1856     | Russian Empire                  | Austrian Empire                   |
+|            8 | Viktor Petrovich Balabin             | Envoy                                                                      | 1864-07-22 00:00:00 | 12 August 1864    | Russian Empire                  | Austrian Empire                   |
+|            9 | Ernest Gustavovich Stackelberg       | Envoy                                                                      | 1864-08-03 00:00:00 | 25 April 1868     | Russian Empire                  | Austrian Empire/Austria-Hungary   |
+|           10 | Nikolay Alexeyevich Orlov            | Envoy                                                                      | 1869-12-13 00:00:00 | 2 May 1870        | Russian Empire                  | Austria-Hungary                   |
+|           11 | Yevgeny Petrovich Novikov            | Ambassador                                                                 | 1874-03-02 00:00:00 | 22 December 1879  | Russian Empire                  | Austria-Hungary                   |
+|           12 | Pavel Petrovich Ubri                 | Ambassador                                                                 | 1879-12-22 00:00:00 | 1 June 1882       | Russian Empire                  | Austria-Hungary                   |
+|           13 | Aleksey Borisovich Lobanov-Rostovsky | Ambassador                                                                 | 1882-07-13 00:00:00 | 6 January 1895    | Russian Empire                  | Austria-Hungary                   |
+|           14 | Pyotr Alekseyevich Kapnist           | Ambassador                                                                 | 1895-04-09 00:00:00 | 1904              | Russian Empire                  | Austria-Hungary                   |
+|           15 | Lev Pavlovich Urusov                 | Ambassador                                                                 | 1905-01-01 00:00:00 | 1910              | Russian Empire                  | Austria-Hungary                   |
+|           16 | Voldemar Khristianovich Aussem       | Plenipotentiary Representative                                             | 1924-05-21 00:00:00 | 10 December 1924  | Soviet Union                    | Federal State of Austria          |
+|           17 | Adolf Abramovich Ioffe               | Plenipotentiary Representative                                             | 1924-12-12 00:00:00 | 19 June 1925      | Soviet Union                    | Federal State of Austria          |
+|           18 | Yan Antonovich Berzin                | Plenipotentiary                                                            | 1925-06-19 00:00:00 | 7 September 1927  | Soviet Union                    | Federal State of Austria          |
+|           19 | Konstantin Konstantinovich Yurenev   | Plenipotentiary                                                            | 1927-10-01 00:00:00 | 24 January 1933   | Soviet Union                    | Federal State of Austria          |
+|           20 | Adolf Markovich Petrovsky            | Plenipotentiary                                                            | 1933-04-01 00:00:00 | 10 November 1934  | Soviet Union                    | Federal State of Austria          |
+|           21 | Ivan Leopoldovich Lorents            | Plenipotentiary                                                            | 1935-03-17 00:00:00 | 31 September 1938 | Soviet Union                    | Federal State of Austria          |
+|           22 | Ivan Ivanovich Ilyichev              | Supreme Commissar of the USSR/Ambassador Extraordinary and Plenipotentiary | 1953-06-13 00:00:00 | 31 March 1956     | Soviet Union                    | Republic of Austria               |
+|           23 | Andrey Andreyevich Smirnov           | Ambassador Extraordinary and Plenipotentiary                               | 1956-03-31 00:00:00 | 14 October 1956   | Soviet Union                    | Republic of Austria               |
+|           24 | Sergey Georgyevich Lapin             | Ambassador Extraordinary and Plenipotentiary                               | 1956-10-19 00:00:00 | 16 June 1960      | Soviet Union                    | Republic of Austria               |
+|           25 | Viktor Ivanovich Avilov              | Ambassador Extraordinary and Plenipotentiary                               | 1960-06-16 00:00:00 | 13 June 1965      | Soviet Union                    | Republic of Austria               |
+|           26 | Boris Fedorovich Podtserob           | Ambassador Extraordinary and Plenipotentiary                               | 1965-06-30 00:00:00 | 20 September 1971 | Soviet Union                    | Republic of Austria               |
+|           27 | Averky Borisovich Aristov            | Ambassador Extraordinary and Plenipotentiary                               | 1971-09-20 00:00:00 | 11 July 1973      | Soviet Union                    | Republic of Austria               |
+|           28 | Mikhail Timofeyevich Yefremov        | Ambassador Extraordinary and Plenipotentiary                               | 1975-03-10 00:00:00 | 24 October 1986   | Soviet Union                    | Republic of Austria               |
+|           29 | Gennady Serafimovich Shikin          | Ambassador Extraordinary and Plenipotentiary                               | 1986-10-24 00:00:00 | 24 May 1990       | Soviet Union                    | Republic of Austria               |
+|           30 | Valery Nikolayevich Popov            | Ambassador Extraordinary and Plenipotentiary                               | 1990-05-24 00:00:00 | 30 August 1996    | Soviet Union/Russian Federation | Republic of Austria               |
+|           31 | Vladimir Mikhailovich Grinin         | Ambassador Extraordinary and Plenipotentiary                               | 1996-08-30 00:00:00 | 29 April 2000     | Russian Federation              | Republic of Austria               |
+|           32 | Alexander Vasiliyevich Golovin       | Ambassador Extraordinary and Plenipotentiary                               | 2000-08-04 00:00:00 | 6 August 2004     | Russian Federation              | Republic of Austria               |
+|           33 | Stanislav Viliorovich Osadchy        | Ambassador Extraordinary and Plenipotentiary                               | 2004-09-14 00:00:00 | Present           | Russian Federation              | Republic of Austria               |
+
+Generated Reasoning SQL: Explanation: To find out which Austrian state Dmitry Mikhailovich Golitsyn and Andrey Kirillovich Razumovsky each served, we need to filter the rows based on their names and then retrieve the corresponding Austrian state values. The "Name" column contains the names of the ambassadors, and the "Austrian state" column contains the Austrian state they served. We will filter the rows where the "Name" is equal to Dmitry Mikhailovich Golitsyn and Andrey Kirillovich Razumovsky, and then select the "Austrian state" values for each of them.
+
+SQL:
+SELECT "Austrian state"
+FROM T
+WHERE "Name" = 'Dmitry Mikhailovich Golitsyn'
+UNION
+SELECT "Austrian state"
+FROM T
+WHERE "Name" = 'Andrey Kirillovich Razumovsky';
+Generated Final SQL: SELECT "Austrian state" FROM T WHERE "Name" = 'Dmitry Mikhailovich Golitsyn' UNION SELECT "Austrian state" FROM T WHERE "Name" = 'Andrey Kirillovich Razumovsky';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Austrian state                    |
+|:----------------------------------|
+| Holy Roman Empire                 |
+| Holy Roman Empire/Austrian Empire |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Ambassadors of Russia to Austria
+SQL: SELECT "Austrian state" FROM T WHERE "Name" = 'Dmitry Mikhailovich Golitsyn' UNION SELECT "Austrian state" FROM T WHERE "Name" = 'Andrey Kirillovich Razumovsky';
+
+SQL Execution Result:
+Austrian state
+Holy Roman Empire
+Holy Roman Empire/Austrian Empire
+
+Question: dmitry mikhailovich golitsyn and andrey kirillovich razumovsky each served which austrian state?
+A: To find the answer to this question, let’s think step by step.
+Prediction: holy roman empire, holy roman empire/austrian empire
+[Gold Answer] russian empire
+

@@ -1,0 +1,52 @@
+### Column Analysis:
+
+1. **Result:**
+   - Data type: Categorical
+   - 4 representative example values: Winner, Runner-up
+   - Role: Describes the outcome of the match for the player/partnership
+
+2. **Date:**
+   - Data type: Date
+   - 4 representative example values: 13 June 1982, 23 May 1983, 20 November 1983, 27 November 1983
+   - Role: Identifies the date when the match took place
+
+3. **Category:**
+   - Data type: Categorical
+   - 4 representative example values: $100,000, $150,000, Grand Slam
+   - Role: Indicates the category or level of the tournament
+
+4. **Tournament:**
+   - Data type: Categorical
+   - 4 representative example values: Birmingham, Great Britain, Berlin, Germany, Brisbane, Australia, Sydney, Australia
+   - Role: Specifies the location of the tournament
+
+5. **Surface:**
+   - Data type: Categorical
+   - 4 representative example values: Grass, Carpet
+   - Role: Describes the type of playing surface for the match
+
+6. **Partnering:**
+   - Data type: Categorical
+   - 4 representative example values: Jo Durie, Wendy Turnbull
+   - Role: Identifies the partner of the player in the doubles match
+
+7. **Opponents:**
+   - Data type: Categorical
+   - 4 representative example values: Rosie Casals, Wendy Turnbull, Martina Navrátilová, Pam Shriver
+   - Role: Lists the opponents faced in the match
+
+8. **Score:**
+   - Data type: Categorical
+   - 4 representative example values: 6–3, 6–2, 6–4, 7–6(7–2)
+   - Role: Displays the set scores of the match
+
+### Outlier Row Analysis:
+
+1. **Row 8:**
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or atypical values. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. **Row 3:**
+   - The values in this row indicate a Runner-up result, a Category of $150,000, and a Tournament in Eastbourne, Great Britain. These values are not significantly different from other rows in the table, making this row an ordinary entry and not an outlier.
+
+3. **Row 2:**
+   - The values in this row show a Winner result, a Category of $150,000, and a Tournament in Berlin, Germany. These values are typical of other rows in the table and do not stand out as distinctive, making this row an ordinary entry and not an outlier.

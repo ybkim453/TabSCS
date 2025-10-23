@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. №
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 10, 13
+   - Role of the column: Identifier for the row number
+
+2. #
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 10, 13
+   - Role of the column: Identifier for the episode number
+
+3. Title
+   - Data type: Categorical
+   - 4 representative example values: Class of Beverly Hills, The Green Room, Isn't it Romantic?, Slumber Party
+   - Role of the column: Descriptor for the title of the episode
+
+4. Directed by
+   - Data type: Categorical
+   - 4 representative example values: Tim Hunter, Michael Uno, Nancy Malone, Charles Braverman
+   - Role of the column: Descriptor for the director of the episode
+
+5. Written by
+   - Data type: Categorical
+   - 4 representative example values: Darren Star, David Stenn, Charles Rosin, Dan Attias
+   - Role of the column: Descriptor for the writer of the episode
+
+6. Original air date
+   - Data type: Categorical
+   - 4 representative example values: October 4, 1990, October 11, 1990, January 3, 1991, January 31, 1991
+   - Role of the column: Descriptor for the original air date of the episode
+
+7. Production code
+   - Data type: Categorical
+   - 4 representative example values: –, 2190001, 2190009, 2190012
+   - Role of the column: Descriptor for the production code of the episode
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are not distinctive and are similar to other rows in the table. Therefore, this is an ordinary row and does not require special handling.
+
+2. Row 1:
+   - The values in this row are not distinctive and are similar to other rows in the table. Therefore, this is an ordinary row and does not require special handling.
+
+3. Row 9:
+   - The values in this row are not distinctive and are similar to other rows in the table. Therefore, this is an ordinary row and does not require special handling.

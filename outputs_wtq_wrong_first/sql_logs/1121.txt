@@ -1,0 +1,146 @@
+=== Table ID ===
+csv/204-csv/285.tsv
+
+=== Question ===
+how many hard surface courts are there?
+
+=== Sub-table Preview ===
+| Town name    | County         | Established   | Disestablished                                     | Current Status                                                                                             | Remarks                                                                                                                         |
+|:-------------|:---------------|:--------------|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
+| Eminence     | Finney County  | 1886          | Post office closed in 1943.                        | Nothing remains of the townsite.                                                                           | Battled with Ravanna for county seat of Garfield County, which ended in 1893 when Garfield County was annexed to Finney County. |
+| Paris        | Linn County    | 1854          | nan                                                | Nothing remains of the townsite.                                                                           | nan                                                                                                                             |
+| Strawn       | Coffey County  | 1870s         | 1961                                               | Old Strawn is now located underneath the John Redmond Reservoir while New Strawn is located along U.S. 75. | nan                                                                                                                             |
+| Salem        | Jewell County  | 1871          | nan                                                | Nothing remains of the townsite.                                                                           | nan                                                                                                                             |
+| Camchester   | Harper County  | late 1880s    | Post office moved to Manchester, Oklahoma in 1903. | Nothing remains of the townsite.                                                                           | Originally named Cameron until 1900.                                                                                            |
+| Williamsport | Shawnee County | 1857          | nan                                                | Nothing remains of the townsite.                                                                           | nan                                                                                                                             |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Town name:
+   - Data type: Categorical
+   - 4 representative example values: Eminence, Paris, Strawn, Salem
+   - Role: Identifier
+
+2. County:
+   - Data type: Categorical
+   - 4 representative example values: Finney County, Linn County, Coffey County, Jewell County
+   - Role: Descriptor
+
+3. Established:
+   - Data type: Numeric (Year)
+   - 4 representative example values: 1886, 1854, 1870s, 1871
+   - Role: Descriptor
+
+4. Disestablished:
+   - Data type: Categorical (Year or event)
+   - 4 representative example values: Post office closed in 1943, nan, 1961
+   - Role: Descriptor
+
+5. Current Status:
+   - Data type: Categorical
+   - 4 representative example values: Nothing remains of the townsite, Old Strawn is now located underneath the John Redmond Reservoir while New Strawn is located along U.S. 75
+   - Role: Descriptor
+
+6. Remarks:
+   - Data type: Categorical
+   - 4 representative example values: Battled with Ravanna for county seat of Garfield County, which ended in 1893 when Garfield County was annexed to Finney County, nan, Originally named Cameron until 1900
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 79:
+   - The Disestablished column has a value of "nan", which is not a specific year or event like the majority of the table.
+   - This makes the row an outlier as it does not provide clear information on when the town was disestablished.
+
+2. Row 155:
+   - The Established column has a value of "1857", which is different from the majority of the table where years are specified.
+   - This makes the row an outlier as it stands out in terms of data format compared to the rest of the table.
+
+3. Row 115:
+   - The Current Status column has a unique description that is longer and more detailed compared to the majority of the table.
+   - This makes the row an outlier as it contains more information than the typical entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                                | Surface   | Opponent          | Score               |
+|-------------:|:----------|------:|:--------------------|:------------------------------------------|:----------|:------------------|:--------------------|
+|            0 | Runner-up |     1 | 2001-04-15 00:00:00 | Grand Prix Hassan II Casablanca Morocco   | Clay      | Guillermo Cañas   | 5–7 2–6             |
+|            1 | Winner    |     1 | 2001-07-29 00:00:00 | Orange Warsaw Open Sopot Poland           | Clay      | Albert Portas     | 1–6 7–5 7–6(7–2)    |
+|            2 | Runner-up |     2 | 2003-07-20 00:00:00 | Mercedes Cup Stuttgart Germany            | Clay      | Guillermo Coria   | 2–6 2–6 1–6         |
+|            3 | Winner    |     2 | 2004-05-02 00:00:00 | Torneo Godó Barcelona Spain               | Clay      | Gastón Gaudio     | 6–3 4–6 6–2 3–6 6–3 |
+|            4 | Runner-up |     3 | 2005-05-01 00:00:00 | Estoril Open Estoril Portugal             | Clay      | Gastón Gaudio     | 1–6 6–2 1–6         |
+|            5 | Runner-up |     4 | 2006-04-30 00:00:00 | Torneo Godó Barcelona Spain               | Clay      | Rafael Nadal      | 4–6 4–6 0–6         |
+|            6 | Winner    |     3 | 2006-05-21 00:00:00 | Hamburg Masters Hamburg Germany           | Clay      | Radek Štěpánek    | 6–1 6–3 6–3         |
+|            7 | Winner    |     4 | 2006-07-16 00:00:00 | Swedish Open Båstad Sweden                | Clay      | Nikolay Davydenko | 6–2 6–1             |
+|            8 | Runner-up |     5 | 2007-01-14 00:00:00 | Heineken Open Auckland New Zealand        | Hard      | David Ferrer      | 4–6 2–6             |
+|            9 | Winner    |     5 | 2007-08-05 00:00:00 | Orange Warsaw Open Sopot Poland (2)       | Clay      | José Acasuso      | 7–5 6–0             |
+|           10 | Runner-up |     6 | 2007-09-16 00:00:00 | China Open Beijing China                  | Hard (i)  | Fernando González | 1–6 6–3 1–6         |
+|           11 | Winner    |     6 | 2007-10-07 00:00:00 | Open de Moselle Metz France               | Hard (i)  | Andy Murray       | 0–6 6–2 6–3         |
+|           12 | Runner-up |     7 | 2008-06-15 00:00:00 | Orange Warsaw Open Warsaw Poland          | Clay      | Nikolay Davydenko | 3–6 3–6             |
+|           13 | Winner    |     7 | 2008-07-13 00:00:00 | Swedish Open Båstad Sweden (2)            | Clay      | Tomáš Berdych     | 6–4 6–1             |
+|           14 | Winner    |     8 | 2009-02-14 00:00:00 | Brasil Open Costa do Sauípe Brazil        | Clay      | Thomaz Bellucci   | 6–3 3–6 6–4         |
+|           15 | Winner    |     9 | 2009-02-22 00:00:00 | Copa Telmex Buenos Aires Argentina        | Clay      | Juan Mónaco       | 7–5 2–6 7–6(7–5)    |
+|           16 | Winner    |    10 | 2011-02-06 00:00:00 | Chile Open Santiago Chile                 | Clay      | Santiago Giraldo  | 6–2 2–6 7–6(7–5)    |
+|           17 | Winner    |    11 | 2013-04-14 00:00:00 | Grand Prix Hassan II Casablanca Morocco   | Clay      | Kevin Anderson    | 7–6(8–6) 4–6 6–3    |
+|           18 | Winner    |    12 | 2013-07-28 00:00:00 | ATP Vegeta Croatia Open Umag Umag Croatia | Clay      | Fabio Fognini     | 6–0 6–3             |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Surface" column contains categorical values representing the type of surface for tennis courts. To count the number of hard surface courts, we need to filter rows where the "Surface" column includes the term "Hard". We should exclude any outlier rows that do not provide clear information on the type of surface.
+SQL: SELECT COUNT("Surface") FROM T WHERE "Surface" LIKE '%Hard%';
+Generated Final SQL: SELECT COUNT("Surface") FROM T WHERE "Surface" LIKE '%Hard%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Surface") |
+|-------------------:|
+|                  3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tommy Robredo career statistics
+SQL: SELECT COUNT("Surface") FROM T WHERE "Surface" LIKE '%Hard%';
+
+SQL Execution Result:
+COUNT("Surface")
+3
+
+Question: how many hard surface courts are there?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

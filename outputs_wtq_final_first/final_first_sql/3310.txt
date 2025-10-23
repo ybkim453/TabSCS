@@ -1,0 +1,99 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **School:**
+   - Data type: Categorical
+   - 4 representative example values: James A. Garfield High School, Abraham Lincoln High School, Woodrow Wilson High School, Theodore Roosevelt High School
+   - Role: Identifier for each school
+
+2. **2007, 2008, 2009, 2010, 2011:**
+   - Data type: Numeric
+   - 4 representative example values: 553, 597, 593, 632
+   - Role: Measure of student population for each school in the respective year
+
+**Outlier Row Analysis:**
+
+1. **Row 8 (Santee Education Complex):**
+   - The value "nan" in the 2007 column makes this row distinctive.
+   - This row is an outlier because it contains missing data (nan) in a significant number of columns, which is not typical for the majority of the table.
+
+2. **Row 2 (Abraham Lincoln High School):**
+   - There are no distinctive values in this row that make it an outlier.
+   - This row is an ordinary row and does not require special handling.
+
+3. **Row 6 (Woodrow Wilson High School):**
+   - There are no distinctive values in this row that make it an outlier.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | School                                     |   2007 |   2008 |   2009 |   2010 |   2011 |
+|-------------:|:-------------------------------------------|-------:|-------:|-------:|-------:|-------:|
+|            0 | Francisco Bravo Medical Magnet High School |    807 |    818 |    815 |    820 |    832 |
+|            1 | Marc and Eva Stern Math and Science School |    718 |    792 |    788 |    788 |    809 |
+|            2 | Oscar De La Hoya Animo Charter High School |    662 |    726 |    709 |    710 |    744 |
+|            3 | James A. Garfield High School              |    553 |    597 |    593 |    632 |    705 |
+|            4 | Abraham Lincoln High School                |    594 |    609 |    588 |    616 |    643 |
+|            5 | Woodrow Wilson High School                 |    582 |    585 |    600 |    615 |    636 |
+|            6 | Theodore Roosevelt High School             |    557 |    551 |    576 |    608 |    nan |
+|            7 | Thomas Jefferson High School               |    457 |    516 |    514 |    546 |    546 |
+|            8 | Santee Education Complex                   |    nan |    502 |    521 |    552 |    565 |
+
+Generated Reasoning SQL: The summary provides information about the columns in the table, including the "School" column, which is categorical and serves as an identifier for each school. To count the number of schools in the chart, we need to consider each unique school listed in the "School" column. Since each row represents a different school, we can count the total number of rows in the table to determine the number of schools included in the chart.
+
+SQL: select count(*) as total_schools from T;
+Generated Final SQL: select count(*) as total_schools from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_schools |
+|----------------:|
+|               9 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Abraham Lincoln High School (Los Angeles)
+SQL: select count(*) as total_schools from T;
+
+total_schools
+9
+Question: how many schools are in the following chart?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 9
+[Gold Answer] 9
+

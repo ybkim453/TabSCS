@@ -1,0 +1,32 @@
+**Column Analysis:**
+
+1. Restaurant
+   - Data type: Categorical
+   - 4 representative example values: Verre at the Hilton Dubai Creek, Maze by Gordon Ramsay, Gordon Ramsay at Conrad Tokyo, Cerise by Gordon Ramsay
+   - Role: Identifier for the restaurant where the location is specified.
+
+2. Location
+   - Data type: Categorical
+   - 4 representative example values: Dubai, United Arab Emirates, The Pearl-Qatar, Doha, Qatar, Conrad Tokyo, Tokyo, Japan, Minato, Tokyo, Japan
+   - Role: Descriptor for the location of the restaurant.
+
+3. Date Opened
+   - Data type: Numeric
+   - 4 representative example values: nan, 2010, April 2009, March 2010
+   - Role: Measure indicating the date when the restaurant was opened.
+
+4. Date Closed
+   - Data type: Categorical
+   - 4 representative example values: October 2011, March 2012, -, July 2010
+   - Role: Measure indicating the date when the restaurant was closed, if applicable.
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Verre at the Hilton Dubai Creek)
+   - The Date Opened is missing (nan), which is different from the majority of the table where specific dates are mentioned. This makes the row an outlier.
+
+2. Row 0 (Maze by Gordon Ramsay)
+   - The Date Opened is 2010, which is different from the majority of the table where specific dates are mentioned. This makes the row an outlier.
+
+3. Row 4 (Maze by Gordon Ramsay)
+   - The Date Closed is July 2010, which is different from the majority of the table where specific dates are mentioned. This makes the row an outlier.

@@ -1,0 +1,132 @@
+=== Table ID ===
+csv/203-csv/170.tsv
+
+=== Question ===
+for what years are there no super g results?
+
+=== Sub-table Preview ===
+| Chord   | Root   | Minor Third   | Perfect Fifth   | Major Seventh   |
+|:--------|:-------|:--------------|:----------------|:----------------|
+| C♯mM7   | C♯     | E             | G♯              | B♯ (C)          |
+| D♭mM7   | D♭     | F♭ (E)        | A♭              | C               |
+| DmM7    | D      | F             | A               | C♯              |
+| EmM7    | E      | G             | B               | D♯              |
+| A♭mM7   | A♭     | C♭ (B)        | E♭              | G               |
+| BmM7    | B      | D             | F♯              | A♯              |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Chord:
+   - Data type: Categorical
+   - 4 representative example values: C♯mM7, D♭mM7, DmM7, EmM7
+   - Role: Identifier for the type of chord being described
+
+2. Root:
+   - Data type: Categorical
+   - 4 representative example values: C♯, D♭, D, E
+   - Role: Descriptor indicating the root note of the chord
+
+3. Minor Third:
+   - Data type: Categorical
+   - 4 representative example values: E, F♭ (E), F, G
+   - Role: Descriptor indicating the minor third note of the chord
+
+4. Perfect Fifth:
+   - Data type: Categorical
+   - 4 representative example values: G♯, A♭, A, B
+   - Role: Descriptor indicating the perfect fifth note of the chord
+
+5. Major Seventh:
+   - Data type: Categorical
+   - 4 representative example values: B♯ (C), C, C♯, D♯
+   - Role: Descriptor indicating the major seventh note of the chord
+
+**Outlier Row Analysis:**
+
+1. Row 3 (DmM7):
+   - The values for the chord DmM7 are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+2. Row 16 (BmM7):
+   - The values for the chord BmM7 are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+3. Row 6 (A♭mM7):
+   - The values for the chord A♭mM7 are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Season |   Age | Overall                 | Slalom                  | Giant\nSlalom           | Super G                 | Downhill                | Combined                |
+|-------------:|---------:|------:|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|
+|            0 |     2004 |    17 | 112                     | –                       | –                       | 51                      | –                       | —                       |
+|            1 |     2005 |    18 | 37                      | –                       | 27                      | 18                      | 49                      | —                       |
+|            2 |     2006 |    19 | 22                      | –                       | 18                      | 37                      | 15                      | —                       |
+|            3 |     2007 |    20 | 33                      | –                       | 50                      | 15                      | 23                      | —                       |
+|            4 |     2008 |    21 | 38                      | –                       | –                       | 35                      | 13                      | —                       |
+|            5 |     2009 |    22 | 9                       | –                       | 40                      | 2                       | 5                       | 50                      |
+|            6 |     2010 |    23 | 28                      | –                       | –                       | 13                      | 23                      | —                       |
+|            7 |     2011 |    24 | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete |
+|            8 |     2012 |    25 | 75                      | –                       | 28                      | –                       | –                       | —                       |
+|            9 |     2013 |    26 | 37                      | –                       | 17                      | 28                      | 30                      | —                       |
+
+Generated Reasoning SQL: Explanation: To find the years where there are no Super G results, we need to look at the "Super G" column, which is categorical. We are interested in rows where the "Super G" value is missing or represented as a placeholder (e.g., "-"). Outlier rows are not relevant to this question, so we will focus on ordinary rows where the "Super G" value is not available.
+
+SQL: SELECT DISTINCT "Season" 
+FROM T 
+WHERE "Super G" = '-' OR "Super G" = '—';
+Generated Final SQL: SELECT DISTINCT "Season" FROM T WHERE "Super G" = '-' OR "Super G" = '—';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Nadia Fanchini (row_number, Season, Age, Overall, Slalom, Giant\nSlalom, Super G, Downhill, Combined)
+
+row_number | Season | Age | Overall | Slalom | Giant\nSlalom | Super G | Downhill | Combined
+0 | 2004 | 17 | 112 | – | – | 51 | – | —
+1 | 2005 | 18 | 37 | – | 27 | 18 | 49 | —
+2 | 2006 | 19 | 22 | – | 18 | 37 | 15 | —
+3 | 2007 | 20 | 33 | – | 50 | 15 | 23 | —
+4 | 2008 | 21 | 38 | – | – | 35 | 13 | —
+5 | 2009 | 22 | 9 | – | 40 | 2 | 5 | 50
+6 | 2010 | 23 | 28 | – | – | 13 | 23 | —
+7 | 2011 | 24 | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete
+8 | 2012 | 25 | 75 | – | 28 | – | – | —
+9 | 2013 | 26 | 37 | – | 17 | 28 | 30 | —
+Question: for what years are there no super g results?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify which column in the table corresponds to the Super G results. Based on the column names provided in the summary, we can see that the "Super G" column contains the Super G results for each year.
+
+Next, we need to look at the entries in the "Super G" column and identify the years where there are no results (denoted by a dash "-"). From the table, we can see that the years with no Super G results are:
+
+1. 2004
+2. 2011
+3. 2012
+
+Therefore, the years with no Super G results are 2004, 2011, and 2012.
+
+Final Answer: 2004, 2011, 2012
+[Fallback] Prediction: 2004, 2011, 2012
+[Gold Answer] 2011
+

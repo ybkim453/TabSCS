@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - 4 representative example values: 1996, 1999, 1999, 2013
+   - Role: Identifier for the year in which the role was performed
+
+2. Title
+   - Data type: Categorical
+   - 4 representative example values: 3rd Rock from the Sun, Sabrina, Down Under, Touched by an Angel, Super Fun Night
+   - Role: Descriptor for the title of the TV show or movie
+
+3. Role
+   - Data type: Categorical
+   - 4 representative example values: Yoga Lady, Gwen, nan, Young Pamela
+   - Role: Descriptor for the role played by the actor/actress
+
+4. Notes
+   - Data type: Categorical
+   - 4 representative example values: Episode: "My Mother the Alien", nan, nan, nan
+   - Role: Descriptor for any additional notes related to the role
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 4:
+   - The values in this row are "nan" for both the Role and Notes columns. While this may seem atypical, it is not uncommon to have missing data in these columns. Therefore, this row is an ordinary entry and does not require special handling.
+
+3. Row 29:
+   - The values in this row are also "nan" for both the Role and Notes columns. As mentioned before, missing data in these columns is not unusual, making this row an ordinary entry and not an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Title                                        | Role                          | Notes                                                                                                                           |
+|-------------:|-------:|:---------------------------------------------|:------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
+|            0 |   1986 | Street Legal                                 | Angela                        |                                                                                                                                 |
+|            1 |   1986 | Desiree's Wish                               | Waitress                      |                                                                                                                                 |
+|            2 |   1988 | T. and T.                                    | Sydney                        |                                                                                                                                 |
+|            3 |   1989 | Mosquito Lake                                | Tara Harrison                 |                                                                                                                                 |
+|            4 |   1991 | Married to It                                | Student in Pageant            |                                                                                                                                 |
+|            5 |   1992 | A Town Torn Apart                            |                               |                                                                                                                                 |
+|            6 |   1992 | The Judge                                    | Millie Waters                 |                                                                                                                                 |
+|            7 |   1992 | Forever Knight                               |                               |                                                                                                                                 |
+|            8 |   1993 | Family Pictures                              |                               |                                                                                                                                 |
+|            9 |   1993 | Kung Fu: The Legend Continues                | Elizabeth                     |                                                                                                                                 |
+|           10 |   1993 | Ready or Not                                 |                               |                                                                                                                                 |
+|           11 |   1994 | Reform School Girl                           | Lucille                       |                                                                                                                                 |
+|           12 |   1994 | Thicker Than Blood: The Larry McLinden Story | Terra (age 16)                |                                                                                                                                 |
+|           13 |   1995 | Skin Deep                                    | Tina                          |                                                                                                                                 |
+|           14 |   1995 | Party of Five                                | Lorna                         |                                                                                                                                 |
+|           15 |   1996 | 3rd Rock from the Sun                        | Yoga Lady                     | Episode: "My Mother the Alien"                                                                                                  |
+|           16 |   1998 | Sabrina Goes to Rome                         | Gwen                          |                                                                                                                                 |
+|           17 |   1999 | Sabrina Down Under                           | Gwen                          |                                                                                                                                 |
+|           18 |   1999 | Touched by an Angel                          |                               |                                                                                                                                 |
+|           19 |   1999 | Black Mask                                   | Additional Voices             |                                                                                                                                 |
+|           20 |   1999 | Candid Camera                                |                               |                                                                                                                                 |
+|           21 |   1999 | 1997 Kids' Choice Awards                     | Herself                       | Winner (with the cast of Rugrats) for Favorite Cartoon                                                                          |
+|           22 |   1999 | 1998 Kids' Choice Awards                     | Herself                       | Winner (with the cast of Rugrats) for Favorite Cartoon                                                                          |
+|           23 |   1999 | 1999 Kids' Choice Awards                     | Herself                       | Presenter Winner (with the cast of Rugrats) for Favorite Cartoon Winner (with the cast of The Rugrats Movie) for Favorite Movie |
+|           24 |   2004 | Comic Book: The Movie                        |                               |                                                                                                                                 |
+|           25 |   2006 | Take Home Chef                               | Herself                       |                                                                                                                                 |
+|           26 |   2007 | The Bad Girls Club                           | Season 2 Narrator             |                                                                                                                                 |
+|           27 |   2008 | According to Jim                             | Kayla                         |                                                                                                                                 |
+|           28 |   2010 | Big Time Rush                                | Miss Collins                  | Recurring Role                                                                                                                  |
+|           29 |   2013 | Super Fun Night                              | Young Pamela                  |                                                                                                                                 |
+|           30 |   2014 | Arrow                                        | Deranged Squad Female (voice) | Episode: "Suicide Squad"                                                                                                        |
+
+Generated Reasoning SQL: Explanation: To find the movie that came out in 1993 with the role of Elizabeth, we need to filter rows where "Year" = 1993 and "Role" = 'Elizabeth'. The "Title" column contains the names of movies, and the "Role" column specifies the character played by Tara Strong.
+
+SQL: select "Title" from T where "Year" = 1993 and "Role" = 'Elizabeth';
+Generated Final SQL: select "Title" from T where "Year" = 1993 and "Role" = 'Elizabeth';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Title                         |
+|:------------------------------|
+| Kung Fu: The Legend Continues |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tara Strong
+SQL: select "Title" from T where "Year" = 1993 and "Role" = 'Elizabeth';
+
+Title
+Kung Fu: The Legend Continues
+Question: which movie came out in 1993 and has the role of elizabeth?
+A: To find the answer to this question, let’s think step by step.
+Prediction: kung fu: the legend continues
+[Gold Answer] kung fu: the legend continues
+

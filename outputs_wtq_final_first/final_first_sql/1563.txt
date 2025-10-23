@@ -1,0 +1,153 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2000, 2002, 2008, 2012
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Division:
+   - Data type: Numeric
+   - 4 representative example values: 4, 4, 4, 4
+   - Role: Descriptor indicating the division number.
+
+3. League:
+   - Data type: Categorical
+   - 4 representative example values: USL PDL
+   - Role: Descriptor for the league in which the team participated.
+
+4. Regular Season:
+   - Data type: Categorical
+   - 4 representative example values: 4th, 5th, 5th, 5th
+   - Role: Measure of the team's performance in the regular season.
+
+5. Playoffs:
+   - Data type: Categorical
+   - 4 representative example values: Did not qualify
+   - Role: Descriptor indicating whether the team qualified for the playoffs.
+
+6. Open Cup:
+   - Data type: Categorical
+   - 4 representative example values: Did not qualify
+   - Role: Descriptor indicating whether the team qualified for the Open Cup.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The Regular Season value of "4th, Rocky Mountain" is different from the majority of "5th, Heartland" in the Regular Season column.
+   - This makes the row an outlier as it has a unique performance in the regular season compared to the other rows.
+
+2. Row 2:
+   - The Regular Season value of "5th, Heartland" is consistent with the majority of the table.
+   - This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year |   Division | League     | Regular Season     | Playoffs        | Open Cup        |
+|-------------:|-------:|-----------:|:-----------|:-------------------|:----------------|:----------------|
+|            0 |   1998 |          4 | USISL PDSL | 4th Central        | Division Finals | 1st Round       |
+|            1 |   1999 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            2 |   2000 |          4 | USL PDL    | 4th Rocky Mountain | Did not qualify | Did not qualify |
+|            3 |   2001 |          4 | USL PDL    | 5th Rocky Mountain | Did not qualify | Did not qualify |
+|            4 |   2002 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            5 |   2003 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            6 |   2004 |          4 | USL PDL    | 6th Heartland      | Did not qualify | Did not qualify |
+|            7 |   2005 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | Did not qualify |
+|            8 |   2006 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | Did not qualify |
+|            9 |   2007 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | 1st Round       |
+|           10 |   2008 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|           11 |   2009 |          4 | USL PDL    | 6th Heartland      | Did not qualify | Did not qualify |
+|           12 |   2010 |          4 | USL PDL    | 7th Heartland      | Did not qualify | Did not qualify |
+|           13 |   2011 |          4 | USL PDL    | 4th Heartland      | Did not qualify | Did not qualify |
+|           14 |   2012 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|           15 |   2013 |          4 | USL PDL    | 4th Heartland      | Did not qualify | Did not qualify |
+
+Generated Reasoning SQL: Explanation: To determine the number of consecutive seasons that the Kansas City Brass did not qualify for the playoffs, we need to identify the rows where the "Playoffs" column contains the value "Did not qualify" and count them consecutively. We should exclude any outlier rows that do not represent the majority trend in the dataset.
+
+SQL: 
+WITH cte AS (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "Year") as rn
+    FROM T
+    WHERE "Playoffs" LIKE '%Did not qualify%'
+)
+SELECT COUNT(*)
+FROM cte
+GROUP BY DATE_PART('year', "Year") - rn
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+Generated Final SQL: WITH cte AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Year") as rn FROM T WHERE "Playoffs" LIKE '%Did not qualify%' ) SELECT COUNT(*) FROM cte GROUP BY DATE_PART('year', "Year") - rn ORDER BY COUNT(*) DESC LIMIT 1;
+[Error] Final SQL 실행 실패: Execution failed on sql 'WITH cte AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Year") as rn FROM T WHERE "Playoffs" LIKE '%Did not qualify%' ) SELECT COUNT(*) FROM cte GROUP BY DATE_PART('year', "Year") - rn ORDER BY COUNT(*) DESC LIMIT 1;': no such function: DATE_PART
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Kansas City Brass (row_number, Year, Division, League, Regular Season, Playoffs, Open Cup)
+
+row_number | Year | Division | League | Regular Season | Playoffs | Open Cup
+0 | 1998 | 4 | USISL PDSL | 4th Central | Division Finals | 1st Round
+1 | 1999 | 4 | USL PDL | 5th Heartland | Did not qualify | Did not qualify
+2 | 2000 | 4 | USL PDL | 4th Rocky Mountain | Did not qualify | Did not qualify
+3 | 2001 | 4 | USL PDL | 5th Rocky Mountain | Did not qualify | Did not qualify
+4 | 2002 | 4 | USL PDL | 5th Heartland | Did not qualify | Did not qualify
+5 | 2003 | 4 | USL PDL | 5th Heartland | Did not qualify | Did not qualify
+6 | 2004 | 4 | USL PDL | 6th Heartland | Did not qualify | Did not qualify
+7 | 2005 | 4 | USL PDL | 3rd Heartland | Did not qualify | Did not qualify
+8 | 2006 | 4 | USL PDL | 3rd Heartland | Did not qualify | Did not qualify
+9 | 2007 | 4 | USL PDL | 3rd Heartland | Did not qualify | 1st Round
+10 | 2008 | 4 | USL PDL | 5th Heartland | Did not qualify | Did not qualify
+11 | 2009 | 4 | USL PDL | 6th Heartland | Did not qualify | Did not qualify
+12 | 2010 | 4 | USL PDL | 7th Heartland | Did not qualify | Did not qualify
+13 | 2011 | 4 | USL PDL | 4th Heartland | Did not qualify | Did not qualify
+14 | 2012 | 4 | USL PDL | 5th Heartland | Did not qualify | Did not qualify
+15 | 2013 | 4 | USL PDL | 4th Heartland | Did not qualify | Did not qualify
+Question: how many consecutive seasons did the kansas city brass not qualify for the playoffs?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will focus on the "Playoffs" column in the full table provided. 
+
+From the table:
+- The Kansas City Brass did not qualify for the playoffs in the following seasons:
+  1. 1999
+  2. 2000
+  3. 2001
+  4. 2002
+  5. 2003
+  6. 2004
+  7. 2005
+  8. 2006
+  9. 2007
+  10. 2008
+  11. 2009
+  12. 2010
+  13. 2011
+  14. 2012
+  15. 2013
+
+Therefore, the Kansas City Brass did not qualify for the playoffs for 15 consecutive seasons.
+
+Final Answer: 15
+[Fallback] Prediction: 15
+[Gold Answer] 15
+

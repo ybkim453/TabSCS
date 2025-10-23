@@ -1,0 +1,129 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - 4 representative example values: Maryland 2, Maryland 3, Maryland 4, Maryland 5
+   - Role: Identifier for the district represented in the table
+
+2. Incumbent
+   - Data type: Categorical
+   - 4 representative example values: Robert Ehrlich, Ben Cardin, Albert Wynn, Steny Hoyer
+   - Role: Descriptor of the incumbent for each district
+
+3. Party
+   - Data type: Categorical
+   - 4 representative example values: Republican, Democratic
+   - Role: Descriptor of the political party of the incumbent
+
+4. First elected
+   - Data type: Numeric
+   - 4 representative example values: 1994, 1986, 1992, 1981
+   - Role: Descriptor of the year the incumbent was first elected
+
+5. Result
+   - Data type: Categorical
+   - 4 representative example values: Retired to run for Governor, Re-elected
+   - Role: Descriptor of the outcome of the election for the district
+
+6. Candidates
+   - Data type: Categorical
+   - 4 representative example values: Dutch Ruppersberger (D) 54.16%, Helen Bentley (R) 45.57%, Ben Cardin (D) 65.72%, Scott Conwell (R) 34.18%
+   - Role: Descriptor of the candidates and their respective percentage of votes
+
+**Outlier Row Analysis:**
+
+1. Maryland 3 (Ben Cardin)
+   - The row is not an outlier as the values for Ben Cardin (D) 65.72% and Scott Conwell (R) 34.18% are consistent with the other candidate rows.
+
+2. Maryland 5 (Steny Hoyer)
+   - The row is not an outlier as the values for Steny Hoyer (D) 69.27% and Joseph Crawford (R) 30.52% are consistent with the other candidate rows.
+
+3. Maryland 2 (Robert Ehrlich)
+   - The row is an outlier as the result states "Retired to run for Governor" which is different from the "Re-elected" results of the other rows. This change in outcome makes this row distinctive.
+
+In summary, only the candidate row for Maryland 2 (Robert Ehrlich) is considered an outlier due to the unique result of the election. The other candidate rows are ordinary and do not require special handling.
+
+=== Full Table Preview ===
+|   row_number | District   | Incumbent       | Party      |   First\nelected | Result                                       | Candidates                                                                         |
+|-------------:|:-----------|:----------------|:-----------|-----------------:|:---------------------------------------------|:-----------------------------------------------------------------------------------|
+|            0 | Maryland 1 | Wayne Gilchrest | Republican |             1990 | Re-elected                                   | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%                                  |
+|            1 | Maryland 2 | Robert Ehrlich  | Republican |             1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%                           |
+|            2 | Maryland 3 | Ben Cardin      | Democratic |             1986 | Re-elected                                   | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%                                    |
+|            3 | Maryland 4 | Albert Wynn     | Democratic |             1992 | Re-elected                                   | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%                                     |
+|            4 | Maryland 5 | Steny Hoyer     | Democratic |             1981 | Re-elected                                   | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%                                 |
+|            5 | Maryland 6 | Roscoe Bartlett | Republican |             1992 | Re-elected                                   | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%                              |
+|            6 | Maryland 7 | Elijah Cummings | Democratic |             1996 | Re-elected                                   | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%                                 |
+|            7 | Maryland 8 | Connie Morella  | Republican |             1986 | Lost re-election\nDemocratic gain            | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73% |
+
+Generated Reasoning SQL: Explanation: To determine who had a higher percentage than Wayne Gilchrest, we need to compare the percentage of votes obtained by each candidate with Wayne Gilchrest's percentage. Since the question focuses on the percentage of votes, we will need to extract and compare these values from the "Candidates" column. We will exclude the outlier row for Maryland 2 (Robert Ehrlich) as it has a different election result compared to the other rows.
+
+SQL: 
+SELECT "Incumbent"
+FROM T
+WHERE "Incumbent" != 'Wayne Gilchrest' 
+AND "Incumbent" != 'Robert Ehrlich' 
+AND CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) > 
+    (SELECT CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) 
+     FROM T 
+     WHERE "Incumbent" = 'Wayne Gilchrest');
+Generated Final SQL: SELECT "Incumbent" FROM T WHERE "Incumbent" != 'Wayne Gilchrest' AND "Incumbent" != 'Robert Ehrlich' AND CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) > (SELECT CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) FROM T WHERE "Incumbent" = 'Wayne Gilchrest');
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: United States House of Representatives elections, 2002 (row_number, District, Incumbent, Party, First\nelected, Result, Candidates)
+
+row_number | District | Incumbent | Party | First\nelected | Result | Candidates
+0 | Maryland 1 | Wayne Gilchrest | Republican | 1990 | Re-elected | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%
+1 | Maryland 2 | Robert Ehrlich | Republican | 1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%
+2 | Maryland 3 | Ben Cardin | Democratic | 1986 | Re-elected | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%
+3 | Maryland 4 | Albert Wynn | Democratic | 1992 | Re-elected | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%
+4 | Maryland 5 | Steny Hoyer | Democratic | 1981 | Re-elected | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%
+5 | Maryland 6 | Roscoe Bartlett | Republican | 1992 | Re-elected | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%
+6 | Maryland 7 | Elijah Cummings | Democratic | 1996 | Re-elected | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%
+7 | Maryland 8 | Connie Morella | Republican | 1986 | Lost re-election\nDemocratic gain | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73%
+Question: who had a higher percentage than wayne gilchrest?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will first identify Wayne Gilchrest's percentage from the summary:
+- In the summary for Wayne Gilchrest (District Maryland 1), he received 76.67% of the vote.
+
+Next, we will look at the percentages for other candidates in the table to see who had a higher percentage than Wayne Gilchrest:
+- Robert Ehrlich in District Maryland 2 received 45.57% of the vote, which is lower than Wayne Gilchrest.
+- Ben Cardin in District Maryland 3 received 65.72% of the vote, which is lower than Wayne Gilchrest.
+- Albert Wynn in District Maryland 4 received 78.57% of the vote, which is higher than Wayne Gilchrest.
+- Steny Hoyer in District Maryland 5 received 69.27% of the vote, which is higher than Wayne Gilchrest.
+- Roscoe Bartlett in District Maryland 6 received 66.11% of the vote, which is lower than Wayne Gilchrest.
+- Elijah Cummings in District Maryland 7 received 73.53% of the vote, which is higher than Wayne Gilchrest.
+- Connie Morella in District Maryland 8 received 47.49% of the vote, which is lower than Wayne Gilchrest.
+
+Therefore, the candidates who had a higher percentage than Wayne Gilchrest are Albert Wynn (Maryland 4), Steny Hoyer (Maryland 5), and Elijah Cummings (Maryland 7).
+
+Final Answer: Albert Wynn, Steny Hoyer, Elijah Cummings
+[Fallback] Prediction: albert wynn, steny hoyer, elijah cummings
+[Gold Answer] albert wynn
+

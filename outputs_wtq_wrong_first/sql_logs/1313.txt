@@ -1,0 +1,143 @@
+=== Table ID ===
+csv/203-csv/361.tsv
+
+=== Question ===
+what was the next opponent after the game against the new england patriots?
+
+=== Sub-table Preview ===
+|   Locomotive | Name         | Serial No      | Entered Service   | Livery           |
+|-------------:|:-------------|:---------------|:------------------|:-----------------|
+|         9001 | Ernest Henry | 1373/918266-3  | May 94            | FreightCorp      |
+|         9027 | -            | 1399/918266-27 | Aug 94            | FreightCorp      |
+|         9029 | -            | 1401/918266/29 | Aug 94            | FreightCorp      |
+|         9031 | -            | 1403/918266/31 | Aug 94            | FreightCorp      |
+|         9032 | -            | 05-1692        | Nov 05            | Pacific National |
+|         9033 | -            | 05-1693        | Nov 05            | Pacific National |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Locomotive
+   - Data type: Numeric
+   - 4 representative example values: 9001, 9027, 9029, 9031
+   - Role: Identifier for the locomotive
+
+2. Name
+   - Data type: Categorical
+   - 4 representative example values: Ernest Henry, -, -, -
+   - Role: Descriptor for the locomotive
+
+3. Serial No
+   - Data type: Categorical
+   - 4 representative example values: 1373/918266-3, 1399/918266-27, 1401/918266/29, 05-1692
+   - Role: Descriptor for the locomotive
+
+4. Entered Service
+   - Data type: Categorical
+   - 4 representative example values: May 94, Aug 94, Nov 05
+   - Role: Descriptor for when the locomotive entered service
+
+5. Livery
+   - Data type: Categorical
+   - 4 representative example values: FreightCorp, Pacific National
+   - Role: Descriptor for the livery of the locomotive
+
+**Outlier Row Analysis:**
+
+1. Row 31
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+2. Row 0
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+3. Row 32
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+Since the values for the outlier rows are not provided in the partial preview, it is not possible to determine the exact reasons why they are considered outliers.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date                | Opponent                | Result   |   Attendance |
+|-------------:|-------:|:--------------------|:------------------------|:---------|-------------:|
+|            0 |      1 | 1981-09-06 00:00:00 | at Los Angeles Rams     | W 27–20  |        63198 |
+|            1 |      2 | 1981-09-13 00:00:00 | at Cleveland Browns     | W 9–3    |        79483 |
+|            2 |      3 | 1981-09-20 00:00:00 | Miami Dolphins          | L 16–10  |        47379 |
+|            3 |      4 | 1981-09-27 00:00:00 | at New York Jets        | L 33–17  |        50309 |
+|            4 |      5 | 1981-10-04 00:00:00 | Cincinnati Bengals      | W 17–10  |        44350 |
+|            5 |      6 | 1981-10-11 00:00:00 | Seattle Seahawks        | W 35–17  |        42671 |
+|            6 |      7 | 1981-10-18 00:00:00 | at New England Patriots | L 38–10  |        60474 |
+|            7 |      8 | 1981-10-26 00:00:00 | at Pittsburgh Steelers  | L 26–13  |        52732 |
+|            8 |      9 | 1981-11-01 00:00:00 | at Cincinnati Bengals   | L 34–21  |        54736 |
+|            9 |     10 | 1981-11-08 00:00:00 | Oakland Raiders         | W 17–16  |        45519 |
+|           10 |     11 | 1981-11-15 00:00:00 | at Kansas City Chiefs   | L 23–10  |        73984 |
+|           11 |     12 | 1981-11-22 00:00:00 | New Orleans Saints      | L 27–24  |        49581 |
+|           12 |     13 | 1981-11-29 00:00:00 | Atlanta Falcons         | L 31–27  |        40201 |
+|           13 |     14 | 1981-12-03 00:00:00 | Cleveland Browns        | W 17–13  |        44502 |
+|           14 |     15 | 1981-12-13 00:00:00 | at San Francisco 49ers  | L 28–6   |        55707 |
+|           15 |     16 | 1981-12-20 00:00:00 | Pittsburgh Steelers     | W 21–20  |        41056 |
+
+Generated Reasoning SQL: The summary indicates that the "Opponent" column contains categorical values representing the opponents of the Houston Oilers in each game. To find the next opponent after the game against the New England Patriots, we need to look for the row where "Week" is greater than the week of the game against the Patriots. 
+
+SQL: 
+SELECT "Opponent" 
+FROM T 
+WHERE "Week" > (SELECT "Week" FROM T WHERE "Opponent" LIKE '%New England Patriots%') 
+ORDER BY "Week" 
+LIMIT 1;
+Generated Final SQL: SELECT "Opponent" FROM T WHERE "Week" > (SELECT "Week" FROM T WHERE "Opponent" LIKE '%New England Patriots%') ORDER BY "Week" LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Opponent               |
+|:-----------------------|
+| at Pittsburgh Steelers |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1981 Houston Oilers season
+SQL: SELECT "Opponent" FROM T WHERE "Week" > (SELECT "Week" FROM T WHERE "Opponent" LIKE '%New England Patriots%') ORDER BY "Week" LIMIT 1;
+
+SQL Execution Result:
+Opponent
+at Pittsburgh Steelers
+
+Question: what was the next opponent after the game against the new england patriots?
+A: To find the answer to this question, let’s think step by step.
+Prediction: pittsburgh steelers
+[Gold Answer] at pittsburgh steelers
+

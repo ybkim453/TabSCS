@@ -1,0 +1,16 @@
+
+JSONL 파일에서 내부 idx=1954 처리 중: datasets/wtq_wrong.jsonl
+  테이블 크기: 38행 5열
+  컬럼 'Year' 분석 중...
+  컬럼 'Single' 분석 중...
+  컬럼 'Peak chart\npositions\nUS Country' 분석 중...
+  컬럼 'Peak chart\npositions\nCAN Country' 분석 중...
+  컬럼 'Album' 분석 중...
+  특이값 행 선택: 행 15 (컬럼 'Peak chart\npositions\nCAN Country', 유사도: 0.6250)
+  특이값 행 선택: 행 18 (컬럼 'Album', 유사도: 0.5922)
+  특이값 행 선택: 행 37 (컬럼 'Year', 유사도: 0.6474)
+  정상값 행 선택: 행 22 (평균 유사도: 0.7292)
+  정상값 행 선택: 행 30 (평균 유사도: 0.7289)
+  정상값 행 선택: 행 31 (평균 유사도: 0.7269)
+  최종 선택된 행 (원본 순서): [15, 18, 22, 30, 31, 37] (총 6개)
+  서브테이블 크기: 7줄

@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 2005, 2007, 2008, 2010
+   - Role: Identifier for the specific season of competition
+
+2. Age
+   - Data type: Numeric
+   - 4 representative example values: 18, 20, 21, 23
+   - Role: Descriptor indicating the age of the athlete during the season
+
+3. Overall
+   - Data type: Numeric
+   - 4 representative example values: 37, 33, 38, 28
+   - Role: Measure representing the overall performance ranking of the athlete
+
+4. Slalom
+   - Data type: Categorical
+   - 4 representative example values: -, -, -, -
+   - Role: Measure representing the performance ranking in the Slalom event
+
+5. Giant Slalom
+   - Data type: Numeric
+   - 4 representative example values: 27, 50, -, -
+   - Role: Measure representing the performance ranking in the Giant Slalom event
+
+6. Super G
+   - Data type: Numeric
+   - 4 representative example values: 18, 15, 35, 13
+   - Role: Measure representing the performance ranking in the Super G event
+
+7. Downhill
+   - Data type: Numeric
+   - 4 representative example values: 49, 23, 13, 23
+   - Role: Measure representing the performance ranking in the Downhill event
+
+8. Combined
+   - Data type: Categorical
+   - 4 representative example values: —, —, —, —
+   - Role: Measure representing the performance ranking in the Combined event
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Season: 2011)
+   - This row is an outlier because all values are "Injured, did not compete", which is significantly different from the typical performance rankings in the table.
+   - The values are not ordinary within the context of the table, making this row an outlier.
+
+2. Row 0 (Season: 2005)
+   - This row is an outlier because the Overall ranking of 37 is significantly lower compared to the other rows in the table.
+   - The values are distinct from the majority of the table, making this row an outlier.
+
+3. Row 1 (Season: 2007)
+   - This row is an outlier because the Giant Slalom ranking of 50 is significantly higher compared to the other rows in the table.
+   - The values are distinct from the majority of the table, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Season |   Age | Overall                 | Slalom                  | Giant\nSlalom           | Super G                 | Downhill                | Combined                |
+|-------------:|---------:|------:|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|
+|            0 |     2004 |    17 | 112                     | –                       | –                       | 51                      | –                       | —                       |
+|            1 |     2005 |    18 | 37                      | –                       | 27                      | 18                      | 49                      | —                       |
+|            2 |     2006 |    19 | 22                      | –                       | 18                      | 37                      | 15                      | —                       |
+|            3 |     2007 |    20 | 33                      | –                       | 50                      | 15                      | 23                      | —                       |
+|            4 |     2008 |    21 | 38                      | –                       | –                       | 35                      | 13                      | —                       |
+|            5 |     2009 |    22 | 9                       | –                       | 40                      | 2                       | 5                       | 50                      |
+|            6 |     2010 |    23 | 28                      | –                       | –                       | 13                      | 23                      | —                       |
+|            7 |     2011 |    24 | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete |
+|            8 |     2012 |    25 | 75                      | –                       | 28                      | –                       | –                       | —                       |
+|            9 |     2013 |    26 | 37                      | –                       | 17                      | 28                      | 30                      | —                       |
+
+Generated Reasoning SQL: Explanation: To identify the years where there are no Super G results, we need to look for rows where the "Super G" column is missing or represented as a placeholder value (e.g., "-"). We will filter out these rows to determine the specific years with no Super G results.
+
+SQL: SELECT DISTINCT "Season" 
+FROM T 
+WHERE "Super G" IS NULL OR "Super G" = '-';
+Generated Final SQL: SELECT DISTINCT "Season" FROM T WHERE "Super G" IS NULL OR "Super G" = '-';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Nadia Fanchini (row_number, Season, Age, Overall, Slalom, Giant\nSlalom, Super G, Downhill, Combined)
+
+row_number | Season | Age | Overall | Slalom | Giant\nSlalom | Super G | Downhill | Combined
+0 | 2004 | 17 | 112 | – | – | 51 | – | —
+1 | 2005 | 18 | 37 | – | 27 | 18 | 49 | —
+2 | 2006 | 19 | 22 | – | 18 | 37 | 15 | —
+3 | 2007 | 20 | 33 | – | 50 | 15 | 23 | —
+4 | 2008 | 21 | 38 | – | – | 35 | 13 | —
+5 | 2009 | 22 | 9 | – | 40 | 2 | 5 | 50
+6 | 2010 | 23 | 28 | – | – | 13 | 23 | —
+7 | 2011 | 24 | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete
+8 | 2012 | 25 | 75 | – | 28 | – | – | —
+9 | 2013 | 26 | 37 | – | 17 | 28 | 30 | —
+Question: for what years are there no super g results?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will examine the "Super G" column in the full table to identify the years where there are no results listed.
+
+From the full table:
+- In 2004, there is a Super G result listed as 51.
+- In 2005, there is a Super G result listed as 18.
+- In 2006, there is a Super G result listed as 37.
+- In 2007, there is a Super G result listed as 15.
+- In 2008, there is a Super G result listed as 35.
+- In 2009, there is a Super G result listed as 2.
+- In 2010, there is a Super G result listed as 13.
+- In 2011, the entry states "Injured did not compete" for all disciplines, including Super G.
+- In 2012, there is no Super G result listed.
+- In 2013, there is a Super G result listed as 28.
+
+Therefore, the years with no Super G results are 2012.
+
+Final Answer: 2012
+[Fallback] Prediction: 2012
+[Gold Answer] 2011
+

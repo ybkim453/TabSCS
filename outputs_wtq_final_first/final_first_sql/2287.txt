@@ -1,0 +1,144 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Hull
+   - Data type: Categorical
+   - 4 representative example values: № 8, № 12, № 13, № 14
+   - Role: Identifier for the specific hull of the ferry.
+
+2. Type
+   - Data type: Categorical
+   - 4 representative example values: 929-117
+   - Role: Descriptor indicating the type of ferry.
+
+3. Original Name
+   - Data type: Categorical
+   - 4 representative example values: Beetle 2, Toppy 2, Toppy 3, Crystal Wing
+   - Role: Descriptor for the original name of the ferry.
+
+4. Original Operator
+   - Data type: Categorical
+   - 4 representative example values: JR Kyushu Jet Ferries, Tane Yaku Jetfoils, Kaijo Access Co.
+   - Role: Descriptor for the original operator of the ferry.
+
+5. Delivery
+   - Data type: Categorical
+   - 4 representative example values: Feb 1991, Apr 1992, Mar 1995, Jun 1994
+   - Role: Measure indicating the delivery date of the ferry.
+
+6. Disposition (2012)
+   - Data type: Categorical
+   - 4 representative example values: Active
+   - Role: Measure indicating the disposition status of the ferry in 2012.
+
+7. 2nd name
+   - Data type: Categorical
+   - 4 representative example values: 2002 Beetle 5, 2004 Rocket 1
+   - Role: Descriptor for the second name of the ferry.
+
+8. 2nd operator
+   - Data type: Categorical
+   - 4 representative example values: JR Kyushu Jet Ferries, Cosmo Line
+   - Role: Descriptor for the second operator of the ferry.
+
+9. 3rd Name
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Descriptor for the third name of the ferry.
+
+10. 3rd operator
+    - Data type: Categorical
+    - 4 representative example values: nan
+    - Role: Descriptor for the third operator of the ferry.
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The presence of "2002 Beetle 5" in the 2nd name column and "JR Kyushu Jet Ferries" in the 2nd operator column makes this row distinctive.
+   - These values are different from the majority of the table and indicate a change in the name and operator of the ferry, making this row an outlier.
+
+2. Row 14:
+   - The presence of "2002 Beetle 5" in the 2nd name column and "JR Kyushu Jet Ferries" in the 2nd operator column makes this row distinctive.
+   - These values are different from the majority of the table and indicate a change in the name and operator of the ferry, making this row an outlier.
+
+3. Row 13:
+   - The presence of "2004 Rocket 1" in the 2nd name column and "Cosmo Line" in the 2nd operator column makes this row distinctive.
+   - These values are different from the majority of the table and indicate a change in the name and operator of the ferry, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Hull   | Type    | Original Name    | Original Operator      | Delivery   | Disposition (2012)   | 2nd name      | 2nd operator           | 3rd Name   | 3rd operator       |
+|-------------:|:-------|:--------|:-----------------|:-----------------------|:-----------|:---------------------|:--------------|:-----------------------|:-----------|:-------------------|
+|            0 | № 1    | 929-117 | Tsubasa          | Sado Kisen             | Mar 1998   | Active               |               |                        |            |                    |
+|            1 | № 2    | 929-117 | Pegasus          | Kyusyu Shosen Co. Ltd. | Jun 1989   | Active               | Toppy 1       | Tane Yaku Jetfoils     |            |                    |
+|            2 | № 3    | 929-117 | Toppy 1          | Tane Yaku Jetfoils     | Sep 1989   | Active               | Beetle 3      | JR Kyushu Jet Ferries  |            |                    |
+|            3 | № 4    | 929-117 | Princess Dacil   | Trasmediterranea       | Mar 1990   | Active               | Pegasus       | Kyusyu Shosen Co. Ltd. |            |                    |
+|            4 | № 5    | 929-117 | Nagasaki         | JR Kyushu Jet Ferries  | Apr 1990   | Active               | Beetle 1      | JR Kyushu Jet Ferries  |            |                    |
+|            5 | № 6    | 929-117 | Beetle           | JR Kyushu Jet Ferries  | Jul 1990   | Active               | Rocket        | Cosmo Line             | Rocket 3   | Tane Yaku Jetfoils |
+|            6 | № 7    | 929-117 | Unicorn          | Kyusyu Shosen Co. Ltd. | Oct 1990   | Active               | Pegasus 2     | Kyusyu Shosen Co. Ltd. |            |                    |
+|            7 | № 8    | 929-117 | Beetle 2         | JR Kyushu Jet Ferries  | Feb 1991   | Active               |               |                        |            |                    |
+|            8 | № 9    | 929-117 | Venus            | Kyushu Yusen           | Mar 1991   | Active               |               |                        |            |                    |
+|            9 | № 10   | 929-117 | Suisei           | Sado Kisen             | Apr 1991   | Active               |               |                        |            |                    |
+|           10 | № 11   | 929-117 | Princess Teguise | Trasmediterranea       | Jun 1991   | Active               | 2007 Toppy 5  | Tane Yaku Jetfoils     |            |                    |
+|           11 | № 12   | 929-117 | Toppy 2          | Tane Yaku Jetfoils     | Apr 1992   | Active               |               |                        |            |                    |
+|           12 | № 13   | 929-117 | Toppy 3          | Tane Yaku Jetfoils     | Mar 1995   | Active               |               |                        |            |                    |
+|           13 | № 14   | 929-117 | Crystal Wing     | Kaijo Access Co.       | Jun 1994   | Active               | 2002 Beetle 5 | JR Kyushu Jet Ferries  |            |                    |
+|           14 | № 15   | 929-117 | Emerald Wing     | Kaijo Access Co.       | Jun 1994   | Active               | 2004 Rocket 1 | Cosmo Line             | -          | Tane Yaku Jetfoil  |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Original Operator" column contains categorical values representing the original operator of the ferry. To find out how many boats Tane Yaku Jetfoils operate in total, we need to count the number of rows where "Original Operator" = 'Tane Yaku Jetfoils'. We should exclude outlier rows as they represent changes in the name and operator of the ferry, not the total number of boats operated by Tane Yaku Jetfoils.
+SQL: select count("Hull") from T where "Original Operator" = 'Tane Yaku Jetfoils';
+Generated Final SQL: select count("Hull") from T where "Original Operator" = 'Tane Yaku Jetfoils';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Hull") |
+|----------------:|
+|               3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Boeing 929
+SQL: select count("Hull") from T where "Original Operator" = 'Tane Yaku Jetfoils';
+
+count("Hull")
+3
+Question: how boats do tane yaku jetfoils operate in total?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

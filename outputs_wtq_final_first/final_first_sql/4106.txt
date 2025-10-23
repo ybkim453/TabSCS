@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 17, 17, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: United States, Australia, Greece, Sweden
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 22, 0, 1, 82
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Rank 2, United States):
+   - This row stands out as it has a significantly higher number of Gold, Silver, and Total medals compared to the other rows.
+   - The values for Gold, Silver, and Total are much higher than the average values in the table, making this row an outlier.
+
+2. Row 24 (Rank 17, Australia):
+   - This row has a Bronze medal, while the other rows with the same rank have no medals.
+   - The presence of a Bronze medal in this row makes it an outlier compared to the other rows with the same rank.
+
+3. Row 1 (Rank 17, Greece):
+   - Similar to Row 24, this row also has a Bronze medal while the other rows with the same rank have no medals.
+   - The presence of a Bronze medal in this row makes it an outlier compared to the other rows with the same rank.
+
+4. Row 17 (Total):
+   - This row represents the total medals for all nations and is not an outlier as it is a summary row and not comparable to individual nation rows.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation         |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:---------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | Soviet Union   |     26 |       17 |       15 |      58 |
+|            1 | 2      | United States  |     22 |       18 |       11 |      51 |
+|            2 | 3      | East Germany   |      8 |        3 |        4 |      15 |
+|            3 | 4      | Italy          |      4 |        4 |        6 |      14 |
+|            4 | 5      | Japan          |      3 |        7 |        5 |      15 |
+|            5 | 6      | Hungary        |      3 |        6 |        6 |      15 |
+|            6 | 7      | West Germany   |      3 |        6 |        4 |      13 |
+|            7 | 8      | United Kingdom |      3 |        4 |        7 |      14 |
+|            8 | 9      | Poland         |      3 |        1 |        5 |       9 |
+|            9 | 10     | Yugoslavia     |      3 |        1 |        1 |       5 |
+|           10 | 11     | Netherlands    |      1 |        1 |        2 |       4 |
+|           11 | 12     | Austria        |      1 |        1 |        1 |       3 |
+|           12 | 12     | Bulgaria       |      1 |        1 |        1 |       3 |
+|           13 | 14     | France         |      1 |        0 |        4 |       5 |
+|           14 | 15     | Romania        |      0 |        4 |        2 |       6 |
+|           15 | 16     | Cuba           |      0 |        2 |        2 |       4 |
+|           16 | 17     | Australia      |      0 |        1 |        0 |       1 |
+|           17 | 17     | Czechoslovakia |      0 |        1 |        0 |       1 |
+|           18 | 17     | Greece         |      0 |        1 |        0 |       1 |
+|           19 | 17     | Sweden         |      0 |        1 |        0 |       1 |
+|           20 | 21     | Canada         |      0 |        0 |        1 |       1 |
+|           21 | 21     | South Korea    |      0 |        0 |        1 |       1 |
+|           22 | 21     | Madagascar     |      0 |        0 |        1 |       1 |
+|           23 | 21     | Panama         |      0 |        0 |        1 |       1 |
+|           24 | Total  | Total          |     82 |       80 |       80 |     242 |
+
+Generated Reasoning SQL: Explanation: To determine the top-ranked team for the year, we need to find the row with the highest rank. Since the "Rank" column is numeric and represents the ranking of each nation, we can simply select the row with the lowest rank value to identify the top-ranked team. We should exclude the outlier rows representing the total medals for all nations (Row 24) and any other placeholder rows. 
+
+SQL: 
+SELECT "Nation" 
+FROM T 
+WHERE "Rank" = (SELECT MIN("Rank") FROM T WHERE "Rank" <> 'Total');
+Generated Final SQL: SELECT "Nation" FROM T WHERE "Rank" = (SELECT MIN("Rank") FROM T WHERE "Rank" <> 'Total');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Nation       |
+|:-------------|
+| Soviet Union |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1970 Summer Universiade
+SQL: SELECT "Nation" FROM T WHERE "Rank" = (SELECT MIN("Rank") FROM T WHERE "Rank" <> 'Total');
+
+SQL Execution Result:
+Nation
+Soviet Union
+
+Question: which team was the top ranked team for this year?
+A: To find the answer to this question, let’s think step by step.
+Prediction: soviet union
+[Gold Answer] soviet union
+

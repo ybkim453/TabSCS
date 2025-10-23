@@ -1,0 +1,46 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2001, 2002, 2006, 2007
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Youth Championships, Asian Games, Universiade
+   - Role: Descriptor for the name of the competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Debrecen, Hungary, Busan, South Korea, Doha, Qatar
+   - Role: Descriptor for the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 4th, 2nd, 1st, DQ
+   - Role: Descriptor for the athlete's position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 400 m, 4x400 m relay
+   - Role: Descriptor for the type of event the athlete participated in.
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Additional notes or remarks related to the athlete's performance.
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The row with Year 2011 and Position DQ is an outlier.
+   - The "DQ" value in the Position column indicates disqualification, which is significantly different from the typical positions (1st, 2nd, 4th).
+   - This row is an outlier due to the unique and atypical nature of the disqualification compared to the other positions in the table.
+
+2. Row 0:
+   - The row with Year 2001 and Position 4th is an ordinary row.
+   - The values in this row (Year, Position) are not significantly different from the majority of the table and do not make it an outlier.
+
+3. Row 1:
+   - The row with Year 2002 and Position 2nd is an ordinary row.
+   - The values in this row (Year, Position) are common and not distinctive compared to the rest of the table.

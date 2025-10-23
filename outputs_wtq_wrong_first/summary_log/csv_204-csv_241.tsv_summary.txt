@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Player:
+   - Data type: Categorical
+   - 4 representative example values: Aloisi, Bresciano, Thompson, Colosimo
+   - Role: Identifier
+
+2. Friendlies:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2
+   - Role: Measure of the number of goals scored in friendly matches
+
+3. FIFA Confederations Cup:
+   - Data type: Numeric
+   - 4 representative example values: 4
+   - Role: Measure of the number of goals scored in FIFA Confederations Cup matches
+
+4. FIFA World Cup Qual.:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2
+   - Role: Measure of the number of goals scored in FIFA World Cup qualification matches
+
+5. Total Goals:
+   - Data type: Numeric
+   - 4 representative example values: 5, 3
+   - Role: Measure of the total number of goals scored by the player
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Aloisi):
+   - The player has a total of 5 goals, which is higher than the other players in the table.
+   - This row is an outlier because the total number of goals scored by Aloisi is significantly higher than the rest of the players.
+
+2. Row 1 (Bresciano):
+   - The player has 2 goals in friendlies and 1 goal in FIFA World Cup Qual., which is higher than the majority of the players in those categories.
+   - This row is an outlier because Bresciano has scored more goals in specific categories compared to the other players.
+
+3. Row 2 (Thompson):
+   - The player has 1 goal in friendlies and 2 goals in FIFA World Cup Qual., which is higher than the majority of the players in those categories.
+   - This row is an outlier because Thompson has scored more goals in specific categories compared to the other players.

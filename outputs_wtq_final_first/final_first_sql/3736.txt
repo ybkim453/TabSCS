@@ -1,0 +1,149 @@
+=== Table Summary ===
+### Column Analysis:
+
+1. **Game:**
+   - Data type: Numeric
+   - 4 representative values: 36, 41, 42, 43
+   - Role: Identifier for each game
+
+2. **Date:**
+   - Data type: Categorical
+   - 4 representative values: January 6, January 16, January 20, January 21
+   - Role: Descriptor for the date of the game
+
+3. **Team:**
+   - Data type: Categorical
+   - 4 representative values: Chicago, Milwaukee, Denver, Washington
+   - Role: Descriptor for the team playing the game
+
+4. **Score:**
+   - Data type: Categorical
+   - 4 representative values: L 94–99, L 122–129, L 99–118, L 107–110
+   - Role: Measure of the game score
+
+5. **High points:**
+   - Data type: Categorical
+   - 4 representative values: Kevin Martin (29), John Salmons, Kevin Martin (24), Kevin Martin (25), John Salmons, Beno Udrih (24)
+   - Role: Descriptor for the player(s) with the highest points in the game
+
+6. **High rebounds:**
+   - Data type: Categorical
+   - 4 representative values: Brad Miller (12), Jason Thompson (11), Jason Thompson (11), John Salmons, Shelden Williams, Jason Thompson (5)
+   - Role: Descriptor for the player(s) with the highest rebounds in the game
+
+7. **High assists:**
+   - Data type: Categorical
+   - 4 representative values: Beno Udrih (5), John Salmons (6), John Salmons, Beno Udrih (5), John Salmons (5)
+   - Role: Descriptor for the player(s) with the highest assists in the game
+
+8. **Location/Attendance:**
+   - Data type: Categorical
+   - 4 representative values: United Center\n18,060, ARCO Arena\n11,663, Pepsi Center\n15,164, ARCO Arena\n10,821
+   - Role: Descriptor for the location and attendance of the game
+
+9. **Record:**
+   - Data type: Categorical
+   - 4 representative values: 8–28, 10–31, 10–32, 10–33
+   - Role: Measure of the team's record after the game
+
+### Outlier Row Analysis:
+
+1. **Row 0:**
+   - The game was played on January 6 at Chicago with a score of L 94–99, which is not significantly different from other games in terms of date, location, and outcome. This row is an ordinary row.
+
+2. **Row 10:**
+   - The game was played on January 25 at Toronto with a score of L 97–113, which is consistent with other games in terms of date, location, and outcome. This row is an ordinary row.
+
+3. **Row 12:**
+   - The game was played on January 29 at New York with a score of L 93–106, which is similar to other games in terms of date, location, and outcome. This row is an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Game | Date       | Team           | Score           | High points                    | High rebounds                                    | High assists                               | Location\nAttendance              | Record   |
+|-------------:|-------:|:-----------|:---------------|:----------------|:-------------------------------|:-------------------------------------------------|:-------------------------------------------|:----------------------------------|:---------|
+|            0 |     33 | January 2  | @ Detroit      | L 92–98         | Brad Miller (25)               | Brad Miller (16)                                 | John Salmons (4)                           | The Palace of Auburn Hills\n22076 | 8–25     |
+|            1 |     34 | January 3  | @ Indiana      | L 117–122       | Kevin Martin (45)              | Bobby Jackson (10)                               | Kevin Martin Brad Miller (6)               | Conseco Fieldhouse\n12765         | 8–26     |
+|            2 |     35 | January 5  | @ New Jersey   | L 90–98         | Kevin Martin (36)              | Kenny Thomas (8)                                 | Brad Miller (8)                            | Izod Center\n12314                | 8–27     |
+|            3 |     36 | January 6  | @ Chicago      | L 94–99         | Kevin Martin (29)              | Brad Miller (12)                                 | Beno Udrih (5)                             | United Center\n18060              | 8–28     |
+|            4 |     37 | January 9  | Miami          | L 115–119 (OT)  | John Salmons (29)              | Brad Miller (16)                                 | John Salmons Brad Miller Bobby Jackson (4) | ARCO Arena\n12587                 | 8–29     |
+|            5 |     38 | January 11 | Dallas         | W 102–95        | Kevin Martin (21)              | Spencer Hawes (8)                                | Beno Udrih (6)                             | ARCO Arena\n12294                 | 9–29     |
+|            6 |     39 | January 13 | Orlando        | L 107–139       | Kevin Martin (30)              | Francisco García (5)                             | Francisco García (5)                       | ARCO Arena\n11168                 | 9–30     |
+|            7 |     40 | January 14 | @ Golden State | W 135–133 (3OT) | Brad Miller (30)               | Brad Miller (22)                                 | John Salmons Beno Udrih (7)                | Oracle Arena\n19122               | 10–30    |
+|            8 |     41 | January 16 | Milwaukee      | L 122–129       | John Salmons Kevin Martin (24) | Jason Thompson (11)                              | John Salmons (6)                           | ARCO Arena\n11663                 | 10–31    |
+|            9 |     42 | January 20 | @ Denver       | L 99–118        | Kevin Martin (25)              | Jason Thompson (11)                              | John Salmons Beno Udrih (5)                | Pepsi Center\n15164               | 10–32    |
+|           10 |     43 | January 21 | Washington     | L 107–110       | John Salmons Beno Udrih (24)   | John Salmons Shelden Williams Jason Thompson (5) | John Salmons (5)                           | ARCO Arena\n10821                 | 10–33    |
+|           11 |     44 | January 24 | @ Milwaukee    | L 104–106       | Kevin Martin (20)              | Brad Miller (13)                                 | Brad Miller (9)                            | Bradley Center\n15379             | 10–34    |
+|           12 |     45 | January 25 | @ Toronto      | L 97–113        | John Salmons (21)              | John Salmons (7)                                 | Beno Udrih (5)                             | Air Canada Centre\n18127          | 10–35    |
+|           13 |     46 | January 27 | @ Cleveland    | L 110–117       | Kevin Martin (35)              | Kevin Martin (7)                                 | Kevin Martin (7)                           | Quicken Loans Arena\n20562        | 10–36    |
+|           14 |     47 | January 28 | @ Boston       | L 100–119       | John Salmons (22)              | Jason Thompson (11)                              | John Salmons (5)                           | TD Banknorth Garden\n18624        | 10–37    |
+|           15 |     48 | January 30 | Chicago        | L 88–109        | Kevin Martin (27)              | Jason Thompson (12)                              | Spencer Hawes Kevin Martin (3)             | ARCO Arena\n13356                 | 10–38    |
+
+Generated Reasoning SQL: Explanation: The summary shows that the "Team" column contains categorical values representing the teams playing each game. To find the point difference between Sacramento and Detroit for game 33, we need to calculate the absolute difference between the scores for these two teams in that specific game. We will filter the rows where "Game" = 33 and "Team" is either Sacramento or Detroit, then subtract the scores to find the point difference.
+SQL: 
+SELECT ABS(CAST(SUBSTR("Score", INSTR("Score", '–') + 1) AS INTEGER) - CAST(SUBSTR("Score", INSTR("Score", '–') - 2, 2) AS INTEGER)) AS point_difference
+FROM T
+WHERE "Game" = 33 AND ("Team" = 'Sacramento' OR "Team" = 'Detroit');
+Generated Final SQL: SELECT ABS(CAST(SUBSTR("Score", INSTR("Score", '–') + 1) AS INTEGER) - CAST(SUBSTR("Score", INSTR("Score", '–') - 2, 2) AS INTEGER)) AS point_difference FROM T WHERE "Game" = 33 AND ("Team" = 'Sacramento' OR "Team" = 'Detroit');
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2008–09 Sacramento Kings season (row_number, Game, Date, Team, Score, High points, High rebounds, High assists, Location\nAttendance, Record)
+
+row_number | Game | Date | Team | Score | High points | High rebounds | High assists | Location\nAttendance | Record
+0 | 33 | January 2 | @ Detroit | L 92–98 | Brad Miller (25) | Brad Miller (16) | John Salmons (4) | The Palace of Auburn Hills\n22076 | 8–25
+1 | 34 | January 3 | @ Indiana | L 117–122 | Kevin Martin (45) | Bobby Jackson (10) | Kevin Martin Brad Miller (6) | Conseco Fieldhouse\n12765 | 8–26
+2 | 35 | January 5 | @ New Jersey | L 90–98 | Kevin Martin (36) | Kenny Thomas (8) | Brad Miller (8) | Izod Center\n12314 | 8–27
+3 | 36 | January 6 | @ Chicago | L 94–99 | Kevin Martin (29) | Brad Miller (12) | Beno Udrih (5) | United Center\n18060 | 8–28
+4 | 37 | January 9 | Miami | L 115–119 (OT) | John Salmons (29) | Brad Miller (16) | John Salmons Brad Miller Bobby Jackson (4) | ARCO Arena\n12587 | 8–29
+5 | 38 | January 11 | Dallas | W 102–95 | Kevin Martin (21) | Spencer Hawes (8) | Beno Udrih (6) | ARCO Arena\n12294 | 9–29
+6 | 39 | January 13 | Orlando | L 107–139 | Kevin Martin (30) | Francisco García (5) | Francisco García (5) | ARCO Arena\n11168 | 9–30
+7 | 40 | January 14 | @ Golden State | W 135–133 (3OT) | Brad Miller (30) | Brad Miller (22) | John Salmons Beno Udrih (7) | Oracle Arena\n19122 | 10–30
+8 | 41 | January 16 | Milwaukee | L 122–129 | John Salmons Kevin Martin (24) | Jason Thompson (11) | John Salmons (6) | ARCO Arena\n11663 | 10–31
+9 | 42 | January 20 | @ Denver | L 99–118 | Kevin Martin (25) | Jason Thompson (11) | John Salmons Beno Udrih (5) | Pepsi Center\n15164 | 10–32
+10 | 43 | January 21 | Washington | L 107–110 | John Salmons Beno Udrih (24) | John Salmons Shelden Williams Jason Thompson (5) | John Salmons (5) | ARCO Arena\n10821 | 10–33
+11 | 44 | January 24 | @ Milwaukee | L 104–106 | Kevin Martin (20) | Brad Miller (13) | Brad Miller (9) | Bradley Center\n15379 | 10–34
+12 | 45 | January 25 | @ Toronto | L 97–113 | John Salmons (21) | John Salmons (7) | Beno Udrih (5) | Air Canada Centre\n18127 | 10–35
+13 | 46 | January 27 | @ Cleveland | L 110–117 | Kevin Martin (35) | Kevin Martin (7) | Kevin Martin (7) | Quicken Loans Arena\n20562 | 10–36
+14 | 47 | January 28 | @ Boston | L 100–119 | John Salmons (22) | Jason Thompson (11) | John Salmons (5) | TD Banknorth Garden\n18624 | 10–37
+15 | 48 | January 30 | Chicago | L 88–109 | Kevin Martin (27) | Jason Thompson (12) | Spencer Hawes Kevin Martin (3) | ARCO Arena\n13356 | 10–38
+Question: what was the point difference between the sacramento and detroit for game 33?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the point difference between Sacramento and Detroit for Game 33, we need to look at the "Score" column in the full table.
+
+From the full table:
+- In Game 33, Sacramento played against Detroit, and the score was "L 92-98".
+
+To calculate the point difference, we subtract the points scored by Sacramento from the points scored by Detroit:
+- Detroit scored 98 points.
+- Sacramento scored 92 points.
+
+Therefore, the point difference between Sacramento and Detroit for Game 33 was 98 - 92 = 6.
+
+Final Answer: 6
+[Fallback] Prediction: 6
+[Gold Answer] 6
+

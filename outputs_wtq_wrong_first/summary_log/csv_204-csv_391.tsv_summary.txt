@@ -1,0 +1,50 @@
+### Column Analysis:
+
+1. **Team:**
+   - Data type: Categorical
+   - 4 representative example values: Damash Gilan, Est. Ahvaz, Foolad, Malavan
+   - Role: Identifier for each team in the table
+
+2. **City:**
+   - Data type: Categorical
+   - 4 representative example values: Rasht, Ahvaz, Anzali, Kerman
+   - Role: Descriptor indicating the city where the team is located
+
+3. **Venue:**
+   - Data type: Categorical
+   - 4 representative example values: Sardar Jangal, Takhti Ahvaz, Shahid Bahonar, Enghelab Karaj
+   - Role: Descriptor specifying the stadium where the team plays
+
+4. **Capacity:**
+   - Data type: Numeric
+   - 4 representative example values: 15,000, 30,000, 8,000
+   - Role: Measure indicating the seating capacity of the venue
+
+5. **Head Coach:**
+   - Data type: Categorical
+   - 4 representative example values: Stanko Poklepović, Khodadad Azizi, Majid Jalali, Mohammad Ahmadzadeh
+   - Role: Descriptor identifying the head coach of the team
+
+6. **Team Captain:**
+   - Data type: Categorical
+   - 4 representative example values: Mohammad Reza Mahdavi, Afshin Komaei, Ali Badavi, Masoud Gholamalizad
+   - Role: Descriptor specifying the team captain
+
+7. **Past Season:**
+   - Data type: Categorical
+   - 4 representative example values: 15th, 8th, Qualifier, 16th
+   - Role: Descriptor indicating the team's performance in the past season
+
+### Outlier Row Analysis:
+
+1. **Row 6 (Saipa):**
+   - The values "Mohammad Mayeli Kohan" for Head Coach and "Ebrahim Sadeghi" for Team Captain are different from the majority of the table.
+   - These values are not ambiguous and clearly distinguish this row from others, making it an outlier.
+
+2. **Row 15 (Est. Ahvaz):**
+   - The value "8th" for Past Season is not significantly different from other values in the table.
+   - This row contains no other distinctive values, so it is an ordinary row and does not require special handling.
+
+3. **Row 2 (Foolad):**
+   - The values "Majid Jalali" for Head Coach and "Ali Badavi" for Team Captain are unique within the table.
+   - These values make this row stand out from the rest, indicating it as an outlier.

@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 5, 6
+   - Role: Identifier
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Mera Juta Hai Japani, Mudh Mudh Ke Na Dekh, O Janewale, Pyar Hua Iqrar Hua
+   - Role: Descriptor
+
+3. Singer(s):
+   - Data type: Categorical
+   - 4 representative example values: Mukesh, Lata Mangeshkar, Mohammed Rafi, Manna Dey
+   - Role: Descriptor
+
+4. Lyricist:
+   - Data type: Categorical
+   - 4 representative example values: Shailendra, Hasrat Jaipuri
+   - Role: Descriptor
+
+5. Length:
+   - Data type: Numeric
+   - 4 representative example values: 4:33, 6:34, 2:20, 4:22
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Mudh Mudh Ke Na Dekh, Lata Mangeshkar, Manna Dey, Shailendra, 6:34):
+   - The length of the song (6:34) is longer compared to the other songs in the table.
+   - This row is an outlier due to the significantly longer duration of the song.
+
+2. Row 0 (Mera Juta Hai Japani, Mukesh, Shailendra, 4:33):
+   - The title and singer(s) are different from the majority of the table.
+   - The length of the song (4:33) is also different from the other songs.
+   - This row is an outlier due to the unique combination of title, singer(s), and length.
+
+3. Row 2 (O Janewale, Lata Mangeshkar, Hasrat Jaipuri, 2:20):
+   - The lyricist for this song is different from the majority of the table.
+   - The length of the song (2:20) is shorter compared to the other songs.
+   - This row is an outlier due to the distinct lyricist and shorter duration of the song.
+
+=== Full Table Preview ===
+|   row_number |   # | Title                       | Singer(s)                            | Lyricist       | Length   |
+|-------------:|----:|:----------------------------|:-------------------------------------|:---------------|:---------|
+|            0 |   1 | "Dil Ka Haal Sune Dilwaala" | Manna Dey                            | Shailendra     | 5:36     |
+|            1 |   2 | "Ichak Dana Beechak Dana"   | Mukesh Lata Mangeshkar               | Hasrat Jaipuri | 5:08     |
+|            2 |   3 | "Mera Juta Hai Japani"      | Mukesh                               | Shailendra     | 4:33     |
+|            3 |   4 | "Mudh Mudh Ke Na Dekh"      | Lata Mangeshkar Manna Dey            | Shailendra     | 6:34     |
+|            4 |   5 | "O Janewale"                | Lata Mangeshkar                      | Hasrat Jaipuri | 2:20     |
+|            5 |   6 | "Pyar Hua Iqrar Hua"        | Lata Mangeshkar Manna Dey            | Shailendra     | 4:22     |
+|            6 |   7 | "Ramaiya Vastavaiya"        | Mohammed Rafi Lata Mangeshkar Mukesh | Shailendra     | 6:10     |
+|            7 |   8 | "Sham Gayi Raat Aayi"       | Lata Mangeshkar                      | Hasrat Jaipuri | 4:00     |
+
+Generated Reasoning SQL: To find out which two artists sang "Mudh Mudh Ke Na Dekh" and "Pyar Hua Iqrar Hua", we need to filter rows based on the "Title" column and then retrieve the corresponding values in the "Singer(s)" column.
+
+Explanation: The summary shows that the "Title" column is categorical and contains the names of songs, while the "Singer(s)" column is also categorical and lists the artists who sang the songs. We will filter rows where the "Title" is either "Mudh Mudh Ke Na Dekh" or "Pyar Hua Iqrar Hua" to identify the singers for these specific songs.
+
+SQL: 
+select "Singer(s)" from T where "Title" = 'Mudh Mudh Ke Na Dekh' or "Title" = 'Pyar Hua Iqrar Hua';
+Generated Final SQL: select "Singer(s)" from T where "Title" = 'Mudh Mudh Ke Na Dekh' or "Title" = 'Pyar Hua Iqrar Hua';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Shree 420 (row_number, #, Title, Singer(s), Lyricist, Length)
+
+row_number | # | Title | Singer(s) | Lyricist | Length
+0 | 1 | "Dil Ka Haal Sune Dilwaala" | Manna Dey | Shailendra | 5:36
+1 | 2 | "Ichak Dana Beechak Dana" | Mukesh Lata Mangeshkar | Hasrat Jaipuri | 5:08
+2 | 3 | "Mera Juta Hai Japani" | Mukesh | Shailendra | 4:33
+3 | 4 | "Mudh Mudh Ke Na Dekh" | Lata Mangeshkar Manna Dey | Shailendra | 6:34
+4 | 5 | "O Janewale" | Lata Mangeshkar | Hasrat Jaipuri | 2:20
+5 | 6 | "Pyar Hua Iqrar Hua" | Lata Mangeshkar Manna Dey | Shailendra | 4:22
+6 | 7 | "Ramaiya Vastavaiya" | Mohammed Rafi Lata Mangeshkar Mukesh | Shailendra | 6:10
+7 | 8 | "Sham Gayi Raat Aayi" | Lata Mangeshkar | Hasrat Jaipuri | 4:00
+Question: "mudh mudh ke na dekh" and "pyar hua iqrar hua" were both sung by which two artists?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will use both the summary and the full table provided.
+
+From the summary:
+- The **Singer(s)** column contains the names of the artists who sang each song.
+- There are no special or atypical rows listed in the summary that we need to consider.
+
+From the full table:
+- "Mudh Mudh Ke Na Dekh" was sung by Lata Mangeshkar and Manna Dey.
+- "Pyar Hua Iqrar Hua" was also sung by Lata Mangeshkar and Manna Dey.
+
+By combining the information from the summary (Singer(s) column contains artist names)  
+with the explicit entries in the full table, we can conclude that "Mudh Mudh Ke Na Dekh" and "Pyar Hua Iqrar Hua" were both sung by Lata Mangeshkar and Manna Dey.
+
+Final Answer: Lata Mangeshkar, Manna Dey
+[Fallback] Prediction: lata mangeshkar, manna dey
+[Gold Answer] lata mangeshkar, manna dey
+

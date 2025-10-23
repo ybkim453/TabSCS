@@ -1,0 +1,239 @@
+=== Table ID ===
+csv/203-csv/825.tsv
+
+=== Question ===
+what is the difference in age between irina mondroe and ivette sarova?
+
+=== Sub-table Preview ===
+| Season   | Footballer         | Club              | Position   | Nationality   |
+|:---------|:-------------------|:------------------|:-----------|:--------------|
+| 2012-13  | Itumeleng Khune    | Kaizer Chiefs     | GK         | South Africa  |
+| 2009-10  | Katlego Mphela     | Mamelodi Sundowns | FW         | South Africa  |
+| 2006-07  | Godfrey Sapula     | Mamelodi Sundowns | MF         | South Africa  |
+| 1999-00  | Siyabonga Nomvethe | Kaizer Chiefs     | FW         | South Africa  |
+| 1998-99  | Roger Feutmba      | Mamelodi Sundowns | MF         | Cameroon      |
+| 1996-97  | Wilfred Mugeyi     | Bush Bucks        | FW         | Zimbabwe      |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season:
+   - Data type: Categorical
+   - 4 representative example values: 2012-13, 2009-10, 2006-07, 1999-00
+   - Role: Identifier for the specific season of the footballer's performance.
+
+2. Footballer:
+   - Data type: Categorical
+   - 4 representative example values: Itumeleng Khune, Katlego Mphela, Godfrey Sapula, Siyabonga Nomvethe
+   - Role: Descriptor for the name of the footballer.
+
+3. Club:
+   - Data type: Categorical
+   - 4 representative example values: Kaizer Chiefs, Mamelodi Sundowns, Bush Bucks
+   - Role: Descriptor for the club the footballer belongs to.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: GK, FW, MF
+   - Role: Descriptor for the playing position of the footballer.
+
+5. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: South Africa, Cameroon, Zimbabwe
+   - Role: Descriptor for the nationality of the footballer.
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values for Season (2012-13), Footballer (Itumeleng Khune), Club (Kaizer Chiefs), Position (GK), and Nationality (South Africa) are all ordinary and consistent with other entries in the table. This row is an ordinary row and does not require special handling.
+
+2. Row 16:
+   - The values for Season (1998-99), Footballer (Roger Feutmba), Club (Mamelodi Sundowns), Position (MF), and Nationality (Cameroon) are all ordinary and consistent with other entries in the table. This row is an ordinary row and does not require special handling.
+
+3. Row 0:
+   - The values for Season (2012-13), Footballer (Itumeleng Khune), Club (Kaizer Chiefs), Position (GK), and Nationality (South Africa) are all ordinary and consistent with other entries in the table. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Represent                  | Candidate                 | in Russian               |   Age | Height                  | Hometown                 |
+|-------------:|:---------------------------|:--------------------------|:-------------------------|------:|:------------------------|:-------------------------|
+|            0 | Adygean Republic           | Alissa Joanndova          | Алисса Йоанндова         |    19 | 1.83 m (6 ft 0 in)      | Tulsky                   |
+|            1 | Altai Krai                 | Anastasija Nindova        | Анастасия Ниндова        |    22 | 1.74 m (5 ft 8 1⁄2 in)  | Barnaul                  |
+|            2 | Altai Republic             | Kassandra Melova          | Кассандра Мелова         |    18 | 1.79 m (5 ft 10 1⁄2 in) | Kosh-Agach               |
+|            3 | Amur Oblast                | Myriam Asfry              | Мыриам Асфры             |    18 | 1.75 m (5 ft 9 in)      | Blagoveshchensk          |
+|            4 | Astrakhan Oblast           | Anastasija Heldriova      | Анастасия Хелдриова      |    18 | 1.74 m (5 ft 8 1⁄2 in)  | Astrakhan                |
+|            5 | Bashkortostan Republic     | Aimee Neosaranova         | Аимее Неосаранова        |    19 | 1.77 m (5 ft 9 1⁄2 in)  | Ufa                      |
+|            6 | Belgorod Oblast            | Jahaira Novgorodova       | Яхаира Новгородова       |    25 | 1.80 m (5 ft 11 in)     | Belgorod                 |
+|            7 | Buryatian Republic         | Loise Egiazarjan          | Лоисе Егиазарян          |    20 | 1.85 m (6 ft 1 in)      | Ulan-Ude                 |
+|            8 | Capital City               | Natalia Varnakova         | Наталиа Варнакова        |    19 | 1.80 m (5 ft 11 in)     | Moscow                   |
+|            9 | Chechen Republic           | Carmen Jenockova          | Цармен Йеноцкова         |    24 | 1.80 m (5 ft 11 in)     | Urus-Martan              |
+|           10 | Chelyabinsk Oblast         | Tatiana Abramenko         | Татиана Абраменко        |    21 | 1.74 m (5 ft 8 1⁄2 in)  | Chelyabinsk              |
+|           11 | Chukotka Okrug             | Mariesea Mnesiču          | Мариесеа Мнесичу         |    19 | 1.80 m (5 ft 11 in)     | Anadyr                   |
+|           12 | Chuvash Republic           | Martha Neosova            | Мартха Неосова           |    19 | 1.78 m (5 ft 10 in)     | Cheboksary               |
+|           13 | Irkutsk Oblast             | Yulia Samoylova           | Ыулиа Самоылова          |    21 | 1.77 m (5 ft 9 1⁄2 in)  | Irkutsk                  |
+|           14 | Jewish Autonomous Oblast   | Natalia Melckenberger     | Наталиа Мелцкенбергер    |    20 | 1.75 m (5 ft 9 in)      | Birobidzhan              |
+|           15 | Kaluga Oblast              | Tatiana Semiletova        | Татиана Семилетова       |    20 | 1.73 m (5 ft 8 in)      | Kaluga                   |
+|           16 | Kamchatka Oblast           | Anastasija Jackson        | Анастасия Яцксон         |    23 | 1.76 m (5 ft 9 1⁄2 in)  | Petropavlovsk-Kamchatsky |
+|           17 | Karachay-Cherkess Republic | Stephanie Drjagina        | Степхание Дрягина        |    24 | 1.81 m (5 ft 11 1⁄2 in) | Kaluga                   |
+|           18 | Kemerovo Oblast            | Ivette Sarova             | Иветте Сарова            |    20 | 1.82 m (5 ft 11 1⁄2 in) | Mezhdurechensk           |
+|           19 | Khabarovsk Krai            | Anastasija Katriova       | Анастасия Катриова       |    18 | 1.76 m (5 ft 9 1⁄2 in)  | Khabarovsk               |
+|           20 | Khakassian Republic        | Anastasija Larekova-Sin   | Анастасия Ларекова-Син   |    23 | 1.81 m (5 ft 11 1⁄2 in) | Abakan                   |
+|           21 | Khanty–Mansi Okrug         | Alba Šaršakova            | Алба Шаршакова           |    18 | 1.76 m (5 ft 9 1⁄2 in)  | Kogalym                  |
+|           22 | Kostroma Oblast            | Ekaterina Protod’jakonova | Екатерина Протодьяконова |    18 | 1.84 m (6 ft 1⁄2 in)    | Kostroma                 |
+|           23 | Krasnodar Krai             | Patricia Valiahmetova     | Патрициа Валиахметова    |    20 | 1.80 m (5 ft 11 in)     | Krasnodar                |
+|           24 | Kurgan Oblast              | Irina Mondroe             | Ирина Мондрое            |    25 | 1.79 m (5 ft 10 1⁄2 in) | Kurgan                   |
+|           25 | Leningrad Oblast           | Mercedes Laplsjfda        | Мерцедес Лаплсйфда       |    18 | 1.79 m (5 ft 10 1⁄2 in) | Leningrad                |
+|           26 | Magadan Oblast             | Ekaterina Filimonova      | Екатерина Филимонова     |    20 | 1.83 m (6 ft 0 in)      | Magadan                  |
+|           27 | Mari El Republic           | Anna Il’ina               | Анна Ильина              |    19 | 1.88 m (6 ft 2 in)      | Medvedevo                |
+|           28 | Mordovian Republic         | Olga Stepančenko          | Олга Степанченко         |    20 | 1.75 m (5 ft 9 in)      | Saransk                  |
+|           29 | Moscow Oblast              | Anastasija Rodriguez      | Анастасия Родригуез      |    20 | 1.83 m (6 ft 0 in)      | Khimki                   |
+|           30 | Nenets Okrug               | Sofia Meldemendev         | Софиа Мелдемендев        |    25 | 1.85 m (6 ft 1 in)      | Naryan-Mar               |
+|           31 | North Ossetian Republic    | Emilianna Ninn            | Емилианна Нинн           |    22 | 1.76 m (5 ft 9 1⁄2 in)  | Vladikavkaz              |
+|           32 | Novgorod Oblast            | Ekaterina Žuravleva       | Екатерина Журавлева      |    20 | 1.81 m (5 ft 11 1⁄2 in) | Novgorod                 |
+|           33 | Novosibirsk Oblast         | Orianna Kleobova          | Орианна Клеобова         |    19 | 1.73 m (5 ft 8 in)      | Novosibirsk              |
+|           34 | Omsk Oblast                | Vera Korobejnikova        | Вера Коробейникова       |    20 | 1.82 m (5 ft 11 1⁄2 in) | Omsk                     |
+|           35 | Oryol Oblast               | Natalia Pavšukova         | Наталиа Павшукова        |    19 | 1.79 m (5 ft 10 1⁄2 in) | Oryol                    |
+|           36 | Penza Oblast               | Anna Milinzova            | Анна Милинзова           |    20 | 1.86 m (6 ft 1 in)      | Penza                    |
+|           37 | Perm Krai                  | Svetlana Ninkova          | Светлана Нинкова         |    22 | 1.73 m (5 ft 8 in)      | Perm                     |
+|           38 | Pskov Oblast               | Anastasija Germonova      | Анастасия Гермонова      |    22 | 1.75 m (5 ft 9 in)      | Pskov                    |
+|           39 | Rostov Oblast              | Tatiana Kotova            | Татиана Котова           |    21 | 1.81 m (5 ft 11 1⁄2 in) | Rostov-on-Don            |
+|           40 | Ryazan Oblast              | Julia Sandrova            | Юлиа Сандрова            |    20 | 1.74 m (5 ft 8 1⁄2 in)  | Ryazan                   |
+|           41 | Saint Petersburg           | Maria Hernasova           | Мариа Хернасова          |    20 | 1.78 m (5 ft 10 in)     | Saint Petersburg         |
+|           42 | Sakha Republic             | Sardana Syromyatnikova    | Сардана Сыромыатникова   |    19 | 1.82 m (5 ft 11 1⁄2 in) | Yakutia                  |
+|           43 | Sakhalin Oblast            | Jeannette Menova          | Йеаннетте Менова         |    18 | 1.75 m (5 ft 9 in)      | Sakhalin                 |
+|           44 | Samara Oblast              | Nadia Gurina              | Надиа Гурина             |    20 | 1.78 m (5 ft 10 in)     | Samara                   |
+|           45 | Saratov Oblast             | Anastasija Marnolova      | Анастасия Марнолова      |    21 | 1.74 m (5 ft 8 1⁄2 in)  | Saratov                  |
+|           46 | Smolensk Oblast            | Viktoria Ševšenko         | Викториа Шевшенко        |    19 | 1.73 m (5 ft 8 in)      | Smolensk                 |
+|           47 | Sverdlovsk Oblast          | Julianna Piskunova        | Юлианна Пискунова        |    22 | 1.87 m (6 ft 1 1⁄2 in)  | Sverdlovsk               |
+|           48 | Tambov Oblast              | Jenna Lerova              | Йенна Лерова             |    21 | 1.77 m (5 ft 9 1⁄2 in)  | Tambov                   |
+|           49 | Tatarstan Republic         | Anastasija Muhammad       | Анастасия Мухаммад       |    19 | 1.84 m (6 ft 1⁄2 in)    | Kazan                    |
+|           50 | Tomsk Oblast               | Anastasija Tristova       | Анастасия Тристова       |    23 | 1.78 m (5 ft 10 in)     | Tomsk                    |
+|           51 | Tuva Republic              | Azida Levenok             | Азида Левенок            |    18 | 1.81 m (5 ft 11 1⁄2 in) | Kyzyl                    |
+|           52 | Tver Oblast                | Anastasija Prače’vysky    | Анастасия Прачеьвыскы    |    19 | 1.75 m (5 ft 9 in)      | Tver                     |
+|           53 | Tyumen Oblast              | Andrea Maksimova          | Андреа Максимова         |    24 | 1.84 m (6 ft 1⁄2 in)    | Tyumen                   |
+|           54 | Udmurt Republic            | Monica Zaharova           | Моница Захарова          |    24 | 1.81 m (5 ft 11 1⁄2 in) | Izhevsk                  |
+|           55 | Volgograd Oblast           | Indhira Perlova           | Индхира Перлова          |    21 | 1.78 m (5 ft 10 in)     | Volgograd                |
+|           56 | Vologda Oblast             | Rosemary Mironova         | Росемары Миронова        |    21 | 1.74 m (5 ft 8 1⁄2 in)  | Vologda                  |
+|           57 | Voronezh Oblast            | Anastasija Larkova        | Анастасия Ларкова        |    22 | 1.80 m (5 ft 11 in)     | Voronezh                 |
+|           58 | Yamalo-Nenets Okrug        | Ekaterina Borzenkova      | Екатерина Борзенкова     |    19 | 1.77 m (5 ft 9 1⁄2 in)  | Tarko-Sale               |
+|           59 | Yaroslavl Oblast           | Emely Androlevy           | Емелы Андролевы          |    23 | 1.73 m (5 ft 8 in)      | Yaroslavl                |
+
+Generated Reasoning SQL: Explanation: To find the age difference between Irina Mondroe and Ivette Sarova, we need to filter the rows for these two footballers and then calculate the absolute difference in their ages. The "Footballer" column contains the names of the players, and the "Age" column represents their ages.
+
+SQL: 
+SELECT ABS(CAST((SELECT "Age" FROM T WHERE "Footballer" = 'Irina Mondroe') AS INTEGER) - CAST((SELECT "Age" FROM T WHERE "Footballer" = 'Ivette Sarova') AS INTEGER)) AS age_difference;
+Generated Final SQL: SELECT ABS(CAST((SELECT "Age" FROM T WHERE "Footballer" = 'Irina Mondroe') AS INTEGER) - CAST((SELECT "Age" FROM T WHERE "Footballer" = 'Ivette Sarova') AS INTEGER)) AS age_difference;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| age_difference   |
+|:-----------------|
+|                  |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Miss Russia 2006 (row_number, Represent, Candidate, in Russian, Age, Height, Hometown)
+
+row_number | Represent | Candidate | in Russian | Age | Height | Hometown
+0 | Adygean Republic | Alissa Joanndova | Алисса Йоанндова | 19 | 1.83 m (6 ft 0 in) | Tulsky
+1 | Altai Krai | Anastasija Nindova | Анастасия Ниндова | 22 | 1.74 m (5 ft 8 1⁄2 in) | Barnaul
+2 | Altai Republic | Kassandra Melova | Кассандра Мелова | 18 | 1.79 m (5 ft 10 1⁄2 in) | Kosh-Agach
+3 | Amur Oblast | Myriam Asfry | Мыриам Асфры | 18 | 1.75 m (5 ft 9 in) | Blagoveshchensk
+4 | Astrakhan Oblast | Anastasija Heldriova | Анастасия Хелдриова | 18 | 1.74 m (5 ft 8 1⁄2 in) | Astrakhan
+5 | Bashkortostan Republic | Aimee Neosaranova | Аимее Неосаранова | 19 | 1.77 m (5 ft 9 1⁄2 in) | Ufa
+6 | Belgorod Oblast | Jahaira Novgorodova | Яхаира Новгородова | 25 | 1.80 m (5 ft 11 in) | Belgorod
+7 | Buryatian Republic | Loise Egiazarjan | Лоисе Егиазарян | 20 | 1.85 m (6 ft 1 in) | Ulan-Ude
+8 | Capital City | Natalia Varnakova | Наталиа Варнакова | 19 | 1.80 m (5 ft 11 in) | Moscow
+9 | Chechen Republic | Carmen Jenockova | Цармен Йеноцкова | 24 | 1.80 m (5 ft 11 in) | Urus-Martan
+10 | Chelyabinsk Oblast | Tatiana Abramenko | Татиана Абраменко | 21 | 1.74 m (5 ft 8 1⁄2 in) | Chelyabinsk
+11 | Chukotka Okrug | Mariesea Mnesiču | Мариесеа Мнесичу | 19 | 1.80 m (5 ft 11 in) | Anadyr
+12 | Chuvash Republic | Martha Neosova | Мартха Неосова | 19 | 1.78 m (5 ft 10 in) | Cheboksary
+13 | Irkutsk Oblast | Yulia Samoylova | Ыулиа Самоылова | 21 | 1.77 m (5 ft 9 1⁄2 in) | Irkutsk
+14 | Jewish Autonomous Oblast | Natalia Melckenberger | Наталиа Мелцкенбергер | 20 | 1.75 m (5 ft 9 in) | Birobidzhan
+15 | Kaluga Oblast | Tatiana Semiletova | Татиана Семилетова | 20 | 1.73 m (5 ft 8 in) | Kaluga
+16 | Kamchatka Oblast | Anastasija Jackson | Анастасия Яцксон | 23 | 1.76 m (5 ft 9 1⁄2 in) | Petropavlovsk-Kamchatsky
+17 | Karachay-Cherkess Republic | Stephanie Drjagina | Степхание Дрягина | 24 | 1.81 m (5 ft 11 1⁄2 in) | Kaluga
+18 | Kemerovo Oblast | Ivette Sarova | Иветте Сарова | 20 | 1.82 m (5 ft 11 1⁄2 in) | Mezhdurechensk
+19 | Khabarovsk Krai | Anastasija Katriova | Анастасия Катриова | 18 | 1.76 m (5 ft 9 1⁄2 in) | Khabarovsk
+20 | Khakassian Republic | Anastasija Larekova-Sin | Анастасия Ларекова-Син | 23 | 1.81 m (5 ft 11 1⁄2 in) | Abakan
+21 | Khanty–Mansi Okrug | Alba Šaršakova | Алба Шаршакова | 18 | 1.76 m (5 ft 9 1⁄2 in) | Kogalym
+22 | Kostroma Oblast | Ekaterina Protod’jakonova | Екатерина Протодьяконова | 18 | 1.84 m (6 ft 1⁄2 in) | Kostroma
+23 | Krasnodar Krai | Patricia Valiahmetova | Патрициа Валиахметова | 20 | 1.80 m (5 ft 11 in) | Krasnodar
+24 | Kurgan Oblast | Irina Mondroe | Ирина Мондрое | 25 | 1.79 m (5 ft 10 1⁄2 in) | Kurgan
+25 | Leningrad Oblast | Mercedes Laplsjfda | Мерцедес Лаплсйфда | 18 | 1.79 m (5 ft 10 1⁄2 in) | Leningrad
+26 | Magadan Oblast | Ekaterina Filimonova | Екатерина Филимонова | 20 | 1.83 m (6 ft 0 in) | Magadan
+27 | Mari El Republic | Anna Il’ina | Анна Ильина | 19 | 1.88 m (6 ft 2 in) | Medvedevo
+28 | Mordovian Republic | Olga Stepančenko | Олга Степанченко | 20 | 1.75 m (5 ft 9 in) | Saransk
+29 | Moscow Oblast | Anastasija Rodriguez | Анастасия Родригуез | 20 | 1.83 m (6 ft 0 in) | Khimki
+30 | Nenets Okrug | Sofia Meldemendev | Софиа Мелдемендев | 25 | 1.85 m (6 ft 1 in) | Naryan-Mar
+31 | North Ossetian Republic | Emilianna Ninn | Емилианна Нинн | 22 | 1.76 m (5 ft 9 1⁄2 in) | Vladikavkaz
+32 | Novgorod Oblast | Ekaterina Žuravleva | Екатерина Журавлева | 20 | 1.81 m (5 ft 11 1⁄2 in) | Novgorod
+33 | Novosibirsk Oblast | Orianna Kleobova | Орианна Клеобова | 19 | 1.73 m (5 ft 8 in) | Novosibirsk
+34 | Omsk Oblast | Vera Korobejnikova | Вера Коробейникова | 20 | 1.82 m (5 ft 11 1⁄2 in) | Omsk
+35 | Oryol Oblast | Natalia Pavšukova | Наталиа Павшукова | 19 | 1.79 m (5 ft 10 1⁄2 in) | Oryol
+36 | Penza Oblast | Anna Milinzova | Анна Милинзова | 20 | 1.86 m (6 ft 1 in) | Penza
+37 | Perm Krai | Svetlana Ninkova | Светлана Нинкова | 22 | 1.73 m (5 ft 8 in) | Perm
+38 | Pskov Oblast | Anastasija Germonova | Анастасия Гермонова | 22 | 1.75 m (5 ft 9 in) | Pskov
+39 | Rostov Oblast | Tatiana Kotova | Татиана Котова | 21 | 1.81 m (5 ft 11 1⁄2 in) | Rostov-on-Don
+40 | Ryazan Oblast | Julia Sandrova | Юлиа Сандрова | 20 | 1.74 m (5 ft 8 1⁄2 in) | Ryazan
+41 | Saint Petersburg | Maria Hernasova | Мариа Хернасова | 20 | 1.78 m (5 ft 10 in) | Saint Petersburg
+42 | Sakha Republic | Sardana Syromyatnikova | Сардана Сыромыатникова | 19 | 1.82 m (5 ft 11 1⁄2 in) | Yakutia
+43 | Sakhalin Oblast | Jeannette Menova | Йеаннетте Менова | 18 | 1.75 m (5 ft 9 in) | Sakhalin
+44 | Samara Oblast | Nadia Gurina | Надиа Гурина | 20 | 1.78 m (5 ft 10 in) | Samara
+45 | Saratov Oblast | Anastasija Marnolova | Анастасия Марнолова | 21 | 1.74 m (5 ft 8 1⁄2 in) | Saratov
+46 | Smolensk Oblast | Viktoria Ševšenko | Викториа Шевшенко | 19 | 1.73 m (5 ft 8 in) | Smolensk
+47 | Sverdlovsk Oblast | Julianna Piskunova | Юлианна Пискунова | 22 | 1.87 m (6 ft 1 1⁄2 in) | Sverdlovsk
+48 | Tambov Oblast | Jenna Lerova | Йенна Лерова | 21 | 1.77 m (5 ft 9 1⁄2 in) | Tambov
+49 | Tatarstan Republic | Anastasija Muhammad | Анастасия Мухаммад | 19 | 1.84 m (6 ft 1⁄2 in) | Kazan
+50 | Tomsk Oblast | Anastasija Tristova | Анастасия Тристова | 23 | 1.78 m (5 ft 10 in) | Tomsk
+51 | Tuva Republic | Azida Levenok | Азида Левенок | 18 | 1.81 m (5 ft 11 1⁄2 in) | Kyzyl
+52 | Tver Oblast | Anastasija Prače’vysky | Анастасия Прачеьвыскы | 19 | 1.75 m (5 ft 9 in) | Tver
+53 | Tyumen Oblast | Andrea Maksimova | Андреа Максимова | 24 | 1.84 m (6 ft 1⁄2 in) | Tyumen
+54 | Udmurt Republic | Monica Zaharova | Моница Захарова | 24 | 1.81 m (5 ft 11 1⁄2 in) | Izhevsk
+55 | Volgograd Oblast | Indhira Perlova | Индхира Перлова | 21 | 1.78 m (5 ft 10 in) | Volgograd
+56 | Vologda Oblast | Rosemary Mironova | Росемары Миронова | 21 | 1.74 m (5 ft 8 1⁄2 in) | Vologda
+57 | Voronezh Oblast | Anastasija Larkova | Анастасия Ларкова | 22 | 1.80 m (5 ft 11 in) | Voronezh
+58 | Yamalo-Nenets Okrug | Ekaterina Borzenkova | Екатерина Борзенкова | 19 | 1.77 m (5 ft 9 1⁄2 in) | Tarko-Sale
+59 | Yaroslavl Oblast | Emely Androlevy | Емелы Андролевы | 23 | 1.73 m (5 ft 8 in) | Yaroslavl
+Question: what is the difference in age between irina mondroe and ivette sarova?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, let's identify the rows for Irina Mondroe and Ivette Sarova in the table. 
+
+From the table:
+- Irina Mondroe is in row 24 with an age of 25.
+- Ivette Sarova is in row 18 with an age of 20.
+
+Now, let's calculate the difference in age between Irina Mondroe and Ivette Sarova:
+Age of Irina Mondroe - Age of Ivette Sarova
+= 25 - 20
+= 5
+
+Therefore, the difference in age between Irina Mondroe and Ivette Sarova is 5 years.
+
+Final Answer: 5
+[Fallback] Prediction: 5
+[Gold Answer] 5 years
+

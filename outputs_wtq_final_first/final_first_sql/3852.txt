@@ -1,0 +1,175 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Bob Hesford, George Howe, Donald Hunter, Johnny McKenna
+   - Role: Identifier
+
+2. Nation
+   - Data type: Categorical
+   - 4 representative example values: England, Northern Ireland
+   - Role: Descriptor
+
+3. Position
+   - Data type: Categorical
+   - 4 representative example values: GK, DF, MF
+   - Role: Descriptor
+
+4. League Apps
+   - Data type: Numeric
+   - 4 representative example values: 6, 5, 7, 40
+   - Role: Measure
+
+5. League Goals
+   - Data type: Numeric
+   - 4 representative example values: 0, 3
+   - Role: Measure
+
+6. FA Cup Apps
+   - Data type: Numeric
+   - 4 representative example values: 0, 1
+   - Role: Measure
+
+7. FA Cup Goals
+   - Data type: Numeric
+   - 4 representative example values: 0
+   - Role: Measure
+
+8. Total Apps
+   - Data type: Numeric
+   - 4 representative example values: 6, 5, 7, 41
+   - Role: Measure
+
+9. Total Goals
+   - Data type: Numeric
+   - 4 representative example values: 0, 3
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 16 (National Cup = Semifinals)
+   - The value "National Cup = Semifinals" is not present in the majority of the table, indicating that this player has reached a significant stage in the cup competition. This makes the row an outlier.
+
+2. Row 5 (Reg. Season = 5th?)
+   - The ambiguous marker "5th?" is not a common value in the table and suggests uncertainty or uniqueness in the player's performance. This makes the row an outlier.
+
+3. Row 10 (Ordinary row)
+   - This row contains ordinary values that are consistent with the majority of the table. There are no distinctive or unusual values present, so it is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Name               | Nation              | Position   |   League Apps |   League Goals |   FA Cup Apps |   FA Cup Goals |   Total Apps |   Total Goals |
+|-------------:|:-------------------|:--------------------|:-----------|--------------:|---------------:|--------------:|---------------:|-------------:|--------------:|
+|            0 | John Battye        | England             | DF         |            22 |              0 |             0 |              0 |           22 |             0 |
+|            1 | Eddie Boot         | England             | DF         |            38 |              0 |             1 |              0 |           39 |             0 |
+|            2 | Tom Briggs         | England             | DF         |             4 |              0 |             0 |              0 |            4 |             0 |
+|            3 | Ronnie Burke       | England             | FW         |            12 |              5 |             0 |              0 |           12 |             5 |
+|            4 | Ian Duthie         | Scotland            | MF         |             1 |              0 |             0 |              0 |            1 |             0 |
+|            5 | Charlie Gallogly   | Northern Ireland    | DF         |            15 |              0 |             0 |              0 |           15 |             0 |
+|            6 | Jimmy Glazzard     | England             | FW         |            21 |              5 |             1 |              0 |           22 |             5 |
+|            7 | Harold Hassall     | England             | FW         |            10 |              4 |             1 |              0 |           11 |             4 |
+|            8 | Bill Hayes         | Republic of Ireland | DF         |            17 |              0 |             1 |              0 |           18 |             0 |
+|            9 | George Hepplewhite | England             | DF         |            36 |              0 |             1 |              0 |           37 |             0 |
+|           10 | Bob Hesford        | England             | GK         |             6 |              0 |             0 |              0 |            6 |             0 |
+|           11 | George Howe        | England             | DF         |             5 |              0 |             0 |              0 |            5 |             0 |
+|           12 | Jack Howe          | England             | DF         |            20 |              1 |             1 |              0 |           21 |             1 |
+|           13 | Donald Hunter      | England             | DF         |             7 |              0 |             0 |              0 |            7 |             0 |
+|           14 | Joe Lynn           | England             | MF         |             5 |              0 |             0 |              0 |            5 |             0 |
+|           15 | Don McEvoy         | England             | DF         |             5 |              2 |             0 |              0 |            5 |             2 |
+|           16 | Johnny McKenna     | Northern Ireland    | MF         |            40 |              3 |             1 |              0 |           41 |             3 |
+|           17 | Vic Metcalfe       | England             | MF         |            41 |             11 |             1 |              0 |           42 |            11 |
+|           18 | Harry Mills        | England             | GK         |            34 |              0 |             1 |              0 |           35 |             0 |
+|           19 | Lol Morgan         | England             | DF         |             6 |              0 |             0 |              0 |            6 |             0 |
+|           20 | Albert Nightingale | England             | MF         |            39 |              7 |             1 |              0 |           40 |             7 |
+|           21 | Jack Percival      | England             | DF         |             7 |              0 |             0 |              0 |            7 |             0 |
+|           22 | Arnold Rodgers     | England             | FW         |             4 |              2 |             0 |              0 |            4 |             2 |
+|           23 | Conway Smith       | England             | MF         |            10 |              0 |             0 |              0 |           10 |             0 |
+|           24 | Henry Stewart      | England             | DF         |            15 |              0 |             0 |              0 |           15 |             0 |
+|           25 | Jeff Taylor        | England             | FW         |            21 |             11 |             0 |              0 |           21 |            11 |
+|           26 | Ray Taylor         | England             | MF         |             2 |              0 |             0 |              0 |            2 |             0 |
+|           27 | Jack Wheeler       | England             | GK         |             2 |              0 |             0 |              0 |            2 |             0 |
+|           28 | Bill Whittaker     | England             | DF         |            16 |              0 |             0 |              0 |           16 |             0 |
+|           29 | Harry Yates        | England             | MF         |             1 |              0 |             0 |              0 |            1 |             0 |
+
+Generated Reasoning SQL: The summary provides the necessary information to answer the question. We know that the "Name" column contains categorical values representing player names, and the "League Apps" and "League Goals" columns are numeric, representing the number of appearances and goals in the league, respectively. 
+To find out the total league goal count for Via Metcalfe, we need to filter the row where "Name" = 'Via Metcalfe' and retrieve the value in the "League Goals" column.
+SQL: select "League Goals" from T where "Name" = 'Via Metcalfe' and "League Apps" > 40;
+Generated Final SQL: select "League Goals" from T where "Name" = 'Via Metcalfe' and "League Apps" > 40;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1949–50 Huddersfield Town F.C. season (row_number, Name, Nation, Position, League Apps, League Goals, FA Cup Apps, FA Cup Goals, Total Apps, Total Goals)
+
+row_number | Name | Nation | Position | League Apps | League Goals | FA Cup Apps | FA Cup Goals | Total Apps | Total Goals
+0 | John Battye | England | DF | 22 | 0 | 0 | 0 | 22 | 0
+1 | Eddie Boot | England | DF | 38 | 0 | 1 | 0 | 39 | 0
+2 | Tom Briggs | England | DF | 4 | 0 | 0 | 0 | 4 | 0
+3 | Ronnie Burke | England | FW | 12 | 5 | 0 | 0 | 12 | 5
+4 | Ian Duthie | Scotland | MF | 1 | 0 | 0 | 0 | 1 | 0
+5 | Charlie Gallogly | Northern Ireland | DF | 15 | 0 | 0 | 0 | 15 | 0
+6 | Jimmy Glazzard | England | FW | 21 | 5 | 1 | 0 | 22 | 5
+7 | Harold Hassall | England | FW | 10 | 4 | 1 | 0 | 11 | 4
+8 | Bill Hayes | Republic of Ireland | DF | 17 | 0 | 1 | 0 | 18 | 0
+9 | George Hepplewhite | England | DF | 36 | 0 | 1 | 0 | 37 | 0
+10 | Bob Hesford | England | GK | 6 | 0 | 0 | 0 | 6 | 0
+11 | George Howe | England | DF | 5 | 0 | 0 | 0 | 5 | 0
+12 | Jack Howe | England | DF | 20 | 1 | 1 | 0 | 21 | 1
+13 | Donald Hunter | England | DF | 7 | 0 | 0 | 0 | 7 | 0
+14 | Joe Lynn | England | MF | 5 | 0 | 0 | 0 | 5 | 0
+15 | Don McEvoy | England | DF | 5 | 2 | 0 | 0 | 5 | 2
+16 | Johnny McKenna | Northern Ireland | MF | 40 | 3 | 1 | 0 | 41 | 3
+17 | Vic Metcalfe | England | MF | 41 | 11 | 1 | 0 | 42 | 11
+18 | Harry Mills | England | GK | 34 | 0 | 1 | 0 | 35 | 0
+19 | Lol Morgan | England | DF | 6 | 0 | 0 | 0 | 6 | 0
+20 | Albert Nightingale | England | MF | 39 | 7 | 1 | 0 | 40 | 7
+21 | Jack Percival | England | DF | 7 | 0 | 0 | 0 | 7 | 0
+22 | Arnold Rodgers | England | FW | 4 | 2 | 0 | 0 | 4 | 2
+23 | Conway Smith | England | MF | 10 | 0 | 0 | 0 | 10 | 0
+24 | Henry Stewart | England | DF | 15 | 0 | 0 | 0 | 15 | 0
+25 | Jeff Taylor | England | FW | 21 | 11 | 0 | 0 | 21 | 11
+26 | Ray Taylor | England | MF | 2 | 0 | 0 | 0 | 2 | 0
+27 | Jack Wheeler | England | GK | 2 | 0 | 0 | 0 | 2 | 0
+28 | Bill Whittaker | England | DF | 16 | 0 | 0 | 0 | 16 | 0
+29 | Harry Yates | England | MF | 1 | 0 | 0 | 0 | 1 | 0
+Question: via metcalfe has over 40 league appearances but what is his total league goal count?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Name** column contains the name of the players.
+- The **League Apps** column represents the number of league appearances.
+- The **League Goals** column represents the number of goals scored in the league.
+- We are looking for Vic Metcalfe's total league goal count.
+
+From the full table:
+- Vic Metcalfe has 41 league appearances (League Apps) and has scored 11 league goals (League Goals).
+
+Therefore, Vic Metcalfe's total league goal count is 11.
+
+Final Answer: 11
+[Fallback] Prediction: 11
+[Gold Answer] 11
+

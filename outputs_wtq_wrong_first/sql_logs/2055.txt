@@ -1,0 +1,177 @@
+=== Table ID ===
+csv/203-csv/785.tsv
+
+=== Question ===
+what is the largest number of episodes tamera mowry appeared in on any particular show?
+
+=== Sub-table Preview ===
+| Year      | Title                          | Role           | Notes              |
+|:----------|:-------------------------------|:---------------|:-------------------|
+| 1991      | Flesh'n Blood                  | Penelope       | 1 episode          |
+| 1994      | The All-New Mickey Mouse (MMC) | Herself        | 1 episode          |
+| 1995      | Are You Afraid of the Dark?    | Evil Chameleon | 1 episode          |
+| 1998      | Blues Clues                    | Herself        | 1 episode          |
+| 2000      | How I Loved a Macho Boy        | Jamal Santos   | 3 episodes         |
+| 2011–2013 | Tia & Tamera                   | Herself        | Executive producer |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - 4 representative example values: 1991, 1994, 1995, 1998
+   - Role of the column: Identifier for the year in which the TV show appearances occurred.
+
+2. Title
+   - Data type: Categorical
+   - 4 representative example values: Flesh'n Blood, The All-New Mickey Mouse (MMC), Are You Afraid of the Dark?, Blues Clues
+   - Role of the column: Descriptor for the title of the TV show.
+
+3. Role
+   - Data type: Categorical
+   - 4 representative example values: Penelope, Herself, Evil Chameleon, Jamal Santos
+   - Role of the column: Descriptor for the role played by the individual in each TV show.
+
+4. Notes
+   - Data type: Categorical
+   - 4 representative example values: 1 episode, 3 episodes, Executive producer
+   - Role of the column: Descriptor for additional information about the TV show appearance, such as the number of episodes or the role of executive producer.
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The row with the title "How I Loved a Macho Boy" and the role "Jamal Santos" for the year 2000 with 3 episodes is not an outlier as it contains typical values for the dataset.
+
+2. Row 18:
+   - The row with the title "Tia & Tamera" and the role "Herself" for the years 2011-2013 as an executive producer is not an outlier as it contains typical values for the dataset.
+
+3. Row 4:
+   - The row with the title "1998 Blues Clues" and the role "Herself" for 1 episode is not an outlier as it contains typical values for the dataset.
+
+Therefore, all the candidate outlier rows are ordinary and do not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Title                          | Role                | Notes                                   |
+|-------------:|-------:|:-------------------------------|:--------------------|:----------------------------------------|
+|            0 |   1991 | Flesh'n Blood                  | Penelope            | 1 episode                               |
+|            1 |   1992 | True Colors                    | Lorae               | 1 episode                               |
+|            2 |   1994 | The All-New Mickey Mouse (MMC) | Herself             | 1 episode                               |
+|            3 |   1994 | Sister Sister                  | Tamera Campbell     | 119 episodes                            |
+|            4 |   1995 | Are You Afraid of the Dark?    | Evil Chameleon      | 1 episode                               |
+|            5 |   1995 | The Adventures of Hyperman     | Emma C. Squared     | 8 episodes                              |
+|            6 |   1996 | All That                       | Herself             |                                         |
+|            7 |   1997 | Smart Guy                      | Roxanne             | 1 episode                               |
+|            8 |   1998 | Blues Clues                    | Herself             | 1 episode                               |
+|            9 |   1999 | Detention                      | Orangejella LaBelle | 13 episodes                             |
+|           10 |   2000 | How I Loved a Macho Boy        | Jamal Santos        | 3 episodes                              |
+|           11 |   2004 | Strong Medicine                | Dr. Kayla Thorton   | 37 episodes                             |
+|           12 |   2006 | Family Guy                     | Esther              | Voice\n3 episodes                       |
+|           13 |   2009 | Roommates                      | Hope                | 13 episodes                             |
+|           14 |   2009 | The Super Hero Squad Show      | Misty Knight        | 1 episode                               |
+|           15 |   2011 | Things We Do for Love          | Lourdes             | 5 episodes                              |
+|           16 |   2011 | Access Hollywood Live          | Herself             | Co-host                                 |
+|           17 |   2011 | CHRISJayify                    | Herself             | Episode: "Drugs Are Bad"                |
+|           18 |   2011 | Tia & Tamera                   | Herself             | Executive producer                      |
+|           19 |   2012 | Christmas Angel                | Daphney             |                                         |
+|           20 |   2013 | The Real                       | Herself             | Host                                    |
+|           21 |   2014 | Melissa and Joey               | Gillian             | Season 3 Episode 24 'To Tell the Truth' |
+
+Generated Reasoning SQL: Explanation: To find the largest number of episodes Tamera Mowry appeared in on any particular show, we need to consider the "Role" column to identify her appearances and the "Notes" column to determine the number of episodes. We will filter rows where "Role" = 'Tamera Mowry' to focus on her appearances and then find the maximum value in the "Notes" column to determine the largest number of episodes she appeared in.
+
+SQL: SELECT MAX(CAST("Notes" AS INTEGER)) AS max_episodes
+FROM T
+WHERE "Role" = 'Tamera Mowry';
+Generated Final SQL: SELECT MAX(CAST("Notes" AS INTEGER)) AS max_episodes FROM T WHERE "Role" = 'Tamera Mowry';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| max_episodes   |
+|:---------------|
+|                |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Tamera Mowry (row_number, Year, Title, Role, Notes)
+
+row_number | Year | Title | Role | Notes
+0 | 1991 | Flesh'n Blood | Penelope | 1 episode
+1 | 1992 | True Colors | Lorae | 1 episode
+2 | 1994 | The All-New Mickey Mouse (MMC) | Herself | 1 episode
+3 | 1994 | Sister Sister | Tamera Campbell | 119 episodes
+4 | 1995 | Are You Afraid of the Dark? | Evil Chameleon | 1 episode
+5 | 1995 | The Adventures of Hyperman | Emma C. Squared | 8 episodes
+6 | 1996 | All That | Herself | None
+7 | 1997 | Smart Guy | Roxanne | 1 episode
+8 | 1998 | Blues Clues | Herself | 1 episode
+9 | 1999 | Detention | Orangejella LaBelle | 13 episodes
+10 | 2000 | How I Loved a Macho Boy | Jamal Santos | 3 episodes
+11 | 2004 | Strong Medicine | Dr. Kayla Thorton | 37 episodes
+12 | 2006 | Family Guy | Esther | Voice\n3 episodes
+13 | 2009 | Roommates | Hope | 13 episodes
+14 | 2009 | The Super Hero Squad Show | Misty Knight | 1 episode
+15 | 2011 | Things We Do for Love | Lourdes | 5 episodes
+16 | 2011 | Access Hollywood Live | Herself | Co-host
+17 | 2011 | CHRISJayify | Herself | Episode: "Drugs Are Bad"
+18 | 2011 | Tia & Tamera | Herself | Executive producer
+19 | 2012 | Christmas Angel | Daphney | None
+20 | 2013 | The Real | Herself | Host
+21 | 2014 | Melissa and Joey | Gillian | Season 3 Episode 24 'To Tell the Truth'
+Question: what is the largest number of episodes tamera mowry appeared in on any particular show?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the largest number of episodes Tamera Mowry appeared in on any particular show, we need to carefully examine the "Notes" column in the full table, as it contains the relevant information about the number of episodes she appeared in for each show.
+
+From the full table:
+- Tamera Mowry appeared in the following number of episodes for each show:
+  1. Sister Sister: 119 episodes
+  2. Strong Medicine: 37 episodes
+  3. Roommates: 13 episodes
+  4. Detention: 13 episodes
+  5. The Adventures of Hyperman: 8 episodes
+  6. Things We Do for Love: 5 episodes
+  7. How I Loved a Macho Boy: 3 episodes
+  8. Family Guy: 3 episodes
+  9. All That: None
+  10. Flesh'n Blood: 1 episode
+  11. True Colors: 1 episode
+  12. The All-New Mickey Mouse (MMC): 1 episode
+  13. Are You Afraid of the Dark?: 1 episode
+  14. Smart Guy: 1 episode
+  15. Blues Clues: 1 episode
+  16. The Super Hero Squad Show: 1 episode
+  17. Christmas Angel: None
+  18. Access Hollywood Live: Co-host
+  19. CHRISJayify: Episode: "Drugs Are Bad"
+  20. Tia & Tamera: Executive producer
+  21. The Real: Host
+  22. Melissa and Joey: Season 3 Episode 24 'To Tell the Truth'
+
+By examining the "Notes" column, we can see that Tamera Mowry appeared in the largest number of episodes (119 episodes) for the show "Sister Sister."
+
+Final Answer: Sister Sister, 119 episodes
+[Fallback] Prediction: sister sister, 119 episodes
+[Gold Answer] 119 episodes
+

@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Callsign:
+   - Data type: Categorical
+   - 4 representative example values: 7EX, 7HO, 7HT, 7LA
+   - Role: Identifier for the radio station
+
+2. Area served:
+   - Data type: Categorical
+   - 4 representative example values: Launceston, Hobart, Ulverstone
+   - Role: Descriptor for the geographical area served by the radio station
+
+3. Frequency:
+   - Data type: Numeric
+   - 4 representative example values: 1008, 864, 1080, 1098
+   - Role: Measure of the frequency at which the radio station broadcasts
+
+4. Band:
+   - Data type: Categorical
+   - 4 representative example values: AM, FM
+   - Role: Descriptor for the frequency band used by the radio station
+
+5. Fate:
+   - Data type: Categorical
+   - 4 representative example values: Moved to FM in 2008 as 7EXX, Moved to FM in 1990 as 7HHO, Moved to FM in 1998 as 7XXX, Moved to FM in 2008 as 7LAA
+   - Role: Descriptor of the outcome or change in status of the radio station
+
+6. Freq currently:
+   - Data type: Categorical
+   - 4 representative example values: silent, 7RPH, 7TAB (HPON), 7AD
+   - Role: Descriptor of the current frequency status of the radio station
+
+7. Purpose:
+   - Data type: Categorical
+   - 4 representative example values: Commercial
+   - Role: Descriptor of the purpose or nature of the radio station
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Callsign: 7EX, Area served: Launceston, Frequency: 1008, Band: AM, Fate: Moved to FM in 2008 as 7EXX, Freq currently: silent, Purpose: Commercial):
+   - The distinctive values that make this row an outlier are the frequency being 1008 and the fate of the station being silent. These values are different from the majority of the table where frequencies are in the 800s and the fate involves moving to FM. This row is an outlier due to the unique combination of these values.
+
+2. Row 9 (Callsign: 7UV, Area served: Ulverstone, Frequency: nan, Band: AM, Fate: Moved to Devonport and changed call to 7AD in 1940, Freq currently: 7AD, Purpose: Commercial):
+   - The distinctive value that makes this row an outlier is the frequency being "nan" (not a number), which is not a typical numeric value. This row is an outlier due to the missing data in the frequency column.
+
+3. Row 4 (Callsign: 7UV, Area served: Ulverstone, Frequency: nan, Band: AM, Fate: Moved to Devonport and changed call to 7AD in 1940, Freq currently: 7AD, Purpose: Commercial):
+   - The distinctive value that makes this row an outlier is the fate of the station involving moving to Devonport and changing the call sign to 7AD in 1940. This historical event sets this row apart from the majority of the table where stations moved to FM. This row is an outlier due to the unique historical change in fate.
+
+=== Full Table Preview ===
+|   row_number | Callsign   | Area served   |   Frequency | Band   | Fate                                                | Freq currently   | Purpose    |
+|-------------:|:-----------|:--------------|------------:|:-------|:----------------------------------------------------|:-----------------|:-----------|
+|            0 | 7CAE       | Hobart        |        92.1 | FM     | Changed call to 7THE ca. 1980                       | 7THE             | Community  |
+|            1 | 7DY        | Derby         |       nan   | AM     | Moved to Scottsdale and changed call to 7SD in 1954 | 7SD              | Commercial |
+|            2 | 7EX        | Launceston    |      1008   | AM     | Moved to FM in 2008 as 7EXX                         | silent           | Commercial |
+|            3 | 7HO        | Hobart        |       864   | AM     | Moved to FM in 1990 as 7HHO                         | 7RPH             | Commercial |
+|            4 | 7HT        | Hobart        |      1080   | AM     | Moved to FM in 1998 as 7XXX                         | 7TAB (HPON)      | Commercial |
+|            5 | 7LA        | Launceston    |      1098   | AM     | Moved to FM in 2008 as 7LAA                         | silent           | Commercial |
+|            6 | 7NT        | Launceston    |       711   | AM     | Moved to FM in 2006 retained call                   | silent           | National   |
+|            7 | 7QN        | Queenstown    |       630   | AM     | Moved to FM in 1991 retained call                   | 7RN              | National   |
+|            8 | 7QT        | Queenstown    |       837   | AM     | Changed call to 7XS in 1988                         | 7XS              | Commercial |
+|            9 | 7UV        | Ulverstone    |       nan   | AM     | Moved to Devonport and changed call to 7AD in 1940  | 7AD              | Commercial |
+|           10 | 7ZL        | Hobart        |       603   | AM     | Changed call to 7RN in 1991                         | 7RN              | National   |
+
+Generated Reasoning SQL: The summary provides information about the columns in the table, including the "Callsign" column, which is categorical and serves as an identifier for radio stations. The "Fate" column describes changes in the status of the radio stations, such as moving to FM or changing callsigns. To find the callsign for 7THE before 1980, we need to look for the row where "Fate" indicates a change to 7THE around 1980 and then retrieve the corresponding "Callsign" value.
+
+SQL: select "Callsign" from T where "Fate" like '%7THE%' and "Fate" like '%1980%';
+Generated Final SQL: select "Callsign" from T where "Fate" like '%7THE%' and "Fate" like '%1980%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Callsign   |
+|:-----------|
+| 7CAE       |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of radio station callsigns in Tasmania
+SQL: select "Callsign" from T where "Fate" like '%7THE%' and "Fate" like '%1980%';
+
+Callsign
+7CAE
+Question: what was the callsign for 7the before 1980?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 7cae
+[Gold Answer] 7cae
+

@@ -1,0 +1,151 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Sr. No.
+   - Data type: Numeric
+   - 4 representative example values: 3, 8, 12, 19
+   - Role: Identifier
+
+2. Train No.
+   - Data type: Numeric
+   - 4 representative example values: 51294, 51151, 51829, 12405
+   - Role: Identifier
+
+3. Name of the Train
+   - Data type: Categorical
+   - 4 representative example values: Amla-Nagpur Pass, New Amravati-Narkhed Pass, Nagpur-Agra Pass, Bhusaval-H.Nizamuddin Gondwana Exp
+   - Role: Descriptor
+
+4. Arrival
+   - Data type: Categorical (Time)
+   - 4 representative example values: 06:39, 08:30, 09:41, 14:08
+   - Role: Measure
+
+5. Departure
+   - Data type: Categorical (Time)
+   - 4 representative example values: 06:40, N/a, 09:42, 14:10
+   - Role: Measure
+
+6. Day
+   - Data type: Categorical
+   - 4 representative example values: Daily, S,Tu,
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 18:
+   - The value "S,Tu," in the Day column is different from the majority of entries that have "Daily" as the day.
+   - This makes the row an outlier as it has a unique combination of days for train operation.
+
+2. Row 0:
+   - The value "Amla-Nagpur Pass" in the Name of the Train column is an ordinary entry and not distinctive.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 7:
+   - The value "N/a" in the Departure column is different from the majority of entries that have specific departure times.
+   - This makes the row an outlier as it has missing data for the departure time.
+
+=== Full Table Preview ===
+|   row_number |   Sr. No. |   Train No. | Name of the Train                  | Arrival   | Departure   | Day     |
+|-------------:|----------:|------------:|:-----------------------------------|:----------|:------------|:--------|
+|            0 |         1 |       18238 | Chhatisgarh Express                | 01:23     | 01:25       | Daily   |
+|            1 |         2 |       12160 | Jabalpur-Amravati SF               | 04:51     | 04:53       | Daily   |
+|            2 |         3 |       51294 | Amla-Nagpur Pass                   | 06:39     | 06:40       | Daily   |
+|            3 |         4 |       12913 | Indore-Nag Tri. Exp                | 06:49     | 06:51       | M       |
+|            4 |         5 |       19301 | Indore-Yashwantpur Exp             | 07:20     | 07:25       | M       |
+|            5 |         6 |       12406 | Nizamuddin-Bhusaval Gondwana Exp   | 07:25     | 07:27       | MSt     |
+|            6 |         7 |       12410 | Nizamuddin-Raigarh Gondwana Exp    | 07:25     | 07:27       | SMTuWTF |
+|            7 |         8 |       51151 | New Amravati-Narkhed Pass          | 08:30     | N/a         | Daily   |
+|            8 |         9 |       22112 | Nagpur-Bhusaval SF                 | 08:37     | 08:39       | MTSt    |
+|            9 |        10 |       11045 | Dikshsabhoomi Exp                  | 08:53     | 08:55       | St      |
+|           10 |        11 |       16359 | Ernakulam-Patna Exp                | 08:53     | 08:55       | M       |
+|           11 |        12 |       51829 | Nagpur-Agra Pass                   | 09:41     | 09:42       | Daily   |
+|           12 |        13 |       12861 | Visakapatnam-Nizamuddin            | 10:43     | 10:44       | Daily   |
+|           13 |        14 |       12721 | Dakshin Express                    | 10:43     | 10:44       | Daily   |
+|           14 |        15 |       12616 | Grand Trunk(GT) Exp                | 10:49     | 10:51       | Daily   |
+|           15 |        16 |       19714 | Sec-Jaipur Exp                     | 11:58     | 12:00       | Tu      |
+|           16 |        17 |       11203 | Nagpur-Jaipur Weekly Express       | 13:03     | 13:05       | T       |
+|           17 |        18 |       12615 | Grand Trunk(GT) Exp                | 13:30     | 13:32       | Daily   |
+|           18 |        19 |       12405 | Bhusaval-H.Nizamuddin Gondwana Exp | 14:08     | 14:10       | STu     |
+|           19 |        20 |       12409 | Raigarh-H.Nizamuddin- Gondwana Exp | 14:08     | 14:10       | MWTFSt  |
+|           20 |        21 |       16360 | Patna-Ernakulam Exp                | 14:08     | 14:10       | W       |
+|           21 |        22 |       11046 | Dikshsabhoomi Exp                  | 14:09     | 14:10       | Tu      |
+|           22 |        23 |       22111 | Bhusaval_Nagpur SF                 | 14:36     | 14:38       | SWF     |
+|           23 |        24 |       19713 | Jaipur-Sec Exp                     | 15:48     | 15:50       | Tu      |
+|           24 |        25 |       12722 | Dakshin Express                    | 16:00     | 16:02       | Daily   |
+|           25 |        26 |       51183 | Bhusaval-Narkhed Pass              | 16:00     | N/a         | Daily   |
+|           26 |        27 |       11204 | Jaipur-Nagpur Exp                  | 17:24     | 17:25       | St      |
+|           27 |        28 |       19302 | Yashwantpur-Indore Exp             | 17:35     | 17:40       | W       |
+|           28 |        29 |       51830 | Agra-Nagpur Pass                   | 18:04     | 18:05       | Daily   |
+|           29 |        30 |       51293 | Nagpur-Amla Pass                   | 19:55     | 20:00       | Daily   |
+|           30 |        31 |       12914 | Nagpur-Indore Tri. Exp             | 20:08     | 20:10       | M       |
+|           31 |        32 |       12159 | Amravati-Jabalpur SF               | 22:30     | 22:32       | Daily   |
+|           32 |        33 |       18237 | Chhatisgarh Express                | 23:09     | 23:10       | Daily   |
+|           33 |        34 |       51152 | Narkhed-New Amravati Pass          | N/a       | 18:00       | Daily   |
+|           34 |        35 |       51184 | Bhusaval-Narkhed Pass              | N/a       | 09:00       | Daily   |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter the rows where the "Departure" time is after 20:00 and the "Day" is "Daily". We will exclude any outlier rows that have missing departure times. The relevant columns for this query are "Departure" and "Day".
+
+SQL: SELECT COUNT(*) 
+FROM T 
+WHERE "Departure" > '20:00' 
+AND "Day" LIKE '%Daily%'
+AND "Departure" NOT LIKE 'N/a';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Departure" > '20:00' AND "Day" LIKE '%Daily%' AND "Departure" NOT LIKE 'N/a';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Narkhed
+SQL: SELECT COUNT(*) FROM T WHERE "Departure" > '20:00' AND "Day" LIKE '%Daily%' AND "Departure" NOT LIKE 'N/a';
+
+SQL Execution Result:
+COUNT(*)
+2
+
+Question: how many trains depart after 20:00 daily?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 3
+

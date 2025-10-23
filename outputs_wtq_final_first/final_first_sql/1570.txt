@@ -1,0 +1,129 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2000, 2002, 2008, 2012
+   - Role of the column: Identifier for the year in which the data was recorded.
+
+2. Division:
+   - Data type: Numeric
+   - 4 representative example values: 4, 4, 4, 4
+   - Role of the column: Descriptor indicating the division number.
+
+3. League:
+   - Data type: Categorical
+   - 4 representative example values: USL PDL, USL PDL, USL PDL, USL PDL
+   - Role of the column: Descriptor indicating the league in which the team participated.
+
+4. Regular Season:
+   - Data type: Categorical
+   - 4 representative example values: 4th, 5th, 5th, 5th
+   - Role of the column: Descriptor indicating the team's position in the regular season.
+
+5. Playoffs:
+   - Data type: Categorical
+   - 4 representative example values: Did not qualify, Did not qualify, Did not qualify, Did not qualify
+   - Role of the column: Descriptor indicating whether the team qualified for the playoffs.
+
+6. Open Cup:
+   - Data type: Categorical
+   - 4 representative example values: Did not qualify, Did not qualify, Did not qualify, Did not qualify
+   - Role of the column: Descriptor indicating whether the team qualified for the Open Cup.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "4th, Rocky Mountain" in the Regular Season column make this row distinctive.
+   - This row is an outlier because the team achieved a higher position in the regular season compared to the other rows.
+
+2. Row 2:
+   - The values "5th, Heartland" in the Regular Season column make this row distinctive.
+   - This row is an outlier because the team achieved a different position in the regular season compared to the other rows.
+
+Both candidate rows are outliers due to the unique values in the Regular Season column, indicating a different performance compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number |   Year |   Division | League     | Regular Season     | Playoffs        | Open Cup        |
+|-------------:|-------:|-----------:|:-----------|:-------------------|:----------------|:----------------|
+|            0 |   1998 |          4 | USISL PDSL | 4th Central        | Division Finals | 1st Round       |
+|            1 |   1999 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            2 |   2000 |          4 | USL PDL    | 4th Rocky Mountain | Did not qualify | Did not qualify |
+|            3 |   2001 |          4 | USL PDL    | 5th Rocky Mountain | Did not qualify | Did not qualify |
+|            4 |   2002 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            5 |   2003 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|            6 |   2004 |          4 | USL PDL    | 6th Heartland      | Did not qualify | Did not qualify |
+|            7 |   2005 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | Did not qualify |
+|            8 |   2006 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | Did not qualify |
+|            9 |   2007 |          4 | USL PDL    | 3rd Heartland      | Did not qualify | 1st Round       |
+|           10 |   2008 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|           11 |   2009 |          4 | USL PDL    | 6th Heartland      | Did not qualify | Did not qualify |
+|           12 |   2010 |          4 | USL PDL    | 7th Heartland      | Did not qualify | Did not qualify |
+|           13 |   2011 |          4 | USL PDL    | 4th Heartland      | Did not qualify | Did not qualify |
+|           14 |   2012 |          4 | USL PDL    | 5th Heartland      | Did not qualify | Did not qualify |
+|           15 |   2013 |          4 | USL PDL    | 4th Heartland      | Did not qualify | Did not qualify |
+
+Generated Reasoning SQL: The summary provides information about the "Year" column, which is numeric and represents the year of the data recorded. To determine which year was more successful between 2008 and 2011, we need to compare the performance metrics for each year. The success can be measured by the team's position in the Regular Season. We will focus on the "Regular Season" column to assess the team's performance in each year.
+
+SQL: 
+SELECT "Year", "Regular Season"
+FROM T
+WHERE "Year" IN (2008, 2011);
+Generated Final SQL: SELECT "Year", "Regular Season" FROM T WHERE "Year" IN (2008, 2011);
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+|   Year | Regular Season   |
+|-------:|:-----------------|
+|   2008 | 5th Heartland    |
+|   2011 | 4th Heartland    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Kansas City Brass
+SQL: SELECT "Year", "Regular Season" FROM T WHERE "Year" IN (2008, 2011);
+
+Year | Regular Season
+2008 | 5th Heartland
+2011 | 4th Heartland
+Question: which year was more successful, 2008 or 2011?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2011
+[Gold Answer] 2011
+

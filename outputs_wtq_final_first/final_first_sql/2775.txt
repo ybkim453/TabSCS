@@ -1,0 +1,149 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Stage
+   - Data type: Numeric
+   - 4 representative example values: 4, 9, 11, 13
+   - Role: Identifier for the stage of the race
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: 3 July, 8 July, 12 July, 14 July
+   - Role: Descriptor for the date of the race
+
+3. Route
+   - Data type: Categorical
+   - 4 representative example values: Brest – Vannes, Pau – Luchon, Perpignan – Montpellier, Marseille – Cannes
+   - Role: Descriptor for the route of the race
+
+4. Terrain
+   - Data type: Categorical
+   - 4 representative example values: Plain stage, Stage with mountain(s)
+   - Role: Descriptor for the type of terrain in the race
+
+5. Length
+   - Data type: Numeric
+   - 4 representative example values: 211 km (131 mi), 231 km (144 mi), 164 km (102 mi), 181 km (112 mi)
+   - Role: Measure for the length of the race
+
+6. Winner
+   - Data type: Categorical
+   - 4 representative example values: André Godinat (FRA), Antonin Magne (FRA), Rafaele di Paco (ITA), Charles Pélissier (FRA)
+   - Role: Descriptor for the winner of the race
+
+7. Race leader
+   - Data type: Categorical
+   - 4 representative example values: Rafaele di Paco (ITA), Antonin Magne (FRA)
+   - Role: Descriptor for the race leader
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Stage 4, Date 3 July, Route Brest – Vannes, Terrain Plain stage, Length 211 km, Winner André Godinat (FRA), Race leader Rafaele di Paco (ITA)):
+   - This row is not an outlier as the values are consistent with other rows in the table.
+
+2. Row 8 (Stage 9, Date 8 July, Route Pau – Luchon, Terrain Stage with mountain(s), Length 231 km, Winner Antonin Magne (FRA), Race leader Antonin Magne (FRA)):
+   - This row is not an outlier as the values are consistent with other rows in the table.
+
+3. Row 3 (Stage 11, Date 12 July, Route Perpignan – Montpellier, Terrain Plain stage, Length 164 km, Winner Rafaele di Paco (ITA), Race leader Antonin Magne (FRA)):
+   - This row is not an outlier as the values are consistent with other rows in the table.
+
+=== Full Table Preview ===
+|   row_number |   Stage | Date    | Route                          | Terrain                |   Length | Winner                   | Race leader                                     |
+|-------------:|--------:|:--------|:-------------------------------|:-----------------------|---------:|:-------------------------|:------------------------------------------------|
+|            0 |       1 | 30 June | Paris – Caen                   | Plain stage            |      208 | Alfred Haemerlinck (BEL) | Alfred Haemerlinck (BEL)                        |
+|            1 |       2 | 1 July  | Caen – Dinan                   | Plain stage            |      212 | Max Bulla (AUT)          | Max Bulla (AUT)                                 |
+|            2 |       3 | 2 July  | Dinan – Brest                  | Plain stage            |      206 | Fabio Battesini (ITA)    | Léon Le Calvez (FRA)                            |
+|            3 |       4 | 3 July  | Brest – Vannes                 | Plain stage            |      211 | André Godinat (FRA)      | Rafaele di Paco (ITA)                           |
+|            4 |       5 | 4 July  | Vannes – Les Sables d'Olonne   | Plain stage            |      202 | Charles Pélissier (FRA)  | Charles Pélissier (FRA)\n Rafaele di Paco (ITA) |
+|            5 |       6 | 5 July  | Les Sables d'Olonne – Bordeaux | Plain stage            |      338 | Alfred Haemerlinck (BEL) | Rafaele di Paco (ITA)                           |
+|            6 |       7 | 6 July  | Bordeaux – Bayonne             | Plain stage            |      180 | Gérard Loncke (BEL)      | Rafaele di Paco (ITA)                           |
+|            7 |       8 | 7 July  | Bayonne – Pau                  | Plain stage            |      106 | Charles Pélissier (FRA)  | Charles Pélissier (FRA)                         |
+|            8 |       9 | 8 July  | Pau – Luchon                   | Stage with mountain(s) |      231 | Antonin Magne (FRA)      | Antonin Magne (FRA)                             |
+|            9 |      10 | 10 July | Luchon – Perpignan             | Stage with mountain(s) |      322 | Rafaele di Paco (ITA)    | Antonin Magne (FRA)                             |
+|           10 |      11 | 12 July | Perpignan – Montpellier        | Plain stage            |      164 | Rafaele di Paco (ITA)    | Antonin Magne (FRA)                             |
+|           11 |      12 | 13 July | Montpellier – Marseille        | Plain stage            |      207 | Max Bulla (AUT)          | Antonin Magne (FRA)                             |
+|           12 |      13 | 14 July | Marseille – Cannes             | Plain stage            |      181 | Charles Pélissier (FRA)  | Antonin Magne (FRA)                             |
+|           13 |      14 | 15 July | Cannes – Nice                  | Stage with mountain(s) |      132 | Eugenio Gestri (ITA)     | Antonin Magne (FRA)                             |
+|           14 |      15 | 17 July | Nice – Gap                     | Stage with mountain(s) |      233 | Jef Demuysere (BEL)      | Antonin Magne (FRA)                             |
+|           15 |      16 | 18 July | Gap – Grenoble                 | Stage with mountain(s) |      102 | Charles Pélissier (FRA)  | Antonin Magne (FRA)                             |
+|           16 |      17 | 19 July | Grenoble – Aix-les-Bains       | Stage with mountain(s) |      230 | Max Bulla (AUT)          | Antonin Magne (FRA)                             |
+|           17 |      18 | 20 July | Aix-les-Bains – Evian          | Stage with mountain(s) |      204 | Jef Demuysere (BEL)      | Antonin Magne (FRA)                             |
+|           18 |      19 | 21 July | Evian – Belfort                | Stage with mountain(s) |      282 | Rafaele di Paco (ITA)    | Antonin Magne (FRA)                             |
+|           19 |      20 | 22 July | Belfort – Colmar               | Stage with mountain(s) |      209 | André Leducq (FRA)       | Antonin Magne (FRA)                             |
+|           20 |      21 | 23 July | Colmar – Metz                  | Plain stage            |      192 | Rafaele di Paco (ITA)    | Antonin Magne (FRA)                             |
+|           21 |      22 | 24 July | Metz – Charleville             | Plain stage            |      159 | Raffaele di Paco (ITA)   | Antonin Magne (FRA)                             |
+|           22 |      23 | 25 July | Charleville – Malo-les-Bains   | Plain stage            |      271 | Gaston Rebry (BEL)       | Antonin Magne (FRA)                             |
+|           23 |      24 | 26 July | Malo-les-Bains – Paris         | Plain stage            |      313 | Charles Pélissier (FRA)  | Antonin Magne (FRA)                             |
+
+Generated Reasoning SQL: To determine which terrain is represented the most consecutive times, we need to analyze the consecutive occurrences of each terrain type in the "Terrain" column. The "Terrain" column is categorical and represents the type of terrain in the race.
+
+We can achieve this by counting the consecutive occurrences of each terrain type and selecting the one with the highest count. We will need to compare each row with the previous row to identify consecutive occurrences.
+
+SQL:
+WITH consecutive_terrain AS (
+    SELECT Terrain,
+           ROW_NUMBER() OVER (ORDER BY Date) AS rn,
+           ROW_NUMBER() OVER (PARTITION BY Terrain ORDER BY Date) AS rn_terrain
+    FROM T
+)
+SELECT Terrain, MAX(rn_terrain) AS consecutive_count
+FROM consecutive_terrain
+GROUP BY Terrain;
+Generated Final SQL: WITH consecutive_terrain AS ( SELECT Terrain, ROW_NUMBER() OVER (ORDER BY Date) AS rn, ROW_NUMBER() OVER (PARTITION BY Terrain ORDER BY Date) AS rn_terrain FROM T ) SELECT Terrain, MAX(rn_terrain) AS consecutive_count FROM consecutive_terrain GROUP BY Terrain;
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+| Terrain                |   consecutive_count |
+|:-----------------------|--------------------:|
+| Plain stage            |                  15 |
+| Stage with mountain(s) |                   9 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1931 Tour de France
+SQL: WITH consecutive_terrain AS ( SELECT Terrain, ROW_NUMBER() OVER (ORDER BY Date) AS rn, ROW_NUMBER() OVER (PARTITION BY Terrain ORDER BY Date) AS rn_terrain FROM T ) SELECT Terrain, MAX(rn_terrain) AS consecutive_count FROM consecutive_terrain GROUP BY Terrain;
+
+Terrain | consecutive_count
+Plain stage | 15
+Stage with mountain(s) | 9
+Question: which terrain is represented the most consecutive times?
+A: To find the answer to this question, let’s think step by step.
+Prediction: plain stage
+[Gold Answer] plain stage
+

@@ -1,0 +1,55 @@
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: September 8, October 6, October 27, November 17
+   - Role: Identifier for the date of the game
+
+2. Time
+   - Data type: Categorical
+   - 4 representative example values: 3:00 PM, 2:30 PM, 7:00 PM, 4:10 PM
+   - Role: Descriptor for the time of the game
+
+3. Opponent#
+   - Data type: Categorical
+   - 4 representative example values: Oregon State, Illinois, Michigan State, Ohio State
+   - Role: Descriptor for the opponent team
+
+4. Rank#
+   - Data type: Categorical
+   - 4 representative example values: #13, nan, #25, #23
+   - Role: Descriptor for the rank of the opponent team
+
+5. Site
+   - Data type: Categorical
+   - 4 representative example values: Reser Stadium • Corvallis, OR, Camp Randall Stadium • Madison, WI, Lucas Oil Stadium • Indianapolis, IN, Rose Bowl • Pasadena, CA
+   - Role: Descriptor for the location of the game
+
+6. TV
+   - Data type: Categorical
+   - 4 representative example values: FX, ABC/ESPN2, FOX, ESPN
+   - Role: Descriptor for the TV channel broadcasting the game
+
+7. Result
+   - Data type: Categorical
+   - 4 representative example values: L 7-10, W 31-14, L 13-16 OT, L 14-21 OT
+   - Role: Descriptor for the outcome of the game
+
+8. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 42,189, 80,096, 80,538, 80,112
+   - Role: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 1 (September 8 | 3:00 PM | at Oregon State* | #13 | Reser Stadium • Corvallis, OR | FX | L 7-10 | 42,189)
+   - The outlier values are the opponent being #13 ranked Oregon State and the low score result of L 7-10.
+   - This row is an outlier due to the high rank of the opponent and the close score of the game.
+
+2. Row 13 (December 1 | 7:00 PM | vs. #14 Nebraska | nan | Lucas Oil Stadium • Indianapolis, IN (Big Ten Championship Game) | FOX | W 70-31 | 41,260)
+   - The outlier values are the opponent being #14 ranked Nebraska and the high score result of W 70-31.
+   - This row is an outlier due to the high rank of the opponent and the high-scoring game.
+
+3. Row 12 (January 1, 2013 | 4:10 PM | vs. #8 Stanford | #23 | Rose Bowl • Pasadena, CA (Rose Bowl) | ESPN | L 14-20 | 93,259)
+   - The outlier values are the opponent being #8 ranked Stanford and the high attendance of 93,259.
+   - This row is an outlier due to the high rank of the opponent and the large attendance at the game.

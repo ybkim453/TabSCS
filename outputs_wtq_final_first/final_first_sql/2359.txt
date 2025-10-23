@@ -1,0 +1,160 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2000, 2001, 2002, 2003
+   - Role: Identifier for the year in which the single was released.
+
+2. Single:
+   - Data type: Categorical
+   - 4 representative example values: My Heart Beats Like a Drum (Dam Dam Dam), Why Oh Why, Call on Me, Set Me Free
+   - Role: Descriptor for the title of the single.
+
+3. Peak chart positions AUS:
+   - Data type: Numeric
+   - 4 representative example values: 76, —, —, —
+   - Role: Measure indicating the peak chart position in Australia.
+
+4. Peak chart positions AUT:
+   - Data type: Numeric
+   - 4 representative example values: 6, 16, —, —
+   - Role: Measure indicating the peak chart position in Austria.
+
+5. Peak chart positions BEL (Fl):
+   - Data type: Numeric
+   - 4 representative example values: 11, 39, —, —
+   - Role: Measure indicating the peak chart position in Belgium (Flanders).
+
+6. Peak chart positions BEL (Wa):
+   - Data type: Numeric
+   - 4 representative example values: 3, 15, —, —
+   - Role: Measure indicating the peak chart position in Belgium (Wallonia).
+
+7. Peak chart positions FIN:
+   - Data type: Numeric
+   - 4 representative example values: 12, —, —, —
+   - Role: Measure indicating the peak chart position in Finland.
+
+8. Peak chart positions FRA:
+   - Data type: Numeric
+   - 4 representative example values: 39, —, —, —
+   - Role: Measure indicating the peak chart position in France.
+
+9. Peak chart positions GER:
+   - Data type: Numeric
+   - 4 representative example values: 3, 16, 44, —
+   - Role: Measure indicating the peak chart position in Germany.
+
+10. Peak chart positions NED:
+    - Data type: Numeric
+    - 4 representative example values: 37, —, —, —
+    - Role: Measure indicating the peak chart position in the Netherlands.
+
+11. Peak chart positions SWE:
+    - Data type: Numeric
+    - 4 representative example values: 38, —, —, —
+    - Role: Measure indicating the peak chart position in Sweden.
+
+12. Peak chart positions SUI:
+    - Data type: Numeric
+    - 4 representative example values: 21, —, —, —
+    - Role: Measure indicating the peak chart position in Switzerland.
+
+13. Certifications (sales thresholds):
+    - Data type: Categorical
+    - 4 representative example values: GER: Gold, nan, nan, nan
+    - Role: Descriptor for the certification status based on sales thresholds.
+
+14. Album:
+    - Data type: Categorical
+    - 4 representative example values: Planet Pop, Touch the Sky, nan, nan
+    - Role: Descriptor for the album to which the single belongs.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The single "My Heart Beats Like a Drum (Dam Dam Dam)" has peak chart positions that are significantly higher compared to the other entries in the table.
+   - This row stands out as an outlier due to the high peak chart positions in multiple countries.
+
+2. Row 0:
+   - The single "Why Oh Why" has a certification of "GER: Gold", which is a distinctive feature not present in the other rows.
+   - This row is an outlier due to the unique certification status.
+
+3. Row 2:
+   - The single "Call on Me" has missing peak chart positions for all countries, making it distinct from the other entries.
+   - This row is an outlier due to the lack of peak chart position data.
+
+Overall, the identified outlier rows have specific values that set them apart from the majority of the table, making them distinctive outliers that may require special attention in the analysis.
+
+=== Full Table Preview ===
+|   row_number |   Year | Single                                     | Peak chart positions\nAUS   | Peak chart positions\nAUT   | Peak chart positions\nBEL\n(Fl)   | Peak chart positions\nBEL\n(Wa)   | Peak chart positions\nFIN   | Peak chart positions\nFRA   | Peak chart positions\nGER   | Peak chart positions\nNED   | Peak chart positions\nSWE   | Peak chart positions\nSUI   | Certifications\n(sales thresholds)               | Album         |
+|-------------:|-------:|:-------------------------------------------|:----------------------------|:----------------------------|:----------------------------------|:----------------------------------|:----------------------------|:----------------------------|:----------------------------|:----------------------------|:----------------------------|:----------------------------|:-------------------------------------------------|:--------------|
+|            0 |   2000 | "Around the World (La La La La La)"        | 11                          | 1                           | 10                                | 10                                | 7                           | 12                          | 1                           | 5                           | 8                           | 1                           | GER: Platinum\nAUT: Gold\nSWI: Gold\nFRA: Silver | Planet Pop    |
+|            1 |   2000 | "My Heart Beats Like a Drum (Dam Dam Dam)" | 76                          | 6                           | 11                                | 3                                 | 12                          | 39                          | 3                           | 37                          | 38                          | 21                          | GER: Gold                                        | Planet Pop    |
+|            2 |   2000 | "Why Oh Why"                               | —                           | 16                          | 39                                | 15                                | —                           | —                           | 16                          | —                           | —                           | —                           |                                                  | Planet Pop    |
+|            3 |   2000 | "Thinking of You"                          | —                           | —                           | —                                 | —                                 | —                           | —                           | 46                          | —                           | —                           | 51                          |                                                  | Planet Pop    |
+|            4 |   2001 | "I'm In Heaven (When You Kiss Me)"         | —                           | 27                          | —                                 | —                                 | —                           | —                           | 22                          | —                           | —                           | 31                          |                                                  | Touch the Sky |
+|            5 |   2001 | "Call on Me"                               | —                           | —                           | —                                 | —                                 | —                           | —                           | —                           | —                           | —                           | —                           |                                                  | Touch the Sky |
+|            6 |   2001 | "Set Me Free"                              | —                           | —                           | —                                 | —                                 | —                           | —                           | 44                          | —                           | —                           | —                           |                                                  | Touch the Sky |
+|            7 |   2001 | "New York City"                            | —                           | —                           | —                                 | —                                 | —                           | —                           | —                           | —                           | —                           | —                           |                                                  | Touch the Sky |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Certifications (sales thresholds)" column contains categorical values representing certification statuses such as "GER: Gold". To count the number of singles with a gold certification, we need to filter rows where the certification includes the term "Gold".
+It is important to note that outlier rows with unique certification statuses, such as "GER: Gold", should be included in the count as they represent valid data points.
+SQL: select count("Single") from T where "Certifications\n(sales thresholds)" like '%Gold%';
+Generated Final SQL: select count("Single") from T where "Certifications\n(sales thresholds)" like '%Gold%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Single") |
+|------------------:|
+|                 2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: A Touch of Class (band)
+SQL: select count("Single") from T where "Certifications\n(sales thresholds)" like '%Gold%';
+
+count("Single")
+2
+Question: how many singles had a gold certification?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

@@ -1,0 +1,163 @@
+=== Table ID ===
+csv/203-csv/63.tsv
+
+=== Question ===
+how many more awards did she win in 2009 than in 2007?
+
+=== Sub-table Preview ===
+| Date         | Team       | Competition      | Round         | Leg           | Opponent          | Location                                  | Score   |
+|:-------------|:-----------|:-----------------|:--------------|:--------------|:------------------|:------------------------------------------|:--------|
+| July 7       | Gent       | Intertoto Cup    | Round 2       | Leg 1, Home   | Cliftonville      | Jules Ottenstadion, Ghent                 | 2-0     |
+| July 31      | Genk       | Champions League | Qual. Round 2 | Leg 1, Home   | Sarajevo          | Cristal Arena, Genk                       | 1-2     |
+| September 20 | Anderlecht | UEFA Cup         | Round 1       | Leg 1, Home   | Rapid Wien        | Constant Vanden Stock Stadium, Anderlecht | 1-1     |
+| October 4    | Anderlecht | UEFA Cup         | Round 1       | Leg 2, Away   | Rapid Wien        | Gerhard Hanappi Stadium, Vienna           | 1-0     |
+| December 6   | Anderlecht | UEFA Cup         | Group Stage   | Match 3, Home | Tottenham Hotspur | Constant Vanden Stock Stadium, Anderlecht | 1-1     |
+| February 13  | Anderlecht | UEFA Cup         | Round of 32   | Leg 1, Home   | Bordeaux          | Constant Vanden Stock Stadium, Anderlecht | 2-1     |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: July 7, July 31, September 20, October 4
+   - Role: Identifier for the date of the match
+
+2. Team:
+   - Data type: Categorical
+   - 4 representative example values: Gent, Genk, Anderlecht
+   - Role: Descriptor for the team participating in the match
+
+3. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Intertoto Cup, Champions League, UEFA Cup
+   - Role: Descriptor for the competition in which the match took place
+
+4. Round:
+   - Data type: Categorical
+   - 4 representative example values: Round 2, Qual. Round 2, Round 1, Round of 32
+   - Role: Descriptor for the round of the competition
+
+5. Leg:
+   - Data type: Categorical
+   - 4 representative example values: Leg 1, Leg 2
+   - Role: Descriptor for the leg of the match (Home or Away)
+
+6. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Cliftonville, Sarajevo, Rapid Wien, Tottenham Hotspur
+   - Role: Descriptor for the opponent team
+
+7. Location:
+   - Data type: Categorical
+   - 4 representative example values: Jules Ottenstadion, Cristal Arena, Constant Vanden Stock Stadium, Gerhard Hanappi Stadium
+   - Role: Descriptor for the location of the match
+
+8. Score:
+   - Data type: Categorical
+   - 4 representative example values: 2-0, 1-2, 1-1, 2-1
+   - Role: Measure of the match score
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The values for Round (Group Stage) and Leg (Match 3, Home) are different from the majority of the table.
+   - This row is an outlier as it represents a different stage of the competition compared to the other rows.
+
+2. Row 0 (Index 0):
+   - The values for Date (July 7), Team (Gent), Competition (Intertoto Cup), and Leg (Leg 1, Home) are not significantly different from other rows.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 18 (Index 18):
+   - The values for Date (February 13), Team (Anderlecht), Competition (UEFA Cup), and Score (2-1) are consistent with other rows.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Award                                   | Nominated work   | Category                                      | Result    |
+|-------------:|-------:|:----------------------------------------|:-----------------|:----------------------------------------------|:----------|
+|            0 |   2007 | Cosmopolitan Ultimate Woman of the Year | Leona Lewis      | Newcomer of the Year                          | Won       |
+|            1 |   2007 | The Record of the Year                  | "Bleeding Love"  | The Record of the Year                        | Won       |
+|            2 |   2008 | Capital Awards                          | Leona Lewis      | Favourite UK Female Artist                    | Won       |
+|            3 |   2008 | Britain's Best                          | Leona Lewis      | Music Award                                   | Won       |
+|            4 |   2008 | NewNowNext Awards                       | Leona Lewis      | The Kylie Award: Next International Crossover | Won       |
+|            5 |   2008 | Glamour Woman Of The Year Awards        | Leona Lewis      | UK Solo Artist                                | Won       |
+|            6 |   2008 | Nickelodeon UK Kids Choice Awards       | "Bleeding Love"  | Favourite Song                                | Won       |
+|            7 |   2008 | UK Music Video Awards                   | "Bleeding Love"  | People's Choice Award                         | Won       |
+|            8 |   2008 | Bambi Award                             | Leona Lewis      | Shooting Star                                 | Won       |
+|            9 |   2008 | New Music Weekly Awards                 | Leona Lewis      | Top 40 New Artist of the Year                 | Won       |
+|           10 |   2008 | Billboard 2008 Year End Award           | Leona Lewis      | Best New Artist                               | Won       |
+|           11 |   2008 | Vh1 Video of the Year                   | "Bleeding Love"  | Best Video                                    | Won       |
+|           12 |   2008 | NME Best Album                          | "Spirit"         | Best Album                                    | Nominated |
+|           13 |   2008 | PETA                                    | Leona Lewis      | Person Of The Year                            | Won       |
+|           14 |   2009 | NAACP Image Awards                      | Leona Lewis      | Outstanding New Artist                        | Nominated |
+|           15 |   2009 | Swiss Music Awards                      | Leona Lewis      | Best International Newcomer                   | Won       |
+|           16 |   2009 | Japan Gold Disc Awards                  | Leona Lewis      | New Artist Of The Year                        | Won       |
+|           17 |   2009 | HITO Pop Music Awards                   | "Bleeding Love"  | Best Western Song                             | Won       |
+|           18 |   2009 | PETA - Sexiest Vegetarian Alive Awards  | Leona Lewis      | Sexiest Vegetarian Celebrity 2009             | Won       |
+|           19 |   2009 | APRA Awards                             | "Bleeding Love"  | Most Played Foreign Work                      | Won       |
+|           20 |   2009 | BEFFTA Awards                           | Leona Lewis      | Best Female Act                               | Won       |
+|           21 |   2009 | Cosmopolitan Awards                     | Leona Lewis      | Ultimate Music Star                           | Won       |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to count the number of awards won by Leona Lewis in 2009 and subtract the number of awards won in 2007. We will filter rows based on the "Year" column and count the rows where "Result" = 'Won' for each year.
+
+SQL: 
+SELECT 
+    (SELECT COUNT("Award") FROM T WHERE "Result" = 'Won' AND "Year" = 2009) - 
+    (SELECT COUNT("Award") FROM T WHERE "Result" = 'Won' AND "Year" = 2007) as awards_difference;
+Generated Final SQL: SELECT (SELECT COUNT("Award") FROM T WHERE "Result" = 'Won' AND "Year" = 2009) - (SELECT COUNT("Award") FROM T WHERE "Result" = 'Won' AND "Year" = 2007) as awards_difference;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   awards_difference |
+|--------------------:|
+|                   5 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of awards and nominations received by Leona Lewis
+SQL: SELECT (SELECT COUNT("Award") FROM T WHERE "Result" = 'Won' AND "Year" = 2009) - (SELECT COUNT("Award") FROM T WHERE "Result" = 'Won' AND "Year" = 2007) as awards_difference;
+
+SQL Execution Result:
+awards_difference
+5
+
+Question: how many more awards did she win in 2009 than in 2007?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 5
+[Gold Answer] 6
+

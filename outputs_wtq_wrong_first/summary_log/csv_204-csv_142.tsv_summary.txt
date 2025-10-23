@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: September 6, 1980, October 3, 1981, September 26, 1987, November 30, 2013
+   - Role: Identifier for the specific game date
+
+2. Site:
+   - Data type: Categorical
+   - 4 representative example values: Fort Collins, Colorado Springs
+   - Role: Descriptor for the location of the game
+
+3. Winning team:
+   - Data type: Categorical
+   - 4 representative example values: Colorado State, Air Force
+   - Role: Descriptor for the team that won the game
+
+4. Winning team.1:
+   - Data type: Numeric
+   - 4 representative example values: 21, 28, 27, 58
+   - Role: Measure for the points scored by the winning team
+
+5. Losing team:
+   - Data type: Categorical
+   - 4 representative example values: Air Force, Colorado State
+   - Role: Descriptor for the team that lost the game
+
+6. Losing team.1:
+   - Data type: Numeric
+   - 4 representative example values: 9, 14, 19, 13
+   - Role: Measure for the points scored by the losing team
+
+7. Series:
+   - Data type: Categorical
+   - 4 representative example values: AFA 11–7–1, AFA 12–7–1, AFA 17–8–1, AFA 31–20–1
+   - Role: Descriptor for the series outcome between the two teams
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The values in this row are not significantly different from the majority of the table. They represent a typical game outcome between the two teams. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 33:
+   - The values in this row are consistent with the other entries in the table. There are no distinctive or atypical values that would make this row an outlier. It is an ordinary entry and does not require special handling.
+
+3. Row 0:
+   - The values in this row are also typical of the other entries in the table. There are no unique or unusual values that would classify this row as an outlier. It is an ordinary entry and does not require special handling.

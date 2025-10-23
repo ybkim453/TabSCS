@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Location:
+   - Data type: Categorical
+   - 4 representative example values: Chernobyl-1, Kursk-1, Kursk-5, Leningrad-2
+   - Role: Identifier for the nuclear power plant location
+
+2. Reactor type:
+   - Data type: Categorical
+   - 4 representative example values: RBMK-1000, MKER-1000
+   - Role: Descriptor for the type of reactor used at the plant
+
+3. Status:
+   - Data type: Categorical
+   - 4 representative example values: shut down in 1996, destroyed in the 1986 accident, operational until 2021, construction begin was 1985, since then shelved
+   - Role: Descriptor indicating the current status of the reactor
+
+4. Net Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 740, 925
+   - Role: Measure of the net capacity of the reactor in Megawatts electrical
+
+5. Gross Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 800, 1,000
+   - Role: Measure of the gross capacity of the reactor in Megawatts electrical
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Chernobyl-1, RBMK-1000, shut down in 1996, 740, 800):
+   - The values in this row are not significantly different from the majority of the table. They represent a reactor that was shut down in 1996 with a net capacity of 740 MWe and a gross capacity of 800 MWe. This row is an ordinary row and does not require special handling.
+
+2. Row 16 (Kursk-5, MKER-1000, construction begin was 1985, since then shelved, 925, 1,000):
+   - The values in this row indicate that the reactor at Kursk-5 was under construction since 1985 and then shelved. While this may seem unusual, it is not significantly different from the other rows in terms of data values. This row is an ordinary row and does not require special handling.
+
+3. Row 3 (Chernobyl-4, RBMK-1000, destroyed in the 1986 accident, 925, 1,000):
+   - The values in this row stand out as the reactor at Chernobyl-4 was destroyed in the 1986 accident. This catastrophic event makes this row an outlier compared to the operational or under-construction reactors in the table. This row is an outlier due to the extreme and atypical nature of the event.

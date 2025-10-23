@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column 1: Reading**
+- Data type: Categorical
+- 4 representative example values: 3, 4, 6, 7
+- Role of the column: Identifier for different readings
+
+**Column 2: Year 1**
+- Data type: Categorical
+- 4 representative example values: 2013, 2016, 2019, 2022
+- Role of the column: Descriptor for the years associated with Year 1 readings
+
+**Column 3: Year 2**
+- Data type: Categorical
+- 4 representative example values: 2014, 2017, 2020, 2023
+- Role of the column: Descriptor for the years associated with Year 2 readings
+
+**Column 4: Year 3**
+- Data type: Categorical
+- 4 representative example values: 2015, 2018, 2021, 2024
+- Role of the column: Descriptor for the years associated with Year 3 readings
+
+**Outlier Row Analysis:**
+1. Row 3:
+   - Distinctive values: Year 1 = 2013, Year 2 = 2014, Year 3 = 2015
+   - Explanation: These values are the earliest in their respective columns, making this row an outlier in terms of chronological order.
+   - Conclusion: This row is an outlier.
+
+2. Row 7:
+   - Distinctive values: Reading = Maftir, Year 1 = 2013, Year 2 = 2014, Year 3 = 2015
+   - Explanation: The combination of Maftir reading with the earliest years in all columns makes this row stand out.
+   - Conclusion: This row is an outlier.
+
+3. Row 2:
+   - Distinctive values: Reading = 4, Year 1 = 2016, Year 2 = 2017, Year 3 = 2018
+   - Explanation: These values are not significantly different from other rows in terms of content or order.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | \nReading   | Year 1\n2013, 2016, 2019, 2022 . . .\n6:2–7:7   | Year 2\n2014, 2017, 2020, 2023 . . .\n7:8–8:15   | Year 3\n2015, 2018, 2021, 2024 . . .\n8:16–9:35   |
+|-------------:|:------------|:------------------------------------------------|:-------------------------------------------------|:--------------------------------------------------|
+|            0 | 1           | 6:2–5                                           | 7:8–13                                           | 8:16–23                                           |
+|            1 | 2           | 6:6–9                                           | 7:14–18                                          | 8:24–28                                           |
+|            2 | 3           | 6:10–13                                         | 7:19–25                                          | 9:1–7                                             |
+|            3 | 4           | 6:14–19                                         | 7:26–29                                          | 9:8–16                                            |
+|            4 | 5           | 6:20–25                                         | 8:1–6                                            | 9:17–21                                           |
+|            5 | 6           | 6:26–28                                         | 8:7–11                                           | 9:22–26                                           |
+|            6 | 7           | 6:29–7:7                                        | 8:12–15                                          | 9:27–35                                           |
+|            7 | Maftir      | 7:5–7                                           | 8:12–15                                          | 9:33–35                                           |
+
+Generated Reasoning SQL: Explanation: To determine how many years it takes to read the same verses again, we need to find the difference in years between the same readings. This involves comparing the values in the "Year 1", "Year 2", and "Year 3" columns for each row to identify patterns where the same verses are read again. We should exclude outlier rows that do not follow a sequential pattern in the years.
+SQL: 
+WITH verse_years AS (
+    SELECT "Reading",
+           ABS(CAST(SUBSTR("Year 1", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 2", 1, 4) AS INTEGER)) AS year_diff_1_2,
+           ABS(CAST(SUBSTR("Year 1", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 3", 1, 4) AS INTEGER)) AS year_diff_1_3,
+           ABS(CAST(SUBSTR("Year 2", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 3", 1, 4) AS INTEGER)) AS year_diff_2_3
+    FROM T
+    WHERE "Reading" NOT IN ('Maftir')
+)
+SELECT COUNT(*) AS years_to_read_same_verses
+FROM verse_years
+WHERE year_diff_1_2 = 0 OR year_diff_1_3 = 0 OR year_diff_2_3 = 0;
+Generated Final SQL: WITH verse_years AS ( SELECT "Reading", ABS(CAST(SUBSTR("Year 1", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 2", 1, 4) AS INTEGER)) AS year_diff_1_2, ABS(CAST(SUBSTR("Year 1", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 3", 1, 4) AS INTEGER)) AS year_diff_1_3, ABS(CAST(SUBSTR("Year 2", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 3", 1, 4) AS INTEGER)) AS year_diff_2_3 FROM T WHERE "Reading" NOT IN ('Maftir') ) SELECT COUNT(*) AS years_to_read_same_verses FROM verse_years WHERE year_diff_1_2 = 0 OR year_diff_1_3 = 0 OR year_diff_2_3 = 0;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   years_to_read_same_verses |
+|----------------------------:|
+|                           8 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Va'eira
+SQL: WITH verse_years AS ( SELECT "Reading", ABS(CAST(SUBSTR("Year 1", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 2", 1, 4) AS INTEGER)) AS year_diff_1_2, ABS(CAST(SUBSTR("Year 1", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 3", 1, 4) AS INTEGER)) AS year_diff_1_3, ABS(CAST(SUBSTR("Year 2", 1, 4) AS INTEGER) - CAST(SUBSTR("Year 3", 1, 4) AS INTEGER)) AS year_diff_2_3 FROM T WHERE "Reading" NOT IN ('Maftir') ) SELECT COUNT(*) AS years_to_read_same_verses FROM verse_years WHERE year_diff_1_2 = 0 OR year_diff_1_3 = 0 OR year_diff_2_3 = 0;
+
+SQL Execution Result:
+years_to_read_same_verses
+8
+
+Question: how many years does it take to read the same verses again?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 8
+[Gold Answer] 3
+

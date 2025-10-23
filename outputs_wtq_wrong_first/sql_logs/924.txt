@@ -1,0 +1,155 @@
+=== Table ID ===
+csv/204-csv/953.tsv
+
+=== Question ===
+tim schenken finished in 76 laps. who was next?
+
+=== Sub-table Preview ===
+|   Rank | Nation        |   Gold |   Silver |   Bronze |   Total |
+|-------:|:--------------|-------:|---------:|---------:|--------:|
+|      1 | China         |     63 |       46 |       32 |     141 |
+|      4 | United States |     27 |       22 |       39 |      88 |
+|      5 | Australia     |     26 |       38 |       36 |     100 |
+|      7 | Spain         |     20 |       27 |       24 |      71 |
+|      8 | Germany       |     19 |       28 |       31 |      78 |
+|      9 | France        |     18 |       26 |       30 |      74 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - Representative values: 1, 4, 5, 7
+   - Role: Identifier for the ranking of nations based on total medal count.
+
+2. Nation:
+   - Data type: Categorical
+   - Representative values: China, United States, Australia, Spain
+   - Role: Descriptor for the name of the nation.
+
+3. Gold:
+   - Data type: Numeric
+   - Representative values: 63, 27, 26, 20
+   - Role: Measure of the number of gold medals won by each nation.
+
+4. Silver:
+   - Data type: Numeric
+   - Representative values: 46, 22, 38, 27
+   - Role: Measure of the number of silver medals won by each nation.
+
+5. Bronze:
+   - Data type: Numeric
+   - Representative values: 32, 39, 36, 24
+   - Role: Measure of the number of bronze medals won by each nation.
+
+6. Total:
+   - Data type: Numeric
+   - Representative values: 141, 88, 100, 71
+   - Role: Measure of the total number of medals won by each nation.
+
+**Outlier Row Analysis:**
+
+1. Australia:
+   - The values for Gold (26), Silver (38), and Bronze (36) are significantly higher compared to the other nations in the table.
+   - These values make the row an outlier in terms of medal count.
+
+2. China:
+   - The values for Gold (63) and Total (141) are much higher than the other nations.
+   - These values make the row an outlier in terms of total medal count.
+
+3. Germany:
+   - The values for Silver (28) and Bronze (31) are relatively high compared to the other nations.
+   - These values are not significantly different from the majority of the table, so this row is an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Pos   |   No | Driver               | Constructor      |   Laps | Time/Retired   |   Grid |   Points |
+|-------------:|:------|-----:|:---------------------|:-----------------|-------:|:---------------|-------:|---------:|
+|            0 | 1     |   11 | Jackie Stewart       | Tyrrell-Ford     |     80 | 1:52:21.3      |      1 |        9 |
+|            1 | 2     |   17 | Ronnie Peterson      | March-Ford       |     80 | + 25.6         |      6 |        6 |
+|            2 | 3     |    4 | Jacky Ickx           | Ferrari          |     80 | + 53.3         |      2 |        4 |
+|            3 | 4     |    9 | Denny Hulme          | McLaren-Ford     |     80 | + 1:06.7       |      8 |        3 |
+|            4 | 5     |    1 | Emerson Fittipaldi   | Lotus-Ford       |     79 | + 1 Lap        |     17 |        2 |
+|            5 | 6     |   24 | Rolf Stommelen       | Surtees-Ford     |     79 | + 1 Lap        |     16 |        1 |
+|            6 | 7     |   22 | John Surtees         | Surtees-Ford     |     79 | + 1 Lap        |     10 |      nan |
+|            7 | 8     |   27 | Henri Pescarolo      | March-Ford       |     77 | + 3 Laps       |     13 |      nan |
+|            8 | 9     |   15 | Pedro Rodríguez      | BRM              |     76 | + 4 Laps       |      5 |      nan |
+|            9 | 10    |    8 | Tim Schenken         | Brabham-Ford     |     76 | + 4 Laps       |     18 |      nan |
+|           10 | Ret   |   14 | Jo Siffert           | BRM              |     58 | Oil Pipe       |      3 |      nan |
+|           11 | Ret   |   21 | Jean-Pierre Beltoise | Matra            |     47 | Differential   |      7 |      nan |
+|           12 | Ret   |   20 | Chris Amon           | Matra            |     45 | Differential   |      4 |      nan |
+|           13 | Ret   |    5 | Clay Regazzoni       | Ferrari          |     24 | Accident       |     11 |      nan |
+|           14 | Ret   |   10 | Peter Gethin         | McLaren-Ford     |     22 | Accident       |     14 |      nan |
+|           15 | Ret   |    2 | Reine Wisell         | Lotus-Ford       |     21 | Wheel bearing  |     12 |      nan |
+|           16 | Ret   |   12 | François Cevert      | Tyrrell-Ford     |      5 | Accident       |     15 |      nan |
+|           17 | Ret   |    7 | Graham Hill          | Brabham-Ford     |      1 | Accident       |      9 |      nan |
+|           18 | DNQ   |   16 | Howden Ganley        | BRM              |    nan |                |    nan |      nan |
+|           19 | DNQ   |    6 | Mario Andretti       | Ferrari          |    nan |                |    nan |      nan |
+|           20 | DNQ   |   19 | Nanni Galli*         | March-Alfa-Romeo |    nan |                |    nan |      nan |
+|           21 | DNQ   |   18 | Alex Soler-Roig      | March-Ford       |    nan |                |    nan |      nan |
+|           22 | DNQ   |   28 | Skip Barber          | March-Ford       |    nan |                |    nan |      nan |
+
+Generated Reasoning SQL: Explanation: To find out who finished after Tim Schenken, we need to look for the row where the number of laps is greater than 76. Since the "Laps" column contains numeric values representing the number of laps completed by each driver, we can filter the rows based on this condition.
+
+SQL: SELECT "Driver" 
+FROM T 
+WHERE "Laps" > 76 
+ORDER BY "Laps" 
+LIMIT 1;
+Generated Final SQL: SELECT "Driver" FROM T WHERE "Laps" > 76 ORDER BY "Laps" LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Driver          |
+|:----------------|
+| Henri Pescarolo |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1971 Monaco Grand Prix
+SQL: SELECT "Driver" FROM T WHERE "Laps" > 76 ORDER BY "Laps" LIMIT 1;
+
+SQL Execution Result:
+Driver
+Henri Pescarolo
+
+Question: tim schenken finished in 76 laps. who was next?
+A: To find the answer to this question, let’s think step by step.
+Prediction: henri pescarolo
+[Gold Answer] jo siffert
+

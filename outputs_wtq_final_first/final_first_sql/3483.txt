@@ -1,0 +1,113 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: nan, 4, 5, 7
+   - Role: Identifier
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Alison Fealey, Jenny Kurth, Sonia Fonseca, Fabíola Molina
+   - Role: Descriptor
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: United States, Puerto Rico, Brazil, Suriname
+   - Role: Descriptor
+
+4. Time:
+   - Data type: Numeric (Time)
+   - 4 representative example values: 4:48.31, 4:57.24, 5:03.15, 5:03.43
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The Nationality is "Puerto Rico", which is different from the majority of "United States" entries in the table.
+   - This makes the row an outlier as it has a distinctive value in the Nationality column.
+
+2. Row 3 (Index 3):
+   - The Nationality is "Brazil", which is different from the majority of "United States" entries in the table.
+   - This makes the row an outlier as it has a distinctive value in the Nationality column.
+
+3. Row 6 (Index 6):
+   - The Rank is missing (nan), which is not a distinctive value as there are other rows with missing Rank values.
+   - The Time value is 5:13.24, which is within the range of other Time values in the table.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Name            | Nationality   | Time    |
+|-------------:|-------:|:----------------|:--------------|:--------|
+|            0 |    nan | Joanne Malar    | Canada        | 4:43.64 |
+|            1 |    nan | Alison Fealey   | United States | 4:48.31 |
+|            2 |    nan | Jenny Kurth     | United States | 4:57.24 |
+|            3 |      4 | Sonia Fonseca   | Puerto Rico   | 5:03.15 |
+|            4 |      5 | Fabíola Molina  | Brazil        | 5:03.43 |
+|            5 |      6 | Isabel Rojas    | Colombia      | 5:11.58 |
+|            6 |      7 | Carolyn Adel    | Suriname      | 5:13.24 |
+|            7 |      8 | Edith Arraspide | Argentina     | 5:13.95 |
+
+Generated Reasoning SQL: The summary provides information about the "Nationality" column, which is categorical and contains the countries of the athletes. To determine the number of countries with more than one athlete, we need to count the distinct countries in the dataset that have more than one athlete represented. We should exclude any rows marked as outliers in the summary. 
+
+SQL: 
+SELECT COUNT(DISTINCT "Nationality") 
+FROM T 
+GROUP BY "Nationality" 
+HAVING COUNT("Name") > 1;
+Generated Final SQL: SELECT COUNT(DISTINCT "Nationality") FROM T GROUP BY "Nationality" HAVING COUNT("Name") > 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(DISTINCT "Nationality") |
+|--------------------------------:|
+|                               1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Swimming at the 1995 Pan American Games – Women's 400 metre individual medley
+SQL: SELECT COUNT(DISTINCT "Nationality") FROM T GROUP BY "Nationality" HAVING COUNT("Name") > 1;
+
+COUNT(DISTINCT "Nationality")
+1
+Question: how many countries have more than 1 athlete?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 1
+

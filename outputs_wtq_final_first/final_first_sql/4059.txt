@@ -1,0 +1,187 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1983, 1985, 1986, 2006
+   - Role of the column: Identifier for the year in which the supporting actor was awarded.
+
+2. Supporting Actor:
+   - Data type: Categorical
+   - 4 representative example values: NOT AWARDED, Terrence Howard, Adam Rodriguez
+   - Role of the column: Descriptor for the supporting actor who was awarded.
+
+3. Motion Picture:
+   - Data type: Categorical
+   - 4 representative example values: -, Crash, I Can Do Bad All by Myself
+   - Role of the column: Descriptor for the motion picture in which the supporting actor appeared.
+
+4. Nominees:
+   - Data type: Categorical
+   - 4 representative example values: nan, Ludacris-Crash, Anthony Mackie-The Hurt Locker, Chiwetel Ejiofor-2012
+   - Role of the column: Descriptor for the nominees in the respective motion picture.
+
+**Outlier Row Analysis:**
+
+1. Row 37:
+   - The row contains missing data (nan) in the "Nominees" column, which is not distinctive as missing data is common in the table. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 41:
+   - The row contains missing data (nan) in the "Nominees" column, which is not distinctive as missing data is common in the table. Therefore, this row is an ordinary row and does not require special handling.
+
+3. Row 13:
+   - The row contains missing data (nan) in the "Nominees" column, which is not distinctive as missing data is common in the table. Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Supporting Actor   | Motion Picture             | Nominees                                                                                                                                                              |
+|-------------:|-------:|:-------------------|:---------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 |   1969 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            1 |   1970 | Redd Foxx          | Cotton Comes to Harlem     |                                                                                                                                                                       |
+|            2 |   1971 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            3 |   1972 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            4 |   1973 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            5 |   1974 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            6 |   1975 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            7 |   1976 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            8 |   1977 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|            9 |   1978 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           10 |   1979 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           11 |   1980 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           12 |   1981 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           13 |   1982 | Moses Gunn         | Ragtime                    |                                                                                                                                                                       |
+|           14 |   1983 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           15 |   1984 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           16 |   1985 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           17 |   1986 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           18 |   1987 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           19 |   1988 | Denzel Washington  | Power                      |                                                                                                                                                                       |
+|           20 |   1989 | Mario Van Peebles  | Heartbreak Ridge           |                                                                                                                                                                       |
+|           21 |   1990 | Arsenio Hall       | Coming to America          |                                                                                                                                                                       |
+|           22 |   1991 | Ossie Davis        | Do the Right Thing         |                                                                                                                                                                       |
+|           23 |   1992 | Denzel Washington  | Glory                      |                                                                                                                                                                       |
+|           24 |   1993 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           25 |   1994 | NOT AWARDED        | -                          |                                                                                                                                                                       |
+|           26 |   1995 | Al Freeman Jr.     | Malcolm X                  | Delroy Lindo- Malcolm X\nDenzel Washington- Much Ado About Nothing\nForest Whitaker- The Crying Game\nWolfgang Bodison- A Few Good Men                                |
+|           27 |   1996 | Laurence Fishburne | Higher Learning            | Charles S. Dutton- Cry the Beloved Country\nDon Cheadle- Devil in a Blue Dress\nIce Cube- Higher Learning\nCuba Gooding Jr.- Outbreak                                 |
+|           28 |   1997 | Samuel L. Jackson  | A Time to Kill             | Blair Underwood- Set it Off\nCharles S. Dutton- A Time to Kill\nDelroy Lindo- Ransom\nForest Whitaker- Phenomenon                                                     |
+|           29 |   1998 | Morgan Freeman     | Amistad                    | Clarence Williams III- Hoodlum\nDanny Glover- The Rainmaker\nDon Cheadle- Rosewood\nVondie Curtis-Hall- Eve's Bayou                                                   |
+|           30 |   1999 | Morgan Freeman     | Deep Impact                | Andre Braugher- City of Angels\nChris Rock- Lethal Weapon 4\nCuba Gooding Jr.- What Dreams May Come\nDon Cheadle- Bulworth                                            |
+|           31 |   2000 | Terrence Howard    | The Best Man               | Charles S. Dutton- Cookie's Fortune\nClarence Williams III- The General's Daughter\nHarold Perrineau- The Best Man\nLL Cool J- Deep Blue Sea                          |
+|           32 |   2001 | Blair Underwood    | Rules of Engagement        | Ving Rhames- Mission: Impossible II\nMorgan Freeman- Nurse Betty\nWood Harris- Remember the Titans\nBilly Dee Williams- The Visit                                     |
+|           33 |   2002 | Jamie Foxx         | Ali                        | Mario Van Peebles- Ali\nVing Rhames- Baby Boy\nCedric the Entertainer- Kingdom Come\nAnthony Anderson-Two Can Play That Game                                          |
+|           34 |   2003 | Denzel Washington  | Antwone Fisher             | Boris Kodjoe-Brown Sugar\nMos Def-Brown Sugar\nCedric the Entertainer-Barbershop\nAnthony Anderson-Barbershop                                                         |
+|           35 |   2004 | Morgan Freeman     | Bruce Almighty             | Djimon Hounsou-In America\nForest Whitaker-Phone Booth\nBernie Mac-Head of State\nCharles S. Dutton-Gothika                                                           |
+|           36 |   2005 | Morgan Freeman     | Million Dollar Baby        | Jamie Foxx-Collateral\nC.J. Sanders-Ray\nClifton Powell-Ray\nDon Cheadle-Ocean's Twelve                                                                               |
+|           37 |   2006 | Terrence Howard    | Crash                      | Ludacris-Crash\nLarenz Tate-Crash\nDon Cheadle-Crash\nAnthony Anderson-Hustle & Flow                                                                                  |
+|           38 |   2007 | Djimon Hounsou     | Blood Diamond              | Eddie Murphy-Dreamgirls\nDanny Glover-Dreamgirls\nHarry Belafonte-Bobby\nJaden Smith-The Pursuit of Happyness                                                         |
+|           39 |   2008 | Denzel Whitaker    | The Great Debaters         | Nate Parker-The Great Debaters\nChiwetel Ejiofor-Talk to Me\nTyler Perry-Why Did I Get Married?\nForest Whitaker-The Great Debaters                                   |
+|           40 |   2009 | Columbus Short     | Cadillac Records           | Dev Patel-Slumdog Millionaire\nNate Parker-The Secret Life of Bees\nCedric the Entertainer-Cadillac Records\nMos Def-Cadillac Records                                 |
+|           41 |   2010 | Adam Rodriguez     | I Can Do Bad All by Myself | Anthony Mackie-The Hurt Locker\nChiwetel Ejiofor-2012\nDanny Glover-2012\nLenny Kravitz-Precious                                                                      |
+|           42 |   2011 | Samuel L. Jackson  | Mother and Child           | Idris Elba-Takers\nDon Cheadle-Brooklyn's Finest\nMichael Ealy-For Colored Girls\nJustin Timberlake-The Social Network                                                |
+|           43 |   2012 | Mike Epps          | Jumping the Broom          | Anthony Mackie – The Adjustment Bureau\nCharles Parnell – Pariah\nDon Cheadle – The Guard\nJeffrey Wright – The Ides of March                                         |
+|           44 |   2013 | Samuel L. Jackson  | Django Unchained           | Lenny Kravitz – The Hunger Games\nDon Cheadle – Flight\nDavid Oyelowo – Middle of Nowhere\nDwight Henry-Beasts of the Southern Wild                                   |
+|           45 |   2014 | David Oyelowo      | Lee Daniels' The Butler    | Terrence Howard - Lee Daniels' The Butler\nCuba Gooding Jr. - Lee Daniels' The Butler\nTerrence Howard - The Best Man Holiday\nMorris Chestnut - The Best Man Holiday |
+
+Generated Reasoning SQL: Explanation: To determine the number of nominees each year for the NAACP Image Award, we need to count the distinct values in the "Nominees" column for each year. Since missing data is common in the "Nominees" column, we should count all non-null values to get an accurate count of nominees each year.
+
+SQL: 
+SELECT "Year", COUNT("Nominees") AS num_nominees
+FROM T
+WHERE "Nominees" IS NOT NULL
+GROUP BY "Year";
+Generated Final SQL: SELECT "Year", COUNT("Nominees") AS num_nominees FROM T WHERE "Nominees" IS NOT NULL GROUP BY "Year";
+SQL 실행 결과 셀 수: 40
+=== SQL 실행 결과 미리보기 ===
+|   Year |   num_nominees |
+|-------:|---------------:|
+|   1995 |              1 |
+|   1996 |              1 |
+|   1997 |              1 |
+|   1998 |              1 |
+|   1999 |              1 |
+|   2000 |              1 |
+|   2001 |              1 |
+|   2002 |              1 |
+|   2003 |              1 |
+|   2004 |              1 |
+|   2005 |              1 |
+|   2006 |              1 |
+|   2007 |              1 |
+|   2008 |              1 |
+|   2009 |              1 |
+|   2010 |              1 |
+|   2011 |              1 |
+|   2012 |              1 |
+|   2013 |              1 |
+|   2014 |              1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: NAACP Image Award for Outstanding Supporting Actor in a Motion Picture
+SQL: SELECT "Year", COUNT("Nominees") AS num_nominees FROM T WHERE "Nominees" IS NOT NULL GROUP BY "Year";
+
+SQL Execution Result:
+Year | num_nominees
+1995 | 1
+1996 | 1
+1997 | 1
+1998 | 1
+1999 | 1
+2000 | 1
+2001 | 1
+2002 | 1
+2003 | 1
+2004 | 1
+2005 | 1
+2006 | 1
+2007 | 1
+2008 | 1
+2009 | 1
+2010 | 1
+2011 | 1
+2012 | 1
+2013 | 1
+2014 | 1
+
+Question: how many nominees are there each year for the naacp image award?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 4
+

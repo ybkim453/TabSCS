@@ -1,0 +1,142 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 7, 13
+   - Role: Identifier for the week number of the NFL game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: September 14, 1986, October 12, 1986, October 19, 1986, November 27, 1986
+   - Role: Descriptor for the date of the NFL game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Detroit Lions, Washington Redskins, Philadelphia Eagles, Seattle Seahawks
+   - Role: Descriptor for the opposing team in the NFL game
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: W 31–7, W 30–6, W 17–14, L 14–31
+   - Role: Measure indicating the outcome of the NFL game
+
+5. Game site:
+   - Data type: Categorical
+   - 4 representative example values: Pontiac Silverdome, Texas Stadium, Veterans Stadium
+   - Role: Descriptor for the location of the NFL game
+
+6. NFL Recap:
+   - Data type: Categorical
+   - 4 representative example values: [2], [6], [7], [13]
+   - Role: Descriptor for the recap reference of the NFL game
+
+7. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 73,812, 63,264, 68,572, 58,020
+   - Role: Measure indicating the number of attendees at the NFL game
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The Week value of 2 is lower than the other weeks in the table.
+   - The Result value of W 31–7 is a significant win compared to the other results.
+   - These values make Row 1 an outlier as it represents an exceptional performance early in the season.
+
+2. Row 0:
+   - The Date value of September 14, 1986 is the earliest date in the table.
+   - The Opponent value of Detroit Lions is different from the other opponents.
+   - These values make Row 0 an outlier as it represents the first game of the season against a unique opponent.
+
+3. Row 6:
+   - The Attendance value of 58,020 is lower than the other attendance numbers.
+   - The Result value of L 14–31 is a significant loss compared to the other results.
+   - These values make Row 6 an outlier as it represents a lower attendance and a notable defeat in the season.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date                | Opponent               | Result   | Game site              | NFL Recap   |   Attendance |
+|-------------:|-------:|:--------------------|:-----------------------|:---------|:-----------------------|:------------|-------------:|
+|            0 |      1 | 1986-09-08 00:00:00 | New York Giants        | W 31–28  | Texas Stadium          | [1]         |        59804 |
+|            1 |      2 | 1986-09-14 00:00:00 | at Detroit Lions       | W 31–7   | Pontiac Silverdome     | [2]         |        73812 |
+|            2 |      3 | 1986-09-21 00:00:00 | Atlanta Falcons        | L 35–37  | Texas Stadium          | [3]         |        62880 |
+|            3 |      4 | 1986-09-29 00:00:00 | at St. Louis Cardinals | W 31–7   | Busch Memorial Stadium | [4]         |        49077 |
+|            4 |      5 | 1986-10-05 00:00:00 | at Denver Broncos      | L 14–29  | Mile High Stadium      | [5]         |        76082 |
+|            5 |      6 | 1986-10-12 00:00:00 | Washington Redskins    | W 30–6   | Texas Stadium          | [6]         |        63264 |
+|            6 |      7 | 1986-10-19 00:00:00 | at Philadelphia Eagles | W 17–14  | Veterans Stadium       | [7]         |        68572 |
+|            7 |      8 | 1986-10-26 00:00:00 | St. Louis Cardinals    | W 37–6   | Texas Stadium          | [8]         |        60756 |
+|            8 |      9 | 1986-11-02 00:00:00 | at New York Giants     | L 14–17  | Giants Stadium         | [9]         |        74871 |
+|            9 |     10 | 1986-11-09 00:00:00 | Los Angeles Raiders    | L 13–17  | Texas Stadium          | [10]        |        61706 |
+|           10 |     11 | 1986-11-16 00:00:00 | at San Diego Chargers  | W 24–21  | Jack Murphy Stadium    | [11]        |        55622 |
+|           11 |     12 | 1986-11-23 00:00:00 | at Washington Redskins | L 14–41  | RFK Stadium            | [12]        |        55642 |
+|           12 |     13 | 1986-11-27 00:00:00 | Seattle Seahawks       | L 14–31  | Texas Stadium          | [13]        |        58020 |
+|           13 |     14 | 1986-12-07 00:00:00 | at Los Angeles Rams    | L 10–29  | Anaheim Stadium        | [14]        |        64949 |
+|           14 |     15 | 1986-12-14 00:00:00 | Philadelphia Eagles    | L 21–23  | Texas Stadium          | [15]        |        46117 |
+|           15 |     16 | 1986-12-21 00:00:00 | Chicago Bears          | L 10–24  | Texas Stadium          | [16]        |        57256 |
+
+Generated Reasoning SQL: Explanation: To find the opponent after the October 26 game at Texas Stadium, we need to identify the row where the "Week" is greater than the week of the October 26 game and the "Game site" is Texas Stadium. We will then select the "Opponent" value from that row.
+
+SQL: 
+SELECT "Opponent" 
+FROM T 
+WHERE "Week" > (SELECT "Week" FROM T WHERE "Date" = '1986-10-26 00:00:00' AND "Game site" = 'Texas Stadium') 
+AND "Game site" = 'Texas Stadium'
+ORDER BY "Week" 
+LIMIT 1;
+Generated Final SQL: SELECT "Opponent" FROM T WHERE "Week" > (SELECT "Week" FROM T WHERE "Date" = '1986-10-26 00:00:00' AND "Game site" = 'Texas Stadium') AND "Game site" = 'Texas Stadium' ORDER BY "Week" LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Opponent            |
+|:--------------------|
+| Los Angeles Raiders |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1986 Dallas Cowboys season
+SQL: SELECT "Opponent" FROM T WHERE "Week" > (SELECT "Week" FROM T WHERE "Date" = '1986-10-26 00:00:00' AND "Game site" = 'Texas Stadium') AND "Game site" = 'Texas Stadium' ORDER BY "Week" LIMIT 1;
+
+SQL Execution Result:
+Opponent
+Los Angeles Raiders
+
+Question: who was the opponent after the october 26 game at the texas stadium?
+A: To find the answer to this question, let’s think step by step.
+Prediction: los angeles raiders
+[Gold Answer] new york giants
+

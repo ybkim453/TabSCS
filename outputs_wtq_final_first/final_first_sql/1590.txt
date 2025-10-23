@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 5, 7, 8
+   - Role: Identifier, indicates the ranking of the nation in the table.
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Indonesia, Chinese Taipei, Japan, India
+   - Role: Descriptor, specifies the name of the nation.
+
+3. Gold:
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 0, 0
+   - Role: Measure, represents the number of gold medals won by each nation.
+
+4. Silver:
+   - Data type: Numeric
+   - 4 representative example values: 3, 1, 0, 0
+   - Role: Measure, represents the number of silver medals won by each nation.
+
+5. Bronze:
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 2, 1
+   - Role: Measure, represents the number of bronze medals won by each nation.
+
+6. Total:
+   - Data type: Numeric
+   - 4 representative example values: 6, 3, 2, 1
+   - Role: Measure, represents the total number of medals won by each nation.
+
+**Outlier Row Analysis:**
+
+1. Indonesia (Rank 2):
+   - This row has a higher total count of 6 medals compared to the other nations in the table.
+   - The distribution of gold, silver, and bronze medals is also higher than the majority of the table.
+   - These values make this row an outlier in terms of medal count.
+
+2. Chinese Taipei (Rank 5):
+   - This row has a total count of 3 medals, which is lower than the other nations in the table.
+   - The distribution of medals (0 gold, 1 silver, 2 bronze) is also different from the majority.
+   - These values make this row an outlier in terms of lower medal count.
+
+3. Spain (Rank 9):
+   - This row has a total count of 1 medal, which is lower than the other nations in the table.
+   - The distribution of medals (0 gold, 0 silver, 1 bronze) is consistent with other nations with a single bronze medal.
+   - These values are ordinary within the context of the table and do not make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Nation         |   Gold |   Silver |   Bronze |   Total |
+|-------------:|-------:|:---------------|-------:|---------:|---------:|--------:|
+|            0 |      1 | Malaysia       |      3 |        0 |        1 |       4 |
+|            1 |      2 | Indonesia      |      1 |        3 |        2 |       6 |
+|            2 |      3 | Korea          |      1 |        1 |        2 |       4 |
+|            3 |      4 | Thailand       |      1 |        0 |        0 |       1 |
+|            4 |      5 | Chinese Taipei |      0 |        1 |        2 |       3 |
+|            5 |      6 | Denmark        |      0 |        1 |        0 |       1 |
+|            6 |      7 | Japan          |      0 |        0 |        2 |       2 |
+|            7 |      8 | India          |      0 |        0 |        1 |       1 |
+|            8 |      9 | Spain          |      0 |        0 |        1 |       1 |
+
+Generated Reasoning SQL: To find the total number of times gold has been won, we need to sum the values in the "Gold" column for all rows in the table. The "Gold" column is numeric and represents the number of gold medals won by each nation.
+SQL: select sum(cast("Gold" as integer)) from T;
+Generated Final SQL: select sum(cast("Gold" as integer)) from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   sum(cast("Gold" as integer)) |
+|-------------------------------:|
+|                              6 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2011 BWF World Junior Championships
+SQL: select sum(cast("Gold" as integer)) from T;
+
+sum(cast("Gold" as integer))
+6
+Question: how many times has gold been won total?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 6
+[Gold Answer] 6
+

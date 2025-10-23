@@ -1,0 +1,126 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Outcome:
+   - Data type: Categorical
+   - 4 representative example values: Runner-up, Winner
+   - Role: Describes the outcome of the match for the player
+
+2. No.:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4
+   - Role: Identifier for the match number
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: 19 June 2010, 18 June 2011
+   - Role: Describes the date of the match
+
+4. Tournament:
+   - Data type: Categorical
+   - 4 representative example values: UNICEF Open, Aegon International
+   - Role: Describes the name of the tournament
+
+5. Surface:
+   - Data type: Categorical
+   - 4 representative example values: Grass, Hard (i)
+   - Role: Describes the type of surface the match was played on
+
+6. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Sergiy Stakhovsky, Andreas Seppi
+   - Role: Describes the name of the opponent player
+
+7. Score:
+   - Data type: Categorical
+   - 4 representative example values: 3–6, 0–6, 6–7(5–7), 6–3, 3–5 ret.
+   - Role: Describes the score of the match
+
+**Outlier Row Analysis:**
+
+1. Row 4:
+   - The values for Tournament being "Kremlin Cup, Russia" and Surface being "Hard (i)" are not common in the table.
+   - This row is an outlier due to the unique combination of tournament location and surface type.
+
+2. Row 1:
+   - The values for Tournament being "UNICEF Open, Netherlands" and Surface being "Grass" are not common in the table.
+   - This row is an outlier due to the unique combination of tournament location and surface type.
+
+3. Row 3:
+   - The values for Tournament being "Malaysian Open, Malaysia" and Surface being "Hard (i)" are not common in the table.
+   - This row is an outlier due to the unique combination of tournament location and surface type.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                                       | Surface   | Opponent              | Score                      |
+|-------------:|:----------|------:|:--------------------|:-------------------------------------------------|:----------|:----------------------|:---------------------------|
+|            0 | Runner-up |     1 | 2009-10-25 00:00:00 | Kremlin Cup Russia                               | Hard (i)  | Mikhail Youzhny       | 7–6(7–5) 0–6 4–6           |
+|            1 | Runner-up |     2 | 2010-06-19 00:00:00 | UNICEF Open Netherlands                          | Grass     | Sergiy Stakhovsky     | 3–6 0–6                    |
+|            2 | Runner-up |     3 | 2011-02-27 00:00:00 | International Tennis Championships United States | Hard      | Juan Martín del Potro | 4–6 4–6                    |
+|            3 | Runner-up |     4 | 2011-06-18 00:00:00 | Aegon International United Kingdom               | Grass     | Andreas Seppi         | 6–7(5–7) 6–3 3–5 ret.      |
+|            4 | Winner    |     1 | 2011-10-02 00:00:00 | Malaysian Open Malaysia                          | Hard (i)  | Marcos Baghdatis      | 6–4 7–5                    |
+|            5 | Winner    |     2 | 2011-10-23 00:00:00 | Kremlin Cup Russia                               | Hard (i)  | Viktor Troicki        | 6–4 6–2                    |
+|            6 | Runner-up |     5 | 2011-10-30 00:00:00 | St. Petersburg Open Russia                       | Hard (i)  | Marin Čilić           | 3–6 6–3 2–6                |
+|            7 | Runner-up |     6 | 2012-01-08 00:00:00 | Chennai Open India                               | Hard      | Milos Raonic          | 7–6(7–4) 6–7(4–7) 6–7(4–7) |
+|            8 | Winner    |     3 | 2012-07-15 00:00:00 | Stuttgart Open Germany                           | Clay      | Juan Mónaco           | 6–4 5–7 6–3                |
+|            9 | Runner-up |     7 | 2012-07-22 00:00:00 | Swiss Open Switzerland                           | Clay      | Thomaz Bellucci       | 7–6(8–6) 4–6 2–6           |
+|           10 | Winner    |     4 | 2013-01-06 00:00:00 | Chennai Open India                               | Hard      | Roberto Bautista-Agut | 3–6 6–1 6–3                |
+
+Generated Reasoning SQL: Explanation: To find the only Canadian opponent, we need to filter rows where the "Opponent" column contains a Canadian player. The summary shows that the "Opponent" column is categorical and provides example values, including Canadian players like "Milos Raonic" or "Vasek Pospisil". We can use this information to construct a query that selects the unique Canadian opponent.
+SQL: select distinct "Opponent" from T where "Opponent" like '%Canada%' or "Opponent" like '%Canadian%'
+Generated Final SQL: select distinct "Opponent" from T where "Opponent" like '%Canada%' or "Opponent" like '%Canadian%'
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Janko Tipsarević (row_number, Outcome, No., Date, Tournament, Surface, Opponent, Score)
+
+row_number | Outcome | No. | Date | Tournament | Surface | Opponent | Score
+0 | Runner-up | 1.0 | 2009-10-25 00:00:00 | Kremlin Cup Russia | Hard (i) | Mikhail Youzhny | 7–6(7–5) 0–6 4–6
+1 | Runner-up | 2.0 | 2010-06-19 00:00:00 | UNICEF Open Netherlands | Grass | Sergiy Stakhovsky | 3–6 0–6
+2 | Runner-up | 3.0 | 2011-02-27 00:00:00 | International Tennis Championships United States | Hard | Juan Martín del Potro | 4–6 4–6
+3 | Runner-up | 4.0 | 2011-06-18 00:00:00 | Aegon International United Kingdom | Grass | Andreas Seppi | 6–7(5–7) 6–3 3–5 ret.
+4 | Winner | 1.0 | 2011-10-02 00:00:00 | Malaysian Open Malaysia | Hard (i) | Marcos Baghdatis | 6–4 7–5
+5 | Winner | 2.0 | 2011-10-23 00:00:00 | Kremlin Cup Russia | Hard (i) | Viktor Troicki | 6–4 6–2
+6 | Runner-up | 5.0 | 2011-10-30 00:00:00 | St. Petersburg Open Russia | Hard (i) | Marin Čilić | 3–6 6–3 2–6
+7 | Runner-up | 6.0 | 2012-01-08 00:00:00 | Chennai Open India | Hard | Milos Raonic | 7–6(7–4) 6–7(4–7) 6–7(4–7)
+8 | Winner | 3.0 | 2012-07-15 00:00:00 | Stuttgart Open Germany | Clay | Juan Mónaco | 6–4 5–7 6–3
+9 | Runner-up | 7.0 | 2012-07-22 00:00:00 | Swiss Open Switzerland | Clay | Thomaz Bellucci | 7–6(8–6) 4–6 2–6
+10 | Winner | 4.0 | 2013-01-06 00:00:00 | Chennai Open India | Hard | Roberto Bautista-Agut | 3–6 6–1 6–3
+Question: who was the only canadian opponent?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify all the opponents in the table who are Canadian.  
+
+From the full table:
+- The opponents who are Canadian:
+  1. Milos Raonic (Runner-up, Chennai Open India 2012)
+
+Therefore, the only Canadian opponent in the table was Milos Raonic.
+
+Final Answer: Milos Raonic
+[Fallback] Prediction: milos raonic
+[Gold Answer] milos raonic
+

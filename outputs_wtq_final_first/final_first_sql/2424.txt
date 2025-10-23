@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Single / EP:
+   - Data type: Categorical
+   - 4 representative example values: Dutchie, Hot & Cold, Rave To The Grave, Redroid
+   - Role: Identifier for the single or EP released by the artist
+
+2. Tracks:
+   - Data type: Categorical
+   - 4 representative example values: Dutchie, Overdose, Raver Booty Shuffle, Redroid
+   - Role: Descriptor of the tracks included in the single or EP
+
+3. Label:
+   - Data type: Categorical
+   - 4 representative example values: Burn The Fire, Temple Music Group, Vicious
+   - Role: Descriptor of the record label associated with the single or EP
+
+4. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2010, 2011, 2014
+   - Role: Measure of the year in which the single or EP was released
+
+5. Album:
+   - Data type: Categorical
+   - 4 representative example values: —
+   - Role: Descriptor of the album associated with the single or EP (empty for this partial preview)
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The values in this row are not significantly different from the majority of the table. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 5:
+   - The values in this row are also not significantly different from the majority of the table. This row is an ordinary row and does not require special handling.
+
+3. Row 22:
+   - The values in this row are consistent with the rest of the table and do not stand out as distinctive. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Single / EP                         | Tracks                                                                                              | Label              |   Year | Album      |
+|-------------:|:------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------|-------:|:-----------|
+|            0 | Your Love Is Electric               | Your Love Is Electric                                                                               | Burn The Fire      |   2009 | —          |
+|            1 | Fresh Attire Vol. 3                 | Crush Groovin'                                                                                      | Wearhouse Music    |   2009 | —          |
+|            2 | Left To Right                       | Left To Right                                                                                       | Destination?       |   2009 | —          |
+|            3 | Breakdown                           | Breakdown                                                                                           | Burn The Fire      |   2009 | —          |
+|            4 | Doin' It Right                      | Doin' It Right                                                                                      | Burn The Fire      |   2009 | —          |
+|            5 | Los Angeles                         | Los Angeles\nLos Angeles feat. Whiskey Pete (Clean Mix)\nLos Angeles feat. Whiskey Pete (Dirty Mix) | Burn The Fire      |   2010 | The Agenda |
+|            6 | Dutchie                             | Dutchie                                                                                             | Burn The Fire      |   2010 | —          |
+|            7 | Ghetto Ass Bitches                  | Ghetto Ass Bitches                                                                                  | Burn The Fire      |   2010 | —          |
+|            8 | Hot & Cold                          | Overdose                                                                                            | Burn The Fire      |   2010 | —          |
+|            9 | The Flying Cat                      | The Flying Cat                                                                                      | Burn The Fire      |   2010 | —          |
+|           10 | Rave To The Grave                   | Raver Booty\nShuffle                                                                                | Burn The Fire      |   2010 | —          |
+|           11 | Those Who From Heaven To Earth Came | The Lizard King\nAnnunaki                                                                           | Burn The Fire      |   2010 | —          |
+|           12 | Still Smoking                       | Nasty & Gaspar Still Smoking                                                                        | Burn The Fire      |   2010 | —          |
+|           13 | The Thirteenth Skull                | The Thirteenth Skull                                                                                | Burn The Fire      |   2010 | —          |
+|           14 | Die Famous                          | Die Famous                                                                                          | Burn The Fire      |   2011 | —          |
+|           15 | Redroid                             | Redroid                                                                                             | Temple Music Group |   2011 | —          |
+|           16 | Ancient Psychic Tandem War Elephant | Ancient Psychic Tandem War Elephant                                                                 | Burn The Fire      |   2011 | —          |
+|           17 | 2012 – Remix Contest EP             | 2012 (Remastered)                                                                                   | Burn The Fire      |   2012 | The Agenda |
+|           18 | Louder Than Bombs                   | Louder Than Bombs                                                                                   | Burn The Fire      |   2012 | The Agenda |
+|           19 | Deception                           | Deception                                                                                           | Burn The Fire      |   2012 | The Agenda |
+|           20 | Onslaught                           | Onslaught                                                                                           | Burn The Fire      |   2012 | The Agenda |
+|           21 | Drop Bears                          | Drop Bears                                                                                          | Burn The Fire      |   2013 | —          |
+|           22 | Hyped                               | Hyped                                                                                               | Vicious            |   2014 | —          |
+
+Generated Reasoning SQL: Explanation: The summary shows that the "Album" column contains categorical values representing the album associated with a single or EP. To find the number of songs in the "The Agenda" album, we count the rows where "Album" = "The Agenda". Since each row represents a single track, counting the rows directly gives us the number of songs in the album.
+
+SQL: select count("Tracks") from T where "Album" = 'The Agenda';
+Generated Final SQL: select count("Tracks") from T where "Album" = 'The Agenda';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Tracks") |
+|------------------:|
+|                 5 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Cold Blank
+SQL: select count("Tracks") from T where "Album" = 'The Agenda';
+
+count("Tracks")
+5
+Question: how many songs are in the cold blank album "the agenda"?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 5
+[Gold Answer] 5
+

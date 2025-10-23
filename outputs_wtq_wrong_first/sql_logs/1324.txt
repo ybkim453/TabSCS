@@ -1,0 +1,152 @@
+=== Table ID ===
+csv/203-csv/87.tsv
+
+=== Question ===
+what are the number of robots that are after located after the year 1800?
+
+=== Sub-table Preview ===
+| Date        | Opponents              | Venue   | Result   | Scorers                          | Attendance   |
+|:------------|:-----------------------|:--------|:---------|:---------------------------------|:-------------|
+| 19 Aug 1950 | Nottingham Forest      | H       | 0–2      | nan                              | 16,595       |
+| 31 Aug 1950 | Port Vale              | H       | 2–1      | Parker, Moore                    | 13,537       |
+| 9 Sep 1950  | Swindon Town           | A       | 0–2      | nan                              | 14,021       |
+| 14 Sep 1950 | Watford                | H       | 2–2      | Newall, M.Haines                 | 12,116       |
+| 18 Nov 1950 | Reading                | H       | 5–0      | Birch 2, Parker, Shergold, Aston | 8,529        |
+| 18 Apr 1951 | Brighton & Hove Albion | A       | 1–9      | Parker                           | 12,114       |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 19 Aug 1950, 31 Aug 1950, 9 Sep 1950, 18 Nov 1950
+   - Role: Identifier for the match date
+
+2. Opponents:
+   - Data type: Categorical
+   - 4 representative example values: Nottingham Forest, Port Vale, Swindon Town, Reading
+   - Role: Descriptor for the opposing team
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: H, A
+   - Role: Descriptor for the location of the match (Home or Away)
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: 0–2, 2–1, 5–0, 1–9
+   - Role: Measure of the match outcome
+
+5. Scorers:
+   - Data type: Categorical
+   - 4 representative example values: nan, Parker, Moore, Newall
+   - Role: Descriptor for the players who scored in the match
+
+6. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 16,595, 13,537, 14,021, 8,529
+   - Role: Measure of the number of spectators present at the match
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The values in this row are consistent with ordinary entries in the table. Therefore, this row is an ordinary row and requires no special handling.
+
+2. Row 39:
+   - The result "1–9" in this row is significantly different from the majority of results in the table, indicating a high-scoring match. This makes the row an outlier.
+
+3. Row 18:
+   - The values in this row are consistent with ordinary entries in the table. Therefore, this row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Subject      | Robot's Name                  | Who?                    | When?                | Where?                | Occupation            |
+|-------------:|:-------------|:------------------------------|:------------------------|:---------------------|:----------------------|:----------------------|
+|            0 | Solar System | Cosmo-Bot                     | Copernicus              | 1531                 | Poland                | Cosmonaut             |
+|            1 | Olympics     | Rhonda Robot                  | Greeks                  | 776 B.C.             | Greece                | Beauty queen          |
+|            2 | Basketball   | Danny Defrost-Bot             | James Naismith          | 1891                 | United States         | Snowman               |
+|            3 | Nursing      | Dr. Bug-Bot                   | Florence Nightengale    | 1860                 | England               | Doctor                |
+|            4 | Scuba Gear   | Flip the High-Diving Robot    | Jacques Cousteau        | 1946                 | France                | Diver                 |
+|            5 | Helicopter   | Amelia Air-Bot                | Leonardo da Vinci       | 1483                 | Italy                 | Pilot                 |
+|            6 | Corn Flakes  | Chef Boy-Robot                | William Kellogg         | 1894                 | Battle Creek Michigan | Cook                  |
+|            7 | Radium       | Miss Battery-Bot              | Marie Curie             | 1898                 | France                | Battery Lady          |
+|            8 | Chewing Gum  | Bubble-Bot                    | Mayans                  | 400                  | Mexico                | Bubble Man            |
+|            9 | Painting     | Pierro-Bot                    | Stone-Age Humans        | 35000 B.C.           | Europe                | Clown/Artist          |
+|           10 | Phonograph   | Slide the Heavy-Metal Robot   | Thomas Edison           | 1877                 | New Jersey            | Rock Star             |
+|           11 | Paper        | Noshi Origami                 | Ts'ai Lun               | 105                  | China                 | Origami Maker         |
+|           12 | Round Earth  | Vasco da Robot                | Ferdinand Magellan      | 1522                 | Spain                 | Early Sailor          |
+|           13 | Dynamite     | Robby Robot                   | Alfred Nobel            | 1866                 | Sweden                | Prankster             |
+|           14 | Microscope   | Slobot                        | Antonie van Leeuwenhoek | 1674                 | The Netherlands       | Dirty Person          |
+|           15 | Writing      | Eraser-Bot                    | Sumerians               | 3500 B.C.            | Middle East           | Pencil Man            |
+|           16 | Sausage      | Sock-Bot                      | Babylonians             | 3000 B.C.            | Middle East           | Sock Man              |
+|           17 | Bicycle      | Booster-Bot                   | Karl von Drais          | 1816                 | Germany               | Rocket Man            |
+|           18 | Wheel        | Rollin' Road-Bot              | Sumerians               | 3000 B.C.            | Middle East           | Race Starter          |
+|           19 | Germs        | Roast-Bot                     | Louis Pasteur           | 1865                 | France                | Firefighter           |
+|           20 | Boomerang    | Oswald the Mailman Robot      | Aborigines              | 40000 years ago      | Australia             | Mailman               |
+|           21 | Coins        | Verna the Vend-Bot            | Lydians                 | 600 B.C.             | Turkey                | Vending Machine       |
+|           22 | Tools        | Hank the Handyman Robot       | Stone-Age Humans        | 2½ million years ago | Africa                | Mechanic              |
+|           23 | Saxophone    | Bongo-Bot the Six-Armed Robot | Antoine-Joseph Sax      | 1846                 | France                | Six-Armed Drum Player |
+|           24 | Toilet       | Brunwella the Bombshell       | Minoans                 | 2000 B.C.            | Crete                 | Demolisher            |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter the rows based on the "When?" column, which represents the year the robot was located. We are interested in robots located after the year 1800. Since the "When?" column is a categorical data type, we need to filter rows where the year is greater than 1800.
+
+SQL: SELECT COUNT("Robot's Name") 
+FROM T 
+WHERE "When?" > 1800;
+Generated Final SQL: SELECT COUNT("Robot's Name") FROM T WHERE "When?" > 1800;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Robot's Name") |
+|------------------------:|
+|                      20 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: JumpStart Adventures 3rd Grade: Mystery Mountain
+SQL: SELECT COUNT("Robot's Name") FROM T WHERE "When?" > 1800;
+
+SQL Execution Result:
+COUNT("Robot's Name")
+20
+
+Question: what are the number of robots that are after located after the year 1800?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 20
+[Gold Answer] 10
+

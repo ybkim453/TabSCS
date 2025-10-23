@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Location:
+   - Data type: Categorical
+   - 4 representative example values: Chernobyl-1, Kursk-1, Kursk-5, Leningrad-2
+   - Role of the column: Identifier for the location of the reactor.
+
+2. Reactor type:
+   - Data type: Categorical
+   - 4 representative example values: RBMK-1000, MKER-1000
+   - Role of the column: Descriptor for the type of reactor.
+
+3. Status:
+   - Data type: Categorical
+   - 4 representative example values: shut down in 1996, destroyed in the 1986 accident, operational until 2021, construction begin was 1985, since then shelved
+   - Role of the column: Descriptor for the current status of the reactor.
+
+4. Net Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 740, 925
+   - Role of the column: Measure of the net capacity of the reactor in Megawatts electrical.
+
+5. Gross Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 800, 1,000
+   - Role of the column: Measure of the gross capacity of the reactor in Megawatts electrical.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Chernobyl-1, RBMK-1000, shut down in 1996, 740, 800):
+   - The reactor being shut down in 1996 is the distinctive value in this row.
+   - This row is an outlier as it represents a reactor that was shut down earlier compared to the other operational reactors.
+
+2. Row 16 (Kursk-5, MKER-1000, construction begin was 1985, since then shelved, 925, 1,000):
+   - The fact that the construction of this reactor was shelved after beginning in 1985 is the distinctive value.
+   - This row is an outlier as it represents a reactor that was not operational and had its construction halted.
+
+3. Row 3 (Kursk-2, RBMK-1000, operational until 2024, 925, 1,000):
+   - The operational status until 2024 is the distinctive value in this row.
+   - This row is an outlier as it represents a reactor with a future operational status compared to the other reactors that are either shut down or operational until 2021.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them outliers in the context of the data presented.

@@ -1,0 +1,162 @@
+=== Table ID ===
+csv/203-csv/101.tsv
+
+=== Question ===
+how many gto winning drivers are there for miami?
+
+=== Sub-table Preview ===
+|   Rnd | Circuit      | GTP Winning Team\nGTP Winning Drivers   | GTO Winning Team\nGTO Winning Drivers   | GTU Winning Team\nGTU Winning Drivers   | Results   |
+|------:|:-------------|:----------------------------------------|:----------------------------------------|:----------------------------------------|:----------|
+|     2 | Miami        | Doc Bundy\n Brian Redman                | Walt Bohren                             | Chris Cord                              | Results   |
+|     7 | Charlotte    | #56 Blue Thunder Racing                 | #4 Stratagraph Inc.                     | #99 All American Racers                 | Results   |
+|     8 | Lime Rock    | Sarel van der Merwe                     | Roger Mandeville                        | Jack Baldwin                            | Results   |
+|    10 | Watkins Glen | #14 Holbert Racing                      | #91 Electrodyne                         | #87 Performance Motorsports             | Results   |
+|    12 | Sears Point  | Bill Whittington                        | John Bauer                              | Dennis Aase                             | Results   |
+|    16 | Watkins Glen | #57 Blue Thunder Racing                 | #91 Electrodyne                         | #84 Dole Racing                         | Results   |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rnd
+   - Data type: Numeric
+   - 4 representative example values: 2, 7, 8, 10
+   - Role: Identifier for the round of the race
+
+2. Circuit
+   - Data type: Categorical
+   - 4 representative example values: Miami, Charlotte, Lime Rock, Watkins Glen
+   - Role: Descriptor for the circuit where the race took place
+
+3. GTP Winning Team\nGTP Winning Drivers
+   - Data type: Categorical
+   - 4 representative example values: Doc Bundy\n Brian Redman, #56 Blue Thunder Racing, Sarel van der Merwe, #14 Holbert Racing
+   - Role: Descriptor for the winning team and drivers in the GTP category
+
+4. GTO Winning Team\nGTO Winning Drivers
+   - Data type: Categorical
+   - 4 representative example values: Walt Bohren, #4 Stratagraph Inc., Roger Mandeville, #91 Electrodyne
+   - Role: Descriptor for the winning team and drivers in the GTO category
+
+5. GTU Winning Team\nGTU Winning Drivers
+   - Data type: Categorical
+   - 4 representative example values: Chris Cord, #99 All American Racers, Jack Baldwin, #87 Performance Motorsports
+   - Role: Descriptor for the winning team and drivers in the GTU category
+
+6. Results
+   - Data type: Categorical
+   - 4 representative example values: Results, Results, Results, Results
+   - Role: Descriptor for the overall results of the race
+
+**Outlier Row Analysis:**
+
+1. Row 15
+   - The values in this row are consistent with the rest of the table and do not contain any distinctive or atypical values. This row is an ordinary entry and does not require special handling.
+
+2. Row 23
+   - The values in this row are also ordinary and do not stand out as atypical compared to the majority of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 3
+   - The values in this row, including the winning teams and drivers, are consistent with the format and content of the other rows in the table. There are no distinctive or atypical values that would make this row an outlier. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rnd | Circuit      | GTP Winning Team\nGTP Winning Drivers              | GTO Winning Team\nGTO Winning Drivers     | GTU Winning Team\nGTU Winning Drivers          | Results   |
+|-------------:|------:|:-------------|:---------------------------------------------------|:------------------------------------------|:-----------------------------------------------|:----------|
+|            0 |     1 | Daytona      | #00 Kreepy Krauly Racing                           | #4 Stratagraph Inc.                       | #76 Malibu Grand Prix                          | Results   |
+|            1 |     1 | Daytona      | Sarel van der Merwe\n Graham Duxbury\n Tony Martin | Terry Labonte\n Billy Hagan\n Gene Felton | Jack Baldwin\n Jim Cook\n Ira Young\n Bob Reed | Results   |
+|            2 |     2 | Miami        | #04 Group 44                                       | #47 Dingman Bros. Racing                  | #99 All American Racers                        | Results   |
+|            3 |     2 | Miami        | Doc Bundy\n Brian Redman                           | Walt Bohren                               | Chris Cord                                     | Results   |
+|            4 |     3 | Sebring      | #48 DeNarvaez Enterprises                          | #4 Stratagraph Inc.                       | #76 Malibu Grand Prix                          | Results   |
+|            5 |     3 | Sebring      | Mauricio DeNarvaez\n Hans Heyer\n Stefan Johansson | Terry Labonte\n Billy Hagan\n Gene Felton | Jack Baldwin\n Bob Reed\n Ira Young            | Results   |
+|            6 |     4 | Road Atlanta | #16 Marty Hinze Racing                             | #4 Stratagraph Inc.                       | #76 Malibu Grand Prix                          | Results   |
+|            7 |     4 | Road Atlanta | Don Whittington                                    | Billy Hagan\n Gene Felton                 | Jack Baldwin\n Bob Reed                        | Results   |
+|            8 |     5 | Riverside    | #56 Blue Thunder Racing                            | #38 Mandeville Auto Tech                  | #87 Performance Motorsports                    | Results   |
+|            9 |     5 | Riverside    | Don Whittington\n Randy Lanier                     | Roger Mandeville\n Amos Johnson           | Elliot Forbes-Robinson\n John Schneider        | Results   |
+|           10 |     6 | Laguna Seca  | #56 Blue Thunder Racing                            | #77 Brooks Racing                         | #99 All American Racers                        | Results   |
+|           11 |     6 | Laguna Seca  | Randy Lanier                                       | John Bauer                                | Jim Adams                                      | Results   |
+|           12 |     7 | Charlotte    | #56 Blue Thunder Racing                            | #4 Stratagraph Inc.                       | #99 All American Racers                        | Results   |
+|           13 |     7 | Charlotte    | Bill Whittington\n Randy Lanier                    | Billy Hagan\n Gene Felton                 | Chris Cord\n Jim Adams                         | Results   |
+|           14 |     8 | Lime Rock    | #00 Kreepy Krauly Racing                           | #38 Mandeville Auto Tech                  | #76 Malibu Grand Prix                          | Results   |
+|           15 |     8 | Lime Rock    | Sarel van der Merwe                                | Roger Mandeville                          | Jack Baldwin                                   | Results   |
+|           16 |     9 | Mid-Ohio     | #14 Holbert Racing                                 | #91 Electrodyne                           | #66 Mike Meyer Racing                          | Results   |
+|           17 |     9 | Mid-Ohio     | Al Holbert\n Derek Bell                            | Chester Vincentz\n Dave White             | Jack Dunham\n Jeff Kline                       | Results   |
+|           18 |    10 | Watkins Glen | #14 Holbert Racing                                 | #91 Electrodyne                           | #87 Performance Motorsports                    | Results   |
+|           19 |    10 | Watkins Glen | Al Holbert\n Jim Adams\n Derek Bell                | Chester Vincentz\n Jim Mullen             | Elliot Forbes-Robinson\n John Schneider        | Results   |
+|           20 |    11 | Portland     | #56 Blue Thunder Racing                            | #51 Corvette                              | #76 Malibu Grand Prix                          | Results   |
+|           21 |    11 | Portland     | Bill Whittington\n Randy Lanier                    | David Schroeder\n Tom Hendrickson         | Jack Baldwin                                   | Results   |
+|           22 |    12 | Sears Point  | #56 Blue Thunder Racing                            | #77 Brooks Racing                         | #98 All American Racers                        | Results   |
+|           23 |    12 | Sears Point  | Bill Whittington                                   | John Bauer                                | Dennis Aase                                    | Results   |
+|           24 |    13 | Road America | #14 Holbert Racing                                 | #91 Electrodyne                           | #66 Mike Meyer Racing                          | Results   |
+|           25 |    13 | Road America | Al Holbert\n Derek Bell                            | Chester Vincentz\n Jim Mullen             | Jack Dunham\n Jeff Kline                       | Results   |
+|           26 |    14 | Pocono       | #14 Holbert Racing                                 | #65 English Enterprises                   | #87 Performance Motorsports                    | Results   |
+|           27 |    14 | Pocono       | Al Holbert\n Derek Bell                            | Gene Felton                               | Elliot Forbes-Robinson\n John Schneider        | Results   |
+|           28 |    15 | Michigan     | #56 Blue Thunder Racing                            | #91 Electrodyne                           | #84 Dole Racing                                | Results   |
+|           29 |    15 | Michigan     | Bill Whittington\n Randy Lanier                    | Chester Vincentz\n Jim Mullen             | Clay Young                                     | Results   |
+|           30 |    16 | Watkins Glen | #57 Blue Thunder Racing                            | #91 Electrodyne                           | #84 Dole Racing                                | Results   |
+|           31 |    16 | Watkins Glen | Dale Whittington\n Randy Lanier                    | Chester Vincentz\n Jim Mullen             | Clay Young                                     | Results   |
+|           32 |    17 | Daytona      | #14 Holbert Racing                                 | #67 Roush Racing                          | #87 Performance Motorsports                    | Results   |
+|           33 |    17 | Daytona      | Al Holbert\n Derek Bell                            | Wally Dallenbach Jr.\n Willy T. Ribbs     | Elliot Forbes-Robinson\n John Schneider        | Results   |
+
+Generated Reasoning SQL: Explanation: To answer the question, we need to count the number of GTO winning drivers for the Miami circuit. We will filter the rows where "Circuit" = 'Miami' and then count the distinct GTO winning drivers in those rows.
+
+SQL: 
+SELECT COUNT(DISTINCT "GTO Winning Team\nGTO Winning Drivers") AS gto_winning_drivers
+FROM T
+WHERE "Circuit" = 'Miami';
+Generated Final SQL: SELECT COUNT(DISTINCT "GTO Winning Team\nGTO Winning Drivers") AS gto_winning_drivers FROM T WHERE "Circuit" = 'Miami';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   gto_winning_drivers |
+|----------------------:|
+|                     2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1984 IMSA GT Championship season
+SQL: SELECT COUNT(DISTINCT "GTO Winning Team\nGTO Winning Drivers") AS gto_winning_drivers FROM T WHERE "Circuit" = 'Miami';
+
+SQL Execution Result:
+gto_winning_drivers
+2
+
+Question: how many gto winning drivers are there for miami?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 1
+

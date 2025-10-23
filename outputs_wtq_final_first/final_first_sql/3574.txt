@@ -1,0 +1,117 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Tablet
+   - Data type: Numeric
+   - 4 representative example values: 7, 8, 11, nan
+   - Role: Identifier for each tablet entry
+
+2. Genealogy
+   - Data type: Categorical
+   - 4 representative example values: Terah to Abraham 11:27, Descendants of Ishmael 25:13 - 18, Descendants of Esau 36:10 to 37:1, no genealogy
+   - Role: Describes the genealogy mentioned in the tablet entry
+
+3. Narrative
+   - Data type: Categorical
+   - 4 representative example values: 11:28 to 25:11, no narrative, no narrative, 37:2 to 50:26
+   - Role: Describes the narrative content of the tablet entry
+
+4. Colophon
+   - Data type: Categorical
+   - 4 representative example values: This is the account of Abraham's son Ishmael. 25:12 (eldest son), This is the account of Abraham's son Isaac. 25:19, This is the account of Jacob. 37:2, no colophon
+   - Role: Describes the colophon or closing statement of the tablet entry
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The genealogy is "Descendants of Esau 36:10 to 37:1", which is different from the other entries.
+   - This row stands out as it has a specific genealogy mentioned, while the other entries either have a different genealogy or no genealogy mentioned.
+   - This row is an outlier due to the unique genealogy mentioned.
+
+2. Row 4:
+   - The tablet value is "nan", indicating missing data.
+   - The narrative is "37:2 to 50:26", which is different from the other entries.
+   - The colophon is "no colophon", which is also different from the other entries.
+   - While the tablet value is missing, the narrative and colophon values are not significantly different from other entries in the table.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Tablet | Genealogy                                    | Narrative      | Colophon                                                                          |
+|-------------:|---------:|:---------------------------------------------|:---------------|:----------------------------------------------------------------------------------|
+|            0 |        1 | Creation of Universe 1:1                     | 1:2 to 2:3     | "This is the account of the heavens and of the earth when they were created." 2:4 |
+|            1 |        2 | Heavens and Earth 2:4                        | 2:5 to 4:26    | "This is the written account of Adam." 5:1                                        |
+|            2 |        3 | Adam to Noah 5:1 - 32                        | 6:1 - 8        | "This is the account of Noah." 6:9                                                |
+|            3 |        4 | Noah to Shem Ham and Japeth 6:9 - 10         | 6:11 to 9:29   | "This is the account of Shem Ham and Japheth Noah's sons." 10:1                   |
+|            4 |        5 | Descendants of Shem Ham and Japeth 10:1 - 32 | 11:1 - 9       | "This is the account of Shem." 11:10                                              |
+|            5 |        6 | Shem to Terah 11:10 - 26                     | no narrative   | "This is the account of Terah." 11:27                                             |
+|            6 |        7 | Terah to Abraham 11:27                       | 11:28 to 25:11 | "This is the account of Abraham's son Ishmael." 25:12 (eldest son)                |
+|            7 |        8 | Descendants of Ishmael 25:13 - 18            | no narrative   | "This is the account of Abraham's son Isaac." 25:19                               |
+|            8 |        9 | Abraham to Isaac 25:19                       | 25:20 to 35:29 | "This is the account of Esau." 36:1 (eldest son)                                  |
+|            9 |       10 | Descendants of Esau 36:2 - 5                 | 36:6 - 8       | "This is the account of Esau." 36:9                                               |
+|           10 |       11 | Descendants of Esau 36:10 to 37:1            | no narrative   | "This is the account of Jacob." 37:2                                              |
+|           11 |      nan | no genealogy                                 | 37:2 to 50:26  | no colophon                                                                       |
+
+Generated Reasoning SQL: Explanation: To find the genealogy that comes after "Heavens and Earth", we need to look for the row where the genealogy value directly follows "Heavens and Earth" in the narrative sequence. We will filter rows where the narrative contains "Heavens and Earth" and then select the genealogy value that comes after it.
+
+SQL: 
+SELECT "Genealogy" 
+FROM T 
+WHERE "Narrative" LIKE '%Heavens and Earth%' 
+AND "row_number" = (SELECT "row_number" + 1 FROM T WHERE "Narrative" LIKE '%Heavens and Earth%');
+Generated Final SQL: SELECT "Genealogy" FROM T WHERE "Narrative" LIKE '%Heavens and Earth%' AND "row_number" = (SELECT "row_number" + 1 FROM T WHERE "Narrative" LIKE '%Heavens and Earth%');
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Wiseman hypothesis (row_number, Tablet, Genealogy, Narrative, Colophon)
+
+row_number | Tablet | Genealogy | Narrative | Colophon
+0 | 1.0 | Creation of Universe 1:1 | 1:2 to 2:3 | "This is the account of the heavens and of the earth when they were created." 2:4
+1 | 2.0 | Heavens and Earth 2:4 | 2:5 to 4:26 | "This is the written account of Adam." 5:1
+2 | 3.0 | Adam to Noah 5:1 - 32 | 6:1 - 8 | "This is the account of Noah." 6:9
+3 | 4.0 | Noah to Shem Ham and Japeth 6:9 - 10 | 6:11 to 9:29 | "This is the account of Shem Ham and Japheth Noah's sons." 10:1
+4 | 5.0 | Descendants of Shem Ham and Japeth 10:1 - 32 | 11:1 - 9 | "This is the account of Shem." 11:10
+5 | 6.0 | Shem to Terah 11:10 - 26 | no narrative | "This is the account of Terah." 11:27
+6 | 7.0 | Terah to Abraham 11:27 | 11:28 to 25:11 | "This is the account of Abraham's son Ishmael." 25:12 (eldest son)
+7 | 8.0 | Descendants of Ishmael 25:13 - 18 | no narrative | "This is the account of Abraham's son Isaac." 25:19
+8 | 9.0 | Abraham to Isaac 25:19 | 25:20 to 35:29 | "This is the account of Esau." 36:1 (eldest son)
+9 | 10.0 | Descendants of Esau 36:2 - 5 | 36:6 - 8 | "This is the account of Esau." 36:9
+10 | 11.0 | Descendants of Esau 36:10 to 37:1 | no narrative | "This is the account of Jacob." 37:2
+11 | nan | no genealogy | 37:2 to 50:26 | no colophon
+Question: which genealogy comes after heavens and earth?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we need to look at the information provided in the "Narrative" column of the full table. 
+
+From the full table:
+- The genealogy that comes after "Heavens and Earth" is "Adam to Noah" (row_number 2), as indicated by the "Narrative" column which states "5:1 - 32".
+
+Therefore, the genealogy that comes after "Heavens and Earth" is "Adam to Noah".
+
+Final Answer: Adam to Noah
+[Fallback] Prediction: adam to noah
+[Gold Answer] adam to noah 5:1 - 32
+

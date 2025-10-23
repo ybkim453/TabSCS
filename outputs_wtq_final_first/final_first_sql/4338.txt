@@ -1,0 +1,141 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative values: 10, 14, 15, 16
+   - Role: Identifier for each row in the table.
+
+2. Year
+   - Data type: Numeric
+   - 4 representative values: 2006, 2010, 2011, 2012
+   - Role: Descriptor indicating the year the event took place.
+
+3. Name
+   - Data type: Categorical
+   - 4 representative values: Kallichanda Cup, Maneyapanda Cup, Machamada Cup, Iychetira Cup
+   - Role: Descriptor for the name of the event.
+
+4. Held at
+   - Data type: Categorical
+   - 4 representative values: Ponnampet, Ammathi, Virajpet
+   - Role: Descriptor for the location where the event was held.
+
+5. Number of teams
+   - Data type: Numeric
+   - 4 representative values: 217, 214, 228, nan
+   - Role: Measure indicating the number of teams participating in the event.
+
+6. Winner
+   - Data type: Categorical
+   - 4 representative values: Palanganda
+   - Role: Descriptor for the team that won the event.
+
+7. Runners Up
+   - Data type: Categorical
+   - 4 representative values: Machamada, Mukkatira(Bonda), Kaliyanda
+   - Role: Descriptor for the team that finished as runners-up in the event.
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Index 7):
+   - The "Number of teams" value is "nan" which is not a typical numeric value seen in the table.
+   - This row is an outlier due to the presence of a non-numeric value in the "Number of teams" column.
+
+2. Row 17 (Index 17):
+   - This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+3. Row 15 (Index 15):
+   - The "Held at" value is "Ponnampet" which is the same as in other rows, so it is an ordinary value and not a distinctive outlier.
+
+=== Full Table Preview ===
+|   row_number |   No. |   Year | Name             | Held at      |   Number of teams | Winner                   | Runners Up       |
+|-------------:|------:|-------:|:-----------------|:-------------|------------------:|:-------------------------|:-----------------|
+|            0 |     1 |   1997 | Pandanda Cup     | Karada       |                60 | Kaliyanda                | Anjaparavanda    |
+|            1 |     2 |   1998 | Kodira Cup       | Kadanga      |               116 | Kullettira               | Koothanda        |
+|            2 |     3 |   1999 | Ballachanda Cup  | Kakotparambu |               140 | Koothanda and Kullettira | -                |
+|            3 |     4 |   2000 | Cheppudira Cup   | Ponnampet    |               170 | Koothanda                | Nellamakkada     |
+|            4 |     5 |   2001 | Nellamakkada Cup | Ammathi      |               220 | Koothanda                | Cheppudira       |
+|            5 |     6 |   2002 | Chekkera Cup     | Hudikeri     |               252 | Kullettira               | Nellamakkada     |
+|            6 |     7 |   2003 | Kaliyanda Cup    | Napoklu      |               280 | Nellamakkada             | Konerira         |
+|            7 |     8 |   2004 | Maleyanda Cup    | Madapur      |               235 | Koothanda                | Nellamakkada     |
+|            8 |     9 |   2005 | Biddanda Cup     | Madikeri     |               222 | Nellamakkada             | Koothanda        |
+|            9 |    10 |   2006 | Kallichanda Cup  | Ponnampet    |               217 | Palanganda               | Machamada        |
+|           10 |    11 |   2007 | Mandettira Cup   | Kakotparambu |               186 | Mandepanda               | Anjaparavanda    |
+|           11 |    12 |   2008 | Alamengada Cup   | Ponnampet    |               216 | Anjaparavanda            | Koothanda        |
+|           12 |    13 |   2009 | Mandepanda Cup   | Ammathi      |               231 | Nellamakkada             | Koothanda        |
+|           13 |    14 |   2010 | Maneyapanda Cup  | Ponnampet    |               214 | Palanganda               | Mukkatira(Bonda) |
+|           14 |    15 |   2011 | Machamada Cup    | Ponnampet    |               228 | Palanganda               | Kaliyanda        |
+|           15 |    16 |   2012 | Iychetira Cup    | Ammathi      |               217 | Palanganda               | Kaliyanda        |
+|           16 |    17 |   2013 | Madanda Cup      | Balugodu     |               225 | Anjaparavanda            | Palanganda       |
+|           17 |    18 |   2014 | Thathanda Cup    | Virajpet     |               nan |                          |                  |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Year" column is numeric and the "Number of teams" column is also numeric, representing the count of teams participating in each event. To find out the number of teams that participated in the Madanda Hockey Fest of 2013, we need to filter rows where "Name" = Madanda Hockey Fest and "Year" = 2013, then retrieve the value in the "Number of teams" column.
+SQL: select "Number of teams" from T where "Name" = 'Madanda Hockey Fest' and "Year" = 2013;
+Generated Final SQL: select "Number of teams" from T where "Name" = 'Madanda Hockey Fest' and "Year" = 2013;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Kodava Hockey Festival (row_number, No., Year, Name, Held at, Number of teams, Winner, Runners Up)
+
+row_number | No. | Year | Name | Held at | Number of teams | Winner | Runners Up
+0 | 1 | 1997 | Pandanda Cup | Karada | 60.0 | Kaliyanda | Anjaparavanda
+1 | 2 | 1998 | Kodira Cup | Kadanga | 116.0 | Kullettira | Koothanda
+2 | 3 | 1999 | Ballachanda Cup | Kakotparambu | 140.0 | Koothanda and Kullettira | -
+3 | 4 | 2000 | Cheppudira Cup | Ponnampet | 170.0 | Koothanda | Nellamakkada
+4 | 5 | 2001 | Nellamakkada Cup | Ammathi | 220.0 | Koothanda | Cheppudira
+5 | 6 | 2002 | Chekkera Cup | Hudikeri | 252.0 | Kullettira | Nellamakkada
+6 | 7 | 2003 | Kaliyanda Cup | Napoklu | 280.0 | Nellamakkada | Konerira
+7 | 8 | 2004 | Maleyanda Cup | Madapur | 235.0 | Koothanda | Nellamakkada
+8 | 9 | 2005 | Biddanda Cup | Madikeri | 222.0 | Nellamakkada | Koothanda
+9 | 10 | 2006 | Kallichanda Cup | Ponnampet | 217.0 | Palanganda | Machamada
+10 | 11 | 2007 | Mandettira Cup | Kakotparambu | 186.0 | Mandepanda | Anjaparavanda
+11 | 12 | 2008 | Alamengada Cup | Ponnampet | 216.0 | Anjaparavanda | Koothanda
+12 | 13 | 2009 | Mandepanda Cup | Ammathi | 231.0 | Nellamakkada | Koothanda
+13 | 14 | 2010 | Maneyapanda Cup | Ponnampet | 214.0 | Palanganda | Mukkatira(Bonda)
+14 | 15 | 2011 | Machamada Cup | Ponnampet | 228.0 | Palanganda | Kaliyanda
+15 | 16 | 2012 | Iychetira Cup | Ammathi | 217.0 | Palanganda | Kaliyanda
+16 | 17 | 2013 | Madanda Cup | Balugodu | 225.0 | Anjaparavanda | Palanganda
+17 | 18 | 2014 | Thathanda Cup | Virajpet | nan | None | None
+Question: what number of teams participated in the madanda hockey fest of 2013?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we look at the summary provided:
+
+- The **Number of teams** column contains numerical data representing the count of teams participating in each festival.
+- There are no special or atypical rows mentioned in the summary.
+
+Next, we examine the full table for the Madanda Cup in 2013:
+
+- The Madanda Cup in 2013 had 225 teams participating.
+
+By combining the information from the summary (the Number of teams column contains the relevant data) with the specific entry in the full table for the Madanda Cup in 2013, we can confidently state:
+
+Final Answer: 225
+[Fallback] Prediction: 225
+[Gold Answer] 225
+

@@ -1,0 +1,130 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - Representative values: 1994, 1995, 1998, 2000
+   - Role: Identifier for the year in which the TV show or role occurred.
+
+2. Title
+   - Data type: Categorical
+   - Representative values: The All-New Mickey Mouse (MMC), Are You Afraid of the Dark?, Blues Clues, How I Loved a Macho Boy
+   - Role: Descriptor for the title of the TV show or role.
+
+3. Role
+   - Data type: Categorical
+   - Representative values: Herself, Evil Chameleon, Jamal Santos, Executive producer
+   - Role: Descriptor for the role played by the individual in the TV show.
+
+4. Notes
+   - Data type: Categorical
+   - Representative values: 1 episode, 3 episodes
+   - Role: Descriptor for additional notes related to the TV show or role.
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values in this row are "2000", "How I Loved a Macho Boy", "Jamal Santos", "3 episodes".
+   - These values are consistent with the majority of the table and do not stand out as atypical. This row is an ordinary row and does not require special handling.
+
+2. Row 18:
+   - The values in this row are "2011–2013", "Tia & Tamera", "Herself", "Executive producer".
+   - These values are also consistent with the majority of the table and do not indicate any atypical data. This row is an ordinary row and does not need special treatment.
+
+3. Row 4:
+   - The values in this row are "1994", "The All-New Mickey Mouse (MMC)", "Herself", "1 episode".
+   - These values are typical of the data in the table and do not deviate from the norm. This row is an ordinary row and does not stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Title                          | Role                | Notes                                   |
+|-------------:|-------:|:-------------------------------|:--------------------|:----------------------------------------|
+|            0 |   1991 | Flesh'n Blood                  | Penelope            | 1 episode                               |
+|            1 |   1992 | True Colors                    | Lorae               | 1 episode                               |
+|            2 |   1994 | The All-New Mickey Mouse (MMC) | Herself             | 1 episode                               |
+|            3 |   1994 | Sister Sister                  | Tamera Campbell     | 119 episodes                            |
+|            4 |   1995 | Are You Afraid of the Dark?    | Evil Chameleon      | 1 episode                               |
+|            5 |   1995 | The Adventures of Hyperman     | Emma C. Squared     | 8 episodes                              |
+|            6 |   1996 | All That                       | Herself             |                                         |
+|            7 |   1997 | Smart Guy                      | Roxanne             | 1 episode                               |
+|            8 |   1998 | Blues Clues                    | Herself             | 1 episode                               |
+|            9 |   1999 | Detention                      | Orangejella LaBelle | 13 episodes                             |
+|           10 |   2000 | How I Loved a Macho Boy        | Jamal Santos        | 3 episodes                              |
+|           11 |   2004 | Strong Medicine                | Dr. Kayla Thorton   | 37 episodes                             |
+|           12 |   2006 | Family Guy                     | Esther              | Voice\n3 episodes                       |
+|           13 |   2009 | Roommates                      | Hope                | 13 episodes                             |
+|           14 |   2009 | The Super Hero Squad Show      | Misty Knight        | 1 episode                               |
+|           15 |   2011 | Things We Do for Love          | Lourdes             | 5 episodes                              |
+|           16 |   2011 | Access Hollywood Live          | Herself             | Co-host                                 |
+|           17 |   2011 | CHRISJayify                    | Herself             | Episode: "Drugs Are Bad"                |
+|           18 |   2011 | Tia & Tamera                   | Herself             | Executive producer                      |
+|           19 |   2012 | Christmas Angel                | Daphney             |                                         |
+|           20 |   2013 | The Real                       | Herself             | Host                                    |
+|           21 |   2014 | Melissa and Joey               | Gillian             | Season 3 Episode 24 'To Tell the Truth' |
+
+Generated Reasoning SQL: Explanation: To determine the show in which Tamera Mowry had the most episodes, we need to consider the "Title" and "Notes" columns. We should focus on rows where the "Notes" column indicates the number of episodes she appeared in. We will need to aggregate the episode counts per show and identify the show with the highest episode count.
+
+SQL: 
+SELECT "Title", MAX(CAST(SUBSTR("Notes", 1, INSTR("Notes", ' episode') - 1) AS INTEGER)) AS max_episodes
+FROM T
+WHERE "Notes" LIKE '%episode%'
+GROUP BY "Title"
+ORDER BY max_episodes DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Title", MAX(CAST(SUBSTR("Notes", 1, INSTR("Notes", ' episode') - 1) AS INTEGER)) AS max_episodes FROM T WHERE "Notes" LIKE '%episode%' GROUP BY "Title" ORDER BY max_episodes DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Title         |   max_episodes |
+|:--------------|---------------:|
+| Sister Sister |            119 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tamera Mowry
+SQL: SELECT "Title", MAX(CAST(SUBSTR("Notes", 1, INSTR("Notes", ' episode') - 1) AS INTEGER)) AS max_episodes FROM T WHERE "Notes" LIKE '%episode%' GROUP BY "Title" ORDER BY max_episodes DESC LIMIT 1;
+
+SQL Execution Result:
+Title | max_episodes
+Sister Sister | 119
+
+Question: what show was she in that she had the most episodes?
+A: To find the answer to this question, let’s think step by step.
+Prediction: sister sister
+[Gold Answer] sister, sister
+

@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Binary
+   - Data type: Categorical
+   - 4 representative example values: 0011 0001, 0011 0100, 0011 0101, 0011 0111
+   - Role: Identifier
+
+2. Octal
+   - Data type: Numeric
+   - 4 representative example values: 61, 64, 65, 67
+   - Role: Descriptor
+
+3. Decimal
+   - Data type: Numeric
+   - 4 representative example values: 49, 52, 53, 55
+   - Role: Measure
+
+4. Hexadecimal
+   - Data type: Categorical
+   - 4 representative example values: 31, 34, 35, 37
+   - Role: Descriptor
+
+5. Glyph
+   - Data type: Numeric
+   - 4 representative example values: 1, 4, 5, 7
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - Distinctive values: Binary = 0011 0111, Octal = 67, Decimal = 55, Hexadecimal = 37, Glyph = 7
+   - Explanation: The values in this row are not significantly different from the majority of the table, so this row is an ordinary row.
+
+2. Row 9:
+   - Distinctive values: Binary = 0011 1001, Octal = 71, Decimal = 57, Hexadecimal = 39, Glyph = 9
+   - Explanation: The values in this row are consistent with the rest of the table, so this row is an ordinary row.
+
+3. Row 8:
+   - Distinctive values: Binary = 0011 1000, Octal = 70, Decimal = 56, Hexadecimal = 38, Glyph = 8
+   - Explanation: The values in this row are not significantly different from the majority of the table, so this row is an ordinary row.

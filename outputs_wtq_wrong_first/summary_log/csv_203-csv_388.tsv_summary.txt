@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2012, 2013, 2014, 2015
+   - Role: Identifier for the year in which the award was received.
+
+2. Award:
+   - Data type: Categorical
+   - 4 representative example values: Cyworld Digital Music Awards, 27th Golden Disk Awards, Mnet Pre-Grammy Awards, 2nd Gaon Chart K-Pop Awards
+   - Role: Descriptor of the specific award received.
+
+3. Category:
+   - Data type: Categorical
+   - 4 representative example values: Rookie & Song of the Month (February), Best New Artist, Mnet Rising Star, New Female Solo Artist
+   - Role: Descriptor of the category for which the award was received.
+
+4. Recipient:
+   - Data type: Categorical
+   - 4 representative example values: Heaven, Herself, U&I, XYZ Band
+   - Role: Identifier for the recipient of the award.
+
+5. Result:
+   - Data type: Categorical
+   - 4 representative example values: Won, Nominated, Lost, Pending
+   - Role: Descriptor of the outcome of the award (e.g., Won, Nominated).
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values for "Award" and "Recipient" are "MAMA" and "Himself" respectively, which are different from the majority of the table.
+   - These values are unique and do not align with the typical entries in the table, making this row an outlier.
+
+2. Row 0:
+   - The values for "Year" and "Result" are 2012 and "Won" respectively, which are common in the table.
+   - There are no distinct values in this row that make it stand out, so it is an ordinary row.
+
+3. Row 15:
+   - The value for "Category" is "Best Female Artist", which is a common category in the table.
+   - There are no unique values in this row that differentiate it from the rest, so it is an ordinary row.

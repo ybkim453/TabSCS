@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. Represent
+   - Data type: Categorical
+   - 4 representative example values: Amur Oblast, Belgorod Oblast, Kemerovo Oblast, Novgorod Oblast
+   - Role: Identifier for the region represented by the candidate
+
+2. Candidate
+   - Data type: Categorical
+   - 4 representative example values: Myriam Asfry, Jahaira Novgorodova, Ivette Sarova, Ekaterina Žuravleva
+   - Role: Descriptor for the candidate participating in the analysis
+
+3. in Russian
+   - Data type: Categorical
+   - 4 representative example values: Мыриам Асфры, Яхаира Новгородова, Иветте Сарова, Екатерина Журавлева
+   - Role: Descriptor for the candidate's name in Russian
+
+4. Age
+   - Data type: Numeric
+   - 4 representative example values: 18, 25, 20, 19
+   - Role: Measure of the candidate's age
+
+5. Height
+   - Data type: Categorical (converted from numeric)
+   - 4 representative example values: 1.75 m (5 ft 9 in), 1.80 m (5 ft 11 in), 1.82 m (5 ft 11 1⁄2 in), 1.81 m (5 ft 11 1⁄2 in)
+   - Role: Measure of the candidate's height
+
+6. Hometown
+   - Data type: Categorical
+   - 4 representative example values: Blagoveshchensk, Belgorod, Mezhdurechensk, Novgorod
+   - Role: Descriptor for the candidate's hometown
+
+**Outlier Row Analysis:**
+
+1. Jahaira Novgorodova (Row 3)
+   - The candidate is 25 years old, which is significantly older than the other candidates in the table.
+   - This makes the row an outlier as the age of 25 deviates from the average age of the candidates.
+
+2. Ivette Sarova (Row 6)
+   - The candidate's height is 1.82 m (5 ft 11 1⁄2 in), which is the tallest among all candidates.
+   - This makes the row an outlier as the height of 1.82 m deviates from the average height of the candidates.
+
+3. Sardana Syromyatnikova (Row 18)
+   - The candidate is from the Sakha Republic, which is different from the other candidates' hometowns.
+   - This makes the row an outlier as the hometown of Sakha Republic is unique compared to the other candidates.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them outliers in the analysis.

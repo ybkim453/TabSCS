@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 7, 8
+   - Role: Identifier for each song in the table
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Out Here, It Ain't A Thang, They Pray with Snakes, Rollin Hard
+   - Role: Descriptor for the title of each song
+
+3. Time:
+   - Data type: Numeric (Time duration)
+   - 4 representative example values: 3:18, 3:45, 3:56, 4:07
+   - Role: Measure of the duration of each song
+
+4. Lyrics:
+   - Data type: Categorical
+   - 4 representative example values: Boondox
+   - Role: Descriptor for the lyricist of each song
+
+5. Music:
+   - Data type: Categorical
+   - 4 representative example values: Mike E. Clark, Kuma
+   - Role: Descriptor for the music composer of each song
+
+6. Producer(s):
+   - Data type: Categorical
+   - 4 representative example values: Boondox
+   - Role: Descriptor for the producer(s) of each song
+
+7. Performer(s):
+   - Data type: Categorical
+   - 4 representative example values: Boondox
+   - Role: Descriptor for the performer(s) of each song
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 6:
+   - The values in this row are consistent with the rest of the table and do not stand out as distinctive. This row is an ordinary entry and does not require special handling.
+
+3. Row 2:
+   - The values in this row are similar to the majority of the table and do not deviate significantly. This row is an ordinary entry and does not qualify as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   # | Title                   | Time   | Lyrics       | Music                      | Producer(s)   | Performer(s)                          |
+|-------------:|----:|:------------------------|:-------|:-------------|:---------------------------|:--------------|:--------------------------------------|
+|            0 |   1 | "Intro"                 | 1:16   |              |                            |               |                                       |
+|            1 |   2 | "Seven"                 | 3:30   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|            2 |   3 | "Out Here"              | 3:18   | Boondox      | Mike E. Clark\nTino Grosse | Boondox       | Boondox                               |
+|            3 |   4 | "It Ain't A Thang"      | 3:45   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|            4 |   5 | "Digging"               | 3:04   | Boondox      | Kuma                       | Boondox       | Boondox                               |
+|            5 |   6 | "Lady In The Jaguar"    | 3:55   | Boondox\nICP | Mike E. Clark              | Boondox\nICP  | Boondox\nICP                          |
+|            6 |   7 | "They Pray with Snakes" | 3:56   | Boondox      | Kuma                       | Boondox       | Boondox                               |
+|            7 |   8 | "Rollin Hard"           | 4:07   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|            8 |   9 | "The Harvest"           | 3:53   | Boondox\nAMB | Kuma                       | Boondox\nAMB  | Boondox\nAxe Murder Boyz              |
+|            9 |  10 | "Sippin"                | 3:16   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|           10 |  11 | "Lake of Fire"          | 4:12   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|           11 |  12 | "Red Mist"              | 3:54   | Boondox      | Mike E. Clark              | Boondox       | Boondox\nBlaze Ya Dead Homie\nTwiztid |
+|           12 |  13 | "Angel Like"            | 3:42   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+
+Generated Reasoning SQL: To find the only track shorter than 2:00, we need to filter the rows based on the "Time" column and identify the track with a duration less than 2:00. The "Time" column is numeric and represents the duration of each song.
+
+SQL: 
+SELECT "Title" 
+FROM T 
+WHERE "Time" < '2:00';
+Generated Final SQL: SELECT "Title" FROM T WHERE "Time" < '2:00';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Title   |
+|:--------|
+| "Intro" |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: The Harvest (Boondox album)
+SQL: SELECT "Title" FROM T WHERE "Time" < '2:00';
+
+Title
+"Intro"
+Question: what is the only track shorter than 2:00?
+A: To find the answer to this question, let’s think step by step.
+Prediction: "intro"
+[Gold Answer] intro
+

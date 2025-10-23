@@ -1,0 +1,99 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 9, 10, 11, 12
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Panama, Uruguay, Brazil, Argentina
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 0, 1, 5, 10
+   - Role: Measures
+
+**Outlier Row Analysis:**
+
+- Row 12 (Total):
+   - The values in this row are significantly higher than the rest of the table, indicating that it represents the total sum of all the other rows. This makes it an outlier in terms of the values being much larger than individual country totals. However, since it is a total row, it is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation               |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:---------------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | Brazil               |      7 |        5 |        3 |      15 |
+|            1 | 2      | Venezuela            |      3 |        2 |        8 |      13 |
+|            2 | 3      | Colombia             |      2 |        3 |        4 |       9 |
+|            3 | 4      | Chile                |      2 |        0 |        2 |       4 |
+|            4 | 5      | Argentina            |      1 |        2 |        5 |       8 |
+|            5 | 6      | Peru                 |      1 |        1 |        2 |       4 |
+|            6 | 7      | Ecuador              |      0 |        2 |        2 |       4 |
+|            7 | 8      | Guyana               |      0 |        1 |        0 |       1 |
+|            8 | 9      | Aruba                |      0 |        0 |        1 |       1 |
+|            9 | 9      | Netherlands Antilles |      0 |        0 |        1 |       1 |
+|           10 | 9      | Panama               |      0 |        0 |        1 |       1 |
+|           11 | 9      | Uruguay              |      0 |        0 |        1 |       1 |
+|           12 | Total  | Total                |     16 |       16 |       30 |      62 |
+
+Generated Reasoning SQL: The relevant columns for this question are "Nation", "Silver", and "Bronze" from the summary. We need to find the country that won exactly one silver medal and no bronze medals. 
+To answer this, we filter rows where "Silver" = 1 and "Bronze" = 0.
+SQL: select "Nation" from T where "Silver" = 1 and "Bronze" = 0;
+Generated Final SQL: select "Nation" from T where "Silver" = 1 and "Bronze" = 0;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Nation   |
+|:---------|
+| Guyana   |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Taekwondo at the 2010 South American Games
+SQL: select "Nation" from T where "Silver" = 1 and "Bronze" = 0;
+
+Nation
+Guyana
+Question: which country won one silver medal but no bronze medals?
+A: To find the answer to this question, let’s think step by step.
+Prediction: guyana
+[Gold Answer] guyana
+

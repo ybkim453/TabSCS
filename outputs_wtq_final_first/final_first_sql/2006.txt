@@ -1,0 +1,132 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 7, 8
+   - Role: Identifier for each song in the table
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Out Here, It Ain't A Thang, They Pray with Snakes, Rollin Hard
+   - Role: Descriptor for the title of each song
+
+3. Time:
+   - Data type: Numeric (Time duration)
+   - 4 representative example values: 3:18, 3:45, 3:56, 4:07
+   - Role: Measure of the duration of each song
+
+4. Lyrics:
+   - Data type: Categorical
+   - 4 representative example values: Boondox
+   - Role: Descriptor for the lyricist of each song
+
+5. Music:
+   - Data type: Categorical
+   - 4 representative example values: Mike E. Clark, Kuma
+   - Role: Descriptor for the music composer of each song
+
+6. Producer(s):
+   - Data type: Categorical
+   - 4 representative example values: Boondox
+   - Role: Descriptor for the producer(s) of each song
+
+7. Performer(s):
+   - Data type: Categorical
+   - 4 representative example values: Boondox
+   - Role: Descriptor for the performer(s) of each song
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 6:
+   - The values in this row are consistent with the rest of the table and do not stand out as distinctive. This row is an ordinary entry and does not require special handling.
+
+3. Row 2:
+   - The values in this row are similar to the majority of the table and do not deviate significantly. This row is an ordinary entry and does not qualify as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   # | Title                   | Time   | Lyrics       | Music                      | Producer(s)   | Performer(s)                          |
+|-------------:|----:|:------------------------|:-------|:-------------|:---------------------------|:--------------|:--------------------------------------|
+|            0 |   1 | "Intro"                 | 1:16   |              |                            |               |                                       |
+|            1 |   2 | "Seven"                 | 3:30   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|            2 |   3 | "Out Here"              | 3:18   | Boondox      | Mike E. Clark\nTino Grosse | Boondox       | Boondox                               |
+|            3 |   4 | "It Ain't A Thang"      | 3:45   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|            4 |   5 | "Digging"               | 3:04   | Boondox      | Kuma                       | Boondox       | Boondox                               |
+|            5 |   6 | "Lady In The Jaguar"    | 3:55   | Boondox\nICP | Mike E. Clark              | Boondox\nICP  | Boondox\nICP                          |
+|            6 |   7 | "They Pray with Snakes" | 3:56   | Boondox      | Kuma                       | Boondox       | Boondox                               |
+|            7 |   8 | "Rollin Hard"           | 4:07   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|            8 |   9 | "The Harvest"           | 3:53   | Boondox\nAMB | Kuma                       | Boondox\nAMB  | Boondox\nAxe Murder Boyz              |
+|            9 |  10 | "Sippin"                | 3:16   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|           10 |  11 | "Lake of Fire"          | 4:12   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+|           11 |  12 | "Red Mist"              | 3:54   | Boondox      | Mike E. Clark              | Boondox       | Boondox\nBlaze Ya Dead Homie\nTwiztid |
+|           12 |  13 | "Angel Like"            | 3:42   | Boondox      | Mike E. Clark              | Boondox       | Boondox                               |
+
+Generated Reasoning SQL: To determine the song that plays before "Red Mist," we need to find the song that has a lower row number than the row where "Red Mist" is listed. The "Title" column contains the names of the songs, and the "#" column serves as the identifier for each song.
+We can filter the row corresponding to "Red Mist," retrieve its row number, and then find the song with a row number one less than that.
+SQL: 
+SELECT "Title" 
+FROM T 
+WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Title" = 'Red Mist') - 1;
+Generated Final SQL: SELECT "Title" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Title" = 'Red Mist') - 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: The Harvest (Boondox album) (row_number, #, Title, Time, Lyrics, Music, Producer(s), Performer(s))
+
+row_number | # | Title | Time | Lyrics | Music | Producer(s) | Performer(s)
+0 | 1 | "Intro" | 1:16 | None | None | None | None
+1 | 2 | "Seven" | 3:30 | Boondox | Mike E. Clark | Boondox | Boondox
+2 | 3 | "Out Here" | 3:18 | Boondox | Mike E. Clark\nTino Grosse | Boondox | Boondox
+3 | 4 | "It Ain't A Thang" | 3:45 | Boondox | Mike E. Clark | Boondox | Boondox
+4 | 5 | "Digging" | 3:04 | Boondox | Kuma | Boondox | Boondox
+5 | 6 | "Lady In The Jaguar" | 3:55 | Boondox\nICP | Mike E. Clark | Boondox\nICP | Boondox\nICP
+6 | 7 | "They Pray with Snakes" | 3:56 | Boondox | Kuma | Boondox | Boondox
+7 | 8 | "Rollin Hard" | 4:07 | Boondox | Mike E. Clark | Boondox | Boondox
+8 | 9 | "The Harvest" | 3:53 | Boondox\nAMB | Kuma | Boondox\nAMB | Boondox\nAxe Murder Boyz
+9 | 10 | "Sippin" | 3:16 | Boondox | Mike E. Clark | Boondox | Boondox
+10 | 11 | "Lake of Fire" | 4:12 | Boondox | Mike E. Clark | Boondox | Boondox
+11 | 12 | "Red Mist" | 3:54 | Boondox | Mike E. Clark | Boondox | Boondox\nBlaze Ya Dead Homie\nTwiztid
+12 | 13 | "Angel Like" | 3:42 | Boondox | Mike E. Clark | Boondox | Boondox
+Question: what song plays before "red mist"?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we need to look at the row_number and Title columns in the full table.
+
+From the full table:
+- "Red Mist" is at row_number 12.
+- To find the song that plays before "Red Mist," we need to look at the row_number before 12, which is 11.
+- At row_number 11, the Title is "Lake of Fire."
+
+Therefore, the song that plays before "Red Mist" is "Lake of Fire."
+
+Final Answer: Lake of Fire
+[Fallback] Prediction: lake of fire
+[Gold Answer] lake of fire
+

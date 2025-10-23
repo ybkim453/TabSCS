@@ -1,0 +1,160 @@
+=== Table ID ===
+csv/204-csv/674.tsv
+
+=== Question ===
+what is the first canadian airdate?
+
+=== Sub-table Preview ===
+|   No. in\nseason |   No. in\nseries | Title                  | Canadian airdate   | US airdate        |   Production code |
+|-----------------:|-----------------:|:-----------------------|:-------------------|:------------------|------------------:|
+|               14 |              331 | Barely Breathing       | November 7, 2013   | November 7, 2013  |              1314 |
+|               20 |              337 | Power to the People    | February 18, 2014  | February 18, 2014 |              1320 |
+|               25 |              342 | What It's Like         | March 18, 2014     | March 18, 2014    |              1325 |
+|               33 |              350 | How Bizarre            | June 17, 2014      | June 17, 2014     |              1333 |
+|               36 |              353 | Out Of My Head         | July 8, 2014       | July 8, 2014      |              1336 |
+|               39 |              356 | Thunderstruck Part One | July 29, 2014      | July 29, 2014     |              1339 |
+
+=== Table Summary ===
+**Column 1: No. in season**
+- Data type: Numeric
+- 4 representative example values: 14, 20, 25, 33
+- Role of the column: Identifier for the episode number within a season
+
+**Column 2: No. in series**
+- Data type: Numeric
+- 4 representative example values: 331, 337, 342, 350
+- Role of the column: Identifier for the episode number within the entire series
+
+**Column 3: Title**
+- Data type: Categorical
+- 4 representative example values: Barely Breathing, Power to the People, What It's Like, How Bizarre
+- Role of the column: Descriptor for the title of each episode
+
+**Column 4: Canadian airdate**
+- Data type: Categorical
+- 4 representative example values: November 7, 2013, February 18, 2014, March 18, 2014, June 17, 2014
+- Role of the column: Descriptor for the airdate of each episode in Canada
+
+**Column 5: US airdate**
+- Data type: Categorical
+- 4 representative example values: November 7, 2013, February 18, 2014, March 18, 2014, June 17, 2014
+- Role of the column: Descriptor for the airdate of each episode in the US
+
+**Column 6: Production code**
+- Data type: Numeric
+- 4 representative example values: 1314, 1320, 1325, 1333
+- Role of the column: Identifier for the production code of each episode
+
+**Outlier Row Analysis:**
+1. Row 12: 
+   - The values are not explicitly mentioned, but if they are ordinary within the context of the table, they should be considered as ordinary values and not special.
+
+2. Row 33:
+   - The values "How Bizarre" for the title and "June 17, 2014" for both Canadian and US airdate are consistent with the majority of the table. This row is an ordinary row and requires no special handling.
+
+3. Row 30:
+   - The values are not explicitly mentioned, but if they are ordinary within the context of the table, they should be considered as ordinary values and not special.
+
+=== Full Table Preview ===
+|   row_number | No. in\nseason   | No. in\nseries   | Title                          | Canadian airdate    | US airdate          | Production code   |
+|-------------:|:-----------------|:-----------------|:-------------------------------|:--------------------|:--------------------|:------------------|
+|            0 | 1–2              | 318–319          | "Summertime"                   | 2013-07-11 00:00:00 | 2013-07-11 00:00:00 | 1301 & 1302       |
+|            1 | 3                | 320              | "All I Wanna Do"               | 2013-07-18 00:00:00 | 2013-07-18 00:00:00 | 1303              |
+|            2 | 4                | 321              | "My Own Worst Enemy"           | 2013-07-25 00:00:00 | 2013-07-25 00:00:00 | 1304              |
+|            3 | 5                | 322              | "About A Girl"                 | 2013-08-01 00:00:00 | 2013-08-01 00:00:00 | 1305              |
+|            4 | 6                | 323              | "Cannonball"                   | 2013-08-08 00:00:00 | 2013-08-08 00:00:00 | 1306              |
+|            5 | 7                | 324              | "Honey"                        | 2013-08-15 00:00:00 | 2013-08-15 00:00:00 | 1307              |
+|            6 | 8                | 325              | "Young Forever"                | 2013-08-22 00:00:00 | 2013-08-22 00:00:00 | 1308              |
+|            7 | 9                | 326              | "This Is How We Do It"         | 2013-10-03 00:00:00 | 2013-10-03 00:00:00 | 1309              |
+|            8 | 10               | 327              | "You Got Me"                   | 2013-10-10 00:00:00 | 2013-10-10 00:00:00 | 1310              |
+|            9 | 11               | 328              | "You Oughta Know"              | 2013-10-17 00:00:00 | 2013-10-17 00:00:00 | 1311              |
+|           10 | 12               | 329              | "Everything You've Done Wrong" | 2013-10-24 00:00:00 | 2013-10-24 00:00:00 | 1312              |
+|           11 | 13               | 330              | "Who Do You Think You Are"     | 2013-10-31 00:00:00 | 2013-10-31 00:00:00 | 1313              |
+|           12 | 14               | 331              | "Barely Breathing"             | 2013-11-07 00:00:00 | 2013-11-07 00:00:00 | 1314              |
+|           13 | 15               | 332              | "Black Or White"               | 2013-11-14 00:00:00 | 2013-11-14 00:00:00 | 1315              |
+|           14 | 16               | 333              | "Spiderwebs"                   | 2013-11-21 00:00:00 | 2013-11-21 00:00:00 | 1316              |
+|           15 | 17               | 334              | "The World I Know"             | 2014-01-28 00:00:00 | 2014-01-28 00:00:00 | 1317              |
+|           16 | 18               | 335              | "Better Man"                   | 2014-02-04 00:00:00 | 2014-02-04 00:00:00 | 1318              |
+|           17 | 19               | 336              | "Dig Me Out"                   | 2014-02-11 00:00:00 | 2014-02-11 00:00:00 | 1319              |
+|           18 | 20               | 337              | "Power to the People"          | 2014-02-18 00:00:00 | 2014-02-18 00:00:00 | 1320              |
+|           19 | 21               | 338              | "No Surprises"                 | 2014-02-25 00:00:00 | 2014-02-25 00:00:00 | 1321              |
+|           20 | 22               | 339              | "Basket Case"                  | 2014-03-04 00:00:00 | 2014-03-04 00:00:00 | 1322              |
+|           21 | 23–24            | 340–341          | "Unbelievable"                 | 2014-03-11 00:00:00 | 2014-03-11 00:00:00 | 1323 & 1324       |
+|           22 | 25               | 342              | "What It's Like"               | 2014-03-18 00:00:00 | 2014-03-18 00:00:00 | 1325              |
+|           23 | 26               | 343              | "Close to Me"                  | 2014-03-25 00:00:00 | 2014-03-25 00:00:00 | 1326              |
+|           24 | 27               | 344              | "Army of Me"                   | 2014-04-01 00:00:00 | 2014-04-01 00:00:00 | 1327              |
+|           25 | 28               | 345              | "Everything Is Everything"     | 2014-04-08 00:00:00 | 2014-04-08 00:00:00 | 1328              |
+|           26 | 29               | 346              | "Sparks Will Fly" Part One     | 2014-04-15 00:00:00 | 2014-04-15 00:00:00 | 1329              |
+|           27 | 30               | 347              | "Sparks Will Fly" Part Two     | 2014-04-22 00:00:00 | 2014-04-22 00:00:00 | 1330              |
+|           28 | 31               | 348              | "You Are Not Alone"            | 2014-06-03 00:00:00 | 2014-06-03 00:00:00 | 1331              |
+|           29 | 32               | 349              | "Enjoy The Silence"            | 2014-06-10 00:00:00 | 2014-06-10 00:00:00 | 1332              |
+|           30 | 33               | 350              | "How Bizarre"                  | 2014-06-17 00:00:00 | 2014-06-17 00:00:00 | 1333              |
+|           31 | 34               | 351              | "My Hero"                      | 2014-06-24 00:00:00 | 2014-06-24 00:00:00 | 1334              |
+|           32 | 35               | 352              | "Hypnotize"                    | 2014-07-01 00:00:00 | 2014-07-01 00:00:00 | 1335              |
+|           33 | 36               | 353              | "Out Of My Head"               | 2014-07-08 00:00:00 | 2014-07-08 00:00:00 | 1336              |
+|           34 | 37               | 354              | TBA                            | 2014-07-15 00:00:00 | 2014-07-15 00:00:00 | 1337              |
+|           35 | 38               | 355              | TBA                            | 2014-07-22 00:00:00 | 2014-07-22 00:00:00 | 1338              |
+|           36 | 39               | 356              | "Thunderstruck" Part One       | 2014-07-29 00:00:00 | 2014-07-29 00:00:00 | 1339              |
+|           37 | 40               | 357              | "Thundestruck" Part Two        | 2014-07-29 00:00:00 | 2014-07-29 00:00:00 | 1340              |
+
+Generated Reasoning SQL: Explanation: To find the first Canadian airdate, we need to select the minimum value from the "Canadian airdate" column. Since the "Canadian airdate" column is categorical and represents dates, we need to ensure that the date values are correctly ordered for comparison.
+
+SQL: SELECT MIN("Canadian airdate") AS first_canadian_airdate FROM T;
+Generated Final SQL: SELECT MIN("Canadian airdate") AS first_canadian_airdate FROM T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| first_canadian_airdate   |
+|:-------------------------|
+| 2013-07-11 00:00:00      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Degrassi: The Next Generation episodes
+SQL: SELECT MIN("Canadian airdate") AS first_canadian_airdate FROM T;
+
+SQL Execution Result:
+first_canadian_airdate
+2013-07-11 00:00:00
+
+Question: what is the first canadian airdate?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2013-07-11
+[Gold Answer] july 11, 2013
+

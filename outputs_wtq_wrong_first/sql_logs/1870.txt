@@ -1,0 +1,149 @@
+=== Table ID ===
+csv/204-csv/656.tsv
+
+=== Question ===
+are the years listed in consecutive order or are they not?
+
+=== Sub-table Preview ===
+|   Year | State/Territory Men's Division   | State/Territory Women's Division   | Major Centres Division   | Community Division   | Women's Division   |
+|-------:|:---------------------------------|:-----------------------------------|:-------------------------|:---------------------|:-------------------|
+|   2012 | Queensland                       | New South Wales                    | nan                      | nan                  | nan                |
+|   2010 | Western Australia                | nan                                | nan                      | nan                  | nan                |
+|   2005 | Queensland                       | nan                                | Alice Springs            | Alkupitja            | Darwin             |
+|   2003 | New South Wales                  | nan                                | Darwin                   | nan                  | nan                |
+|   2002 | Northern Territory               | nan                                | Darwin                   | nan                  | nan                |
+|   2001 | Tasmania                         | nan                                | nan                      | nan                  | nan                |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2012, 2010, 2005, 2003
+   - Role: Identifier for the year in which the data was recorded.
+
+2. State/Territory Men's Division:
+   - Data type: Categorical
+   - 4 representative example values: Queensland, Western Australia, New South Wales, Northern Territory
+   - Role: Descriptor indicating the state or territory for the men's division.
+
+3. State/Territory Women's Division:
+   - Data type: Categorical
+   - 4 representative example values: New South Wales, nan, nan, nan
+   - Role: Descriptor indicating the state or territory for the women's division.
+
+4. Major Centres Division:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, Alice Springs, Darwin
+   - Role: Descriptor indicating the major centres division.
+
+5. Community Division:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, Alkupitja, nan
+   - Role: Descriptor indicating the community division.
+
+6. Women's Division:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, Darwin, nan
+   - Role: Descriptor indicating the women's division.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in the State/Territory Men's Division and State/Territory Women's Division columns are Queensland and New South Wales, respectively, which are common values in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row.
+
+2. Row 8:
+   - The values in the Major Centres Division and Community Division columns are both nan, which are common missing data values in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row.
+
+3. Row 11:
+   - The values in the State/Territory Men's Division and Women's Division columns are Tasmania and nan, respectively, which are common values in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Year | State/Territory Men's Division   | State/Territory Women's Division   | Major Centres Division   | Community Division   | Women's Division   |
+|-------------:|-------:|:---------------------------------|:-----------------------------------|:-------------------------|:---------------------|:-------------------|
+|            0 |   2012 | Queensland                       | New South Wales                    |                          |                      |                    |
+|            1 |   2012 | New South Wales                  | New South Wales                    | Darwin                   | Brothers in Arms     | Bush Potatoes      |
+|            2 |   2011 | New South Wales                  | New South Wales                    | Maranoa Murris           | Gap Angels           | Bush Potatoes      |
+|            3 |   2010 | Western Australia                |                                    |                          |                      |                    |
+|            4 |   2009 | Queensland                       |                                    | Alkupitja                | Tangentyere          | New South Wales    |
+|            5 |   2008 | Queensland                       |                                    | Katherine                | Cooktown             | New South Wales    |
+|            6 |   2007 | New South Wales                  |                                    | Alkupitja                | Cat Tigers           | CGA Cougars        |
+|            7 |   2006 | Queensland                       |                                    | Alice Springs            | Melville Island      | Darwin             |
+|            8 |   2005 | Queensland                       |                                    | Alice Springs            | Alkupitja            | Darwin             |
+|            9 |   2004 | Queensland                       |                                    | Alice Springs            | Normanton            | Tennant Creek      |
+|           10 |   2003 | New South Wales                  |                                    | Darwin                   |                      |                    |
+|           11 |   2002 | Northern Territory               |                                    | Darwin                   |                      |                    |
+|           12 |   2001 | Tasmania                         |                                    |                          |                      |                    |
+
+Generated Reasoning SQL: Explanation: To determine if the years listed in the table are consecutive, we need to check if there are any gaps between consecutive years. We can achieve this by comparing each year with the next year in the dataset and checking if there are any missing years.
+We will use the "Year" column, which is numeric and represents the year in which the data was recorded.
+
+SQL: 
+SELECT DISTINCT "Year" 
+FROM T t1
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM T t2 
+    WHERE t2."Year" = t1."Year" + 1
+);
+Generated Final SQL: SELECT DISTINCT "Year" FROM T t1 WHERE NOT EXISTS ( SELECT 1 FROM T t2 WHERE t2."Year" = t1."Year" + 1 );
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Year |
+|-------:|
+|   2012 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Imparja Cup
+SQL: SELECT DISTINCT "Year" FROM T t1 WHERE NOT EXISTS ( SELECT 1 FROM T t2 WHERE t2."Year" = t1."Year" + 1 );
+
+SQL Execution Result:
+Year
+2012
+
+Question: are the years listed in consecutive order or are they not?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2012
+[Gold Answer] yes
+

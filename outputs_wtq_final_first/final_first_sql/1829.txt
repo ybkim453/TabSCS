@@ -1,0 +1,107 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 3, 6, 7, 8
+   - Role of the column: Identifier, ranks the nations based on their total medal count.
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Finland, United States, Norway, Italy
+   - Role of the column: Descriptor, identifies the nation corresponding to the medal count.
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: Gold - 3, 2, 1, 1; Silver - 3, 3, 2, 0; Bronze - 1, 2, 1, 1; Total - 7, 7, 4, 2
+   - Role of the columns: Measures, represent the number of gold, silver, bronze medals, and total medals won by each nation.
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Norway):
+   - The values for Gold (2) and Bronze (1) are different from the majority of the table.
+   - This row is an outlier because it has a unique combination of medal counts compared to the surrounding rows.
+
+2. Row 8 (Italy):
+   - The values for Silver (2) are different from the majority of the table.
+   - This row is an outlier because it has a unique number of silver medals compared to the neighboring rows.
+
+3. Row 0 (Finland):
+   - The values for Gold (3) and Silver (3) are different from the majority of the table.
+   - This row is an outlier because it has a higher number of gold and silver medals compared to the other rows.
+
+Overall, rows 7, 8, and 0 are considered outliers due to their distinctive medal counts compared to the rest of the table.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Nation        | Gold   |   Silver |   Bronze |   Total |
+|-------------:|-------:|:--------------|:-------|---------:|---------:|--------:|
+|            0 |      1 | Soviet Union  | *7*    |        3 |        6 |      16 |
+|            1 |      2 | Austria       | 4      |        3 |        4 |      11 |
+|            2 |      3 | Finland       | 3      |        3 |        1 |       7 |
+|            3 |      4 | Switzerland   | 3      |        2 |        1 |       6 |
+|            4 |      5 | Sweden        | 2      |        4 |        4 |      10 |
+|            5 |      6 | United States | 2      |        3 |        2 |       7 |
+|            6 |      7 | Norway        | 2      |        1 |        1 |       4 |
+|            7 |      8 | Italy         | 1      |        2 |        0 |       3 |
+|            8 |      9 | Germany       | 1      |        0 |        1 |       2 |
+|            9 |     10 | Canada        | 0      |        1 |        2 |       3 |
+
+Generated Reasoning SQL: Explanation: To determine the number of gold medals Finland won, we need to filter the rows where "Nation" = Finland and then sum the values in the "Gold" column. The summary provides that the "Nation" column is categorical and the "Gold" column is numeric, representing the number of gold medals won by each nation.
+
+SQL: select sum(cast("Gold" as integer)) as total_gold_medals from T where "Nation" = 'Finland';
+Generated Final SQL: select sum(cast("Gold" as integer)) as total_gold_medals from T where "Nation" = 'Finland';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_gold_medals |
+|--------------------:|
+|                   3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1956 Winter Olympics
+SQL: select sum(cast("Gold" as integer)) as total_gold_medals from T where "Nation" = 'Finland';
+
+total_gold_medals
+3
+Question: how many gold medals did finland win?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team
+   - Data type: Categorical
+   - 4 representative example values: Castleford Tigers, Catalans Dragons, Hull, St Helens RLFC
+   - Role of the column: Identifier for the rugby league teams
+
+2. Stadium
+   - Data type: Categorical
+   - 4 representative example values: The Wish Communications Stadium, Stade Gilbert Brutus, Kingston Communications Stadium, Langtree Park
+   - Role of the column: Descriptor for the stadiums where the teams play
+
+3. Capacity
+   - Data type: Numeric
+   - 4 representative example values: 11,750, 14,000, 25,404, 18,000
+   - Role of the column: Measure of the seating capacity of each stadium
+
+4. City/Area
+   - Data type: Categorical
+   - 4 representative example values: Castleford, Perpignan, Kingston upon Hull, St Helens
+   - Role of the column: Descriptor for the city or area where the stadium is located
+
+**Outlier Row Analysis:**
+
+1. Catalans Dragons (2014 season)
+   - The stadium capacity of 14,000 is significantly lower compared to the other stadiums in the table.
+   - This makes the row an outlier as it has a distinctively lower capacity compared to the majority of the table.
+
+2. Wakefield Trinity Wildcats (2014 season)
+   - The stadium capacity of 11,000 is lower than the average capacity in the table.
+   - This makes the row an outlier as it has a lower capacity compared to the majority of the table.
+
+3. St Helens RLFC (2014 season)
+   - The stadium capacity of 18,000 is higher than the average capacity in the table.
+   - This makes the row an outlier as it has a higher capacity compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Team                                     | Stadium                         |   Capacity | City/Area                                   |
+|-------------:|:-----------------------------------------|:--------------------------------|-----------:|:--------------------------------------------|
+|            0 | Bradford Bulls (2014 season)             | Provident Stadium               |      27000 | Bradford West Yorkshire                     |
+|            1 | Castleford Tigers (2014 season)          | The Wish Communications Stadium |      11750 | Castleford West Yorkshire                   |
+|            2 | Catalans Dragons (2014 season)           | Stade Gilbert Brutus            |      14000 | Perpignan Pyrénées-Orientales France        |
+|            3 | Huddersfield Giants (2014 season)        | John Smith's Stadium            |      24544 | Huddersfield West Yorkshire                 |
+|            4 | Hull (2014 season)                       | Kingston Communications Stadium |      25404 | Kingston upon Hull East Riding of Yorkshire |
+|            5 | Hull Kingston Rovers (2014 season)       | MS3 Craven Park                 |       9471 | Kingston upon Hull East Riding of Yorkshire |
+|            6 | Leeds Rhinos (2014 season)               | Headingley Carnegie Stadium     |      22250 | Leeds West Yorkshire                        |
+|            7 | London Broncos (2014 season)             | Twickenham Stoop                |      12700 | Twickenham London                           |
+|            8 | Salford City Reds (2014 season)          | Salford City Stadium            |      12000 | Salford Greater Manchester                  |
+|            9 | St Helens RLFC (2014 season)             | Langtree Park                   |      18000 | St Helens Merseyside                        |
+|           10 | Wakefield Trinity Wildcats (2014 season) | Rapid Solicitors Stadium        |      11000 | Wakefield West Yorkshire                    |
+|           11 | Warrington Wolves (2014 season)          | Halliwell Jones Stadium         |      15500 | Warrington Cheshire                         |
+|           12 | Widnes Vikings (2014 season)             | The Select Security Stadium     |      13500 | Widnes Cheshire England                     |
+|           13 | Wigan Warriors (2014 season)             | DW Stadium                      |      25138 | Wigan Greater Manchester                    |
+
+Generated Reasoning SQL: Explanation: To find the next team listed after Widnes Vikings, we need to identify the row_number of Widnes Vikings and then retrieve the team listed in the row_number immediately after that. The "Team" column contains categorical values representing the rugby league teams. 
+We will first find the row_number for Widnes Vikings and then select the team from the row_number that is one greater than the row_number of Widnes Vikings.
+
+SQL: 
+SELECT "Team" 
+FROM T 
+WHERE row_number = (SELECT row_number FROM T WHERE Team = 'Widnes Vikings') + 1;
+Generated Final SQL: SELECT "Team" FROM T WHERE row_number = (SELECT row_number FROM T WHERE Team = 'Widnes Vikings') + 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Super League XVIV (row_number, Team, Stadium, Capacity, City/Area)
+
+row_number | Team | Stadium | Capacity | City/Area
+0 | Bradford Bulls (2014 season) | Provident Stadium | 27000 | Bradford West Yorkshire
+1 | Castleford Tigers (2014 season) | The Wish Communications Stadium | 11750 | Castleford West Yorkshire
+2 | Catalans Dragons (2014 season) | Stade Gilbert Brutus | 14000 | Perpignan Pyrénées-Orientales France
+3 | Huddersfield Giants (2014 season) | John Smith's Stadium | 24544 | Huddersfield West Yorkshire
+4 | Hull (2014 season) | Kingston Communications Stadium | 25404 | Kingston upon Hull East Riding of Yorkshire
+5 | Hull Kingston Rovers (2014 season) | MS3 Craven Park | 9471 | Kingston upon Hull East Riding of Yorkshire
+6 | Leeds Rhinos (2014 season) | Headingley Carnegie Stadium | 22250 | Leeds West Yorkshire
+7 | London Broncos (2014 season) | Twickenham Stoop | 12700 | Twickenham London
+8 | Salford City Reds (2014 season) | Salford City Stadium | 12000 | Salford Greater Manchester
+9 | St Helens RLFC (2014 season) | Langtree Park | 18000 | St Helens Merseyside
+10 | Wakefield Trinity Wildcats (2014 season) | Rapid Solicitors Stadium | 11000 | Wakefield West Yorkshire
+11 | Warrington Wolves (2014 season) | Halliwell Jones Stadium | 15500 | Warrington Cheshire
+12 | Widnes Vikings (2014 season) | The Select Security Stadium | 13500 | Widnes Cheshire England
+13 | Wigan Warriors (2014 season) | DW Stadium | 25138 | Wigan Greater Manchester
+Question: what is the next team listed after widnes vikings?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate the row for Widnes Vikings in the table. Widnes Vikings are in row 12.
+
+Next, we need to look at the row immediately following row 12 to find the next team listed.  
+The team listed after Widnes Vikings is Wigan Warriors in row 13.
+
+Therefore, the next team listed after Widnes Vikings is Wigan Warriors.
+
+Final Answer: Wigan Warriors
+[Fallback] Prediction: wigan warriors
+[Gold Answer] wigan warriors
+

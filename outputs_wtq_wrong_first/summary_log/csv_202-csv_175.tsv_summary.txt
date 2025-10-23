@@ -1,0 +1,33 @@
+**Column Analysis:**
+
+1. Parish
+   - Data type: Categorical
+   - 4 representative example values: Alstadhaug, Ekne, Levanger, Ytterøy
+   - Role of the column: Identifier for the parish where the church is located
+
+2. Church name
+   - Data type: Categorical
+   - 4 representative example values: Alstadhaug Church, Ekne Church, Levanger Church, Bamberg Church
+   - Role of the column: Descriptor for the name of the church
+
+3. Location
+   - Data type: Categorical
+   - 4 representative example values: Alstadhaug, Ekne, Levanger, Ytterøya
+   - Role of the column: Descriptor for the specific location of the church
+
+4. Year built
+   - Data type: Numeric
+   - 4 representative example values: 1180, 1893, 1902, 1998
+   - Role of the column: Measure for the year the church was built
+
+**Outlier Row Analysis:**
+
+1. Row 6 (Ytterøy Church)
+   - The values for Parish (Ytterøy) and Location (Ytterøya) are different from the majority of the table.
+   - The Year built (1890) is also significantly earlier compared to the other churches in the table.
+   - These distinctive values make this row an outlier.
+
+2. Row 0 (Alstadhaug Church)
+   - The values for Parish (Alstadhaug) and Location (Alstadhaug) are consistent with other entries in the table.
+   - The Year built (1180) is significantly earlier compared to the other churches, but given the historical context, it is an ordinary value for a church built in that period.
+   - This row is an ordinary entry and does not require special handling as an outlier.

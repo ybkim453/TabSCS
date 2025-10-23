@@ -1,0 +1,148 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 5, 6, 9
+   - Role: Identifier for each episode
+
+2. Episode:
+   - Data type: Categorical
+   - 4 representative example values: Blind Dates and Bleeding Hearts, Maybe, Baby, Play Through the Pain, To Drag & To Hold
+   - Role: Descriptor for each episode
+
+3. Air date:
+   - Data type: Date
+   - 4 representative example values: October 26, 2007, November 9, 2007, November 15, 2007, December 7, 2007
+   - Role: Descriptor for the airing date of each episode
+
+4. Rating:
+   - Data type: Numeric
+   - 4 representative example values: 6.1, 6.5, 5.8, 5.8
+   - Role: Measure of the rating for each episode
+
+5. Share:
+   - Data type: Numeric
+   - 4 representative example values: 11, 10, 11, 10
+   - Role: Measure of the share for each episode
+
+6. 18-49 (Rating/Share):
+   - Data type: Categorical
+   - 4 representative example values: 1.9/6, 2.0/6, 3.3/9, 1.8/5
+   - Role: Descriptor for the 18-49 rating and share for each episode
+
+7. Viewers (m):
+   - Data type: Numeric
+   - 4 representative example values: 8.9, 9.7, 8.93, 8.58
+   - Role: Measure of the number of viewers for each episode
+
+8. Rank (night):
+   - Data type: Categorical
+   - 4 representative example values: #1, #8, #2, nan
+   - Role: Descriptor for the rank of the episode within the night
+
+9. Rank (timeslot):
+   - Data type: Categorical
+   - 4 representative example values: #1, #3, #1, #2
+   - Role: Descriptor for the rank of the episode within its timeslot
+
+10. Rank (overall):
+   - Data type: Categorical
+   - 4 representative example values: #41, #36, #45, #32
+   - Role: Descriptor for the overall rank of the episode
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Episode: Maybe, Baby)
+   - The values for Rating (6.5) and Share (11) are higher compared to the surrounding rows.
+   - These values are significantly different from the majority of the table, making this row an outlier.
+
+2. Row 12 (Episode: Never Tell)
+   - The values for Rank (night) and Rank (overall) are marked as "nan", which is not a typical value in the dataset.
+   - This inconsistency makes the row an outlier.
+
+3. Row 0 (Episode: Blind Dates and Bleeding Hearts)
+   - The values for 18-49 (Rating/Share) (1.9/6) and Viewers (m) (8.9) are within the range of other rows.
+   - These values are ordinary within the context of the table and do not make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   # | Episode                                       | Air date            |   Rating |   Share | 18-49 (Rating/Share)   |   Viewers (m) | Rank (night)   | Rank (timeslot)   | Rank (overall)   |
+|-------------:|----:|:----------------------------------------------|:--------------------|---------:|--------:|:-----------------------|--------------:|:---------------|:------------------|:-----------------|
+|            0 |   1 | "Welcome to the Club"                         | 2007-10-12 00:00:00 |      7.3 |      13 | 2.5/8                  |         10.82 | #1             | #1                | #26              |
+|            1 |   2 | "Train In Vain"                               | 2007-10-19 00:00:00 |      6.5 |      12 | 2.0/6                  |          9.69 | #2             | #1                | #37              |
+|            2 |   3 | "Blind Dates and Bleeding Hearts"             | 2007-10-26 00:00:00 |      6.1 |      11 | 1.9/6                  |          8.9  | #1             | #1                | #41              |
+|            3 |   4 | "Grannies Guns Love Mints"                    | 2007-11-02 00:00:00 |      6.4 |      11 | 1.9/6                  |          9.47 | #1             | #1                | #35              |
+|            4 |   5 | "Maybe Baby"                                  | 2007-11-09 00:00:00 |      6.5 |      11 | 2.0/6                  |          9.7  | #1             | #1                | #36              |
+|            5 |   6 | "Play Through the Pain"                       | 2007-11-15 00:00:00 |      6.1 |      10 | 3.3/9                  |          8.93 | #8             | #3                | #45              |
+|            6 |   7 | "The Past Comes Back to Haunt You"            | 2007-11-16 00:00:00 |      6.2 |      11 | 1.7/5                  |          8.94 | #4             | #1                | #41              |
+|            7 |   8 | "No Opportunity Necessary"                    | 2007-11-23 00:00:00 |      5.3 |       9 | 1.6/5                  |          7.76 | #3             | #1                | #45              |
+|            8 |   9 | "To Drag & To Hold"                           | 2007-12-07 00:00:00 |      5.8 |      10 | 1.8/5                  |          8.58 | #2             | #1                | #32              |
+|            9 |  10 | "FBI Guy"                                     | 2008-01-04 00:00:00 |      5.2 |       9 | 1.8/5                  |          7.68 | #2             | #1                | #36              |
+|           10 |  11 | "Father's Day"                                | 2008-04-29 00:00:00 |      5.8 |       9 | 1.9/5                  |          8.14 | #7             | #2                | #42              |
+|           11 |  12 | "And the Truth Will (Sometimes) Set You Free" | 2008-05-06 00:00:00 |      6.1 |      10 | 2.2/6                  |          8.68 | #8             | #2                |                  |
+|           12 |  13 | "Never Tell"                                  | 2008-05-13 00:00:00 |      5.8 |      10 | 2.1/6                  |          8.46 |                | #2                |                  |
+
+Generated Reasoning SQL: Explanation: To determine the number of episodes that ranked at least #4 for the night, we need to consider the "Rank (night)" column. We are interested in episodes with a rank of #4 or higher, including #4 itself. Outliers such as row 5 with a missing rank value will be excluded from the count as they do not provide relevant ranking information.
+
+SQL: 
+SELECT COUNT(*) AS episodes_ranked_at_least_4_for_night
+FROM T
+WHERE "Rank (night)" >= '#4' AND "Rank (night)" NOT LIKE 'nan';
+Generated Final SQL: SELECT COUNT(*) AS episodes_ranked_at_least_4_for_night FROM T WHERE "Rank (night)" >= '#4' AND "Rank (night)" NOT LIKE 'nan';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   episodes_ranked_at_least_4_for_night |
+|---------------------------------------:|
+|                                      4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Women's Murder Club (TV series)
+SQL: SELECT COUNT(*) AS episodes_ranked_at_least_4_for_night FROM T WHERE "Rank (night)" >= '#4' AND "Rank (night)" NOT LIKE 'nan';
+
+SQL Execution Result:
+episodes_ranked_at_least_4_for_night
+4
+
+Question: how many episodes ranked at least #4 for the night?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 9
+

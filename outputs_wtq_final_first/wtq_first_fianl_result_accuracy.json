@@ -1,0 +1,86 @@
+{
+  "overall_accuracy": {
+    "correct": 2977,
+    "total": 4344,
+    "percentage": 68.53
+  },
+  "category_accuracy": {
+    "Extraction(Identification)": {
+      "correct": 1589,
+      "total": 2324,
+      "percentage": 68.37
+    },
+    "Calculation": {
+      "correct": 109,
+      "total": 206,
+      "percentage": 52.91
+    },
+    "Position(Identification)": {
+      "correct": 243,
+      "total": 338,
+      "percentage": 71.89
+    },
+    "Extraction(Identification), Counting(Identification), Comparison(Identification)": {
+      "correct": 1,
+      "total": 1,
+      "percentage": 100.0
+    },
+    "Counting(Identification), Extraction(Identification)": {
+      "correct": 1,
+      "total": 1,
+      "percentage": 100.0
+    },
+    "Comparison(Identification)": {
+      "correct": 301,
+      "total": 445,
+      "percentage": 67.64
+    },
+    "Extraction(Identification), Calculation": {
+      "correct": 5,
+      "total": 7,
+      "percentage": 71.43
+    },
+    "Calculation, Extraction(Identification)": {
+      "correct": 1,
+      "total": 1,
+      "percentage": 100.0
+    },
+    "Counting(Identification)": {
+      "correct": 721,
+      "total": 1011,
+      "percentage": 71.32
+    },
+    "Comparison(Identification), Counting(Identification)": {
+      "correct": 2,
+      "total": 2,
+      "percentage": 100.0
+    },
+    "Extraction(Identification), Position(Identification)": {
+      "correct": 2,
+      "total": 3,
+      "percentage": 66.67
+    },
+    "Position(Identification), Extraction(Identification)": {
+      "correct": 1,
+      "total": 3,
+      "percentage": 33.33
+    },
+    "Position(Identification), Calculation": {
+      "correct": 1,
+      "total": 1,
+      "percentage": 100.0
+    },
+    "Extraction(Identification), Comparison( Identification)": {
+      "correct": 0,
+      "total": 1,
+      "percentage": 0.0
+    }
+  },
+  "tabsize_accuracy": {
+    "unknown": {
+      "correct": 2977,
+      "total": 4344,
+      "percentage": 68.53
+    }
+  }
+}

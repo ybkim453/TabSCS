@@ -1,0 +1,112 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 1992, 2004, 1992
+   - Role: Identifier for the year the coin was issued
+
+2. Model:
+   - Data type: Categorical
+   - 4 representative example values: 80th anniversary of declaration of Independence, Re-establishment of Krooni currency, Barcelona Olympics, The Flag of Estonia – 2004
+   - Role: Descriptor of the theme or event commemorated by the coin
+
+3. Denomination:
+   - Data type: Categorical
+   - 4 representative example values: 100 krooni, 10 krooni, 10 krooni, 10 krooni
+   - Role: Descriptor of the face value of the coin
+
+4. Metal composition:
+   - Data type: Categorical
+   - 4 representative example values: .925 silver, .925 silver, .925 silver, .925 silver
+   - Role: Descriptor of the material used in making the coin
+
+5. Dimensions:
+   - Data type: Categorical
+   - 4 representative example values: 25 grams (0.88 oz)38 millimetres (1.5 in), 25 grams (0.88 oz)38 millimetres (1.5 in), 25 grams (0.88 oz)38 millimetres (1.5 in), 25 grams (0.88 oz)38 millimetres (1.5 in)
+   - Role: Descriptor of the weight and size of the coin
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The row has a denomination of 100 krooni, which is significantly higher than the other denominations in the table.
+   - This makes the row an outlier as it deviates from the typical denomination values of 10 krooni.
+
+2. Row 7:
+   - The row has a model of "The Flag of Estonia – 2004", which is different from the other models in the table.
+   - This makes the row an outlier as it represents a unique theme compared to the other coins.
+
+3. Row 4:
+   - The row has a year of 2004, which is different from the majority of the years in the table.
+   - However, the model and other attributes are consistent with other entries in the table, so this row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Model                                                     | Denomination   | Metal composition   | Dimensions                                |
+|-------------:|-------:|:----------------------------------------------------------|:---------------|:--------------------|:------------------------------------------|
+|            0 |   1992 | Re-establishment of kroon 28 August 1992                  | 100 krooni     | .900 silver         | 23 grams (0.81 oz)36 millimetres (1.4 in) |
+|            1 |   1996 | Atlanta Olympics 100th anniversary of Modern Olympiad     | 100 krooni     | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            2 |   1998 | 80th anniversary of declaration of Independence 1918–1998 | 100 krooni     | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            3 |   1992 | Re-establishment of Krooni currency                       | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            4 |   1992 | Barcelona Olympics                                        | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            5 |   1998 | 80th anniversary of declaration of Independence 1918–1998 | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            6 |   2002 | 370th anniversary of the founding of Tartu University     | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            7 |   2004 | The Flag of Estonia – 2004                                | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+
+Generated Reasoning SQL: To find the metal composition with the least dimension, we need to compare the values in the "Dimensions" column. The "Dimensions" column contains both weight and size information, so we must extract the relevant size component for comparison. Since the size is represented in millimeters, we need to identify the minimum value in this column.
+SQL: select "Metal composition" from T where "Dimensions" = (select min("Dimensions") from T);
+Generated Final SQL: select "Metal composition" from T where "Dimensions" = (select min("Dimensions") from T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Metal composition   |
+|:--------------------|
+| .900 silver         |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Commemorative coins of Estonia
+SQL: select "Metal composition" from T where "Dimensions" = (select min("Dimensions") from T);
+
+Metal composition
+.900 silver
+Question: which metal composition has the least dimension?
+A: To find the answer to this question, let’s think step by step.
+Prediction: .900 silver
+[Gold Answer] .900 silver
+

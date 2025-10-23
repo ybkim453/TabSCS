@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Wrestler:
+   - Data type: Categorical
+   - 4 representative example values: Randy Savage, Lanny Poffo, Paul Christy, 
+   - Role: Identifier for the wrestler who held the championship reign
+
+2. Reigns:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3
+   - Role: Measure of the number of championship reigns for the wrestler
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: March 13, 1979, 1981, November 13, 1983
+   - Role: Descriptor indicating the date when the championship reign started
+
+4. Place:
+   - Data type: Categorical
+   - 4 representative example values: Halifax, Nova Scotia, Unknown, Springfield, Illinois
+   - Role: Descriptor indicating the location where the championship reign took place
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Additional notes or comments related to the championship reign
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The Date value "March 13, 1979" is specific and different from the other rows where the Date is just mentioned as a year.
+   - This makes the row an outlier as it has a more detailed and specific date compared to the other rows.
+
+2. Row 6:
+   - The Place value "Unknown" is different from the specific locations mentioned in the other rows.
+   - This makes the row an outlier as it lacks specific information about the location compared to the other rows.
+
+3. Row 1:
+   - The Reigns value "2" is different from the other rows where the Reigns values are either "1" or "3".
+   - This makes the row an outlier as it has a unique number of championship reigns compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Wrestler:    |   Reigns: | Date:               | Place:                   | Notes:                                          |
+|-------------:|:-------------|----------:|:--------------------|:-------------------------|:------------------------------------------------|
+|            0 | Lanny Poffo  |         1 | 1978-05-10 00:00:00 | San Francisco California | Defeated Joe Banek to become the first champion |
+|            1 | Randy Savage |         1 | 1979-03-13 00:00:00 | Halifax Nova Scotia      |                                                 |
+|            2 | Lanny Poffo  |         2 | 1979-07-21 00:00:00 | Lexington Kentucky       |                                                 |
+|            3 | Randy Savage |         2 | 1981-01-01 00:00:00 | Unknown                  |                                                 |
+|            4 | Lanny Poffo  |         3 | 1981-01-01 00:00:00 | Unknown                  |                                                 |
+|            5 | Randy Savage |         3 | 1982-01-01 00:00:00 | Unknown                  |                                                 |
+|            6 | Paul Christy |         1 | 1983-11-13 00:00:00 | Springfield Illinois     |                                                 |
+|            7 | Lanny Poffo  |         4 | 1984-01-01 00:00:00 | Springfield Illinois     |                                                 |
+
+Generated Reasoning SQL: To find out who reigned after Randy Savage in 1981, we need to look for the wrestler who held the championship reign after Randy Savage's reign in 1981. 
+We can filter the rows based on the "Date" column to include only those rows where the date is after 1981 and then identify the wrestler who held the championship. 
+Since the "Date" column is of type Date, we can compare it directly with a date value in the format 'YYYY-MM-DD'.
+It's important to note that the outlier row with the specific date "March 13, 1979" should be excluded from the comparison as it does not fall within the scope of the question.
+SQL: 
+select "Wrestler:" 
+from T 
+where Date > '1981-01-01' and "Wrestler:" != 'Randy Savage'
+order by Date asc
+limit 1;
+Generated Final SQL: select "Wrestler:" from T where Date > '1981-01-01' and "Wrestler:" != 'Randy Savage' order by Date asc limit 1;
+[Error] Final SQL 실행 실패: Execution failed on sql 'select "Wrestler:" from T where Date > '1981-01-01' and "Wrestler:" != 'Randy Savage' order by Date asc limit 1;': no such column: Date
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: ICW World Heavyweight Championship (row_number, Wrestler:, Reigns:, Date:, Place:, Notes:)
+
+row_number | Wrestler: | Reigns: | Date: | Place: | Notes:
+0 | Lanny Poffo | 1 | 1978-05-10 00:00:00 | San Francisco California | Defeated Joe Banek to become the first champion
+1 | Randy Savage | 1 | 1979-03-13 00:00:00 | Halifax Nova Scotia | None
+2 | Lanny Poffo | 2 | 1979-07-21 00:00:00 | Lexington Kentucky | None
+3 | Randy Savage | 2 | 1981-01-01 00:00:00 | Unknown | None
+4 | Lanny Poffo | 3 | 1981-01-01 00:00:00 | Unknown | None
+5 | Randy Savage | 3 | 1982-01-01 00:00:00 | Unknown | None
+6 | Paul Christy | 1 | 1983-11-13 00:00:00 | Springfield Illinois | None
+7 | Lanny Poffo | 4 | 1984-01-01 00:00:00 | Springfield Illinois | None
+Question: who reigned after randy savage in 1981?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify who reigned after Randy Savage in 1981. According to the summary, the **Wrestler** column contains the names of the wrestlers. 
+
+From the full table:
+- Randy Savage held the championship for the second time until 1982.
+- After Randy Savage's second reign, Lanny Poffo started his third reign in 1981.
+
+Therefore, the wrestler who reigned after Randy Savage in 1981 was Lanny Poffo.
+
+Final Answer: Lanny Poffo
+[Fallback] Prediction: lanny poffo
+[Gold Answer] lanny poffo
+

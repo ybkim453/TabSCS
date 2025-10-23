@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Henrik Jensen, John 'Tune' Kristiansen, René Heitmann, Christian Andersen
+   - Role: Identifier
+
+2. Nationality
+   - Data type: Categorical
+   - 4 representative example values: Denmark
+   - Role: Descriptor
+
+3. From
+   - Data type: Date
+   - 4 representative example values: 1 July 2012, 18 June 2012, 17 July 2010, 11 July 2009
+   - Role: Descriptor
+
+4. To
+   - Data type: Date
+   - 4 representative example values: Present, 23 June 2012, 30 December 2011, 19 June 2010
+   - Role: Descriptor
+
+5. Honours
+   - Data type: Categorical
+   - 4 representative example values: nan, won promotion to the fourth tier, Team was relegated to third tier
+   - Role: Descriptor
+
+6. Comments
+   - Data type: Categorical
+   - 4 representative example values: nan, Caretaker for one league match, Originally had contract until summer 2012, Club went bankrupt after the season
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - The value "Team was relegated to third tier" in the Honours column is different from the majority of the table where honours are not mentioned or are positive achievements.
+   - This row is an outlier as it represents a negative outcome compared to the other entries.
+
+2. Row 4 (Index 4):
+   - The value "Never coached the team in a match" in the Comments column is different from the majority of the table where comments are related to coaching or achievements.
+   - This row is an outlier as it indicates a unique situation where the coach did not actually coach any matches.
+
+3. Row 9 (Index 9):
+   - The value "Originally had contract until end of 2001" in the Comments column is different from the majority of the table where comments are related to coaching or achievements.
+   - This row is an outlier as it provides specific information about the coach's contract duration, which is not commonly found in the other entries.

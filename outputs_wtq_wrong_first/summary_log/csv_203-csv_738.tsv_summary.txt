@@ -1,0 +1,48 @@
+**Column Analysis:**
+
+1. Common name:
+   - Data type: Categorical
+   - 4 representative example values: Bamboo, Casuarina, Jack, Lauraceae, Saj
+   - Role: Descriptor
+
+2. Binomial nomenclature:
+   - Data type: Categorical
+   - 4 representative example values: Family Poaceae, tribe Bambuseae, Casuarina spp., Mangifera caesia, Lauraceae
+   - Role: Descriptor
+
+3. Colour:
+   - Data type: Categorical
+   - 4 representative example values: nan, Reddish brown, Yellow, darkens with age, Dark brown, Dark red
+   - Role: Descriptor
+
+4. Density ¹:
+   - Data type: Numeric
+   - 4 representative example values: nan, 765 kg/m³, 595 kg/m³, 880 kg/m³, 720 kg/m³
+   - Role: Measure
+
+5. Location:
+   - Data type: Categorical
+   - 4 representative example values: Throughout India, especially Assam and Bengal, Andhra Pradesh, Tamil Nadu, Karnataka, Maharashtra, Tamil Nadu, Kerala, Bengal
+   - Role: Descriptor
+
+6. Characteristics, Usage and Status:
+   - Data type: Categorical
+   - 4 representative example values: Not actually a tree, but a woody grass, It grows straight, It is compact and even grained, It is strong, hard and tough
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 17 (Sundri):
+   - The values "Heritiera fomes" for Binomial nomenclature and "Dark red" for Colour are consistent with other rows.
+   - The Density of 960 kg/m³ is higher than the other densities in the table, making it an outlier in terms of density.
+   - This row is an outlier due to the significantly higher density compared to the rest of the entries.
+
+2. Row 5 (Mahogany):
+   - The values "Swietenia spp." for Binomial nomenclature and "Reddish brown" for Colour are consistent with other rows.
+   - The Density of 720 kg/m³ is within the range of densities in the table and is not significantly different from the majority.
+   - This row is an ordinary row and does not exhibit any distinctive values that would make it an outlier.
+
+3. Row 36 (Bamboo):
+   - The values "Family Poaceae, tribe Bambuseae" for Binomial nomenclature and "nan" for Colour are consistent with other rows.
+   - The Density of nan is missing data and does not provide any distinctive information for outlier analysis.
+   - This row is an ordinary row and does not exhibit any distinctive values that would make it an outlier.

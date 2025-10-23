@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative values: 1986–87, 1987–88, 1990–91, 2009–10
+   - Role: Identifier for the season in which the matches took place.
+
+2. Competition
+   - Data type: Categorical
+   - 4 representative values: UEFA Cup, UEFA Cup Winners' Cup, UEFA Europa League
+   - Role: Descriptor for the specific competition in which the matches were played.
+
+3. Round
+   - Data type: Categorical
+   - 4 representative values: 1R, 1/16, 2QR
+   - Role: Descriptor for the round of the competition in which the matches were played.
+
+4. Club
+   - Data type: Categorical
+   - 4 representative values: FC Barcelona, FK Partizan Beograd, Olympiacos Piraeus, Motherwell
+   - Role: Identifier for the club participating in the matches.
+
+5. Home
+   - Data type: Numeric
+   - 4 representative values: 1, 2, 0, nan
+   - Role: Measure of goals scored by the home team in each match.
+
+6. Away
+   - Data type: Numeric
+   - 4 representative values: 0, 1, 4, 8
+   - Role: Measure of goals scored by the away team in each match.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Season: 1990–91, Competition: UEFA Cup Winners' Cup, Club: Olympiacos Piraeus, Home: 0–2, Away: 1–3)
+   - The values for goals scored by Olympiacos Piraeus (0 and 1) are significantly lower compared to the other matches in the table.
+   - This row is an outlier due to the unusually low goal scoring by the home and away teams.
+
+2. Row 11 (Season: nan, Competition: nan, Club: FK Jablonec 97, Home: 0–2, Away: 1–5)
+   - The season and competition fields are missing, which is not typical for the rest of the table.
+   - However, the goal scoring values are within the range of other matches, making this row an ordinary entry with missing metadata.
+
+3. Row 9 (Season: nan, Competition: 2QR, Club: FK Jablonec 97, Home: 0–2, Away: 1–5)
+   - Similar to Row 11, the missing season information is atypical but the goal scoring values are not unusual.
+   - This row is an ordinary entry with missing metadata and does not require special handling.

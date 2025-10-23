@@ -1,0 +1,127 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2008, 2009, 2010, 2012
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Olympic Games, European U23 Championships, World Championships, European Championships
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Beijing, China, Kaunas, Lithuania, Berlin, Germany, Barcelona, Spain
+   - Role: Descriptor of the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 10th, 8th, 22nd (q), 6th
+   - Role: Measure of the athlete's performance in the competition.
+
+5. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 5.45 m, 5.15 m, 5.40 m, 5.60 m
+   - Role: Measure of the athlete's performance in terms of height achieved in the competition.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The Position value "10th" is significantly lower compared to the other positions in the table.
+   - The Notes value of "5.60 m" is also higher than the other values in the table.
+   - These distinctive values make this row an outlier in terms of performance.
+
+2. Row 3 (Index 3):
+   - The Position value "22nd (q)" is different from the typical position values in the table.
+   - The Notes value of "5.40 m" is within the range of other values, so it is not a distinctive outlier.
+   - The unique position designation makes this row an outlier.
+
+3. Row 0 (Index 0):
+   - The Position value "10th" is not significantly different from other positions in the table.
+   - The Notes value of "5.45 m" is also within the range of other values.
+   - This row contains ordinary values and does not stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition                   | Venue                 | Position   | Notes   |
+|-------------:|-------:|:------------------------------|:----------------------|:-----------|:--------|
+|            0 |   2005 | World Youth Championships     | Marrakech Morocco     | 6th        | 5.05 m  |
+|            1 |   2006 | World Junior Championships    | Beijing China         | 5th        | 5.30 m  |
+|            2 |   2008 | Olympic Games                 | Beijing China         | 10th       | 5.45 m  |
+|            3 |   2009 | European U23 Championships    | Kaunas Lithuania      | 8th        | 5.15 m  |
+|            4 |   2009 | World Championships           | Berlin Germany        | 22nd (q)   | 5.40 m  |
+|            5 |   2010 | European Championships        | Barcelona Spain       | 10th       | 5.60 m  |
+|            6 |   2011 | World Championships           | Daegu South Korea     | 9th        | 5.65 m  |
+|            7 |   2012 | European Championships        | Helsinki Finland      | 6th        | 5.60 m  |
+|            8 |   2012 | Olympic Games                 | London United Kingdom | 8th        | 5.65 m  |
+|            9 |   2013 | European Indoor Championships | Gothenburg Sweden     | 5th        | 5.71 m  |
+|           10 |   2014 | World Indoor Championships    | Sopot Poland          | 3rd        | 5.80 m  |
+
+Generated Reasoning SQL: To determine the year when the Czech Republic competed in the Olympics and finished the best, we need to consider the "Year" and "Position" columns. The "Year" column represents the year of the competition, and the "Position" column indicates the athlete's performance in that competition. We are interested in finding the year where the Czech Republic competed and achieved the best position.
+
+We need to filter rows where the "Position" is the best for the Czech Republic. Since the "Position" column is categorical, we need to identify the best position based on the specific values in the column. This may involve considering numeric rankings or specific labels that denote the best performance.
+
+SQL:
+select "Year" 
+from T 
+where "Position" = '1st'
+and "Competition" like '%Olympics%'
+and "Venue" like '%Czech Republic%';
+Generated Final SQL: select "Year" from T where "Position" = '1st' and "Competition" like '%Olympics%' and "Venue" like '%Czech Republic%';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Jan Kudlička (row_number, Year, Competition, Venue, Position, Notes)
+
+row_number | Year | Competition | Venue | Position | Notes
+0 | 2005 | World Youth Championships | Marrakech Morocco | 6th | 5.05 m
+1 | 2006 | World Junior Championships | Beijing China | 5th | 5.30 m
+2 | 2008 | Olympic Games | Beijing China | 10th | 5.45 m
+3 | 2009 | European U23 Championships | Kaunas Lithuania | 8th | 5.15 m
+4 | 2009 | World Championships | Berlin Germany | 22nd (q) | 5.40 m
+5 | 2010 | European Championships | Barcelona Spain | 10th | 5.60 m
+6 | 2011 | World Championships | Daegu South Korea | 9th | 5.65 m
+7 | 2012 | European Championships | Helsinki Finland | 6th | 5.60 m
+8 | 2012 | Olympic Games | London United Kingdom | 8th | 5.65 m
+9 | 2013 | European Indoor Championships | Gothenburg Sweden | 5th | 5.71 m
+10 | 2014 | World Indoor Championships | Sopot Poland | 3rd | 5.80 m
+Question: which year the czech republic compete in the olympics and finish best?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the rows in the table where the Competition is the Olympic Games.  
+From the full table, we see that the Czech athlete, Jan Kudlička, competed in the Olympic Games in two different years: 2008 and 2012.  
+
+Next, we need to determine in which of these two years Jan Kudlička finished best.  
+From the Position column in the full table, we can see that in the 2008 Olympic Games, Jan Kudlička finished in 10th place, while in the 2012 Olympic Games, he finished in 8th place.  
+
+Therefore, the Czech Republic competed in the Olympics in both 2008 and 2012, and Jan Kudlička finished best in 2012 when he placed 8th.  
+
+Final Answer: 2012
+[Fallback] Prediction: 2012
+[Gold Answer] 2012
+

@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Player:
+   - Data type: Categorical
+   - 4 representative example values: Derrick Favors, Kyrylo Fesenko, Derek Fisher, Bernie Fryer
+   - Role: Identifier for each player in the table
+
+2. No.:
+   - Data type: Numeric
+   - 4 representative example values: 15, 44, 2, 25
+   - Role: Identifier for the player's jersey number
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: United States, Ukraine
+   - Role: Descriptor for the player's nationality
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: Forward, Center, Guard/Forward
+   - Role: Descriptor for the player's position in basketball
+
+5. Years for Jazz:
+   - Data type: Categorical
+   - 4 representative example values: 2011-present, 2007-11, 2006-2007, 1975-76
+   - Role: Descriptor for the years the player played for the Jazz
+
+6. School/Club Team:
+   - Data type: Categorical
+   - 4 representative example values: Georgia Tech, Cherkasy Monkeys (Ukraine), Arkansas-Little Rock, BYU
+   - Role: Descriptor for the player's school or club team
+
+**Outlier Row Analysis:**
+
+1. Kyrylo Fesenko:
+   - The values "44", "Ukraine", "Center", and "2007-11" are not significantly different from the majority of the table.
+   - These values are ordinary within the context of the table, so this row is an ordinary row and requires no special handling.
+
+2. Derrick Favors:
+   - The values "15", "United States", "Forward", and "2011-present" are consistent with the majority of the table.
+   - These values are not distinctive enough to make this row an outlier, so this row is an ordinary row and requires no special handling.
+
+3. Derek Fisher:
+   - The values "2", "United States", "Guard", and "2006-2007" are not significantly different from the majority of the table.
+   - These values are ordinary within the context of the table, so this row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Player         |   No. | Nationality   | Position       | Years for Jazz   | School/Club Team           |
+|-------------:|:---------------|------:|:--------------|:---------------|:-----------------|:---------------------------|
+|            0 | Jim Farmer     |    30 | United States | Guard          | 1988-89          | Alabama                    |
+|            1 | Derrick Favors |    15 | United States | Forward        | 2011-present     | Georgia Tech               |
+|            2 | Kyrylo Fesenko |    44 | Ukraine       | Center         | 2007-11          | Cherkasy Monkeys (Ukraine) |
+|            3 | Derek Fisher   |     2 | United States | Guard          | 2006-2007        | Arkansas-Little Rock       |
+|            4 | Greg Foster    |    44 | United States | Center/Forward | 1995-99          | UTEP                       |
+|            5 | Bernie Fryer   |    25 | United States | Guard          | 1975-76          | BYU                        |
+|            6 | Todd Fuller    |    52 | United States | Center         | 1998-99          | North Carolina State       |
+|            7 | Terry Furlow   |    25 | United States | Guard/Forward  | 1979-80          | Michigan State             |
+
+Generated Reasoning SQL: Explanation: To determine who was ranked on top, we need to identify the player with the highest jersey number ("No.") as the ranking is likely based on this criterion. We will select the player with the maximum value in the "No." column.
+
+SQL: 
+SELECT "Player"
+FROM T
+WHERE "No." = (SELECT MAX("No.") FROM T);
+Generated Final SQL: SELECT "Player" FROM T WHERE "No." = (SELECT MAX("No.") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Player      |
+|:------------|
+| Todd Fuller |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Utah Jazz all-time roster
+SQL: SELECT "Player" FROM T WHERE "No." = (SELECT MAX("No.") FROM T);
+
+SQL Execution Result:
+Player
+Todd Fuller
+
+Question: who was ranked op top?
+A: To find the answer to this question, let’s think step by step.
+Prediction: todd fuller
+[Gold Answer] jim farmer
+

@@ -1,0 +1,156 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: October 6, October 27, November 17, December 1
+   - Role: Descriptor
+
+2. Time
+   - Data type: Categorical
+   - 4 representative example values: 2:30 PM, 7:00 PM, 4:10 PM
+   - Role: Descriptor
+
+3. Opponent#
+   - Data type: Categorical
+   - 4 representative example values: Illinois, Michigan State, Ohio State, vs. #14 Nebraska
+   - Role: Descriptor
+
+4. Rank#
+   - Data type: Categorical
+   - 4 representative example values: nan, #25, #23, #8
+   - Role: Descriptor
+
+5. Site
+   - Data type: Categorical
+   - 4 representative example values: Camp Randall Stadium • Madison, WI, Lucas Oil Stadium • Indianapolis, IN, Rose Bowl • Pasadena, CA
+   - Role: Descriptor
+
+6. TV
+   - Data type: Categorical
+   - 4 representative example values: ABC/ESPN2, FOX, ESPN
+   - Role: Descriptor
+
+7. Result
+   - Data type: Categorical
+   - 4 representative example values: W 31–14, L 13–16 OT, L 14–21 OT, W 70–31
+   - Role: Measure
+
+8. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 80,096, 80,538, 80,112, 41,260
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Index 1):
+   - The Opponent# is "Illinois" and the Rank# is "nan".
+   - This row is an outlier because the opponent is different from the other rows and the rank is missing, making it stand out.
+
+2. Row 13 (Index 12):
+   - The Opponent# is "vs. #14 Nebraska" and the Rank# is "nan".
+   - This row is an outlier because the opponent is a specific ranking team and the rank is missing, making it unique compared to the other rows.
+
+3. Row 12 (Index 13):
+   - The Opponent# is "vs. #8 Stanford" and the Rank# is "#23".
+   - This row is an outlier because the opponent is a ranked team and the rank is different from the majority of the table, making it distinctive.
+
+=== Full Table Preview ===
+|   row_number | Date           | Time                | Opponent#               | Rank#   | Site                                                            | TV        | Result     |   Attendance |
+|-------------:|:---------------|:--------------------|:------------------------|:--------|:----------------------------------------------------------------|:----------|:-----------|-------------:|
+|            0 | September 1    | 2025-09-25 14:30:00 | #9 (FCS) Northern Iowa* | #12     | Camp Randall Stadium • Madison WI                               | BTN       | W 26–21    |        79568 |
+|            1 | September 8    | 2025-09-25 15:00:00 | at Oregon State*        | #13     | Reser Stadium • Corvallis OR                                    | FX        | L 7–10     |        42189 |
+|            2 | September 15   | 2025-09-25 19:00:00 | Utah State*             | #22     | Camp Randall Stadium • Madison WI                               | BTN       | W 16–14    |        79332 |
+|            3 | September 22   | 2025-09-25 11:00:00 | UTEP*                   | #24     | Camp Randall Stadium • Madison WI                               | ESPN2     | W 37–26    |        79806 |
+|            4 | September 29   | 2025-09-25 19:00:00 | at #20 Nebraska         | #23     | Memorial Stadium • Lincoln NE                                   | ABC       | L 27–30    |        85962 |
+|            5 | October 6      | 2025-09-25 14:30:00 | Illinois                |         | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | W 31–14    |        80096 |
+|            6 | October 13     | 2025-09-25 11:00:00 | at Purdue               |         | Ross-Ade Stadium • West Lafayette IN                            | BTN       | W 38–14    |        46007 |
+|            7 | October 20     | 2025-09-25 11:00:00 | Minnesota               |         | Camp Randall Stadium • Madison WI (Paul Bunyan's Axe)           | ESPNU     | W 38–13    |        80587 |
+|            8 | October 27     | 2025-09-25 14:30:00 | Michigan State          | #25     | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | L 13–16 OT |        80538 |
+|            9 | November 10    | 2025-09-25 11:00:00 | at Indiana              |         | Memorial Stadium • Bloomington IN                               | ESPN2     | W 62–14    |        43240 |
+|           10 | November 17    | 2025-09-25 14:30:00 | Ohio State              |         | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | L 14–21 OT |        80112 |
+|           11 | November 24    | 2025-09-25 14:30:00 | at Penn State           |         | Beaver Stadium • University Park PA                             | ESPN2     | L 21–24 OT |        93505 |
+|           12 | December 1     | 2025-09-25 19:00:00 | vs. #14 Nebraska        |         | Lucas Oil Stadium • Indianapolis IN (Big Ten Championship Game) | FOX       | W 70–31    |        41260 |
+|           13 | January 1 2013 | 2025-09-25 16:10:00 | vs. #8 Stanford         | #23     | Rose Bowl • Pasadena CA (Rose Bowl)                             | ESPN      | L 14–20    |        93259 |
+
+Generated Reasoning SQL: Explanation: To find the second-highest attendance on the chart, we need to sort the "Attendance" column in descending order and select the second row after skipping the highest attendance value. Outliers are not relevant to this question as we are looking for a general trend in attendance.
+SQL: 
+SELECT "Attendance" 
+FROM T 
+ORDER BY "Attendance" DESC 
+OFFSET 1 LIMIT 1;
+Generated Final SQL: SELECT "Attendance" FROM T ORDER BY "Attendance" DESC OFFSET 1 LIMIT 1;
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT "Attendance" FROM T ORDER BY "Attendance" DESC OFFSET 1 LIMIT 1;': near "OFFSET": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2012 Wisconsin Badgers football team (row_number, Date, Time, Opponent#, Rank#, Site, TV, Result, Attendance)
+
+row_number | Date | Time | Opponent# | Rank# | Site | TV | Result | Attendance
+0 | September 1 | 2025-09-25 14:30:00 | #9 (FCS) Northern Iowa* | #12 | Camp Randall Stadium • Madison WI | BTN | W 26–21 | 79568
+1 | September 8 | 2025-09-25 15:00:00 | at Oregon State* | #13 | Reser Stadium • Corvallis OR | FX | L 7–10 | 42189
+2 | September 15 | 2025-09-25 19:00:00 | Utah State* | #22 | Camp Randall Stadium • Madison WI | BTN | W 16–14 | 79332
+3 | September 22 | 2025-09-25 11:00:00 | UTEP* | #24 | Camp Randall Stadium • Madison WI | ESPN2 | W 37–26 | 79806
+4 | September 29 | 2025-09-25 19:00:00 | at #20 Nebraska | #23 | Memorial Stadium • Lincoln NE | ABC | L 27–30 | 85962
+5 | October 6 | 2025-09-25 14:30:00 | Illinois | None | Camp Randall Stadium • Madison WI | ABC/ESPN2 | W 31–14 | 80096
+6 | October 13 | 2025-09-25 11:00:00 | at Purdue | None | Ross-Ade Stadium • West Lafayette IN | BTN | W 38–14 | 46007
+7 | October 20 | 2025-09-25 11:00:00 | Minnesota | None | Camp Randall Stadium • Madison WI (Paul Bunyan's Axe) | ESPNU | W 38–13 | 80587
+8 | October 27 | 2025-09-25 14:30:00 | Michigan State | #25 | Camp Randall Stadium • Madison WI | ABC/ESPN2 | L 13–16 OT | 80538
+9 | November 10 | 2025-09-25 11:00:00 | at Indiana | None | Memorial Stadium • Bloomington IN | ESPN2 | W 62–14 | 43240
+10 | November 17 | 2025-09-25 14:30:00 | Ohio State | None | Camp Randall Stadium • Madison WI | ABC/ESPN2 | L 14–21 OT | 80112
+11 | November 24 | 2025-09-25 14:30:00 | at Penn State | None | Beaver Stadium • University Park PA | ESPN2 | L 21–24 OT | 93505
+12 | December 1 | 2025-09-25 19:00:00 | vs. #14 Nebraska | None | Lucas Oil Stadium • Indianapolis IN (Big Ten Championship Game) | FOX | W 70–31 | 41260
+13 | January 1 2013 | 2025-09-25 16:10:00 | vs. #8 Stanford | #23 | Rose Bowl • Pasadena CA (Rose Bowl) | ESPN | L 14–20 | 93259
+Question: what is the other best attendance on the chart
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: 1. The summary mentions that the **Attendance** column contains numerical values representing the number of attendees at each game.
+2. We are looking for the second-best attendance on the chart, so we need to identify the top two highest attendance values.
+3. From the full table, we can see the following attendance values:
+   - Game 1: 79568
+   - Game 2: 42189
+   - Game 3: 79332
+   - Game 4: 79806
+   - Game 5: 85962
+   - Game 6: 80096
+   - Game 7: 46007
+   - Game 8: 80587
+   - Game 9: 80538
+   - Game 10: 43240
+   - Game 11: 80112
+   - Game 12: 93505
+   - Game 13: 41260
+
+Based on the attendance values listed above, the two highest attendance numbers are:
+1. 93505
+2. 85962
+
+Therefore, the second-best attendance on the chart is 85962.
+
+Final Answer: 85962
+[Fallback] Prediction: 85962
+[Gold Answer] 93,505
+

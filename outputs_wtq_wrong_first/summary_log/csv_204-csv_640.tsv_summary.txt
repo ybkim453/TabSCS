@@ -1,0 +1,39 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 2005/06, 2006/07, 2007/08, 2010/11
+   - Role: Identifier for the specific season the data corresponds to.
+
+2. Club
+   - Data type: Categorical
+   - 4 representative example values: KSV Roeselare, Kortrijk
+   - Role: Descriptor for the football club the player was associated with during a particular season.
+
+3. Competition
+   - Data type: Categorical
+   - 4 representative example values: Jupiler League, Totaal
+   - Role: Descriptor for the competition in which the player participated during a specific season.
+
+4. Games
+   - Data type: Numeric
+   - 4 representative example values: 26, 29, 25, 0
+   - Role: Measure of the number of games played by the player in a particular season.
+
+5. Goals
+   - Data type: Numeric
+   - 4 representative example values: 0, 1, 4
+   - Role: Measure of the number of goals scored by the player in a particular season.
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values in this row are all "nan" which indicates missing data.
+   - These missing values do not make the row distinctive as they are not unique or unusual in the context of the table.
+   - Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 9:
+   - The values in this row indicate a total or aggregate for the entire table (Totaal).
+   - While this row may stand out due to the "Totaal" entry in the Competition column, it is a common practice to include a total row in tables.
+   - The values in this row are not significantly different from the rest of the data and do not make it an outlier.
+   - Therefore, this row is an ordinary row and does not require special handling.

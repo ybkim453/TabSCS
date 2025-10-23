@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 6, 7
+   - Role: Identifier for each row in the table
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: 8 September 1999, 26 January 2000
+   - Role: Descriptor indicating the date of the match
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Vivero, Badajoz, Spain, Cartagonova, Cartagena, Spain
+   - Role: Descriptor specifying the location of the match
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Cyprus, Poland
+   - Role: Descriptor identifying the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: 1–0, 2–0, 4–0, 2–0
+   - Role: Measure indicating the score of the match
+
+6. Result:
+   - Data type: Categorical
+   - 4 representative example values: 8–0, 3–0
+   - Role: Measure indicating the final result of the match
+
+7. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Euro 2000 qualifying, Friendly
+   - Role: Descriptor specifying the competition type of the match
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The score of 4–0 is significantly higher compared to the other scores in the table.
+   - This row stands out as it represents a match where the team scored a higher number of goals than usual.
+   - Conclusion: This row is an outlier.
+
+2. Row 2:
+   - The score of 2–0 is not significantly different from the other scores in the table.
+   - The values in this row are ordinary and do not deviate from the majority of the data.
+   - Conclusion: This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   # | Date                | Venue                          | Opponent   | Score   | Result   | Competition          |
+|-------------:|----:|:--------------------|:-------------------------------|:-----------|:--------|:---------|:---------------------|
+|            0 |   1 | 1999-03-27 00:00:00 | Mestalla Valencia Spain        | Austria    | 3–0     | 9–0      | Euro 2000 qualifying |
+|            1 |   2 | 1999-03-27 00:00:00 | Mestalla Valencia Spain        | Austria    | 5–0     | 9–0      | Euro 2000 qualifying |
+|            2 |   3 | 1999-03-31 00:00:00 | Olimpico Serravalle San Marino | San Marino | 0–3     | 0–6      | Euro 2000 qualifying |
+|            3 |   4 | 1999-09-08 00:00:00 | Vivero Badajoz Spain           | Cyprus     | 1–0     | 8–0      | Euro 2000 qualifying |
+|            4 |   5 | 1999-09-08 00:00:00 | Vivero Badajoz Spain           | Cyprus     | 2–0     | 8–0      | Euro 2000 qualifying |
+|            5 |   6 | 1999-09-08 00:00:00 | Vivero Badajoz Spain           | Cyprus     | 4–0     | 8–0      | Euro 2000 qualifying |
+|            6 |   7 | 2000-01-26 00:00:00 | Cartagonova Cartagena Spain    | Poland     | 2–0     | 3–0      | Friendly             |
+|            7 |   8 | 2000-01-26 00:00:00 | Cartagonova Cartagena Spain    | Poland     | 3–0     | 3–0      | Friendly             |
+
+Generated Reasoning SQL: To determine who scored the least international goals, we need to consider the "Score" column, which represents the number of goals scored in each match. Since we are looking for the player with the least goals, we should focus on the minimum value in the "Score" column. The "Opponent" column can be used to identify the player associated with the minimum goal score.
+
+SQL: 
+SELECT "Opponent" 
+FROM T 
+WHERE "Score" = (SELECT MIN("Score") FROM T);
+Generated Final SQL: SELECT "Opponent" FROM T WHERE "Score" = (SELECT MIN("Score") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Opponent   |
+|:-----------|
+| San Marino |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Ismael Urzaiz
+SQL: SELECT "Opponent" FROM T WHERE "Score" = (SELECT MIN("Score") FROM T);
+
+Opponent
+San Marino
+Question: who scored the least international goals?
+A: To find the answer to this question, let’s think step by step.
+Prediction: san marino
+[Gold Answer] san marino
+

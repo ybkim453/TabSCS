@@ -1,0 +1,52 @@
+**Column Analysis:**
+
+1. Hand
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, 10.7
+   - Role: Measure
+
+2. Auto
+   - Data type: Numeric
+   - 4 representative example values: 10.6, 10.84, 10.87, nan
+   - Role: Measure
+
+3. Wind
+   - Data type: Numeric
+   - 4 representative example values: nan, 1.8, nan, nan
+   - Role: Measure
+
+4. Athlete
+   - Data type: Categorical
+   - 4 representative example values: Bill Collins, Erik Oostweegel, Eddie Hart, Klaus Jürgen Schneider
+   - Role: Descriptor
+
+5. Nationality
+   - Data type: Categorical
+   - 4 representative example values: United States, Netherlands, United States, Germany
+   - Role: Descriptor
+
+6. Birthdate
+   - Data type: Date
+   - 4 representative example values: 20.11.1950, 29.04.1960, 24.04.1949, 02.03.1942
+   - Role: Descriptor
+
+7. Location
+   - Data type: Categorical
+   - 4 representative example values: nan, Tilburg, Eugene, Stuttgart
+   - Role: Descriptor
+
+8. Date
+   - Data type: Date
+   - 4 representative example values: 06.06.1992, 10.06.2000, 03.08.1989, 07.07.1982
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The values in the "Wind" column are significantly different from the majority of the table, where most entries have "nan" values. This makes the row an outlier.
+
+2. Row 7:
+   - The value in the "Auto" column is significantly different from the majority of the table, where most entries have "nan" values. This makes the row an outlier.
+
+3. Row 10:
+   - The value in the "Auto" column is significantly different from the majority of the table, where most entries have values around 10.9. This makes the row an outlier.

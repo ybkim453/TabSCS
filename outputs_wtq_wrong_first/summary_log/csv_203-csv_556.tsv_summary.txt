@@ -1,0 +1,52 @@
+**Column Analysis:**
+
+1. Speed:
+   - Data type: Numeric
+   - 4 representative example values: 202.6 km/h, 200.4 km/h, 182.4 km/h, 168.5 km/h
+   - Role: Measure of the speed of the train
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: 1938-07-03, 1936-05-11, 1972-10-11, 1935-03-05
+   - Role: Identifier for the date of the train record
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: UK, Germany
+   - Role: Descriptor for the country where the train record took place
+
+4. Train:
+   - Data type: Categorical
+   - 4 representative example values: LNER Class A4 No. 4468 Mallard, Borsig DRG series 05 002, BR 18 201, LNER Class A3 No. 2750 Papyrus
+   - Role: Descriptor for the type of train
+
+5. Arr.:
+   - Data type: Categorical
+   - 4 representative example values: Loc
+   - Role: Descriptor for the arrival status of the train
+
+6. Power:
+   - Data type: Categorical
+   - 4 representative example values: Steam
+   - Role: Descriptor for the power source of the train
+
+7. State:
+   - Data type: Categorical
+   - 4 representative example values: Unkn., Unmod.
+   - Role: Descriptor for the state of the train
+
+8. Comments:
+   - Data type: Categorical
+   - 4 representative example values: Downhill grade, Level grade, The fastest operational steam locomotive as of 2011, First run at 100+ mph with complete, surviving documentation
+   - Role: Descriptor for additional comments on the train record
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "202.6 km/h (126 mph)" and "UK" in the Speed and Country columns respectively are significantly higher than the corresponding values in other rows, making this row an outlier.
+
+2. Row 1:
+   - The value "200.4 km/h (125 mph)" in the Speed column is notably higher than the other speed values in the table, indicating an outlier row.
+
+3. Row 3:
+   - The value "168.5 km/h (105 mph)" in the Speed column is considerably higher than the majority of the speed values, marking this row as an outlier.

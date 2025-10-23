@@ -1,0 +1,29 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 1988/89, 1990/91, 1991/92, 1993/94
+   - Role: Identifier for the specific season of the data
+
+2. Tier
+   - Data type: Numeric
+   - 4 representative example values: 4, 3, 3, 3
+   - Role: Descriptor indicating the tier level of the division
+
+3. Division
+   - Data type: Categorical
+   - 4 representative example values: 3ª, 2ªB, 2ªB, 2ªB
+   - Role: Descriptor specifying the division within the tier
+
+4. Place
+   - Data type: Categorical
+   - 4 representative example values: 3rd, 6th, 12th, 15th
+   - Role: Measure indicating the final standing or rank achieved
+
+**Outlier Row Analysis:**
+
+1. Row 5 (1994/95, Tier 3, Division 2ªB, Place 9th):
+   - The values in this row (Tier 3, Division 2ªB, Place 9th) are not significantly different from the majority of the table. They are ordinary values within the context of the data. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 0 (1988/89, Tier 4, Division 3ª, Place 3rd):
+   - The values in this row (Tier 4, Division 3ª, Place 3rd) are also not significantly different from the majority of the table. They are typical values for the dataset. Therefore, this row is an ordinary row and does not require special handling.

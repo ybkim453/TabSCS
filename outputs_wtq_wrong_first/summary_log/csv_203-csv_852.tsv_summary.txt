@@ -1,0 +1,62 @@
+**Column Analysis:**
+
+1. Place
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier for the ranking of shooters
+
+2. Shooter
+   - Data type: Categorical
+   - 4 representative example values: Ole Lilloe-Olsen, Otto Olsen, Otto Hultberg, Walter Stokes
+   - Role: Descriptor for the name of the shooter
+
+3. 5 pts
+   - Data type: Numeric
+   - 4 representative example values: 4, 1, 6, 1
+   - Role: Measure of the number of 5-point shots made by the shooter
+
+4. 4 pts
+   - Data type: Numeric
+   - 4 representative example values: 5, 5, 6, 6
+   - Role: Measure of the number of 4-point shots made by the shooter
+
+5. 3 pts
+   - Data type: Numeric
+   - 4 representative example values: 1, 4, 3, 3
+   - Role: Measure of the number of 3-point shots made by the shooter
+
+6. 2 pts
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, 1
+   - Role: Measure of the number of 2-point shots made by the shooter
+
+7. 1 pts
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, -
+   - Role: Measure of the number of 1-point shots made by the shooter
+
+8. 0 pts
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, 9
+   - Role: Measure of the number of 0-point shots made by the shooter
+
+9. Total
+   - Data type: Numeric
+   - 4 representative example values: 43, 37, 38, 41
+   - Role: Measure of the total points scored by the shooter
+
+10. Rank
+    - Data type: Numeric
+    - 4 representative example values: 1, 11, 8, 3
+    - Role: Measure of the ranking of the shooter
+
+**Outlier Row Analysis:**
+
+1. Row 25:
+   - The values in this row are all missing or empty, which makes it an outlier as it does not contain any data points for the shooter.
+
+2. Row 1:
+   - The shooter "Ole Lilloe-Olsen" has a total of 43 points, which is the highest in the table, and ranks 1st. This makes the row an outlier as it stands out from the other shooters.
+
+3. Row 16:
+   - The shooter "Hungary (HUN)" has a total of 97 points, which is significantly higher than the other shooters. Additionally, they have a high number of points in each category, making them an outlier in terms of performance compared to individual shooters.

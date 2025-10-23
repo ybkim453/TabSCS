@@ -1,0 +1,7 @@
+Specifications	Foundation	Essentials	Standard	Datacenter
+Licensing model	Per server	Per server	Per CPU pair + CAL	Per CPU pair + CAL
+Network Policy and Access Services limits	50 RRAS connections and 10 IAS connections	250 RRAS connections, 50 IAS connections, and 2 IAS Server Groups	Unlimited	Unlimited
+Remote Desktop Services limits	50 Remote Desktop Services connections	Gateway only	Unlimited	Unlimited
+Active Directory Lightweight Directory Services	Yes	Yes	Yes	Yes
+Active Directory Rights Management Services	Yes	Yes	Yes	Yes
+Server Manager	Yes	Yes	Yes	Yes

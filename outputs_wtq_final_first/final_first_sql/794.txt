@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2004, 2005, 2008, 2010
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Division:
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 1, 1
+   - Role: Descriptor indicating the division number.
+
+3. League:
+   - Data type: Categorical
+   - 4 representative example values: USL W-League, USL W-League, USL W-League, USL W-League
+   - Role: Descriptor for the league in which the team participated.
+
+4. Reg. Season:
+   - Data type: Categorical
+   - 4 representative example values: 8th, Western, 6th, Western, 6th, Western, 6th, Western
+   - Role: Measure indicating the team's position in the regular season.
+
+5. Playoffs:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, Did not qualify, Did not qualify
+   - Role: Descriptor indicating the team's performance in the playoffs.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "8th, Western" in the Reg. Season column make this row distinctive.
+   - This row is an outlier because the team's position in the regular season is significantly different from the majority of the table, which suggests a unique performance.
+
+2. Row 1:
+   - The values "6th, Western" in the Reg. Season column make this row distinctive.
+   - This row is an outlier because the team's position in the regular season is different from the majority of the table, indicating a unique performance.
+
+3. Row 2:
+   - The value "Did not qualify" in the Playoffs column makes this row distinctive.
+   - This row is an outlier because the team did not qualify for the playoffs, which is different from the majority of the table where teams either qualified or the playoffs field is empty.
+
+Overall, rows 0, 1, and 2 are considered outliers based on the specific values in the Reg. Season and Playoffs columns that deviate from the typical entries in the table.
+
+=== Full Table Preview ===
+|   row_number |   Year |   Division | League       | Reg. Season   | Playoffs        |
+|-------------:|-------:|-----------:|:-------------|:--------------|:----------------|
+|            0 |   2003 |          2 | USL W-League | 5th Western   |                 |
+|            1 |   2004 |          1 | USL W-League | 8th Western   |                 |
+|            2 |   2005 |          1 | USL W-League | 6th Western   |                 |
+|            3 |   2006 |          1 | USL W-League | 5th Western   |                 |
+|            4 |   2007 |          1 | USL W-League | 5th Western   |                 |
+|            5 |   2008 |          1 | USL W-League | 6th Western   | Did not qualify |
+|            6 |   2009 |          1 | USL W-League | 7th Western   | Did not qualify |
+|            7 |   2010 |          1 | USL W-League | 6th Western   | Did not qualify |
+|            8 |   2011 |          1 | USL W-League | 7th Western   | Did not qualify |
+|            9 |   2012 |          1 | USL W-League | 4th Western   | Did not qualify |
+|           10 |   2013 |          1 | USL W-League | 4th Western   | Did not qualify |
+
+Generated Reasoning SQL: To answer the question, we need to count the number of seasons where the Colorado Rapids Women finished 6th place or better in the USL W-League Western Division 1. 
+We must exclude outlier rows where the team's position in the regular season is significantly different or where they did not qualify for the playoffs.
+The "Reg. Season" column contains the relevant information for the team's position, and the "League" column specifies the league and division.
+We filter rows where "Reg. Season" is '6th Western' or better and "League" is 'USL W-League' and 'Division' is 1.
+SQL: select count("Year") from T where "Reg. Season" <= '6th Western' and "League" = 'USL W-League' and "Division" = 1;
+Generated Final SQL: select count("Year") from T where "Reg. Season" <= '6th Western' and "League" = 'USL W-League' and "Division" = 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Year") |
+|----------------:|
+|               7 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Colorado Rapids Women
+SQL: select count("Year") from T where "Reg. Season" <= '6th Western' and "League" = 'USL W-League' and "Division" = 1;
+
+count("Year")
+7
+Question: how many seasons have the colorado rapids women finished 6th place or better in the usl w-league western division 1?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 7
+[Gold Answer] 7
+

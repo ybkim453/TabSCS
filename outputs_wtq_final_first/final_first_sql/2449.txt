@@ -1,0 +1,102 @@
+=== Table Summary ===
+**Column 1: Preceded by Alfred Scott**
+- Data type: Categorical
+- 4 representative example values: Sir Frederick Cawley, New office
+- Role of the column: Descriptor of the individual who preceded the person in the corresponding role
+
+**Column 2: Member of Parliament for Ashton-under-Lyne 1910–1916**
+- Data type: Categorical
+- 4 representative example values: Chancellor of the Duchy of Lancaster 1918, Minister of Aircraft Production 1940–1941
+- Role of the column: Descriptor of the role held by the individual
+
+**Column 3: Succeeded by Albert Stanley**
+- Data type: Categorical
+- 4 representative example values: The Lord Downham, John Moore-Brabazon
+- Role of the column: Descriptor of the individual who succeeded the person in the corresponding role
+
+**Outlier Row Analysis:**
+1. Row 1: Preceded by Sir Frederick Cawley, Member of Parliament for Ashton-under-Lyne 1910–1916, Succeeded by The Lord Downham
+   - The values in this row are consistent with the majority of the table and do not stand out as unusual. This row is an ordinary row and does not require special handling.
+
+2. Row 4: New creation, Baron Beaverbrook 1917–1964, Succeeded by John William Maxwell Aitken
+   - The value "New creation" in the first column is different from the typical "Preceded by" or "Succeeded by" entries, making this row an outlier. This row represents the creation of a new title, which is unique compared to the other entries in the table.
+
+3. Row 7: New creation, Baronet(of Cherkley) 1916–1964, Succeeded by John William Maxwell Aitken
+   - Similar to Row 4, the value "New creation" in the first column sets this row apart from the typical entries. This row signifies the creation of a new baronet title, making it an outlier in the table.
+
+=== Full Table Preview ===
+|   row_number | Preceded by\nAlfred Scott         | Member of Parliament for Ashton-under-Lyne\n1910–1916   | Succeeded by\nAlbert Stanley                              |
+|-------------:|:----------------------------------|:--------------------------------------------------------|:----------------------------------------------------------|
+|            0 | New office                        | Minister of Information\n1918                           | Succeeded by\nThe Lord Downham                            |
+|            1 | Preceded by\nSir Frederick Cawley | Chancellor of the Duchy of Lancaster\n1918              | Succeeded by\nThe Lord Downham                            |
+|            2 | New office                        | Minister of Aircraft Production\n1940–1941              | Succeeded by\nJohn Moore-Brabazon                         |
+|            3 | Preceded by\nSir Andrew Duncan    | Minister of Supply\n1941–1942                           | Succeeded by\nSir Andrew Duncan                           |
+|            4 | New office                        | Minister of War Production\n1942                        | Succeeded by\nOliver Lyttelton\nas Minister of Production |
+|            5 | Preceded by\nViscount Cranborne   | Lord Privy Seal\n1943–1945                              | Succeeded by\nArthur Greenwood                            |
+|            6 | New creation                      | Baron Beaverbrook\n1917–1964                            | Succeeded by\nJohn William Maxwell Aitken                 |
+|            7 | New creation                      | Baronet(of Cherkley) \n1916–1964                        | Succeeded by\nJohn William Maxwell Aitken                 |
+
+Generated Reasoning SQL: Explanation: To identify the individual who held the peerage of the United Kingdom from 1917 to 1964, we need to focus on the rows where the title was created ("New creation") and the corresponding years fall within the specified range. The relevant columns for this query are "Preceded by Alfred Scott" and "Succeeded by Albert Stanley". We will filter for rows where the title was created ("New creation") and the years fall within the specified range.
+
+SQL: SELECT "Succeeded by\nAlbert Stanley" 
+FROM T 
+WHERE "Preceded by\nAlfred Scott" = 'New creation' 
+AND "Member of Parliament for Ashton-under-Lyne\n1910–1916" LIKE '%1917–1964%';
+Generated Final SQL: SELECT "Succeeded by\nAlbert Stanley" FROM T WHERE "Preceded by\nAlfred Scott" = 'New creation' AND "Member of Parliament for Ashton-under-Lyne\n1910–1916" LIKE '%1917–1964%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Succeeded by\nAlbert Stanley              |
+|:------------------------------------------|
+| Succeeded by\nJohn William Maxwell Aitken |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Max Aitken, Lord Beaverbrook
+SQL: SELECT "Succeeded by\nAlbert Stanley" FROM T WHERE "Preceded by\nAlfred Scott" = 'New creation' AND "Member of Parliament for Ashton-under-Lyne\n1910–1916" LIKE '%1917–1964%';
+
+SQL Execution Result:
+Succeeded by\nAlbert Stanley
+Succeeded by\nJohn William Maxwell Aitken
+
+Question: who was peerage of the united kingdom from 1917-1964?
+A: To find the answer to this question, let’s think step by step.
+Prediction: albert stanley, john william maxwell aitken
+[Gold Answer] baron beaverbrook
+

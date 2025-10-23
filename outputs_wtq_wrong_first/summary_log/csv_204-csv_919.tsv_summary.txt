@@ -1,0 +1,41 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1974, 1975, 1977, 1979
+   - Role: Identifier for the year in which the single was released.
+
+2. Single:
+   - Data type: Categorical
+   - 4 representative example values: Loving You Has Changed My Life, It Takes a Whole Lot of Livin' in a House, The Lady and the Baby, You Are My Rainbow
+   - Role: Descriptor for the title of the single.
+
+3. Peak chart positions US Country:
+   - Data type: Numeric
+   - 4 representative example values: 9, 60, 76, 36
+   - Role: Measure indicating the peak position on the US Country chart.
+
+4. Peak chart positions CAN Country:
+   - Data type: Numeric
+   - 4 representative example values: 21, —, —, —
+   - Role: Measure indicating the peak position on the Canadian Country chart.
+
+5. Album:
+   - Data type: Categorical
+   - 4 representative example values: Hey There Girl, Whole Lotta Livin' in a House, singles only, singles only
+   - Role: Descriptor for the album associated with the single.
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The peak chart position for US Country is 1, which is significantly lower than the other values in the table.
+   - This makes the row an outlier as it has a distinctively low peak position compared to the majority of the data.
+
+2. Row 18:
+   - The peak chart position for US Country is 100, which is significantly higher than the other values in the table.
+   - This makes the row an outlier as it has a distinctively high peak position compared to the majority of the data.
+
+3. Row 37:
+   - The peak chart position for US Country is 5th?, which is an ambiguous marker.
+   - However, within the context of the table, this is an ordinary value as it represents a position on the chart.
+   - Therefore, this row is an ordinary entry and does not require special handling.

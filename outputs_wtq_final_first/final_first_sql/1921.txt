@@ -1,0 +1,151 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team
+   - Data type: Categorical
+   - 4 representative example values: Newman-Haas Racing, Team Rahal, Payton/Coyne Racing, Arciero-Wells Racing
+   - Role: Identifier for the racing team
+
+2. Chassis
+   - Data type: Categorical
+   - 4 representative example values: Swift 009.c, Reynard 98i
+   - Role: Descriptor for the type of chassis used by the team
+
+3. Engine
+   - Data type: Categorical
+   - 4 representative example values: Ford XB, Toyota
+   - Role: Descriptor for the type of engine used by the team
+
+4. Tires
+   - Data type: Categorical
+   - 4 representative example values: Goodyear, Firestone
+   - Role: Descriptor for the type of tires used by the team
+
+5. No
+   - Data type: Numeric
+   - 4 representative example values: 6, 7, 8, 34
+   - Role: Identifier for the car number
+
+6. Drivers
+   - Data type: Categorical
+   - 4 representative example values: Michael Andretti, Bobby Rahal, Bryan Herta, Hiro Matsushita
+   - Role: Descriptor for the driver(s) associated with the team
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - The values "Reynard 98i", "Toyota", and "Firestone" in the Chassis, Engine, and Tires columns respectively are different from the majority of the table.
+   - These values make the row distinctive as they are not common combinations seen in the table, making this an outlier row.
+
+2. Row 2 (Index 2):
+   - The values "Reynard 98i", "Ford XB", and "Firestone" in the Chassis, Engine, and Tires columns respectively are common in the table.
+   - These values are ordinary within the context of the table and do not make this row an outlier.
+
+3. Row 21 (Index 21):
+   - The values "Reynard 98i", "Ford XB", and "Firestone" in the Chassis, Engine, and Tires columns respectively are common in the table.
+   - These values are ordinary within the context of the table and do not make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Team                     | Chassis                | Engine   | Tires     |   No | Drivers                                 |
+|-------------:|:-------------------------|:-----------------------|:---------|:----------|-----:|:----------------------------------------|
+|            0 | Chip Ganassi Racing      | Reynard 98i            | Honda    | Firestone |    1 | Alex Zanardi                            |
+|            1 | Chip Ganassi Racing      | Reynard 98i            | Honda    | Firestone |   12 | Jimmy Vasser                            |
+|            2 | Marlboro Team Penske     | Penske PC27-98         | Mercedes | Goodyear  |    2 | Al Unser Jr.                            |
+|            3 | Marlboro Team Penske     | Penske PC27-98         | Mercedes | Goodyear  |    3 | André Ribeiro                           |
+|            4 | Walker Racing            | Reynard 98i            | Honda    | Goodyear  |    5 | Gil de Ferran                           |
+|            5 | Newman-Haas Racing       | Swift 009.c            | Ford XB  | Goodyear  |    6 | Michael Andretti                        |
+|            6 | Newman-Haas Racing       | Swift 009.c            | Ford XB  | Goodyear  |   11 | Christian Fittipaldi\n Roberto Moreno   |
+|            7 | Team Rahal               | Reynard 98i            | Ford XB  | Firestone |    7 | Bobby Rahal                             |
+|            8 | Team Rahal               | Reynard 98i            | Ford XB  | Firestone |    8 | Bryan Herta                             |
+|            9 | Hogan Racing             | Reynard 98i            | Mercedes | Firestone |    9 | JJ Lehto                                |
+|           10 | Della Penna Motorsports  | Swift 009.c            | Ford XB  | Firestone |   10 | Richie Hearn                            |
+|           11 | Della Penna Motorsports  | Swift 009.c            | Ford XB  | Firestone |   43 | Hideshi Matsuda                         |
+|           12 | Project Indy             | Reynard 97i            | Ford XB  | Goodyear  |   15 | Roberto Moreno\n Domenico Schiattarella |
+|           13 | Bettenhausen Racing      | Reynard 98i            | Mercedes | Goodyear  |   16 | Hélio Castroneves                       |
+|           14 | PacWest Racing Group     | Reynard 98i            | Mercedes | Firestone |   17 | Maurício Gugelmin                       |
+|           15 | PacWest Racing Group     | Reynard 98i            | Mercedes | Firestone |   18 | Mark Blundell                           |
+|           16 | Payton/Coyne Racing      | Reynard 98i            | Ford XB  | Firestone |   19 | Michel Jourdain Jr.                     |
+|           17 | Payton/Coyne Racing      | Reynard 98i            | Ford XB  | Firestone |   34 | Dennis Vitolo\n Gualter Salles          |
+|           18 | Patrick Racing           | Reynard 98i            | Ford XB  | Firestone |   20 | Scott Pruett                            |
+|           19 | Patrick Racing           | Reynard 98i            | Ford XB  | Firestone |   40 | Adrián Fernández                        |
+|           20 | Tasman Motorsports Group | Reynard 98i            | Honda    | Firestone |   21 | Tony Kanaan                             |
+|           21 | Arciero-Wells Racing     | Reynard 98i            | Toyota   | Firestone |   24 | Hiro Matsushita\n Robby Gordon          |
+|           22 | Arciero-Wells Racing     | Reynard 98i            | Toyota   | Firestone |   25 | Max Papis                               |
+|           23 | Team KOOL Green          | Reynard 98i            | Honda    | Firestone |   26 | Paul Tracy                              |
+|           24 | Team KOOL Green          | Reynard 98i            | Honda    | Firestone |   27 | Dario Franchitti                        |
+|           25 | Forsythe Racing          | Reynard 98i            | Mercedes | Firestone |   33 | Patrick Carpentier                      |
+|           26 | Forsythe Racing          | Reynard 98i            | Mercedes | Firestone |   99 | Greg Moore                              |
+|           27 | All American Racing      | Reynard 98i\nEagle 987 | Toyota   | Goodyear  |   36 | Alex Barron                             |
+|           28 | All American Racing      | Reynard 98i\nEagle 987 | Toyota   | Goodyear  |   98 | P. J. Jones\n Vincenzo Sospiri          |
+|           29 | Davis Racing             | Lola T98/00            | Ford XB  | Goodyear  |   77 | Arnd Meier                              |
+
+Generated Reasoning SQL: Explanation: To find out which teams have the same engines as Team KOOL Green, we need to identify the engine used by Team KOOL Green first. We will then search for other teams that have the same engine type as Team KOOL Green. The "Engine" column contains categorical values representing the type of engine used by each team.
+
+SQL: 
+SELECT DISTINCT "Team"
+FROM T
+WHERE "Engine" = (SELECT "Engine" FROM T WHERE "Team" = 'Team KOOL Green');
+Generated Final SQL: SELECT DISTINCT "Team" FROM T WHERE "Engine" = (SELECT "Engine" FROM T WHERE "Team" = 'Team KOOL Green');
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+| Team                     |
+|:-------------------------|
+| Chip Ganassi Racing      |
+| Walker Racing            |
+| Tasman Motorsports Group |
+| Team KOOL Green          |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1998 CART season
+SQL: SELECT DISTINCT "Team" FROM T WHERE "Engine" = (SELECT "Engine" FROM T WHERE "Team" = 'Team KOOL Green');
+
+SQL Execution Result:
+Team
+Chip Ganassi Racing
+Walker Racing
+Tasman Motorsports Group
+Team KOOL Green
+
+Question: who has the same engines as team kool green?
+A: To find the answer to this question, let’s think step by step.
+Prediction: chip ganassi racing, walker racing, tasman motorsports group, team kool green
+[Gold Answer] chip ganassi racing,walker racing,tasman motorsports group
+

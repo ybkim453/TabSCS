@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 17, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Soviet Union, United States, Australia, Greece
+   - Role: Descriptor
+
+3. Gold:
+   - Data type: Numeric
+   - 4 representative example values: 26, 22, 0, 0
+   - Role: Measure
+
+4. Silver:
+   - Data type: Numeric
+   - 4 representative example values: 17, 18, 1, 1
+   - Role: Measure
+
+5. Bronze:
+   - Data type: Numeric
+   - 4 representative example values: 15, 11, 0, 0
+   - Role: Measure
+
+6. Total:
+   - Data type: Numeric
+   - 4 representative example values: 58, 51, 1, 1
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Soviet Union):
+   - The values for Gold, Silver, and Bronze are significantly higher compared to the other rows.
+   - These values make the row an outlier as it has a much higher total medal count.
+
+2. Row 24 (United States):
+   - The values for Gold, Silver, and Bronze are also higher compared to most other rows.
+   - This row is an outlier due to its high total medal count.
+
+3. Row 1 (United States):
+   - The values for Gold, Silver, and Bronze are high, but not as extreme as the previous outlier rows.
+   - This row is an ordinary row and does not require special handling.

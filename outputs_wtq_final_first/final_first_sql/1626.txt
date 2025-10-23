@@ -1,0 +1,147 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Olympics
+   - Data type: Categorical
+   - 4 representative example values: 1952 Summer Olympics, 1960 Summer Olympics, 1994 Winter Olympics, 2000 Summer Olympics
+   - Role: Identifier for the specific Olympic event.
+
+2. Athlete
+   - Data type: Categorical
+   - 4 representative example values: Heikki Savolainen, Adolfo Consolini, Vegard Ulvang, Rechelle Hawkes
+   - Role: Descriptor for the athlete participating in the Olympics.
+
+3. Judge (Official)
+   - Data type: Categorical
+   - 4 representative example values: -, Kari Kåring, Peter Kerr, Vyacheslav Vedenin, Jr
+   - Role: Descriptor for the official judge associated with the athlete.
+
+4. Coach
+   - Data type: Categorical
+   - 4 representative example values: -, Anastassia Popkova
+   - Role: Descriptor for the coach of the athlete.
+
+5. Language
+   - Data type: Categorical
+   - 4 representative example values: English (Ulvang)/Norwegian (Kåring), English, Russian
+   - Role: Descriptor for the language used by the athlete or coach.
+
+**Outlier Row Analysis:**
+
+1. Row 36:
+   - The row contains missing values for all columns, which is not distinctive and is a common occurrence in the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 43:
+   - The row contains missing values for all columns, similar to row 36. These missing values do not make the row distinctive and are considered ordinary. Hence, this row is also an ordinary entry.
+
+3. Row 33:
+   - The row contains values for all columns, but they are not significantly different from the majority of the table. The values are not ambiguous markers or outliers within the context of the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Olympics             | Athlete                                             | Judge (Official)       | Coach              | Language                            |
+|-------------:|:---------------------|:----------------------------------------------------|:-----------------------|:-------------------|:------------------------------------|
+|            0 | 1920 Summer Olympics | Victor Boin                                         | -                      | -                  | -                                   |
+|            1 | 1924 Winter Olympics | Camille Mandrillon                                  | -                      | -                  | -                                   |
+|            2 | 1924 Summer Olympics | Géo André                                           | -                      | -                  | French.                             |
+|            3 | 1928 Winter Olympics | Hans Eidenbenz                                      | -                      | -                  | -                                   |
+|            4 | 1928 Summer Olympics | Harry Dénis                                         | -                      | -                  | -                                   |
+|            5 | 1932 Winter Olympics | Jack Shea                                           | -                      | -                  | -                                   |
+|            6 | 1932 Summer Olympics | George Calnan                                       | -                      | -                  | English                             |
+|            7 | 1936 Winter Olympics | Willy Bogner Sr.                                    | -                      | -                  | -                                   |
+|            8 | 1936 Summer Olympics | Rudolf Ismayr                                       | -                      | -                  | -                                   |
+|            9 | 1948 Winter Olympics | Bibi Torriani                                       | -                      | -                  | -                                   |
+|           10 | 1948 Summer Olympics | Donald Finlay                                       | -                      | -                  | English                             |
+|           11 | 1952 Winter Olympics | Torbjørn Falkanger                                  | -                      | -                  | -                                   |
+|           12 | 1952 Summer Olympics | Heikki Savolainen                                   | -                      | -                  | -                                   |
+|           13 | 1956 Winter Olympics | Giuliana Minuzzo                                    | -                      | -                  | -                                   |
+|           14 | 1956 Summer Olympics | John Landy (Melbourne)\nHenri Saint Cyr (Stockholm) | -                      | -                  | English/Swedish                     |
+|           15 | 1960 Winter Olympics | Carol Heiss                                         | -                      | -                  | -                                   |
+|           16 | 1960 Summer Olympics | Adolfo Consolini                                    | -                      | -                  | -                                   |
+|           17 | 1964 Winter Olympics | Paul Aste                                           | -                      | -                  | German                              |
+|           18 | 1964 Summer Olympics | Takashi Ono                                         | -                      | -                  | Japanese                            |
+|           19 | 1968 Winter Olympics | Léo Lacroix                                         | -                      | -                  | French                              |
+|           20 | 1968 Summer Olympics | Pablo Garrido                                       | -                      | -                  | Spanish                             |
+|           21 | 1972 Winter Olympics | Keiichi Suzuki                                      | Fumio Asaki            | -                  | Japanese                            |
+|           22 | 1972 Summer Olympics | Heidi Schüller                                      | Heinz Pollay           | -                  | German                              |
+|           23 | 1976 Winter Olympics | Werner Delle Karth                                  | Willy Köstinger        | -                  | German                              |
+|           24 | 1976 Summer Olympics | Pierre St.-Jean                                     | Maurice Fauget         | -                  | French (St.-Jean)/English (Fauget)  |
+|           25 | 1980 Winter Olympics | Eric Heiden                                         | Terry McDermott        | -                  | English                             |
+|           26 | 1980 Summer Olympics | Nikolai Andrianov                                   | Alexander Medved       | -                  | Russian                             |
+|           27 | 1984 Winter Olympics | Bojan Križaj                                        | Dragan Perovic         | -                  | Serbo-Croatian                      |
+|           28 | 1984 Summer Olympics | Edwin Moses                                         | Sharon Weber           | -                  | English                             |
+|           29 | 1988 Winter Olympics | Pierre Harvey                                       | Suzanna Morrow-Francis | -                  | English                             |
+|           30 | 1988 Summer Olympics | Hur Jae\nShon Mi-Na                                 | Lee Hak-Rae            | -                  | Korean                              |
+|           31 | 1992 Winter Olympics | Surya Bonaly                                        | Pierre Bornat          | -                  | French                              |
+|           32 | 1992 Summer Olympics | Luis Doreste Blanco                                 | Eugeni Asensio         | -                  | Spanish/Catalan                     |
+|           33 | 1994 Winter Olympics | Vegard Ulvang                                       | Kari Kåring            | -                  | English (Ulvang)/Norwegian (Kåring) |
+|           34 | 1996 Summer Olympics | Teresa Edwards                                      | Hobie Billingsley      | -                  | English                             |
+|           35 | 1998 Winter Olympics | Kenji Ogiwara                                       | Junko Hiramatsu        | -                  | Japanese                            |
+|           36 | 2000 Summer Olympics | Rechelle Hawkes                                     | Peter Kerr             | -                  | English                             |
+|           37 | 2002 Winter Olympics | Jimmy Shea                                          | Allen Church           | -                  | English                             |
+|           38 | 2004 Summer Olympics | Zoi Dimoschaki                                      | Lazaros Voreadis       | -                  | Greek                               |
+|           39 | 2006 Winter Olympics | Giorgio Rocca                                       | Fabio Bianchetti       | -                  | Italian                             |
+|           40 | 2008 Summer Olympics | Zhang Yining                                        | Huang Liping           | -                  | Chinese                             |
+|           41 | 2010 Winter Olympics | Hayley Wickenheiser                                 | Michel Verrault        | -                  | English/French                      |
+|           42 | 2012 Summer Olympics | Sarah Stevenson                                     | Mik Basi               | Eric Farrell       | English                             |
+|           43 | 2014 Winter Olympics | Ruslan Zakharov                                     | Vyacheslav Vedenin Jr  | Anastassia Popkova | Russian                             |
+
+Generated Reasoning SQL: To find the total number of times Japanese was used as the language, we need to count the rows where the "Language" column contains the value "Japanese".
+The "Language" column is categorical, and we are interested in a specific language value.
+We do not need to consider any outlier rows as they do not affect the count of occurrences of "Japanese" in the language column.
+SQL: select count("Language") from T where "Language" like '%Japanese%';
+Generated Final SQL: select count("Language") from T where "Language" like '%Japanese%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Language") |
+|--------------------:|
+|                   3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Olympic Oath
+SQL: select count("Language") from T where "Language" like '%Japanese%';
+
+count("Language")
+3
+Question: what is the total number of times that japanese was used as the language?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

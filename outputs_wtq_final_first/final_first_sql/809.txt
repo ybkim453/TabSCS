@@ -1,0 +1,135 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - 4 representative example values: 1937, 1939
+   - Role: Identifier for the year in which the race took place
+
+2. Car
+   - Data type: Categorical
+   - 4 representative example values: 38, 62
+   - Role: Identifier for the car number
+
+3. Start
+   - Data type: Numeric
+   - 4 representative example values: 7, 27
+   - Role: Measure of the starting position in the race
+
+4. Qual
+   - Data type: Numeric
+   - 4 representative example values: 118.788, 121.749
+   - Role: Measure of the qualifying speed
+
+5. Rank
+   - Data type: Numeric
+   - 4 representative example values: 16, 24
+   - Role: Measure of the final ranking position in the race
+
+6. Finish
+   - Data type: Numeric
+   - 4 representative example values: 8, 11
+   - Role: Measure of the finishing position in the race
+
+7. Laps
+   - Data type: Numeric
+   - 4 representative example values: 200
+   - Role: Measure of the number of laps completed in the race
+
+8. Led
+   - Data type: Numeric
+   - 4 representative example values: 0, 33
+   - Role: Measure of the number of laps led in the race
+
+9. Retired
+   - Data type: Categorical
+   - 4 representative example values: Running, nan
+   - Role: Descriptor of the retirement status in the race
+
+**Outlier Row Analysis:**
+
+- Row 13:
+  - The values in this row are not significantly different from the majority of the table. The values are ordinary and do not stand out as distinctive outliers. Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Year   | Car    | Start   | Qual    | Rank   | Finish   |   Laps |   Led | Retired      |
+|-------------:|:-------|:-------|:--------|:--------|:-------|:---------|-------:|------:|:-------------|
+|            0 | 1926   | 31     | 12      | 102.789 | 13     | 11       |    142 |     0 | Flagged      |
+|            1 | 1927   | 27     | 27      | 107.765 | 22     | 3        |    200 |     0 | Running      |
+|            2 | 1928   | 8      | 4       | 117.031 | 4      | 10       |    200 |    33 | Running      |
+|            3 | 1929   | 23     | 11      | 112.146 | 15     | 17       |     91 |     0 | Supercharger |
+|            4 | 1930   | 9      | 20      | 100.033 | 18     | 20       |     79 |     0 | Valve        |
+|            5 | 1931   | 37     | 19      | 111.725 | 6      | 18       |    167 |     0 | Crash T4     |
+|            6 | 1932   | 25     | 20      | 108.896 | 34     | 13       |    184 |     0 | Flagged      |
+|            7 | 1933   | 34     | 12      | 113.578 | 15     | 7        |    200 |     0 | Running      |
+|            8 | 1934   | 8      | 7       | 113.733 | 13     | 17       |     94 |     0 | Rod          |
+|            9 | 1935   | 44     | 6       | 115.459 | 11     | 21       |    102 |     0 | Magneto      |
+|           10 | 1937   | 38     | 7       | 118.788 | 16     | 8        |    200 |     0 | Running      |
+|           11 | 1938   | 17     | 4       | 122.499 | 6      | 17       |    130 |     0 | Rod          |
+|           12 | 1939   | 62     | 27      | 121.749 | 24     | 11       |    200 |     0 | Running      |
+|           13 | Totals | Totals | Totals  | Totals  | Totals | Totals   |   1989 |    33 |              |
+
+Generated Reasoning SQL: To determine the year in which Tony Gulotta led the most laps, we need to find the maximum value in the "Led" column and then retrieve the corresponding "Year" value. 
+Since the "Led" column is numeric, we can directly find the maximum value and then filter the row based on that value to get the year.
+SQL: 
+SELECT "Year" 
+FROM T 
+WHERE "Led" = (SELECT MAX(CAST("Led" AS INTEGER)) FROM T);
+Generated Final SQL: SELECT "Year" FROM T WHERE "Led" = (SELECT MAX(CAST("Led" AS INTEGER)) FROM T);
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Year   |
+|:-------|
+| 1928   |
+| Totals |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tony Gulotta
+SQL: SELECT "Year" FROM T WHERE "Led" = (SELECT MAX(CAST("Led" AS INTEGER)) FROM T);
+
+Year
+1928
+Totals
+Question: in what year did he lead the most laps in?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1928
+[Gold Answer] 1928
+

@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 1999, 2001, 2004
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Cross Country Championships, All-Africa Games, IAAF Grand Prix Final, World Athletics Final
+   - Role: Descriptor of the specific competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Marrakech, Morocco, Johannesburg, South Africa, Munich, Germany, Melbourne, Australia, Monte Carlo, Monaco
+   - Role: Descriptor of the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 8th, 1st, 4th
+   - Role: Measure of the athlete's performance in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: Short race, 3000 m st.
+   - Role: Descriptor of the specific event within the competition.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The position value of "8th" is different from the other positions in the table, which are mostly "1st" or "4th". This makes the row an outlier in terms of performance.
+
+2. Row 3:
+   - The competition being "IAAF Grand Prix Final" is consistent with other rows, so this row is an ordinary entry and not a special outlier.
+
+3. Row 0:
+   - The missing value for the year makes this row an outlier in terms of completeness, as all other rows have a specific year mentioned.
+
+Overall, row 1 is an outlier due to its distinctive position value, while rows 0 and 3 are ordinary entries within the context of the table.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition                       | Venue                     | Position   | Event      |
+|-------------:|-------:|:----------------------------------|:--------------------------|:-----------|:-----------|
+|            0 |   1996 | World Junior Championships        | Sydney Australia          | 2nd        | 3000 m st. |
+|            1 |   1998 | World Cross Country Championships | Marrakech Morocco         | 8th        | Short race |
+|            2 |    nan | Commonwealth Games                | Kuala Lumpur Malaysia     | 3rd        | 3000 m st. |
+|            3 |   1999 | All-Africa Games                  | Johannesburg South Africa | 1st        | 3000 m st. |
+|            4 |    nan | IAAF Grand Prix Final             | Munich Germany            | 4th        | 3000 m st. |
+|            5 |   2001 | IAAF Grand Prix Final             | Melbourne Australia       | 4th        | 3000 m st. |
+|            6 |   2004 | World Athletics Final             | Monte Carlo Monaco        | 4th        | 3000 m st. |
+|            7 |   2005 | World Athletics Final             | Monte Carlo Monaco        | 8th        | 3000 m st. |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Position" column contains categorical values representing the athlete's performance in the event. To find the number of 4th place finishes, we need to count the rows where "Position" = '4th'. It is important to note that the outlier row 1 with a position of '8th' should be excluded from the count as it does not represent a 4th place finish.
+SQL: select count("Position") from T where "Position" = '4th';
+Generated Final SQL: select count("Position") from T where "Position" = '4th';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Position") |
+|--------------------:|
+|                   3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Kipkurui Misoi
+SQL: select count("Position") from T where "Position" = '4th';
+
+count("Position")
+3
+Question: how many 4th place finishes did he have?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

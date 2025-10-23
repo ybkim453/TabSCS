@@ -1,0 +1,60 @@
+### Column Analysis:
+
+1. **Date:**
+   - Data type: Numeric
+   - 4 representative example values: 3, 5, 7, 8
+   - Role: Identifier for the date of the race.
+
+2. **Rnd:**
+   - Data type: Categorical
+   - 4 representative example values: May 27, June 17, July 8, July 15
+   - Role: Descriptor for the round number of the race.
+
+3. **Race Name:**
+   - Data type: Categorical
+   - 4 representative example values: 74th Indianapolis 500, Valvoline Grand Prix of Detroit, Budweiser Grand Prix of Cleveland, Marlboro Grand Prix at the Meadowlands
+   - Role: Descriptor for the name of the race.
+
+4. **Circuit:**
+   - Data type: Categorical
+   - 4 representative example values: Indianapolis Motor Speedway, Streets of Detroit, Cleveland Burke Lakefront Airport, Meadowlands Sports Complex
+   - Role: Descriptor for the circuit where the race took place.
+
+5. **City/Location:**
+   - Data type: Categorical
+   - 4 representative example values: Speedway, Indiana, Detroit, Michigan, Cleveland, Ohio, East Rutherford, New Jersey
+   - Role: Descriptor for the city/location of the race.
+
+6. **Pole position:**
+   - Data type: Categorical
+   - 4 representative example values: Emerson Fittipaldi, Michael Andretti, Rick Mears, Teo Fabi
+   - Role: Descriptor for the driver who secured the pole position.
+
+7. **Winning driver:**
+   - Data type: Categorical
+   - 4 representative example values: Arie Luyendyk, Michael Andretti, Danny Sullivan, Al Unser, Jr.
+   - Role: Descriptor for the driver who won the race.
+
+8. **Winning team:**
+   - Data type: Categorical
+   - 4 representative example values: Doug Shierson Racing, Newman/Haas Racing, Team Penske, Galles-Kraco Racing
+   - Role: Descriptor for the team that the winning driver belonged to.
+
+9. **Report:**
+   - Data type: Categorical
+   - 4 representative example values: Report, Report, Report, Report
+   - Role: Descriptor for the report of the race.
+
+### Outlier Row Analysis:
+
+1. **Row 6:**
+   - The winning driver (Arie Luyendyk) and winning team (Doug Shierson Racing) are different from the majority of the table.
+   - These values are distinctive and make this row an outlier.
+
+2. **Row 10:**
+   - The winning driver (Al Unser, Jr.) is the same as in Row 6, which is not a distinctive value.
+   - This row is an ordinary entry and does not require special handling.
+
+3. **Row 2:**
+   - The race name (Valvoline Grand Prix of Detroit) and winning driver (Michael Andretti) are not unique in the table.
+   - This row is an ordinary entry and does not require special handling.

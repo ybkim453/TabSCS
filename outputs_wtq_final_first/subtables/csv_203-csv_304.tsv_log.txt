@@ -1,0 +1,16 @@
+
+JSONL 파일에서 인덱스 2084 처리 중: datasets/wtq.jsonl
+  테이블 크기: 19행 5열
+  컬럼 'Year' 분석 중...
+  컬럼 'MVP' 분석 중...
+  컬럼 'Defensive Player of the Year' 분석 중...
+  컬럼 'Unsung Hero' 분석 중...
+  컬럼 'Newcomer of the Year' 분석 중...
+  특이값 행 선택: 행 17 (컬럼 'Newcomer of the Year', 유사도: 0.5925)
+  특이값 행 선택: 행 12 (컬럼 'Unsung Hero', 유사도: 0.5925)
+  특이값 행 선택: 행 14 (컬럼 'Defensive Player of the Year', 유사도: 0.5950)
+  정상값 행 선택: 행 8 (평균 유사도: 0.7320)
+  정상값 행 선택: 행 4 (평균 유사도: 0.7308)
+  정상값 행 선택: 행 5 (평균 유사도: 0.7306)
+  최종 선택된 행 (원본 순서): [4, 5, 8, 12, 14, 17] (총 6개)
+  서브테이블 크기: 7줄

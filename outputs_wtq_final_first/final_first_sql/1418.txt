@@ -1,0 +1,155 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Conference
+   - Data type: Categorical
+   - 4 representative example values: Big Ten, Atlantic Coast, Missouri Valley, Big Sky
+   - Role: Identifier for the conference each team belongs to
+
+2. # of Bids
+   - Data type: Numeric
+   - 4 representative example values: 5, 3, 2, 1
+   - Role: Measure of the number of bids each conference received
+
+3. Record
+   - Data type: Categorical
+   - 4 representative example values: 9-5, 9-2, 2-2, 1-2
+   - Role: Descriptor of the win-loss record for each conference
+
+4. Win %
+   - Data type: Numeric
+   - 4 representative example values: .643, .818, .500, .333
+   - Role: Measure of the winning percentage for each conference
+
+5. Round of 32
+   - Data type: Numeric
+   - 4 representative example values: 4, 3, 2, 1
+   - Role: Measure of the number of teams from each conference that made it to the Round of 32
+
+6. Sweet Sixteen
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 0, 0
+   - Role: Measure of the number of teams from each conference that made it to the Sweet Sixteen
+
+7. Elite Eight
+   - Data type: Numeric
+   - 4 representative example values: 2, 1, 0, 0
+   - Role: Measure of the number of teams from each conference that made it to the Elite Eight
+
+8. Final Four
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 0, 0
+   - Role: Measure of the number of teams from each conference that made it to the Final Four
+
+9. Championship Game
+   - Data type: Categorical
+   - 4 representative example values: -, 1, -, -
+   - Role: Descriptor of whether a team from each conference made it to the Championship Game
+
+**Outlier Row Analysis:**
+
+1. Row 5 (West Coast)
+   - The values for Win %, Round of 32, Sweet Sixteen, Elite Eight, Final Four, and Championship Game are all missing or marked as "-".
+   - This row is an outlier as it does not have any data for these important metrics, making it distinct from the other rows in the table.
+
+2. Row 0 (Big Ten)
+   - The Win % is .643, which is lower than the Win % of the Atlantic Coast conference (Row 1) with .818.
+   - This row is an outlier as it has a lower Win % compared to the conference with the second-highest number of bids.
+
+3. Row 1 (Atlantic Coast)
+   - The Win % is .818, which is higher than the Win % of the Big Ten conference (Row 0) with .643.
+   - This row is an outlier as it has a higher Win % compared to the conference with the highest number of bids.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them outliers that may require special handling in the analysis.
+
+=== Full Table Preview ===
+|   row_number | Conference       |   # of Bids | Record   | Win %   | Round\nof 32   | Sweet\nSixteen   | Elite\nEight   | Final\nFour   | Championship\nGame   |
+|-------------:|:-----------------|------------:|:---------|:--------|:---------------|:-----------------|:---------------|:--------------|:---------------------|
+|            0 | Southeastern     |           6 | 10–6     | .625    | 5              | 3                | 1              | 1             | –                    |
+|            1 | Big Ten          |           5 | 9–5      | .643    | 4              | 2                | 2              | 1             | –                    |
+|            2 | Pacific-10       |           5 | 8–5      | .615    | 4              | 2                | 2              | –             | –                    |
+|            3 | Southwest        |           4 | 5–4      | .556    | 3              | 2                | –              | –             | –                    |
+|            4 | Big Eight        |           4 | 3–4      | .429    | 2              | 1                | –              | –             | –                    |
+|            5 | Atlantic Coast   |           3 | 9–2      | .818    | 3              | 2                | 1              | 1             | 1                    |
+|            6 | Atlantic 10      |           3 | 1–3      | .250    | 1              | –                | –              | –             | –                    |
+|            7 | Sun Belt         |           2 | 6–2      | .750    | 2              | 1                | 1              | 1             | 1                    |
+|            8 | Big East         |           2 | 5–2      | .714    | 2              | 2                | 1              | –             | –                    |
+|            9 | Metro            |           2 | 2–2      | .500    | 1              | 1                | –              | –             | –                    |
+|           10 | Missouri Valley  |           2 | 2–2      | .500    | 2              | –                | –              | –             | –                    |
+|           11 | Big Sky          |           2 | 1–2      | .333    | 1              | –                | –              | –             | –                    |
+|           12 | Big West         |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           13 | Great Midwest    |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           14 | Mid-Continent    |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           15 | West Coast       |           2 | 0–2      | –       | –              | –                | –              | –             | –                    |
+|           16 | Colonial         |           1 | 1–1      | .500    | 1              | –                | –              | –             | –                    |
+|           17 | Western Athletic |           1 | 1–1      | .500    | 1              | –                | –              | –             | –                    |
+
+Generated Reasoning SQL: To find the conference with 2 bids and a record of 5-2, we need to filter rows where "# of Bids" = 2 and "Record" = '5-2'. 
+Since the "Record" column is categorical, we can directly compare it to the string '5-2'. 
+SQL: select "Conference" from T where "# of Bids" = 2 and "Record" = '5-2';
+Generated Final SQL: select "Conference" from T where "# of Bids" = 2 and "Record" = '5-2';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1994 NCAA Women's Division I Basketball Tournament (row_number, Conference, # of Bids, Record, Win %, Round\nof 32, Sweet\nSixteen, Elite\nEight, Final\nFour, Championship\nGame)
+
+row_number | Conference | # of Bids | Record | Win % | Round\nof 32 | Sweet\nSixteen | Elite\nEight | Final\nFour | Championship\nGame
+0 | Southeastern | 6 | 10–6 | .625 | 5 | 3 | 1 | 1 | –
+1 | Big Ten | 5 | 9–5 | .643 | 4 | 2 | 2 | 1 | –
+2 | Pacific-10 | 5 | 8–5 | .615 | 4 | 2 | 2 | – | –
+3 | Southwest | 4 | 5–4 | .556 | 3 | 2 | – | – | –
+4 | Big Eight | 4 | 3–4 | .429 | 2 | 1 | – | – | –
+5 | Atlantic Coast | 3 | 9–2 | .818 | 3 | 2 | 1 | 1 | 1
+6 | Atlantic 10 | 3 | 1–3 | .250 | 1 | – | – | – | –
+7 | Sun Belt | 2 | 6–2 | .750 | 2 | 1 | 1 | 1 | 1
+8 | Big East | 2 | 5–2 | .714 | 2 | 2 | 1 | – | –
+9 | Metro | 2 | 2–2 | .500 | 1 | 1 | – | – | –
+10 | Missouri Valley | 2 | 2–2 | .500 | 2 | – | – | – | –
+11 | Big Sky | 2 | 1–2 | .333 | 1 | – | – | – | –
+12 | Big West | 2 | 0–2 | – | – | – | – | – | –
+13 | Great Midwest | 2 | 0–2 | – | – | – | – | – | –
+14 | Mid-Continent | 2 | 0–2 | – | – | – | – | – | –
+15 | West Coast | 2 | 0–2 | – | – | – | – | – | –
+16 | Colonial | 1 | 1–1 | .500 | 1 | – | – | – | –
+17 | Western Athletic | 1 | 1–1 | .500 | 1 | – | – | – | –
+Question: which conference has 2 bids, but a record of 5-2?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to look at the relevant columns in the summary:
+- The **Conference** column lists the conference names.
+- The **# of Bids** column indicates the number of bids each conference received.
+- The **Record** column shows the win-loss record for each conference team.
+
+Next, we will examine the full table to identify the conference that meets the criteria:
+- From the full table, we can see that the conference with 2 bids and a record of 5-2 is the **Big East** conference.
+
+By combining the information from the summary (identifying columns and criteria) with the details from the full table, we can confidently determine that the conference with 2 bids and a 5-2 record is the Big East conference.
+
+Final Answer: Big East
+[Fallback] Prediction: big east
+[Gold Answer] big east
+

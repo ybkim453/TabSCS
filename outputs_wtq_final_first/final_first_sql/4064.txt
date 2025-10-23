@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 3, 8, 9, 11
+   - Role: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: September 18, 1988, October 23, 1988, October 30, 1988, November 13, 1988
+   - Role: Descriptor for the date of the game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: San Francisco 49ers, New York Giants, Philadelphia Eagles, San Diego Chargers
+   - Role: Descriptor for the opposing team
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: W 34–17, L 23–16, W 27–24, L 10–7
+   - Role: Descriptor for the outcome of the game
+
+5. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 60,168, 45,092, 60,091, 26,329
+   - Role: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 12:
+   - The values for Week, Date, Opponent, Result, and Attendance are all missing in this row.
+   - This row is an outlier due to the absence of any data, making it distinct from the rest of the table.
+
+2. Row 10:
+   - The Result value is "L 7–6", which is different from the typical format of "W/L [score]".
+   - This row is an outlier due to the unusual Result value compared to the standard format seen in other rows.
+
+3. Row 1:
+   - The Week value is 1, which is not present in the typical sequence of weeks in the table.
+   - This row is an outlier due to the Week value being outside the expected range based on the other rows.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date                | Opponent               | Result   |   Attendance |
+|-------------:|-------:|:--------------------|:-----------------------|:---------|-------------:|
+|            0 |      1 | 1988-09-04 00:00:00 | at Detroit Lions       | L 31–17  |        31075 |
+|            1 |      2 | 1988-09-11 00:00:00 | New Orleans Saints     | L 29–21  |        48901 |
+|            2 |      3 | 1988-09-18 00:00:00 | at San Francisco 49ers | W 34–17  |        60168 |
+|            3 |      4 | 1988-09-25 00:00:00 | at Dallas Cowboys      | L 26–20  |        39702 |
+|            4 |      5 | 1988-10-02 00:00:00 | Seattle Seahawks       | L 31–20  |        28619 |
+|            5 |      6 | 1988-10-09 00:00:00 | Los Angeles Rams       | L 33–0   |        30852 |
+|            6 |      7 | 1988-10-16 00:00:00 | at Denver Broncos      | L 30–14  |        75287 |
+|            7 |      8 | 1988-10-23 00:00:00 | New York Giants        | L 23–16  |        45092 |
+|            8 |      9 | 1988-10-30 00:00:00 | at Philadelphia Eagles | W 27–24  |        60091 |
+|            9 |     10 | 1988-11-06 00:00:00 | Green Bay Packers      | W 20–0   |        29952 |
+|           10 |     11 | 1988-11-13 00:00:00 | San Diego Chargers     | L 10–7   |        26329 |
+|           11 |     12 | 1988-11-20 00:00:00 | at Los Angeles Raiders | W 12–6   |        40967 |
+|           12 |     13 | 1988-11-27 00:00:00 | Tampa Bay Buccaneers   | W 17–10  |        14020 |
+|           13 |     14 | 1988-12-04 00:00:00 | San Francisco 49ers    | L 13–3   |        44048 |
+|           14 |     15 | 1988-12-11 00:00:00 | at Los Angeles Rams    | L 22–7   |        42828 |
+|           15 |     16 | 1988-12-18 00:00:00 | at New Orleans Saints  | L 10–9   |        60566 |
+
+Generated Reasoning SQL: Explanation: To determine the number of times the Atlanta Falcons lost, we need to count the rows where the "Result" column indicates a loss. The "Result" column is categorical and contains values like "W 34–17" and "L 23–16" where "W" represents a win and "L" represents a loss. We will filter rows based on the presence of "L" in the "Result" column.
+SQL: select count("Result") from T where "Result" like 'L%';
+Generated Final SQL: select count("Result") from T where "Result" like 'L%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Result") |
+|------------------:|
+|                11 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1988 Atlanta Falcons season
+SQL: select count("Result") from T where "Result" like 'L%';
+
+count("Result")
+11
+Question: how many times did they lose?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 11
+[Gold Answer] 11
+

@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: T3, 6, 7, T10
+   - Role: Identifier for the player's finishing position in the tournament
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Billy Burke, Lawson Little, Craig Wood, Byron Nelson
+   - Role: Descriptor for the name of the player
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: United States
+   - Role: Descriptor for the country the player represents
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 282, 284, 287, 291
+   - Role: Measure of the total score achieved by the player in the tournament
+
+5. To par:
+   - Data type: Categorical
+   - 4 representative example values: –6, –4, –1, +3
+   - Role: Descriptor for the player's score relative to par
+
+6. Money ($):
+   - Data type: Numeric
+   - 4 representative example values: 550, 300, 250, 100
+   - Role: Measure of the amount of prize money earned by the player
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values in this row are not significantly different from the majority of the table.
+   - The score of +3 and the money earned of 100 are ordinary values within the context of the table.
+   - This row is an ordinary row and does not require special handling.
+
+2. Row 6:
+   - The values in this row are not significantly different from the majority of the table.
+   - The score of –1 and the money earned of 250 are ordinary values within the context of the table.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 0:
+   - The values in this row are not significantly different from the majority of the table.
+   - The place of T3, score of 282, and money earned of 550 are ordinary values within the context of the table.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Place   | Player        | Country       | Score           | To par   |   Money ($) |
+|-------------:|:--------|:--------------|:--------------|:----------------|:---------|------------:|
+|            0 | 1       | Ralph Guldahl | United States | 72-68-70-69=279 | –9       |        1500 |
+|            1 | 2       | Sam Snead     | United States | 70-70-72-68=280 | –8       |         800 |
+|            2 | T3      | Billy Burke   | United States | 69-72-71-70=282 | –6       |         550 |
+|            3 | T3      | Lawson Little | United States | 72-72-68-70=282 | –6       |         550 |
+|            4 | 5       | Gene Sarazen  | United States | 73-66-72-72=283 | –5       |         400 |
+|            5 | 6       | Craig Wood    | United States | 72-73-71-68=284 | –4       |         300 |
+|            6 | 7       | Byron Nelson  | United States | 71-69-72-75=287 | –1       |         250 |
+|            7 | 8       | Henry Picard  | United States | 71-71-76-71=289 | +1       |         175 |
+|            8 | 9       | Ben Hogan     | United States | 75-71-72-72=290 | +2       |         125 |
+|            9 | T10     | Ed Dudley     | United States | 75-75-69-72=291 | +3       |         100 |
+|           10 | T10     | Toney Penna   | United States | 72-75-72-72=291 | +3       |         100 |
+
+Generated Reasoning SQL: To determine the number of players who tied another player in the tournament, we need to count the rows where the "Place" column contains the value "T" followed by a number, indicating a tie in the finishing position.
+We will exclude any rows that do not represent a tie, such as rows with numeric values in the "Place" column.
+SQL: select count("Player") from T where "Place" like 'T%';
+Generated Final SQL: select count("Player") from T where "Place" like 'T%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Player") |
+|------------------:|
+|                 4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1939 Masters Tournament
+SQL: select count("Player") from T where "Place" like 'T%';
+
+count("Player")
+4
+Question: the number of players who tied another player in the tournament
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

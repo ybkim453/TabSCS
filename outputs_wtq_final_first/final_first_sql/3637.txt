@@ -1,0 +1,194 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Designation
+   - Data type: Categorical
+   - 4 representative example values: PE-5, PE-24, PE-45, PE-50
+   - Role: Identifier for each ship
+
+2. Keel Laid
+   - Data type: Date
+   - 4 representative example values: 28 May 1918, 13 September 1918, 20 February 1919, 10 March 1919
+   - Role: Indicates the date when the keel of the ship was laid down
+
+3. Launched
+   - Data type: Date
+   - 4 representative example values: 28 September 1918, 24 February 1919, 17 May 1919, 18 July 1919
+   - Role: Indicates the date when the ship was launched
+
+4. Commissioned
+   - Data type: Date
+   - 4 representative example values: 19 November 1918, 12 July 1919, 2 October 1919, 6 October 1919
+   - Role: Indicates the date when the ship was commissioned into service
+
+5. Fate
+   - Data type: Categorical
+   - 4 representative example values: Sold 11 June 1930, In service during WWII, Torpedoed by U-853 off Portland, Maine, on 23 April 1945
+   - Role: Describes the final fate or outcome of the ship
+
+**Outlier Row Analysis:**
+
+1. Row 55:
+   - The values in this row are not provided in the partial preview, so it cannot be determined if this row is an outlier based on the given information.
+
+2. Row 4:
+   - The fate of the ship in this row is "In service during WWII", which is different from the majority of the rows that mention being sold in 1930. This makes the row an outlier as it had a different fate compared to the other ships.
+
+3. Row 2:
+   - The fate of the ship in this row is "Sold 11 June 1930", which is consistent with the majority of the rows. Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Designation   | Keel Laid           | Launched            | Commissioned        | Fate                                                                           |
+|-------------:|:--------------|:--------------------|:--------------------|:--------------------|:-------------------------------------------------------------------------------|
+|            0 | PE-1          | 1918-05-07 00:00:00 | 1918-07-11 00:00:00 | 1918-10-27 00:00:00 | Sold 11 June 1930                                                              |
+|            1 | PE-2          | 1918-05-10 00:00:00 | 1918-08-19 00:00:00 | 1918-07-11 00:00:00 | Sold 11 June 1930                                                              |
+|            2 | PE-3          | 1918-05-16 00:00:00 | 1918-09-11 00:00:00 | 1918-11-11 00:00:00 | Sold 11 June 1930                                                              |
+|            3 | PE-4          | 1918-05-21 00:00:00 | 1918-09-15 00:00:00 | 1918-11-14 00:00:00 | Sold 11 June 1930                                                              |
+|            4 | PE-5          | 1918-05-28 00:00:00 | 1918-09-28 00:00:00 | 1918-11-19 00:00:00 | Sold 11 June 1930                                                              |
+|            5 | PE-6          | 1918-06-03 00:00:00 | 1918-10-16 00:00:00 | 1918-11-21 00:00:00 | Expended as target 30 November 1934                                            |
+|            6 | PE-7          | 1918-06-08 00:00:00 | 1918-10-05 00:00:00 | 1918-11-24 00:00:00 | Expended as target 30 November 1934                                            |
+|            7 | PE-8          | 1918-06-10 00:00:00 | 1918-11-11 00:00:00 | 1919-10-31 00:00:00 | Sold 1 April 1931                                                              |
+|            8 | PE-9          | 1918-06-17 00:00:00 | 1918-11-08 00:00:00 | 1919-10-27 00:00:00 | Sold 26 May 1930                                                               |
+|            9 | PE-10         | 1918-07-06 00:00:00 | 1918-11-09 00:00:00 | 1919-10-31 00:00:00 | Destroyed 19 August 1937                                                       |
+|           10 | PE-11         | 1918-07-13 00:00:00 | 1918-11-14 00:00:00 | 1919-05-29 00:00:00 | Sold 16 January 1935                                                           |
+|           11 | PE-12         | 1918-07-13 00:00:00 | 1918-11-12 00:00:00 | 1919-11-06 00:00:00 | Sold 30 December 1935                                                          |
+|           12 | PE-13         | 1918-07-15 00:00:00 | 1919-01-09 00:00:00 | 1919-04-02 00:00:00 | Sold 26 May 1930                                                               |
+|           13 | PE-14         | 1918-07-20 00:00:00 | 1919-01-23 00:00:00 | 1919-06-17 00:00:00 | Expended as target 22 November 1934                                            |
+|           14 | PE-15         | 1918-07-21 00:00:00 | 1919-01-25 00:00:00 | 1919-06-11 00:00:00 | Sold 14 June 1934                                                              |
+|           15 | PE-16         | 1918-07-22 00:00:00 | 1919-01-11 00:00:00 | 1919-06-05 00:00:00 | Transferred to USCG late 1919                                                  |
+|           16 | PE-17         | 1918-08-03 00:00:00 | 1919-02-01 00:00:00 | 1919-07-03 00:00:00 | Wrecked off Long Island New York 22 May 1922                                   |
+|           17 | PE-18         | 1918-08-05 00:00:00 | 1919-02-10 00:00:00 | 1919-08-07 00:00:00 | Sold 11 June 1930                                                              |
+|           18 | PE-19         | 1918-08-06 00:00:00 | 1919-01-30 00:00:00 | 1919-06-25 00:00:00 | In service during WWII\nDestroyed 6 August 1946                                |
+|           19 | PE-20         | 1918-08-26 00:00:00 | 1919-02-15 00:00:00 | 1919-07-28 00:00:00 | Transferred to USCG late 1919                                                  |
+|           20 | PE-21         | 1918-08-31 00:00:00 | 1919-02-15 00:00:00 | 1919-07-31 00:00:00 | Transferred to USCG late 1919                                                  |
+|           21 | PE-22         | 1918-09-05 00:00:00 | 1919-02-10 00:00:00 | 1919-07-17 00:00:00 | Transferred to USCG late 1919                                                  |
+|           22 | PE-23         | 1918-09-11 00:00:00 | 1919-02-20 00:00:00 | 1919-06-19 00:00:00 | Sold 11 June 1930                                                              |
+|           23 | PE-24         | 1918-09-13 00:00:00 | 1919-02-24 00:00:00 | 1919-07-12 00:00:00 | Sold 11 June 1930                                                              |
+|           24 | PE-25         | 1918-09-17 00:00:00 | 1919-02-19 00:00:00 | 1919-06-30 00:00:00 | Capsized in Delaware Bay squall 11 June 1920                                   |
+|           25 | PE-26         | 1918-09-25 00:00:00 | 1919-03-01 00:00:00 | 1919-10-01 00:00:00 | Sold 29 August 1938                                                            |
+|           26 | PE-27         | 1918-10-22 00:00:00 | 1919-03-01 00:00:00 | 1919-07-14 00:00:00 | In service during WWII\nSold 4 June 1946                                       |
+|           27 | PE-28         | 1918-10-23 00:00:00 | 1919-03-01 00:00:00 | 1919-07-28 00:00:00 | Sold 11 June 1930                                                              |
+|           28 | PE-29         | 1918-11-18 00:00:00 | 1919-03-08 00:00:00 | 1919-08-20 00:00:00 | Sold 11 June 1930                                                              |
+|           29 | PE-30         | 1918-11-19 00:00:00 | 1919-03-08 00:00:00 | 1919-08-14 00:00:00 | Transferred to USCG late 1919                                                  |
+|           30 | PE-31         | 1918-11-19 00:00:00 | 1919-03-08 00:00:00 | 1919-08-14 00:00:00 | Sold 18 May 1923                                                               |
+|           31 | PE-32         | 1918-11-30 00:00:00 | 1919-03-15 00:00:00 | 1919-09-04 00:00:00 | In service during WWII\nSold 3 March 1947                                      |
+|           32 | PE-33         | 1918-02-14 00:00:00 | 1919-03-15 00:00:00 | 1919-09-04 00:00:00 | Sold 11 June 1930                                                              |
+|           33 | PE-34         | 1919-01-08 00:00:00 | 1919-03-15 00:00:00 | 1919-09-03 00:00:00 | Sold 9 June 1932                                                               |
+|           34 | PE-35         | 1919-01-13 00:00:00 | 1919-03-22 00:00:00 | 1919-08-22 00:00:00 | Sold 7 June 1938                                                               |
+|           35 | PE-36         | 1919-01-22 00:00:00 | 1919-03-22 00:00:00 | 1919-08-20 00:00:00 | Sold 27 February 1936                                                          |
+|           36 | PE-37         | 1919-01-27 00:00:00 | 1919-03-25 00:00:00 | 1919-09-30 00:00:00 | Sold 11 June 1930                                                              |
+|           37 | PE-38         | 1919-01-30 00:00:00 | 1919-03-29 00:00:00 | 1919-07-30 00:00:00 | In service during WWII\nSold 3 March 1947                                      |
+|           38 | PE-39         | 1919-02-03 00:00:00 | 1919-03-29 00:00:00 | 1919-09-20 00:00:00 | Sold 7 June 1938                                                               |
+|           39 | PE-40         | 1919-02-07 00:00:00 | 1919-04-05 00:00:00 | 1919-10-01 00:00:00 | Expended as target 19 November 1934                                            |
+|           40 | PE-41         | 1919-02-20 00:00:00 | 1919-04-05 00:00:00 | 1919-09-26 00:00:00 | Sold 11 June 1930                                                              |
+|           41 | PE-42         | 1919-02-13 00:00:00 | 1919-05-17 00:00:00 | 1919-10-03 00:00:00 | Sold 11 June 1930                                                              |
+|           42 | PE-43         | 1919-02-17 00:00:00 | 1919-05-17 00:00:00 | 1919-10-02 00:00:00 | Sold 26 May 1930                                                               |
+|           43 | PE-44         | 1919-02-20 00:00:00 | 1919-05-24 00:00:00 | 1919-09-30 00:00:00 | Disposed of 14 May 1938                                                        |
+|           44 | PE-45         | 1919-02-20 00:00:00 | 1919-05-17 00:00:00 | 1919-10-02 00:00:00 | Sold 11 June 1930                                                              |
+|           45 | PE-46         | 1919-02-24 00:00:00 | 1919-05-24 00:00:00 | 1919-10-03 00:00:00 | Sold 10 December 1936                                                          |
+|           46 | PE-47         | 1919-03-03 00:00:00 | 1919-06-19 00:00:00 | 1919-10-04 00:00:00 | Sold 30 December 1935                                                          |
+|           47 | PE-48         | 1919-03-03 00:00:00 | 1919-05-24 00:00:00 | 1919-10-08 00:00:00 | Sold 10 October 1946                                                           |
+|           48 | PE-49         | 1919-03-04 00:00:00 | 1919-06-14 00:00:00 | 1919-10-10 00:00:00 | Sold 20 September 1930                                                         |
+|           49 | PE-50         | 1919-03-10 00:00:00 | 1919-07-18 00:00:00 | 1919-10-06 00:00:00 | Sold 11 June 1930                                                              |
+|           50 | PE-51         | 1919-03-10 00:00:00 | 1919-06-14 00:00:00 | 1919-10-02 00:00:00 | Sold 29 August 1938                                                            |
+|           51 | PE-52         | 1919-03-10 00:00:00 | 1919-07-09 00:00:00 | 1919-10-10 00:00:00 | Sold 29 August 1938                                                            |
+|           52 | PE-53         | 1919-03-17 00:00:00 | 1919-08-13 00:00:00 | 1919-10-20 00:00:00 | Sold 26 August 1938                                                            |
+|           53 | PE-54         | 1919-03-17 00:00:00 | 1919-07-17 00:00:00 | 1919-10-10 00:00:00 | Sold 26 May 1930                                                               |
+|           54 | PE-55         | 1919-03-17 00:00:00 | 1919-07-22 00:00:00 | 1919-10-10 00:00:00 | In service during WWII\nSold 3 March 1947                                      |
+|           55 | PE-56         | 1919-03-25 00:00:00 | 1919-08-15 00:00:00 | 1919-10-26 00:00:00 | In service during WWII\nTorpedoed by U-853 off Portland Maine on 23 April 1945 |
+|           56 | PE-57         | 1919-03-25 00:00:00 | 1919-07-29 00:00:00 | 1919-10-15 00:00:00 | In service during WWII\nSold 5 March 1947                                      |
+|           57 | PE-58         | 1919-03-25 00:00:00 | 1919-08-02 00:00:00 | 1919-10-20 00:00:00 | Disposed of 30 June 1940                                                       |
+|           58 | PE-59         | 1919-03-31 00:00:00 | 1919-04-12 00:00:00 | 1919-09-19 00:00:00 | Sold 29 August 1938                                                            |
+|           59 | PE-60         | 1919-03-31 00:00:00 | 1919-08-13 00:00:00 | 1919-10-27 00:00:00 | Sold 29 August 1938                                                            |
+
+Generated Reasoning SQL: Explanation: To find the launch date of the "tob" item in the table, we need to filter the row based on the "Designation" column where it equals "tob" and then retrieve the corresponding "Launched" date value.
+
+SQL: 
+SELECT "Launched" 
+FROM T 
+WHERE "Designation" = 'tob';
+Generated Final SQL: SELECT "Launched" FROM T WHERE "Designation" = 'tob';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Eagle-class patrol craft (row_number, Designation, Keel Laid, Launched, Commissioned, Fate)
+
+row_number | Designation | Keel Laid | Launched | Commissioned | Fate
+0 | PE-1 | 1918-05-07 00:00:00 | 1918-07-11 00:00:00 | 1918-10-27 00:00:00 | Sold 11 June 1930
+1 | PE-2 | 1918-05-10 00:00:00 | 1918-08-19 00:00:00 | 1918-07-11 00:00:00 | Sold 11 June 1930
+2 | PE-3 | 1918-05-16 00:00:00 | 1918-09-11 00:00:00 | 1918-11-11 00:00:00 | Sold 11 June 1930
+3 | PE-4 | 1918-05-21 00:00:00 | 1918-09-15 00:00:00 | 1918-11-14 00:00:00 | Sold 11 June 1930
+4 | PE-5 | 1918-05-28 00:00:00 | 1918-09-28 00:00:00 | 1918-11-19 00:00:00 | Sold 11 June 1930
+5 | PE-6 | 1918-06-03 00:00:00 | 1918-10-16 00:00:00 | 1918-11-21 00:00:00 | Expended as target 30 November 1934
+6 | PE-7 | 1918-06-08 00:00:00 | 1918-10-05 00:00:00 | 1918-11-24 00:00:00 | Expended as target 30 November 1934
+7 | PE-8 | 1918-06-10 00:00:00 | 1918-11-11 00:00:00 | 1919-10-31 00:00:00 | Sold 1 April 1931
+8 | PE-9 | 1918-06-17 00:00:00 | 1918-11-08 00:00:00 | 1919-10-27 00:00:00 | Sold 26 May 1930
+9 | PE-10 | 1918-07-06 00:00:00 | 1918-11-09 00:00:00 | 1919-10-31 00:00:00 | Destroyed 19 August 1937
+10 | PE-11 | 1918-07-13 00:00:00 | 1918-11-14 00:00:00 | 1919-05-29 00:00:00 | Sold 16 January 1935
+11 | PE-12 | 1918-07-13 00:00:00 | 1918-11-12 00:00:00 | 1919-11-06 00:00:00 | Sold 30 December 1935
+12 | PE-13 | 1918-07-15 00:00:00 | 1919-01-09 00:00:00 | 1919-04-02 00:00:00 | Sold 26 May 1930
+13 | PE-14 | 1918-07-20 00:00:00 | 1919-01-23 00:00:00 | 1919-06-17 00:00:00 | Expended as target 22 November 1934
+14 | PE-15 | 1918-07-21 00:00:00 | 1919-01-25 00:00:00 | 1919-06-11 00:00:00 | Sold 14 June 1934
+15 | PE-16 | 1918-07-22 00:00:00 | 1919-01-11 00:00:00 | 1919-06-05 00:00:00 | Transferred to USCG late 1919
+16 | PE-17 | 1918-08-03 00:00:00 | 1919-02-01 00:00:00 | 1919-07-03 00:00:00 | Wrecked off Long Island New York 22 May 1922
+17 | PE-18 | 1918-08-05 00:00:00 | 1919-02-10 00:00:00 | 1919-08-07 00:00:00 | Sold 11 June 1930
+18 | PE-19 | 1918-08-06 00:00:00 | 1919-01-30 00:00:00 | 1919-06-25 00:00:00 | In service during WWII\nDestroyed 6 August 1946
+19 | PE-20 | 1918-08-26 00:00:00 | 1919-02-15 00:00:00 | 1919-07-28 00:00:00 | Transferred to USCG late 1919
+20 | PE-21 | 1918-08-31 00:00:00 | 1919-02-15 00:00:00 | 1919-07-31 00:00:00 | Transferred to USCG late 1919
+21 | PE-22 | 1918-09-05 00:00:00 | 1919-02-10 00:00:00 | 1919-07-17 00:00:00 | Transferred to USCG late 1919
+22 | PE-23 | 1918-09-11 00:00:00 | 1919-02-20 00:00:00 | 1919-06-19 00:00:00 | Sold 11 June 1930
+23 | PE-24 | 1918-09-13 00:00:00 | 1919-02-24 00:00:00 | 1919-07-12 00:00:00 | Sold 11 June 1930
+24 | PE-25 | 1918-09-17 00:00:00 | 1919-02-19 00:00:00 | 1919-06-30 00:00:00 | Capsized in Delaware Bay squall 11 June 1920
+25 | PE-26 | 1918-09-25 00:00:00 | 1919-03-01 00:00:00 | 1919-10-01 00:00:00 | Sold 29 August 1938
+26 | PE-27 | 1918-10-22 00:00:00 | 1919-03-01 00:00:00 | 1919-07-14 00:00:00 | In service during WWII\nSold 4 June 1946
+27 | PE-28 | 1918-10-23 00:00:00 | 1919-03-01 00:00:00 | 1919-07-28 00:00:00 | Sold 11 June 1930
+28 | PE-29 | 1918-11-18 00:00:00 | 1919-03-08 00:00:00 | 1919-08-20 00:00:00 | Sold 11 June 1930
+29 | PE-30 | 1918-11-19 00:00:00 | 1919-03-08 00:00:00 | 1919-08-14 00:00:00 | Transferred to USCG late 1919
+30 | PE-31 | 1918-11-19 00:00:00 | 1919-03-08 00:00:00 | 1919-08-14 00:00:00 | Sold 18 May 1923
+31 | PE-32 | 1918-11-30 00:00:00 | 1919-03-15 00:00:00 | 1919-09-04 00:00:00 | In service during WWII\nSold 3 March 1947
+32 | PE-33 | 1918-02-14 00:00:00 | 1919-03-15 00:00:00 | 1919-09-04 00:00:00 | Sold 11 June 1930
+33 | PE-34 | 1919-01-08 00:00:00 | 1919-03-15 00:00:00 | 1919-09-03 00:00:00 | Sold 9 June 1932
+34 | PE-35 | 1919-01-13 00:00:00 | 1919-03-22 00
+Question: what is the launch date of the tob item in the table?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the row corresponding to the top item in the table. Given that the rows are numbered starting from 0, the top item would be the row with row_number 0.
+
+Next, we look at the "Launched" column of row 0 in the full table:
+
+- Designation: PE-1
+- Keel Laid: 1918-05-07
+- Launched: 1918-07-11
+- Commissioned: 1918-10-27
+- Fate: Sold 11 June 1930
+
+Therefore, the launch date of the top item in the table (PE-1) is 1918-07-11.
+
+Final Answer: 1918-07-11
+[Fallback] Prediction: 1918-07-11
+[Gold Answer] 11 july 1918
+

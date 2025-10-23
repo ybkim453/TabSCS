@@ -1,0 +1,126 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Client
+   - Data type: Categorical
+   - 4 representative example values: OMV, Total, IPLL, Veba
+   - Role: Identifier
+
+2. Years of Operation
+   - Data type: Numeric
+   - 4 representative example values: 1997, 1999-current, 2000, 2000-01
+   - Role: Measure
+
+3. Area of Operation
+   - Data type: Categorical
+   - 4 representative example values: Field 103, El Mabrouk, El Naka field, Different fields
+   - Role: Descriptor
+
+4. Country
+   - Data type: Categorical
+   - 4 representative example values: Libya, Gabon
+   - Role: Descriptor
+
+5. Services
+   - Data type: Categorical
+   - 4 representative example values: Drilling, workover
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 13 (Perenco Oil Co.)
+   - The values "2000-01" in the Years of Operation column make this row distinctive.
+   - This row is an outlier because it has a specific end year (2001) compared to the other rows with continuous or current operations.
+
+2. Row 1 (OMV)
+   - The value "1997" in the Years of Operation column makes this row distinctive.
+   - This row is an outlier because it represents the earliest year of operation compared to the other rows.
+
+3. Row 12 (Veba)
+   - The value "2000" in the Years of Operation column makes this row distinctive.
+   - This row is an outlier because it represents a single year of operation compared to the other rows with continuous or current operations.
+
+=== Full Table Preview ===
+|   row_number | Client          |   Years of Operation | Area of Operation   | Country   | Services          |
+|-------------:|:----------------|---------------------:|:--------------------|:----------|:------------------|
+|            0 | Agoco           |                 1991 | Sarir field         | Libya     | Drilling workover |
+|            1 | Lasmo           |                 1993 | Wadi Borjuj         | Libya     | Drilling workover |
+|            2 | Waha            |                 1994 | El Zahra            | Libya     | Drilling workover |
+|            3 | IPC-Dublin      |                 1997 | Kilwa               | Tanzania  | Drilling          |
+|            4 | OMV             |                 1997 | Field 103           | Libya     | Drilling workover |
+|            5 | Fina            |                 1997 | El Hamada           | Libya     | Drilling workover |
+|            6 | Marathon        |                 1998 | Manzala field       | Egypt     | Drilling          |
+|            7 | Khalda/Repsol   |                 1998 | West Desert         | Egypt     | Drilling          |
+|            8 | Total           |                 1999 | El Mabrouk          | Libya     | Drilling          |
+|            9 | Agiba-Agip      |                 1999 | West Desert         | Egypt     | Drilling          |
+|           10 | IPLL            |                 1999 | El Naka field       | Libya     | Drilling          |
+|           11 | SOC             |                 2000 | SOC fields          | Libya     | Drilling          |
+|           12 | Veba            |                 2000 | Different fields    | Libya     | Drilling workover |
+|           13 | Perenco Oil Co. |                 2000 | EchiraX Concession  | Gabon     | Drilling          |
+|           14 | Zueitina        |                 2001 | Field 103           | Libya     | Drilling workover |
+
+Generated Reasoning SQL: To find the year when Lasmo's run as a client ended, we need to look for the row corresponding to Lasmo and determine the year of operation. The summary indicates that the "Client" column is categorical and the "Years of Operation" column is numeric. We should filter rows where "Client" = 'Lasmo' and exclude any outliers that do not represent continuous or current operations.
+
+SQL: 
+SELECT "Years of Operation" 
+FROM T 
+WHERE "Client" = 'Lasmo' 
+AND "Years of Operation" <> '1992';
+Generated Final SQL: SELECT "Years of Operation" FROM T WHERE "Client" = 'Lasmo' AND "Years of Operation" <> '1992';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Years of Operation |
+|---------------------:|
+|                 1993 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Challenger LTD
+SQL: SELECT "Years of Operation" FROM T WHERE "Client" = 'Lasmo' AND "Years of Operation" <> '1992';
+
+SQL Execution Result:
+Years of Operation
+1993
+
+Question: lasmo's run as a client didn't end in 1992 but what year?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1993
+[Gold Answer] 1994
+

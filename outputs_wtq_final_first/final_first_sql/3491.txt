@@ -1,0 +1,141 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 6, 17, 23, 27
+   - Role: Identifier
+
+2. Stadium:
+   - Data type: Categorical
+   - 4 representative example values: Stade Gerland, MMArena, Stade de l'Aube, Stade Marcel Picot
+   - Role: Descriptor
+
+3. Capacity:
+   - Data type: Numeric
+   - 4 representative example values: 41,044, 25,000, 20,400, 20,087
+   - Role: Measure
+
+4. City:
+   - Data type: Categorical
+   - 4 representative example values: Lyon, Le Mans, Troyes, Tomblaine
+   - Role: Descriptor
+
+5. Region:
+   - Data type: Categorical
+   - 4 representative example values: Rhône-Alpes, Pays de la Loire, Champagne-Ardenne, Lorraine
+   - Role: Descriptor
+
+6. Home Team:
+   - Data type: Categorical
+   - 4 representative example values: Olympique Lyonnais, Le Mans UC, Troyes AC, AS Nancy
+   - Role: Descriptor
+
+7. Opened:
+   - Data type: Numeric
+   - 4 representative example values: 1926, 2011, 1956, 1938
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - Stade de l'Aube has a capacity of 20,400, which is within the range of capacities in the table.
+   - Troyes in Champagne-Ardenne is a typical city-region combination.
+   - Troyes AC as the home team and the stadium opened in 1956 are not unusual values.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+2. Row 16:
+   - The values for this row are not provided in the partial preview, so it cannot be analyzed for outlier status.
+
+3. Row 2:
+   - The values for this row are not provided in the partial preview, so it cannot be analyzed for outlier status.
+
+=== Full Table Preview ===
+|   row_number |   # | Stadium                          |   Capacity | City              | Region                     | Home Team                     |   Opened |
+|-------------:|----:|:---------------------------------|-----------:|:------------------|:---------------------------|:------------------------------|---------:|
+|            0 |   1 | Stade de France                  |      81338 | Paris             | Île-de-France              | France national football team |     1998 |
+|            1 |   2 | Stade Vélodrome                  |      60013 | Marseille         | Provence-Alpes-Côte d'Azur | Olympique de Marseille        |     1937 |
+|            2 |   3 | Grand Stade Lille Métropole      |      50186 | Villeneuve-d'Ascq | Nord-Pas-de-Calais         | Lille OSC                     |     2012 |
+|            3 |   4 | Parc des Princes                 |      48712 | Paris             | Île-de-France              | Paris Saint-Germain FC        |     1897 |
+|            4 |   5 | Stade Félix Bollaert             |      41233 | Lens              | Nord-Pas-de-Calais         | RC Lens                       |     1932 |
+|            5 |   6 | Stade Gerland                    |      41044 | Lyon              | Rhône-Alpes                | Olympique Lyonnais            |     1926 |
+|            6 |   7 | Stade de la Beaujoire            |      38285 | Nantes            | Pays de la Loire           | FC Nantes Atlantique          |     1984 |
+|            7 |   8 | Stade Geoffroy-Guichard          |      37587 | Saint-Étienne     | Rhône-Alpes                | AS Saint-Étienne              |     1931 |
+|            8 |   9 | Allianz Riviera                  |      35624 | Nice              | Provence-Alpes-Côte d'Azur | OGC Nice                      |     2013 |
+|            9 |  10 | Stadium Municipal                |      35575 | Toulouse          | Midi-Pyrénées              | Toulouse FC                   |     1937 |
+|           10 |  11 | Stade Chaban-Delmas              |      34462 | Bordeaux          | Aquitaine                  | FC Girondins de Bordeaux      |     1938 |
+|           11 |  12 | Stade de la Mosson               |      32939 | Montpellier       | Languedoc-Roussillon       | Montpellier HSC               |     1972 |
+|           12 |  13 | Stade de la Route de Lorient     |      31127 | Rennes            | Brittany                   | Stade Rennais FC              |     1912 |
+|           13 |  14 | Stade de la Meinau               |      29230 | Strasbourg        | Alsace                     | RC Strasbourg                 |     1914 |
+|           14 |  15 | Stade Municipal Saint-Symphorien |      26700 | Metz              | Lorraine                   | FC Metz                       |     1923 |
+|           15 |  16 | Grand Stade du Havre             |      25178 | Le Havre          | Upper Normandy             | Le Havre AC                   |     2012 |
+|           16 |  17 | MMArena                          |      25000 | Le Mans           | Pays de la Loire           | Le Mans UC                    |     2011 |
+|           17 |  18 | Stade du Hainaut                 |      24926 | Valenciennes      | Nord-Pas-de-Calais         | Valenciennes FC               |     2011 |
+|           18 |  19 | Stade de l'Abbé-Deschamps        |      23467 | Auxerre           | Bourgogne                  | AJ Auxerre                    |     1918 |
+|           19 |  20 | Stade Louis Dugauguez            |      23189 | Sedan             | Champagne-Ardenne          | Club Sportif Sedan Ardennes   |     2000 |
+|           20 |  21 | Stade Auguste-Delaune            |      21684 | Reims             | Champagne-Ardenne          | Stade Reims                   |     1935 |
+|           21 |  22 | Stade Michel d'Ornano            |      21500 | Caen              | Lower Normandy             | Stade Malherbe Caen           |     1993 |
+|           22 |  23 | Stade de l'Aube                  |      20400 | Troyes            | Champagne-Ardenne          | Troyes AC                     |     1956 |
+|           23 |  24 | Stade Marcel Picot               |      20087 | Tomblaine         | Lorraine                   | AS Nancy                      |     1926 |
+|           24 |  25 | Stade des Alpes                  |      20068 | Grenoble          | Rhône-Alpes                | Grenoble Foot 38              |     2008 |
+|           25 |  26 | Stade Auguste Bonal              |      20025 | Montbéliard       | Franche-Comté              | FC Sochaux-Montbéliard        |     2000 |
+|           26 |  27 | Stade Sébastien Charléty         |      20000 | Paris             | Île-de-France              | Paris FC                      |     1938 |
+
+Generated Reasoning SQL: The summary indicates that the "City" column contains categorical values such as Paris. To find the total capacity of stadiums in Paris, we need to sum the "Capacity" values for all rows where "City" = Paris.
+SQL: select sum(cast("Capacity" as integer)) as total_capacity from T where "City" like '%Paris%';
+Generated Final SQL: select sum(cast("Capacity" as integer)) as total_capacity from T where "City" like '%Paris%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_capacity |
+|-----------------:|
+|           150050 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of football stadiums in France
+SQL: select sum(cast("Capacity" as integer)) as total_capacity from T where "City" like '%Paris%';
+
+total_capacity
+150050
+Question: what is the total capacity of the stadiums in paris?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 150050
+[Gold Answer] 150050
+

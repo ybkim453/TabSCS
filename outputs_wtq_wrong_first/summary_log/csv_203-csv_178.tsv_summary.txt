@@ -1,0 +1,30 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 5
+   - Role: Identifier, ranking the nations based on their total medal count.
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Australia (AUS), Italy (ITA), Germany (EUA), Switzerland (SUI)
+   - Role: Descriptor, identifying the nation associated with the medal count.
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 2, 1, 0, 3
+   - Role: Measures, representing the number of gold, silver, bronze, and total medals won by each nation.
+
+**Outlier Row Analysis:**
+
+1. Australia (AUS):
+   - The nation has 2 gold medals, which is the highest in the table.
+   - This row is an outlier as it has the highest number of gold medals compared to the other nations.
+
+2. Switzerland (SUI):
+   - The nation has 2 silver medals, which is the highest in the table.
+   - This row is an outlier as it has the highest number of silver medals compared to the other nations.
+
+3. Germany (EUA):
+   - The nation has 1 gold and 1 bronze medal, which is unique compared to the other nations.
+   - This row is an outlier as it has a combination of gold and bronze medals that is different from the majority of the table.

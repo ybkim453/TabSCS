@@ -1,0 +1,136 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 6, 7
+   - Role: Identifier for each row
+
+2. **Name**
+   - Data type: Categorical
+   - 4 representative example values: Dong'an District, Xi'an District, Suifenhe City, Hailin City
+   - Role: Descriptor for the geographical location
+
+3. **Hanzi**
+   - Data type: Categorical
+   - 4 representative example values: 东安区, 西安区, 绥芬河市, 海林市
+   - Role: Descriptor for the name in Chinese characters
+
+4. **Hanyu Pinyin**
+   - Data type: Categorical
+   - 4 representative example values: Dōng'ān Qū, Xī'ān Qū, Suífēnhé Shi, Hǎilín Shì
+   - Role: Descriptor for the name in Pinyin
+
+5. **Population (2003 est.)**
+   - Data type: Numeric
+   - 4 representative example values: 180,000, 210,000, 60,000, 440,000
+   - Role: Measure of the estimated population in 2003
+
+6. **Area (km²)**
+   - Data type: Numeric
+   - 4 representative example values: 566, 325, 427, 9,877
+   - Role: Measure of the area in square kilometers
+
+7. **Density (/km²)**
+   - Data type: Numeric
+   - 4 representative example values: 318, 646, 141, 45
+   - Role: Measure of population density per square kilometer
+
+**Outlier Row Analysis:**
+
+1. **Row 5 (Ning'an City)**
+   - The population of 440,000 is significantly higher compared to the other entries in the table.
+   - The area of 7,870 km² is also notably larger than the average area for the other cities.
+   - These values make this row an outlier in terms of population size and area.
+
+2. **Row 1 (Dong'an District)**
+   - The population of 180,000 is lower than the other entries in the table.
+   - The area of 566 km² is relatively small compared to the other cities.
+   - These values make this row an outlier in terms of population size and area.
+
+3. **Row 0 (Xi'an District)**
+   - The population of 210,000 is higher than the average population in the table.
+   - The area of 325 km² is within the range of the other cities.
+   - These values are not significantly different from the majority, so this row is an ordinary entry.
+
+4. **Row 7 (Hailin City)**
+   - The population of 440,000 is the same as Ning'an City, making it an outlier in terms of population size.
+   - The area of 9,877 km² is significantly larger than the other cities.
+   - These values make this row an outlier in terms of population size and area.
+
+=== Full Table Preview ===
+|   row_number |   # | Name              | Hanzi    | Hanyu Pinyin   |   Population (2003 est.) |   Area (km²) |   Density (/km²) |
+|-------------:|----:|:------------------|:---------|:---------------|-------------------------:|-------------:|-----------------:|
+|            0 |   1 | Aimin District    | 爱民区   | Àimín Qū       |                   230000 |          359 |              641 |
+|            1 |   2 | Dong'an District  | 东安区   | Dōng'ān Qū     |                   180000 |          566 |              318 |
+|            2 |   3 | Yangming District | 阳明区   | Yángmíng Qū    |                   160000 |          358 |              447 |
+|            3 |   4 | Xi'an District    | 西安区   | Xī'ān Qū       |                   210000 |          325 |              646 |
+|            4 |   5 | Muling City       | 穆棱市   | Mùlíng Shì     |                   330000 |         6094 |               54 |
+|            5 |   6 | Suifenhe City     | 绥芬河市 | Suífēnhé Shi   |                    60000 |          427 |              141 |
+|            6 |   7 | Hailin City       | 海林市   | Hǎilín Shì     |                   440000 |         9877 |               45 |
+|            7 |   8 | Ning'an City      | 宁安市   | Níng'ān Shì    |                   440000 |         7870 |               56 |
+|            8 |   9 | Dongning County   | 东宁县   | Dōngníng Xiàn  |                   210000 |         7368 |               29 |
+|            9 |  10 | Linkou County     | 林口县   | Línkǒu Xiàn    |                   450000 |         7191 |               63 |
+
+Generated Reasoning SQL: To determine which division has the highest population, we need to consider the "Population (2003 est.)" column, which is a numeric measure of the estimated population in 2003 for each division. We should exclude any outlier rows that significantly deviate from the typical population values.
+
+SQL: 
+SELECT "Name" as division
+FROM T
+WHERE "Population (2003 est.)" = (SELECT MAX("Population (2003 est.)") FROM T);
+Generated Final SQL: SELECT "Name" as division FROM T WHERE "Population (2003 est.)" = (SELECT MAX("Population (2003 est.)") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| division      |
+|:--------------|
+| Linkou County |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Mudanjiang
+SQL: SELECT "Name" as division FROM T WHERE "Population (2003 est.)" = (SELECT MAX("Population (2003 est.)") FROM T);
+
+division
+Linkou County
+Question: which division has the highest population?
+A: To find the answer to this question, let’s think step by step.
+Prediction: linkou county
+[Gold Answer] linkou county
+

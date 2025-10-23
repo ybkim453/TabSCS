@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1997, 2000, 2002, 2003
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: USA Outdoor Championships, Olympic Games, Grand Prix Final, World Indoor Championships
+   - Role: Descriptor of the specific competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Indianapolis, United States, Sydney, Australia, Doha, Qatar, Paris, France
+   - Role: Descriptor of the location where the competition was held.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 1st, 3rd, 4th, 7th
+   - Role: Measure of the athlete's performance in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 100 m hurdles, 60 m hurdles
+   - Role: Descriptor of the specific event in which the athlete competed.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The athlete achieved 1st position in the USA Outdoor Championships, which is a significant accomplishment compared to the other positions in the table. This makes the row an outlier.
+
+2. Row 6:
+   - The athlete achieved 6th position in the World Athletics Final, which is not a common occurrence among the other positions listed. This makes the row an outlier.
+
+3. Row 10:
+   - The athlete's position in the Grand Prix Final is listed as 7th, which is different from the majority of positions in the table. However, this position is not extremely unusual in the context of athletic competitions, so this row is considered an ordinary entry and does not require special handling.

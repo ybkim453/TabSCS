@@ -1,0 +1,116 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 8, 9
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: South Korea (KOR), Chinese Taipei (TPE), Mongolia (MGL), Guam (GUM)
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 32, 12, 1, 0
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. South Korea (KOR):
+   - The high number of Gold, Silver, and Bronze medals (32, 48, 65) make this row distinctive compared to other nations in the table.
+   - These values are significantly higher than the majority of the table, making South Korea an outlier.
+
+2. Chinese Taipei (TPE):
+   - The relatively high number of Gold, Silver, and Bronze medals (12, 34, 26) set this row apart from other nations.
+   - While not as extreme as South Korea, these values are still higher than most nations in the table, making Chinese Taipei an outlier.
+
+3. Mongolia (MGL):
+   - The low number of Gold, Silver, and Bronze medals (1, 1, 6) make this row distinctive compared to other nations.
+   - These values are significantly lower than the majority of the table, making Mongolia an outlier.
+
+4. Guam (GUM):
+   - The very low number of Gold, Silver, and Bronze medals (0, 0, 1) make this row stand out from other nations.
+   - While not as extreme as Mongolia, these values are still lower than most nations in the table, making Guam an outlier.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation               |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:---------------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | China (CHN)          |    127 |       63 |       33 |     223 |
+|            1 | 2      | Japan (JPN)          |     46 |       56 |       77 |     179 |
+|            2 | 3      | South Korea (KOR)    |     32 |       48 |       65 |     145 |
+|            3 | 4      | Chinese Taipei (TPE) |     12 |       34 |       26 |      72 |
+|            4 | 5      | Macau (MAC)          |     11 |       16 |       17 |      44 |
+|            5 | 6      | North Korea (PRK)    |      6 |       10 |       20 |      36 |
+|            6 | 7      | Hong Kong (HKG)      |      2 |        2 |        9 |      13 |
+|            7 | 8      | Mongolia (MGL)       |      1 |        1 |        6 |       8 |
+|            8 | 9      | Guam (GUM)           |      0 |        0 |        1 |       1 |
+|            9 | Total  | Total                |    237 |      230 |      254 |     721 |
+
+Generated Reasoning SQL: Explanation: To compare the number of gold medals won by Chinese Taipei and Macau, we need to filter the rows for each nation and retrieve the gold medal count. We should exclude any outlier rows marked in the summary. Since the question is specific to gold medals, we only need to focus on the "Gold" column.
+
+SQL: 
+SELECT "Gold" 
+FROM T 
+WHERE "Nation" LIKE '%Chinese Taipei%' OR "Nation" LIKE '%Macau%';
+Generated Final SQL: SELECT "Gold" FROM T WHERE "Nation" LIKE '%Chinese Taipei%' OR "Nation" LIKE '%Macau%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   Gold |
+|-------:|
+|     12 |
+|     11 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2005 East Asian Games
+SQL: SELECT "Gold" FROM T WHERE "Nation" LIKE '%Chinese Taipei%' OR "Nation" LIKE '%Macau%';
+
+SQL Execution Result:
+Gold
+12
+11
+
+Question: did chinese tapei win more or les gold medals than macau?
+A: To find the answer to this question, let’s think step by step.
+Prediction: chinese taipei
+[Gold Answer] more
+

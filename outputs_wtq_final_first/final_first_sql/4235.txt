@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 4, 11
+   - Role: Identifier, indicating the ranking of the ski jumpers.
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Tami Kiuru, Janne Ahonen, Adam Małysz, Jakub Janda
+   - Role: Descriptor, identifying the name of the ski jumper.
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: FIN, POL, AUT, CZE
+   - Role: Descriptor, indicating the nationality of the ski jumper.
+
+4. 1st (m):
+   - Data type: Numeric
+   - 4 representative example values: 128.5, 127, 126.5, 123.5
+   - Role: Measure, representing the distance of the ski jump in the first round.
+
+5. 2nd (m):
+   - Data type: Numeric
+   - 4 representative example values: 130.5, 130.5, 132, 128.5
+   - Role: Measure, representing the distance of the ski jump in the second round.
+
+6. Points:
+   - Data type: Numeric
+   - 4 representative example values: 264.7, 264, 261.5, 252.6
+   - Role: Measure, indicating the total points scored by the ski jumper.
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Andreas Kofler):
+   - The values for 1st (m) and Points are slightly lower compared to the other ski jumpers.
+   - These values are not significantly different from the majority of the table and are within a reasonable range, so this row is an ordinary entry.
+
+2. Row 4 (Adam Małysz):
+   - The values for 1st (m) and Points are slightly lower compared to the other ski jumpers.
+   - These values are not significantly different from the majority of the table and are within a reasonable range, so this row is an ordinary entry.
+
+3. Row 1 (Tami Kiuru):
+   - The values for 1st (m) and Points are slightly higher compared to the other ski jumpers.
+   - These values are not significantly different from the majority of the table and are within a reasonable range, so this row is an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Name            | Nationality   |   1st (m) |   2nd (m) |   Points |
+|-------------:|-------:|:----------------|:--------------|----------:|----------:|---------:|
+|            0 |      1 | Matti Hautamäki | FIN           |     132   |     131.5 |    274.3 |
+|            1 |      2 | Tami Kiuru      | FIN           |     128.5 |     130.5 |    264.7 |
+|            2 |      3 | Janne Ahonen    | FIN           |     127   |     130.5 |    264   |
+|            3 |      4 | Adam Małysz     | POL           |     127   |     130.5 |    261.5 |
+|            4 |      5 | Andreas Kofler  | AUT           |     126.5 |     132   |    261.3 |
+|            5 |     11 | Jakub Janda     | CZE           |     123.5 |     128.5 |    252.6 |
+
+Generated Reasoning SQL: Explanation: To find the ski jumpers who had fewer points than Adam Małysz, we need to compare the "Points" column values. We will filter rows where the "Points" value is less than the points scored by Adam Małysz.
+We will exclude any outlier rows mentioned in the summary to focus on the relevant data entries.
+
+SQL:
+SELECT "Name"
+FROM T
+WHERE "Points" < (SELECT "Points" FROM T WHERE "Name" = 'Adam Małysz');
+Generated Final SQL: SELECT "Name" FROM T WHERE "Points" < (SELECT "Points" FROM T WHERE "Name" = 'Adam Małysz');
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Name           |
+|:---------------|
+| Andreas Kofler |
+| Jakub Janda    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2005–06 FIS Ski Jumping World Cup
+SQL: SELECT "Name" FROM T WHERE "Points" < (SELECT "Points" FROM T WHERE "Name" = 'Adam Małysz');
+
+SQL Execution Result:
+Name
+Andreas Kofler
+Jakub Janda
+
+Question: who had less points than adam malysz?
+A: To find the answer to this question, let’s think step by step.
+Prediction: andreas kofler, jakub janda
+[Gold Answer] andreas kofler,jakub janda
+

@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - Representative values: 2003, 2005, 2006, 2007
+   - Role: Identifier for the year in which the team record and playoffs data were recorded.
+
+2. Team Record W:
+   - Data type: Numeric
+   - Representative values: 8, 3, 5, 13
+   - Role: Measure of the number of wins for the team in a particular year.
+
+3. Team Record L:
+   - Data type: Numeric
+   - Representative values: 1, 5, 4
+   - Role: Measure of the number of losses for the team in a particular year.
+
+4. Playoffs:
+   - Data type: Categorical
+   - Representative values: 2nd Qualifier, Did Not Make Playoffs, 4th Qualifier, 1st Qualifier
+   - Role: Descriptor indicating the team's performance in the playoffs for a specific year.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Year: 2007, Team Record W: 13, Team Record L: 1, Playoffs: 1st Qualifier, Region 2):
+   - The team had the highest number of wins (13) and the lowest number of losses (1) compared to other years in the table.
+   - The playoffs entry as 1st Qualifier is also unique and indicates exceptional performance, making this row an outlier.
+
+2. Row 6 (Year: 2008, Team Record W: 7, Team Record L: 4, Playoffs: 2nd Qualifier, Region 2):
+   - The team record of 7 wins and 4 losses is not significantly different from other years.
+   - The playoffs entry as 2nd Qualifier is common in the table, so this row is an ordinary entry and not an outlier.
+
+3. Row 5 (Year: 2006, Team Record W: 5, Team Record L: 4, Playoffs: 4th Qualifier, Region 2):
+   - The team record of 5 wins and 4 losses is within the range of other years.
+   - The playoffs entry as 4th Qualifier is not significantly different from other entries, so this row is an ordinary entry and not an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year |   Team Record\nW |   Team Record\nL | Playoffs               |
+|-------------:|-------:|-----------------:|-----------------:|:-----------------------|
+|            0 |   2001 |                7 |                2 | 3rd Qualifier Region 2 |
+|            1 |   2002 |                8 |                1 | 2nd Qualifier Region 2 |
+|            2 |   2003 |                8 |                1 | 2nd Qualifier Region 2 |
+|            3 |   2004 |                7 |                2 | 2nd Qualifier Region 2 |
+|            4 |   2005 |                3 |                5 | Did Not Make Playoffs  |
+|            5 |   2006 |                5 |                4 | 4th Qualifier Region 2 |
+|            6 |   2007 |               13 |                1 | 1st Qualifier Region 2 |
+|            7 |   2008 |                7 |                4 | 2nd Qualifier Region 2 |
+|            8 |   2009 |                5 |                5 | Did Not Make Playoffs  |
+|            9 |   2010 |                5 |                5 | Did Not Make Playoffs  |
+
+Generated Reasoning SQL: To determine the year in which the team scored the most wins, we need to consider the "Team Record W" column, which represents the number of wins in a specific year. 
+We should exclude outlier rows that may distort the analysis, such as the row with the highest number of wins and the lowest number of losses, as it is an exceptional case.
+To find the year with the most wins, we can select the year with the maximum value in the "Team Record W" column.
+SQL: select "Year" from T where "Team Record\nW" = (select max(cast("Team Record\nW" as integer)) from T);
+Generated Final SQL: select "Year" from T where "Team Record\nW" = (select max(cast("Team Record\nW" as integer)) from T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Year |
+|-------:|
+|   2007 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Charles Henderson High School
+SQL: select "Year" from T where "Team Record\nW" = (select max(cast("Team Record\nW" as integer)) from T);
+
+Year
+2007
+Question: in what year did they score the most wins?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2007
+[Gold Answer] 2007
+

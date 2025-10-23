@@ -1,0 +1,142 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Period:**
+   - Data type: Categorical
+   - 4 representative example values: 1970-1975, 1980-1985, 1985-1990, 1995-2000
+   - Role: Identifier for the time period covered in the data
+
+2. **Live births per year:**
+   - Data type: Numeric
+   - 4 representative example values: 263,000; 350,000; 406,000; 538,000
+   - Role: Measure of the number of live births in a year
+
+3. **Deaths per year:**
+   - Data type: Numeric
+   - 4 representative example values: 121,000; 157,000; 179,000; 194,000
+   - Role: Measure of the number of deaths in a year
+
+4. **Natural change per year:**
+   - Data type: Numeric
+   - 4 representative example values: 142,000; 193,000; 227,000; 344,000
+   - Role: Measure of the natural change in population (live births - deaths) per year
+
+5. **CBR*:**
+   - Data type: Numeric
+   - 4 representative example values: 55.8, 55.4, 55.9, 53.5
+   - Role: Measure of the crude birth rate per 1,000 population
+
+6. **CDR*:**
+   - Data type: Numeric
+   - 4 representative example values: 25.6, 24.8, 24.6, 19.3
+   - Role: Measure of the crude death rate per 1,000 population
+
+7. **NC*:**
+   - Data type: Numeric
+   - 4 representative example values: 30.2, 30.6, 31.3, 34.2
+   - Role: Measure of the natural change rate per 1,000 population
+
+8. **TFR*:**
+   - Data type: Numeric
+   - 4 representative example values: 7.52, 7.76, 7.81, 7.6
+   - Role: Measure of the total fertility rate per woman
+
+9. **IMR*:**
+   - Data type: Numeric
+   - 4 representative example values: 162, 159, 155, 131
+   - Role: Measure of the infant mortality rate per 1,000 live births
+
+**Outlier Row Analysis:**
+
+1. Row 9 (1985-1990):
+   - The values for Live births per year (406,000) and Deaths per year (179,000) are significantly higher compared to the surrounding rows.
+   - This makes the row an outlier in terms of the natural change per year (227,000) as it is much higher than the adjacent periods.
+
+2. Row 10 (1995-2000):
+   - The values for Live births per year (538,000) and Deaths per year (194,000) are notably higher than the neighboring rows.
+   - This results in a natural change per year of 344,000, which is considerably higher than the previous and subsequent periods.
+
+3. Row 3 (1980-1985):
+   - The values for Live births per year (350,000) and Deaths per year (157,000) are higher than the previous period but not as extreme as the outlier rows 9 and 10.
+   - The natural change per year of 193,000 is within the range of the other periods, making this row an ordinary entry and not a distinctive outlier.
+
+=== Full Table Preview ===
+|   row_number | Period    | Live births per year   | Deaths per year   | Natural change per year   |   CBR* |   CDR* |   NC* |   TFR* |   IMR* |
+|-------------:|:----------|:-----------------------|:------------------|:--------------------------|-------:|-------:|------:|-------:|-------:|
+|            0 | 1950-1955 | 139 000                | 66 000            | 74 000                    |   52.6 |   24.8 |  27.8 |   6.86 |    174 |
+|            1 | 1955-1960 | 164 000                | 76 000            | 88 000                    |   53.8 |   24.9 |  29   |   6.96 |    171 |
+|            2 | 1960-1965 | 195 000                | 89 000            | 105 000                   |   55.5 |   25.5 |  30.1 |   7.13 |    167 |
+|            3 | 1965-1970 | 229 000                | 105 000           | 124 000                   |   56.2 |   25.8 |  30.4 |   7.32 |    164 |
+|            4 | 1970-1975 | 263 000                | 121 000           | 142 000                   |   55.8 |   25.6 |  30.2 |   7.52 |    162 |
+|            5 | 1975-1980 | 301 000                | 138 000           | 164 000                   |   55.1 |   25.1 |  29.9 |   7.63 |    161 |
+|            6 | 1980-1985 | 350 000                | 157 000           | 193 000                   |   55.4 |   24.8 |  30.6 |   7.76 |    159 |
+|            7 | 1985-1990 | 406 000                | 179 000           | 227 000                   |   55.9 |   24.6 |  31.3 |   7.81 |    155 |
+|            8 | 1990-1995 | 471 000                | 192 000           | 279 000                   |   55.5 |   22.7 |  32.8 |   7.78 |    146 |
+|            9 | 1995-2000 | 538 000                | 194 000           | 344 000                   |   53.5 |   19.3 |  34.2 |   7.6  |    131 |
+|           10 | 2000-2005 | 614 000                | 194 000           | 420 000                   |   51.3 |   16.2 |  35.1 |   7.4  |    113 |
+|           11 | 2005-2010 | 705 000                | 196 000           | 509 000                   |   49.5 |   13.8 |  35.7 |   7.19 |     96 |
+
+Generated Reasoning SQL: To determine the number of deaths from 1950-1960, we need to filter the rows based on the "Period" column to include only the period 1950-1955 and 1955-1960, and then sum the values in the "Deaths per year" column.
+
+SQL: 
+SELECT SUM(CAST("Deaths per year" AS INTEGER)) AS total_deaths_1950_1960 
+FROM T 
+WHERE "Period" IN ('1950-1955', '1955-1960');
+Generated Final SQL: SELECT SUM(CAST("Deaths per year" AS INTEGER)) AS total_deaths_1950_1960 FROM T WHERE "Period" IN ('1950-1955', '1955-1960');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_deaths_1950_1960 |
+|-------------------------:|
+|                      142 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Demographics of Niger
+SQL: SELECT SUM(CAST("Deaths per year" AS INTEGER)) AS total_deaths_1950_1960 FROM T WHERE "Period" IN ('1950-1955', '1955-1960');
+
+SQL Execution Result:
+total_deaths_1950_1960
+142
+
+Question: number of deaths from 1950-1960
+A: To find the answer to this question, let’s think step by step.
+Prediction: 142
+[Gold Answer] 142,000
+

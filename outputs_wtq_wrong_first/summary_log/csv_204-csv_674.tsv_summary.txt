@@ -1,0 +1,39 @@
+**Column 1: No. in season**
+- Data type: Numeric
+- 4 representative example values: 14, 20, 25, 33
+- Role of the column: Identifier for the episode number within a season
+
+**Column 2: No. in series**
+- Data type: Numeric
+- 4 representative example values: 331, 337, 342, 350
+- Role of the column: Identifier for the episode number within the entire series
+
+**Column 3: Title**
+- Data type: Categorical
+- 4 representative example values: Barely Breathing, Power to the People, What It's Like, How Bizarre
+- Role of the column: Descriptor for the title of each episode
+
+**Column 4: Canadian airdate**
+- Data type: Categorical
+- 4 representative example values: November 7, 2013, February 18, 2014, March 18, 2014, June 17, 2014
+- Role of the column: Descriptor for the airdate of each episode in Canada
+
+**Column 5: US airdate**
+- Data type: Categorical
+- 4 representative example values: November 7, 2013, February 18, 2014, March 18, 2014, June 17, 2014
+- Role of the column: Descriptor for the airdate of each episode in the US
+
+**Column 6: Production code**
+- Data type: Numeric
+- 4 representative example values: 1314, 1320, 1325, 1333
+- Role of the column: Identifier for the production code of each episode
+
+**Outlier Row Analysis:**
+1. Row 12: 
+   - The values are not explicitly mentioned, but if they are ordinary within the context of the table, they should be considered as ordinary values and not special.
+
+2. Row 33:
+   - The values "How Bizarre" for the title and "June 17, 2014" for both Canadian and US airdate are consistent with the majority of the table. This row is an ordinary row and requires no special handling.
+
+3. Row 30:
+   - The values are not explicitly mentioned, but if they are ordinary within the context of the table, they should be considered as ordinary values and not special.

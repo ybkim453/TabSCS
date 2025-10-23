@@ -1,0 +1,135 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - Representative values: 1994, 1995, 1998, 2000
+   - Role: Identifier for the year in which the TV show or role occurred.
+
+2. Title
+   - Data type: Categorical
+   - Representative values: The All-New Mickey Mouse (MMC), Are You Afraid of the Dark?, Blues Clues, How I Loved a Macho Boy
+   - Role: Descriptor for the title of the TV show or role.
+
+3. Role
+   - Data type: Categorical
+   - Representative values: Herself, Evil Chameleon, Jamal Santos, Executive producer
+   - Role: Descriptor for the role played by the individual in the TV show.
+
+4. Notes
+   - Data type: Categorical
+   - Representative values: 1 episode, 3 episodes
+   - Role: Descriptor for additional notes related to the TV show or role.
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values in this row are "2000", "How I Loved a Macho Boy", "Jamal Santos", "3 episodes".
+   - These values are consistent with the majority of the table and do not stand out as atypical. This row is an ordinary row and does not require special handling.
+
+2. Row 18:
+   - The values in this row are "2011–2013", "Tia & Tamera", "Herself", "Executive producer".
+   - These values are also consistent with the majority of the table and do not indicate any atypical data. This row is an ordinary row and does not need special treatment.
+
+3. Row 4:
+   - The values in this row are "1994", "The All-New Mickey Mouse (MMC)", "Herself", "1 episode".
+   - These values are typical of the data in the table and do not deviate from the norm. This row is an ordinary row and does not stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Title                          | Role                | Notes                                   |
+|-------------:|-------:|:-------------------------------|:--------------------|:----------------------------------------|
+|            0 |   1991 | Flesh'n Blood                  | Penelope            | 1 episode                               |
+|            1 |   1992 | True Colors                    | Lorae               | 1 episode                               |
+|            2 |   1994 | The All-New Mickey Mouse (MMC) | Herself             | 1 episode                               |
+|            3 |   1994 | Sister Sister                  | Tamera Campbell     | 119 episodes                            |
+|            4 |   1995 | Are You Afraid of the Dark?    | Evil Chameleon      | 1 episode                               |
+|            5 |   1995 | The Adventures of Hyperman     | Emma C. Squared     | 8 episodes                              |
+|            6 |   1996 | All That                       | Herself             |                                         |
+|            7 |   1997 | Smart Guy                      | Roxanne             | 1 episode                               |
+|            8 |   1998 | Blues Clues                    | Herself             | 1 episode                               |
+|            9 |   1999 | Detention                      | Orangejella LaBelle | 13 episodes                             |
+|           10 |   2000 | How I Loved a Macho Boy        | Jamal Santos        | 3 episodes                              |
+|           11 |   2004 | Strong Medicine                | Dr. Kayla Thorton   | 37 episodes                             |
+|           12 |   2006 | Family Guy                     | Esther              | Voice\n3 episodes                       |
+|           13 |   2009 | Roommates                      | Hope                | 13 episodes                             |
+|           14 |   2009 | The Super Hero Squad Show      | Misty Knight        | 1 episode                               |
+|           15 |   2011 | Things We Do for Love          | Lourdes             | 5 episodes                              |
+|           16 |   2011 | Access Hollywood Live          | Herself             | Co-host                                 |
+|           17 |   2011 | CHRISJayify                    | Herself             | Episode: "Drugs Are Bad"                |
+|           18 |   2011 | Tia & Tamera                   | Herself             | Executive producer                      |
+|           19 |   2012 | Christmas Angel                | Daphney             |                                         |
+|           20 |   2013 | The Real                       | Herself             | Host                                    |
+|           21 |   2014 | Melissa and Joey               | Gillian             | Season 3 Episode 24 'To Tell the Truth' |
+
+Generated Reasoning SQL: Explanation: To determine the number of episodes of "Sister, Sister" that Tamera Mowry has been in, we need to filter the rows where the "Title" column is equal to "Sister Sister" and sum the values in the "Notes" column where the role is specified in episodes. We will consider all ordinary rows that match the criteria.
+
+SQL: SELECT SUM(CAST("Notes" AS INTEGER)) AS total_episodes
+FROM T
+WHERE "Title" = 'Sister Sister' AND "Role" LIKE '%episode%';
+Generated Final SQL: SELECT SUM(CAST("Notes" AS INTEGER)) AS total_episodes FROM T WHERE "Title" = 'Sister Sister' AND "Role" LIKE '%episode%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| total_episodes   |
+|:-----------------|
+|                  |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Tamera Mowry (row_number, Year, Title, Role, Notes)
+
+row_number | Year | Title | Role | Notes
+0 | 1991 | Flesh'n Blood | Penelope | 1 episode
+1 | 1992 | True Colors | Lorae | 1 episode
+2 | 1994 | The All-New Mickey Mouse (MMC) | Herself | 1 episode
+3 | 1994 | Sister Sister | Tamera Campbell | 119 episodes
+4 | 1995 | Are You Afraid of the Dark? | Evil Chameleon | 1 episode
+5 | 1995 | The Adventures of Hyperman | Emma C. Squared | 8 episodes
+6 | 1996 | All That | Herself | None
+7 | 1997 | Smart Guy | Roxanne | 1 episode
+8 | 1998 | Blues Clues | Herself | 1 episode
+9 | 1999 | Detention | Orangejella LaBelle | 13 episodes
+10 | 2000 | How I Loved a Macho Boy | Jamal Santos | 3 episodes
+11 | 2004 | Strong Medicine | Dr. Kayla Thorton | 37 episodes
+12 | 2006 | Family Guy | Esther | Voice\n3 episodes
+13 | 2009 | Roommates | Hope | 13 episodes
+14 | 2009 | The Super Hero Squad Show | Misty Knight | 1 episode
+15 | 2011 | Things We Do for Love | Lourdes | 5 episodes
+16 | 2011 | Access Hollywood Live | Herself | Co-host
+17 | 2011 | CHRISJayify | Herself | Episode: "Drugs Are Bad"
+18 | 2011 | Tia & Tamera | Herself | Executive producer
+19 | 2012 | Christmas Angel | Daphney | None
+20 | 2013 | The Real | Herself | Host
+21 | 2014 | Melissa and Joey | Gillian | Season 3 Episode 24 'To Tell the Truth'
+Question: how many episodes of sister, sister has she been in?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the given table, we can see that Tamera Mowry appeared in the show "Sister Sister" in the role of Tamera Campbell for 119 episodes.
+
+Final Answer: 119 episodes
+[Fallback] Prediction: 119 episodes
+[Gold Answer] 119
+

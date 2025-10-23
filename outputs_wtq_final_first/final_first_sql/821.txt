@@ -1,0 +1,136 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - Representative values: 1937, 1939, Totals
+   - Role: Identifier for the year in which the data was recorded
+
+2. Car
+   - Data type: Numeric
+   - Representative values: 38, 62, Totals
+   - Role: Identifier for the specific car number
+
+3. Start
+   - Data type: Numeric
+   - Representative values: 7, 27, Totals
+   - Role: Measure of the starting position in a race
+
+4. Qual
+   - Data type: Numeric
+   - Representative values: 118.788, 121.749, Totals
+   - Role: Measure of the qualifying speed in a race
+
+5. Rank
+   - Data type: Numeric
+   - Representative values: 16, 24, Totals
+   - Role: Measure of the final ranking position in a race
+
+6. Finish
+   - Data type: Numeric
+   - Representative values: 8, 11, Totals
+   - Role: Measure of the finishing position in a race
+
+7. Laps
+   - Data type: Numeric
+   - Representative values: 200, 1989
+   - Role: Measure of the number of laps completed in a race
+
+8. Led
+   - Data type: Numeric
+   - Representative values: 0, 33
+   - Role: Measure of the number of laps led in a race
+
+9. Retired
+   - Data type: Categorical
+   - Representative values: Running, nan
+   - Role: Descriptor indicating whether the car retired from the race or was still running
+
+**Outlier Row Analysis:**
+
+- Row 13:
+  - The values in this row are "nan" for the Retired column, which is different from the majority of the table where the Retired column contains categorical values like "Running". This makes the row an outlier as it does not conform to the expected pattern of data in that column.
+
+=== Full Table Preview ===
+|   row_number | Year   | Car    | Start   | Qual    | Rank   | Finish   |   Laps |   Led | Retired      |
+|-------------:|:-------|:-------|:--------|:--------|:-------|:---------|-------:|------:|:-------------|
+|            0 | 1926   | 31     | 12      | 102.789 | 13     | 11       |    142 |     0 | Flagged      |
+|            1 | 1927   | 27     | 27      | 107.765 | 22     | 3        |    200 |     0 | Running      |
+|            2 | 1928   | 8      | 4       | 117.031 | 4      | 10       |    200 |    33 | Running      |
+|            3 | 1929   | 23     | 11      | 112.146 | 15     | 17       |     91 |     0 | Supercharger |
+|            4 | 1930   | 9      | 20      | 100.033 | 18     | 20       |     79 |     0 | Valve        |
+|            5 | 1931   | 37     | 19      | 111.725 | 6      | 18       |    167 |     0 | Crash T4     |
+|            6 | 1932   | 25     | 20      | 108.896 | 34     | 13       |    184 |     0 | Flagged      |
+|            7 | 1933   | 34     | 12      | 113.578 | 15     | 7        |    200 |     0 | Running      |
+|            8 | 1934   | 8      | 7       | 113.733 | 13     | 17       |     94 |     0 | Rod          |
+|            9 | 1935   | 44     | 6       | 115.459 | 11     | 21       |    102 |     0 | Magneto      |
+|           10 | 1937   | 38     | 7       | 118.788 | 16     | 8        |    200 |     0 | Running      |
+|           11 | 1938   | 17     | 4       | 122.499 | 6      | 17       |    130 |     0 | Rod          |
+|           12 | 1939   | 62     | 27      | 121.749 | 24     | 11       |    200 |     0 | Running      |
+|           13 | Totals | Totals | Totals  | Totals  | Totals | Totals   |   1989 |    33 |              |
+
+Generated Reasoning SQL: Explanation: To find the number of times the rank is listed as 10 or below, we need to filter the rows where the "Rank" column is less than or equal to 10. Since the "Rank" column is numeric, we can directly compare it to the value 10 to identify the relevant rows. We should exclude the outlier row 13, which contains "Totals" and does not represent a specific race rank. 
+
+SQL: 
+SELECT COUNT("Rank") 
+FROM T 
+WHERE "Rank" <= 10 
+AND "Rank" IS NOT NULL;
+Generated Final SQL: SELECT COUNT("Rank") FROM T WHERE "Rank" <= 10 AND "Rank" IS NOT NULL;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Rank") |
+|----------------:|
+|               0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tony Gulotta
+SQL: SELECT COUNT("Rank") FROM T WHERE "Rank" <= 10 AND "Rank" IS NOT NULL;
+
+SQL Execution Result:
+COUNT("Rank")
+0
+
+Question: what are the number of times the rank is listed 10 or below?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 3
+

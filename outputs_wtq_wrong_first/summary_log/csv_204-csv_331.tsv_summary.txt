@@ -1,0 +1,65 @@
+**Column Analysis:**
+
+1. Hull
+   - Data type: Categorical
+   - 4 representative example values: № 6, № 8, № 12, № 13
+   - Role: Identifier for the specific hull of the ferry
+
+2. Type
+   - Data type: Categorical
+   - 4 representative example values: 929-117, Beetle, Toppy 2, Crystal Wing
+   - Role: Descriptor of the type of ferry
+
+3. Original Name
+   - Data type: Categorical
+   - 4 representative example values: Beetle, Beetle 2, Toppy 2, Crystal Wing
+   - Role: Descriptor of the original name of the ferry
+
+4. Original Operator
+   - Data type: Categorical
+   - 4 representative example values: JR Kyushu Jet Ferries, Tane Yaku Jetfoils, Kaijo Access Co., Cosmo Line
+   - Role: Descriptor of the original operator of the ferry
+
+5. Delivery
+   - Data type: Date
+   - 4 representative example values: Jul 1990, Feb 1991, Apr 1992, Mar 1995
+   - Role: Measure of the delivery date of the ferry
+
+6. Disposition (2012)
+   - Data type: Categorical
+   - 4 representative example values: Active, nan
+   - Role: Descriptor of the disposition status of the ferry in 2012
+
+7. 2nd name
+   - Data type: Categorical
+   - 4 representative example values: Rocket, nan, 2002 Beetle 5, 2004 Rocket 1
+   - Role: Descriptor of the second name of the ferry
+
+8. 2nd operator
+   - Data type: Categorical
+   - 4 representative example values: Cosmo Line, nan, JR Kyushu Jet Ferries, Tane Yaku Jetfoils
+   - Role: Descriptor of the second operator of the ferry
+
+9. 3rd Name
+   - Data type: Categorical
+   - 4 representative example values: Rocket 3, nan
+   - Role: Descriptor of the third name of the ferry
+
+10. 3rd operator
+    - Data type: Categorical
+    - 4 representative example values: Tane Yaku Jetfoils, nan
+    - Role: Descriptor of the third operator of the ferry
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: The presence of a different name and operator compared to the majority of the table makes this row an outlier.
+
+2. Row 14 (Index 14):
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: Similar to Row 5, the different name and operator make this row stand out from the rest.
+
+3. Row 13 (Index 13):
+   - Distinctive values: nan, nan
+   - Explanation: The presence of missing values in both the 2nd and 3rd name and operator columns is not unusual in this table, making this row an ordinary entry.

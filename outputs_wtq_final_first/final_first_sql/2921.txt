@@ -1,0 +1,115 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season:
+   - Data type: Numeric
+   - 4 representative example values: 1994, 1995, 1996, 1997
+   - Role: Identifier for the year in which the event took place
+
+2. Date:
+   - Data type: Date
+   - 4 representative example values: 12 Dec 1993, 29 Dec 1993, 12 Mar 1994, 13 Mar 1994
+   - Role: Descriptor indicating the specific date of the event
+
+3. Location:
+   - Data type: Categorical
+   - 4 representative example values: Val-d'Isère, France, Bormio, Italy, Whistler, BC, Canada, Vail, CO, USA
+   - Role: Descriptor specifying the location where the event occurred
+
+4. Discipline:
+   - Data type: Categorical
+   - 4 representative example values: Super G, Downhill
+   - Role: Descriptor indicating the type of skiing discipline for the event
+
+5. Place:
+   - Data type: Categorical
+   - 4 representative example values: 1st, 3rd
+   - Role: Measure representing the final ranking achieved by the participant in the event
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values that make it distinctive are "Val-d'Isère, France" for Location and "3rd" for Place.
+   - This row is an outlier because it has the same Place value as Row 4, but a different Location, making it unique compared to the majority of the table.
+
+2. Row 4:
+   - The values that make it distinctive are "Vail, CO, USA" for Location and "3rd" for Place.
+   - This row is an outlier because it has the same Place value as Row 0, but a different Location, making it unique compared to the majority of the table.
+
+3. Row 1:
+   - The values that make it distinctive are "Bormio, Italy" for Location and "3rd" for Place.
+   - This row is an outlier because it has the same Place value as Rows 0 and 4, but a different Location, making it unique compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number |   Season | Date                | Location           | Discipline   | Place   |
+|-------------:|---------:|:--------------------|:-------------------|:-------------|:--------|
+|            0 |     1993 | 1993-02-27 00:00:00 | Whistler BC Canada | Downhill     | 2nd     |
+|            1 |     1994 | 1993-12-12 00:00:00 | Val-d'Isère France | Super G      | 3rd     |
+|            2 |     1994 | 1993-12-29 00:00:00 | Bormio Italy       | Downhill     | 3rd     |
+|            3 |     1994 | 1994-03-12 00:00:00 | Whistler BC Canada | Downhill     | 3rd     |
+|            4 |     1994 | 1994-03-13 00:00:00 | Whistler BC Canada | Super G      | 1st     |
+|            5 |     1994 | 1994-03-16 00:00:00 | Vail CO USA        | Downhill     | 3rd     |
+|            6 |     1995 | 1994-12-11 00:00:00 | Tignes France      | Super G      | 2nd     |
+
+Generated Reasoning SQL: To find the next location listed after Bormio, Italy, we need to identify the location that appears immediately after Bormio, Italy in the table. The "Location" column is categorical and contains the names of different locations where events took place. We can use the row_number to determine the order of locations in the table.
+
+To answer the question, we can select the distinct "Location" values that come after "Bormio, Italy" based on the row_number order.
+
+SQL: 
+SELECT DISTINCT "Location"
+FROM T
+WHERE row_number > (SELECT row_number FROM T WHERE "Location" = 'Bormio, Italy')
+ORDER BY row_number
+LIMIT 1;
+Generated Final SQL: SELECT DISTINCT "Location" FROM T WHERE row_number > (SELECT row_number FROM T WHERE "Location" = 'Bormio, Italy') ORDER BY row_number LIMIT 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Tommy Moe (row_number, Season, Date, Location, Discipline, Place)
+
+row_number | Season | Date | Location | Discipline | Place
+0 | 1993 | 1993-02-27 00:00:00 | Whistler BC Canada | Downhill | 2nd
+1 | 1994 | 1993-12-12 00:00:00 | Val-d'Isère France | Super G | 3rd
+2 | 1994 | 1993-12-29 00:00:00 | Bormio Italy | Downhill | 3rd
+3 | 1994 | 1994-03-12 00:00:00 | Whistler BC Canada | Downhill | 3rd
+4 | 1994 | 1994-03-13 00:00:00 | Whistler BC Canada | Super G | 1st
+5 | 1994 | 1994-03-16 00:00:00 | Vail CO USA | Downhill | 3rd
+6 | 1995 | 1994-12-11 00:00:00 | Tignes France | Super G | 2nd
+Question: what is the next location listed after bormio, italy?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate the row with the location "Bormio Italy" in the Location column.  
+From the full table, we see that it is row 2.  
+Next, we need to look at the row immediately after row 2 to find the next location listed.  
+From the full table, we see that the row after row 2 is row 3, and the location listed is "Whistler BC Canada".  
+
+Therefore, the next location listed after Bormio, Italy is "Whistler BC Canada".
+
+Final Answer: Whistler BC Canada
+[Fallback] Prediction: whistler bc canada
+[Gold Answer] whistler, bc, canada
+

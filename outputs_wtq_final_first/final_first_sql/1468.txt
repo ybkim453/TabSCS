@@ -1,0 +1,144 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Numeric
+   - 4 representative example values: 5, 7, 8, 9
+   - Role: Identifier for the position of the team in the table
+
+2. Team:
+   - Data type: Categorical
+   - 4 representative example values: ÍA, Breiðablik, Fram, Stjarnan
+   - Role: Descriptor for the name of the team
+
+3. Played:
+   - Data type: Numeric
+   - 4 representative example values: 18, 18, 18, 18
+   - Role: Measure of the number of games played by each team
+
+4. Won:
+   - Data type: Numeric
+   - 4 representative example values: 7, 5, 4, 4
+   - Role: Measure of the number of games won by each team
+
+5. Draw:
+   - Data type: Numeric
+   - 4 representative example values: 5, 3, 5, 5
+   - Role: Measure of the number of games drawn by each team
+
+6. Lost:
+   - Data type: Numeric
+   - 4 representative example values: 6, 10, 9, 9
+   - Role: Measure of the number of games lost by each team
+
+7. Goals For:
+   - Data type: Numeric
+   - 4 representative example values: 21, 29, 22, 18
+   - Role: Measure of the number of goals scored by each team
+
+8. Goals Against:
+   - Data type: Numeric
+   - 4 representative example values: 17, 35, 33, 31
+   - Role: Measure of the number of goals conceded by each team
+
+9. Goal Difference:
+   - Data type: Numeric
+   - 4 representative example values: 4, -6, -11, -13
+   - Role: Measure of the difference between goals scored and goals conceded by each team
+
+10. Points:
+    - Data type: Numeric
+    - 4 representative example values: 26, 18, 17, 17
+    - Role: Measure of the total points earned by each team
+
+11. Notes:
+    - Data type: Categorical
+    - 4 representative example values: nan, nan, nan, Relegated
+    - Role: Descriptor for any additional notes about the team's status
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Leiftur):
+   - The values in the "Goals For" and "Goal Difference" columns (-15) are significantly lower compared to the other teams in the table, indicating poor offensive performance and goal difference. This makes the row an outlier.
+
+2. Row 3 (Fram):
+   - The value in the "Goals Against" column (33) is notably higher compared to the other teams, suggesting a weaker defense. This distinctive value makes the row an outlier.
+
+3. Row 9 (Stjarnan):
+   - The note "Relegated" in the "Notes" column sets this row apart from the majority of the table, indicating that this team has been relegated. This unique status makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Pos | Team       |   Played |   Won |   Draw |   Lost |   Goals For |   Goals Against |   Goal Difference |   Points | Notes                 |
+|-------------:|------:|:-----------|---------:|------:|-------:|-------:|------------:|----------------:|------------------:|---------:|:----------------------|
+|            0 |     1 | KR         |       18 |    11 |      4 |      3 |          27 |              14 |                13 |       37 | UEFA Champions League |
+|            1 |     2 | Fylkir     |       18 |    10 |      5 |      3 |          39 |              16 |                23 |       35 | UEFA Cup              |
+|            2 |     3 | Grindavík  |       18 |     8 |      6 |      4 |          25 |              18 |                 7 |       30 | UEFA Cup              |
+|            3 |     4 | ÍBV        |       18 |     8 |      5 |      5 |          29 |              17 |                12 |       29 | Inter-Toto Cup        |
+|            4 |     5 | ÍA         |       18 |     7 |      5 |      6 |          21 |              17 |                 4 |       26 |                       |
+|            5 |     6 | Keflavík   |       18 |     4 |      7 |      7 |          21 |              35 |               -14 |       19 |                       |
+|            6 |     7 | Breiðablik |       18 |     5 |      3 |     10 |          29 |              35 |                -6 |       18 |                       |
+|            7 |     8 | Fram       |       18 |     4 |      5 |      9 |          22 |              33 |               -11 |       17 |                       |
+|            8 |     9 | Stjarnan   |       18 |     4 |      5 |      9 |          18 |              31 |               -13 |       17 | Relegated             |
+|            9 |    10 | Leiftur    |       18 |     3 |      7 |      8 |          24 |              39 |               -15 |       16 | Relegated             |
+
+Generated Reasoning SQL: To find out how many more points Fram had than Leiftur, we need to calculate the difference in points between the two teams. 
+We will filter the rows for Fram and Leiftur and then subtract the points earned by Leiftur from the points earned by Fram.
+SQL: 
+SELECT 
+    (SELECT "Points" FROM T WHERE "Team" = 'Fram') - (SELECT "Points" FROM T WHERE "Team" = 'Leiftur') as point_difference;
+Generated Final SQL: SELECT (SELECT "Points" FROM T WHERE "Team" = 'Fram') - (SELECT "Points" FROM T WHERE "Team" = 'Leiftur') as point_difference;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   point_difference |
+|-------------------:|
+|                  1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2000 Úrvalsdeild
+SQL: SELECT (SELECT "Points" FROM T WHERE "Team" = 'Fram') - (SELECT "Points" FROM T WHERE "Team" = 'Leiftur') as point_difference;
+
+point_difference
+1
+Question: fram had how many more points than leiftur?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 1
+

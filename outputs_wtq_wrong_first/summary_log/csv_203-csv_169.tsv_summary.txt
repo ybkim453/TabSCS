@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 5, 7
+   - Role: Identifier, indicates the ranking of the city in terms of passengers.
+
+2. City:
+   - Data type: Categorical
+   - 4 representative example values: Nuevo León, Monterrey; Guerrero, Acapulco; Jalisco, Puerto Vallarta; Guerrero, Ixtapa/Zihuatanejo
+   - Role: Descriptor, specifies the city where the airport is located.
+
+3. Passengers:
+   - Data type: Numeric
+   - 4 representative example values: 106,513; 56,069; 43,419; 35,507
+   - Role: Measure, indicates the number of passengers at the airport.
+
+4. Ranking:
+   - Data type: Numeric
+   - 4 representative example values: nan, 1
+   - Role: Measure, shows the ranking of the city based on the number of passengers. 
+
+5. Airline:
+   - Data type: Categorical
+   - 4 representative example values: Aeroméxico Connect, Interjet; Interjet; VivaAerobus
+   - Role: Descriptor, specifies the airline(s) operating at the airport.
+
+**Outlier Row Analysis:**
+
+1. Row 8 (Index 8):
+   - The city is Baja California, Tijuana with only 14,906 passengers, which is significantly lower compared to the other cities in the table.
+   - This row is an outlier due to the unusually low number of passengers for a city like Tijuana.
+
+2. Row 4 (Index 4):
+   - The city is Jalisco, Puerto Vallarta with a ranking of 1, which is different from the other rankings in the table.
+   - This row is an outlier because it has the highest ranking in terms of passengers among the listed cities.
+
+3. Row 2 (Index 2):
+   - The city is Nuevo León, Monterrey with 106,513 passengers, which is the highest number of passengers in the table.
+   - This row is an outlier due to the exceptionally high number of passengers compared to the other cities.

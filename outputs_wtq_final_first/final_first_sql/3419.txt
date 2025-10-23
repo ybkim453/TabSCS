@@ -1,0 +1,142 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: nan, 3, 8, 2
+   - Role: Identifier for the ranking of the athletes in the heat.
+
+2. Heat:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Descriptor indicating the heat number in which the athlete competed.
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: Khalil Al-Hanahneh, Shen Yunbao, Chaleunsouk Oudomphanh, Reanchai Srihawong
+   - Role: Descriptor identifying the name of the athlete.
+
+4. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: Jordan, China, Laos, Thailand
+   - Role: Descriptor indicating the nationality of the athlete.
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: DNS, 10.72, 11.76, DQ
+   - Role: Measure representing the time taken by the athlete in the race.
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan, Q, SB
+   - Role: Descriptor providing additional information about the athlete's performance.
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The values "DNS" and "nan" in the Time and Rank columns respectively make this row distinctive.
+   - This row is an outlier as the combination of a DNS (Did Not Start) time and a missing rank is not typical in a race result table.
+
+2. Row 7:
+   - The value "SB" in the Notes column makes this row distinctive.
+   - This row is an outlier as achieving a Season Best time can indicate a significant improvement or exceptional performance compared to the other athletes in the heat.
+
+3. Row 31:
+   - The value "DQ" in the Time column makes this row distinctive.
+   - This row is an outlier as being disqualified from a race is not a common occurrence and sets this athlete apart from the rest in terms of performance.
+
+=== Full Table Preview ===
+|   row_number |   Rank |   Heat | Name                     | Nationality    | Time   | Notes   |
+|-------------:|-------:|-------:|:-------------------------|:---------------|:-------|:--------|
+|            0 |      1 |      1 | Salem Al-Yami            | Saudi Arabia   | 10.55  | Q       |
+|            1 |      2 |      1 | Hiroyasu Tsuchie         | Japan          | 10.64  | Q       |
+|            2 |      3 |      1 | Khaled Yousef Al-Obaidli | Qatar          | 10.68  | Q       |
+|            3 |      4 |      1 | Chintake De Zoysa        | Sri Lanka      | 10.78  | q       |
+|            4 |      5 |      1 | Suminda Mendis           | Sri Lanka      | 10.82  | q PB    |
+|            5 |      6 |      1 | Vissanu Sophanich        | Thailand       | 10.87  |         |
+|            6 |      7 |      1 | Zakaria Messaiké         | Lebanon        | 11.06  |         |
+|            7 |    nan |      1 | Khalil Al-Hanahneh       | Jordan         | DNS    |         |
+|            8 |      1 |      2 | Gennadiy Chernovol       | Kazakhstan     | 10.59  | Q       |
+|            9 |      2 |      2 | Yuta Kanno               | Japan          | 10.64  | Q       |
+|           10 |      3 |      2 | Shen Yunbao              | China          | 10.72  | Q       |
+|           11 |      4 |      2 | Tsai Meng-Lin            | Chinese Taipei | 10.74  | q       |
+|           12 |      5 |      2 | Tan Kok Lim              | Malaysia       | 10.83  | q       |
+|           13 |      6 |      2 | Ahmad Hudeib Al-Mamari   | Oman           | 10.97  |         |
+|           14 |      7 |      2 | Tang Yui Han             | Singapore      | 11.61  | PB      |
+|           15 |      8 |      2 | Chaleunsouk Oudomphanh   | Laos           | 11.76  | SB      |
+|           16 |      1 |      3 | Jamal Al-Saffar          | Saudi Arabia   | 10.57  | Q       |
+|           17 |      2 |      3 | Reanchai Srihawong       | Thailand       | 10.72  | Q       |
+|           18 |      3 |      3 | Shin Jung-Ki             | South Korea    | 10.79  |         |
+|           19 |      4 |      3 | Chen Tien-Wen            | Chinese Taipei | 10.74  | q       |
+|           20 |      5 |      3 | To Wai Lok               | Hong Kong      | 10.92  |         |
+|           21 |      6 |      3 | Poh Seng Song            | Singapore      | 11.10  | SB      |
+|           22 |      7 |      3 | Abdullah Ibrahim         | Maldives       | 12.04  | PB      |
+|           23 |    nan |      3 | Sudath Ravindra Kumara   | Sri Lanka      | DQ     |         |
+|           24 |      1 |      4 | Chen Haijian             | China          | 10.65  | Q       |
+|           25 |      2 |      4 | Saad Faraj Al-Shahwani   | Qatar          | 10.67  | Q       |
+|           26 |      3 |      4 | Azmi Ibrahim             | Malaysia       | 10.78  | Q       |
+|           27 |      4 |      4 | Chiang Wai Hung          | Malaysia       | 10.89  |         |
+|           28 |      5 |      4 | Nguyen Thanh Hai         | Vietnam        | 11.16  | PB      |
+|           29 |      6 |      4 | Piphop Rasme Prum Keo    | Cambodia       | 11.70  | PB      |
+|           30 |      7 |      4 | Bona Kong                | Cambodia       | 11.75  | PB      |
+|           31 |    nan |      4 | Hamood Al-Dalhami        | Oman           | DQ     |         |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Nationality" column contains categorical values representing the nationality of the athletes. To find the only runner from Laos, we need to filter the rows where "Nationality" = 'Laos'. Since there is only one runner from Laos, we do not need to consider any aggregate or placeholder rows.
+
+SQL: select "Name" from T where "Nationality" = 'Laos';
+Generated Final SQL: select "Name" from T where "Nationality" = 'Laos';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Name                   |
+|:-----------------------|
+| Chaleunsouk Oudomphanh |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2002 Asian Athletics Championships – Men's 100 metres
+SQL: select "Name" from T where "Nationality" = 'Laos';
+
+Name
+Chaleunsouk Oudomphanh
+Question: who is the only runner from laos?
+A: To find the answer to this question, let’s think step by step.
+Prediction: chaleunsouk oudomphanh
+[Gold Answer] chaleunsouk oudomphanh
+

@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2007, 2009, 2010
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: All-Africa Games, World Championships, African Championships, Commonwealth Games
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Abuja, Nigeria, Algiers, Algeria, Berlin, Germany, Nairobi, Kenya
+   - Role: Descriptor of the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 11th (h), 1st, 36th (h), 7th
+   - Role: Measure of the athlete's position in the race.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 800 m
+   - Role: Descriptor of the type of event (800 meters race in this case).
+
+6. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 2:05.19, 2:02.83, 2:06.72, DNF
+   - Role: Measure of the athlete's performance or outcome in the event.
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The row with the Year 2010 and Competition Commonwealth Games has a Note value of DNF (Did Not Finish), which is different from the typical timing values in the Notes column. This makes the row an outlier as it represents a non-completion of the race.
+
+2. Row 7:
+   - The row with the Year 2011 and Competition All-Africa Games has a Position value of 12th (h), which is different from the typical top positions seen in the Position column. This makes the row an outlier as it represents a lower ranking compared to the majority of the table.
+
+3. Row 0:
+   - The row with the Year 2003 and Competition All-Africa Games has a Position value of 11th (h), which is different from the typical top positions seen in the Position column. However, the Note value of 2:05.19 is within the range of typical timing values in the Notes column. This row is an ordinary row and does not require special handling.

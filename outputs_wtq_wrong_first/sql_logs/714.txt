@@ -1,0 +1,163 @@
+=== Table ID ===
+csv/204-csv/331.tsv
+
+=== Question ===
+what are the least points scored for a match to be a win?
+
+=== Sub-table Preview ===
+| Hull   | Type    | Original Name   | Original Operator     | Delivery   | Disposition (2012)   | 2nd name      | 2nd operator          | 3rd Name   | 3rd operator       |
+|:-------|:--------|:----------------|:----------------------|:-----------|:---------------------|:--------------|:----------------------|:-----------|:-------------------|
+| № 6    | 929-117 | Beetle          | JR Kyushu Jet Ferries | Jul 1990   | Active               | Rocket        | Cosmo Line            | Rocket 3   | Tane Yaku Jetfoils |
+| № 8    | 929-117 | Beetle 2        | JR Kyushu Jet Ferries | Feb 1991   | Active               | nan           | nan                   | nan        | nan                |
+| № 12   | 929-117 | Toppy 2         | Tane Yaku Jetfoils    | Apr 1992   | Active               | nan           | nan                   | nan        | nan                |
+| № 13   | 929-117 | Toppy 3         | Tane Yaku Jetfoils    | Mar 1995   | Active               | nan           | nan                   | nan        | nan                |
+| № 14   | 929-117 | Crystal Wing    | Kaijo Access Co.      | Jun 1994   | Active               | 2002 Beetle 5 | JR Kyushu Jet Ferries | nan        | nan                |
+| № 15   | 929-117 | Emerald Wing    | Kaijo Access Co.      | Jun 1994   | Active               | 2004 Rocket 1 | Cosmo Line            | -          | Tane Yaku Jetfoil  |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Hull
+   - Data type: Categorical
+   - 4 representative example values: № 6, № 8, № 12, № 13
+   - Role: Identifier for the specific hull of the ferry
+
+2. Type
+   - Data type: Categorical
+   - 4 representative example values: 929-117, Beetle, Toppy 2, Crystal Wing
+   - Role: Descriptor of the type of ferry
+
+3. Original Name
+   - Data type: Categorical
+   - 4 representative example values: Beetle, Beetle 2, Toppy 2, Crystal Wing
+   - Role: Descriptor of the original name of the ferry
+
+4. Original Operator
+   - Data type: Categorical
+   - 4 representative example values: JR Kyushu Jet Ferries, Tane Yaku Jetfoils, Kaijo Access Co., Cosmo Line
+   - Role: Descriptor of the original operator of the ferry
+
+5. Delivery
+   - Data type: Date
+   - 4 representative example values: Jul 1990, Feb 1991, Apr 1992, Mar 1995
+   - Role: Measure of the delivery date of the ferry
+
+6. Disposition (2012)
+   - Data type: Categorical
+   - 4 representative example values: Active, nan
+   - Role: Descriptor of the disposition status of the ferry in 2012
+
+7. 2nd name
+   - Data type: Categorical
+   - 4 representative example values: Rocket, nan, 2002 Beetle 5, 2004 Rocket 1
+   - Role: Descriptor of the second name of the ferry
+
+8. 2nd operator
+   - Data type: Categorical
+   - 4 representative example values: Cosmo Line, nan, JR Kyushu Jet Ferries, Tane Yaku Jetfoils
+   - Role: Descriptor of the second operator of the ferry
+
+9. 3rd Name
+   - Data type: Categorical
+   - 4 representative example values: Rocket 3, nan
+   - Role: Descriptor of the third name of the ferry
+
+10. 3rd operator
+    - Data type: Categorical
+    - 4 representative example values: Tane Yaku Jetfoils, nan
+    - Role: Descriptor of the third operator of the ferry
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: The presence of a different name and operator compared to the majority of the table makes this row an outlier.
+
+2. Row 14 (Index 14):
+   - Distinctive values: 2002 Beetle 5, JR Kyushu Jet Ferries
+   - Explanation: Similar to Row 5, the different name and operator make this row stand out from the rest.
+
+3. Row 13 (Index 13):
+   - Distinctive values: nan, nan
+   - Explanation: The presence of missing values in both the 2nd and 3rd name and operator columns is not unusual in this table, making this row an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                  | Surface    | Partner           | Opponents                              | Score                |
+|-------------:|:----------|------:|:--------------------|:----------------------------|:-----------|:------------------|:---------------------------------------|:---------------------|
+|            0 | Runner-up |     1 | 2010-05-16 00:00:00 | Kurume Japan                | Clay       | Karolína Plíšková | Sun Shengnan\n Xu Yifan                | 0–6 3–6              |
+|            1 | Winner    |     1 | 2011-02-13 00:00:00 | Rancho Mirage United States | Hard       | Karolína Plíšková | Nadejda Guskova\n Sandra Zaniewska     | 6–7(6–8) 6–1 6–4     |
+|            2 | Winner    |     2 | 2011-08-07 00:00:00 | Vancouver Canada            | Hard       | Karolína Plíšková | Jamie Hampton\n N. Lertcheewakarn      | 5–7 6–2 6–4          |
+|            3 | Runner-up |     2 | 2011-11-06 00:00:00 | Taipei 5 Taiwan             | Hard       | Karolína Plíšková | Chan Yung-jan\n Zheng Jie              | 6–7(5–7) 7–5 3–6     |
+|            4 | Runner-up |     3 | 2011-11-20 00:00:00 | Bratislava Slovakia         | Hard       | Karolína Plíšková | Naomi Broady\n Kristina Mladenovic     | 7–5 4–6 [2–10]       |
+|            5 | Winner    |     3 | 2012-01-23 00:00:00 | Andrézieux-Bouthéon France  | Hard (i)   | Karolína Plíšková | Julie Coin\n Eva Hrdinová              | 6–4 4–6 [10–5]       |
+|            6 | Winner    |     4 | 2012-01-30 00:00:00 | Grenoble France             | Hard (i)   | Karolína Plíšková | Valentyna Ivakhnenko\n Maryna Zanevska | 6–1 6–3              |
+|            7 | Runner-up |     4 | 2012-09-17 00:00:00 | Shrewsbury United Kingdom   | Hard (i)   | Karolína Plíšková | Vesna Dolonc\n Stefanie Vögele         | 1–6 7–6(7–3) [13–15] |
+|            8 | Winner    |     5 | 2012-11-12 00:00:00 | Zawada Poland               | Carpet (i) | Karolína Plíšková | Kristina Barrois\n Sandra Klemenschits | 6–3 6–1              |
+|            9 | Winner    |     6 | 2013-10-28 00:00:00 | Barnstaple United Kingdom   | Hard (i)   | Naomi Broady      | Raluca Olaru\n Tamira Paszek           | 6–3 3–6 [10–5]       |
+
+Generated Reasoning SQL: The summary provides information about the columns in the table, including data types and representative example values. The relevant columns for this question are "Outcome" and "Score". The "Outcome" column likely contains values indicating whether a match was won or lost, while the "Score" column shows the points scored in each match.
+
+To determine the least points scored for a match to be a win, we need to identify the minimum score that corresponds to a winning outcome. This means we should focus on rows where the "Outcome" is a win and then find the minimum value in the "Score" column for those rows.
+
+SQL: 
+SELECT MIN("Score") AS min_points_for_win
+FROM T
+WHERE "Outcome" = 'Winner';
+Generated Final SQL: SELECT MIN("Score") AS min_points_for_win FROM T WHERE "Outcome" = 'Winner';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| min_points_for_win   |
+|:---------------------|
+| 5–7 6–2 6–4          |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Kristýna Plíšková
+SQL: SELECT MIN("Score") AS min_points_for_win FROM T WHERE "Outcome" = 'Winner';
+
+SQL Execution Result:
+min_points_for_win
+5–7 6–2 6–4
+
+Question: what are the least points scored for a match to be a win?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 5–7 6–2 6–4
+[Gold Answer] 12
+

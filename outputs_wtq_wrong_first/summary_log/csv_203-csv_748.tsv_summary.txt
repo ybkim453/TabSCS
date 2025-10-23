@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier, indicating the ranking of the player based on transfer fee.
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Neymar, Cesc Fàbregas, Alexis Sánchez, Javier Mascherano
+   - Role: Descriptor, identifying the name of the player.
+
+3. From:
+   - Data type: Categorical
+   - 4 representative example values: Santos FC, Arsenal, Udinese, Liverpool
+   - Role: Descriptor, indicating the club the player transferred from.
+
+4. Transfer Fee (€ millions):
+   - Data type: Numeric
+   - 4 representative example values: 86.0, 29+5(variables), 26+11(add ons), 26.8
+   - Role: Measure, representing the amount of transfer fee in millions of euros.
+
+5. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2013, 2011, 2010, 2012
+   - Role: Descriptor, indicating the year of the transfer.
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - The value "19.0" in the Transfer Fee column is significantly lower compared to the other transfer fees in the table.
+   - This makes the row an outlier as it deviates from the typical transfer fee values in the table.
+
+2. Row 0 (Index 0):
+   - The value "86.0" in the Transfer Fee column is notably higher than the other transfer fees.
+   - This makes the row an outlier as it stands out in terms of the transfer fee amount.
+
+3. Row 1 (Index 1):
+   - The values "29+5(variables)" in the Transfer Fee column indicate a variable transfer fee structure, which is different from the fixed transfer fees in other rows.
+   - While this may seem atypical, it is a common occurrence in football transfers, making this row an ordinary entry and not a true outlier.

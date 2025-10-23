@@ -1,0 +1,170 @@
+=== Table ID ===
+csv/204-csv/21.tsv
+
+=== Question ===
+is the number on skoda fabia for 1999 more or less than 1000?
+
+=== Sub-table Preview ===
+| Outcome   |   No. | Date             | Tournament                   | Surface    | Partner           | Opponents                              | Score              |
+|:----------|------:|:-----------------|:-----------------------------|:-----------|:------------------|:---------------------------------------|:-------------------|
+| Runner-up |     1 | 16 May 2010      | Kurume, Japan                | Clay       | Karolína Plíšková | Sun Shengnan\n Xu Yifan                | 0–6, 3–6           |
+| Winner    |     1 | 13 February 2011 | Rancho Mirage, United States | Hard       | Karolína Plíšková | Nadejda Guskova\n Sandra Zaniewska     | 6–7(6–8), 6–1, 6–4 |
+| Winner    |     3 | 23 January 2012  | Andrézieux-Bouthéon, France  | Hard (i)   | Karolína Plíšková | Julie Coin\n Eva Hrdinová              | 6–4, 4–6, [10–5]   |
+| Winner    |     4 | 30 January 2012  | Grenoble, France             | Hard (i)   | Karolína Plíšková | Valentyna Ivakhnenko\n Maryna Zanevska | 6–1, 6–3           |
+| Winner    |     5 | 12 November 2012 | Zawada, Poland               | Carpet (i) | Karolína Plíšková | Kristina Barrois\n Sandra Klemenschits | 6–3, 6–1           |
+| Winner    |     6 | 28 October 2013  | Barnstaple, United Kingdom   | Hard (i)   | Naomi Broady      | Raluca Olaru\n Tamira Paszek           | 6–3, 3–6, [10–5]   |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **Outcome:**
+   - Data type: Categorical
+   - 4 representative values: Runner-up, Winner
+   - Role: Describes the outcome of the match for the player.
+
+2. **No.:**
+   - Data type: Numeric
+   - 4 representative values: 1, 3, 4, 5
+   - Role: Identifier for each match entry.
+
+3. **Date:**
+   - Data type: Date
+   - 4 representative values: 16 May 2010, 13 February 2011, 23 January 2012, 30 January 2012
+   - Role: Indicates the date when the match took place.
+
+4. **Tournament:**
+   - Data type: Categorical
+   - 4 representative values: Kurume, Japan, Rancho Mirage, United States, Andrézieux-Bouthéon, France, Grenoble, France
+   - Role: Describes the name of the tournament where the match was played.
+
+5. **Surface:**
+   - Data type: Categorical
+   - 4 representative values: Clay, Hard, Hard (i), Carpet (i)
+   - Role: Indicates the type of surface on which the match was played.
+
+6. **Partner:**
+   - Data type: Categorical
+   - 4 representative values: Karolína Plíšková, Naomi Broady
+   - Role: Describes the player's partner in the doubles match.
+
+7. **Opponents:**
+   - Data type: Categorical
+   - 4 representative values: Sun Shengnan\n Xu Yifan, Nadejda Guskova\n Sandra Zaniewska, Julie Coin\n Eva Hrdinová, Valentyna Ivakhnenko\n Maryna Zanevska
+   - Role: Describes the names of the opponents in the doubles match.
+
+8. **Score:**
+   - Data type: Categorical
+   - 4 representative values: 0–6, 3–6, 6–7(6–8), 6–1
+   - Role: Indicates the set scores of the match.
+
+### Outlier Row Analysis:
+
+1. **Row 9:**
+   - The Outcome is "Winner" which is consistent with other rows.
+   - The Date is "28 October 2013" which is an ordinary date.
+   - The Tournament is "Barnstaple, United Kingdom" which is a regular tournament location.
+   - The Surface is "Hard (i)" which is a common surface type.
+   - The Partner is "Naomi Broady" which is a regular partner.
+   - The Opponents are "Raluca Olaru\n Tamira Paszek" which are typical opponent names.
+   - The Score is "6–3, 3–6, [10–5]" which is a standard set score.
+   - Conclusion: This row is an ordinary entry and does not require special handling.
+
+2. **Row 8:**
+   - The Outcome is "Winner" which is consistent with other rows.
+   - The Date is "12 November 2012" which is an ordinary date.
+   - The Tournament is "Zawada, Poland" which is a regular tournament location.
+   - The Surface is "Carpet (i)" which is a common surface type.
+   - The Partner is "Karolína Plíšková" which is a regular partner.
+   - The Opponents are "Kristina Barrois\n Sandra Klemenschits" which are typical opponent names.
+   - The Score is "6–3, 6–1" which is a standard set score.
+   - Conclusion: This row is an ordinary entry and does not require special handling.
+
+3. **Row 0:**
+   - The Outcome is "Runner-up" which is consistent with other rows.
+   - The Date is "16 May 2010" which is an ordinary date.
+   - The Tournament is "Kurume, Japan" which is a regular tournament location.
+   - The Surface is "Clay" which is a common surface type.
+   - The Partner is "Karolína Plíšková" which is a regular partner.
+   - The Opponents are "Sun Shengnan\n Xu Yifan" which are typical opponent names.
+   - The Score is "0–6, 3–6" which is a standard set score.
+   - Conclusion: This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Model          | 1991   | 1995   | 1996   | 1997   | 1998   | 1999   | 2000   | 2001   | 2002   | 2003   | 2004   | 2005   | 2006   | 2007   | 2008   | 2009   | 2010   | 2011   | 2012   | 2013   |
+|-------------:|:---------------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|
+|            0 | Škoda Felicia  | 172000 | 210000 |        | 288458 | 261127 | 241256 | 148028 | 44963  | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      |
+|            1 | Škoda Octavia  | −      | −      |        | 47876  | 102373 | 143251 | 158503 | 164134 | 164017 | 165635 | 181683 | 233322 | 270274 | 309951 | 344857 | 317335 | 349746 | 387200 | 409360 | 359600 |
+|            2 | Škoda Fabia    | −      | −      | −      | −      | −      | 823    | 128872 | 250978 | 264641 | 260988 | 247600 | 236698 | 243982 | 232890 | 246561 | 264173 | 229045 | 266800 | 255025 | 202000 |
+|            3 | Škoda Superb   | −      | −      | −      | −      | −      | −      | −      | 177    | 16867  | 23135  | 22392  | 22091  | 20989  | 20530  | 25645  | 44548  | 98873  | 116700 | 106847 | 94400  |
+|            4 | Škoda Roomster | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | 14422  | 66661  | 57467  | 47152  | 32332  | 36000  | 39249  | 33300  |
+|            5 | Škoda Yeti     | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | 11018  | 52604  | 70300  | 90952  | 82400  |
+|            6 | Škoda Rapid    | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | 1700   | 9292   | 103800 |
+|            7 | Škoda Citigo   | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | −      | 509    | 36687  | 45200  |
+|            8 | Total          | 172000 | 210000 | 261000 | 336334 | 363500 | 385330 | 435403 | 460252 | 445525 | 449758 | 451675 | 492111 | 549667 | 630032 | 674530 | 684226 | 762600 | 879200 | 949412 | 920800 |
+
+Generated Reasoning SQL: Explanation: 
+The summary indicates that the "Model" column contains categorical values representing different Škoda car models, and the columns from "1991" to "2013" contain numeric values representing sales figures for each year. 
+To compare the sales figure for the Škoda Fabia in 1999 to 1000, we need to filter the row corresponding to the Škoda Fabia for 1999 and check if the value is greater or less than 1000.
+
+SQL:
+SELECT "1999" 
+FROM T 
+WHERE "Model" = 'Škoda Fabia' 
+AND "1999" < 1000;
+Generated Final SQL: SELECT "1999" FROM T WHERE "Model" = 'Škoda Fabia' AND "1999" < 1000;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Škoda Auto (row_number, Model, 1991, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013)
+
+row_number | Model | 1991 | 1995 | 1996 | 1997 | 1998 | 1999 | 2000 | 2001 | 2002 | 2003 | 2004 | 2005 | 2006 | 2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013
+0 | Škoda Felicia | 172000 | 210000 | None | 288458 | 261127 | 241256 | 148028 | 44963 | − | − | − | − | − | − | − | − | − | − | − | −
+1 | Škoda Octavia | − | − | None | 47876 | 102373 | 143251 | 158503 | 164134 | 164017 | 165635 | 181683 | 233322 | 270274 | 309951 | 344857 | 317335 | 349746 | 387200 | 409360 | 359600
+2 | Škoda Fabia | − | − | − | − | − | 823 | 128872 | 250978 | 264641 | 260988 | 247600 | 236698 | 243982 | 232890 | 246561 | 264173 | 229045 | 266800 | 255025 | 202000
+3 | Škoda Superb | − | − | − | − | − | − | − | 177 | 16867 | 23135 | 22392 | 22091 | 20989 | 20530 | 25645 | 44548 | 98873 | 116700 | 106847 | 94400
+4 | Škoda Roomster | − | − | − | − | − | − | − | − | − | − | − | − | 14422 | 66661 | 57467 | 47152 | 32332 | 36000 | 39249 | 33300
+5 | Škoda Yeti | − | − | − | − | − | − | − | − | − | − | − | − | − | − | − | 11018 | 52604 | 70300 | 90952 | 82400
+6 | Škoda Rapid | − | − | − | − | − | − | − | − | − | − | − | − | − | − | − | − | − | 1700 | 9292 | 103800
+7 | Škoda Citigo | − | − | − | − | − | − | − | − | − | − | − | − | − | − | − | − | − | 509 | 36687 | 45200
+8 | Total | 172000 | 210000 | 261000 | 336334 | 363500 | 385330 | 435403 | 460252 | 445525 | 449758 | 451675 | 492111 | 549667 | 630032 | 674530 | 684226 | 762600 | 879200 | 949412 | 920800
+Question: is the number on skoda fabia for 1999 more or less than 1000?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **1999** column under the Škoda Fabia model is **250978**.
+
+From the full table:
+- The value in the **1999** column for the Škoda Fabia model is **250978**.
+
+Therefore, the number on the Škoda Fabia for 1999 is more than 1000.
+
+Final Answer: More
+[Fallback] Prediction: more
+[Gold Answer] less
+

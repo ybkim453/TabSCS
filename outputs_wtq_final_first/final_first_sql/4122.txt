@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Iteration
+   - Data type: Categorical
+   - 4 representative example values: 5th, 7th, 10th, 12th
+   - Role: Identifier for the specific iteration of the event
+
+2. Year
+   - Data type: Numeric
+   - 4 representative example values: 1988, 1996, 2008, 2016
+   - Role: Descriptor indicating the year of the event
+
+3. Dates
+   - Data type: Categorical
+   - 4 representative example values: 14 August-24 August, 8 September-23 September, 20 July-2 August, TBA
+   - Role: Descriptor specifying the dates of the event
+
+4. Location
+   - Data type: Categorical
+   - 4 representative example values: Townsville, Australia, Apia, Sāmoa, Pago Pago, American Samoa, Tumon, Guam
+   - Role: Descriptor indicating the location of the event
+
+5. Theme
+   - Data type: Categorical
+   - 4 representative example values: Cultural interchange, Unveiling treasures, Threading the Oceania ‘Ula, TBA
+   - Role: Descriptor describing the theme of the event
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values for Iteration, Year, Dates, and Location are all "TBA".
+   - This row is an outlier as it lacks specific information that is present in other rows, making it distinct from the majority of the table.
+
+2. Row 9:
+   - The Theme is "Threading the Oceania ‘Ula", which is different from the other themes mentioned in the table.
+   - This row is an outlier based on the unique theme compared to the rest of the entries.
+
+3. Row 12:
+   - The Iteration is "13th", which is different from the other iterations in the table.
+   - This row is an outlier due to the atypical iteration compared to the surrounding rows.
+
+=== Full Table Preview ===
+|   row_number | Iteration   |   Year | Dates                    | Location                      | Theme                            |
+|-------------:|:------------|-------:|:-------------------------|:------------------------------|:---------------------------------|
+|            0 | 1st         |   1972 | 6 May-20 May             | Suva Fiji                     | "Preserving culture"             |
+|            1 | 2nd         |   1976 | 6 March-13 March         | Rotorua New Zealand           | "Sharing culture"                |
+|            2 | 3rd         |   1980 | 30 June-12 July          | Port Moresby Papua New Guinea | "Pacific awareness"              |
+|            3 | 4th         |   1985 | 29 June-15 July          | Tahiti French Polynesia       | "My Pacific"                     |
+|            4 | 5th         |   1988 | 14 August-24 August      | Townsville Australia          | "Cultural interchange"           |
+|            5 | 6th         |   1992 | 16 October-27 October    | Rarotonga Cook Islands        | "Seafaring heritage"             |
+|            6 | 7th         |   1996 | 8 September-23 September | Apia Sāmoa                    | "Unveiling treasures"            |
+|            7 | 8th         |   2000 | 23 October-3 November    | Nouméa New Caledonia          | "Words of past present future"   |
+|            8 | 9th         |   2004 | 22 July-31 July          | Koror Palau                   | "Nurture Regenerate Celebrate"   |
+|            9 | 10th        |   2008 | 20 July-2 August         | Pago Pago American Samoa      | "Threading the Oceania ‘Ula"     |
+|           10 | 11th        |   2012 | 1–14 July                | Honiara Solomon Islands       | "Culture in Harmony with Nature" |
+|           11 | 12th        |   2016 | TBA                      | Tumon Guam                    | "TBA"                            |
+|           12 | 13th        |   2020 | TBA                      | TBA Hawaii                    | "TBA"                            |
+
+Generated Reasoning SQL: To determine the number of festivals that occurred in the month of July, we need to consider the "Dates" column, which contains categorical values representing the duration of each event. Since the dates are in a format like "20 July-2 August", we can identify events that took place in July by checking if the "Dates" value contains "July". We will count all rows where the "Dates" column includes the month of July.
+It is important to note that we are looking for festivals that occurred either wholly or partially in July, so any event that had any part of its duration in July should be included in the count.
+
+SQL: 
+select count("Iteration") from T where "Dates" like '%July%';
+Generated Final SQL: select count("Iteration") from T where "Dates" like '%July%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Iteration") |
+|---------------------:|
+|                    5 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Festival of Pacific Arts
+SQL: select count("Iteration") from T where "Dates" like '%July%';
+
+count("Iteration")
+5
+Question: how many festivals occurred in the month of july, either in whole or in part?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 5
+[Gold Answer] 5
+

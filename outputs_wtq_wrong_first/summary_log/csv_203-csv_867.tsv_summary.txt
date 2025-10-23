@@ -1,0 +1,55 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 4, 8
+   - Role: Identifier for the season of the TV show
+
+2. Episodes
+   - Data type: Numeric
+   - 4 representative example values: 23, 17, 22
+   - Role: Measure of the number of episodes in a season
+
+3. Time slot (EST)
+   - Data type: Categorical
+   - 4 representative example values: Friday 9pm/8c, Thursday 9pm/8c, Wednesday 10pm/9c
+   - Role: Descriptor of the time slot for each season
+
+4. Original airing Season premiere
+   - Data type: Categorical
+   - 4 representative example values: October 6, 2000, September 27, 2001, September 25, 2003
+   - Role: Descriptor of the premiere date for each season
+
+5. Original airing Season finale
+   - Data type: Categorical
+   - 4 representative example values: May 17, 2001, May 16, 2002, May 20, 2004
+   - Role: Descriptor of the finale date for each season
+
+6. Original airing TV season
+   - Data type: Categorical
+   - 4 representative example values: 2000-2001, 2001-2002, 2003-2004
+   - Role: Descriptor of the TV season for each season
+
+7. Rank
+   - Data type: Categorical
+   - 4 representative example values: #10, #2, #9, #12
+   - Role: Descriptor of the rank of the TV show within its season
+
+8. Viewers (in millions)
+   - Data type: Numeric
+   - 4 representative example values: 17.8, 23.69, 25.27, 16.62
+   - Role: Measure of the number of viewers in millions for each season
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The time slot changes from Friday to Thursday, which is different from the other rows.
+   - This change in time slot could potentially impact viewership and the overall performance of the season, making it an outlier.
+
+2. Row 7:
+   - The number of episodes is 17, which is lower than the typical 22-23 episodes in other rows.
+   - This lower number of episodes could indicate a shorter season or a special format, making it an outlier.
+
+3. Row 11:
+   - The time slot is on Wednesday instead of Thursday like the majority of the other rows.
+   - This change in the airing day could affect viewership patterns and make this row an outlier.

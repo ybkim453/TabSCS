@@ -1,0 +1,97 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - 4 representative example values: Notre Dame-Cathedral Latin, Saint Anselm School, Saint Helen's School, Saint Mary's School
+   - Role of the column: Identifier for the educational institutions
+
+2. Location
+   - Data type: Categorical
+   - 4 representative example values: Munson Township, Chester Township, Newbury, Chardon
+   - Role of the column: Descriptor indicating the geographical location of the schools
+
+3. Communities served
+   - Data type: Categorical
+   - 4 representative example values: Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not, Roman Catholic Diocese of Cleveland K - 8th grade; preschool, Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners, Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners
+   - Role of the column: Descriptor specifying the communities served by each school
+
+**Outlier Row Analysis:**
+
+1. Saint Anselm School | Chester Township, Ohio | Roman Catholic Diocese of Cleveland K - 8th grade; preschool
+   - This row is not an outlier as it contains typical values for the location and communities served columns.
+
+2. Saint Mary's School | Chardon, Ohio | Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners
+   - This row is not an outlier as it contains typical values for the location and communities served columns.
+
+=== Full Table Preview ===
+|   row_number | District                                        | Location                                    | Communities served                                                                                                                     |
+|-------------:|:------------------------------------------------|:--------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Agape Christian Academy                         | Burton Township Ohio and Troy Township Ohio | Accepts applications prior to the start of each school year                                                                            |
+|            1 | Hawken School                                   | Gates Mills Ohio                            | College preparatory day school: online application site visit and testing                                                              |
+|            2 | Hershey Montessori Farm School                  | Huntsburg Township Ohio                     | parent-owned and chartered by Ohio Department of Education: application deadline January each year                                     |
+|            3 | Notre Dame-Cathedral Latin                      | Munson Township Ohio                        | Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not |
+|            4 | Solon/Bainbridge Montessori School of Languages | Bainbridge Township Ohio                    | nonsectarian Montessori School: quarterly enrollment periods                                                                           |
+|            5 | Saint Anselm School                             | Chester Township Ohio                       | Roman Catholic Diocese of Cleveland K - 8th grade; preschool                                                                           |
+|            6 | Saint Helen's School                            | Newbury Ohio                                | Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners                                                   |
+|            7 | Saint Mary's School                             | Chardon Ohio                                | Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners                                           |
+
+Generated Reasoning SQL: Explanation: The summary shows that the "District" column contains the name of the educational institution, and the "Communities served" column provides information about the application process. To find out when Agape Christian Academy accepts applications, we need to retrieve the specific information from the "Communities served" column for the row where "District" is Agape Christian Academy.
+
+SQL: SELECT "Communities served" FROM T WHERE "District" = 'Agape Christian Academy';
+Generated Final SQL: SELECT "Communities served" FROM T WHERE "District" = 'Agape Christian Academy';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Communities served                                          |
+|:------------------------------------------------------------|
+| Accepts applications prior to the start of each school year |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Geauga County, Ohio
+SQL: SELECT "Communities served" FROM T WHERE "District" = 'Agape Christian Academy';
+
+Communities served
+Accepts applications prior to the start of each school year
+Question: when does agape christian academy accept applications?
+A: To find the answer to this question, let’s think step by step.
+Prediction: accepts applications prior to the start of each school year
+[Gold Answer] accepts applications prior to the start of each school year
+

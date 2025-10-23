@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 6, 7
+   - Role: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical (Date)
+   - 4 representative example values: Sept 4, Sept 11, Oct 2, Oct 9
+   - Role: Descriptor for the date of the game
+
+3. Opponent:
+   - Data type: Categorical (Text)
+   - 4 representative example values: Montreal Alouettes, Toronto Argonauts, Hamilton Tiger-Cats
+   - Role: Descriptor for the opposing team
+
+4. Score:
+   - Data type: Categorical (Score)
+   - 4 representative example values: 21–2, 12–5, 45–0, 25–11
+   - Role: Measure of the score of the game
+
+5. Result:
+   - Data type: Categorical
+   - 4 representative example values: Loss, Win
+   - Role: Descriptor for the outcome of the game
+
+6. Record:
+   - Data type: Categorical
+   - 4 representative example values: 0–2, 1–3, 1–6, 1–7
+   - Role: Descriptor for the team's overall record
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Week 6):
+   - The score of 45–0 is significantly higher compared to the other scores in the table, making this row an outlier.
+
+2. Row 1 (Week 2):
+   - The score of 21–2 is a significant loss compared to the other scores, making this row an outlier.
+
+3. Row 6 (Week 8):
+   - The score of 27–11 is significantly higher compared to the other scores, making this row an outlier.

@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: Sep 19, Sep 28, Oct 9, Oct 17
+   - Role: Identifier for the date of the festival
+
+2. Festival:
+   - Data type: Categorical
+   - 4 representative example values: Lund International Fantastic Film Festival, Fantastic Fest, Sitges Film Festival, Icon TLV
+   - Role: Descriptor for the name of the festival
+
+3. Location:
+   - Data type: Categorical
+   - 4 representative example values: Lund, Skåne\n Sweden, Austin, Texas\n USA, Sitges, Catalonia\n Spain, Tel Aviv, Central\n Israel
+   - Role: Descriptor for the location of the festival
+
+4. Awards:
+   - Data type: Categorical
+   - 4 representative example values: nan, Best Special Effects\n Best Musical Score
+   - Role: Descriptor for any awards received at the festival
+
+5. Link:
+   - Data type: Categorical
+   - 4 representative example values: fff.se, FantasticFest.com, Sitges Festival, icon.org.il
+   - Role: Descriptor for the website link of the festival
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The festival is "Toronto After Dark" which won "Best Special Effects" and "Best Musical Score".
+   - These awards are different from the majority of the festivals in the table, making this row an outlier.
+
+2. Row 9:
+   - The festival is "Icon TLV" in Tel Aviv, Israel.
+   - This row is an ordinary entry and does not contain any distinctive values that would make it an outlier.
+
+3. Row 7:
+   - The festival is "Sitges Film Festival" in Sitges, Spain.
+   - This row is an ordinary entry and does not contain any distinctive values that would make it an outlier.

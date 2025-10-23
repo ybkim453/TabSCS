@@ -1,0 +1,57 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2002, 2003, 2006, 2008
+   - Role: Identifier
+
+2. Total passengers:
+   - Data type: Numeric
+   - 4 representative example values: 1,182,815, 1,335,757, 1,764,948, 2,529,395
+   - Role: Measure
+
+3. Passenger Change:
+   - Data type: Categorical
+   - 4 representative example values: +15.0%, +12.9%, +12.7%, +7.8%
+   - Role: Descriptor
+
+4. Domestic:
+   - Data type: Numeric
+   - 4 representative example values: 793,295, 879,665, 1,128,489, 1,523,102
+   - Role: Measure
+
+5. International (total):
+   - Data type: Numeric
+   - 4 representative example values: 389,520, 456,092, 636,459, 1,006,293
+   - Role: Measure
+
+6. International (non-CIS):
+   - Data type: Numeric
+   - 4 representative example values: 239,461, 297,421, 488,954, 815,124
+   - Role: Measure
+
+7. CIS:
+   - Data type: Numeric
+   - 4 representative example values: 150,059, 158,671, 147,505, 191,169
+   - Role: Measure
+
+8. Aircraft Landings:
+   - Data type: Numeric
+   - 4 representative example values: 10,162, 10,092, 13,289, 16,407
+   - Role: Measure
+
+9. Cargo (tonnes):
+   - Data type: Numeric
+   - 4 representative example values: 20,153, 18,054, 15,519, 17,142
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 9 (Year: 2009):
+   - The passenger change value is negative (-14.2%), indicating a decrease in passengers compared to the previous year. This makes it an outlier as it deviates from the overall trend of increasing passenger numbers.
+
+2. Row 13 (Year: 2013):
+   - The values for International (non-CIS) and CIS are marked as "nan" (not a number), which is not a valid numerical value. This inconsistency makes the row an outlier.
+
+3. Row 2 (Year: 2003):
+   - There are no clear distinctive values that make this row an outlier. The data in this row seems to be consistent with the rest of the table and does not require special handling.

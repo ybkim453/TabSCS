@@ -1,0 +1,126 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Title:
+   - Data type: Categorical
+   - 4 representative example values: 
+     - Regional Structure and Telecommunications Demand: A Case Study of Kenya (Ph.D. thesis)
+     - Global Turf Wars: Re-Inventing the Telecoms Operator for the Age of Global Competition
+     - ATM Vendor & Operator Strategies
+     - The Far Reaching Effects of Broadband
+   - Role: Descriptor
+
+2. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1982, 1999, 1993, 2002
+   - Role: Identifier
+
+3. Authors:
+   - Data type: Categorical
+   - 4 representative example values: 
+     - D. D. Cleevely
+     - Tim Hills, David Cleevely, Andrea Smith
+     - David Cleevely, Peter Aknai, Ian Leslie
+     - David Cleevely
+   - Role: Descriptor
+
+4. Publisher:
+   - Data type: Categorical
+   - 4 representative example values: 
+     - University of Cambridge
+     - Analysis Publications
+     - Institution of Engineering & Technology
+   - Role: Descriptor
+
+5. Pages:
+   - Data type: Numeric
+   - 4 representative example values: -, 218, 180, 415
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values in this row are "Regulating the Telecoms Market: Competition and Innovation in the Broadband Economy", 2003, "Tim Hills, David Cleevely, Ross Pow", "Analysis Publications", 35.
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not make this row an outlier.
+
+2. Row 6:
+   - The values in this row are "-", 1982, "D. D. Cleevely", "University of Cambridge", "-".
+   - The presence of "-" in the Pages column makes this row different from the majority of the table where numeric values are present. This makes the row an outlier.
+
+3. Row 1:
+   - The values in this row are "Regional Structure and Telecommunications Demand: A Case Study of Kenya (Ph.D. thesis)", 1982, "D. D. Cleevely", "University of Cambridge", "-".
+   - The presence of "-" in the Pages column and the specific title being a Ph.D. thesis make this row slightly different from the majority of the table. However, it is not significantly different enough to be considered a true outlier.
+
+=== Full Table Preview ===
+|   row_number | Title                                                                                  |   Year | Authors                                        | Publisher                               | Pages   |
+|-------------:|:---------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|:----------------------------------------|:--------|
+|            0 | Rural Telecoms Handbook: Equipment and Manufacturers                                   |   1992 | Tim Hills David Cleevely                       | Analysys Publications                   | -       |
+|            1 | Regional Structure and Telecommunications Demand: A Case Study of Kenya (Ph.D. thesis) |   1982 | D. D. Cleevely                                 | University of Cambridge                 | -       |
+|            2 | The Route to Advanced Communications                                                   |   1991 | David Cleevely Stefan Stanislawski Ade Ajibulu | Analysys Publications                   | 178     |
+|            3 | Global Turf Wars: Re-Inventing the Telecoms Operator for the Age of Global Competition |   1999 | Tim Hills David Cleevely Andrea Smith          | Analysis Publications                   | 218     |
+|            4 | ATM Vendor & Operator Strategies                                                       |   1993 | David Cleevely Peter Aknai Ian Leslie          | Analysis Publications                   | 180     |
+|            5 | The Far Reaching Effects of Broadband                                                  |   2002 | David Cleevely                                 | Institution of Engineering & Technology | 415     |
+|            6 | Regulating the Telecoms Market: Competition and Innovation in the Broadband Economy    |   2003 | Tim Hills David Cleevely Ross Pow              | Analysis Publications                   | 35      |
+
+Generated Reasoning SQL: To determine the title published before "The Route to Advanced Communications," we need to find the maximum year before the publication year of "The Route to Advanced Communications" and then retrieve the corresponding title.
+The "Year" column is numeric and represents the publication year of each title. We can use this column to filter the rows.
+SQL: 
+SELECT "Title" 
+FROM T 
+WHERE "Year" = (SELECT MAX("Year") FROM T WHERE "Year" < (SELECT "Year" FROM T WHERE "Title" = 'The Route to Advanced Communications'));
+Generated Final SQL: SELECT "Title" FROM T WHERE "Year" = (SELECT MAX("Year") FROM T WHERE "Year" < (SELECT "Year" FROM T WHERE "Title" = 'The Route to Advanced Communications'));
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Title                                                                                  |
+|:---------------------------------------------------------------------------------------|
+| Regional Structure and Telecommunications Demand: A Case Study of Kenya (Ph.D. thesis) |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: David Cleevely
+SQL: SELECT "Title" FROM T WHERE "Year" = (SELECT MAX("Year") FROM T WHERE "Year" < (SELECT "Year" FROM T WHERE "Title" = 'The Route to Advanced Communications'));
+
+Title
+Regional Structure and Telecommunications Demand: A Case Study of Kenya (Ph.D. thesis)
+Question: which title was published previous to the route to advanced communications?
+A: To find the answer to this question, let’s think step by step.
+Prediction: regional structure and telecommunications demand: a case study of kenya (ph.d. thesis)
+[Gold Answer] regional structure and telecommunications demand: a case study of kenya (ph.d. thesis)
+

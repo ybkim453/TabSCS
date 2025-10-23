@@ -1,0 +1,117 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 1992, 2004, 1992
+   - Role: Identifier for the year the coin was issued
+
+2. Model:
+   - Data type: Categorical
+   - 4 representative example values: 80th anniversary of declaration of Independence, Re-establishment of Krooni currency, Barcelona Olympics, The Flag of Estonia – 2004
+   - Role: Descriptor of the theme or event commemorated by the coin
+
+3. Denomination:
+   - Data type: Categorical
+   - 4 representative example values: 100 krooni, 10 krooni, 10 krooni, 10 krooni
+   - Role: Descriptor of the face value of the coin
+
+4. Metal composition:
+   - Data type: Categorical
+   - 4 representative example values: .925 silver, .925 silver, .925 silver, .925 silver
+   - Role: Descriptor of the material used in making the coin
+
+5. Dimensions:
+   - Data type: Categorical
+   - 4 representative example values: 25 grams (0.88 oz)38 millimetres (1.5 in), 25 grams (0.88 oz)38 millimetres (1.5 in), 25 grams (0.88 oz)38 millimetres (1.5 in), 25 grams (0.88 oz)38 millimetres (1.5 in)
+   - Role: Descriptor of the weight and size of the coin
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The model is "80th anniversary of declaration of Independence, 1918–1998" with a denomination of 100 krooni, which is different from the other rows with a denomination of 10 krooni. This makes it an outlier.
+
+2. Row 7:
+   - The model is "The Flag of Estonia – 2004" with a denomination of 10 krooni, which is consistent with other rows. This row contains no distinctive values that make it an outlier.
+
+3. Row 4:
+   - The model is "80th anniversary of declaration of Independence, 1918–1998" with a denomination of 10 krooni, which is different from the other row with a denomination of 100 krooni. This makes it an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Model                                                     | Denomination   | Metal composition   | Dimensions                                |
+|-------------:|-------:|:----------------------------------------------------------|:---------------|:--------------------|:------------------------------------------|
+|            0 |   1992 | Re-establishment of kroon 28 August 1992                  | 100 krooni     | .900 silver         | 23 grams (0.81 oz)36 millimetres (1.4 in) |
+|            1 |   1996 | Atlanta Olympics 100th anniversary of Modern Olympiad     | 100 krooni     | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            2 |   1998 | 80th anniversary of declaration of Independence 1918–1998 | 100 krooni     | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            3 |   1992 | Re-establishment of Krooni currency                       | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            4 |   1992 | Barcelona Olympics                                        | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            5 |   1998 | 80th anniversary of declaration of Independence 1918–1998 | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            6 |   2002 | 370th anniversary of the founding of Tartu University     | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+|            7 |   2004 | The Flag of Estonia – 2004                                | 10 krooni      | .925 silver         | 25 grams (0.88 oz)38 millimetres (1.5 in) |
+
+Generated Reasoning SQL: Explanation: To determine the top metal composition used in the commemorative coins of Estonia, we need to analyze the "Metal composition" column. We should count the occurrences of each unique metal composition and select the one with the highest count as the top metal composition.
+
+SQL: 
+SELECT "Metal composition", COUNT(*) AS composition_count
+FROM T
+GROUP BY "Metal composition"
+ORDER BY composition_count DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Metal composition", COUNT(*) AS composition_count FROM T GROUP BY "Metal composition" ORDER BY composition_count DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Metal composition   |   composition_count |
+|:--------------------|--------------------:|
+| .925 silver         |                   7 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Commemorative coins of Estonia
+SQL: SELECT "Metal composition", COUNT(*) AS composition_count FROM T GROUP BY "Metal composition" ORDER BY composition_count DESC LIMIT 1;
+
+SQL Execution Result:
+Metal composition | composition_count
+.925 silver | 7
+
+Question: what is the top metal composition?
+A: To find the answer to this question, let’s think step by step.
+Prediction: .925 silver
+[Gold Answer] .900 silver
+

@@ -1,0 +1,134 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 8, 9, 11, 12
+   - Role: Identifier, indicating the ranking of the mountain peaks.
+
+2. Mountain Peak:
+   - Data type: Categorical
+   - 4 representative example values: Montañas Peña Blanca High Point PB, Volcán Acatenango PB, Cerro Tacarcuna PB, Volcán Atitlán PB
+   - Role: Descriptor, identifying the name of the mountain peak.
+
+3. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Guatemala, Panama, Honduras
+   - Role: Descriptor, indicating the nation where the mountain peak is located.
+
+4. Province:
+   - Data type: Categorical
+   - 4 representative example values: Huehuetenango, Chimaltenango\Sacatepéquez, Darién, Sololá
+   - Role: Descriptor, specifying the province within the nation where the mountain peak is located.
+
+5. Elevation:
+   - Data type: Numeric
+   - 4 representative example values: 3518 m\n11,542 ft, 3975 m\n13,041 ft, 1875 m\n6,152 ft, 3537 m\n11,604 ft
+   - Role: Measure, providing the elevation of the mountain peak in meters and feet.
+
+6. Prominence:
+   - Data type: Numeric
+   - 4 representative example values: 1858 m\n6,096 ft, 1835 m\n6,020 ft, 1770 m\n5,807 ft, 1754 m\n5,755 ft
+   - Role: Measure, indicating the prominence of the mountain peak in meters and feet.
+
+7. Isolation:
+   - Data type: Numeric
+   - 4 representative example values: 42 km\n26 mi, 126 km\n78 mi, 99 km\n61 mi, 35 km\n21 mi
+   - Role: Measure, showing the isolation distance of the mountain peak in kilometers and miles.
+
+**Outlier Row Analysis:**
+
+1. Row 10 (Pico Turquino PB, Cuba, Santiago de Cuba, 1974 m\n6,476 ft, 1934 m\n6,345 ft, 1,045 km\n650 mi):
+   - The values for Elevation, Prominence, and Isolation are significantly different from the majority of the table.
+   - The high values for Elevation, Prominence, and Isolation make this row an outlier.
+
+2. Row 12 (Volcán Atitlán PB, Guatemala, Sololá, 3537 m\n11,604 ft, 1754 m\n5,755 ft, 35 km\n21 mi):
+   - The values for Elevation, Prominence, and Isolation are consistent with the majority of the table.
+   - This row is an ordinary entry and does not require special handling.
+
+3. Row 11 (Cerro Tacarcuna PB, Panama, Darién, 1875 m\n6,152 ft, 1770 m\n5,807 ft, 99 km\n61 mi):
+   - The values for Elevation, Prominence, and Isolation are consistent with the majority of the table.
+   - This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Mountain Peak                      | Nation      | Province                    | Elevation        | Prominence       | Isolation      |
+|-------------:|-------:|:-----------------------------------|:------------|:----------------------------|:-----------------|:-----------------|:---------------|
+|            0 |      1 | Volcán Tajumulco PB                | Guatemala   | San Marcos                  | 4220 m\n13845 ft | 3980 m\n13058 ft | 722 km\n448 mi |
+|            1 |      2 | Chirripó Grande PB                 | Costa Rica  | Cartago\nLimón\nSan José    | 3819 m\n12530 ft | 3726 m\n12224 ft | 864 km\n537 mi |
+|            2 |      3 | Montaña de Santa Bárbara PB        | Honduras    | Santa Bárbara               | 2744 m\n9003 ft  | 2084 m\n6837 ft  | 74 km\n46 mi   |
+|            3 |      4 | Cerro las Minas PB                 | Honduras    | Lempira                     | 2849 m\n9347 ft  | 2069 m\n6788 ft  | 130 km\n81 mi  |
+|            4 |      5 | Volcán de Agua PB                  | Guatemala   | Escuintla\nSacatepéquez     | 3761 m\n12339 ft | 1981 m\n6499 ft  | 16 km\n10 mi   |
+|            5 |      6 | Alto Cuchumatanes PB               | Guatemala   | Huehuetenango               | 3837 m\n12589 ft | 1877 m\n6158 ft  | 65 km\n40 mi   |
+|            6 |      7 | Volcán Irazú PB                    | Costa Rica  | Cartago\nSan José           | 3402 m\n11161 ft | 1872 m\n6142 ft  | 48 km\n30 mi   |
+|            7 |      8 | Montañas Peña Blanca High Point PB | Guatemala   | Huehuetenango               | 3518 m\n11542 ft | 1858 m\n6096 ft  | 42 km\n26 mi   |
+|            8 |      9 | Volcán Acatenango PB               | Guatemala   | Chimaltenango\nSacatepéquez | 3975 m\n13041 ft | 1835 m\n6020 ft  | 126 km\n78 mi  |
+|            9 |     10 | Volcán San Miguel PB               | El Salvador | San Miguel                  | 2131 m\n6991 ft  | 1831 m\n6007 ft  | 64 km\n40 mi   |
+|           10 |     11 | Cerro Tacarcuna PB                 | Panama      | Darién                      | 1875 m\n6152 ft  | 1770 m\n5807 ft  | 99 km\n61 mi   |
+|           11 |     12 | Volcán Atitlán PB                  | Guatemala   | Sololá                      | 3537 m\n11604 ft | 1754 m\n5755 ft  | 35 km\n21 mi   |
+|           12 |     13 | Pico Bonito PB                     | Honduras    | Atlántida                   | 2450 m\n8038 ft  | 1710 m\n5610 ft  | 152 km\n95 mi  |
+|           13 |     14 | Montaña San Ildefonso PB           | Honduras    | Cortés                      | 2242 m\n7356 ft  | 1702 m\n5584 ft  | 68 km\n42 mi   |
+|           14 |     15 | Volcán San Cristóbal PB            | Nicaragua   | Chinandega                  | 1745 m\n5725 ft  | 1665 m\n5463 ft  | 134 km\n83 mi  |
+
+Generated Reasoning SQL: Explanation: To determine the elevation of the rank 1 mountain peak, we need to filter the row where the "Rank" column is equal to 1 and retrieve the value from the "Elevation" column. Since the "Elevation" column contains both meters and feet values, we may need to convert them to a consistent unit for accurate comparison.
+
+SQL: SELECT "Elevation" 
+FROM T 
+WHERE "Rank" = 1;
+Generated Final SQL: SELECT "Elevation" FROM T WHERE "Rank" = 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Elevation        |
+|:-----------------|
+| 4220 m\n13845 ft |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Mountain peaks of Central America
+SQL: SELECT "Elevation" FROM T WHERE "Rank" = 1;
+
+SQL Execution Result:
+Elevation
+4220 m\n13845 ft
+
+Question: what is the elevation of the rank 1 mountain?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4220m, 13845ft
+[Gold Answer] 4220 m,13,845 ft
+

@@ -1,0 +1,109 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Parish:
+   - Data type: Categorical
+   - 4 representative example values: Ekne, Levanger, Ytterøy, 
+   - Role of the column: Identifier
+
+2. Church name:
+   - Data type: Categorical
+   - 4 representative example values: Ekne Church, Levanger Church, Bamberg Church, Ytterøy Church
+   - Role of the column: Descriptor
+
+3. Location:
+   - Data type: Categorical
+   - 4 representative example values: Ekne, Levanger, Ytterøya
+   - Role of the column: Descriptor
+
+4. Year built:
+   - Data type: Numeric
+   - 4 representative example values: 1893, 1902, 1998, 1890
+   - Role of the column: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 6 (Index 6):
+   - The values that make it distinctive are Parish = Ytterøy, Church name = Ytterøy Church, Location = Ytterøya, Year built = 1890.
+   - This row is not an outlier as it contains ordinary values that are consistent with the majority of the table.
+
+2. Row 0 (Index 0):
+   - The values that make it distinctive are Parish = Ekne, Church name = Ekne Church, Location = Ekne, Year built = 1893.
+   - This row is not an outlier as it contains ordinary values that are consistent with the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Parish     | Church name       | Location   |   Year built |
+|-------------:|:-----------|:------------------|:-----------|-------------:|
+|            0 | Alstadhaug | Alstadhaug Church | Alstadhaug |         1180 |
+|            1 | Ekne       | Ekne Church       | Ekne       |         1893 |
+|            2 | Levanger   | Levanger Church   | Levanger   |         1902 |
+|            3 | Levanger   | Bamberg Church    | Levanger   |         1998 |
+|            4 | Markabygd  | Markabygda Church | Markabygd  |         1887 |
+|            5 | Okkenhaug  | Okkenhaug Chapel  | Okkenhaug  |         1893 |
+|            6 | Ytterøy    | Ytterøy Church    | Ytterøya   |         1890 |
+|            7 | Åsen       | Åsen Church       | Åsen       |         1904 |
+
+Generated Reasoning SQL: To determine which parish had the most churches built, we need to count the number of occurrences of each unique value in the "Parish" column and identify the parish with the highest count.
+
+SQL: 
+SELECT "Parish", COUNT("Church name") AS num_churches_built
+FROM T
+GROUP BY "Parish"
+ORDER BY num_churches_built DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Parish", COUNT("Church name") AS num_churches_built FROM T GROUP BY "Parish" ORDER BY num_churches_built DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Parish   |   num_churches_built |
+|:---------|---------------------:|
+| Levanger |                    2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Levanger
+SQL: SELECT "Parish", COUNT("Church name") AS num_churches_built FROM T GROUP BY "Parish" ORDER BY num_churches_built DESC LIMIT 1;
+
+Parish | num_churches_built
+Levanger | 2
+Question: which parish had the most churches built.
+A: To find the answer to this question, let’s think step by step.
+Prediction: levanger
+[Gold Answer] levanger
+

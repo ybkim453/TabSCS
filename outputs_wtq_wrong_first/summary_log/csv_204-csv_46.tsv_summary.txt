@@ -1,0 +1,35 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, 4
+   - Role of the column: Descriptor indicating the ranking of the athlete in the competition.
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Joanne Malar, Alison Fealey, Jenny Kurth, Sonia Fonseca
+   - Role of the column: Identifier for the athlete competing in the event.
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: Canada, United States, United States, Puerto Rico
+   - Role of the column: Descriptor indicating the nationality of the athlete.
+
+4. Time:
+   - Data type: Numeric (Time)
+   - 4 representative example values: 4:43.64, 4:48.31, 4:57.24, 5:03.15
+   - Role of the column: Measure indicating the time taken by the athlete to complete the event.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The time value of 5:03.15 is higher compared to the times of the surrounding athletes.
+   - This makes the row an outlier as it deviates significantly from the trend of faster times in the table.
+
+2. Row 3 (Index 3):
+   - The time value of 4:57.24 is higher compared to the times of the surrounding athletes.
+   - This makes the row an outlier as it deviates from the trend of faster times in the table.
+
+3. Row 6 (Index 6):
+   - The time value of 5:13.24 is higher compared to the times of the surrounding athletes.
+   - This makes the row an outlier as it deviates significantly from the trend of faster times in the table.

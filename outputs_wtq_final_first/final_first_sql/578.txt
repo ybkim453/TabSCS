@@ -1,0 +1,160 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Film:
+   - Data type: Categorical
+   - 4 representative example values: Kodachrome film, Kodak Color Print Material, Kodachrome 25 film, Kodachrome 40 film
+   - Role of the column: Descriptor
+
+2. Film.1:
+   - Data type: Categorical
+   - 4 representative example values: 8 mm, daylight (ASA 10) & Type A (ASA 16), Type D (slide duping film), Movie film, 8 mm, daylight, Movie film, 8 mm, Type A
+   - Role of the column: Descriptor
+
+3. Date:
+   - Data type: Numeric (Range)
+   - 4 representative example values: 1936–1962, 1955–1957, 1974–1992, 1974–1992
+   - Role of the column: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values in this row are Kodachrome 40 film, Movie film, 8 mm, Type A, 1974–1992.
+   - These values are similar to other rows in the table and do not stand out as distinctive.
+   - Conclusion: This is an ordinary row and does not require special handling.
+
+2. Row 0:
+   - The values in this row are Kodachrome film, 8 mm, daylight (ASA 10) & Type A (ASA 16), 1936–1962.
+   - These values are the earliest in terms of the date range compared to the other rows in the table.
+   - The early date range makes this row distinctive and potentially an outlier.
+   - Conclusion: This row is an outlier due to the early date range compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Film                                  | Film_1                                              | Date      |
+|-------------:|:--------------------------------------|:----------------------------------------------------|:----------|
+|            0 | Kodachrome film                       | 16 mm daylight (ASA 10) & Type A (ASA 16)           | 1935–1962 |
+|            1 | Kodachrome film                       | 8 mm daylight (ASA 10) & Type A (ASA 16)            | 1936–1962 |
+|            2 | Kodachrome film                       | 35 mm and 828 daylight & Type A                     | 1936–1962 |
+|            3 | Kodachrome Professional film (sheets) | daylight (ASA 8) and Type B (ASA 10)                | 1938–1951 |
+|            4 | Kodachrome film                       | 35 mm and 828 Type F (ASA 12)                       | 1955–1962 |
+|            5 | Kodachrome Professional film          | 35 mm Type A (ASA 16)                               | 1956–1962 |
+|            6 | Kodak Color Print Material            | Type D (slide duping film)                          | 1955–1957 |
+|            7 | Kodachrome II film                    | 16 mm daylight (ASA 25) and Type A (ASA 40)         | 1961–1974 |
+|            8 | Kodachrome II film                    | 8 mm daylight (ASA 25) and Type A (ASA 40)          | 1961–1974 |
+|            9 | Kodachrome II film                    | S-8 Type A (ASA 40)                                 | 1965–1974 |
+|           10 | Kodachrome II film                    | 35 mm and 828 daylight (ASA 25/early) (ASA 64/late) | 1961–1974 |
+|           11 | Kodachrome II film                    | Professional 35 mm Type A (ASA 40)                  | 1962–1978 |
+|           12 | Kodachrome-X film                     | 35 mm (ASA 64)                                      | 1962–1974 |
+|           13 | Kodachrome-X film                     | 126 format                                          | 1963–1974 |
+|           14 | Kodachrome-X film                     | 110 format                                          | 1972–1974 |
+|           15 | Kodachrome 25 film                    | 35 mm daylight                                      | 1974–2001 |
+|           16 | Kodachrome 25 film                    | Movie film 16 mm daylight                           | 1974–2002 |
+|           17 | Kodachrome 25 film                    | Movie film 8 mm daylight                            | 1974–1992 |
+|           18 | Kodachrome 25 film                    | Professional film 35 mm daylight                    | 1983–1999 |
+|           19 | Kodachrome 40 film                    | 35 mm Type A                                        | 1978–1997 |
+|           20 | Kodachrome 40 film                    | Movie film 16 mm Type A                             | 1974–2006 |
+|           21 | Kodachrome 40 film                    | Movie film S-8 Type A                               | 1974–2005 |
+|           22 | Kodachrome 40 film                    | Sound Movie film S-8 Type A                         | 1974–1998 |
+|           23 | Kodachrome 40 film                    | Movie film 8 mm Type A                              | 1974–1992 |
+|           24 | Kodachrome 64                         | 35 mm daylight                                      | 1974–2009 |
+|           25 | Kodachrome 64                         | 126 format daylight                                 | 1974–1993 |
+|           26 | Kodachrome 64                         | 110 format daylight                                 | 1974–1987 |
+|           27 | Kodachrome 64                         | Professional film 35 mm daylight                    | 1983–2009 |
+|           28 | Kodachrome 64                         | Professional film daylight 120 format               | 1986–1996 |
+|           29 | Kodachrome 200                        | Professional film 35 mm daylight                    | 1986–2004 |
+|           30 | Kodachrome 200                        | 35 mm daylight                                      | 1988–2007 |
+|           31 | Cine-Chrome 40A                       | Double Regular 8 mm tungsten                        | 2003–2006 |
+
+Generated Reasoning SQL: Explanation: To determine when the Kodachrome Professional 35mm film was first released, we need to filter the rows based on the film type and find the earliest date in the "Date" column for that specific film type. The "Film" column contains the categorical values that describe the type of film, and the "Date" column represents the range of years when the film was in use. We are interested in the earliest date for the Kodachrome Professional 35mm film.
+
+SQL: 
+SELECT MIN("Date") AS release_date
+FROM T
+WHERE "Film" = 'Kodachrome Professional film'
+AND "Film_1" LIKE '%35 mm%';
+Generated Final SQL: SELECT MIN("Date") AS release_date FROM T WHERE "Film" = 'Kodachrome Professional film' AND "Film_1" LIKE '%35 mm%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| release_date   |
+|:---------------|
+|                |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Kodachrome (row_number, Film, Film_1, Date)
+
+row_number | Film | Film_1 | Date
+0 | Kodachrome film | 16 mm daylight (ASA 10) & Type A (ASA 16) | 1935–1962
+1 | Kodachrome film | 8 mm daylight (ASA 10) & Type A (ASA 16) | 1936–1962
+2 | Kodachrome film | 35 mm and 828 daylight & Type A | 1936–1962
+3 | Kodachrome Professional film (sheets) | daylight (ASA 8) and Type B (ASA 10) | 1938–1951
+4 | Kodachrome film | 35 mm and 828 Type F (ASA 12) | 1955–1962
+5 | Kodachrome Professional film | 35 mm Type A (ASA 16) | 1956–1962
+6 | Kodak Color Print Material | Type D (slide duping film) | 1955–1957
+7 | Kodachrome II film | 16 mm daylight (ASA 25) and Type A (ASA 40) | 1961–1974
+8 | Kodachrome II film | 8 mm daylight (ASA 25) and Type A (ASA 40) | 1961–1974
+9 | Kodachrome II film | S-8 Type A (ASA 40) | 1965–1974
+10 | Kodachrome II film | 35 mm and 828 daylight (ASA 25/early) (ASA 64/late) | 1961–1974
+11 | Kodachrome II film | Professional 35 mm Type A (ASA 40) | 1962–1978
+12 | Kodachrome-X film | 35 mm (ASA 64) | 1962–1974
+13 | Kodachrome-X film | 126 format | 1963–1974
+14 | Kodachrome-X film | 110 format | 1972–1974
+15 | Kodachrome 25 film | 35 mm daylight | 1974–2001
+16 | Kodachrome 25 film | Movie film 16 mm daylight | 1974–2002
+17 | Kodachrome 25 film | Movie film 8 mm daylight | 1974–1992
+18 | Kodachrome 25 film | Professional film 35 mm daylight | 1983–1999
+19 | Kodachrome 40 film | 35 mm Type A | 1978–1997
+20 | Kodachrome 40 film | Movie film 16 mm Type A | 1974–2006
+21 | Kodachrome 40 film | Movie film S-8 Type A | 1974–2005
+22 | Kodachrome 40 film | Sound Movie film S-8 Type A | 1974–1998
+23 | Kodachrome 40 film | Movie film 8 mm Type A | 1974–1992
+24 | Kodachrome 64 | 35 mm daylight | 1974–2009
+25 | Kodachrome 64 | 126 format daylight | 1974–1993
+26 | Kodachrome 64 | 110 format daylight | 1974–1987
+27 | Kodachrome 64 | Professional film 35 mm daylight | 1983–2009
+28 | Kodachrome 64 | Professional film daylight 120 format | 1986–1996
+29 | Kodachrome 200 | Professional film 35 mm daylight | 1986–2004
+30 | Kodachrome 200 | 35 mm daylight | 1988–2007
+31 | Cine-Chrome 40A | Double Regular 8 mm tungsten | 2003–2006
+Question: when was the kodachrome professional 35mm film first released?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will use both the summary and the full table.
+
+From the summary:
+- The **Film** column contains the different types of Kodachrome films.
+- The **Date** column indicates the years during which each type of film was in production.
+
+From the full table:
+- The Kodachrome Professional film 35mm Type A (ASA 40) was first released in 1962 based on the entry: "Kodachrome II film | Professional 35 mm Type A (ASA 40) | 1962–1978".
+
+Therefore, based on the information from both the summary and the full table, the Kodachrome Professional 35mm film was first released in 1962.
+
+Final Answer: 1962
+[Fallback] Prediction: 1962
+[Gold Answer] 1956
+

@@ -1,0 +1,119 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 1987-88, 1990-91, 2009-10, nan
+   - Role of the column: Identifier for the season in which the matches took place
+
+2. Competition
+   - Data type: Categorical
+   - 4 representative example values: UEFA Cup, UEFA Cup Winners' Cup, UEFA Europa League, nan
+   - Role of the column: Descriptor for the type of competition
+
+3. Round
+   - Data type: Categorical
+   - 4 representative example values: 1R, 1/16, 2QR, 2QR
+   - Role of the column: Descriptor for the round of the competition
+
+4. Club
+   - Data type: Categorical
+   - 4 representative example values: FK Partizan Beograd, FC Barcelona, Olympiacos Piraeus, Motherwell
+   - Role of the column: Identifier for the club participating in the match
+
+5. Home
+   - Data type: Numeric
+   - 4 representative example values: 2-0, 1-0, 0-2, 1-0
+   - Role of the column: Measure of goals scored by the home team
+
+6. Away
+   - Data type: Numeric
+   - 4 representative example values: 1-2, 1-4, 1-3, 1-8
+   - Role of the column: Measure of goals scored by the away team
+
+**Outlier Row Analysis:**
+
+1. Row 4:
+   - The values for Home (0-2) and Away (1-5) are significantly different from the majority of the table where goals scored are usually closer in range. This makes the row an outlier.
+
+2. Row 11:
+   - The values for Home (0-2) and Away (1-5) are similar to the outlier row 4. These values are distinctive and make this row an outlier as well.
+
+3. Row 9:
+   - The values for Season (nan) and Competition (nan) indicate missing data, which is not distinctive in this context. Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Season   | Competition           | Round   | Club                |   Home |   Away |
+|-------------:|:---------|:----------------------|:--------|:--------------------|-------:|-------:|
+|            0 | 1985–86  | UEFA Cup Winners' Cup | 1R      | HJK Helsinki        |      1 |      2 |
+|            1 | 1986–87  | UEFA Cup              | 1R      | FC Barcelona        |      1 |      0 |
+|            2 | 1987–88  | UEFA Cup              | 1R      | FK Partizan Beograd |      2 |      1 |
+|            3 | 1987–88  | UEFA Cup              | 2R      | Wismut Aue          |      2 |      0 |
+|            4 | 1987–88  | UEFA Cup              | 1/16    | FC Barcelona        |      1 |      1 |
+|            5 | 1988–89  | UEFA Cup Winners' Cup | 1R      | Lech Poznań         |      2 |      0 |
+|            6 | 1990–91  | UEFA Cup Winners' Cup | 1R      | Olympiacos Piraeus  |      0 |      1 |
+|            7 | 1991–92  | UEFA European Cup     | 1R      | IFK Göteborg        |      1 |      0 |
+|            8 | 1996–97  | UEFA Cup Winners' Cup | QR      | Humenné             |      0 |      0 |
+|            9 | 2009–10  | UEFA Europa League    | 2QR     | Motherwell          |      1 |      1 |
+|           10 | 2011–12  | UEFA Europa League    | 1QR     | FK Budućnost        |      1 |      3 |
+|           11 |          |                       | 2QR     | FK Jablonec 97      |      0 |      1 |
+|           12 | 2012–13  | UEFA Europa League    | 1QR     | Budapest Honvéd     |      0 |      0 |
+
+Generated Reasoning SQL: The summary indicates that the "Club" column contains categorical values representing the clubs participating in matches. To find the total number of unique clubs represented, we need to count the distinct values in the "Club" column. Since each row represents a match involving a club, we can simply count the total number of rows to determine the number of unique clubs.
+SQL: select count(distinct "Club") from T;
+Generated Final SQL: select count(distinct "Club") from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(distinct "Club") |
+|-------------------------:|
+|                       12 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Flamurtari Vlorë
+SQL: select count(distinct "Club") from T;
+
+count(distinct "Club")
+12
+Question: how many clubs are represented?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 12
+[Gold Answer] 12
+

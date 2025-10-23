@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1999, 2002, 2003, 2004
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: European Junior Championships, European Indoor Championships, European U23 Championships, Olympic Games
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Riga, Latvia, Vienna, Austria, Bydgoszcz, Poland, Athens, Greece
+   - Role: Descriptor of the location where the competition was held.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 4th, 1st, 10th (h), 3rd
+   - Role: Measure of the athlete's finishing position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 400 m hurdles, 400 m, 4x400 m relay
+   - Role: Descriptor of the specific track and field event.
+
+6. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 52.17, 45.39 (CR, NR), 48.45, 3:03.69
+   - Role: Measure of the athlete's performance in the event.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The position "10th (h)" in the Olympic Games event is significantly lower compared to the other positions in the table, making this row an outlier.
+
+2. Row 13 (Index 13):
+   - The notes "48.12 (NR)" for the 400 m hurdles event at the World Championships is a national record (NR), which is a distinctive achievement and makes this row an outlier.
+
+3. Row 0 (Index 0):
+   - The position "4th" in the European Junior Championships event is not significantly different from other positions in the table, so this row is an ordinary entry and does not require special handling.

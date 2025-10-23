@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Ship
+   - Data type: Categorical
+   - 4 representative example values: Benjamin Isherwood, Walter S. Diehl, John Ericsson, Kanawha
+   - Role: Identifier for each ship
+
+2. Hull No.
+   - Data type: Categorical
+   - 4 representative example values: T-AO-191, T-AO-193, T-AO-194, T-AO-196
+   - Role: Identifier for each ship's hull number
+
+3. Status
+   - Data type: Categorical
+   - 4 representative example values: Cancelled when 95.3% complete, Active
+   - Role: Descriptor indicating the current status of the ship
+
+4. Years Active
+   - Data type: Categorical
+   - 4 representative example values: Launched 1988, 1988–present, 1991–present, 1992–present
+   - Role: Descriptor indicating the years the ship has been active
+
+5. NVR Page
+   - Data type: Categorical
+   - 4 representative example values: AO191, AO193, AO194, AO196
+   - Role: Identifier for each ship's NVR page
+
+**Outlier Row Analysis:**
+
+1. Kanawha | T-AO-196 | Active | 1991–present | AO196
+   - This row is not an outlier as it contains typical values that are consistent with the majority of the table.
+
+2. Big Horn | T-AO-198 | Active | 1992–present | AO198
+   - This row is not an outlier as it contains typical values that are consistent with the majority of the table. 
+
+3. (Missing row)
+   - Since this row is missing, it cannot be analyzed for outlier status.
+
+=== Full Table Preview ===
+|   row_number | Ship               | Hull No.   | Status                                                                                                                                                                                                                                   | Years Active                                   | NVR\nPage   |
+|-------------:|:-------------------|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:------------|
+|            0 | Henry J. Kaiser    | T-AO-187   | Active—Southern California Duty Oiler                                                                                                                                                                                                    | 1986–present                                   | AO187       |
+|            1 | Joshua Humphreys   | T-AO-188   | Inactivated 1996 returned to service 2005                                                                                                                                                                                                | 1987-1996; 2005-2006; 2010-present             | AO188       |
+|            2 | John Lenthall      | T-AO-189   | Active                                                                                                                                                                                                                                   | 1987-1996; 1998–present                        | AO189       |
+|            3 | Andrew J. Higgins  | T-AO-190   | Inactivated May 1996. Sold to the Chilean Navy May 2009. Towed to Atlantic Marine Alabama shipyard Mobile Alabama September 2009 for three-month refit. Commissioned in Chilean Navy on 10 February 2010 and renamed Almirante Montt.[1] | 1987-1996 (USA); 2010–present (Chile)          | AO190       |
+|            4 | Benjamin Isherwood | T-AO-191   | Cancelled when 95.3% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011                                                                                                    | Launched 1988 christened 1991 never in service | AO191       |
+|            5 | Henry Eckford      | T-AO-192   | Cancelled when 84% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011                                                                                                      | Launched 1989 never in service                 | AO192       |
+|            6 | Walter S. Diehl    | T-AO-193   | Active                                                                                                                                                                                                                                   | 1988–present                                   | AO193       |
+|            7 | John Ericsson      | T-AO-194   | Active                                                                                                                                                                                                                                   | 1991–present                                   | AO194       |
+|            8 | Leroy Grumman      | T-AO-195   | Active                                                                                                                                                                                                                                   | 1989–present                                   | AO195       |
+|            9 | Kanawha            | T-AO-196   | Active                                                                                                                                                                                                                                   | 1991–present                                   | AO196       |
+|           10 | Pecos              | T-AO-197   | Active                                                                                                                                                                                                                                   | 1990–present                                   | AO197       |
+|           11 | Big Horn           | T-AO-198   | Active                                                                                                                                                                                                                                   | 1992–present                                   | AO198       |
+|           12 | Tippecanoe         | T-AO-199   | Active                                                                                                                                                                                                                                   | 1993–present                                   | AO199       |
+|           13 | Guadalupe          | T-AO-200   | Active                                                                                                                                                                                                                                   | 1992–present                                   | AO200       |
+|           14 | Patuxent           | T-AO-201   | Active                                                                                                                                                                                                                                   | 1995–present                                   | AO201       |
+|           15 | Yukon              | T-AO-202   | Active                                                                                                                                                                                                                                   | 1994–present                                   | AO202       |
+|           16 | Laramie            | T-AO-203   | Active                                                                                                                                                                                                                                   | 1996–present                                   | AO203       |
+|           17 | Rappahannock       | T-AO-204   | Active                                                                                                                                                                                                                                   | 1995–present                                   | AO204       |
+
+Generated Reasoning SQL: Explanation: To determine the number of years the oldest ship has been active, we need to find the ship with the earliest launch year and calculate the difference between that year and the current year. We will consider the "Years Active" column, which contains information about the ship's launch year and its activity status.
+
+SQL: 
+SELECT MAX(strftime('%Y', 'now') - CAST(SUBSTR("Years Active", INSTR("Years Active", 'Launched') + 8, 4) AS INTEGER)) AS max_years_active
+FROM T
+WHERE "Years Active" LIKE 'Launched%';
+Generated Final SQL: SELECT MAX(strftime('%Y', 'now') - CAST(SUBSTR("Years Active", INSTR("Years Active", 'Launched') + 8, 4) AS INTEGER)) AS max_years_active FROM T WHERE "Years Active" LIKE 'Launched%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   max_years_active |
+|-------------------:|
+|               1827 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Henry J. Kaiser-class oiler
+SQL: SELECT MAX(strftime('%Y', 'now') - CAST(SUBSTR("Years Active", INSTR("Years Active", 'Launched') + 8, 4) AS INTEGER)) AS max_years_active FROM T WHERE "Years Active" LIKE 'Launched%';
+
+SQL Execution Result:
+max_years_active
+1827
+
+Question: how many years at most was the oldest ship active?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1827
+[Gold Answer] 28
+

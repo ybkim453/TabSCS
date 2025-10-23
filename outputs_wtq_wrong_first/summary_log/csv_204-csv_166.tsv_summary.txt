@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 31, 39
+   - Role: Identifier for each game in the table
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: October 28, 1927, November 10, 1933, October 2, 1965, November 10, 1973
+   - Role: Descriptor indicating the date of the game
+
+3. Location:
+   - Data type: Categorical
+   - 4 representative example values: ?, Jacksonville, AL, Troy, AL
+   - Role: Descriptor indicating where the game took place
+
+4. Winner:
+   - Data type: Categorical
+   - 4 representative example values: Jacksonville State, Troy State
+   - Role: Descriptor indicating the winning team of each game
+
+5. Score\nJSU:
+   - Data type: Numeric
+   - 4 representative example values: 26, 7, 9, 38
+   - Role: Measure indicating the score of Jacksonville State in each game
+
+6. Score\nTU:
+   - Data type: Numeric
+   - 4 representative example values: 12, 18, 7, 14
+   - Role: Measure indicating the score of Troy State in each game
+
+7. Series:
+   - Data type: Categorical
+   - 4 representative example values: JSU 2-0, Tied 3-3, JSU 20-10-1, JSU 23-14-2
+   - Role: Descriptor indicating the series outcome between the two teams
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The Location is marked as "?" which is an ambiguous marker.
+   - This row is an ordinary row and does not require special handling.
+
+2. Row 63:
+   - The Winner is marked as "nan" which indicates missing data.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 5:
+   - The Series is marked as "?" which is an ambiguous marker.
+   - This row is an ordinary row and does not require special handling.

@@ -1,0 +1,147 @@
+=== Table Summary ===
+**Column 1: Award**
+- Data type: Categorical
+- 4 representative example values: Academy Awards, BAFTA, David di Donatello Award, Golden Globe Awards
+- Role of the column: Descriptor
+
+**Column 2: Category**
+- Data type: Categorical
+- 4 representative example values: Best Supporting Actor, Best Actor, Best Direction, Best Foreign Film
+- Role of the column: Descriptor
+
+**Column 3: Nominee**
+- Data type: Categorical
+- 4 representative example values: Roy Scheider, Gene Hackman, William Friedkin, Philip D'Antoni
+- Role of the column: Descriptor
+
+**Column 4: Result**
+- Data type: Categorical
+- 4 representative example values: Nominated, Won
+- Role of the column: Measure
+
+**Outlier Row Analysis:**
+1. Row 14:
+   - The values are "Golden Globe Awards, 1972", "Best Actor", "Gene Hackman", "Won".
+   - This row is not an outlier as it contains values that are consistent with other rows in the table.
+
+2. Row 11:
+   - The values are "BAFTA, 1972", "Best Actor", "Gene Hackman", "Won".
+   - This row is not an outlier as it contains values that are consistent with other rows in the table.
+
+3. Row 5:
+   - The values are "David di Donatello Award, 1972", "Best Foreign Film", "Philip D'Antoni", "Won".
+   - This row is not an outlier as it contains values that are consistent with other rows in the table.
+
+=== Full Table Preview ===
+|   row_number | Award                                 | Category                            | Nominee                                | Result    |
+|-------------:|:--------------------------------------|:------------------------------------|:---------------------------------------|:----------|
+|            0 | Academy Awards 1972                   | Best Picture                        | Phillip D'Antoni                       | Won       |
+|            1 | Academy Awards 1972                   | Best Director                       | William Friedkin                       | Won       |
+|            2 | Academy Awards 1972                   | Best Actor                          | Gene Hackman                           | Won       |
+|            3 | Academy Awards 1972                   | Best Adapted Screenplay             | Ernest Tidyman                         | Won       |
+|            4 | Academy Awards 1972                   | Film Editing                        | Gerald B. Greenberg                    | Won       |
+|            5 | Academy Awards 1972                   | Best Supporting Actor               | Roy Scheider                           | Nominated |
+|            6 | Academy Awards 1972                   | Best Cinematography                 | Owen Roizman                           | Nominated |
+|            7 | Academy Awards 1972                   | Best Sound                          | Theodore Soderberg\nChristopher Newman | Nominated |
+|            8 | American Cinema Editors 1972          | Best Edited Feature Film            | Gerald B. Greenberg                    | Nominated |
+|            9 | BAFTA 1972                            | Best Actor                          | Gene Hackman                           | Won       |
+|           10 | BAFTA 1972                            | Best Film Editing                   | Gerald B. Greenberg                    | Won       |
+|           11 | BAFTA 1972                            | Best Direction                      | William Friedkin                       | Nominated |
+|           12 | BAFTA 1972                            | Best Film                           | Philip D'Antoni                        | Nominated |
+|           13 | BAFTA 1972                            | Best Sound Track                    | Christopher Newman\nTheodore Soderberg | Nominated |
+|           14 | David di Donatello Award 1972         | Best Foreign Film                   | Philip D'Antoni                        | Won       |
+|           15 | Directors Guild of America 1972       | Outstanding Directorial Achievement | William Friedkin                       | Won       |
+|           16 | Edgar Allan Poe Awards 1972           | Best Motion Picture                 | Ernest Tidyman                         | Won       |
+|           17 | Golden Globe Awards 1972              | Best Motion Picture                 | Phillip D'Antoni                       | Won       |
+|           18 | Golden Globe Awards 1972              | Best Director                       | William Friedkin                       | Won       |
+|           19 | Golden Globe Awards 1972              | Best Actor                          | Gene Hackman                           | Won       |
+|           20 | Golden Globe Awards 1972              | Best Screenplay                     | Ernest Tidyman                         | Nominated |
+|           21 | Kansas City Film Critics Circle 1972  | Best Actor                          | Gene Hackman                           | Won       |
+|           22 | Kansas City Film Critics Circle 1972  | Best Film                           | Ernest Tidyman                         | Won       |
+|           23 | National Society of Film Critics 1972 | Best Actor                          | Gene Hackman                           | Nominated |
+|           24 | New York Film Critics Circle 1971     | Best Actor                          | Gene Hackman                           | Won       |
+|           25 | New York Film Critics Circle 1971     | Best Film                           | Ernest Tidyman                         | Nominated |
+|           26 | Writers Guild of America 1972         | Best Drama Adaptation               | Ernest Tidyman                         | Nominated |
+
+Generated Reasoning SQL: The relevant columns for this question are "Award", "Category", "Nominee", and "Result" from the summary. We need to find the nominee who won an Academy Award for Best Director in the film "The French Connection." To answer this, we filter rows where "Award" = "Academy Awards" and "Category" = "Best Director" and "Result" = "Won" and "Nominee" is the director of the film "The French Connection."
+
+SQL: 
+select "Nominee" 
+from T 
+where "Award" = 'Academy Awards' 
+and "Category" = 'Best Director' 
+and "Result" = 'Won' 
+and "Nominee" like '%William Friedkin%';
+Generated Final SQL: select "Nominee" from T where "Award" = 'Academy Awards' and "Category" = 'Best Director' and "Result" = 'Won' and "Nominee" like '%William Friedkin%';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: The French Connection (film) (row_number, Award, Category, Nominee, Result)
+
+row_number | Award | Category | Nominee | Result
+0 | Academy Awards 1972 | Best Picture | Phillip D'Antoni | Won
+1 | Academy Awards 1972 | Best Director | William Friedkin | Won
+2 | Academy Awards 1972 | Best Actor | Gene Hackman | Won
+3 | Academy Awards 1972 | Best Adapted Screenplay | Ernest Tidyman | Won
+4 | Academy Awards 1972 | Film Editing | Gerald B. Greenberg | Won
+5 | Academy Awards 1972 | Best Supporting Actor | Roy Scheider | Nominated
+6 | Academy Awards 1972 | Best Cinematography | Owen Roizman | Nominated
+7 | Academy Awards 1972 | Best Sound | Theodore Soderberg\nChristopher Newman | Nominated
+8 | American Cinema Editors 1972 | Best Edited Feature Film | Gerald B. Greenberg | Nominated
+9 | BAFTA 1972 | Best Actor | Gene Hackman | Won
+10 | BAFTA 1972 | Best Film Editing | Gerald B. Greenberg | Won
+11 | BAFTA 1972 | Best Direction | William Friedkin | Nominated
+12 | BAFTA 1972 | Best Film | Philip D'Antoni | Nominated
+13 | BAFTA 1972 | Best Sound Track | Christopher Newman\nTheodore Soderberg | Nominated
+14 | David di Donatello Award 1972 | Best Foreign Film | Philip D'Antoni | Won
+15 | Directors Guild of America 1972 | Outstanding Directorial Achievement | William Friedkin | Won
+16 | Edgar Allan Poe Awards 1972 | Best Motion Picture | Ernest Tidyman | Won
+17 | Golden Globe Awards 1972 | Best Motion Picture | Phillip D'Antoni | Won
+18 | Golden Globe Awards 1972 | Best Director | William Friedkin | Won
+19 | Golden Globe Awards 1972 | Best Actor | Gene Hackman | Won
+20 | Golden Globe Awards 1972 | Best Screenplay | Ernest Tidyman | Nominated
+21 | Kansas City Film Critics Circle 1972 | Best Actor | Gene Hackman | Won
+22 | Kansas City Film Critics Circle 1972 | Best Film | Ernest Tidyman | Won
+23 | National Society of Film Critics 1972 | Best Actor | Gene Hackman | Nominated
+24 | New York Film Critics Circle 1971 | Best Actor | Gene Hackman | Won
+25 | New York Film Critics Circle 1971 | Best Film | Ernest Tidyman | Nominated
+26 | Writers Guild of America 1972 | Best Drama Adaptation | Ernest Tidyman | Nominated
+Question: who won an academy award for best director in the film, "the french connection."?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: 1. Start by looking at the summary to understand the structure of the table:
+- The **Nominee** column contains the names of the individuals nominated for various awards related to the film "The French Connection."
+- The **Category** column specifies the award category, such as Best Director.
+
+2. Next, examine the full table to identify the row where someone won an Academy Award for Best Director related to "The French Connection."
+- From the table, we see that William Friedkin won the Academy Award for Best Director in the film "The French Connection."
+
+Therefore, the final answer to the question "Who won an Academy Award for Best Director in the film, 'The French Connection'?" is:
+Final Answer: William Friedkin
+[Fallback] Prediction: william friedkin
+[Gold Answer] william friedkin
+

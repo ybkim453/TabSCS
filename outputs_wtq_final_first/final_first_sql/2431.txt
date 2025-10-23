@@ -1,0 +1,137 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1997, 2002, 2006, 2008
+   - Role: Identifier for the year in which the title was released.
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Zazá, Festival de Desenhos, O Beijo do Vampiro, A Favorita
+   - Role: Descriptor for the title of the project.
+
+3. Role:
+   - Data type: Categorical
+   - 4 representative example values: Dora Dumont, Herself, Lara, Maria do Céu / Pâmela Queiroz
+   - Role: Descriptor for the role played by the individual in the project.
+
+4. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan, Hoster
+   - Role: Additional notes or information related to the project.
+
+**Outlier Row Analysis:**
+
+1. Row 20:
+   - The values in this row are not provided, indicated as "nan". This lack of information makes it an outlier as it deviates from the typical data entries in the table.
+
+2. Row 3:
+   - The role is listed as "Herself", which is different from the typical roles listed in the table. This makes it an outlier as it does not fit the pattern of character roles played by individuals.
+
+3. Row 10:
+   - The role is listed as "Elizabeth Aparecida Barra", which is different from the typical format of listing one character name. This deviation makes it an outlier as it stands out from the usual role descriptions in the table.
+
+=== Full Table Preview ===
+|   row_number |   Year | Title                           | Role                          | Notes                               |
+|-------------:|-------:|:--------------------------------|:------------------------------|:------------------------------------|
+|            0 |   1990 | Mico Preto                      | Denise Menezes Garcia         |                                     |
+|            1 |   1990 | Meu Bem Meu Mal                 |                               | Cameo                               |
+|            2 |   1992 | Você Decide                     |                               | Ep: "Tabu"                          |
+|            3 |   1992 | Escolinha do Professor Raimundo | Capituzinha                   |                                     |
+|            4 |   1992 | Você Decide                     |                               | Ep: "Mamãe Coragem"                 |
+|            5 |   1993 | Contos de Verão                 | Fabíola                       |                                     |
+|            6 |   1994 | Confissões de Adolescente       | Carol                         |                                     |
+|            7 |   1995 | A Próxima Vítima                | Carina Carvalho Rossi         |                                     |
+|            8 |   1996 | Você Decide                     |                               | Ep: "Justiça"                       |
+|            9 |   1996 | Vira-Lata                       | Tatu / Bárbara                |                                     |
+|           10 |   1997 | Zazá                            | Dora Dumont                   |                                     |
+|           11 |   1998 | Era Uma Vez...                  | Emilia Zanella                |                                     |
+|           12 |   1999 | Mundo VIP                       | Herself                       | Cameo                               |
+|           13 |   1999 | Suave Veneno                    | Marina Canhedo                |                                     |
+|           14 |   1999 | Você Decide                     | Socorro                       | Ep: "A Filha de Maria"              |
+|           15 |   1999 | Terra Nostra                    | Hannah                        | Cameo                               |
+|           16 |   2000 | A Invenção do Brasil            | Moema                         |                                     |
+|           17 |   2000 | Laços de Família                | Íris Frank Lacerda            |                                     |
+|           18 |   2001 | Sítio do Picapau Amarelo        |                               | Ep: "A Festa da Cuca"               |
+|           19 |   2001 | A Padroeira                     | Cecília de Sá                 |                                     |
+|           20 |   2002 | Festival de Desenhos            | Herself                       | Hoster                              |
+|           21 |   2002 | Brava Gente                     | Jane                          | Ep: "Loucos de Pedra"               |
+|           22 |   2002 | Os Normais                      | Kátia                         | Ep: "É Nojento Mas é Normal"        |
+|           23 |   2002 | O Beijo do Vampiro              | Lara                          |                                     |
+|           24 |   2003 | Homem Objeto                    | Eva                           |                                     |
+|           25 |   2003 | Celebridade                     | Darlene Sampaio               |                                     |
+|           26 |   2004 | Casseta & Planeta Urgente!      | Darlene Sampaio               | Cameo                               |
+|           27 |   2005 | América                         | Sol de Oliveira               |                                     |
+|           28 |   2006 | Dança no Gelo                   | Herself                       | Reality show of Domingão do Faustão |
+|           29 |   2006 | Pé na Jaca                      | Elizabeth Aparecida Barra     |                                     |
+|           30 |   2007 | Paraíso Tropical                | Betina Monteiro               | Cameo                               |
+|           31 |   2008 | Episódio Especial               | Herself                       | Cameo                               |
+|           32 |   2008 | A Favorita                      | Maria do Céu / Pâmela Queiroz |                                     |
+|           33 |   2009 | Decamerão - A Comédia do Sexo   | Monna                         |                                     |
+|           34 |   2009 | Ó Paí Ó                         | Keila Cristina                | Ep: "A Outra"                       |
+|           35 |   2009 | Episódio Especial               | Herself                       | Cameo                               |
+|           36 |   2010 | As Cariocas                     | Alice                         | Ep: "A Suicida da Lapa"             |
+|           37 |   2011 | Insensato Coração               | Natalie Lamour                |                                     |
+|           38 |   2012 | Louco por Elas                  | Giovanna Bianchi              |                                     |
+|           39 |   2013 | A Grande Família                | Bianca                        | Cameo                               |
+
+Generated Reasoning SQL: To determine the year of Deborah Secco's first film, we need to find the minimum value in the "Year" column, as it represents the earliest year in which a project was released. 
+Since the "Year" column is numeric, we can directly find the minimum value without any additional casting or conversion.
+SQL: select min("Year") as first_film_year from T;
+Generated Final SQL: select min("Year") as first_film_year from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   first_film_year |
+|------------------:|
+|              1990 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Deborah Secco
+SQL: select min("Year") as first_film_year from T;
+
+first_film_year
+1990
+Question: what was the year of secco's first film?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1990
+[Gold Answer] 1990
+

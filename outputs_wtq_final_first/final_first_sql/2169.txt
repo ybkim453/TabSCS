@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. DATE
+   - Data type: Categorical
+   - 4 representative example values: June 10 Commissioner's Cup, June 15, July 1, October 14
+   - Role: Identifier for the date of the game
+
+2. OPPONENT
+   - Data type: Categorical
+   - 4 representative example values: MOBILINE, BRGY.GINEBRA, POP COLA, SHELL
+   - Role: Descriptor for the opposing team
+
+3. SCORE
+   - Data type: Categorical
+   - 4 representative example values: 97-92, 111-98, 95-79, 68-62
+   - Role: Measure of the final score of the game
+
+4. TOP SCORER (Total points)
+   - Data type: Categorical
+   - 4 representative example values: Tony Lang (29), nan
+   - Role: Descriptor for the player with the highest points in the game
+
+5. VENUE
+   - Data type: Categorical
+   - 4 representative example values: ARANETA COLISEUM, PHILSPORTS ARENA, YNARES CENTER
+   - Role: Descriptor for the location of the game
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The TOP SCORER column has a specific player name and total points, unlike the other rows where it is marked as "nan". This makes it an outlier as it has a distinctive value in that column.
+
+2. Row 15:
+   - The DATE column has an unusual format "October 24" without specifying the tournament or cup name like the other rows. This makes it an outlier as it deviates from the standard format of the DATE column.
+
+3. Row 10:
+   - The OPPONENT column has a missing value "nan", which is different from the other rows where the opponent team is specified. This makes it an outlier as it has a missing value in a crucial column.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them atypical and requiring special handling.
+
+=== Full Table Preview ===
+|   row_number | DATE                        | OPPONENT     | SCORE   | TOP SCORER (Total points)   | VENUE            |
+|-------------:|:----------------------------|:-------------|:--------|:----------------------------|:-----------------|
+|            0 | February 7 All-Filipino Cup | SHELL        | 76-60   |                             | PHILSPORTS ARENA |
+|            1 | February 11                 | MOBILINE     | 80-68   |                             | ARANETA COLISEUM |
+|            2 | February 16                 | ALASKA       | 73-72   | Davonn Harp (20)            | PHILSPORTS ARENA |
+|            3 | February 28                 | SAN MIGUEL   | 78-76   | Lowell Briones (21)         | PHILSPORTS ARENA |
+|            4 | March 3                     | BRGY.GINEBRA | 79-72   |                             | ILOILO CITY      |
+|            5 | March 9                     | SHELL        | 65-58   |                             | PHILSPORTS ARENA |
+|            6 | April 4                     | STA.LUCIA    | 87-84   |                             | PHILSPORTS ARENA |
+|            7 | June 10 Commissioner's Cup  | MOBILINE     | 97-92   | Tony Lang (29)              | ARANETA COLISEUM |
+|            8 | June 15                     | BRGY.GINEBRA | 111-98  |                             | PHILSPORTS ARENA |
+|            9 | June 24                     | SHELL        | 94-82   |                             | ARANETA COLISEUM |
+|           10 | July 1                      | POP COLA     | 95-79   |                             | ARANETA COLISEUM |
+|           11 | July 8                      | STA.LUCIA    | 95-88   |                             | ARANETA COLISEUM |
+|           12 | July 13                     | TANDUAY      | 104-98  |                             | PHILSPORTS ARENA |
+|           13 | September 23 Governor's Cup | TANDUAY      | 108-93  |                             | PHILSPORTS ARENA |
+|           14 | September 29                | TALK 'N TEXT | 99-85   |                             | DUMAGUETE CITY   |
+|           15 | October 14                  | SHELL        | 68-62   |                             | YNARES CENTER    |
+|           16 | October 19                  | STA.LUCIA    | 101-94  |                             | CUNETA ASTRODOME |
+|           17 | October 24                  | BRGY.GINEBRA | 93-72   |                             | PHILSPORTS ARENA |
+|           18 | November 7                  | SAN MIGUEL   | 86-81   |                             | ARANETA COLISEUM |
+
+Generated Reasoning SQL: Explanation: To determine the number of games the team won with scores above 100, we need to consider the "SCORE" column to extract the winning scores. We will filter rows where the team's score is above 100 and the team won the game. The "SCORE" column contains the scores in the format "team_score-opponent_score", and we are interested in the team's score. We will exclude any outlier rows that do not provide relevant information for this calculation.
+
+SQL: 
+SELECT COUNT(*) 
+FROM T 
+WHERE CAST(SUBSTR("SCORE", 1, INSTR("SCORE", '-') - 1) AS INTEGER) > 100;
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE CAST(SUBSTR("SCORE", 1, INSTR("SCORE", '-') - 1) AS INTEGER) > 100;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2001 Batang Red Bull Thunder season
+SQL: SELECT COUNT(*) FROM T WHERE CAST(SUBSTR("SCORE", 1, INSTR("SCORE", '-') - 1) AS INTEGER) > 100;
+
+SQL Execution Result:
+COUNT(*)
+4
+
+Question: how many games did the team win with scores above 100?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

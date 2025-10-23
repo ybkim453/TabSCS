@@ -1,0 +1,154 @@
+=== Table ID ===
+csv/204-csv/566.tsv
+
+=== Question ===
+which reactor is the only one to have been destroyed in an accident?
+
+=== Sub-table Preview ===
+| Location    | Reactor type   | Status                                          |   Net\nCapacity\n(MWe) | Gross\nCapacity\n(MWe)   |
+|:------------|:---------------|:------------------------------------------------|-----------------------:|:-------------------------|
+| Chernobyl-1 | RBMK-1000      | shut down in 1996                               |                    740 | 800                      |
+| Chernobyl-4 | RBMK-1000      | destroyed in the 1986 accident                  |                    925 | 1,000                    |
+| Kursk-1     | RBMK-1000      | operational until 2021                          |                    925 | 1,000                    |
+| Kursk-2     | RBMK-1000      | operational until 2024                          |                    925 | 1,000                    |
+| Kursk-5     | MKER-1000      | construction begin was 1985, since then shelved |                    925 | 1,000                    |
+| Leningrad-2 | RBMK-1000      | operational until 2021                          |                    925 | 1,000                    |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Location:
+   - Data type: Categorical
+   - 4 representative example values: Chernobyl-1, Kursk-1, Kursk-5, Leningrad-2
+   - Role of the column: Identifier for the location of the reactor.
+
+2. Reactor type:
+   - Data type: Categorical
+   - 4 representative example values: RBMK-1000, MKER-1000
+   - Role of the column: Descriptor for the type of reactor.
+
+3. Status:
+   - Data type: Categorical
+   - 4 representative example values: shut down in 1996, destroyed in the 1986 accident, operational until 2021, construction begin was 1985, since then shelved
+   - Role of the column: Descriptor for the current status of the reactor.
+
+4. Net Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 740, 925
+   - Role of the column: Measure of the net capacity of the reactor in Megawatts electrical.
+
+5. Gross Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 800, 1,000
+   - Role of the column: Measure of the gross capacity of the reactor in Megawatts electrical.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Chernobyl-1, RBMK-1000, shut down in 1996, 740, 800):
+   - The reactor being shut down in 1996 is the distinctive value in this row.
+   - This row is an outlier as it represents a reactor that was shut down earlier compared to the other operational reactors.
+
+2. Row 16 (Kursk-5, MKER-1000, construction begin was 1985, since then shelved, 925, 1,000):
+   - The fact that the construction of this reactor was shelved after beginning in 1985 is the distinctive value.
+   - This row is an outlier as it represents a reactor that was not operational and had its construction halted.
+
+3. Row 3 (Kursk-2, RBMK-1000, operational until 2024, 925, 1,000):
+   - The operational status until 2024 is the distinctive value in this row.
+   - This row is an outlier as it represents a reactor with a future operational status compared to the other reactors that are either shut down or operational until 2021.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them outliers in the context of the data presented.
+
+=== Full Table Preview ===
+|   row_number | Location    | Reactor type   | Status                                         |   Net\nCapacity\n(MWe) |   Gross\nCapacity\n(MWe) |
+|-------------:|:------------|:---------------|:-----------------------------------------------|-----------------------:|-------------------------:|
+|            0 | Chernobyl-1 | RBMK-1000      | shut down in 1996                              |                    740 |                      800 |
+|            1 | Chernobyl-2 | RBMK-1000      | shut down in 1991                              |                    925 |                     1000 |
+|            2 | Chernobyl-3 | RBMK-1000      | shut down in 2000                              |                    925 |                     1000 |
+|            3 | Chernobyl-4 | RBMK-1000      | destroyed in the 1986 accident                 |                    925 |                     1000 |
+|            4 | Chernobyl-5 | RBMK-1000      | construction cancelled in 1988                 |                    950 |                     1000 |
+|            5 | Chernobyl-6 | RBMK-1000      | construction cancelled in 1988                 |                    950 |                     1000 |
+|            6 | Ignalina-1  | RBMK-1500      | shut down in 2004                              |                   1185 |                     1300 |
+|            7 | Ignalina-2  | RBMK-1500      | shut down in 2009                              |                   1185 |                     1300 |
+|            8 | Ignalina-3  | RBMK-1500      | construction cancelled in 1988                 |                   1380 |                     1500 |
+|            9 | Ignalina-4  | RBMK-1500      | plan cancelled in 1988                         |                   1380 |                     1500 |
+|           10 | Kostroma-1  | RBMK-1500      | construction cancelled in 1980s                |                   1380 |                     1500 |
+|           11 | Kostroma-2  | RBMK-1500      | construction cancelled in 1980s                |                   1380 |                     1500 |
+|           12 | Kursk-1     | RBMK-1000      | operational until 2021                         |                    925 |                     1000 |
+|           13 | Kursk-2     | RBMK-1000      | operational until 2024                         |                    925 |                     1000 |
+|           14 | Kursk-3     | RBMK-1000      | operational until March 2014                   |                    925 |                     1000 |
+|           15 | Kursk-4     | RBMK-1000      | operational until February 2016                |                    925 |                     1000 |
+|           16 | Kursk-5     | MKER-1000      | construction begin was 1985 since then shelved |                    925 |                     1000 |
+|           17 | Kursk-6     | RBMK-1000      | construction cancelled in 1993                 |                    925 |                     1000 |
+|           18 | Leningrad-1 | RBMK-1000      | operational                                    |                    925 |                     1000 |
+|           19 | Leningrad-2 | RBMK-1000      | operational until 2021                         |                    925 |                     1000 |
+|           20 | Leningrad-3 | RBMK-1000      | operational until June 2025                    |                    925 |                     1000 |
+|           21 | Leningrad-4 | RBMK-1000      | operational until August 2026                  |                    925 |                     1000 |
+|           22 | Smolensk-1  | RBMK-1000      | operational until December 2022                |                    925 |                     1000 |
+|           23 | Smolensk-2  | RBMK-1000      | operational until July 2015                    |                    925 |                     1000 |
+|           24 | Smolensk-3  | RBMK-1000      | operational until July 2023                    |                    925 |                     1000 |
+|           25 | Smolensk-4  | RBMK-1000      | construction cancelled in 1993                 |                    925 |                     1000 |
+
+Generated Reasoning SQL: Explanation: To identify the reactor that was destroyed in an accident, we need to look for the row where the "Status" column contains the specific value "destroyed in the 1986 accident". This row represents the reactor that suffered destruction due to an accident, making it the only one in the table with this fate.
+
+SQL: 
+SELECT "Location", "Reactor type"
+FROM T
+WHERE "Status" LIKE '%destroyed in the 1986 accident%';
+Generated Final SQL: SELECT "Location", "Reactor type" FROM T WHERE "Status" LIKE '%destroyed in the 1986 accident%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Location    | Reactor type   |
+|:------------|:---------------|
+| Chernobyl-4 | RBMK-1000      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: RBMK
+SQL: SELECT "Location", "Reactor type" FROM T WHERE "Status" LIKE '%destroyed in the 1986 accident%';
+
+SQL Execution Result:
+Location | Reactor type
+Chernobyl-4 | RBMK-1000
+
+Question: which reactor is the only one to have been destroyed in an accident?
+A: To find the answer to this question, let’s think step by step.
+Prediction: rbmk-1000
+[Gold Answer] chernobyl-4
+

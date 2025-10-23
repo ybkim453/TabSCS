@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - Representative values: September 24, October 23, November 6, January 1, 1927
+   - Role: Identifier for the specific date of the game
+
+2. Opponent
+   - Data type: Categorical
+   - Representative values: Millsaps, Sewanee, Kentucky, Georgia, vs. Stanford
+   - Role: Descriptor for the opposing team
+
+3. Site
+   - Data type: Categorical
+   - Representative values: Denny Field • Tuscaloosa, AL, Rickwood Field • Birmingham, AL, Rose Bowl • Pasadena, CA
+   - Role: Descriptor for the location of the game
+
+4. Result
+   - Data type: Categorical
+   - Representative values: W 54–0, W 2–0, W 14–0, W 33–6, T 7–7
+   - Role: Measure indicating the outcome of the game
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The Date is "January 1, 1927" which is the only row with a date in January.
+   - The Opponent is "vs. Stanford*" which is different from the other opponents listed.
+   - The Site is "Rose Bowl • Pasadena, CA (Rose Bowl)" which is a unique location compared to the other sites.
+   - The Result is "T 7–7" which is a tie, unlike the other rows with wins.
+   - This row is an outlier due to the combination of a unique date, opponent, site, and the tie result.
+
+2. Row 0:
+   - The Date is "September 24" which is the earliest date in the table.
+   - The Opponent is "Millsaps*" which is different from the other opponents listed.
+   - The Site is "Denny Field • Tuscaloosa, AL" which is a unique location compared to the other sites.
+   - The Result is "W 54–0" which is a significant win compared to the other results.
+   - This row is an outlier due to the combination of the earliest date, unique opponent, site, and the large margin of victory.

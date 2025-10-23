@@ -1,0 +1,132 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 6, 8, 9, 16
+   - Role: Identifier for each row
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Keep Hustlin, The Autobiography, Worldwide Gunnin', Better Days
+   - Role: Descriptor of the title of each track
+
+3. Featured guest(s):
+   - Data type: Categorical
+   - 4 representative example values: E-40 & Too Short, nan, Ron Banks
+   - Role: Descriptor of any featured guest artists on the track
+
+4. Producer(s):
+   - Data type: Categorical
+   - 4 representative example values: Young Tre, Crazy Toones, Skooby Doo, Barr Nine
+   - Role: Descriptor of the producer(s) of the track
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 3:39, 1:21, 3:25, 3:53
+   - Role: Measure of the duration of each track
+
+6. Sample(s):
+   - Data type: Categorical
+   - 4 representative example values: *"Yearning for Your Love" by The Gap Band, nan, *"It's Gonna Be Alright" by Crimies
+   - Role: Descriptor of any samples used in the track
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The values in this row are not significantly different from the majority of the table. They contain typical data entries and do not stand out as outliers.
+
+2. Row 5:
+   - The values in this row are also not distinctively different from the majority of the table. They are ordinary data entries and do not qualify as outliers.
+
+3. Row 16:
+   - The values in this row include a sample from "It's Gonna Be Alright" by Crimies, which is different from the other samples in the table. This makes the row an outlier as it deviates from the typical pattern of samples in the table.
+
+=== Full Table Preview ===
+|   row_number |   # | Title                       | Featured guest(s)               | Producer(s)     | Time   | Sample (s)                                                                          |
+|-------------:|----:|:----------------------------|:--------------------------------|:----------------|:-------|:------------------------------------------------------------------------------------|
+|            0 |   1 | "Hog"                       |                                 | Battlecat       | 4:24   | *"3 Time Felons" by Westside Connection                                             |
+|            1 |   2 | "Where Y'all From"          |                                 | Battlecat       | 1:11   |                                                                                     |
+|            2 |   3 | "Fuckin Wit uh House Party" |                                 | Battlecat       | 4:49   | *"Hollywood Squares" by Bootsy's Rubber Band\n*"(Not Just) Knee Deep" by Funkadelic |
+|            3 |   4 | "The Shadiest One"          | CJ Mac                          | Ant Banks       | 4:26   |                                                                                     |
+|            4 |   5 | "Can't Hold Back"           | Ice Cube                        | Skooby Doo      | 3:34   | *"Ain't No Half-Steppin'" by Big Daddy Kane                                         |
+|            5 |   6 | "Keep Hustlin"              | E-40 & Too Short                | Young Tre       | 3:39   | *"Yearning for Your Love" by The Gap Band\n*"Intimate Connection" by Kleeer         |
+|            6 |   7 | "Just Clownin'"             |                                 | Battlecat       | 3:59   | *"(Not Just) Knee Deep" by Funkadelic\n*"Too Tight for Light" by Funkadelic         |
+|            7 |   8 | "The Autobiography"         |                                 | Crazy Toones    | 1:21   |                                                                                     |
+|            8 |   9 | "Worldwide Gunnin'"         |                                 | Skooby Doo      | 3:25   |                                                                                     |
+|            9 |  10 | "Like That"                 | Ice Cube Daz Dillinger & CJ Mac | Daz Dillinger   | 4:29   | *"Just Rhymin' With Biz" by Big Daddy Kane\n*"West Up!" by WC and the Maad Circle   |
+|           10 |  11 | "Call It What You Want"     |                                 | Crazy Toones    | 4:29   | *"Knucklehead" by Grover Washington Jr.                                             |
+|           11 |  12 | "Rich Rollin'"              |                                 | Dutch           | 3:40   |                                                                                     |
+|           12 |  13 | "Cheddar"                   | Mack 10 & Ice Cube              | Mo-Suave-A      | 4:12   | *"Gotta Get My Hands on Some (Money)" by The Fatback Band                           |
+|           13 |  14 | "Bank Lick"                 |                                 | WC              | 0:49   |                                                                                     |
+|           14 |  15 | "It's All Bad"              |                                 | Battlecat       | 4:15   | *"Chocolate City" by Parliament                                                     |
+|           15 |  16 | "Better Days"               | Ron Banks                       | Barr Nine       | 3:53   | *"It's Gonna Be Alright" by Crimies                                                 |
+|           16 |  17 | "The Outcome"               |                                 | Douglas Coleman | 2:45   |                                                                                     |
+
+Generated Reasoning SQL: To determine the number of featured guests on the "Keep Hustlin" track, we need to count the occurrences of the track in the "Title" column and then retrieve the corresponding value in the "Featured guest(s)" column.
+The summary indicates that the "Title" column is categorical and contains the track titles, while the "Featured guest(s)" column describes any featured guest artists on the track.
+We will filter rows where "Title" = 'Keep Hustlin' and count the number of featured guests listed for that track.
+SQL: select "Featured guest(s)" from T where "Title" = 'Keep Hustlin';
+Generated Final SQL: select "Featured guest(s)" from T where "Title" = 'Keep Hustlin';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: The Shadiest One (row_number, #, Title, Featured guest(s), Producer(s), Time, Sample (s))
+
+row_number | # | Title | Featured guest(s) | Producer(s) | Time | Sample (s)
+0 | 1 | "Hog" | None | Battlecat | 4:24 | *"3 Time Felons" by Westside Connection
+1 | 2 | "Where Y'all From" | None | Battlecat | 1:11 | None
+2 | 3 | "Fuckin Wit uh House Party" | None | Battlecat | 4:49 | *"Hollywood Squares" by Bootsy's Rubber Band\n*"(Not Just) Knee Deep" by Funkadelic
+3 | 4 | "The Shadiest One" | CJ Mac | Ant Banks | 4:26 | None
+4 | 5 | "Can't Hold Back" | Ice Cube | Skooby Doo | 3:34 | *"Ain't No Half-Steppin'" by Big Daddy Kane
+5 | 6 | "Keep Hustlin" | E-40 & Too Short | Young Tre | 3:39 | *"Yearning for Your Love" by The Gap Band\n*"Intimate Connection" by Kleeer
+6 | 7 | "Just Clownin'" | None | Battlecat | 3:59 | *"(Not Just) Knee Deep" by Funkadelic\n*"Too Tight for Light" by Funkadelic
+7 | 8 | "The Autobiography" | None | Crazy Toones | 1:21 | None
+8 | 9 | "Worldwide Gunnin'" | None | Skooby Doo | 3:25 | None
+9 | 10 | "Like That" | Ice Cube Daz Dillinger & CJ Mac | Daz Dillinger | 4:29 | *"Just Rhymin' With Biz" by Big Daddy Kane\n*"West Up!" by WC and the Maad Circle
+10 | 11 | "Call It What You Want" | None | Crazy Toones | 4:29 | *"Knucklehead" by Grover Washington Jr.
+11 | 12 | "Rich Rollin'" | None | Dutch | 3:40 | None
+12 | 13 | "Cheddar" | Mack 10 & Ice Cube | Mo-Suave-A | 4:12 | *"Gotta Get My Hands on Some (Money)" by The Fatback Band
+13 | 14 | "Bank Lick" | None | WC | 0:49 | None
+14 | 15 | "It's All Bad" | None | Battlecat | 4:15 | *"Chocolate City" by Parliament
+15 | 16 | "Better Days" | Ron Banks | Barr Nine | 3:53 | *"It's Gonna Be Alright" by Crimies
+16 | 17 | "The Outcome" | None | Douglas Coleman | 2:45 | None
+Question: what was the number of featured guest on keep hustlin track?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Featured guest(s)** column indicates the guest artist(s) featured on each track.
+
+From the full table:
+- The "Keep Hustlin" track had featured guests E-40 & Too Short.
+
+Therefore, the number of featured guests on the "Keep Hustlin" track is 2.
+
+Final Answer: 2
+[Fallback] Prediction: 2
+[Gold Answer] 2
+

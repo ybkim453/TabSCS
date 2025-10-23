@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2000, 2003, 2004, 2006
+   - Role: Identifier
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: October 29, October 19, November 28, December 17
+   - Role: Descriptor
+
+3. Winner:
+   - Data type: Categorical
+   - 4 representative example values: New York Giants, Philadelphia Eagles
+   - Role: Descriptor
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: 24-7, 14-10, 27-6, 36-22
+   - Role: Measure
+
+5. Loser:
+   - Data type: Categorical
+   - 4 representative example values: Philadelphia Eagles, New York Giants
+   - Role: Descriptor
+
+6. Location:
+   - Data type: Categorical
+   - 4 representative example values: Giants Stadium
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The winner is New York Giants, which is different from the majority of the table where Philadelphia Eagles are the winners.
+   - This makes the row an outlier as it deviates from the usual pattern of Philadelphia Eagles winning.
+
+2. Row 1:
+   - The date is October 19, which is different from the other dates in the table.
+   - This makes the row an outlier as it has a unique date compared to the rest of the entries.
+
+3. Row 7:
+   - The result is 20-14, which is different from the other results in the table.
+   - This makes the row an outlier as it has a distinct outcome compared to the majority of the results.
+
+=== Full Table Preview ===
+|   row_number |   Year | Date         | Winner              | Result     | Loser               | Location                |
+|-------------:|-------:|:-------------|:--------------------|:-----------|:--------------------|:------------------------|
+|            0 |   2000 | September 10 | New York Giants     | 33-18      | Philadelphia Eagles | Veterans Stadium        |
+|            1 |   2000 | October 29   | New York Giants     | 24-7       | Philadelphia Eagles | Giants Stadium          |
+|            2 |   2001 | January 7    | New York Giants     | 20-10      | Philadelphia Eagles | Giants Stadium          |
+|            3 |   2001 | October 22   | Philadelphia Eagles | 10-9       | New York Giants     | Giants Stadium          |
+|            4 |   2001 | December 30  | Philadelphia Eagles | 24-21      | New York Giants     | Veterans Stadium        |
+|            5 |   2002 | October 28   | Philadelphia Eagles | 17-3       | New York Giants     | Veterans Stadium        |
+|            6 |   2002 | December 28  | New York Giants     | 10-7       | Philadelphia Eagles | Giants Stadium          |
+|            7 |   2003 | October 19   | Philadelphia Eagles | 14-10      | New York Giants     | Giants Stadium          |
+|            8 |   2003 | November 16  | Philadelphia Eagles | 28-10      | New York Giants     | Lincoln Financial Field |
+|            9 |   2004 | September 12 | Philadelphia Eagles | 31-17      | New York Giants     | Lincoln Financial Field |
+|           10 |   2004 | November 28  | Philadelphia Eagles | 27-6       | New York Giants     | Giants Stadium          |
+|           11 |   2005 | November 20  | New York Giants     | 27-17      | Philadelphia Eagles | Giants Stadium          |
+|           12 |   2005 | December 11  | New York Giants     | 26-23 (OT) | Philadelphia Eagles | Lincoln Financial Field |
+|           13 |   2006 | September 17 | New York Giants     | 30-24 (OT) | Philadelphia Eagles | Lincoln Financial Field |
+|           14 |   2006 | December 17  | Philadelphia Eagles | 36-22      | New York Giants     | Giants Stadium          |
+|           15 |   2007 | January 7    | Philadelphia Eagles | 23-20      | New York Giants     | Lincoln Financial Field |
+|           16 |   2007 | September 30 | New York Giants     | 16-3       | Philadelphia Eagles | Giants Stadium          |
+|           17 |   2007 | December 9   | New York Giants     | 16-13      | Philadelphia Eagles | Lincoln Financial Field |
+|           18 |   2008 | November 9   | New York Giants     | 36-31      | Philadelphia Eagles | Lincoln Financial Field |
+|           19 |   2008 | December 7   | Philadelphia Eagles | 20-14      | New York Giants     | Giants Stadium          |
+|           20 |   2009 | January 11   | Philadelphia Eagles | 23-11      | New York Giants     | Giants Stadium          |
+|           21 |   2009 | November 1   | Philadelphia Eagles | 40-17      | New York Giants     | Lincoln Financial Field |
+|           22 |   2009 | December 13  | Philadelphia Eagles | 45-38      | New York Giants     | Giants Stadium          |
+
+Generated Reasoning SQL: Explanation: To find the next location after the Veterans Stadium game on September 10, 2000, we need to identify the row corresponding to that game and then retrieve the location of the subsequent game. Since the "Date" column is categorical and unique for each game, we can use it to locate the specific game in question.
+
+SQL: 
+SELECT "Location"
+FROM T
+WHERE "Date" > 'September 10, 2000'
+ORDER BY "Date" ASC
+LIMIT 1;
+Generated Final SQL: SELECT "Location" FROM T WHERE "Date" > 'September 10, 2000' ORDER BY "Date" ASC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Location                |
+|:------------------------|
+| Lincoln Financial Field |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Eagles–Giants rivalry
+SQL: SELECT "Location" FROM T WHERE "Date" > 'September 10, 2000' ORDER BY "Date" ASC LIMIT 1;
+
+SQL Execution Result:
+Location
+Lincoln Financial Field
+
+Question: what was the next location after the vetrans stadium game on september 10, 2000?
+A: To find the answer to this question, let’s think step by step.
+Prediction: lincoln financial field
+[Gold Answer] giants stadium
+

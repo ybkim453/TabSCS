@@ -1,0 +1,109 @@
+=== Table Summary ===
+**Column 1: Team 1**
+- Data type: Categorical
+- 4 representative example values: Deportivo Saprissa, Duurly's, Real C.D. España, C.D. Motagua
+- Role of the column: Identifier for the first team in each match
+
+**Column 2: Agg.**
+- Data type: Numeric
+- 4 representative example values: 8 - 2, 0 - 8, 6 - 0, 2 - 2
+- Role of the column: Measure representing the aggregate score of the two legs
+
+**Column 3: Team 2**
+- Data type: Categorical
+- 4 representative example values: Real Estelí, C.D. Luis Ángel Firpo, Acros Real Verdes, CSD Comunicaciones
+- Role of the column: Identifier for the second team in each match
+
+**Column 4: 1st leg**
+- Data type: Numeric
+- 4 representative example values: 4 - 1, 0 - 4, 5 - 0, 1 - 1
+- Role of the column: Measure representing the score of the first leg for the home team
+
+**Column 5: 2nd leg**
+- Data type: Numeric
+- 4 representative example values: 4 - 1, 0 - 4, 1 - 0, 1 - 1
+- Role of the column: Measure representing the score of the second leg for the away team
+
+**Outlier Row Analysis:**
+1. Row 7 (index 0): Deportivo Saprissa with an aggregate score of 8 - 2 against Real Estelí. This row stands out as the aggregate score is significantly higher compared to the other matches.
+2. Row 3 (index 3): Real C.D. España with an aggregate score of 6 - 0 against Acros Real Verdes. This row is an outlier due to the high aggregate score and the dominant performance of Real C.D. España.
+3. Row 0 (index 7): C.D. Motagua with a 0 - 1 (Replay) against CSD Comunicaciones. This row is an outlier as it involves a replay match, which is not common in the context of the other matches.
+
+=== Full Table Preview ===
+|   row_number | Team 1             | Agg.           | Team 2                | 1st leg   | 2nd leg   |
+|-------------:|:-------------------|:---------------|:----------------------|:----------|:----------|
+|            0 | Tauro F.C.         | 5 - 0          | América Managua       | 5 - 0     | 0 - 0     |
+|            1 | Deportivo Saprissa | 8 - 2          | Real Estelí           | 4 - 1     | 4 - 1     |
+|            2 | L.D. Alajuelense   | 11 - 1         | C.D. Plaza Amador     | 4 - 1     | 7 - 0     |
+|            3 | Duurly's           | 0 - 8          | C.D. Luis Ángel Firpo | 0 - 4     | 0 - 4     |
+|            4 | Real C.D. España   | 6 - 0          | Acros Real Verdes     | 5 - 0     | 1 - 0     |
+|            5 | CSD Municipal      | 3 - 6          | Alianza F.C.          | 2 - 5     | 1 - 1     |
+|            6 | C.D. Motagua       | 2 - 2          | CSD Comunicaciones    | 1 - 1     | 1 - 1     |
+|            7 | C.D. Motagua       | 0 - 1 (Replay) | CSD Comunicaciones    |           |           |
+
+Generated Reasoning SQL: To identify a team that scored no points in one game, we need to look for rows where either the "1st leg" or "2nd leg" score is 0. Since we are interested in the team that scored no points, we will focus on the "Team 1" column as the identifier for the team.
+
+SQL: 
+SELECT "Team 1"
+FROM T
+WHERE "1st leg" LIKE '0 - %' OR "2nd leg" LIKE '0 - %';
+Generated Final SQL: SELECT "Team 1" FROM T WHERE "1st leg" LIKE '0 - %' OR "2nd leg" LIKE '0 - %';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Team 1     |
+|:-----------|
+| Tauro F.C. |
+| Duurly's   |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1991 CONCACAF Champions' Cup
+SQL: SELECT "Team 1" FROM T WHERE "1st leg" LIKE '0 - %' OR "2nd leg" LIKE '0 - %';
+
+SQL Execution Result:
+Team 1
+Tauro F.C.
+Duurly's
+
+Question: name a team that scored no points in one game.
+A: To find the answer to this question, let’s think step by step.
+Prediction: tauro f.c., duurly's
+[Gold Answer] américa managua
+

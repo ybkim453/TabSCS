@@ -1,0 +1,138 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week
+   - Data type: Numeric
+   - 4 representative example values: 6, 7, 8, 9
+   - Role: Identifier for the week number of the game
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: October 23, October 30, November 6, November 14
+   - Role: Descriptor for the date of the game
+
+3. Result
+   - Data type: Categorical
+   - 4 representative example values: Win, Win, Win, Loss
+   - Role: Descriptor for the outcome of the game
+
+4. Record
+   - Data type: Categorical
+   - 4 representative example values: 6-0, 7-0, 8-0, 8-1
+   - Role: Descriptor for the team's win-loss record at that point
+
+5. Opponent
+   - Data type: Categorical
+   - 4 representative example values: Philadelphia Eagles, Detroit Lions, New York Giants, St. Louis Cardinals
+   - Role: Descriptor for the opposing team
+
+6. Points For
+   - Data type: Numeric
+   - 4 representative example values: 16, 37, 24, 17
+   - Role: Measure for the points scored by the team
+
+7. Points Against
+   - Data type: Numeric
+   - 4 representative example values: 10, 0, 10, 24
+   - Role: Measure for the points scored against the team
+
+8. First Downs
+   - Data type: Numeric
+   - 4 representative example values: 17, 20, 13, 16
+   - Role: Measure for the number of first downs achieved by the team
+
+9. Attendance
+   - Data type: Categorical
+   - 4 representative example values: 65,507, 63,160, 74,532, 64,038
+   - Role: Measure for the attendance at the game
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The values for Points For (14) and First Downs (19) are significantly lower compared to the other rows.
+   - This row is an outlier due to the unusually low points scored and first downs achieved.
+
+2. Row 6:
+   - The value for Points Against (0) is notably different from the other rows.
+   - This row is an outlier because of the rare occurrence of the opposing team scoring zero points.
+
+3. Row 10:
+   - The value for Attendance (55,031) is lower than the majority of the attendance figures in the table.
+   - This row is an outlier based on the lower attendance compared to the other games.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date         | Result   | Record   | Opponent               |   Points For |   Points Against |   First Downs |   Attendance |
+|-------------:|-------:|:-------------|:---------|:---------|:-----------------------|-------------:|-----------------:|--------------:|-------------:|
+|            0 |      1 | September 18 | Win      | 1–0      | at Minnesota Vikings   |           16 |               10 |            16 |        47678 |
+|            1 |      2 | September 25 | Win      | 2–0      | New York Giants        |           41 |               21 |            25 |        64215 |
+|            2 |      3 | October 2    | Win      | 3–0      | Tampa Bay Buccaneers   |           23 |                7 |            23 |        55316 |
+|            3 |      4 | October 9    | Win      | 4–0      | at St. Louis Cardinals |           30 |               24 |            22 |        50129 |
+|            4 |      5 | October 16   | Win      | 5–0      | Washington Redskins    |           34 |               16 |            23 |        62115 |
+|            5 |      6 | October 23   | Win      | 6–0      | at Philadelphia Eagles |           16 |               10 |            17 |        65507 |
+|            6 |      7 | October 30   | Win      | 7–0      | Detroit Lions          |           37 |                0 |            20 |        63160 |
+|            7 |      8 | November 6   | Win      | 8–0      | at New York Giants     |           24 |               10 |            13 |        74532 |
+|            8 |      9 | November 14  | Loss     | 8–1      | St. Louis Cardinals    |           17 |               24 |            16 |        64038 |
+|            9 |     10 | November 20  | Loss     | 8–2      | at Pittsburgh Steelers |           13 |               28 |            20 |        49761 |
+|           10 |     11 | November 27  | Win      | 9–2      | at Washington Redskins |           14 |                7 |            19 |        55031 |
+|           11 |     12 | December 4   | Win      | 10–2     | Philadelphia Eagles    |           24 |               14 |            19 |        60289 |
+|           12 |     13 | December 12  | Win      | 11–2     | at San Francisco 49ers |           42 |               35 |            24 |        55851 |
+|           13 |     14 | December 18  | Win      | 12–2     | Denver Broncos         |           14 |                6 |            15 |        63752 |
+
+Generated Reasoning SQL: The summary indicates that the "Attendance" column is categorical and contains representative example values such as 65,507, 63,160, 74,532, 64,038. To answer the question, we need to count the number of rows where the attendance is below 50,000. We will filter rows based on the attendance value.
+SQL: select count("Attendance") from T where cast("Attendance" as integer) < 50000;
+Generated Final SQL: select count("Attendance") from T where cast("Attendance" as integer) < 50000;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Attendance") |
+|----------------------:|
+|                     2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1977 Dallas Cowboys season
+SQL: select count("Attendance") from T where cast("Attendance" as integer) < 50000;
+
+count("Attendance")
+2
+Question: how many times was attendance below 50,000?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

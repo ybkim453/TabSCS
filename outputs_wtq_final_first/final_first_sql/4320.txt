@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Grp:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 1, 4
+   - Role: Identifier for grouping different races
+
+2. Race Name:
+   - Data type: Categorical
+   - 4 representative example values: Surround Stakes, Warwick Stakes, Liverpool City Cup, Silver Shadow Stakes
+   - Role: Descriptor for the name of the race
+
+3. Age:
+   - Data type: Categorical
+   - 4 representative example values: 3YO, Open, 2YO, 4YO
+   - Role: Descriptor for the age group of the horses
+
+4. Sex:
+   - Data type: Categorical
+   - 4 representative example values: Fillies, Open, C&G, Mares
+   - Role: Descriptor for the gender of the horses
+
+5. Weight:
+   - Data type: Categorical
+   - 4 representative example values: sw, wfa, qlty, swp
+   - Role: Descriptor for the weight category of the race
+
+6. Distance:
+   - Data type: Numeric
+   - 4 representative example values: 1400, 1300, 1200, 1600
+   - Role: Measure for the distance of the race in meters
+
+7. Date:
+   - Data type: Categorical
+   - 4 representative example values: March, August, April, May
+   - Role: Descriptor for the month of the race
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values "3YO" in Age and "C&G" in Sex are different from the majority of the table where Age is either "3YO" or "Open" and Sex is either "Fillies" or "Open". This makes the row an outlier.
+
+2. Row 0:
+   - The values "2" in Grp and "Surround Stakes" in Race Name are different from the majority of the table where Grp is either 3 or 2 and Race Name is different. This makes the row an outlier.
+
+3. Row 3:
+   - The values "August" in Date and "Silver Shadow Stakes" in Race Name are different from the majority of the table where Date is either "March" or "August" and Race Name is different. This makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Grp | Race Name            | Age   | Sex     | Weight   |   Distance | Date   |
+|-------------:|------:|:---------------------|:------|:--------|:---------|-----------:|:-------|
+|            0 |     2 | AJC Challenge Stakes | Open  | Open    | wfa      |       1000 | March  |
+|            1 |     2 | Surround Stakes      | 3YO   | Fillies | sw       |       1400 | March  |
+|            2 |     2 | Warwick Stakes       | Open  | Open    | wfa      |       1400 | August |
+|            3 |     3 | Liverpool City Cup   | Open  | Open    | qlty     |       1300 | March  |
+|            4 |     3 | Silver Shadow Stakes | 3YO   | Fillies | swp      |       1200 | August |
+|            5 |     3 | Up And Coming Stakes | 3YO   | C&G     | swp      |       1200 | August |
+
+Generated Reasoning SQL: Explanation: To identify races that are open to all sexes, we need to look for races where the "Sex" column includes both male and female categories. This means we are looking for races where "Sex" is not limited to a specific gender like Fillies or C&G. We will filter out any outlier rows that do not fit this criteria.
+
+SQL: 
+SELECT "Race Name"
+FROM T
+WHERE "Sex" IN ('Open', 'Mares')
+AND "Race Name" NOT LIKE '%Surround Stakes%';
+Generated Final SQL: SELECT "Race Name" FROM T WHERE "Sex" IN ('Open', 'Mares') AND "Race Name" NOT LIKE '%Surround Stakes%';
+SQL 실행 결과 셀 수: 3
+=== SQL 실행 결과 미리보기 ===
+| Race Name            |
+|:---------------------|
+| AJC Challenge Stakes |
+| Warwick Stakes       |
+| Liverpool City Cup   |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Warwick Farm Racecourse
+SQL: SELECT "Race Name" FROM T WHERE "Sex" IN ('Open', 'Mares') AND "Race Name" NOT LIKE '%Surround Stakes%';
+
+SQL Execution Result:
+Race Name
+AJC Challenge Stakes
+Warwick Stakes
+Liverpool City Cup
+
+Question: list the races that are open to all sexes.
+A: To find the answer to this question, let’s think step by step.
+Prediction: ajc challenge stakes, warwick stakes, liverpool city cup
+[Gold Answer] ajc challenge stakes,warwick stakes,liverpool city cup
+

@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: 2, T4, T10
+   - Role: Identifier for the player's finishing position in the tournament
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Greg Norman, Jay Haas, Jeff Maggert, Phil Mickelson
+   - Role: Descriptor for the name of the player
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: Australia, United States, Fiji
+   - Role: Descriptor for the country the player represents
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 68-67-74-73=282, 70-73-72-69=284, 69-72-77-66=284, 68-70-72-74=284
+   - Role: Measure of the player's total score in the tournament
+
+5. To par:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 5
+   - Role: Measure of how many strokes the player is under or over par
+
+6. Money ($):
+   - Data type: Numeric
+   - 4 representative example values: 207,000, 66,633, 44,184
+   - Role: Measure of the amount of prize money won by the player
+
+**Outlier Row Analysis:**
+
+1. Row 10 (Vijay Singh):
+   - The values for the player's score (70-71-72-72=285) and the money won ($44,184) are not significantly different from the other rows in the table.
+   - These values are ordinary within the context of the table and do not make this row an outlier. It is an ordinary row and requires no special handling.
+
+2. Row 0 (Greg Norman):
+   - The value for the player's finishing position (2) is different from the other rows, which have "T4" or "T10" indicating tied positions.
+   - This makes the row an outlier as it is the only row with a specific position rather than a tied position.
+
+3. Row 1 (Jay Haas):
+   - The values for the player's finishing position (T4) and the money won ($66,633) are consistent with the majority of the table.
+   - These values are ordinary within the context of the table and do not make this row an outlier. It is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Place   | Player         | Country       | Score           | To par   |   Money ($) |
+|-------------:|:--------|:---------------|:--------------|:----------------|:---------|------------:|
+|            0 | 1       | Corey Pavin    | United States | 72-69-71-68=280 | E        |      350000 |
+|            1 | 2       | Greg Norman    | Australia     | 68-67-74-73=282 | +2       |      207000 |
+|            2 | 3       | Tom Lehman     | United States | 70-72-67-74=283 | +3       |      131974 |
+|            3 | T4      | Bill Glasson   | United States | 69-70-76-69=284 | +4       |       66633 |
+|            4 | T4      | Jay Haas       | United States | 70-73-72-69=284 | +4       |       66633 |
+|            5 | T4      | Neal Lancaster | United States | 70-72-77-65=284 | +4       |       66633 |
+|            6 | T4      | Davis Love III | United States | 72-68-73-71=284 | +4       |       66633 |
+|            7 | T4      | Jeff Maggert   | United States | 69-72-77-66=284 | +4       |       66633 |
+|            8 | T4      | Phil Mickelson | United States | 68-70-72-74=284 | +4       |       66633 |
+|            9 | T10     | Frank Nobilo   | New Zealand   | 72-72-70-71=285 | +5       |       44184 |
+|           10 | T10     | Vijay Singh    | Fiji          | 70-71-72-72=285 | +5       |       44184 |
+|           11 | T10     | Bob Tway       | United States | 69-69-72-75=285 | +5       |       44184 |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Place" column contains categorical values representing the finishing position of players in the tournament. To find the number of players tied for 4th place, we count the rows where "Place" = 'T4'. It is important to note that we are specifically looking for rows with 'T4' to identify tied positions.
+SQL: select count("Player") from T where "Place" = 'T4';
+Generated Final SQL: select count("Player") from T where "Place" = 'T4';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Player") |
+|------------------:|
+|                 6 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1995 U.S. Open (golf)
+SQL: select count("Player") from T where "Place" = 'T4';
+
+count("Player")
+6
+Question: how many players tied for 4th place?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 6
+[Gold Answer] 6
+

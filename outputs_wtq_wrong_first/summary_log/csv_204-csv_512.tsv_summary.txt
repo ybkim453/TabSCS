@@ -1,0 +1,48 @@
+**Column Analysis:**
+
+1. Common name:
+   - Data type: Categorical
+   - 4 representative example values: Beitar Illit, Hod HaSharon, Kafr Qasim, Kfar Saba
+   - Role: Identifier for the city
+
+2. District:
+   - Data type: Categorical
+   - 4 representative example values: Judea & Samaria (West Bank), Center, Haifa, North
+   - Role: Descriptor indicating the geographical district of the city
+
+3. Hebrew:
+   - Data type: Categorical
+   - 4 representative example values: ביתר עילית, הוד השרון, כפר קאסם, כפר סבא
+   - Role: Descriptor showing the Hebrew name of the city
+
+4. Arabic:
+   - Data type: Categorical
+   - 4 representative example values: بيتار عيليت, هود هشارون, كفر قاسم, كفار سابا
+   - Role: Descriptor displaying the Arabic name of the city
+
+5. Population (2009):
+   - Data type: Numeric
+   - 4 representative example values: 35,000, 47,200, 18,800, 83,600
+   - Role: Measure indicating the population of the city in 2009
+
+6. Area (km²):
+   - Data type: Numeric
+   - 4 representative example values: 6.801, 21.585, 8.745, 14.169
+   - Role: Measure representing the area of the city in square kilometers
+
+7. Mayor:
+   - Data type: Categorical
+   - 4 representative example values: Meir Rubenstein, Hai Adiv, Sami Issa, Yehuda Ben-Hemo
+   - Role: Descriptor showing the name of the mayor of the city
+
+**Outlier Row Analysis:**
+
+1. Row 11 (Tiberias):
+   - The values for Population (41,300) and Area (10.872 km²) are significantly different from the other values in the table.
+   - This row is an outlier due to the unusual combination of population and area compared to the rest of the cities.
+
+2. Row 25 (Candidate row):
+   - No distinctive values were provided for this row, so it is considered an ordinary row and does not require special handling.
+
+3. Row 26 (Candidate row):
+   - No distinctive values were provided for this row, so it is considered an ordinary row and does not require special handling.

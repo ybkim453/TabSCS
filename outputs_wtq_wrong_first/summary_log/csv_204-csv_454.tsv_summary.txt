@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. City
+   - Data type: Categorical
+   - 4 representative example values: Constanța, Suceava, Găești, Dumbrăveni
+   - Role: Identifier for the city where the population is recorded.
+
+2. County
+   - Data type: Categorical
+   - 4 representative example values: Constanța, Suceava, Dâmbovița, Sibiu
+   - Role: Descriptor for the county where the city is located.
+
+3. Population (2011)
+   - Data type: Numeric
+   - 4 representative example values: 283,872, 92,121, 13,317, 7,388
+   - Role: Measure of the population count in the year 2011.
+
+4. Population (2002)
+   - Data type: Numeric
+   - 4 representative example values: 310,471, 106,138, 16,598, 8,812
+   - Role: Measure of the population count in the year 2002.
+
+5. Altitude (m)
+   - Data type: Numeric
+   - 4 representative example values: 25, 325, nan, nan
+   - Role: Measure of the altitude in meters of the city.
+
+6. Year status granted* or first attested†
+   - Data type: Categorical
+   - 4 representative example values: 260 BC†, 1388†, nan, 1968*
+   - Role: Descriptor indicating the year when the city's status was granted or first attested.
+
+**Outlier Row Analysis:**
+
+1. Row 22 (Găești, Dâmbovița, 13,317, 16,598, nan, nan)
+   - The values for Population (2011) and Population (2002) are significantly lower compared to other rows in the table, making this row an outlier in terms of population size.
+
+2. Row 4 (Techirghiol, Constanța, 7,292, 7,388, nan, nan)
+   - The values for Population (2011) and Population (2002) are very close to each other and lower than other rows, indicating a stable population over the years, which is different from the population trends seen in other cities.
+
+3. Row 243 (Segarcea, Dolj, 7,019, 8,704, nan, 1968*)
+   - The year 1968* in the "Year status granted* or first attested†" column is different from the other rows, which have historical dates or "nan". This makes the row an outlier in terms of the year status was granted or first attested.

@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **May 20-21**
+   - Data type: Numeric
+   - 4 representative example values: 118, 138, 148
+   - Role of the column: Date range descriptor
+
+2. **March 9**
+   - Data type: Numeric
+   - 4 representative example values: 120, 140, 150
+   - Role of the column: Date descriptor
+
+3. **December 25-26**
+   - Data type: Numeric
+   - 4 representative example values: 122, 142, 152
+   - Role of the column: Date range descriptor
+
+4. **October 13-14**
+   - Data type: Numeric
+   - 4 representative example values: 124, 144, 154
+   - Role of the column: Date range descriptor
+
+5. **August 1-2**
+   - Data type: Numeric
+   - 4 representative example values: 126, 146, 156
+   - Role of the column: Date range descriptor
+
+**Outlier Row Analysis:**
+
+1. **Row 0:**
+   - The values in this row are 118, 138, 148, which are significantly lower than the corresponding values in other rows.
+   - These values are distinctively lower and do not follow the pattern of increasing values in other rows, making this row an outlier.
+
+2. **Row 5:**
+   - The values in this row are 126, 146, 156, which are significantly higher than the corresponding values in other rows.
+   - These values are distinctively higher and do not follow the pattern of increasing values in other rows, making this row an outlier.
+
+3. **Row 3:**
+   - The values in this row are 124, 144, 154, which are consistent with the pattern seen in other rows.
+   - These values are ordinary within the context of the table and do not stand out as outliers. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | May 20-21\n118   | March 9\n120   | December 25-26\n122   | October 13-14\n124   | August 1-2\n126   |
+|-------------:|:-----------------|:---------------|:----------------------|:---------------------|:------------------|
+|            0 | May 21 1993      | March 9 1997   | December 25 2000      | October 14 2004      | August 1 2008     |
+|            1 | 128              | 130            | 132                   | 134                  | 136               |
+|            2 | May 20 2012      | March 9 2016   | December 26 2019      | October 14 2023      | August 2 2027     |
+|            3 | 138              | 140            | 142                   | 144                  | 146               |
+|            4 | May 21 2031      | March 9 2035   | December 26 2038      | October 14 2042      | August 2 2046     |
+|            5 | 148              | 150            | 152                   | 154                  | 156               |
+|            6 | May 20 2050      | March 9 2054   | December 26 2057      | October 13 2061      | August 2 2065     |
+
+Generated Reasoning SQL: Explanation: To determine the last date charted, we need to find the maximum value among all the date descriptors in the table. Since the "May 20-21", "March 9", "December 25-26", "October 13-14", and "August 1-2" columns represent different dates, we should find the maximum value across all these columns to identify the last date charted.
+
+SQL: 
+SELECT MAX("May 20-21", "March 9", "December 25-26", "October 13-14", "August 1-2") AS last_date_charted
+FROM T;
+Generated Final SQL: SELECT MAX("May 20-21", "March 9", "December 25-26", "October 13-14", "August 1-2") AS last_date_charted FROM T;
+SQL 실행 결과 셀 수: 7
+=== SQL 실행 결과 미리보기 ===
+| last_date_charted   |
+|:--------------------|
+| October 13-14       |
+| October 13-14       |
+| October 13-14       |
+| October 13-14       |
+| October 13-14       |
+| October 13-14       |
+| October 13-14       |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Solar eclipse of May 20, 2012
+SQL: SELECT MAX("May 20-21", "March 9", "December 25-26", "October 13-14", "August 1-2") AS last_date_charted FROM T;
+
+SQL Execution Result:
+last_date_charted
+October 13-14
+October 13-14
+October 13-14
+October 13-14
+October 13-14
+October 13-14
+October 13-14
+
+Question: what is the last date charted?
+A: To find the answer to this question, let’s think step by step.
+Prediction: october 13-14
+[Gold Answer] may 20, 2069
+

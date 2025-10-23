@@ -1,0 +1,133 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Golfer
+   - Data type: Categorical
+   - 4 representative example values: Darren Clarke, Ernie Els, Hunter Mahan, Phil Mickelson
+   - Role: Identifier for each golfer
+
+2. Country
+   - Data type: Categorical
+   - 4 representative example values: Northern Ireland, South Africa, United States, England
+   - Role: Descriptor indicating the country of each golfer
+
+3. Wins
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 2, 2
+   - Role: Measure representing the number of wins for each golfer
+
+4. Match Play
+   - Data type: Categorical
+   - 4 representative example values: 1: 2000, —, 1: 2012, —
+   - Role: Descriptor indicating the match play performance of each golfer
+
+5. Championship
+   - Data type: Categorical
+   - 4 representative example values: —, 2: 2004, 1: 2009, —
+   - Role: Descriptor indicating championship wins for each golfer
+
+6. Invitational
+   - Data type: Categorical
+   - 4 representative example values: 1: 2003, —, 1: 2010, —
+   - Role: Descriptor indicating invitational wins for each golfer
+
+7. Champions
+   - Data type: Categorical
+   - 4 representative example values: —, —, —, 1: 2012
+   - Role: Descriptor indicating champions wins for each golfer
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Ian Poulter)
+   - The values in the Match Play and Champions columns are different from the majority of the table.
+   - The 1: 2010 in the Match Play column and 1: 2012 in the Champions column make this row distinctive.
+   - These values are not common among the other rows, making this row an outlier.
+
+2. Row 0 (Darren Clarke)
+   - The values in the Match Play and Invitational columns are different from the majority of the table.
+   - The 1: 2000 in the Match Play column and 1: 2003 in the Invitational column make this row distinctive.
+   - These values are not common among the other rows, making this row an outlier.
+
+3. Row 3 (Phil Mickelson)
+   - The values in the Championship and Champions columns are different from the majority of the table.
+   - The 1: 2009 in the Championship column and 1: 2009 in the Champions column make this row distinctive.
+   - These values are not common among the other rows, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Golfer         | Country          |   Wins | Match Play        | Championship                           | Invitational                                | Champions   |
+|-------------:|:---------------|:-----------------|-------:|:------------------|:---------------------------------------|:--------------------------------------------|:------------|
+|            0 | Tiger Woods    | United States    |     18 | 3: 2003 2004 2008 | 7: 1999 2002 2003\n2005 2006 2007 2013 | 8: 1999 2000 2001 2005\n2006 2007 2009 2013 | —           |
+|            1 | Geoff Ogilvy   | Australia        |      3 | 2: 2006 2009      | 1: 2008                                | —                                           | —           |
+|            2 | Darren Clarke  | Northern Ireland |      2 | 1: 2000           | —                                      | 1: 2003                                     | —           |
+|            3 | Ernie Els      | South Africa     |      2 | —                 | 2: 2004 2010                           | —                                           | —           |
+|            4 | Hunter Mahan   | United States    |      2 | 1: 2012           | —                                      | 1: 2010                                     | —           |
+|            5 | Phil Mickelson | United States    |      2 | —                 | 1: 2009                                | —                                           | 1: 2009     |
+|            6 | Ian Poulter    | England          |      2 | 1: 2010           | —                                      | —                                           | 1: 2012     |
+
+Generated Reasoning SQL: Explanation: To determine which countries have more wins than England, we need to compare the number of wins for each country with the number of wins for England. We will filter out any rows where the country is England and then count the number of wins for each remaining country.
+
+SQL: 
+SELECT "Country"
+FROM T
+WHERE "Country" <> 'England' 
+AND CAST("Wins" AS INTEGER) > (SELECT CAST("Wins" AS INTEGER) FROM T WHERE "Country" = 'England');
+Generated Final SQL: SELECT "Country" FROM T WHERE "Country" <> 'England' AND CAST("Wins" AS INTEGER) > (SELECT CAST("Wins" AS INTEGER) FROM T WHERE "Country" = 'England');
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Country       |
+|:--------------|
+| United States |
+| Australia     |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: World Golf Championships
+SQL: SELECT "Country" FROM T WHERE "Country" <> 'England' AND CAST("Wins" AS INTEGER) > (SELECT CAST("Wins" AS INTEGER) FROM T WHERE "Country" = 'England');
+
+SQL Execution Result:
+Country
+United States
+Australia
+
+Question: which countries have more wins than england?
+A: To find the answer to this question, let’s think step by step.
+Prediction: united states, australia
+[Gold Answer] australia,united states
+

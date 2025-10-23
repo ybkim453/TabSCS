@@ -1,0 +1,137 @@
+=== Table ID ===
+csv/204-csv/368.tsv
+
+=== Question ===
+is earl marshal listed above or below lord privy seal?
+
+=== Sub-table Preview ===
+| Representative         | Years           | State        | Party        | Lifespan   |
+|:-----------------------|:----------------|:-------------|:-------------|:-----------|
+| Mark Kennedy           | 2001–2007       | Minnesota    | Republican   | 1957–      |
+| J. Floyd King          | 1879–1887       | Louisiana    | Democratic   | 1842–1915  |
+| George Washington Kipp | 1907–1909\n1911 | Pennsylvania | Democratic   | 1847–1911  |
+| Marcus C.L. Kline      | 1903–1907       | Pennsylvania | Democratic   | 1855–1911  |
+| George Frederic Kribbs | 1891–1895       | Pennsylvania | Democratic   | 1846–1938  |
+| Ole J. Kvale           | 1923–1929       | Minnesota    | Farmer-Labor | 1869–1929  |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Representative:
+   - Data type: Categorical
+   - 4 representative example values: Mark Kennedy, J. Floyd King, George Washington Kipp, Marcus C.L. Kline
+   - Role of the column: Identifier for the political representatives
+
+2. Years:
+   - Data type: Categorical
+   - 4 representative example values: 2001–2007, 1879–1887, 1907–1909\n1911, 1903–1907
+   - Role of the column: Descriptor indicating the years the representative served
+
+3. State:
+   - Data type: Categorical
+   - 4 representative example values: Minnesota, Louisiana, Pennsylvania
+   - Role of the column: Descriptor indicating the state the representative belonged to
+
+4. Party:
+   - Data type: Categorical
+   - 4 representative example values: Republican, Democratic, Farmer-Labor
+   - Role of the column: Descriptor indicating the political party of the representative
+
+5. Lifespan:
+   - Data type: Categorical
+   - 4 representative example values: 1957–, 1842–1915, 1847–1911, 1855–1911
+   - Role of the column: Descriptor indicating the lifespan of the representative
+
+**Outlier Row Analysis:**
+
+1. Row 325 (Ole J. Kvale):
+   - The values in the "Years" column (1923–1929) and "Lifespan" column (1869–1929) are consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 99 (George Washington Kipp):
+   - The values in the "Years" column (1907–1909\n1911) and "Lifespan" column (1847–1911) are consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 182 (Marcus C.L. Kline):
+   - The values in the "Years" column (1903–1907) and "Lifespan" column (1855–1911) are consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Position | Officer                       | current officers                 | superseded by       | Royal Household     |
+|-------------:|-----------:|:------------------------------|:---------------------------------|:--------------------|:--------------------|
+|            0 |          1 | Lord High Steward             | vacant                           | Justiciar           | Lord Steward        |
+|            1 |          2 | Lord High Chancellor          | The Rt Hon Chris Grayling MP     |                     |                     |
+|            2 |          3 | Lord High Treasurer           | in commission                    |                     |                     |
+|            3 |          4 | Lord President of the Council | The Rt Hon Nick Clegg MP         |                     |                     |
+|            4 |          5 | Lord Privy Seal               | The Rt Hon Andrew Lansley CBE MP |                     |                     |
+|            5 |          6 | Lord Great Chamberlain        | The Marquess of Cholmondeley     | Lord High Treasurer | Lord Chamberlain    |
+|            6 |          7 | Lord High Constable           | vacant                           | Earl Marshal        | Master of the Horse |
+|            7 |          8 | Earl Marshal                  | The Duke of Norfolk              |                     | Master of the Horse |
+|            8 |          9 | Lord High Admiral             | HRH The Duke of Edinburgh        |                     |                     |
+
+Generated Reasoning SQL: Explanation: To determine if Earl Marshal is listed above or below Lord Privy Seal, we need to compare their positions. The "Position" column contains the hierarchical ranking of the officers. We can filter the rows for Earl Marshal and Lord Privy Seal and compare their row numbers to see which position comes first in the list.
+
+SQL: 
+SELECT "Position" 
+FROM T 
+WHERE "Officer" = 'Earl Marshal' OR "Officer" = 'Lord Privy Seal';
+Generated Final SQL: SELECT "Position" FROM T WHERE "Officer" = 'Earl Marshal' OR "Officer" = 'Lord Privy Seal';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   Position |
+|-----------:|
+|          5 |
+|          8 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Great Officer of State
+SQL: SELECT "Position" FROM T WHERE "Officer" = 'Earl Marshal' OR "Officer" = 'Lord Privy Seal';
+
+SQL Execution Result:
+Position
+5
+8
+
+Question: is earl marshal listed above or below lord privy seal?
+A: To find the answer to this question, let’s think step by step.
+Prediction: earl marshal
+[Gold Answer] below
+

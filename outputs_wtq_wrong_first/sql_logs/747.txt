@@ -1,0 +1,123 @@
+=== Table ID ===
+csv/204-csv/519.tsv
+
+=== Question ===
+who was drafted above alan ameche?
+
+=== Sub-table Preview ===
+| Preceded by\nAlfred Scott         | Member of Parliament for Ashton-under-Lyne\n1910–1916   | Succeeded by\nAlbert Stanley                              |
+|:----------------------------------|:--------------------------------------------------------|:----------------------------------------------------------|
+| New office                        | Minister of Information\n1918                           | Succeeded by\nThe Lord Downham                            |
+| Preceded by\nSir Frederick Cawley | Chancellor of the Duchy of Lancaster\n1918              | Succeeded by\nThe Lord Downham                            |
+| New office                        | Minister of Aircraft Production\n1940–1941              | Succeeded by\nJohn Moore-Brabazon                         |
+| New office                        | Minister of War Production\n1942                        | Succeeded by\nOliver Lyttelton\nas Minister of Production |
+| New creation                      | Baron Beaverbrook\n1917–1964                            | Succeeded by\nJohn William Maxwell Aitken                 |
+| New creation                      | Baronet(of Cherkley) \n1916–1964                        | Succeeded by\nJohn William Maxwell Aitken                 |
+
+=== Table Summary ===
+**Column 1: Preceded by Alfred Scott**
+- Data type: Categorical
+- 4 representative example values: New office, Preceded by Sir Frederick Cawley, New creation
+- Role of the column: Descriptor indicating the individual who held the position before the current individual
+
+**Column 2: Member of Parliament for Ashton-under-Lyne 1910–1916**
+- Data type: Categorical
+- 4 representative example values: Minister of Information 1918, Chancellor of the Duchy of Lancaster 1918, Minister of Aircraft Production 1940–1941
+- Role of the column: Descriptor indicating the specific role or position held by the individual
+
+**Column 3: Succeeded by Albert Stanley**
+- Data type: Categorical
+- 4 representative example values: The Lord Downham, John Moore-Brabazon, Oliver Lyttelton as Minister of Production
+- Role of the column: Descriptor indicating the individual who succeeded the current individual in the position
+
+**Outlier Row Analysis:**
+1. Row 1: New office, Minister of Information 1918, The Lord Downham
+   - The values in this row are different from the typical pattern of preceding and succeeding individuals, making it an outlier.
+2. Row 4: New office, Minister of War Production 1942, Oliver Lyttelton as Minister of Production
+   - The values in this row are different from the majority of the table, indicating an outlier status.
+3. Row 7: New creation, Baronet(of Cherkley) 1916–1964, John William Maxwell Aitken
+   - The values in this row are consistent with the ordinary entries in the table, making it an ordinary row and not a special outlier.
+
+=== Full Table Preview ===
+|   row_number |   Pick # | NFL Team                             | Player            | Position    | College      |
+|-------------:|---------:|:-------------------------------------|:------------------|:------------|:-------------|
+|            0 |        1 | Baltimore Colts (Lottery bonus pick) | George Shaw       | Quarterback | Oregon       |
+|            1 |        2 | Chicago Cardinals                    | Max Boydston      | End         | Oklahoma     |
+|            2 |        3 | Baltimore Colts                      | Alan Ameche       | Fullback    | Wisconsin    |
+|            3 |        4 | Washington Redskins                  | Ralph Guglielmi   | Quarterback | Notre Dame   |
+|            4 |        5 | Green Bay Packers                    | Tom Bettis        | Guard       | Purdue       |
+|            5 |        6 | Pittsburgh Steelers                  | Frank Varrichione | Tackle      | Notre Dame   |
+|            6 |        7 | Los Angeles Rams                     | Larry Morris      | Center      | Georgia Tech |
+|            7 |        8 | New York Giants                      | Joe Heap          | Halfback    | Notre Dame   |
+|            8 |        9 | Philadelphia Eagles                  | Dick Bielski      | Fullback    | Maryland     |
+|            9 |       10 | San Francisco 49ers                  | Dickey Moegle     | Halfback    | Rice         |
+|           10 |       11 | Chicago Bears                        | Ron Drzewiecki    | Halfback    | Marquette    |
+|           11 |       12 | Detroit Lions                        | Dave Middleton    | Halfback    | Auburn       |
+|           12 |       13 | Cleveland Browns                     | Kurt Burris       | Center      | Oklahoma     |
+
+Generated Reasoning SQL: Explanation: To determine who was drafted above Alan Ameche, we need to look at the "Pick #" column to find the player with a lower pick number. Since the question specifically mentions Alan Ameche, we can filter the rows based on the "Player" column to find his pick number and then select the player(s) with a lower pick number.
+
+SQL: 
+SELECT "Player" 
+FROM T 
+WHERE "Pick #" < (SELECT "Pick #" FROM T WHERE "Player" = 'Alan Ameche');
+Generated Final SQL: SELECT "Player" FROM T WHERE "Pick #" < (SELECT "Pick #" FROM T WHERE "Player" = 'Alan Ameche');
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Player       |
+|:-------------|
+| George Shaw  |
+| Max Boydston |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1955 NFL Draft
+SQL: SELECT "Player" FROM T WHERE "Pick #" < (SELECT "Pick #" FROM T WHERE "Player" = 'Alan Ameche');
+
+SQL Execution Result:
+Player
+George Shaw
+Max Boydston
+
+Question: who was drafted above alan ameche?
+A: To find the answer to this question, let’s think step by step.
+Prediction: george shaw, max boydston
+[Gold Answer] max boydston
+

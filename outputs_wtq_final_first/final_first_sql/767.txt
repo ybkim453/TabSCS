@@ -1,0 +1,122 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1995, 1996, 1999, 2000
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Injuries (US $000):
+   - Data type: Numeric
+   - 4 representative example values: 139, 130, 152, 191
+   - Role: Measure of the number of injuries in thousands reported.
+
+3. Deaths (age <15):
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, 16, 17
+   - Role: Measure of the number of deaths of children under 15 years old reported.
+
+4. CPSC toy safety funding (US$ Millions):
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, 13.6, 12
+   - Role: Measure of the funding allocated by CPSC for toy safety in millions of US dollars.
+
+5. Toy sales (US $ Billions):
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, 21.3
+   - Role: Measure of toy sales in billions of US dollars.
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The values in this row are all "nan" which indicates missing data.
+   - These missing values are not distinctive and are common in the table, so this row is an ordinary row.
+
+2. Row 5:
+   - The values in this row are 1999, 152, 16, 13.6, nan.
+   - The values in this row are not significantly different from other rows in terms of injuries, deaths, and funding, so this row is an ordinary row.
+
+3. Row 6:
+   - The values in this row are 2000, 191, 17, 12, nan.
+   - The values in this row are also not significantly different from other rows, so this row is an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Year | Injuries (US $000)   |   Deaths (age <15) | CPSC toy safety funding\n(US$ Millions)   |   Toy sales\n(US $ Billions) |
+|-------------:|-------:|:---------------------|-------------------:|:------------------------------------------|-----------------------------:|
+|            0 |   1994 | 154                  |                nan |                                           |                        nan   |
+|            1 |   1995 | 139                  |                nan |                                           |                        nan   |
+|            2 |   1996 | 130                  |                nan |                                           |                        nan   |
+|            3 |   1997 | 141                  |                nan |                                           |                        nan   |
+|            4 |   1998 | 153                  |                 14 |                                           |                        nan   |
+|            5 |   1999 | 152                  |                 16 | 13.6                                      |                        nan   |
+|            6 |   2000 | 191                  |                 17 | 12.0                                      |                        nan   |
+|            7 |   2001 | 255                  |                 25 | 12.4                                      |                        nan   |
+|            8 |   2002 | 212                  |                 13 | 12.2                                      |                         21.3 |
+|            9 |   2003 | 206                  |                 11 | 12.8                                      |                         20.7 |
+|           10 |   2004 | 210                  |                 16 | 11.5                                      |                         22.4 |
+|           11 |   2005 | 202 (estimate)       |                 20 | 11.0                                      |                         22.2 |
+|           12 |   2006 | no data              |                 22 | no data†                                  |                         22.3 |
+|           13 |   2007 | no data              |                 22 | no data                                   |                        nan   |
+|           14 |   2008 | no data              |                 19 | no data                                   |                        nan   |
+|           15 |   2009 | no data              |                 12 | no data                                   |                        nan   |
+
+Generated Reasoning SQL: The summary indicates that the "Year" column is numeric and the "Deaths (age <15)" column represents the number of deaths of children under 15 years old. 
+To find the year with the largest number of deaths reported, we need to identify the maximum value in the "Deaths (age <15)" column.
+Since the "Deaths (age <15)" column contains numeric values and some missing values represented as "nan", we can filter out the missing values and find the maximum among the available values.
+SQL: select "Year" from T where "Deaths (age <15)" not like 'nan' order by cast("Deaths (age <15)" as integer) desc limit 1;
+Generated Final SQL: select "Year" from T where "Deaths (age <15)" not like 'nan' order by cast("Deaths (age <15)" as integer) desc limit 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Year |
+|-------:|
+|   2001 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Toy safety
+SQL: select "Year" from T where "Deaths (age <15)" not like 'nan' order by cast("Deaths (age <15)" as integer) desc limit 1;
+
+Year
+2001
+Question: what year had the largest number of deaths reported?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2001
+[Gold Answer] 2001
+

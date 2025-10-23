@@ -1,0 +1,120 @@
+=== Table Summary ===
+### Column Analysis:
+
+1. **Name:**
+   - Data type: Categorical
+   - 4 representative example values: Canaveral, Cape Hatteras, Cape Lookout, Cumberland Island
+   - Role: Identifier for the national seashores
+
+2. **Location:**
+   - Data type: Categorical
+   - 4 representative example values: Florida, North Carolina, Georgia, Texas
+   - Role: Descriptor indicating the state and coordinates of the national seashores
+
+3. **Date Formed:**
+   - Data type: Date
+   - 4 representative example values: January 3, 1975, January 12, 1953, March 10, 1966, October 23, 1972
+   - Role: Descriptor indicating the date when the national seashores were established
+
+4. **Area:**
+   - Data type: Numeric
+   - 4 representative example values: 57,661.69 acres, 30,350.65 acres, 28,243.36 acres, 36,415.13 acres
+   - Role: Measure of the size of the national seashores
+
+5. **Description:**
+   - Data type: Text
+   - 4 representative example values: Description of the recreational activities and features of each national seashore
+   - Role: Descriptor providing detailed information about each national seashore
+
+### Outlier Row Analysis:
+
+1. **Row 5 (Padre Island):**
+   - The values that make it distinctive are "130,434.27 acres" for the Area column, which is significantly larger than the other national seashores, making it an outlier in terms of size.
+   - This row is an outlier due to the unusually large area compared to the other national seashores.
+
+2. **Row 0 (Canaveral):**
+   - The values in this row are not significantly different from the majority of the table and are ordinary entries.
+   - This row is an ordinary row and does not require special handling.
+
+3. **Row 1 (Cape Hatteras):**
+   - The values in this row are not significantly different from the majority of the table and are ordinary entries.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Name              | Location                                               | Date Formed         | Area                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|-------------:|:------------------|:-------------------------------------------------------|:--------------------|:----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Assateague Island | Maryland Virginia\n38°05′N 75°13′W﻿ / ﻿38.08°N 75.21°W   | 1965-09-21 00:00:00 | 39726.75 acres (160.8 km2)  | As a barrier island Assateague Island is continually shaped by wind and waves. It is known for its feral horses and is also home to deer crabs fox and migrating snow geese. Main vegetation includes American beach grass saltmarsh cordgrass and sea rocket.                                                                                                                                                              |
+|            1 | Canaveral         | Florida\n28°46′N 80°47′W﻿ / ﻿28.77°N 80.78°W             | 1975-01-03 00:00:00 | 57661.69 acres (233.3 km2)  | Adjacent to the Kennedy Space Center this barrier island has a variety of recreational activities including hiking boating and fishing. The Seminole Rest features an ancient Native American mound and Eldora Statehouse shows historic life on the lagoon. Florida's longest undeveloped Atlantic beach surrounds Mosquito Lagoon which is home to dolphins manatees and sea turtles along with a variety of sea grasses. |
+|            2 | Cape Cod          | Massachusetts\n41°57′N 70°00′W﻿ / ﻿41.95°N 70.00°W       | 1961-08-07 00:00:00 | 43608.48 acres (176.5 km2)  | Beyond its nearly 40 miles of beaches this historic area has Marconi Station the Three Sisters Lighthouses and the former North Truro Air Force Station. Cranberry bogs marshes and hiking trails provide a look into the flora and fauna of Cape Cod.                                                                                                                                                                      |
+|            3 | Cape Hatteras     | North Carolina\n35°18′N 75°31′W﻿ / ﻿35.30°N 75.51°W      | 1953-01-12 00:00:00 | 30350.65 acres (122.8 km2)  | Located in the Outer Banks Cape Hatteras is known for its Bodie Island and Cape Hatteras Lighthouses. Popular recreation activities include windsurfing birdwatching fishing shell collecting and kayaking. Constantly changing from ocean activity this barrier island provides refuge for the endangered piping plover seabeach amaranth and sea turtles.                                                                 |
+|            4 | Cape Lookout      | North Carolina\n34°37′N 76°32′W﻿ / ﻿34.61°N 76.54°W      | 1966-03-10 00:00:00 | 28243.36 acres (114.3 km2)  | Cape Lookout National Seashore is made up of three islands of the Outer Banks. It is known for its wild horses and the Cape Lookout Lighthouse. Hiking camping fishing and birdwatching are popular recreational activities. It is also home to two historic villages.                                                                                                                                                      |
+|            5 | Cumberland Island | Georgia\n30°50′N 81°27′W﻿ / ﻿30.83°N 81.45°W             | 1972-10-23 00:00:00 | 36415.13 acres (147.4 km2)  | Cumberland Island is the site of the Plum Orchard estate Thomas Carnegie's ruined Dungeness mansion and an African Baptist church. The museum on the mainland preserves Timucua Indian history Nathaniel Green and Eli Whitney's works and War of 1812 battles.                                                                                                                                                             |
+|            6 | Fire Island       | New York\n40°42′N 72°59′W﻿ / ﻿40.70°N 72.98°W            | 1964-09-11 00:00:00 | 19579.47 acres (79.2 km2)   | Fire Island a barrier island south of Long Island has the historic William Floyd House and Fire Island Lighthouse. The beaches and dunes are complemented by a sunken forest wetlands and seventeen communities.                                                                                                                                                                                                            |
+|            7 | Gulf Islands      | Florida Mississippi\n30°22′N 86°58′W﻿ / ﻿30.36°N 86.97°W | 1971-01-08 00:00:00 | 137990.97 acres (558.4 km2) | Seven main islands have four historic forts built by the Spanish British and Americans that were used for defense in the Civil War. Apache Indians once lived here including Geronimo. There are nature trails for wildlife viewing and long beaches for snorkeling biking and other activities.                                                                                                                            |
+|            8 | Padre Island      | Texas\n27°00′N 97°23′W﻿ / ﻿27°N 97.38°W                  | 1968-04-06 00:00:00 | 130434.27 acres (527.8 km2) | Padre Island the world's longest undeveloped barrier island is a nesting ground for the Kemp's ridley sea turtle and a migratory site for Least Terns Brown Pelicans and Piping Plovers. Malaquite Beach provides a variety of recreational activities and Novillo Line Camp has the remains of a cattle ranch. The military used part of the island as a bombing range during WWII.                                        |
+|            9 | Point Reyes       | California\n38°00′N 123°00′W﻿ / ﻿38.00°N 123.00°W        | 1972-10-20 00:00:00 | 71067.78 acres (287.6 km2)  | Historic locations on Point Reyes Peninsula include the Point Reyes Lighthouse and Lifeboat Station and a recreated Coast Miwok village. Gray whales can be seen as they migrate near the seashore and tule elk and elephant seals populate the wilderness area.                                                                                                                                                            |
+
+Generated Reasoning SQL: Explanation: To determine which location provides the best opportunity to see dolphins, we need to analyze the "Description" column for each national seashore. The presence of dolphins as a notable feature or attraction in the description would indicate a good opportunity to see them. We will search for the keyword "dolphins" in the description to identify the relevant locations.
+
+SQL: 
+SELECT "Location"
+FROM T
+WHERE "Description" LIKE '%dolphins%';
+Generated Final SQL: SELECT "Location" FROM T WHERE "Description" LIKE '%dolphins%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Location                                   |
+|:-------------------------------------------|
+| Florida\n28°46′N 80°47′W﻿ / ﻿28.77°N 80.78°W |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of United States national lakeshores and seashores
+SQL: SELECT "Location" FROM T WHERE "Description" LIKE '%dolphins%';
+
+SQL Execution Result:
+Location
+Florida\n28°46′N 80°47′W﻿ / ﻿28.77°N 80.78°W
+
+Question: which location provides the best opportunity to see dolphins?
+A: To find the answer to this question, let’s think step by step.
+Prediction: florida
+[Gold Answer] canaveral
+

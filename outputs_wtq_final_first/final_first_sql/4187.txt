@@ -1,0 +1,108 @@
+=== Table Summary ===
+**Column 1:**
+- Data type: Numeric
+- 4 representative example values: 118, 120, 122, 124
+- Role of the column: Measure
+
+**Column 2:**
+- Data type: Categorical (dates)
+- 4 representative example values: May 20, 2012; May 21, 2031; May 20, 2050
+- Role of the column: Descriptor
+
+**Column 3:**
+- Data type: Numeric
+- 4 representative example values: 138, 148, 140, 150
+- Role of the column: Measure
+
+**Column 4:**
+- Data type: Categorical (dates)
+- 4 representative example values: October 14, 2023; October 14, 2042; October 13, 2061
+- Role of the column: Descriptor
+
+**Column 5:**
+- Data type: Numeric
+- 4 representative example values: 146, 156, 144, 154
+- Role of the column: Measure
+
+**Outlier Row Analysis:**
+1. Row 0: May 20-21, 118 - This row is an outlier because it contains a range of dates (May 20-21) which is not present in any other rows.
+2. Row 5: August 2, 2065 - This row is an outlier because it contains a date (August 2, 2065) which is different from the majority of the table.
+3. Row 3: October 13-14, 124 - This row is an outlier because it contains a range of dates (October 13-14) which is not present in any other rows.
+
+=== Full Table Preview ===
+|   row_number | May 20-21\n118   | March 9\n120   | December 25-26\n122   | October 13-14\n124   | August 1-2\n126   |
+|-------------:|:-----------------|:---------------|:----------------------|:---------------------|:------------------|
+|            0 | May 21 1993      | March 9 1997   | December 25 2000      | October 14 2004      | August 1 2008     |
+|            1 | 128              | 130            | 132                   | 134                  | 136               |
+|            2 | May 20 2012      | March 9 2016   | December 26 2019      | October 14 2023      | August 2 2027     |
+|            3 | 138              | 140            | 142                   | 144                  | 146               |
+|            4 | May 21 2031      | March 9 2035   | December 26 2038      | October 14 2042      | August 2 2046     |
+|            5 | 148              | 150            | 152                   | 154                  | 156               |
+|            6 | May 20 2050      | March 9 2054   | December 26 2057      | October 13 2061      | August 2 2065     |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the columns "May 20-21\n118", "March 9\n120", "December 25-26\n122", "October 13-14\n124", "August 1-2\n126" are all numeric and represent measures. The rows contain data for different years and the corresponding eclipse sizes. To compare the eclipse sizes in 2012 and 2054, we need to find the maximum eclipse size for each year and then compare the two values.
+
+SQL: 
+SELECT MAX("May 20-21\n118") AS max_eclipse_2012, MAX("August 1-2\n126") AS max_eclipse_2054
+FROM T
+WHERE "March 9\n120" = 120 AND "December 25-26\n122" = 122 AND "October 13-14\n124" = 124;
+Generated Final SQL: SELECT MAX("May 20-21\n118") AS max_eclipse_2012, MAX("August 1-2\n126") AS max_eclipse_2054 FROM T WHERE "March 9\n120" = 120 AND "December 25-26\n122" = 122 AND "October 13-14\n124" = 124;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| max_eclipse_2012   | max_eclipse_2054   |
+|:-------------------|:-------------------|
+|                    |                    |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Solar eclipse of May 20, 2012 (row_number, May 20-21\n118, March 9\n120, December 25-26\n122, October 13-14\n124, August 1-2\n126)
+
+row_number | May 20-21\n118 | March 9\n120 | December 25-26\n122 | October 13-14\n124 | August 1-2\n126
+0 | May 21 1993 | March 9 1997 | December 25 2000 | October 14 2004 | August 1 2008
+1 | 128 | 130 | 132 | 134 | 136
+2 | May 20 2012 | March 9 2016 | December 26 2019 | October 14 2023 | August 2 2027
+3 | 138 | 140 | 142 | 144 | 146
+4 | May 21 2031 | March 9 2035 | December 26 2038 | October 14 2042 | August 2 2046
+5 | 148 | 150 | 152 | 154 | 156
+6 | May 20 2050 | March 9 2054 | December 26 2057 | October 13 2061 | August 2 2065
+Question: which year has the biggest eclipse, 2012 or 2054?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the columns relevant to our question from the summary:
+- The **May 20-21\n118** column represents the eclipse magnitude on May 20-21 for each row.
+- The **May 20-21\n118** column contains the year and magnitude of the eclipse.
+
+From the full table:
+- The eclipse magnitude for 2012 is 118.
+- The eclipse magnitude for 2054 is 150.
+
+Therefore, the eclipse in 2054 has a bigger magnitude compared to the one in 2012.
+
+Final Answer: 2054
+[Fallback] Prediction: 2054
+[Gold Answer] 2054
+

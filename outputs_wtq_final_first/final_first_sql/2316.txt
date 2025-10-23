@@ -1,0 +1,193 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Common name:
+   - Data type: Categorical
+   - 4 representative example values: Hod HaSharon, Kafr Qasim, Kfar Saba, Kiryat Ata
+   - Role: Identifier for the city
+
+2. District:
+   - Data type: Categorical
+   - 4 representative example values: Center, Haifa, North
+   - Role: Descriptor for the geographical location of the city
+
+3. Hebrew:
+   - Data type: Categorical
+   - 4 representative example values: הוד השרון, כפר קאסם, כפר סבא, קריית אתא
+   - Role: Descriptor for the city name in Hebrew
+
+4. Arabic:
+   - Data type: Categorical
+   - 4 representative example values: هود هشارون, كفر قاسم, كفار سابا, كريات آتا
+   - Role: Descriptor for the city name in Arabic
+
+5. Population (2009):
+   - Data type: Numeric
+   - 4 representative example values: 47,200, 18,800, 83,600, 50,700
+   - Role: Measure of the population in the year 2009
+
+6. Area (km²):
+   - Data type: Numeric
+   - 4 representative example values: 21.585, 8.745, 14.169, 16.706
+   - Role: Measure of the area of the city in square kilometers
+
+7. Mayor:
+   - Data type: Categorical
+   - 4 representative example values: Hai Adiv, Sami Issa, Yehuda Ben-Hemo, Ya'akov Peretz
+   - Role: Descriptor for the mayor of the city
+
+**Outlier Row Analysis:**
+
+1. Row 11 (Tiberias):
+   - The values for Population (41,300) and Area (10.872 km²) are different from the majority of the table.
+   - These values are lower compared to other cities, making this row an outlier.
+
+2. Row 25 (Nazareth):
+   - The values for Population (65,800) and Area (14.123 km²) are not significantly different from the majority of the table.
+   - These values are ordinary within the context of the table, so this row is not an outlier.
+
+3. Row 26 (Nahariya):
+   - The values for Population (51,200) and Area (17.501 km²) are not significantly different from the majority of the table.
+   - These values are ordinary within the context of the table, so this row is not an outlier.
+
+=== Full Table Preview ===
+|   row_number | Common name            | District                     | Hebrew             | Arabic               |   Population\n(2009) |   Area\n(km²) | Mayor               |
+|-------------:|:-----------------------|:-----------------------------|:-------------------|:---------------------|---------------------:|--------------:|:--------------------|
+|            0 | Acre                   | North                        | עכו                | عكا                  |                46300 |        13.533 | Shimon Lancry       |
+|            1 | Afula                  | North                        | עפולה              | العفولة              |                40500 |        26.909 | Avi Elkabetz        |
+|            2 | Arad                   | South                        | ערד                | عراد                 |                23400 |        93.14  | Tali Ploskov        |
+|            3 | Ariel                  | Judea & Samaria\n(West Bank) | אריאל              | أريأل                |                17600 |        14.677 | Eliyahu Shaviro     |
+|            4 | Ashdod                 | South                        | אשדוד              | أشدود                |               206400 |        47.242 | Yehiel Lasri        |
+|            5 | Ashkelon               | South                        | אשקלון             | عسقلان               |               111900 |        47.788 | Benny Vaknin        |
+|            6 | Baqa-Jatt              | Haifa                        | באקה-ג'ת           | باقة جت              |                34300 |        16.392 | Yitzhak Veled       |
+|            7 | Bat Yam                | Tel Aviv                     | בת ים              | بات يام              |               130000 |         8.167 | Shlomo Lahiani      |
+|            8 | Beersheba              | South                        | באר שבע            | بئر السبع            |               197300 |        52.903 | Rubik Danilovich    |
+|            9 | Beit She'an            | North                        | בית שאן            | بيسان                |                16900 |         7.33  | Jacky Levi          |
+|           10 | Beit Shemesh           | Jerusalem                    | בית שמש            | بيت شيمش             |                77100 |        34.259 | Moshe Abutbul       |
+|           11 | Beitar Illit           | Judea & Samaria\n(West Bank) | ביתר עילית         | بيتار عيليت          |                35000 |         6.801 | Meir Rubenstein     |
+|           12 | Bnei Brak              | Tel Aviv                     | בני ברק            | بني براك             |               154400 |         7.088 | Ya'akov Asher       |
+|           13 | Dimona                 | South                        | דימונה             | ديمونة               |                32400 |        29.877 | Meir Cohen          |
+|           14 | Eilat                  | South                        | אילת               | إيلات                |                47400 |        84.789 | Meir Yitzhak Halevi |
+|           15 | El'ad                  | Center                       | אלעד               | أيلعاد               |                36300 |         2.756 | Yitzhak Idan        |
+|           16 | Giv'atayim             | Tel Aviv                     | גבעתיים            | جفعاتايم             |                53000 |         3.246 | Ran Kunik           |
+|           17 | Giv'at Shmuel          | Center                       | גבעת שמואל         |                      |                21800 |         2.579 | Yossi Brodny        |
+|           18 | Hadera                 | Haifa                        | חדרה               | الخضيرة              |                80200 |        49.359 | Haim Avitan         |
+|           19 | Haifa                  | Haifa                        | חיפה               | حيفا                 |               265600 |        63.666 | Yona Yahav          |
+|           20 | Herzliya               | Tel Aviv                     | הרצליה             | هرتسليا              |                87000 |        21.585 | Yehonatan Yassur    |
+|           21 | Hod HaSharon           | Center                       | הוד השרון          | هود هشارون           |                47200 |        21.585 | Hai Adiv            |
+|           22 | Holon                  | Tel Aviv                     | חולון              | حولون                |               184700 |        18.927 | Moti Sasson         |
+|           23 | Jerusalem              | Jerusalem                    | ירושלים            | أورشليم القدس        |               815600 |       125.156 | Nir Barkat          |
+|           24 | Karmiel                | North                        | כרמיאל             | كرميئيل              |                44100 |        19.188 | Adi Eldar           |
+|           25 | Kafr Qasim             | Center                       | כפר קאסם           | كفر قاسم             |                18800 |         8.745 | Sami Issa           |
+|           26 | Kfar Saba              | Center                       | כפר סבא            | كفار سابا            |                83600 |        14.169 | Yehuda Ben-Hemo     |
+|           27 | Kiryat Ata             | Haifa                        | קריית אתא          | كريات آتا            |                50700 |        16.706 | Ya'akov Peretz      |
+|           28 | Kiryat Bialik          | Haifa                        | קריית ביאליק       | كريات بياليك         |                37300 |         8.178 | Eli Dokursky        |
+|           29 | Kiryat Gat             | South                        | קריית גת           | كريات جات            |                47400 |        16.302 | Aviram Dahari       |
+|           30 | Kiryat Malakhi         | South                        | קריית מלאכי        | كريات ملاخي          |                20600 |         4.632 | Motti Malka         |
+|           31 | Kiryat Motzkin         | Haifa                        | קריית מוצקין       | كريات موتسكين        |                38000 |         3.778 | Haim Zuri           |
+|           32 | Kiryat Ono             | Tel Aviv                     | קריית אונו         | كريات أونو           |                31000 |         4.112 | Yossi Nishri        |
+|           33 | Kiryat Shmona          | North                        | קריית שמונה        | كريات شمونة          |                23100 |        14.228 | Nissim Malka        |
+|           34 | Kiryat Yam             | Haifa                        | קריית ים           | كريات يام            |                37700 |         4.339 | Shmuel Sisso        |
+|           35 | Lod                    | Center                       | לוד                | اللد                 |                69800 |        12.226 | Yair Revivo         |
+|           36 | Ma'ale Adumim          | Judea & Samaria\n(West Bank) | מעלה אדומים        | معلي أدوميم          |                34300 |        49.177 | Benny Kashriel      |
+|           37 | Ma'alot-Tarshiha       | North                        | מעלות-תרשיחא       | معالوت ترشيحا        |                20600 |         6.832 | Shlomo Bohbot       |
+|           38 | Migdal HaEmek          | North                        | מגדל העמק          | مجدال هعيمق          |                23900 |         7.637 | Eliyahu Barda       |
+|           39 | Modi'in Illit          | Judea & Samaria\n(West Bank) | מודיעין עילית      | موديعين عيليت        |                46200 |         4.746 | Ya'akov Gutterman   |
+|           40 | Modi'in-Maccabim-Re'ut | Center                       | מודיעין-מכבים-רעות | موديعين-مكابيم-ريعوت |                72700 |        50.176 | Haim Beebas         |
+|           41 | Nahariya               | North                        | נהריה              | نهاريا               |                51200 |        10.233 | Jacky Sabag         |
+|           42 | Nazareth               | North                        | נצרת               | الناصرة              |                72200 |        14.123 | Ali Salam           |
+|           43 | Nazareth Illit         | North                        | נצרת עילית         | الناصرة العليا       |                40800 |        32.521 | Shimon Gapso        |
+|           44 | Nesher                 | Haifa                        | נשר                | نيشر                 |                23600 |        12.79  | David Amar          |
+|           45 | Ness Ziona             | Center                       | נס ציונה           | نيس تسيونا           |                38100 |        15.579 | Yossi Shvo          |
+|           46 | Netanya                | Center                       | נתניה              | نتانيا               |               183200 |        28.954 | Miriam Feirberg     |
+|           47 | Netivot                | South                        | נתיבות             | نتيفوت               |                26700 |         5.626 | Yehiel Zohar        |
+|           48 | Ofakim                 | South                        | אופקים             | أوفاكيم              |                24000 |        10.273 | Zvika Greengold     |
+|           49 | Or Akiva               | Haifa                        | אור עקיבא          | أور عكيفا            |                16100 |         3.539 | Simha Yosipov       |
+|           50 | Or Yehuda              | Tel Aviv                     | אור יהודה          | أور يهودا            |                34400 |         5.141 | David Yosef         |
+|           51 | Petah Tikva            | Center                       | פתח תקווה          | بيتح تكفا            |               209600 |        35.868 | Itzik Braverman     |
+|           52 | Qalansawe              | Center                       | קלנסווה            | قلنسوة               |                18700 |         8.417 |                     |
+|           53 | Ra'anana               | Center                       | רעננה              | رعنانا               |                68300 |        14.878 | Nahum Hofree        |
+|           54 | Rahat                  | South                        | רהט                | رهط                  |                51700 |        19.586 | Talal al-Krenawi    |
+|           55 | Ramat Gan              | Tel Aviv                     | רמת גן             | رمات غان             |               145000 |        13.229 | Yisrael Zinger      |
+|           56 | Ramat HaSharon         | Tel Aviv                     | רמת השרון          | رمات هشارون          |                40600 |        16.792 | Yitzhak Rochberger  |
+|           57 | Ramla                  | Center                       | רמלה               | الرملة               |                65800 |        11.854 | Yoel Lavi           |
+|           58 | Rehovot                | Center                       | רחובות             | رحوفوت               |               112700 |        23.041 | Rahamim Malul       |
+|           59 | Rishon LeZion          | Center                       | ראשון לציון        | ريشون لتسيون         |               228200 |        58.704 | Dov Tzur            |
+|           60 | Rosh HaAyin            | Center                       | ראש העין           | رأس العين            |                38500 |        24.39  | Moshe Sinai         |
+|           61 | Safed                  | North                        | צפת                | صفد                  |                29500 |        29.248 | Ilan Shohat         |
+|           62 | Sakhnin                | North                        | סח'נין             | سخنين                |                25700 |         9.816 | Mazen Ghnaim        |
+|           63 | Sderot                 | South                        | שדרות              | سديروت               |                23700 |         4.472 | David Buskila       |
+|           64 | Shefa-'Amr (Shfar'am)  | North                        | שפרעם              | شفا عمرو             |                36200 |        19.766 | Nahed Khazem        |
+|           65 | Tamra                  | North                        | טמרה               | طمرة                 |                28700 |        29.259 | Abu el-Hija Adel    |
+|           66 | Tayibe                 | Center                       | טייבה              | الطيبة               |                36500 |        18.662 | Hemi Doron          |
+|           67 | Tel Aviv               | Tel Aviv                     | תל אביב            | تل أبيب يافا         |               403700 |        51.788 | Ron Huldai          |
+|           68 | Tiberias               | North                        | טבריה              | طبريا                |                41300 |        10.872 | Zohar Oved          |
+|           69 | Tira                   | Center                       | טירה               | الطيرة               |                22600 |        11.894 | Mamoun Abd al-Hay   |
+|           70 | Tirat Carmel           | Haifa                        | טירת כרמל          | طيرة الكرمل          |                18600 |         5.601 | Aryeh Tal           |
+|           71 | Umm al-Fahm            | Haifa                        | אום אל-פחם         | أم الفحم             |                46100 |        22.253 | Khaled Aghbariyya   |
+|           72 | Yavne                  | Center                       | יבנה               | يبنة                 |                33000 |        10.7   | Zvi Gov-Ari         |
+|           73 | Yehud-Monosson         | Center                       | יהוד-מונוסון       | يهود مونوسون         |                26500 |         5.014 | Yossi Ben-David     |
+|           74 | Yokneam                | North                        | יקנעם              | يوقنعم               |                19100 |         7.39  | Simon Alfasi        |
+
+Generated Reasoning SQL: The summary indicates that the "Area (km²)" column is numeric and represents the area of each city in square kilometers. To determine which city has a larger area between Ashdod and Eilat, we need to compare the values in the "Area (km²)" column for these two cities.
+
+SQL: 
+select "Common name", "Area\n(km²)" from T where "Common name" like '%Ashdod%' or "Common name" like '%Eilat%';
+Generated Final SQL: select "Common name", "Area\n(km²)" from T where "Common name" like '%Ashdod%' or "Common name" like '%Eilat%';
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+| Common name   |   Area\n(km²) |
+|:--------------|--------------:|
+| Ashdod        |        47.242 |
+| Eilat         |        84.789 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Israeli cities
+SQL: select "Common name", "Area\n(km²)" from T where "Common name" like '%Ashdod%' or "Common name" like '%Eilat%';
+
+Common name | Area\n(km²)
+Ashdod | 47.242
+Eilat | 84.789
+Question: which has a larger area, ashdod or eilat?
+A: To find the answer to this question, let’s think step by step.
+Prediction: eilat
+[Gold Answer] eilat
+

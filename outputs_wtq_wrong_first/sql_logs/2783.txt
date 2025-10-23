@@ -1,0 +1,447 @@
+=== Table ID ===
+csv/204-csv/454.tsv
+
+=== Question ===
+what city is before brasov?
+
+=== Sub-table Preview ===
+| City        | County    | Population (2011)   | Population (2002)   |   Altitude (m) | Year status\ngranted* or\nfirst attested†   |
+|:------------|:----------|:--------------------|:--------------------|---------------:|:--------------------------------------------|
+| Constanța   | Constanța | 283,872             | 310,471             |             25 | 260 BC†                                     |
+| Suceava     | Suceava   | 92,121              | 106,138             |            325 | 1388†                                       |
+| Găești      | Dâmbovița | 13,317              | 16,598              |            nan | nan                                         |
+| Dumbrăveni  | Sibiu     | 7,388               | 8,812               |            nan | nan                                         |
+| Techirghiol | Constanța | 7,292               | 7,388               |            nan | nan                                         |
+| Segarcea    | Dolj      | 7,019               | 8,704               |            nan | 1968*                                       |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. City
+   - Data type: Categorical
+   - 4 representative example values: Constanța, Suceava, Găești, Dumbrăveni
+   - Role: Identifier for the city where the population is recorded.
+
+2. County
+   - Data type: Categorical
+   - 4 representative example values: Constanța, Suceava, Dâmbovița, Sibiu
+   - Role: Descriptor for the county where the city is located.
+
+3. Population (2011)
+   - Data type: Numeric
+   - 4 representative example values: 283,872, 92,121, 13,317, 7,388
+   - Role: Measure of the population count in the year 2011.
+
+4. Population (2002)
+   - Data type: Numeric
+   - 4 representative example values: 310,471, 106,138, 16,598, 8,812
+   - Role: Measure of the population count in the year 2002.
+
+5. Altitude (m)
+   - Data type: Numeric
+   - 4 representative example values: 25, 325, nan, nan
+   - Role: Measure of the altitude in meters of the city.
+
+6. Year status granted* or first attested†
+   - Data type: Categorical
+   - 4 representative example values: 260 BC†, 1388†, nan, 1968*
+   - Role: Descriptor indicating the year when the city's status was granted or first attested.
+
+**Outlier Row Analysis:**
+
+1. Row 22 (Găești, Dâmbovița, 13,317, 16,598, nan, nan)
+   - The values for Population (2011) and Population (2002) are significantly lower compared to other rows in the table, making this row an outlier in terms of population size.
+
+2. Row 4 (Techirghiol, Constanța, 7,292, 7,388, nan, nan)
+   - The values for Population (2011) and Population (2002) are very close to each other and lower than other rows, indicating a stable population over the years, which is different from the population trends seen in other cities.
+
+3. Row 243 (Segarcea, Dolj, 7,019, 8,704, nan, 1968*)
+   - The year 1968* in the "Year status granted* or first attested†" column is different from the other rows, which have historical dates or "nan". This makes the row an outlier in terms of the year status was granted or first attested.
+
+=== Full Table Preview ===
+|   row_number | City                  | County          |   Population (2011) |   Population (2002) |   Altitude (m) | Year status\ngranted* or\nfirst attested†   |
+|-------------:|:----------------------|:----------------|--------------------:|--------------------:|---------------:|:--------------------------------------------|
+|            0 | Bucharest             | -               |             1883425 |             1926334 |             85 | 1459†                                       |
+|            1 | Cluj-Napoca           | Cluj            |              324576 |              317953 |            360 | 1316*                                       |
+|            2 | Timișoara             | Timiș           |              319279 |              317660 |             90 | 1342*                                       |
+|            3 | Iași                  | Iași            |              290422 |              320888 |             95 | 1408†                                       |
+|            4 | Constanța             | Constanța       |              283872 |              310471 |             25 | 260 BC†                                     |
+|            5 | Craiova               | Dolj            |              269506 |              302601 |            100 | 1475†                                       |
+|            6 | Brașov                | Brașov          |              253200 |              284596 |            625 | 1235†                                       |
+|            7 | Galați                | Galați          |              249432 |              298861 |             55 | 1445†                                       |
+|            8 | Ploiești              | Prahova         |              209945 |              232527 |            150 | 1596†                                       |
+|            9 | Oradea                | Bihor           |              196367 |              206614 |            150 | 1113†                                       |
+|           10 | Brăila                | Brăila          |              180302 |              216292 |             20 | 1368†                                       |
+|           11 | Arad                  | Arad            |              159074 |              172824 |            107 | 1028†                                       |
+|           12 | Pitești               | Argeș           |              155383 |              168458 |            287 | 1388†                                       |
+|           13 | Sibiu                 | Sibiu           |              147245 |              154892 |            415 | 1366†                                       |
+|           14 | Bacău                 | Bacău           |              144307 |              175500 |            165 | 1408†                                       |
+|           15 | Târgu Mureș           | Mureș           |              134290 |              149577 |            330 | 1332*                                       |
+|           16 | Baia Mare             | Maramureș       |              123738 |              137976 |            225 | 1329†                                       |
+|           17 | Buzău                 | Buzău           |              115494 |              133116 |             95 | 1431†                                       |
+|           18 | Botoșani              | Botoșani        |              106847 |              115344 |            130 | 1439†                                       |
+|           19 | Satu Mare             | Satu Mare       |              102411 |              115630 |            123 | 1213†                                       |
+|           20 | Râmnicu Vâlcea        | Vâlcea          |               98776 |              107656 |            250 | 1388†                                       |
+|           21 | Drobeta-Turnu Severin | Mehedinți       |               92617 |              104035 |             65 | 121 AD†/1833*                               |
+|           22 | Suceava               | Suceava         |               92121 |              106138 |            325 | 1388†                                       |
+|           23 | Piatra Neamț          | Neamț           |               85055 |              105499 |            345 | 1491†                                       |
+|           24 | Târgu Jiu             | Gorj            |               82504 |               96562 |            205 |                                             |
+|           25 | Târgoviște            | Dâmbovița       |               79610 |               89429 |            280 |                                             |
+|           26 | Focșani               | Vrancea         |               79315 |              103219 |             55 | 1575†                                       |
+|           27 | Bistrița              | Bistrița-Năsăud |               75076 |               81467 |            360 | 1349*                                       |
+|           28 | Tulcea                | Tulcea          |               73707 |               92762 |             30 |                                             |
+|           29 | Reșița                | Caraș-Severin   |               73282 |               83985 |            245 | 1925*                                       |
+|           30 | Slatina               | Olt             |               70293 |               79171 |            135 | 1368†                                       |
+|           31 | Călărași              | Călărași        |               65181 |               70039 |             13 | 1534†                                       |
+|           32 | Alba Iulia            | Alba            |               63536 |               66369 |            330 | 1097†                                       |
+|           33 | Giurgiu               | Giurgiu         |               61353 |               69587 |            nan | 1395†                                       |
+|           34 | Deva                  | Hunedoara       |               61123 |               69390 |            nan | 1269†                                       |
+|           35 | Hunedoara             | Hunedoara       |               60525 |               71380 |            240 |                                             |
+|           36 | Zalău                 | Sălaj           |               56202 |               63305 |            nan | 1473*                                       |
+|           37 | Sfântu Gheorghe       | Covasna         |               56006 |               61512 |            nan | 1332†/1832*                                 |
+|           38 | Bârlad                | Vaslui          |               55837 |               69183 |            nan |                                             |
+|           39 | Vaslui                | Vaslui          |               55407 |               70267 |            nan |                                             |
+|           40 | Roman                 | Neamț           |               50713 |               69483 |            nan |                                             |
+|           41 | Turda                 | Cluj            |               47744 |               55770 |            nan | 1075†                                       |
+|           42 | Mediaș                | Sibiu           |               47204 |               55203 |            nan | 1359*                                       |
+|           43 | Slobozia              | Ialomița        |               45891 |               52677 |            nan |                                             |
+|           44 | Alexandria            | Teleorman       |               45434 |               50591 |            nan | 1840*                                       |
+|           45 | Voluntari             | Ilfov           |               42944 |               30016 |            nan | 2004*                                       |
+|           46 | Lugoj                 | Timiș           |               40361 |               44571 |            nan |                                             |
+|           47 | Medgidia              | Constanța       |               39780 |               43867 |            nan |                                             |
+|           48 | Onești                | Bacău           |               39172 |               51681 |            nan | 1956*                                       |
+|           49 | Miercurea Ciuc        | Harghita        |               38966 |               41852 |            nan |                                             |
+|           50 | Sighetu Marmației     | Maramureș       |               37640 |               41246 |            nan |                                             |
+|           51 | Petroșani             | Hunedoara       |               37160 |               45447 |            nan | 1930*                                       |
+|           52 | Mangalia              | Constanța       |               36364 |               40037 |            nan |                                             |
+|           53 | Tecuci                | Galați          |               34871 |               42012 |            nan |                                             |
+|           54 | Odorheiu Secuiesc     | Harghita        |               34257 |               36926 |            nan |                                             |
+|           55 | Râmnicu Sărat         | Buzău           |               33843 |               38805 |            nan |                                             |
+|           56 | Pașcani               | Iași            |               33745 |               42172 |            nan |                                             |
+|           57 | Dej                   | Cluj            |               33497 |               38478 |            nan |                                             |
+|           58 | Reghin                | Mureș           |               33281 |               36023 |            nan |                                             |
+|           59 | Năvodari              | Constanța       |               32981 |               32400 |            nan | 1968*                                       |
+|           60 | Câmpina               | Prahova         |               32935 |               38758 |            nan | 1864*                                       |
+|           61 | Mioveni               | Argeș           |               31998 |               35849 |            nan | 1989*                                       |
+|           62 | Câmpulung             | Argeș           |               31767 |               38285 |            nan |                                             |
+|           63 | Caracal               | Olt             |               30954 |               34603 |            nan | 1538†                                       |
+|           64 | Săcele                | Brașov          |               30798 |               29967 |            nan | 1971*                                       |
+|           65 | Făgăraș               | Brașov          |               30714 |               36121 |            nan | 1291†                                       |
+|           66 | Fetești               | Ialomița        |               30217 |               33197 |            nan | 1965*                                       |
+|           67 | Sighișoara            | Mureș           |               28102 |               32287 |            nan | 1367*                                       |
+|           68 | Borșa                 | Maramureș       |               27611 |               27247 |            nan | 1968*                                       |
+|           69 | Roșiorii de Vede      | Teleorman       |               27416 |               31873 |            nan |                                             |
+|           70 | Curtea de Argeș       | Argeș           |               27359 |               32626 |            nan | 1330†                                       |
+|           71 | Sebeș                 | Alba            |               27019 |               29475 |            nan |                                             |
+|           72 | Huși                  | Vaslui          |               26266 |               33320 |            nan |                                             |
+|           73 | Fălticeni             | Suceava         |               25723 |               33867 |            nan |                                             |
+|           74 | Pantelimon            | Ilfov           |               25596 |               16019 |            nan | 2005*                                       |
+|           75 | Oltenița              | Călărași        |               24822 |               31434 |            nan |                                             |
+|           76 | Turnu Măgurele        | Teleorman       |               24772 |               30187 |            nan |                                             |
+|           77 | Caransebeș            | Caraș-Severin   |               24689 |               31199 |            nan |                                             |
+|           78 | Dorohoi               | Botoșani        |               24309 |               31073 |            nan |                                             |
+|           79 | Vulcan                | Hunedoara       |               24160 |               33186 |            nan | 1953*                                       |
+|           80 | Rădăuți               | Suceava         |               23822 |               32151 |            nan |                                             |
+|           81 | Zărnești              | Brașov          |               23476 |               26520 |            nan | 1951*                                       |
+|           82 | Lupeni                | Hunedoara       |               23390 |               31409 |            nan | 1941*/1960*                                 |
+|           83 | Aiud                  | Alba            |               22876 |               28909 |            nan |                                             |
+|           84 | Petrila               | Hunedoara       |               22692 |               28742 |            nan | 1956*                                       |
+|           85 | Câmpia Turzii         | Cluj            |               22223 |               29852 |            nan |                                             |
+|           86 | Buftea                | Ilfov           |               22178 |               19617 |            nan | 1968*                                       |
+|           87 | Târnăveni             | Mureș           |               22075 |               29828 |            nan | 1912*                                       |
+|           88 | Popești-Leordeni      | Ilfov           |               21895 |               15115 |            nan | 2004*                                       |
+|           89 | Moinești              | Bacău           |               21787 |               25532 |            nan |                                             |
+|           90 | Codlea                | Brașov          |               21708 |               24814 |            nan | 1950*                                       |
+|           91 | Cugir                 | Alba            |               21376 |               30244 |            nan | 1960*                                       |
+|           92 | Carei                 | Satu Mare       |               21112 |               25590 |            nan | 1871*                                       |
+|           93 | Gherla                | Cluj            |               20982 |               24232 |            nan |                                             |
+|           94 | Blaj                  | Alba            |               20630 |               21819 |            nan | 1271†                                       |
+|           95 | Comănești             | Bacău           |               19568 |               26237 |            nan | 1952*                                       |
+|           96 | Motru                 | Gorj            |               19079 |               25860 |            nan | 1966*                                       |
+|           97 | Târgu Neamț           | Neamț           |               18695 |               22634 |            nan |                                             |
+|           98 | Moreni                | Dâmbovița       |               18687 |               22868 |            nan | 1948*                                       |
+|           99 | Târgu Secuiesc        | Covasna         |               18491 |               22251 |            nan |                                             |
+|          100 | Gheorgheni            | Harghita        |               18377 |               21245 |            nan |                                             |
+|          101 | Orăștie               | Hunedoara       |               18227 |               24354 |            nan |                                             |
+|          102 | Balș                  | Olt             |               18164 |               23147 |            nan | 1921*                                       |
+|          103 | Băicoi                | Prahova         |               17981 |               20234 |            nan | 1948*                                       |
+|          104 | Drăgășani             | Vâlcea          |               17871 |               22499 |            nan |                                             |
+|          105 | Salonta               | Bihor           |               17735 |               20006 |            nan |                                             |
+|          106 | Băilești              | Dolj            |               17437 |               22231 |            nan | 1921*                                       |
+|          107 | Calafat               | Dolj            |               17336 |               21227 |            nan |                                             |
+|          108 | Cernavodă             | Constanța       |               17022 |               20514 |            nan |                                             |
+|          109 | Filiași               | Dolj            |               16900 |               20159 |            nan | 1968*                                       |
+|          110 | Câmpulung Moldovenesc | Suceava         |               16722 |               21862 |            nan | 1866*                                       |
+|          111 | Corabia               | Olt             |               16441 |               21932 |            nan | 1871*                                       |
+|          112 | Adjud                 | Vrancea         |               16045 |               20776 |            nan |                                             |
+|          113 | Breaza                | Prahova         |               15928 |               18863 |            nan | 1952*                                       |
+|          114 | Bocșa                 | Caraș-Severin   |               15842 |               19023 |            nan | 1960*                                       |
+|          115 | Marghita              | Bihor           |               15770 |               18650 |            nan | 1967*                                       |
+|          116 | Baia Sprie            | Maramureș       |               15476 |               15735 |            nan |                                             |
+|          117 | Bragadiru             | Ilfov           |               15329 |                8165 |            nan | 2005*                                       |
+|          118 | Luduș                 | Mureș           |               15328 |               18647 |            nan | 1960*                                       |
+|          119 | Urziceni              | Ialomița        |               15308 |               19088 |            nan |                                             |
+|          120 | Vișeu de Sus          | Maramureș       |               15037 |               18444 |            nan | 1956*                                       |
+|          121 | Râșnov                | Brașov          |               15022 |               16242 |            nan |                                             |
+|          122 | Buhuși                | Bacău           |               14562 |               21993 |            nan | 1930*                                       |
+|          123 | Ștefănești            | Argeș           |               14541 |               12983 |            nan | 2004*                                       |
+|          124 | Brad                  | Hunedoara       |               14495 |               18075 |            nan | 1941*                                       |
+|          125 | Șimleu Silvaniei      | Sălaj           |               14436 |               17053 |            nan |                                             |
+|          126 | Vatra Dornei          | Suceava         |               14429 |               17864 |            nan | 1907*                                       |
+|          127 | Mizil                 | Prahova         |               14312 |               17075 |            nan | 1830*                                       |
+|          128 | Cisnădie              | Sibiu           |               14282 |               17204 |            nan | 1948*                                       |
+|          129 | Pucioasa              | Dâmbovița       |               14254 |               16489 |            nan | 1929*                                       |
+|          130 | Chitila               | Ilfov           |               14184 |               12643 |            nan | 2005*                                       |
+|          131 | Zimnicea              | Teleorman       |               14058 |               16787 |            nan |                                             |
+|          132 | Toplița               | Harghita        |               13929 |               16839 |            nan | 1956*                                       |
+|          133 | Otopeni               | Ilfov           |               13861 |               10515 |            nan | 2000*                                       |
+|          134 | Ovidiu                | Constanța       |               13847 |               13458 |            nan | 1989*                                       |
+|          135 | Gura Humorului        | Suceava         |               13667 |               16740 |            nan | 1904*                                       |
+|          136 | Găești                | Dâmbovița       |               13317 |               16598 |            nan |                                             |
+|          137 | Vicovu de Sus         | Suceava         |               13308 |               14125 |            nan | 2004*                                       |
+|          138 | Țăndărei              | Ialomița        |               13219 |               14591 |            nan | 1968*                                       |
+|          139 | Ocna Mureș            | Alba            |               13036 |               15697 |            nan | 1956*                                       |
+|          140 | Bolintin-Vale         | Giurgiu         |               12929 |               11464 |            nan | 1989*                                       |
+|          141 | Avrig                 | Sibiu           |               12815 |               16215 |            nan | 1989*                                       |
+|          142 | Pecica                | Arad            |               12762 |               13024 |            nan | 2004*                                       |
+|          143 | Simeria               | Hunedoara       |               12556 |               14571 |            nan | 1956*                                       |
+|          144 | Moldova Nouă          | Caraș-Severin   |               12350 |               15112 |            nan | 1968*                                       |
+|          145 | Sânnicolau Mare       | Timiș           |               12312 |               13007 |            nan | 1942*                                       |
+|          146 | Vălenii de Munte      | Prahova         |               12257 |               13898 |            nan |                                             |
+|          147 | Dărmănești            | Bacău           |               12247 |               14232 |            nan | 1989*                                       |
+|          148 | Dăbuleni              | Dolj            |               12182 |               13888 |            nan | 2004*                                       |
+|          149 | Comarnic              | Prahova         |               11970 |               13532 |            nan | 1968*                                       |
+|          150 | Negrești-Oaș          | Satu Mare       |               11867 |               16356 |            nan | 1965*                                       |
+|          151 | Rovinari              | Gorj            |               11816 |               12603 |            nan | 1981*                                       |
+|          152 | Scornicești           | Olt             |               11766 |               13751 |            nan | 1989*                                       |
+|          153 | Târgu Lăpuș           | Maramureș       |               11744 |               14139 |            nan | 1968*                                       |
+|          154 | Săcueni               | Bihor           |               11526 |               11665 |            nan | 2004*                                       |
+|          155 | Videle                | Teleorman       |               11508 |               12498 |            nan |                                             |
+|          156 | Sântana               | Arad            |               11428 |               12936 |            nan | 2003*                                       |
+|          157 | Oravița               | Caraș-Severin   |               11382 |               15222 |            nan |                                             |
+|          158 | Târgu Ocna            | Bacău           |               11300 |               14184 |            nan | 1774*                                       |
+|          159 | Călan                 | Hunedoara       |               11279 |               14714 |            nan | 1961*                                       |
+|          160 | Boldești-Scăeni       | Prahova         |               11137 |               11505 |            nan |                                             |
+|          161 | Măgurele              | Ilfov           |               11041 |                9200 |            nan | 2005*                                       |
+|          162 | Hârlău                | Iași            |               10905 |               12260 |            nan | 1968*                                       |
+|          163 | Drăgănești-Olt        | Olt             |               10894 |               13181 |            nan |                                             |
+|          164 | Jimbolia              | Timiș           |               10808 |               10497 |            nan | 1950*                                       |
+|          165 | Mărășești             | Vrancea         |               10671 |               13070 |            nan |                                             |
+|          166 | Beiuș                 | Bihor           |               10667 |               12089 |            nan | 1451*                                       |
+|          167 | Beclean               | Bistrița-Năsăud |               10628 |               12033 |            nan | 1968*                                       |
+|          168 | Urlați                | Prahova         |               10541 |               11858 |            nan |                                             |
+|          169 | Oțelu Roșu            | Caraș-Severin   |               10510 |               13128 |            nan | 1960*                                       |
+|          170 | Strehaia              | Mehedinți       |               10506 |               12564 |            nan | 1921*                                       |
+|          171 | Târgu Frumos          | Iași            |               10475 |               13763 |            nan |                                             |
+|          172 | Orșova                | Mehedinți       |               10441 |               15379 |            nan |                                             |
+|          173 | Sinaia                | Prahova         |               10410 |               14636 |            nan | 1880*                                       |
+|          174 | Jibou                 | Sălaj           |               10407 |               12283 |            nan | 1968*                                       |
+|          175 | Sovata                | Mureș           |               10385 |               12219 |            nan | 1952*                                       |
+|          176 | Costești              | Argeș           |               10375 |               12091 |            nan | 1968*                                       |
+|          177 | Ianca                 | Brăila          |               10343 |               12886 |            nan | 1989*                                       |
+|          178 | Lipova                | Arad            |               10313 |               11491 |            nan | 1440*                                       |
+|          179 | Dolhasca              | Suceava         |               10298 |               11009 |            nan | 2004*                                       |
+|          180 | Topoloveni            | Argeș           |               10219 |               10329 |            nan | 1968*                                       |
+|          181 | Murfatlar             | Constanța       |               10216 |               10857 |            nan | 1989*                                       |
+|          182 | Nehoiu                | Buzău           |               10211 |               12650 |            nan | 1989*                                       |
+|          183 | Flămânzi              | Botoșani        |               10136 |               11799 |            nan | 2004*                                       |
+|          184 | Covasna               | Covasna         |               10114 |               12306 |            nan | 1952*                                       |
+|          185 | Aleșd                 | Bihor           |               10066 |               10852 |            nan | 1968*                                       |
+|          186 | Valea lui Mihai       | Bihor           |                9902 |               10665 |            nan | 1844*/1930*/1989*                           |
+|          187 | Darabani              | Botoșani        |                9893 |               12002 |            nan | 1926*/1968*                                 |
+|          188 | Hațeg                 | Hunedoara       |                9685 |               12507 |            nan |                                             |
+|          189 | Sângeorz-Băi          | Bistrița-Năsăud |                9679 |               10702 |            nan |                                             |
+|          190 | Titu                  | Dâmbovița       |                9658 |               10711 |            nan | 1968*                                       |
+|          191 | Cristuru Secuiesc     | Harghita        |                9650 |               11291 |            nan | 1956*                                       |
+|          192 | Hârșova               | Constanța       |                9642 |               11198 |            nan |                                             |
+|          193 | Liteni                | Suceava         |                9596 |                9851 |            nan | 2004*                                       |
+|          194 | Năsăud                | Bistrița-Năsăud |                9587 |               11365 |            nan |                                             |
+|          195 | Podu Iloaiei          | Iași            |                9573 |                9739 |            nan | 2005*                                       |
+|          196 | Eforie                | Constanța       |                9473 |                9294 |            nan |                                             |
+|          197 | Odobești              | Vrancea         |                9364 |                8000 |            nan |                                             |
+|          198 | Huedin                | Cluj            |                9346 |                9955 |            nan | 1961*                                       |
+|          199 | Ineu                  | Arad            |                9260 |               10416 |            nan | 1967*                                       |
+|          200 | Salcea                | Suceava         |                9015 |                8719 |            nan | 2004*                                       |
+|          201 | Seini                 | Maramureș       |                8987 |                9439 |            nan | 1989*                                       |
+|          202 | Uricani               | Hunedoara       |                8972 |               12177 |            nan | 1965*                                       |
+|          203 | Babadag               | Tulcea          |                8940 |               10878 |            nan |                                             |
+|          204 | Bumbești-Jiu          | Gorj            |                8932 |               11882 |            nan | 1989*                                       |
+|          205 | Bușteni               | Prahova         |                8894 |               11787 |            nan | 1946*                                       |
+|          206 | Agnita                | Sibiu           |                8732 |               12115 |            nan | 1950*                                       |
+|          207 | Iernut                | Mureș           |                8705 |                9833 |            nan | 1989*                                       |
+|          208 | Baraolt               | Covasna         |                8672 |               10464 |            nan |                                             |
+|          209 | Tășnad                | Satu Mare       |                8631 |               10188 |            nan | 1968*                                       |
+|          210 | Roznov                | Neamț           |                8593 |                9171 |            nan | 2003*                                       |
+|          211 | Băbeni                | Vâlcea          |                8451 |                9475 |            nan | 2002*                                       |
+|          212 | Negrești              | Vaslui          |                8380 |               10481 |            nan | 1968*                                       |
+|          213 | Recaș                 | Timiș           |                8336 |                8560 |            nan | 2004*                                       |
+|          214 | Măcin                 | Tulcea          |                8245 |               11803 |            nan |                                             |
+|          215 | Târgu Cărbunești      | Gorj            |                8034 |                9338 |            nan | 1968*                                       |
+|          216 | Chișineu-Criș         | Arad            |                7987 |                8724 |            nan | 1968*                                       |
+|          217 | Siret                 | Suceava         |                7976 |               10003 |            nan |                                             |
+|          218 | Mihăilești            | Giurgiu         |                7923 |                7161 |            nan |                                             |
+|          219 | Budești               | Călărași        |                7725 |                9596 |            nan | 1989*                                       |
+|          220 | Plopeni               | Prahova         |                7718 |               10083 |            nan | 1968*                                       |
+|          221 | Panciu                | Vrancea         |                7664 |                9834 |            nan | 1956*                                       |
+|          222 | Călimănești           | Vâlcea          |                7622 |                8923 |            nan | 1927*                                       |
+|          223 | Fieni                 | Dâmbovița       |                7587 |                8092 |            nan | 1968*                                       |
+|          224 | Șomcuta Mare          | Maramureș       |                7565 |                7708 |            nan | 2004*                                       |
+|          225 | Întorsura Buzăului    | Covasna         |                7528 |                9081 |            nan | 1968*                                       |
+|          226 | Zlatna                | Alba            |                7490 |                9254 |            nan |                                             |
+|          227 | Anina                 | Caraș-Severin   |                7485 |               10594 |            nan | 1952*                                       |
+|          228 | Curtici               | Arad            |                7453 |                9762 |            nan | 1968*                                       |
+|          229 | Nădlac                | Arad            |                7398 |                8422 |            nan | 1968*                                       |
+|          230 | Dumbrăveni            | Sibiu           |                7388 |                8812 |            nan |                                             |
+|          231 | Victoria              | Brașov          |                7386 |                9059 |            nan | 1954*                                       |
+|          232 | Amara                 | Ialomița        |                7345 |                7627 |            nan | 2004*                                       |
+|          233 | Pătârlagele           | Buzău           |                7304 |                8290 |            nan | 2004*                                       |
+|          234 | Techirghiol           | Constanța       |                7292 |                7388 |            nan |                                             |
+|          235 | Pogoanele             | Buzău           |                7275 |                7614 |            nan | 1989*                                       |
+|          236 | Ulmeni                | Maramureș       |                7270 |                7153 |            nan | 2004*                                       |
+|          237 | Câmpeni               | Alba            |                7221 |                8587 |            nan | 1961*                                       |
+|          238 | Cehu Silvaniei        | Sălaj           |                7214 |                8468 |            nan | 1968*                                       |
+|          239 | Tăuții-Măgherăuș      | Maramureș       |                7136 |                6713 |            nan | 2004*                                       |
+|          240 | Murgeni               | Vaslui          |                7119 |                7674 |            nan | 2003*                                       |
+|          241 | Tismana               | Gorj            |                7035 |                7894 |            nan | 2004*                                       |
+|          242 | Buziaș                | Timiș           |                7023 |                8128 |            nan | 1956*                                       |
+|          243 | Segarcea              | Dolj            |                7019 |                8704 |            nan | 1968*                                       |
+|          244 | Săveni                | Botoșani        |                6999 |                8685 |            nan | 1920*/1968*                                 |
+|          245 | Pâncota               | Arad            |                6946 |                7418 |            nan | 1968*                                       |
+|          246 | Ungheni               | Mureș           |                6945 |                6554 |            nan | 2004*                                       |
+|          247 | Sărmașu               | Mureș           |                6942 |                7493 |            nan | 2003*                                       |
+|          248 | Răcari                | Dâmbovița       |                6930 |                6892 |            nan | 2004*                                       |
+|          249 | Tălmaciu              | Sibiu           |                6905 |                9147 |            nan | 1989*                                       |
+|          250 | Cajvana               | Suceava         |                6901 |                7263 |            nan | 2004*                                       |
+|          251 | Vlăhița               | Harghita        |                6898 |                7392 |            nan |                                             |
+|          252 | Fundulea              | Călărași        |                6851 |                6217 |            nan | 1989*                                       |
+|          253 | Livada                | Satu Mare       |                6773 |                7004 |            nan | 2006*                                       |
+|          254 | Făget                 | Timiș           |                6761 |                7519 |            nan | 1994*                                       |
+|          255 | Teiuș                 | Alba            |                6695 |                7338 |            nan | 1994*                                       |
+|          256 | Bicaz                 | Neamț           |                6543 |                8911 |            nan | 1960*                                       |
+|          257 | Ștei                  | Bihor           |                6529 |                9466 |            nan | 1956*                                       |
+|          258 | Însurăței             | Brăila          |                6528 |                7501 |            nan | 1989*                                       |
+|          259 | Lehliu Gară           | Călărași        |                6502 |                6667 |            nan | 1989*                                       |
+|          260 | Târgu Bujor           | Galați          |                6299 |                8044 |            nan | 1968*                                       |
+|          261 | Piatra-Olt            | Olt             |                6299 |                6583 |            nan | 1989*                                       |
+|          262 | Horezu                | Vâlcea          |                6263 |                7446 |            nan | 1968*                                       |
+|          263 | Deta                  | Timiș           |                6260 |                6423 |            nan | 1810*/1968*                                 |
+|          264 | Ardud                 | Satu Mare       |                6231 |                6486 |            nan | 2004*                                       |
+|          265 | Bălan                 | Harghita        |                6115 |                9295 |            nan | 1968*                                       |
+|          266 | Slănic                | Prahova         |                6034 |                7249 |            nan | 1892*                                       |
+|          267 | Brezoi                | Vâlcea          |                6022 |                7589 |            nan | 1968*                                       |
+|          268 | Sebiș                 | Arad            |                5979 |                6829 |            nan |                                             |
+|          269 | Frasin                | Suceava         |                5876 |                6532 |            nan | 2004*                                       |
+|          270 | Gătaia                | Timiș           |                5861 |                8103 |            nan | 2004*                                       |
+|          271 | Potcoava              | Olt             |                5743 |                6111 |            nan | 2004*                                       |
+|          272 | Miercurea Nirajului   | Mureș           |                5554 |                5824 |            nan | 2003*                                       |
+|          273 | Broșteni              | Suceava         |                5506 |                6603 |            nan | 2004*                                       |
+|          274 | Novaci                | Gorj            |                5431 |                6151 |            nan | 1968*                                       |
+|          275 | Săliște               | Sibiu           |                5421 |                6092 |            nan | 2003*                                       |
+|          276 | Copșa Mică            | Sibiu           |                5404 |                5157 |            nan | 1961*                                       |
+|          277 | Băneasa               | Constanța       |                5384 |                5538 |            nan | 2004*                                       |
+|          278 | Baia de Aramă         | Mehedinți       |                5349 |                5724 |            nan | 1968*                                       |
+|          279 | Ciacova               | Timiș           |                5348 |                7285 |            nan | 2004*                                       |
+|          280 | Ștefănești            | Botoșani        |                5314 |                5628 |            nan | 2004*                                       |
+|          281 | Vânju Mare            | Mehedinți       |                5311 |                7074 |            nan | 1968*                                       |
+|          282 | Geoagiu               | Hunedoara       |                5294 |                6290 |            nan | 2000*                                       |
+|          283 | Rupea                 | Brașov          |                5269 |                6246 |            nan | 1951*                                       |
+|          284 | Sângeorgiu de Pădure  | Mureș           |                5166 |                5492 |            nan | 2003*                                       |
+|          285 | Negru Vodă            | Constanța       |                5088 |                5529 |            nan |                                             |
+|          286 | Abrud                 | Alba            |                5072 |                6803 |            nan |                                             |
+|          287 | Isaccea               | Tulcea          |                5026 |                5374 |            nan |                                             |
+|          288 | Băile Herculane       | Caraș-Severin   |                5008 |                6051 |            nan |                                             |
+|          289 | Milișăuți             | Suceava         |                5005 |                8433 |            nan | 2004*                                       |
+|          290 | Cavnic                | Maramureș       |                4976 |                5494 |            nan | 1968*                                       |
+|          291 | Fierbinți-Târg        | Ialomița        |                4969 |                5253 |            nan | 2004*                                       |
+|          292 | Săliștea de Sus       | Maramureș       |                4893 |                5196 |            nan | 1365†/2004*                                 |
+|          293 | Bălcești              | Vâlcea          |                4864 |                5780 |            nan | 2002*                                       |
+|          294 | Berbești              | Vâlcea          |                4836 |                5704 |            nan | 2003*                                       |
+|          295 | Predeal               | Brașov          |                4755 |                5615 |           1030 | 1935*                                       |
+|          296 | Ghimbav               | Brașov          |                4698 |                5112 |            nan | 2002*                                       |
+|          297 | Azuga                 | Prahova         |                4440 |                6119 |            nan | 1948*                                       |
+|          298 | Țicleni               | Gorj            |                4414 |                5205 |            nan | 1968*                                       |
+|          299 | Aninoasa              | Hunedoara       |                4360 |                6108 |            nan | 1989*                                       |
+|          300 | Bucecea               | Botoșani        |                4274 |                5128 |            nan | 2004*                                       |
+|          301 | Slănic Moldova        | Bacău           |                4198 |                5375 |            nan |                                             |
+|          302 | Băile Olănești        | Vâlcea          |                4186 |                4814 |            nan |                                             |
+|          303 | Miercurea Sibiului    | Sibiu           |                3910 |                4063 |            nan | 2004*                                       |
+|          304 | Sulina                | Tulcea          |                3663 |                5140 |            nan |                                             |
+|          305 | Bechet                | Dolj            |                3657 |                3864 |            nan | 2004*                                       |
+|          306 | Făurei                | Brăila          |                3592 |                4626 |            nan | 1968*                                       |
+|          307 | Ocna Sibiului         | Sibiu           |                3562 |                4184 |            nan |                                             |
+|          308 | Baia de Arieș         | Alba            |                3461 |                4877 |            nan | 1998*                                       |
+|          309 | Ocnele Mari           | Vâlcea          |                3309 |                3591 |            nan | 1960*                                       |
+|          310 | Căzănești             | Ialomița        |                3271 |                3641 |            nan | 2004*                                       |
+|          311 | Dragomirești          | Maramureș       |                3213 |                3132 |            nan | 2004*                                       |
+|          312 | Berești               | Galați          |                2916 |                3926 |            nan | 1968*                                       |
+|          313 | Borsec                | Harghita        |                2585 |                3109 |            nan | 1956*                                       |
+|          314 | Băile Govora          | Vâlcea          |                2449 |                3147 |            nan | 1927*                                       |
+|          315 | Vașcău                | Bihor           |                2315 |                3032 |            nan | 1956*                                       |
+|          316 | Solca                 | Suceava         |                2188 |                4687 |            nan | 1926*                                       |
+|          317 | Nucet                 | Bihor           |                2165 |                2851 |            nan | 1956*                                       |
+|          318 | Băile Tușnad          | Harghita        |                1641 |                1802 |            nan | 1968*                                       |
+
+Generated Reasoning SQL: Explanation: To find the city before Brașov, we need to consider the order of cities based on their row numbers. Since the row numbers represent the sequence of cities in the table, we can identify the city that comes before Brașov by selecting the city with a row number one less than Brașov.
+
+SQL: 
+SELECT "City" 
+FROM T 
+WHERE "row_number" = (SELECT "row_number" FROM T WHERE "City" = 'Brașov') - 1;
+Generated Final SQL: SELECT "City" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "City" = 'Brașov') - 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| City    |
+|:--------|
+| Craiova |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of cities and towns in Romania
+SQL: SELECT "City" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "City" = 'Brașov') - 1;
+
+SQL Execution Result:
+City
+Craiova
+
+Question: what city is before brasov?
+A: To find the answer to this question, let’s think step by step.
+Prediction: craiova
+[Gold Answer] craiova
+

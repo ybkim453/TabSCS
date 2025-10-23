@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 6, 7
+   - Role: Identifier for each row
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: August 13, 1988, July 3, 1991, April 4, 1992, March 14, 1993
+   - Role: Descriptor for the date of the match
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: St. Louis, Missouri, Los Angeles, California, Palo Alto, California, Tokyo, Japan
+   - Role: Descriptor for the location of the match
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Jamaica, Costa Rica, China PR, Japan
+   - Role: Descriptor for the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: 2–1, 2–2, 1–0, 5–0
+   - Role: Measure of the score of the match
+
+6. Result:
+   - Data type: Categorical
+   - 4 representative example values: 5-1, 3-2, 1-0, 1-3
+   - Role: Descriptor for the result of the match
+
+7. Competition:
+   - Data type: Categorical
+   - 4 representative example values: 1990 World Cup qualifying, 1991 CONCACAF Gold Cup, Friendly
+   - Role: Descriptor for the competition of the match
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The values "Costa Rica" for Opponent and "3-2" for Result are different from the majority of the table.
+   - This row is an outlier due to the unique combination of opponent and result.
+
+2. Row 0:
+   - The values "Jamaica" for Opponent and "5-1" for Result are different from the majority of the table.
+   - This row is an outlier due to the unique combination of opponent and result.
+
+3. Row 1:
+   - The values "Los Angeles, California" for Venue and "2-2" for Score are different from the majority of the table.
+   - This row is an outlier due to the unique combination of venue and score.
+
+=== Full Table Preview ===
+|   row_number |   # | Date                | Venue                     | Opponent    | Score   | Result   | Competition               |
+|-------------:|----:|:--------------------|:--------------------------|:------------|:--------|:---------|:--------------------------|
+|            0 |   1 | 1985-04-04 00:00:00 | Portland Oregon           | Canada      | N/A     | 1–1      | Friendly                  |
+|            1 |   2 | 1988-08-13 00:00:00 | St. Louis Missouri        | Jamaica     | 2–1     | 5-1      | 1990 World Cup qualifying |
+|            2 |   3 | 1989-09-17 00:00:00 | Tegucigalpa Honduras      | El Salvador | 1–0     | 1–0      | 1990 World Cup qualifying |
+|            3 |   4 | 1991-07-03 00:00:00 | Los Angeles California    | Costa Rica  | 2–2     | 3–2      | 1991 CONCACAF Gold Cup    |
+|            4 |   5 | 1992-03-18 00:00:00 | Casablanca Morocco        | Morocco     | 1–2     | 1–3      | Friendly                  |
+|            5 |   6 | 1992-04-04 00:00:00 | Palo Alto California      | China PR    | 1–0     | 1-0      | Friendly                  |
+|            6 |   7 | 1992-04-04 00:00:00 | Palo Alto California      | China PR    | 5–0     | 1-0      | Friendly                  |
+|            7 |   8 | 1993-03-14 00:00:00 | Tokyo Japan               | Japan       | 1–0     | 1–3      | Friendly                  |
+|            8 |   9 | 1993-10-16 00:00:00 | High Point North Carolina | Ukraine     | 1–0     | 1–2      | Friendly                  |
+|            9 |  10 | 1993-12-05 00:00:00 | Los Angeles California    | El Salvador | 5–0     | 7–0      | Friendly                  |
+|           10 |  11 | 1994-02-20 00:00:00 | Miami Florida             | Sweden      | 1–3     | 1–0      | Friendly                  |
+|           11 |  12 | 1994-03-26 00:00:00 | Dallas Texas              | Bolivia     | 1–1     | 2–2      | Friendly                  |
+
+Generated Reasoning SQL: Explanation: The question requires finding the opponent against whom Hugo Perez scored his first international goal in a 1985 friendly match. 
+To answer this, we need to filter rows where the "Date" column contains the year 1985 and the "Result" column indicates a goal scored by Hugo Perez. 
+The "Opponent" column will provide the name of the opposing team in this context.
+It is important to note that the "Result" column may contain multiple scores, so we need to specifically look for the row where Hugo Perez scored a goal.
+SQL: select "Opponent" from T where "Date" like '%1985%' and "Result" like '%1–1%' and "Score" like '%1–1%' and "Venue" like '%Portland Oregon%';
+Generated Final SQL: select "Opponent" from T where "Date" like '%1985%' and "Result" like '%1–1%' and "Score" like '%1–1%' and "Venue" like '%Portland Oregon%';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Hugo Pérez (soccer) (row_number, #, Date, Venue, Opponent, Score, Result, Competition)
+
+row_number | # | Date | Venue | Opponent | Score | Result | Competition
+0 | 1 | 1985-04-04 00:00:00 | Portland Oregon | Canada | N/A | 1–1 | Friendly
+1 | 2 | 1988-08-13 00:00:00 | St. Louis Missouri | Jamaica | 2–1 | 5-1 | 1990 World Cup qualifying
+2 | 3 | 1989-09-17 00:00:00 | Tegucigalpa Honduras | El Salvador | 1–0 | 1–0 | 1990 World Cup qualifying
+3 | 4 | 1991-07-03 00:00:00 | Los Angeles California | Costa Rica | 2–2 | 3–2 | 1991 CONCACAF Gold Cup
+4 | 5 | 1992-03-18 00:00:00 | Casablanca Morocco | Morocco | 1–2 | 1–3 | Friendly
+5 | 6 | 1992-04-04 00:00:00 | Palo Alto California | China PR | 1–0 | 1-0 | Friendly
+6 | 7 | 1992-04-04 00:00:00 | Palo Alto California | China PR | 5–0 | 1-0 | Friendly
+7 | 8 | 1993-03-14 00:00:00 | Tokyo Japan | Japan | 1–0 | 1–3 | Friendly
+8 | 9 | 1993-10-16 00:00:00 | High Point North Carolina | Ukraine | 1–0 | 1–2 | Friendly
+9 | 10 | 1993-12-05 00:00:00 | Los Angeles California | El Salvador | 5–0 | 7–0 | Friendly
+10 | 11 | 1994-02-20 00:00:00 | Miami Florida | Sweden | 1–3 | 1–0 | Friendly
+11 | 12 | 1994-03-26 00:00:00 | Dallas Texas | Bolivia | 1–1 | 2–2 | Friendly
+Question: against what opponent did hugo perez score his first international goal in a 1985 friendly?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: 1. First, we need to identify the row corresponding to Hugo Pérez's first international goal in a 1985 friendly.
+2. From the summary, we know that the "Score" column indicates the score of the match, and the "Result" column shows the final result of the match.
+3. Looking at the full table, we find that Hugo Pérez's first international goal in a 1985 friendly is in row 0, where the "Score" is "1–1" and the "Result" is a draw "1-1".
+4. The "Opponent" column in row 0 shows that the opponent against whom Hugo Pérez scored his first international goal in a 1985 friendly is "Canada".
+
+Final Answer: Canada
+[Fallback] Prediction: canada
+[Gold Answer] canada
+

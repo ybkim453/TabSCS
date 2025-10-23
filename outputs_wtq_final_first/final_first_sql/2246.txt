@@ -1,0 +1,130 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: 2, T4, T10
+   - Role of the column: Identifier for the player's finishing position in the tournament.
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Greg Norman, Jay Haas, Jeff Maggert, Phil Mickelson
+   - Role of the column: Descriptor for the player's name.
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: Australia, United States, Fiji
+   - Role of the column: Descriptor for the player's country of origin.
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 68-67-74-73=282, 70-73-72-69=284, 69-72-77-66=284, 68-70-72-74=284
+   - Role of the column: Measure of the player's total score in the tournament.
+
+5. To par:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 5
+   - Role of the column: Measure of how many strokes the player is under or over par.
+
+6. Money ($):
+   - Data type: Numeric
+   - 4 representative example values: 207,000, 66,633, 44,184
+   - Role of the column: Measure of the prize money earned by the player.
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values for Place (T10) and To par (5) are consistent with other rows in the table.
+   - The values for Player (Vijay Singh), Country (Fiji), Score (70-71-72-72=285), and Money ($44,184) are ordinary within the context of the table.
+   - Conclusion: This is an ordinary row and does not require special handling.
+
+2. Row 0:
+   - The value for Place (2) is consistent with other rows in the table.
+   - The values for Player (Greg Norman), Country (Australia), Score (68-67-74-73=282), To par (2), and Money ($207,000) are ordinary within the context of the table.
+   - Conclusion: This is an ordinary row and does not require special handling.
+
+3. Row 1:
+   - The value for Place (T4) is consistent with other rows in the table.
+   - The values for Player (Jay Haas), Country (United States), Score (70-73-72-69=284), To par (4), and Money ($66,633) are ordinary within the context of the table.
+   - Conclusion: This is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Place   | Player         | Country       | Score           | To par   |   Money ($) |
+|-------------:|:--------|:---------------|:--------------|:----------------|:---------|------------:|
+|            0 | 1       | Corey Pavin    | United States | 72-69-71-68=280 | E        |      350000 |
+|            1 | 2       | Greg Norman    | Australia     | 68-67-74-73=282 | +2       |      207000 |
+|            2 | 3       | Tom Lehman     | United States | 70-72-67-74=283 | +3       |      131974 |
+|            3 | T4      | Bill Glasson   | United States | 69-70-76-69=284 | +4       |       66633 |
+|            4 | T4      | Jay Haas       | United States | 70-73-72-69=284 | +4       |       66633 |
+|            5 | T4      | Neal Lancaster | United States | 70-72-77-65=284 | +4       |       66633 |
+|            6 | T4      | Davis Love III | United States | 72-68-73-71=284 | +4       |       66633 |
+|            7 | T4      | Jeff Maggert   | United States | 69-72-77-66=284 | +4       |       66633 |
+|            8 | T4      | Phil Mickelson | United States | 68-70-72-74=284 | +4       |       66633 |
+|            9 | T10     | Frank Nobilo   | New Zealand   | 72-72-70-71=285 | +5       |       44184 |
+|           10 | T10     | Vijay Singh    | Fiji          | 70-71-72-72=285 | +5       |       44184 |
+|           11 | T10     | Bob Tway       | United States | 69-69-72-75=285 | +5       |       44184 |
+
+Generated Reasoning SQL: Explanation: To find the total amount of money awarded to the top 2 players, we need to sum the "Money ($)" values for the players who finished in the top 2 positions. The "Place" column indicates the player's finishing position, with lower values representing better positions. We will consider rows with "Place" values of 1 and 2 as the top 2 players.
+
+SQL: 
+SELECT SUM(CAST("Money ($)" AS INTEGER)) AS total_money_awarded
+FROM T
+WHERE "Place" IN ('1', '2');
+Generated Final SQL: SELECT SUM(CAST("Money ($)" AS INTEGER)) AS total_money_awarded FROM T WHERE "Place" IN ('1', '2');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_money_awarded |
+|----------------------:|
+|                557000 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1995 U.S. Open (golf)
+SQL: SELECT SUM(CAST("Money ($)" AS INTEGER)) AS total_money_awarded FROM T WHERE "Place" IN ('1', '2');
+
+SQL Execution Result:
+total_money_awarded
+557000
+
+Question: what was the total amount of money awarded to the top 2 players?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 557000
+[Gold Answer] $557,000
+

@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Character
+   - Data type: Categorical
+   - 4 representative example values: Dr. Charlie Gibbs, Wyn Ryan, Helen Farmer, Kerry Cox
+   - Role: Descriptor, identifying the name of the character in the series.
+
+2. Actor
+   - Data type: Categorical
+   - 4 representative example values: Wunmi Mosaku, Ruth McCabe, Clare Higgins, Ruth Gemmell
+   - Role: Descriptor, identifying the actor who portrays the character.
+
+3. Series
+   - Data type: Categorical
+   - 4 representative example values: Series 13, Series 1-3, Series 1, Series 2
+   - Role: Descriptor, indicating the specific series in which the character appeared.
+
+4. Notes
+   - Data type: Text
+   - 4 representative example values: A junior doctor and lab technician..., Professor Ryan's sister..., A superintendent..., A junior trainee detective...
+   - Role: Descriptor, providing additional information or context about the character or actor.
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values in this row are "Rachel Selway", "Nicola Redmond", "Series 2", "Tom Adams' replacement, following his resignation from the force. She joined the team alongside junior sergeant Tony Speed."
+   - These values are consistent with the rest of the table and do not contain any atypical or distinctive information. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 8:
+   - The values in this row are "Dr. Charlie Gibbs", "Wunmi Mosaku", "Series 13", "A junior doctor and lab technician, who was appointed to work with the team by Professor Dalton."
+   - These values are also consistent with the majority of the table and do not stand out as atypical. This row is an ordinary row and does not need special treatment.
+
+3. Row 15:
+   - The values in this row are "Rachel Selway", "Nicola Redmond", "Series 2", "Tom Adams' replacement, following his resignation from the force. She joined the team alongside junior sergeant Tony Speed."
+   - Similar to Row 6, the values in this row are typical and in line with the rest of the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Character              | Actor             | Series       | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|-------------:|:-----------------------|:------------------|:-------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Professor Sam Ryan     | Amanda Burton     | Series 1-8   | Sam originally lived and worked in Cambridge but moved to London at the end of series three after she was offered the job of professor at a university. Sam departed in the first episode of series eight "A Time To Heal". Sam returned home to Ireland after a member of her family was implicated in a murder.                                                                                                                                                                                                                                                                                                           |
+|            1 | Dr. Trevor Stewart     | William Armstrong | Series 1-3   | As well as being a pathologist in his own right Trevor was Sam's business partner owning half of the morgue and its facilities. Trevor decided to stay in Cambridge with his friends and family when Sam accepted the professorship position at a university in London and moved away at the end of series three.                                                                                                                                                                                                                                                                                                           |
+|            2 | Dr. Fred Dale          | Sam Parks         | Series 1-3   | Fred was Sam's main assistant during post mortems and on visits to crime scenes often identifying DNA samples at the scene of the crime and linking them to those responsible. He was also notable for not having many speaking lines and regularly appearing without speaking. His fate at the end of series three was not revealed.                                                                                                                                                                                                                                                                                       |
+|            3 | Dr. Harry Cunningham   | Tom Ward          | Series 6-15  | Harry started out life as a junior doctor who worked as an apprentice alongside Sam and Leo. However he soon qualified as a pathologist and has worked on equal footing with the team for a number of years. Harry was single and lived alone but has had several romantic relationships including an on-off relationship with his colleague Nikki. Harry left the team to accept a professorship in New York in the episode "And Then I Fell in Love" at the end of series 15.                                                                                                                                             |
+|            4 | Professor Leo Dalton   | William Gaminara  | Series 6-16  | Leo first appeared in the episode "The Fall Out" where he was nothing more than a simple doctor. However he was promoted to professor after former professor Sam Ryan left. In the episode "Ghosts" both his wife Theresa and his daughter Cassie are killed in a car accident. He began a relationship with fellow professor Janet Mander in "Safe" but ended their relationship in the episode "Domestic". Leo often took a strong opinion on cases and often became emotionally involved. He died in the series 16 finale 'Greater Love' when he sacrificed himself to save many others from a terrorist bomb explosion. |
+|            5 | Professor Janet Mander | Jaye Griffiths    | Series 12-15 | Janet is a psychological profiler who assists the police in cases of serial offences. She began a relationship with Leo in the episode "Safe" and they lived together as partners until Leo ended the relationship in "Redhill". She recurringly worked alongside the team to provide them with information in order to get an idea of the suspect they are looking for. Janet decided to move away from London after Leo ended their relationship.                                                                                                                                                                         |
+|            6 | Dr. Charlie Gibbs      | Wunmi Mosaku      | Series 13    | A junior doctor and lab technician who was appointed to work with the team by Professor Dalton.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|            7 | Dr. Zak Khan           | Arsher Ali        | Series 14    | A junior doctor who worked his forensic science apprenticeship with the team to learn the ropes of the profession.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|            8 | Wyn Ryan               | Ruth McCabe       | Series 1-3   | Professor Ryan's sister who after coming over to visit her from her home in Ireland ended up living with her on a permanent basis.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|            9 | Helen Farmer           | Clare Higgins     | Series 1     | A superintendent and Tom Adams' boss and mentor who accompanied him on investigating several cases during his time in the force.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|           10 | Tom Adams              | John McGlynn      | Series 1     | An investigator with the Cambridgeshire police force who had an affair with Kerry Cox before her death.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|           11 | Kerry Cox              | Ruth Gemmell      | Series 1     | A junior trainee detective who had an affair with Tom Adams but was later killed in a freak accident in a hospital basement.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|           12 | Marcia Evans           | Janice Acquah     | Series 1     | A fellow junior trainee detective for the Cambridgeshire police force who resigned after Kerry Cox's death.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|           13 | Ricky Ryan             | Matthew Steer     | Series 1     | Wyn's son and Sam's nephew who regularly got into trouble and was expelled from school for very poor behaviour.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|           14 | Peter Ross             | Mick Ford         | Series 2     | A superintendent and an ex-boyfriend of Sam's who believed in a strong relationship between the police and the pathology lab.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|           15 | Rachel Selway          | Nicola Redmond    | Series 2     | Tom Adams' replacement following his resignation from the force. She joined the team alongside junior sergeant Tony Speed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|           16 | Tony Speed             | Richard Huw       | Series 2     | A junior sergeant who joined the team alongside his superior officer Rachel Selway. He knew Mick Ross from a previous posting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|           17 | Michael Connor         | Nick Reding       | Series 3-4   | A detective chief inspector and old friend of Sam's whom she met during her junior years at university.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|           18 | Rob Bradley            | Mark Letheren     | Series 3-4   | A detective sergeant who as Connor's junior officer accompanied him in investigating in the cases which he was assigned to.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|           19 | Rosemary Mason         | Jane Hazlegrove   | Series 6-7   | The main receptionist at the Lyell Centre before the change in focus from university department to purely commercial pathology.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+
+Generated Reasoning SQL: Explanation: To determine the number of series William Armstrong's character appeared in, we need to filter the rows where the "Actor" column is equal to "William Armstrong" and count the distinct values in the "Series" column. Since the "Series" column contains categorical values representing different series, we should count the distinct series to avoid double counting if the same series appears multiple times for the same actor.
+
+SQL: 
+SELECT COUNT(DISTINCT "Series") AS series_count
+FROM T
+WHERE "Actor" = 'William Armstrong';
+Generated Final SQL: SELECT COUNT(DISTINCT "Series") AS series_count FROM T WHERE "Actor" = 'William Armstrong';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   series_count |
+|---------------:|
+|              1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Silent Witness
+SQL: SELECT COUNT(DISTINCT "Series") AS series_count FROM T WHERE "Actor" = 'William Armstrong';
+
+SQL Execution Result:
+series_count
+1
+
+Question: how many series' was william armstrong's character in?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 3
+

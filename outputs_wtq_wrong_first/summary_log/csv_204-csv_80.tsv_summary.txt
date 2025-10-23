@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Week:
+   - Data type: Categorical
+   - 4 representative example values: "-", 7, 10, 11
+   - Role: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Date
+   - 4 representative example values: September 27, 1987, November 1, 1987, November 22, 1987, November 26, 1987
+   - Role: Descriptor for the date of the game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Minnesota Vikings, Chicago Bears, Green Bay Packers, Detroit Lions
+   - Role: Descriptor for the opposing team
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: canceled, L 31–28, L 23–3, W 27–20
+   - Role: Descriptor for the outcome of the game
+
+5. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: nan, 63,498, 34,611, 43,820
+   - Role: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The game was canceled, which is not a typical result like wins or losses.
+   - This row is an outlier due to the unusual result of the game being canceled.
+
+2. Row 10 (Index 10):
+   - The attendance value is "nan", which is not a typical numeric value.
+   - This row is an outlier due to the missing or undefined attendance data.
+
+3. Row 7 (Index 7):
+   - The attendance value is significantly lower compared to other entries.
+   - This row is an outlier due to the unusually low attendance number.

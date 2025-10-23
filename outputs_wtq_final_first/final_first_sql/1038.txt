@@ -1,0 +1,143 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Position:
+   - Data type: Numeric
+   - 4 representative example values: 9, 11, 22, nan
+   - Role: Identifier for the driver's position in the race.
+
+2. Driver:
+   - Data type: Categorical
+   - 4 representative example values: Ivan Mikac, Kevin Clark, Shane Eklund, Craig Wildridge
+   - Role: Descriptor for the driver's name.
+
+3. No.:
+   - Data type: Numeric
+   - 4 representative example values: 42, 116, nan, nan
+   - Role: Identifier for the car number.
+
+4. Car:
+   - Data type: Categorical
+   - 4 representative example values: Mazda RX-7, Ford Mustang GT, nan, nan
+   - Role: Descriptor for the car model.
+
+5. Entrant:
+   - Data type: Categorical
+   - 4 representative example values: Ivan Mikac, Kevin Clark, nan, nan
+   - Role: Descriptor for the entrant's name.
+
+6. Lak., Ora., San., Phi.:
+   - Data type: Numeric
+   - 4 representative example values: 25, 23, 10, 10
+   - Role: Measures of the driver's performance in different races.
+
+**Outlier Row Analysis:**
+
+1. Row 8 (Position: nan, Driver: Craig Wildridge):
+   - The values in the Position and Driver columns are missing (nan).
+   - This row is an outlier because it does not provide any information about the driver's position or name, unlike the majority of the table.
+
+2. Row 4 (Position: nan, Driver: Ron O'Brien):
+   - The values in the Position and Driver columns are missing (nan).
+   - This row is an outlier because it does not provide any information about the driver's position or name, unlike the majority of the table.
+
+3. Row 10 (Position: nan, Driver: nan):
+   - The values in the Position and Driver columns are missing (nan).
+   - This row is an outlier because it does not provide any information about the driver's position or name, unlike the majority of the table.
+
+=== Full Table Preview ===
+|   row_number |   Position | Driver          |   No. | Car                      | Entrant           | Lak.   | Ora.   | San.   | Phi.   | Total   |
+|-------------:|-----------:|:----------------|------:|:-------------------------|:------------------|:-------|:-------|:-------|:-------|:--------|
+|            0 |          1 | John Briggs     |     9 | Honda Prelude Chevrolet  | John Briggs       | 42     | 42     | 42     | 42     | 168     |
+|            1 |          2 | Kerry Baily     |    18 | Toyota Supra Chevrolet   | Kerry Baily       | 38     | 38     | 36     | 38     | 150     |
+|            2 |          3 | James Phillip   |    55 | Honda Prelude Chevrolet  | James Phillip     | 26     | 28     | 28     | 30     | 112     |
+|            3 |          4 | Mick Monterosso |     2 | Ford Escort RS2000       | Mick Monterosso   | -      | 34     | 36     | 34     | 104     |
+|            4 |          5 | Bob Jolly       |     3 | Holden VS Commodore      | Bob Jolly         | -      | 28     | 16     | 32     | 76      |
+|            5 |          6 | Danny Osborne   |   nan | Mazda RX-7               |                   | 26     | 10     | 30     | -      | 66'     |
+|            6 |          7 | Mike Imrie      |     4 | Saab                     | Imrie Motor Sport | 23     | 11     | -      | 28     | 62      |
+|            7 |          8 | Mark Trenoweth  |   nan | Jaguar                   |                   | 33     | 24     | -      | -      | 57      |
+|            8 |          9 | Ivan Mikac      |    42 | Mazda RX-7               | Ivan Mikac        | -      | -      | 25     | 26     | 51      |
+|            9 |         10 | Des Wall        |   nan | Toyota Supra             |                   | 15     | 32     | -      | -      | 47      |
+|           10 |         11 | Kevin Clark     |   116 | Ford Mustang GT          | Kevin Clark       | -      | -      | 23     | 23     | 46      |
+|           11 |         12 | Peter O'Brien   |    17 | Holden VL Commodore      | O'Brien Aluminium | -      | 11     | 29     | -      | 40      |
+|           12 |         13 | Chris Fing      |   nan | Chevrolet Monza          |                   | 29     | -      | -      | -      | 29      |
+|           13 |         14 | Brian Smith     |   nan | Alfa Romeo GTV Chevrolet |                   | -      | 28     | -      | -      | 28      |
+|           14 |         15 | Gary Rowe       |    47 | Nissan Stanza            | Gary Rowe         | -      | -      | 21     | -      | 21      |
+|           15 |        nan | Domenic Beninca |   nan |                          |                   | -      | -      | -      | 21     | 21      |
+|           16 |         17 | Phil Crompton   |    49 | Ford EA Falcon           | Phil Crompton     | 17     | -      | -      | -      | 17      |
+|           17 |         18 | Allan McCarthy  |   nan | Alfa Romeo Alfetta       |                   | 14     | -      | -      | -      | 14      |
+|           18 |         19 | Chris Donnelly  |   nan |                          |                   | 12     | -      | -      | -      | 12      |
+|           19 |        nan | Paul Barrett    |   nan |                          |                   | -      | -      | -      | 12     | 12      |
+|           20 |         21 | Brett Francis   |   nan |                          |                   | 11     | -      | -      | -      | 11      |
+|           21 |         22 | Shane Eklund    |   nan |                          |                   | 10     | -      | -      | -      | 10      |
+|           22 |        nan | Craig Wildridge |   nan |                          |                   | -      | 10     | -      | -      | 10      |
+|           23 |        nan | Ron O'Brien     |   nan |                          |                   | -      | -      | -      | 10     | 10      |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to sum the values in the columns "Lak.", "Ora.", "San.", and "Phi." for each competitor and then count the number of competitors who had a total score greater than 100 points. We will exclude the outlier rows where the Position or Driver values are missing (nan) as they do not provide relevant information for this calculation.
+
+SQL: 
+SELECT COUNT(*) 
+FROM (
+    SELECT "Driver", ("Lak." + "Ora." + "San." + "Phi.") AS total_points
+    FROM T
+    WHERE "Position" NOT LIKE '%nan%'
+) AS subquery
+WHERE total_points > 100;
+Generated Final SQL: SELECT COUNT(*) FROM ( SELECT "Driver", ("Lak." + "Ora." + "San." + "Phi.") AS total_points FROM T WHERE "Position" NOT LIKE '%nan%' ) AS subquery WHERE total_points > 100;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1996 Australian Sports Sedan Championship
+SQL: SELECT COUNT(*) FROM ( SELECT "Driver", ("Lak." + "Ora." + "San." + "Phi.") AS total_points FROM T WHERE "Position" NOT LIKE '%nan%' ) AS subquery WHERE total_points > 100;
+
+SQL Execution Result:
+COUNT(*)
+4
+
+Question: how many competitors had more than 100 points?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

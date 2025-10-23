@@ -1,0 +1,51 @@
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: 10 September 1960, 12 November 1960, 10 December 1960, 26 December 1960
+   - Role: Identifier for the specific match date
+
+2. Opponent
+   - Data type: Categorical
+   - 4 representative example values: West Ham United, Arsenal, Cardiff City, Manchester United
+   - Role: Descriptor for the opposing team
+
+3. Venue
+   - Data type: Categorical
+   - 4 representative example values: H, A
+   - Role: Descriptor for the location of the match (Home or Away)
+
+4. Result
+   - Data type: Categorical
+   - 4 representative example values: 3-2, 4-1, 1-2, 0-6
+   - Role: Measure of the match outcome
+
+5. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 37,873, 38,666, 21,840, 50,213
+   - Role: Measure of the number of spectators present at the match
+
+6. Scorers
+   - Data type: Categorical
+   - 4 representative example values: Greaves, Livesey, Blunstone, Mortimore
+   - Role: Descriptor for the players who scored goals in the match
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - Manchester United as the opponent
+   - Result of 0-6
+   - Attendance of 50,213
+   - This row stands out as Manchester United is a prominent team, and a 0-6 result is a significant loss. The high attendance number also indicates the importance or interest in this match, making it an outlier.
+
+2. Row 22:
+   - Wolverhampton Wanderers as the opponent
+   - Result of 1-6
+   - Anderton as the scorer
+   - Similar to the previous row, a 1-6 result against Wolverhampton Wanderers is a notable defeat. The scorer being Anderton instead of the usual scorers also adds to the uniqueness of this row.
+
+3. Row 15:
+   - Everton as the opponent
+   - Result of 1-1
+   - Greaves as the scorer
+   - This row appears to be an ordinary entry with a draw result and Greaves scoring, which is not significantly different from other matches. It does not stand out as an outlier.

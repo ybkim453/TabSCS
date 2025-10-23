@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: nan, 8, 23, 31
+   - Role: Measure of the athlete's ranking in the competition
+
+2. Pair:
+   - Data type: Numeric
+   - 4 representative example values: 19, 21, 18, 14
+   - Role: Identifier for the pair of athlete and country
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: Shani Davis, Erben Wennemars, Stefan Groothuis, Even Wetten
+   - Role: Descriptor for the athlete's name
+
+4. Country:
+   - Data type: Categorical
+   - 4 representative example values: United States, Netherlands, Norway, Finland
+   - Role: Descriptor for the athlete's country
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 1:08.89, 1:09.32, 1:09.57, 1:10.57
+   - Role: Measure of the athlete's time in the competition
+
+6. Time behind:
+   - Data type: Categorical
+   - 4 representative example values: nan, +0.43, +0.68, +1.68
+   - Role: Descriptor for the time difference behind the leader
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The Rank value is "nan" which is not a typical ranking value.
+   - This row is an outlier due to the unusual Rank value.
+
+2. Row 38:
+   - The Time value is "DQ" which stands for Disqualified, indicating a different status compared to the other time values.
+   - This row is an outlier due to the disqualification status.
+
+3. Row 22:
+   - The Rank value is "-" which is not a typical ranking value.
+   - This row is an outlier due to the unusual Rank value.

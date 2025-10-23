@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Party
+   - Data type: Categorical
+   - 4 representative example values: Conservative, UKIP, Monster Raving Loony, Independent
+   - Role: Descriptor, identifying the political party of the candidate
+
+2. Candidate
+   - Data type: Categorical
+   - 4 representative example values: Patrick McLoughlin, Stuart Bavester, The Flying Brick Delves, Robert Goodall
+   - Role: Identifier, specifying the name of the candidate
+
+3. Votes
+   - Data type: Numeric
+   - 4 representative example values: 24,280, 672, 472, 333
+   - Role: Measure, indicating the number of votes received by each candidate
+
+4. %
+   - Data type: Numeric
+   - 4 representative example values: 48, 1.3, 0.9, 0.7
+   - Role: Measure, representing the percentage of votes received by each candidate
+
+5. ±%
+   - Data type: Numeric
+   - 4 representative example values: 5.9, 0.5, 0.4, 0.5
+   - Role: Measure, showing the change in percentage of votes compared to a previous period
+
+**Outlier Row Analysis:**
+
+1. Row 6 (Majority)
+   - This row is an ordinary row and requires no special handling as it represents the majority of votes received by the winning candidate.
+
+2. Row 4 (Independent - Robert Goodall)
+   - This row is an ordinary row and requires no special handling as the values are not significantly different from the majority of the table.
+
+3. Row 8 (Conservative hold)
+   - This row is an ordinary row and requires no special handling as it represents the swing in votes for the Conservative party.

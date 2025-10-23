@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Contestant
+   - Data type: Categorical
+   - 4 representative example values: Isabelle Raisa, Sabrina Angelika Rauch †, Nataša Marić, Bianca Ebelsberger
+   - Role: Identifier for each contestant
+
+2. Age
+   - Data type: Numeric
+   - 4 representative example values: 16, 21, 24
+   - Role: Measure of the age of each contestant
+
+3. Height
+   - Data type: Categorical
+   - 4 representative example values: 170 cm (5 ft 7 in), 175 cm (5 ft 9 in), 179 cm (5 ft 10.5 in), 183 cm (6 ft 0 in)
+   - Role: Descriptor of the height of each contestant
+
+4. Home City
+   - Data type: Categorical
+   - 4 representative example values: Vienna, Graz, Liefering (originally from Serbia), Aurach am Hongar
+   - Role: Descriptor of the home city of each contestant
+
+5. Rank
+   - Data type: Categorical
+   - 4 representative example values: Eliminated in Episode 1, Eliminated in Episode 2, Eliminated in Episode 3, Winner
+   - Role: Descriptor of the rank achieved by each contestant
+
+**Outlier Row Analysis:**
+
+1. Row 15 (Index 15):
+   - The contestant is listed as the winner, which is different from the other eliminated contestants.
+   - This row is an outlier because it represents the contestant who won the competition, while the others were eliminated.
+
+2. Row 11 (Index 11):
+   - The contestant's home city is listed as "Siegendorf", which is different from the other home cities.
+   - This row is an outlier because the home city is unique compared to the other contestants.
+
+3. Row 10 (Index 10):
+   - The contestant's height is listed as 183 cm (6 ft 0 in), which is the tallest among the contestants.
+   - This row is an outlier because it represents a contestant with a significantly taller height compared to the others.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them outliers in the context of the data.

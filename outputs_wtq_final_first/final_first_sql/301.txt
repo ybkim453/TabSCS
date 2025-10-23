@@ -1,0 +1,136 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Series
+   - Data type: Categorical
+   - 4 representative example values: Two, Three, Seven, Eight
+   - Role: Identifier for the different series of the show
+
+2. Premiere
+   - Data type: Date
+   - 4 representative example values: 12 April 2008, 11 April 2009, 13 April 2013, 12 April 2014
+   - Role: Descriptor indicating the premiere date of each series
+
+3. Finale
+   - Data type: Date
+   - 4 representative example values: 31 May 2008, 30 May 2009, 8 June 2013, 31 May 2014
+   - Role: Descriptor indicating the finale date of each series
+
+4. Winner
+   - Data type: Categorical
+   - 4 representative example values: George Sampson, Diversity, Attraction, TBA
+   - Role: Descriptor indicating the winner of each series
+
+5. Runner-up
+   - Data type: Categorical
+   - 4 representative example values: Signature, Susan Boyle, Jack Carroll, TBA
+   - Role: Descriptor indicating the runner-up of each series
+
+6. Third place
+   - Data type: Categorical
+   - 4 representative example values: Andrew Johnston, Julian Smith, Richard & Adam, TBA
+   - Role: Descriptor indicating the third place contestant of each series
+
+7. Host(s)
+   - Data type: Categorical
+   - 4 representative example values: Ant & Dec
+   - Role: Descriptor indicating the hosts of the show for each series
+
+8. Judging panel
+   - Data type: Categorical
+   - 4 representative example values: Simon Cowell, Amanda Holden, Piers Morgan, Alesha Dixon
+   - Role: Descriptor indicating the members of the judging panel for each series
+
+9. Guest judge(s)
+   - Data type: Categorical
+   - 4 representative example values: nan, Kelly Brook, Ant & Dec, TBA
+   - Role: Descriptor indicating the guest judge(s) for each series
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The values for Winner, Runner-up, and Third place are all "TBA", which is different from the other rows where specific names are mentioned. This makes the row an outlier as it lacks specific information about the contestants.
+
+2. Row 2:
+   - The values for Winner, Runner-up, and Third place are George Sampson, Signature, and Andrew Johnston respectively, which are different from the other rows. This makes the row an outlier as it has unique contestants compared to the majority.
+
+3. Row 0:
+   - The values for Winner, Runner-up, and Third place are all different from the other rows, making them distinctive. This row is an outlier due to the unique combination of contestants.
+
+=== Full Table Preview ===
+|   row_number | Series   | Premiere            | Finale              | Winner              | Runner-up              | Third place     | Host(s)   | Judging panel                                                   | Guest judge(s)   |
+|-------------:|:---------|:--------------------|:--------------------|:--------------------|:-----------------------|:----------------|:----------|:----------------------------------------------------------------|:-----------------|
+|            0 | One      | 2007-06-09 00:00:00 | 2007-06-17 00:00:00 | Paul Potts          | Damon Scott            | Connie Talbot   | Ant & Dec | Simon Cowell\nAmanda Holden\nPiers Morgan                       | N/A              |
+|            1 | Two      | 2008-04-12 00:00:00 | 2008-05-31 00:00:00 | George Sampson      | Signature              | Andrew Johnston | Ant & Dec | Simon Cowell\nAmanda Holden\nPiers Morgan                       | N/A              |
+|            2 | Three    | 2009-04-11 00:00:00 | 2009-05-30 00:00:00 | Diversity           | Susan Boyle            | Julian Smith    | Ant & Dec | Simon Cowell\nAmanda Holden\nPiers Morgan                       | Kelly Brook      |
+|            3 | Four     | 2010-04-17 00:00:00 | 2010-06-05 00:00:00 | Spelbound           | Twist and Pulse        | Kieran Gaffney  | Ant & Dec | Simon Cowell\nAmanda Holden\nPiers Morgan                       | Louis Walsh      |
+|            4 | Five     | 2011-04-16 00:00:00 | 2011-06-04 00:00:00 | Jai McDowall        | Ronan Parke            | New Bounce      | Ant & Dec | Simon Cowell\nAmanda Holden\nDavid Hasselhoff\nMichael McIntyre | Louis Walsh      |
+|            5 | Six      | 2012-03-24 00:00:00 | 2012-05-12 00:00:00 | Ashleigh and Pudsey | Jonathan and Charlotte | Only Boys Aloud | Ant & Dec | Simon Cowell\nAmanda Holden\nAlesha Dixon\nDavid Walliams       | Carmen Electra   |
+|            6 | Seven    | 2013-04-13 00:00:00 | 2013-06-08 00:00:00 | Attraction          | Jack Carroll           | Richard & Adam  | Ant & Dec | Simon Cowell\nAmanda Holden\nAlesha Dixon\nDavid Walliams       | N/A              |
+|            7 | Eight    | 2014-04-12 00:00:00 | 2014-05-31 00:00:00 | TBA                 | TBA                    | TBA             | Ant & Dec | Simon Cowell\nAmanda Holden\nAlesha Dixon\nDavid Walliams       | Ant & Dec        |
+|            8 | Nine     | 2015-01-01 00:00:00 | 2015-01-01 00:00:00 | TBA                 | TBA                    | TBA             | Ant & Dec | TBA                                                             | TBA              |
+
+Generated Reasoning SQL: Explanation: To determine the duration of the 7th series of Britain's Got Talent, we need to calculate the difference between the premiere date and the finale date. The "Premiere" and "Finale" columns contain date values that can be used to calculate the duration.
+
+SQL: 
+SELECT julianday("Finale") - julianday("Premiere") AS series_duration
+FROM T
+WHERE "Series" = 'Seven';
+Generated Final SQL: SELECT julianday("Finale") - julianday("Premiere") AS series_duration FROM T WHERE "Series" = 'Seven';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   series_duration |
+|------------------:|
+|                56 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Britain's Got Talent
+SQL: SELECT julianday("Finale") - julianday("Premiere") AS series_duration FROM T WHERE "Series" = 'Seven';
+
+SQL Execution Result:
+series_duration
+56.0
+
+Question: how long was the 7th series?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 56
+[Gold Answer] 2 months
+

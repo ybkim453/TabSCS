@@ -1,0 +1,211 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. №:
+   - Data type: Numeric
+   - 4 representative example values: 2, (1), (22), 26
+   - Role: Identifier for the order of the Prime Ministers
+
+2. №.1:
+   - Data type: Numeric
+   - 4 representative example values: 2, 20, 26, 3
+   - Role: Identifier for the order of the Prime Ministers
+
+3. Name (Birth-Death) (Title):
+   - Data type: Categorical
+   - 4 representative example values: Son Ngoc Thanh (1908-1977) Prime Minister, Prince Norodom Sihanouk (1922-2012) Prime Minister (10th term), General Lon Nol (1913-1985) Prime Minister (2nd term), In Tam (1916-2006) Prime Minister
+   - Role: Descriptor for the Prime Ministers including their name, birth-death years, and title
+
+4. Portrait:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, nan, (right)
+   - Role: Descriptor for the portrait of the Prime Ministers
+
+5. Term start:
+   - Data type: Date
+   - 4 representative example values: 14 August 1945, 17 November 1961, 14 August 1969, 18 March 1972
+   - Role: Measure for the start date of the Prime Minister's term
+
+6. Term end:
+   - Data type: Date
+   - 4 representative example values: 16 October 1945, 13 February 1962, 9 October 1970, 15 October 1972
+   - Role: Measure for the end date of the Prime Minister's term
+
+7. Political Party:
+   - Data type: Categorical
+   - 4 representative example values: Non-party, Sangkum (Popular Socialist Community), Sangkum (Popular Socialist Community) / Military, Khmer Serei
+   - Role: Descriptor for the political party affiliation of the Prime Ministers
+
+8. Head of State:
+   - Data type: Categorical
+   - 4 representative example values: King Norodom Sihanouk, Prince Norodom Sihanouk, Cheng Heng, General Lon Nol
+   - Role: Descriptor for the head of state during the Prime Minister's term
+
+**Outlier Row Analysis:**
+
+1. Row 44:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not require special handling.
+
+2. Row 49:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not require special handling.
+
+3. Row 47:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not require special handling.
+
+=== Full Table Preview ===
+|   row_number | №    | №_1   | Name\n(Birth–Death)\n(Title)                                                                           | Portrait   | Term start          | Term end          | Political Party                                                      | Head of State                                                  |
+|-------------:|:-----|:------|:-------------------------------------------------------------------------------------------------------|:-----------|:--------------------|:------------------|:---------------------------------------------------------------------|:---------------------------------------------------------------|
+|            0 | 1    | 1     | King Norodom Sihanouk\n(1922–2012)\nPrime Minister                                                     |            | 1945-03-18 00:00:00 | 13 August 1945    | Non-party                                                            | King Norodom Sihanouk                                          |
+|            1 | 2    | 2     | Son Ngoc Thanh\n(1908–1977)\nPrime Minister                                                            |            | 1945-08-14 00:00:00 | 16 October 1945   | Non-party                                                            | King Norodom Sihanouk                                          |
+|            2 | 3    | 3     | Prince Sisowath Monireth\n(1909–1975)\nPrime Minister                                                  |            | 1945-10-17 00:00:00 | 15 December 1946  | Non-party                                                            | King Norodom Sihanouk                                          |
+|            3 | 4    | 4     | Prince Sisowath Youtevong\n(1913–1947)\nPrime Minister                                                 |            | 1946-12-15 00:00:00 | 15 July 1947      | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|            4 | 5    | 5     | Prince Sisowath Watchayavong\n(1891–1972)\nPrime Minister                                              |            | 1947-07-25 00:00:00 | 20 February 1948  | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|            5 | 6    | 6     | Chhean Vam\n(1916–2000)\nPrime Minister                                                                |            | 1948-02-20 00:00:00 | 14 August 1948    | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|            6 | 7    | 7     | Samdech Penn Nouth\n(1906–1985)\nPrime Minister                                                        |            | 1948-08-15 00:00:00 | 21 January 1949   | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|            7 | 8    | 8     | Yem Sambaur\n(1913–1989)\nPrime Minister                                                               |            | 1949-02-12 00:00:00 | 20 September 1949 | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|            8 | 9    | 9     | Ieu Koeus\n(1905–1950)\nPrime Minister                                                                 |            | 1949-09-20 00:00:00 | 29 September 1949 | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|            9 | (8)  | 10    | Yem Sambaur\n(1913–1989)\nPrime Minister\n(2nd term)                                                   |            | 1949-09-29 00:00:00 | 28 April 1950     | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|           10 | (1)  | 11    | King Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(2nd term)                                         |            | 1950-04-28 00:00:00 | 30 May 1950       | Non-party                                                            | King Norodom Sihanouk                                          |
+|           11 | 10   | 12    | Prince Sisowath Monipong\n(1912–1956)\nPrime Minister                                                  |            | 1950-05-30 00:00:00 | 3 March 1951      | Non-party                                                            | King Norodom Sihanouk                                          |
+|           12 | 11   | 13    | Oum Chheang Sun\n(1900–?)\nPrime Minister                                                              |            | 1951-03-03 00:00:00 | 12 October 1951   | National Democratic Party                                            | King Norodom Sihanouk                                          |
+|           13 | 12   | 14    | Huy Kanthoul\n(1909–1991)\nPrime Minister                                                              |            | 1951-10-13 00:00:00 | 16 June 1952      | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|           14 | (1)  | 15    | King Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(3rd term)                                         |            | 1952-06-16 00:00:00 | 24 January 1953   | Non-party                                                            | King Norodom Sihanouk                                          |
+|           15 | (7)  | 16    | Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(2nd term)                                            |            | 1953-01-24 00:00:00 | 9 November 1953   | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|           16 | (7)  | 1     | Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(3rd term)                                            |            | 1953-11-09 00:00:00 | 22 November 1953  | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|           17 | 13   | 2     | Chan Nak\n(1892–1954)\nPrime Minister                                                                  |            | 1953-11-23 00:00:00 | 7 April 1954      | Non-party                                                            | King Norodom Sihanouk                                          |
+|           18 | (1)  | 3     | King Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(4th term)                                         |            | 1954-04-07 00:00:00 | 18 April 1954     | Non-party                                                            | King Norodom Sihanouk                                          |
+|           19 | (7)  | 4     | Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(4th term)                                            |            | 1954-04-18 00:00:00 | 26 January 1955   | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|           20 | 14   | 5     | Leng Ngeth\n(1900–c.1975)\nPrime Minister                                                              |            | 1955-01-26 00:00:00 | 3 October 1955    | Democratic Party                                                     | King Norodom Sihanouk                                          |
+|           21 | 14   | 5     | Leng Ngeth\n(1900–c.1975)\nPrime Minister                                                              |            | 1955-01-26 00:00:00 | 3 October 1955    | Democratic Party                                                     | King Norodom Suramarit                                         |
+|           22 | (1)  | 6     | Prince Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(5th term)                                       |            | 1955-10-03 00:00:00 | 5 January 1956    | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           23 | (11) | 7     | Oum Chheang Sun\n(1900–?)\nPrime Minister\n(2nd term)                                                  |            | 1956-01-05 00:00:00 | 29 February 1956  | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           24 | (1)  | 8     | Prince Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(6th term)                                       |            | 1956-03-01 00:00:00 | 24 March 1956     | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           25 | 15   | 9     | Khim Tit\n(1896–1975)\nPrime Minister                                                                  |            | 1956-04-03 00:00:00 | 29 July 1956      | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           26 | (1)  | 10    | Prince Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(7th term)                                       |            | 1956-09-15 00:00:00 | 15 October 1956   | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           27 | 16   | 11    | Sam Yun\n(1905–1974)\nPrime Minister                                                                   |            | 1956-10-25 00:00:00 | 9 April 1957      | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           28 | (1)  | 12    | Prince Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(8th term)                                       |            | 1957-04-09 00:00:00 | 7 July 1957       | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           29 | 17   | 13    | Sim Var\n(1906–1989)\nPrime Minister                                                                   |            | 1957-07-26 00:00:00 | 11 January 1958   | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           30 | 18   | 14    | Ek Yi Oun\n(1910– )\nPrime Minister                                                                    |            | 1958-01-11 00:00:00 | 17 January 1958   | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           31 | (7)  | 15    | Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(5th term)                                            |            | 1958-01-17 00:00:00 | 24 April 1958     | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           32 | (17) | 16    | Sim Var\n(1906–1989)\nPrime Minister\n(2nd term)                                                       |            | 1958-04-24 00:00:00 | 10 July 1958      | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           33 | (1)  | 17    | Prince Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(9th term)                                       |            | 1958-07-10 00:00:00 | 19 April 1960     | Sangkum\n(Popular Socialist\nCommunity)                              | King Norodom Suramarit                                         |
+|           34 | 19   | 18    | Pho Proeung\n(1903–c.1975)\nPrime Minister                                                             |            | 1960-04-19 00:00:00 | 28 January 1961   | Non-party                                                            | Chuop Hell\nPrince Sisowath Monireth\nChuop Hell               |
+|           35 | (7)  | 19    | Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(6th term)                                            |            | 1961-01-28 00:00:00 | 17 November 1961  | Sangkum\n(Popular Socialist\nCommunity)                              | Prince Norodom Sihanouk                                        |
+|           36 | (1)  | 20    | Prince Norodom Sihanouk\n(1922–2012)\nPrime Minister\n(10th term)                                      |            | 1961-11-17 00:00:00 | 13 February 1962  | Sangkum\n(Popular Socialist\nCommunity)                              | Prince Norodom Sihanouk                                        |
+|           37 | —    | —     | Nhiek Tioulong\n(1908–1996)\nActing Prime Minister                                                     |            | 1962-02-13 00:00:00 | 6 August 1962     | Sangkum\n(Popular Socialist\nCommunity)                              | Prince Norodom Sihanouk                                        |
+|           38 | 20   | 21    | Chau Sen Cocsal Chhum\n(1905–2009)\nPrime Minister                                                     |            | 1962-08-06 00:00:00 | 6 October 1962    | Sangkum\n(Popular Socialist\nCommunity)                              | Prince Norodom Sihanouk                                        |
+|           39 | 21   | 22    | Prince Norodom Kantol\n(1920–1976)\nPrime Minister                                                     |            | 1962-10-06 00:00:00 | 25 October 1966   | Sangkum\n(Popular Socialist\nCommunity)                              | Prince Norodom Sihanouk                                        |
+|           40 | 22   | 23    | General Lon Nol\n(1913–1985)\nPrime Minister                                                           |            | 1966-10-25 00:00:00 | 1 May 1967        | Sangkum\n(Popular Socialist\nCommunity) / Military                   | Prince Norodom Sihanouk                                        |
+|           41 | 23   | 24    | Son Sann\n(1911–2000)\nPrime Minister                                                                  |            | 1967-05-01 00:00:00 | 31 January 1968   | Sangkum\n(Popular Socialist\nCommunity)                              | Prince Norodom Sihanouk                                        |
+|           42 | (7)  | 25    | Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(7th term)                                            |            | 1968-01-31 00:00:00 | 14 August 1969    | Sangkum\n(Popular Socialist\nCommunity)                              | Prince Norodom Sihanouk                                        |
+|           43 | (22) | 26    | General Lon Nol\n(1913–1985)\nPrime Minister\n(2nd term)                                               |            | 1969-08-14 00:00:00 | 9 October 1970    | Sangkum\n(Popular Socialist\nCommunity) / Military                   | Prince Norodom Sihanouk                                        |
+|           44 | (22) | 26    | General Lon Nol\n(1913–1985)\nPrime Minister\n(2nd term)                                               |            | 1969-08-14 00:00:00 | 9 October 1970    | Sangkum\n(Popular Socialist\nCommunity) / Military                   | Cheng Heng                                                     |
+|           45 | (22) | 1     | General Lon Nol\n(1913–1985)\nPrime Minister\n(3rd term)                                               |            | 1970-10-09 00:00:00 | 11 March 1971     | Military                                                             | Cheng Heng                                                     |
+|           46 | 24   | 2     | Prince Sisowath Sirik Matak\n(1914–1975)\nPrime Minister                                               |            | 1971-03-11 00:00:00 | 18 March 1972     | Non-party                                                            | Cheng Heng                                                     |
+|           47 | (2)  | 3     | Son Ngoc Thanh\n(1908–1977)\nPrime Minister\n(2nd term)                                                |            | 1972-03-18 00:00:00 | 15 October 1972   | Khmer Serei                                                          | General Lon Nol                                                |
+|           48 | 25   | 4     | Hang Thun Hak\n(1924–1975)\nPrime Minister                                                             |            | 1972-10-15 00:00:00 | 6 May 1973        | Social Republican Party                                              | General Lon Nol                                                |
+|           49 | 26   | 5     | In Tam\n(1916–2006)\nPrime Minister                                                                    | (right)    | 1973-05-06 00:00:00 | 9 December 1973   | Social Republican Party                                              | General Lon Nol                                                |
+|           50 | 27   | 6     | Long Boret\n(1933–1975)\nPrime Minister                                                                |            | 1973-12-26 00:00:00 | 17 April 1975     | Social Republican Party                                              | General Lon Nol\nGeneral Saukam Khoy\nGeneral Sak Sutsakhan    |
+|           51 | (7)  | 1     | Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(8th term)                                            |            | 1975-04-17 00:00:00 | 4 April 1976      | National United Front of Kampuchea                                   | Prince Norodom Sihanouk                                        |
+|           52 | 28   | 2     | Khieu Samphan\n(1931– )\nActing Prime Minister                                                         |            | 1976-04-04 00:00:00 | 14 April 1976     | Communist Party of Kampuchea                                         | Khieu Samphan                                                  |
+|           53 | 29   | 3     | Pol Pot\n(1925–1998)\nPrime Minister                                                                   |            | 1976-04-14 00:00:00 | 27 September 1976 | Communist Party of Kampuchea                                         | Khieu Samphan                                                  |
+|           54 | 30   | 4     | Nuon Chea\n(1926– )\nPrime Minister                                                                    |            | 1976-09-27 00:00:00 | 25 October 1976   | Communist Party of Kampuchea                                         | Khieu Samphan                                                  |
+|           55 | (29) | 5     | Pol Pot\n(1925–1998)\nPrime Minister\n(2nd term)                                                       |            | 1976-10-25 00:00:00 | 7 January 1979    | Communist Party of Kampuchea                                         | Khieu Samphan                                                  |
+|           56 | —    | —     | Samdach Heng Samrin\n(1934)\nChairman of the People's Revolutionary Council\n(de facto Prime Minister) |            | 1979-01-07 00:00:00 | 27 June 1981      | Kampuchean People's Revolutionary Party                              | Samdach Heng Samrin                                            |
+|           57 | 31   | 1     | Pen Sovan\n(1939– )\nChairman of the Council of Ministers                                              |            | 1981-06-27 00:00:00 | 5 December 1981   | Kampuchean People's Revolutionary Party                              | Samdach Heng Samrin                                            |
+|           58 | 32   | 2     | Chan Sy\n(1932–1984)\nChairman of the Council of Ministers                                             |            | 1981-12-05 00:00:00 | 26 December 1984  | Kampuchean People's Revolutionary Party                              | Samdach Heng Samrin                                            |
+|           59 | 33   | 3     | Samdach Hun Sen\n(1951– )\nChairman of the Council of Ministers                                        |            | 1985-01-14 00:00:00 | 1 May 1989        | Kampuchean People's Revolutionary Party                              | Samdach Heng Samrin                                            |
+|           60 | (33) | 1     | Samdach Hun Sen\n(1951– )\nChairman of the Council of Ministers\n(2nd term)                            |            | 1989-05-01 00:00:00 | 2 July 1993       | Kampuchean People's Revolutionary Party\n↓\nCambodian People's Party | Samdach Heng Samrin\nSamdach Chea Sim\nPrince Norodom Sihanouk |
+|           61 | (33) | 2     | Samdach Hun Sen\n(1951– )\nCoequal Prime Minister\n(3rd term)                                          |            | 1993-07-02 00:00:00 | 21 September 1993 | Cambodian People's Party                                             | Prince Norodom Sihanouk                                        |
+|           62 | 34   | 2     | Prince Norodom Ranariddh\n(1944– )\nCoequal Prime Minister                                             |            | 1993-07-02 00:00:00 | 21 September 1993 | Funcinpec Party                                                      | Prince Norodom Sihanouk                                        |
+|           63 | 34   | 3     | Prince Norodom Ranariddh\n(1944– )\nFirst Prime Minister\n(2nd term)                                   |            | 1993-09-21 00:00:00 | 24 September 1993 | Funcinpec Party                                                      | Prince Norodom Sihanouk                                        |
+|           64 | (33) | 3     | Samdach Hun Sen\n(1951– )\nSecond Prime Minister\n(4th term)                                           |            | 1993-09-21 00:00:00 | 24 September 1993 | Cambodian People's Party                                             | Prince Norodom Sihanouk                                        |
+|           65 | (34) | 27    | Prince Norodom Ranariddh\n(1944– )\nFirst Prime Minister\n(3rd term)                                   |            | 1993-09-24 00:00:00 | 6 July 1997       | Funcinpec Party                                                      | King Norodom Sihanouk\n(Reign: 1993-2004)                      |
+|           66 | (33) | 27    | Samdach Hun Sen\n(1951– )\nSecond Prime Minister\n(5th term)                                           |            | 1993-09-24 00:00:00 | 6 July 1997       | Cambodian People's Party                                             | King Norodom Sihanouk\n(Reign: 1993-2004)                      |
+|           67 | 35   | 28    | Ung Huot\n(1947– )\nFirst Prime Minister                                                               |            | 1997-07-16 00:00:00 | 30 November 1998  | Funcinpec Party                                                      | King Norodom Sihanouk\n(Reign: 1993-2004)                      |
+|           68 | (33) | 28    | Samdach Hun Sen\n(1951– )\nSecond Prime Minister\n(6th term)                                           |            | 1997-07-06 00:00:00 | 30 November 1998  | Cambodian People's Party                                             | King Norodom Sihanouk\n(Reign: 1993-2004)                      |
+|           69 | (33) | 29    | Samdach Hun Sen\n(1951– )\nPrime Minister\n(7th term)                                                  |            | 1998-11-30 00:00:00 | Incumbent         | Cambodian People's Party                                             | King Norodom Sihanouk\n(Reign: 1993-2004)                      |
+|           70 | (33) | 29    | Samdach Hun Sen\n(1951– )\nPrime Minister\n(7th term)                                                  |            | 1998-11-30 00:00:00 | Incumbent         | Cambodian People's Party                                             | King Norodom Sihamoni\n(Reign: 2004-present)                   |
+
+Generated Reasoning SQL: To determine who was in office longer in the French Protectorate between Penn Nouth and Sisowath Monireth, we need to compare the duration of their terms. The relevant columns for this comparison are "Term start" and "Term end", which contain date values representing the start and end of each Prime Minister's term.
+
+We can calculate the length of each Prime Minister's term by subtracting the "Term start" date from the "Term end" date. Then, we can compare these durations to determine who held office longer.
+
+SQL:
+SELECT 
+    "Name\n(Birth–Death)\n(Title)" AS prime_minister,
+    ("Term end" - "Term start") AS term_duration
+FROM T
+WHERE "Name\n(Birth–Death)\n(Title)" LIKE '%Penn Nouth%' OR "Name\n(Birth–Death)\n(Title)" LIKE '%Sisowath Monireth%';
+Generated Final SQL: SELECT "Name\n(Birth–Death)\n(Title)" AS prime_minister, ("Term end" - "Term start") AS term_duration FROM T WHERE "Name\n(Birth–Death)\n(Title)" LIKE '%Penn Nouth%' OR "Name\n(Birth–Death)\n(Title)" LIKE '%Sisowath Monireth%';
+SQL 실행 결과 셀 수: 18
+=== SQL 실행 결과 미리보기 ===
+| prime_minister                                              |   term_duration |
+|:------------------------------------------------------------|----------------:|
+| Prince Sisowath Monireth\n(1909–1975)\nPrime Minister       |           -1930 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister             |           -1927 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(2nd term) |           -1944 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(3rd term) |           -1931 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(4th term) |           -1928 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(5th term) |           -1934 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(6th term) |           -1944 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(7th term) |           -1954 |
+| Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(8th term) |           -1971 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Prime Ministers of Cambodia
+SQL: SELECT "Name\n(Birth–Death)\n(Title)" AS prime_minister, ("Term end" - "Term start") AS term_duration FROM T WHERE "Name\n(Birth–Death)\n(Title)" LIKE '%Penn Nouth%' OR "Name\n(Birth–Death)\n(Title)" LIKE '%Sisowath Monireth%';
+
+prime_minister | term_duration
+Prince Sisowath Monireth\n(1909–1975)\nPrime Minister | -1930
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister | -1927
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(2nd term) | -1944
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(3rd term) | -1931
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(4th term) | -1928
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(5th term) | -1934
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(6th term) | -1944
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(7th term) | -1954
+Samdech Penn Nouth\n(1906–1985)\nPrime Minister\n(8th term) | -1971
+Question: who was in office longer in the french protectorate: penn nouth or sisowath monireth?
+A: To find the answer to this question, let’s think step by step.
+Prediction: sisowath monireth
+[Gold Answer] sisowath monireth
+

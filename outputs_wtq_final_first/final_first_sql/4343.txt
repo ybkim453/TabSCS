@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Party
+   - Data type: Categorical
+   - Representative values: Progressive Conservative, Liberal
+   - Role: Descriptor of the political party the candidate represents
+
+2. Candidate
+   - Data type: Categorical
+   - Representative values: Bryan McLeod, Gerald Basarab
+   - Role: Identifier of the candidate running for election
+
+3. Votes
+   - Data type: Numeric
+   - Representative values: 1,470, 604
+   - Role: Measure of the number of votes received by the candidate
+
+4. %
+   - Data type: Numeric
+   - Representative values: 22.16, 9.1
+   - Role: Measure of the percentage of total votes received by the candidate
+
+5. ∆%
+   - Data type: Numeric
+   - Representative values: 7.76, -7.02
+   - Role: Measure of the change in percentage of votes compared to the previous election
+
+6. Expenditures
+   - Data type: Numeric
+   - Representative values: $2,732.56, $848.80
+   - Role: Measure of the amount of money spent on the candidate's campaign
+
+**Outlier Row Analysis:**
+
+1. Bryan McLeod (Progressive Conservative)
+   - The values that make this row distinctive are the high number of votes (1,470) and the positive change in percentage of votes (∆% = 7.76).
+   - These values are significantly higher than the corresponding values for the other candidate, making this row an outlier.
+
+2. Gerald Basarab (Liberal)
+   - The values that make this row distinctive are the low number of votes (604) and the negative change in percentage of votes (∆% = -7.02).
+   - These values are significantly lower than the corresponding values for the other candidate, making this row an outlier.
+
+3. Total valid votes
+   - This row is an ordinary row and requires no special handling as it represents the total valid votes cast in the election.
+
+In summary, the outlier rows are Bryan McLeod (Progressive Conservative) and Gerald Basarab (Liberal) due to their significantly different values compared to the other candidate.
+
+=== Full Table Preview ===
+|   row_number | Party                         | Candidate                     |   Votes |      % |     ∆% |   Expenditures |
+|-------------:|:------------------------------|:------------------------------|--------:|-------:|-------:|---------------:|
+|            0 | New Democratic Party          | Daryl Reid                    |    4560 |  68.74 |  -0.74 |       19318    |
+|            1 | Progressive Conservative      | Bryan McLeod                  |    1470 |  22.16 |   7.76 |        2732.56 |
+|            2 | Liberal                       | Gerald Basarab                |     604 |   9.1  |  -7.02 |         848.8  |
+|            3 | Total valid votes             | Total valid votes             |    6634 | 100    | nan    |         nan    |
+|            4 | Rejected and declined ballots | Rejected and declined ballots |      34 | nan    | nan    |         nan    |
+|            5 | Turnout                       | Turnout                       |    6668 |  48.75 |   0.21 |         nan    |
+|            6 | Electors on the lists         | Electors on the lists         |   13678 | nan    | nan    |         nan    |
+
+Generated Reasoning SQL: The summary provides information about the columns in the table, including "Party", "Candidate", and "Votes". It also highlights outlier rows, such as Bryan McLeod, who received 1470 votes in the election. To find out how many votes Bryan McLeod received in the Manitoba general election of 2007, we need to filter the rows where "Candidate" = 'Bryan McLeod' and "Party" = 'Progressive Conservative' and retrieve the value in the "Votes" column.
+
+SQL: select "Votes" from T where "Candidate" = 'Bryan McLeod' and "Party" = 'Progressive Conservative';
+Generated Final SQL: select "Votes" from T where "Candidate" = 'Bryan McLeod' and "Party" = 'Progressive Conservative';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Votes |
+|--------:|
+|    1470 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Transcona (electoral district)
+SQL: select "Votes" from T where "Candidate" = 'Bryan McLeod' and "Party" = 'Progressive Conservative';
+
+Votes
+1470
+Question: how many votes did bryan mcleod get in the manitoba general election of 2007?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1470
+[Gold Answer] 1,470
+

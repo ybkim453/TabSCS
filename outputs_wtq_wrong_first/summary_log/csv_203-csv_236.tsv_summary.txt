@@ -1,0 +1,57 @@
+**Column Analysis:**
+
+1. Leg
+   - Data type: Categorical
+   - 4 representative example values: 1 (16 Feb), 2 (17 Feb), 3 (18 Feb)
+   - Role: Identifier for the leg of the rally
+
+2. Stage
+   - Data type: Categorical
+   - 4 representative example values: SS1, SS2, SS6, SS10
+   - Role: Descriptor for the specific stage of the rally
+
+3. Time
+   - Data type: Numeric (time)
+   - 4 representative example values: 07:43, 08:34, 14:36, 09:23
+   - Role: Measure of the time taken for the stage
+
+4. Name
+   - Data type: Categorical
+   - 4 representative example values: Loten 1, Haslemoen, Kongsvinger, Terningmoen
+   - Role: Descriptor for the name of the stage
+
+5. Length
+   - Data type: Numeric (distance)
+   - 4 representative example values: 30.30 km, 11.92 km, 14.60 km, 12.71 km
+   - Role: Measure of the length of the stage
+
+6. Winner
+   - Data type: Categorical
+   - 4 representative example values: M. Hirvonen, S. Loeb, D. Sordo, M. Grönholm
+   - Role: Descriptor for the winner of the stage
+
+7. Time.1
+   - Data type: Numeric (time)
+   - 4 representative example values: 16:14.1, 8:08.4, 9:44.5, 7:59.1
+   - Role: Measure of the time taken by the winner of the stage
+
+8. Avg. spd.
+   - Data type: Numeric (speed)
+   - 4 representative example values: 111.98 km/h, 87.86 km/h, 89.92 km/h, 95.5 km/h
+   - Role: Measure of the average speed during the stage
+
+9. Rally leader
+   - Data type: Categorical
+   - 4 representative example values: M. Hirvonen, S. Loeb
+   - Role: Descriptor for the rally leader at that stage
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The values for "Winner" and "Rally leader" are the same (M. Hirvonen), which is consistent with the majority of the table. This row is an ordinary row and requires no special handling.
+
+2. Row 14:
+   - The values for "Winner" (M. Grönholm) and "Rally leader" (M. Hirvonen) are different from the majority of the table. This discrepancy in leadership roles makes this row an outlier.
+
+3. Row 11:
+   - The values for "Winner" (S. Loeb) and "Rally leader" (M. Hirvonen) are different from the majority of the table. This discrepancy in leadership roles makes this row an outlier.

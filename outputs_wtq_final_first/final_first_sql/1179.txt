@@ -1,0 +1,173 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Wrestler:
+   - Data type: Categorical
+   - 4 representative example values: King Kong, Fidel Sierra, Glamour Boy Shane, B.J.
+   - Role: Identifier for the wrestler holding the title
+
+2. Reigns:
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 1, 2
+   - Role: Measure indicating the number of times a wrestler has held the title
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: April 20, 1991, October 19, 1991, April 2, 1999, March 15, 2008
+   - Role: Descriptor indicating the date when the wrestler won the title
+
+4. Place:
+   - Data type: Categorical
+   - 4 representative example values: Bayamon, Puerto Rico, Guaynabo, Puerto Rico, Lares, Puerto Rico
+   - Role: Descriptor indicating the location where the title match took place
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan, Defeated "Jungle" Jim Steele for vacant title, Chris Joel Jumps to IWA
+   - Role: Descriptor providing additional information about the title reign
+
+**Outlier Row Analysis:**
+
+1. Row 37:
+   - The row contains missing values (nan) for all columns, which is not distinctive and is an ordinary occurrence in the table. This row is an ordinary row and does not require special handling.
+
+2. Row 65:
+   - The row contains the note "Chris Joel Jumps to IWA," which is different from the typical notes in the table. This unique note makes the row an outlier as it represents a specific event that sets it apart from the other entries.
+
+3. Row 63:
+   - The row contains the wrestler name "Vacant" and missing values for the other columns. While the wrestler name is not a typical wrestler name, the concept of a vacant title is common in wrestling, making this row an ordinary entry and not a distinctive outlier.
+
+=== Full Table Preview ===
+|   row_number | Wrestler:                      |   Reigns: | Date:               | Place:                  | Notes:                                                                                           |
+|-------------:|:-------------------------------|----------:|:--------------------|:------------------------|:-------------------------------------------------------------------------------------------------|
+|            0 | Ron Starr                      |         1 | 1986-09-19 00:00:00 | Ponce Puerto Rico       | Defeated Invader I in a Tournament Final                                                         |
+|            1 | Invader I                      |         1 | 1986-11-05 00:00:00 | San Juan Puerto Rico    |                                                                                                  |
+|            2 | Jason The Terrible             |         1 | 1987-01-17 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|            3 | Invader I                      |         2 | 1987-09-18 00:00:00 | San Juan Puerto Rico    |                                                                                                  |
+|            4 | Grizzly Boone                  |         1 | 1987-10-24 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|            5 | Invader I                      |         3 | 1987-11-25 00:00:00 | San Juan Puerto Rico    | Held up after a match against Super Black Ninja on January 8 1988 in San Juan PR                 |
+|            6 | Super Black Ninja              |         1 | 1988-02-06 00:00:00 | Guaynabo Puerto Rico    |                                                                                                  |
+|            7 | Invader I                      |         4 | 1988-04-02 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|            8 | Ron Starr                      |         2 | 1988-06-25 00:00:00 | Carolina Puerto Rico    |                                                                                                  |
+|            9 | Carlos Colon                   |         1 | 1988-08-20 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           10 | Jason The Terrible             |         2 | 1989-01-28 00:00:00 | Carolina Puerto Rico    |                                                                                                  |
+|           11 | Carlos Colon                   |         2 | 1989-03-01 00:00:00 | Carolina Puerto Rico    | Vacant on May 22 1989 after Colon was injured by Steve Strong on May 20 1989                     |
+|           12 | TNT                            |         1 | 1989-06-17 00:00:00 | San Juan Puerto Rico    | Defeats Abudda Dein; vacant on February 9 1990 when TNT wins the WWC Universal Heavyweight Title |
+|           13 | Leo Burke                      |         1 | 1990-03-24 00:00:00 | Caguas Puerto Rico      | Defeats Carlos Colon in a tournament final.                                                      |
+|           14 | TNT                            |         2 | 1990-04-25 00:00:00 | San Juan Puerto Rico    | Won the vacant title                                                                             |
+|           15 | Action Jackson (Original TNT)  |         1 | 1991-01-26 00:00:00 | Caguas Puerto Rico      | Wins tournament; loses a name match on March 2 1991 in Bayamon PR                                |
+|           16 | TNT                            |         3 | 1991-03-30 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           17 | King Kong                      |         1 | 1991-04-20 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           18 | TNT                            |         4 | 1991-06-01 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           19 | Fidel Sierra                   |         1 | 1991-10-19 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           20 | TNT                            |         5 | 1991-10-26 00:00:00 | Carolina Puerto Rico    |                                                                                                  |
+|           21 | Dick Murdoch                   |         1 | 1991-11-23 00:00:00 | Arroyo Puerto Rico      |                                                                                                  |
+|           22 | Invader I                      |         5 | 1991-12-25 00:00:00 | San Juan Puerto Rico    |                                                                                                  |
+|           23 | Dick Murdoch                   |         2 | 1992-01-06 00:00:00 | San Juan Puerto Rico    | Vacant on January 6 1993 when Murdoch leaves the promotion.                                      |
+|           24 | Carlos Colon                   |         3 | 1994-06-18 00:00:00 | San Juan Puerto Rico    | Defeated Mighty Koadiak in a tournament final.                                                   |
+|           25 | Mighty Koadiak                 |         1 | 1994-01-01 00:00:00 |                         |                                                                                                  |
+|           26 | Rex King                       |         1 | 1995-01-01 00:00:00 |                         |                                                                                                  |
+|           27 | Sean Morley                    |         1 | 1995-01-01 00:00:00 |                         |                                                                                                  |
+|           28 | Ricky Santana                  |         1 | 1995-01-01 00:00:00 |                         |                                                                                                  |
+|           29 | Rex King                       |         2 | 1995-01-01 00:00:00 |                         |                                                                                                  |
+|           30 | Pulgarcito                     |         1 | 1995-11-11 00:00:00 |                         |                                                                                                  |
+|           31 | Mighty Koadiak                 |         2 | 1995-11-26 00:00:00 |                         |                                                                                                  |
+|           32 | Sweet Brown Sugar (Skip Young) |         1 | 1996-01-06 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           33 | Ricky Santana                  |         2 | 1996-03-23 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           34 | "Jungle" Jim Steele            |         1 | 1996-04-20 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           35 | El Bronco I                    |         1 | 1996-05-18 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           36 | Sean Morley                    |         2 | 1996-05-30 00:00:00 | Caguas Puerto Rico      | Joins the WWF in 1997 but is still recognized as champion; title becomes vacant on March 3 1999. |
+|           37 | Glamour Boy Shane              |         1 | 1999-04-02 00:00:00 | Guaynabo Puerto Rico    | Defeated "Jungle" Jim Steele for vacant title.                                                   |
+|           38 | Mustafa Saed                   |         1 | 1999-08-14 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           39 | Glamour Boy Shane              |         2 | 1999-09-19 00:00:00 | Guaynabo Puerto Rico    |                                                                                                  |
+|           40 | Chicky Starr                   |         1 | 1999-11-13 00:00:00 | Naguabo Puerto Rico     |                                                                                                  |
+|           41 | Glamour Boy Shane              |         3 | 2000-01-06 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           42 | Rex King                       |         3 | 2000-03-19 00:00:00 | Cabo Rojo Puerto Rico   |                                                                                                  |
+|           43 | Chris Grant                    |         1 | 2001-04-21 00:00:00 | Orocovis Puerto Rico    |                                                                                                  |
+|           44 | Alex Porteau                   |         1 | 2001-07-07 00:00:00 | Carolina Puerto Rico    |                                                                                                  |
+|           45 | Chris Grant                    |         2 | 2001-07-21 00:00:00 | Orocovis Puerto Rico    | wins the title by forfeit                                                                        |
+|           46 | Bad Boy Bradley                |         1 | 2001-09-08 00:00:00 | Bayamón Puerto Rico     |                                                                                                  |
+|           47 | Super Gladiator                |         1 | 2001-10-06 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           48 | Ricky Santana                  |         3 | 2002-03-16 00:00:00 | Aibonito Puerto Rico    |                                                                                                  |
+|           49 | Rico Suave                     |         1 | 2002-04-06 00:00:00 | Caguas Puerto Rico      |                                                                                                  |
+|           50 | Ray Gonzalez                   |         1 | 2002-04-27 00:00:00 | San Lorenzo Puerto Rico |                                                                                                  |
+|           51 | Carlos Colon                   |         4 | 2002-06-08 00:00:00 | Toa Baja Puerto Rico    |                                                                                                  |
+|           52 | Ray Gonzalez                   |         2 | 2002-06-15 00:00:00 | Caguas Puerto Rico      | Vacates title on July 1 2002 when he leaves the company.                                         |
+|           53 | Wilfredo Alejandro             |         1 | 2002-07-06 00:00:00 | Cayey Puerto Rico       | wins a battle royal for the vacant title.                                                        |
+|           54 | Fidel Sierra                   |         2 | 2002-08-24 00:00:00 | Coamo Puerto Rico       |                                                                                                  |
+|           55 | Chris Candido                  |         1 | 2003-06-06 00:00:00 | Cayey Puerto Rico       |                                                                                                  |
+|           56 | Vengador Boricua               |         1 | 2003-07-19 00:00:00 | Carolina Puerto Rico    | title becomes inactive when Vengador Boricua leaves the company.                                 |
+|           57 | Superstar Romeo                |         1 | 2007-02-03 00:00:00 | Caguas Puerto Rico      | Romeo beat Barabas Jr. to win the reactivated title.                                             |
+|           58 | Rico Suave                     |         2 | 2007-03-17 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           59 | Crazy Rudy                     |         1 | 2007-04-28 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           60 | Ash Rubinsky                   |         1 | 2007-11-24 00:00:00 | Bayamon Puerto Rico     | Wins a 7-man battle royal.                                                                       |
+|           61 | B.J.                           |         1 | 2008-01-06 00:00:00 | Choliseo Puerto Rico    | Wins the title after winning an 11 man Battle Royal                                              |
+|           62 | Hammett                        |         1 | 2008-03-01 00:00:00 | Tao Baja Puerto Rico    |                                                                                                  |
+|           63 | B.J.                           |         2 | 2008-03-15 00:00:00 | Lares Puerto Rico       |                                                                                                  |
+|           64 | Chris Joel                     |         1 | 2008-05-10 00:00:00 | Bayamon Puerto Rico     |                                                                                                  |
+|           65 | Vacant                         |       nan | NaT                 |                         | Chris Joel Jumps to IWA                                                                          |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Date" column contains date values and the "Wrestler" column contains categorical wrestler names. To find out who won the last title in 2008, we need to identify the wrestler who held the title with the latest date in 2008. We will filter the rows where the "Date" is in 2008, order them by descending date, and select the top row to get the wrestler who won the last title in 2008.
+
+SQL: 
+SELECT "Wrestler:" 
+FROM T 
+WHERE "Date:" LIKE '%2008%' 
+ORDER BY "Date:" DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Wrestler:" FROM T WHERE "Date:" LIKE '%2008%' ORDER BY "Date:" DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Wrestler:   |
+|:------------|
+| Chris Joel  |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: WWC Television Championship
+SQL: SELECT "Wrestler:" FROM T WHERE "Date:" LIKE '%2008%' ORDER BY "Date:" DESC LIMIT 1;
+
+Wrestler:
+Chris Joel
+Question: who won the last title in 2008?
+A: To find the answer to this question, let’s think step by step.
+Prediction: chris joel
+[Gold Answer] chris joel
+

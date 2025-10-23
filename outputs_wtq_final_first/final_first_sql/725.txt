@@ -1,0 +1,145 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Numeric
+   - 4 representative example values: 10, 12, 13, 18
+   - Role: Identifier for the position of the driver in the race.
+
+2. No.:
+   - Data type: Numeric
+   - 4 representative example values: 11, 3, 18, 98
+   - Role: Identifier for the driver's number.
+
+3. Driver:
+   - Data type: Categorical
+   - 4 representative example values: Tony Kanaan, Hélio Castroneves, Justin Wilson, Richard Antinucci
+   - Role: Descriptor for the driver's name.
+
+4. Team:
+   - Data type: Categorical
+   - 4 representative example values: Andretti Green Racing, Penske Racing, Dale Coyne Racing, Team 3G
+   - Role: Descriptor for the team the driver belongs to.
+
+5. Laps:
+   - Data type: Numeric
+   - 4 representative example values: 85, 83, 56
+   - Role: Measure of the number of laps completed by the driver.
+
+6. Time/Retired:
+   - Data type: Categorical
+   - 4 representative example values: + 52.0810, + 53.2362, + 53.5768, + 2 Laps
+   - Role: Descriptor for the time taken or reason for retirement.
+
+7. Grid:
+   - Data type: Numeric
+   - 4 representative example values: 8, 5, 2, 19
+   - Role: Measure of the starting grid position of the driver.
+
+8. Laps Led:
+   - Data type: Numeric
+   - 4 representative example values: 0, 28
+   - Role: Measure of the number of laps led by the driver.
+
+9. Points:
+   - Data type: Numeric
+   - 4 representative example values: 20, 18, 17, 12
+   - Role: Measure of the points earned by the driver in the race.
+
+**Outlier Row Analysis:**
+
+1. Row 12:
+   - Hélio Castroneves from Penske Racing finished 12th with a time of + 53.2362.
+   - This row is not an outlier as the values are within the range of typical race results.
+
+2. Row 20:
+   - Milka Duno from Dreyer & Reinbold Racing retired due to handling issues after completing 56 laps.
+   - This row is not an outlier as retirements due to technical issues are common in racing.
+
+3. Row 17:
+   - Justin Wilson from Dale Coyne Racing finished 13th but led 28 laps, earning 17 points.
+   - This row is an outlier as leading a significant number of laps while finishing outside the top positions is uncommon and makes it distinctive.
+
+=== Full Table Preview ===
+|   row_number |   Pos |   No. | Driver              | Team                       |   Laps | Time/Retired   |   Grid |   Laps Led |   Points |
+|-------------:|------:|------:|:--------------------|:---------------------------|-------:|:---------------|-------:|-----------:|---------:|
+|            0 |     1 |     9 | Scott Dixon         | Chip Ganassi Racing        |     85 | 1:46:05.7985   |      3 |         51 |       52 |
+|            1 |     2 |     6 | Ryan Briscoe        | Penske Racing              |     85 | + 29.7803      |      1 |          6 |       41 |
+|            2 |     3 |    10 | Dario Franchitti    | Chip Ganassi Racing        |     85 | + 30.0551      |      6 |          0 |       35 |
+|            3 |     4 |    14 | Ryan Hunter-Reay    | A. J. Foyt Enterprises     |     85 | + 33.7307      |      7 |          0 |       32 |
+|            4 |     5 |    27 | Hideki Mutoh        | Andretti Green Racing      |     85 | + 34.1839      |     11 |          0 |       30 |
+|            5 |     6 |    26 | Marco Andretti      | Andretti Green Racing      |     85 | + 46.7669      |     13 |          0 |       28 |
+|            6 |     7 |     5 | Paul Tracy          | KV Racing Technology       |     85 | + 49.7020      |     10 |          0 |       26 |
+|            7 |     8 |     2 | Graham Rahal        | Newman/Haas/Lanigan Racing |     85 | + 50.4517      |      4 |          0 |       24 |
+|            8 |     9 |     2 | Raphael Matos (R)   | Luczo-Dragon Racing        |     85 | + 51.2286      |     15 |          0 |       22 |
+|            9 |    10 |    11 | Tony Kanaan         | Andretti Green Racing      |     85 | + 52.0810      |      8 |          0 |       20 |
+|           10 |    11 |     6 | Oriol Servià        | Newman/Haas/Lanigan Racing |     85 | + 52.6215      |     14 |          0 |       19 |
+|           11 |    12 |     3 | Hélio Castroneves   | Penske Racing              |     85 | + 53.2362      |      5 |          0 |       18 |
+|           12 |    13 |    18 | Justin Wilson       | Dale Coyne Racing          |     85 | + 53.5768      |      2 |         28 |       17 |
+|           13 |    14 |    33 | Robert Doornbos (R) | HVM Racing                 |     85 | + 1:10.0812    |     18 |          0 |       16 |
+|           14 |    15 |    13 | E. J. Viso          | HVM Racing                 |     84 | + 1 Lap        |      9 |          0 |       15 |
+|           15 |    16 |     4 | Dan Wheldon         | Panther Racing             |     84 | + 1 Lap        |     17 |          0 |       14 |
+|           16 |    17 |    20 | Ed Carpenter        | Vision Racing              |     84 | + 1 Lap        |     21 |          0 |       13 |
+|           17 |    18 |    98 | Richard Antinucci   | Team 3G                    |     83 | + 2 Laps       |     19 |          0 |       12 |
+|           18 |    19 |     7 | Danica Patrick      | Andretti Green Racing      |     83 | + 2 Laps       |     12 |          0 |       12 |
+|           19 |    20 |    24 | Mike Conway (R)     | Dreyer & Reinbold Racing   |     69 | Mechanical     |     16 |          0 |       12 |
+|           20 |    21 |    23 | Milka Duno          | Dreyer & Reinbold Racing   |     56 | Handling       |     20 |          0 |       12 |
+
+Generated Reasoning SQL: Explanation: To find the number of drivers who had more laps led than Justin Wilson, we need to compare the "Laps Led" value of each driver to Justin Wilson's laps led count. Since Justin Wilson led 28 laps, we count the number of rows where "Laps Led" is greater than 28.
+SQL: select count(*) from T where "Laps Led" > 28;
+Generated Final SQL: select count(*) from T where "Laps Led" > 28;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(*) |
+|-----------:|
+|          1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2009 Honda 200
+SQL: select count(*) from T where "Laps Led" > 28;
+
+count(*)
+1
+Question: how many drivers had more laps led than justin wilson?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 1
+

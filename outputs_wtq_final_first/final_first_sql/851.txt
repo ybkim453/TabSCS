@@ -1,0 +1,116 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2000, 2002, 2003, 2003
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Olympic Games, Grand Prix Final, World Indoor Championships, World Athletics Final
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Sydney, Australia, Doha, Qatar, Paris, France, Birmingham, England
+   - Role: Descriptor of the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 3rd, 4th, 7th, 6th
+   - Role: Measure of the athlete's position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 100 m hurdles, 60 m hurdles
+   - Role: Descriptor of the specific event in which the athlete competed.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The position "3rd" in the Olympic Games competition is not a common occurrence and indicates a high level of achievement, making this row an outlier.
+
+2. Row 6:
+   - The position "7th" in the Grand Prix Final competition is not a typical result for a top athlete, suggesting a lower performance compared to other entries, making this row an outlier.
+
+3. Row 10:
+   - The position "6th" in the World Athletics Final competition is not a usual outcome for a top athlete, indicating a lower performance relative to other entries, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition                | Venue                      | Position   | Event         |
+|-------------:|-------:|:---------------------------|:---------------------------|:-----------|:--------------|
+|            0 |   1997 | World Indoor Championships | Paris France               | 5th        | 60 m hurdles  |
+|            1 |   1997 | USA Outdoor Championships  | Indianapolis United States | 1st        | 100 m hurdles |
+|            2 |   1998 | Grand Prix Final           | Moscow Russia              | 2nd        | 100 m hurdles |
+|            3 |   1998 | USA Indoor Championships   |                            | 1st        | 60 m hurdles  |
+|            4 |   1999 | World Indoor Championships | Maebashi Japan             | 6th        | 60 m hurdles  |
+|            5 |   2000 | Olympic Games              | Sydney Australia           | 3rd        | 100 m hurdles |
+|            6 |   2000 | Grand Prix Final           | Doha Qatar                 | 4th        | 100 m hurdles |
+|            7 |   2002 | Grand Prix Final           | Paris France               | 7th        | 100 m hurdles |
+|            8 |   2002 | USA Indoor Championships   |                            | 1st        | 60 m hurdles  |
+|            9 |   2003 | World Indoor Championships | Birmingham England         | 3rd        | 60 m hurdles  |
+|           10 |   2003 | World Athletics Final      | Monaco                     | 6th        | 100 m hurdles |
+|           11 |   2004 | Olympic Games              | Athens Greece              | 3rd        | 100 m hurdles |
+
+Generated Reasoning SQL: To find the competition where Melissa Morrison-Howard placed 6th, excluding the World Athletics Final, we need to filter rows where "Position" = '6th' and "Competition" is not 'World Athletics Final'.
+The summary indicates that the "Position" column is categorical and contains values like '6th'. The "Competition" column is also categorical and describes the type of competition.
+We must exclude the outlier rows mentioned in the summary to ensure accurate results.
+SQL: 
+select "Competition" from T where "Position" = '6th' and "Competition" != 'World Athletics Final';
+Generated Final SQL: select "Competition" from T where "Position" = '6th' and "Competition" != 'World Athletics Final';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Competition                |
+|:---------------------------|
+| World Indoor Championships |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Melissa Morrison-Howard
+SQL: select "Competition" from T where "Position" = '6th' and "Competition" != 'World Athletics Final';
+
+Competition
+World Indoor Championships
+Question: what other competition did melissa morrison-howard place 6th besides world athletics final?
+A: To find the answer to this question, let’s think step by step.
+Prediction: world indoor championships
+[Gold Answer] world indoor championships
+

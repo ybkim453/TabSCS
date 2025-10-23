@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1999, 2002, 2008, 2009
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Youth Championships, World Junior Championships, Olympic Games, World Student Games
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Bydgoszcz, Poland, Kingston, Jamaica, Beijing, PR China, Belgrade, Serbia
+   - Role: Descriptor of the location where the competition was held.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 12th, 2nd, 8th, 3rd
+   - Role: Measure of the athlete's performance in the competition.
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan, 63.91 m, 71.00 m, 72.85 m
+   - Role: Additional information or details related to the competition.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Year: 1999, Competition: World Youth Championships, Venue: Bydgoszcz, Poland, Position: 12th, Notes: nan):
+   - The values in this row are not significantly different from the majority of the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 9 (Year: 2009, Competition: World Championships, Venue: Berlin, Germany, Position: 3rd, Notes: 74.79 m):
+   - The values in this row are consistent with the other entries in the table. This row is an ordinary entry and does not stand out as an outlier.
+
+3. Row 4 (Year: 2009, Competition: World Student Games, Venue: Belgrade, Serbia, Position: 2nd, Notes: 72.85 m):
+   - The values in this row are similar to other entries in the table. This row is an ordinary entry and does not exhibit any distinctive characteristics that would classify it as an outlier.

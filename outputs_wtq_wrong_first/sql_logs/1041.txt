@@ -1,0 +1,186 @@
+=== Table ID ===
+csv/204-csv/955.tsv
+
+=== Question ===
+name a driver than has more total points than phillip.
+
+=== Sub-table Preview ===
+| Name                    | Nationality   | From         | To               | Honours                          | Comments                                  |
+|:------------------------|:--------------|:-------------|:-----------------|:---------------------------------|:------------------------------------------|
+| Henrik Jensen           | Denmark       | 1 July 2012  | Present          | nan                              | nan                                       |
+| John 'Tune' Kristiansen | Denmark       | 18 June 2012 | 23 June 2012     | nan                              | Caretaker for one league match            |
+| John 'Tune' Kristiansen | Denmark       | 27 July 2010 | 30 December 2011 | won promotion to the fourth tier | Originally had contract until summer 2012 |
+| René Heitmann           | Denmark       | 17 July 2010 | 27 July 2010     | nan                              | Never coached the team in a match         |
+| Christian Andersen      | Denmark       | 11 July 2009 | 19 June 2010     | Team was relegated to third tier | Club went bankrupt after the season       |
+| Johnny Petersen         | Denmark       | 5 May 1998   | 14 October 2001  | nan                              | Originally had contract until end of 2001 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Henrik Jensen, John 'Tune' Kristiansen, René Heitmann, Christian Andersen
+   - Role: Identifier
+
+2. Nationality
+   - Data type: Categorical
+   - 4 representative example values: Denmark
+   - Role: Descriptor
+
+3. From
+   - Data type: Date
+   - 4 representative example values: 1 July 2012, 18 June 2012, 17 July 2010, 11 July 2009
+   - Role: Descriptor
+
+4. To
+   - Data type: Date
+   - 4 representative example values: Present, 23 June 2012, 30 December 2011, 19 June 2010
+   - Role: Descriptor
+
+5. Honours
+   - Data type: Categorical
+   - 4 representative example values: nan, won promotion to the fourth tier, Team was relegated to third tier
+   - Role: Descriptor
+
+6. Comments
+   - Data type: Categorical
+   - 4 representative example values: nan, Caretaker for one league match, Originally had contract until summer 2012, Club went bankrupt after the season
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - The value "Team was relegated to third tier" in the Honours column is different from the majority of the table where honours are not mentioned. This makes the row an outlier as it highlights a significant event (relegation) compared to the other entries.
+
+2. Row 4 (Index 4):
+   - The value "Never coached the team in a match" in the Comments column is different from the majority of the table where comments are not specific about coaching. This makes the row an outlier as it indicates a unique situation where the coach did not actually coach any matches.
+
+3. Row 9 (Index 9):
+   - The value "Originally had contract until end of 2001" in the Comments column is different from the majority of the table where comments are more general. This makes the row an outlier as it provides specific information about the contract duration, which is not common in the other entries.
+
+=== Full Table Preview ===
+|   row_number |   Position | Driver          |   No. | Car                      | Entrant           | Lak.   | Ora.   | San.   | Phi.   | Total   |
+|-------------:|-----------:|:----------------|------:|:-------------------------|:------------------|:-------|:-------|:-------|:-------|:--------|
+|            0 |          1 | John Briggs     |     9 | Honda Prelude Chevrolet  | John Briggs       | 42     | 42     | 42     | 42     | 168     |
+|            1 |          2 | Kerry Baily     |    18 | Toyota Supra Chevrolet   | Kerry Baily       | 38     | 38     | 36     | 38     | 150     |
+|            2 |          3 | James Phillip   |    55 | Honda Prelude Chevrolet  | James Phillip     | 26     | 28     | 28     | 30     | 112     |
+|            3 |          4 | Mick Monterosso |     2 | Ford Escort RS2000       | Mick Monterosso   | -      | 34     | 36     | 34     | 104     |
+|            4 |          5 | Bob Jolly       |     3 | Holden VS Commodore      | Bob Jolly         | -      | 28     | 16     | 32     | 76      |
+|            5 |          6 | Danny Osborne   |   nan | Mazda RX-7               |                   | 26     | 10     | 30     | -      | 66'     |
+|            6 |          7 | Mike Imrie      |     4 | Saab                     | Imrie Motor Sport | 23     | 11     | -      | 28     | 62      |
+|            7 |          8 | Mark Trenoweth  |   nan | Jaguar                   |                   | 33     | 24     | -      | -      | 57      |
+|            8 |          9 | Ivan Mikac      |    42 | Mazda RX-7               | Ivan Mikac        | -      | -      | 25     | 26     | 51      |
+|            9 |         10 | Des Wall        |   nan | Toyota Supra             |                   | 15     | 32     | -      | -      | 47      |
+|           10 |         11 | Kevin Clark     |   116 | Ford Mustang GT          | Kevin Clark       | -      | -      | 23     | 23     | 46      |
+|           11 |         12 | Peter O'Brien   |    17 | Holden VL Commodore      | O'Brien Aluminium | -      | 11     | 29     | -      | 40      |
+|           12 |         13 | Chris Fing      |   nan | Chevrolet Monza          |                   | 29     | -      | -      | -      | 29      |
+|           13 |         14 | Brian Smith     |   nan | Alfa Romeo GTV Chevrolet |                   | -      | 28     | -      | -      | 28      |
+|           14 |         15 | Gary Rowe       |    47 | Nissan Stanza            | Gary Rowe         | -      | -      | 21     | -      | 21      |
+|           15 |        nan | Domenic Beninca |   nan |                          |                   | -      | -      | -      | 21     | 21      |
+|           16 |         17 | Phil Crompton   |    49 | Ford EA Falcon           | Phil Crompton     | 17     | -      | -      | -      | 17      |
+|           17 |         18 | Allan McCarthy  |   nan | Alfa Romeo Alfetta       |                   | 14     | -      | -      | -      | 14      |
+|           18 |         19 | Chris Donnelly  |   nan |                          |                   | 12     | -      | -      | -      | 12      |
+|           19 |        nan | Paul Barrett    |   nan |                          |                   | -      | -      | -      | 12     | 12      |
+|           20 |         21 | Brett Francis   |   nan |                          |                   | 11     | -      | -      | -      | 11      |
+|           21 |         22 | Shane Eklund    |   nan |                          |                   | 10     | -      | -      | -      | 10      |
+|           22 |        nan | Craig Wildridge |   nan |                          |                   | -      | 10     | -      | -      | 10      |
+|           23 |        nan | Ron O'Brien     |   nan |                          |                   | -      | -      | -      | 10     | 10      |
+
+Generated Reasoning SQL: Explanation: To find a driver with more total points than Phillip, we need to compare the "Total" points of each driver. Since the question specifically mentions Phillip, we will filter for his row and then compare the "Total" points of other drivers to determine if they have more points.
+
+SQL: 
+SELECT "Driver"
+FROM T
+WHERE "Total" > (SELECT "Total" FROM T WHERE "Driver" = 'James Phillip');
+Generated Final SQL: SELECT "Driver" FROM T WHERE "Total" > (SELECT "Total" FROM T WHERE "Driver" = 'James Phillip');
+SQL 실행 결과 셀 수: 18
+=== SQL 실행 결과 미리보기 ===
+| Driver          |
+|:----------------|
+| John Briggs     |
+| Kerry Baily     |
+| Bob Jolly       |
+| Danny Osborne   |
+| Mike Imrie      |
+| Mark Trenoweth  |
+| Ivan Mikac      |
+| Des Wall        |
+| Kevin Clark     |
+| Peter O'Brien   |
+| Chris Fing      |
+| Brian Smith     |
+| Gary Rowe       |
+| Domenic Beninca |
+| Phil Crompton   |
+| Allan McCarthy  |
+| Chris Donnelly  |
+| Paul Barrett    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1996 Australian Sports Sedan Championship
+SQL: SELECT "Driver" FROM T WHERE "Total" > (SELECT "Total" FROM T WHERE "Driver" = 'James Phillip');
+
+SQL Execution Result:
+Driver
+John Briggs
+Kerry Baily
+Bob Jolly
+Danny Osborne
+Mike Imrie
+Mark Trenoweth
+Ivan Mikac
+Des Wall
+Kevin Clark
+Peter O'Brien
+Chris Fing
+Brian Smith
+Gary Rowe
+Domenic Beninca
+Phil Crompton
+Allan McCarthy
+Chris Donnelly
+Paul Barrett
+
+Question: name a driver than has more total points than phillip.
+A: To find the answer to this question, let’s think step by step.
+Prediction: john briggs, kerry baily, bob jolly, danny osborne, mike imrie, mark trenoweth, ivan mikac, des wall, kevin clark, peter o'brien, chris fing, brian smith, gary rowe, domenic beninca, phil crompton, allan mccarthy, chris donnelly, paul barrett
+[Gold Answer] kerry baily
+

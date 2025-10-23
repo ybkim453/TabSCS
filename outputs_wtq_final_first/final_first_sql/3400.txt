@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name:
+   - Data type: Categorical
+   - 4 representative example values: Cassiopeia 1, NGC 1560, NGC 1569, UGCA 86
+   - Role: Identifier for the astronomical objects
+
+2. Type:
+   - Data type: Categorical
+   - 4 representative example values: dIrr, SA(s)d, Sbrst, Im
+   - Role: Descriptor of the type of astronomical object
+
+3. R.A. (J2000):
+   - Data type: Categorical
+   - 4 representative example values: 02h 06m 02.8s, 04h 32m 49.1s, 04h 30m 49.1s, 03h 59m 50.5s
+   - Role: Measure of the Right Ascension in J2000 coordinates
+
+4. Dec. (J2000):
+   - Data type: Categorical
+   - 4 representative example values: +68° 59′ 59″, +71° 52′ 59″, +64° 50′ 52.6″, +67° 08′ 37″
+   - Role: Measure of the Declination in J2000 coordinates
+
+5. Redshift (km/s):
+   - Data type: Numeric
+   - 4 representative example values: 35, -36 ± 5, -104 ± 4, 67 ± 4
+   - Role: Measure of the redshift in kilometers per second
+
+6. Apparent Magnitude:
+   - Data type: Numeric
+   - 4 representative example values: 16.4, 12.2, 11.2, 13.5
+   - Role: Measure of the apparent brightness of the astronomical object
+
+**Outlier Row Analysis:**
+
+1. NGC 1560:
+   - The Redshift value of -36 ± 5 is significantly different from the other Redshift values in the table.
+   - This makes the row an outlier as it deviates from the typical range of Redshift values.
+
+2. UGCA 92:
+   - The Redshift value of -99 ± 5 is notably different from the other Redshift values in the table.
+   - This makes the row an outlier as it stands out in terms of Redshift compared to the majority of the data.
+
+3. (No row number provided):
+   - If there is no specific row number provided, it is not possible to analyze the outlier status of this row accurately.
+   - Please provide the row number for further analysis.
+
+=== Full Table Preview ===
+|   row_number | Name             | Type      | R.A. (J2000)   | Dec. (J2000)   | Redshift (km/s)   |   Apparent Magnitude |
+|-------------:|:-----------------|:----------|:---------------|:---------------|:------------------|---------------------:|
+|            0 | Camelopardalis A | Irr       | 04h 26m 16.3s  | +72° 48′ 21″   | -46 ± 1           |                 14.8 |
+|            1 | Camelopardalis B | Irr       | 04h 53m 07.1s  | +67° 05′ 57″   | 77                |                 16.1 |
+|            2 | Cassiopeia 1     | dIrr      | 02h 06m 02.8s  | +68° 59′ 59″   | 35                |                 16.4 |
+|            3 | IC 342           | SAB(rs)cd | 03h 46m 48.5s  | +68° 05′ 46″   | 31 ± 3            |                  9.1 |
+|            4 | KK 35            | Irr       | 03h 45m 12.6s  | +67° 51′ 51″   | 105 ± 1           |                 17.2 |
+|            5 | NGC 1560         | SA(s)d    | 04h 32m 49.1s  | +71° 52′ 59″   | -36 ± 5           |                 12.2 |
+|            6 | NGC 1569         | Sbrst     | 04h 30m 49.1s  | +64° 50′ 526″  | -104 ± 4          |                112   |
+|            7 | UGCA 86          | Im        | 03h 59m 50.5s  | +67° 08′ 37″   | 67 ± 4            |                 13.5 |
+|            8 | UGCA 92          | Im        | 04h 32m 04.9s  | +63° 36′ 49.0″ | -99 ± 5           |                 13.8 |
+|            9 | UGCA 105         | Im        | 05h 14m 15.3s  | +62° 34′ 48″   | 111 ± 5           |                 13.9 |
+
+Generated Reasoning SQL: To calculate the total number of names in the table, we need to count the total number of rows in the table.
+Since each row represents a unique astronomical object with a name, counting the rows will give us the total number of names present in the table.
+SQL: select count("Name") from T;
+Generated Final SQL: select count("Name") from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Name") |
+|----------------:|
+|              10 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: IC 342/Maffei Group
+SQL: select count("Name") from T;
+
+count("Name")
+10
+Question: what is the total of names?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 10
+[Gold Answer] 10
+

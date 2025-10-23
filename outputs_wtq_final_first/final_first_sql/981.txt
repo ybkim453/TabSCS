@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Thread nominal size
+   - Data type: Categorical
+   - 4 representative example values: PG13.5, PG21, PG36, PG42
+   - Role: Identifier
+
+2. Outer diameter [mm (in)]
+   - Data type: Numeric
+   - 4 representative example values: 20.4 (0.803), 28.3 (1.114), 47.0 (1.850), 54.0 (2.126)
+   - Role: Measure
+
+3. Threads per inch (TPI)
+   - Data type: Numeric
+   - 4 representative example values: 18, 16
+   - Role: Measure
+
+4. Pitch [in (mm)]
+   - Data type: Numeric
+   - 4 representative example values: 0.05556 (1.4112), 0.0625 (1.5875)
+   - Role: Measure
+
+5. Inner diameter [mm (in)]
+   - Data type: Numeric
+   - 4 representative example values: 19.06 (0.750), 26.78 (1.054), 45.48 (1.791), 52.48 (2.066)
+   - Role: Measure
+
+6. Cable diameter [mm (in)]
+   - Data type: Numeric
+   - 4 representative example values: 6 to 12 (0.236 to 0.472), 13 to 18 (0.512 to 0.709)
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 0 (PG13.5)
+   - The cable diameter is given as 6 to 12 (0.236 to 0.472), which is a range rather than a specific value. This makes it different from the other rows where a specific cable diameter is provided. This row is an outlier due to the presence of a range instead of a single value.
+
+2. Row 5 (PG48)
+   - The cable diameter is marked as "nan", indicating missing data. This row is an outlier because it lacks a crucial piece of information that is present in the other rows.
+
+3. Row 3 (PG42)
+   - The cable diameter is also marked as "nan", similar to Row 5. This row is an outlier for the same reason as Row 5, as it lacks important data present in the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Thread\nnominal size   | Outer diameter\n[mm (in)]   |   Threads per inch\n(TPI) | Pitch\n[in (mm)]   | Inner diameter\n[mm (in)]   | Cable diameter\n[mm (in)]   |
+|-------------:|:-----------------------|:----------------------------|--------------------------:|:-------------------|:----------------------------|:----------------------------|
+|            0 | PG7                    | 12.5 (0.492)                |                        20 | 0.05 (1.270)       | 11.28 (0.444)               | 3 to 6.5 (0.118 to 0.256)   |
+|            1 | PG9                    | 15.5 (0.610)                |                        18 | 0.05556 (1.4112)   | 13.86 (0.546)               | 4 to 8 (0.157 to 0.315)     |
+|            2 | PG11                   | 18.6 (0.732)                |                        18 | 0.05556 (1.4112)   | 17.26 (0.680)               | 5 to 10 (0.197 to 0.394)    |
+|            3 | PG13.5                 | 20.4 (0.803)                |                        18 | 0.05556 (1.4112)   | 19.06 (0.750)               | 6 to 12 (0.236 to 0.472)    |
+|            4 | PG16                   | 22.5 (0.886)                |                        18 | 0.05556 (1.4112)   | 21.16 (0.833)               | 10 to 14 (0.394 to 0.551)   |
+|            5 | PG21                   | 28.3 (1.114)                |                        16 | 0.0625 (1.5875)    | 26.78 (1.054)               | 13 to 18 (0.512 to 0.709)   |
+|            6 | PG29                   | 37.0 (1.457)                |                        16 | 0.0625 (1.5875)    | 35.48 (1.397)               | 18 to 25 (0.709 to 0.984)   |
+|            7 | PG36                   | 47.0 (1.850)                |                        16 | 0.0625 (1.5875)    | 45.48 (1.791)               |                             |
+|            8 | PG42                   | 54.0 (2.126)                |                        16 | 0.0625 (1.5875)    | 52.48 (2.066)               |                             |
+|            9 | PG48                   | 59.3 (2.335)                |                        16 | 0.0625 (1.5875)    | 57.78 (2.275)               |                             |
+
+Generated Reasoning SQL: Explanation: To determine the inner diameter of a PG16 screw, we need to filter the row where the "Thread nominal size" is PG16 and retrieve the value from the "Inner diameter [mm (in)]" column. Since the inner diameter is a numeric measure, we can directly use it without any additional processing.
+
+SQL: SELECT "Inner diameter [mm (in)]" 
+FROM T 
+WHERE "Thread\nnominal size" = 'PG16';
+Generated Final SQL: SELECT "Inner diameter [mm (in)]" FROM T WHERE "Thread\nnominal size" = 'PG16';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| "Inner diameter [mm (in)]"   |
+|:-----------------------------|
+| Inner diameter [mm (in)]     |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of thread standards
+SQL: SELECT "Inner diameter [mm (in)]" FROM T WHERE "Thread\nnominal size" = 'PG16';
+
+SQL Execution Result:
+"Inner diameter [mm (in)]"
+Inner diameter [mm (in)]
+
+Question: how long is the inner diameter of a pg16 screw?
+A: To find the answer to this question, let’s think step by step.
+Prediction: inner diameter [mm (in)]
+[Gold Answer] 21.16 (0.833)
+

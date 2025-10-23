@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Series:
+   - Data type: Categorical
+   - 4 representative example values: BB6, BB7, BB8, BB9
+   - Role: Identifier for the reality TV series season
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Vanessa Layton-McIntosh, Sam Heuston, Sezer Yurtseven, Kara-Louise Horne
+   - Role: Descriptor for the contestant's name
+
+3. Age:
+   - Data type: Numeric
+   - 4 representative example values: 19, 23, 26, 24
+   - Role: Measure of the contestant's age
+
+4. Hometown:
+   - Data type: Categorical
+   - 4 representative example values: London, Torfaen
+   - Role: Descriptor for the contestant's hometown
+
+5. Occupation:
+   - Data type: Categorical
+   - 4 representative example values: Student, Stock Broker/Property Developer, Trainee Teacher/Actress, Film maker
+   - Role: Descriptor for the contestant's occupation
+
+6. Status:
+   - Data type: Categorical
+   - 4 representative example values: 10th - Evicted, 14th - Evicted, 18th - Evicted, 7th - Evicted
+   - Role: Descriptor for the contestant's status in the reality TV show
+
+**Outlier Row Analysis:**
+
+1. Row 123:
+   - The values in this row are not provided in the partial preview, so it cannot be determined if it is an outlier based on the information given.
+
+2. Row 183:
+   - The values in this row are not provided in the partial preview, so it cannot be determined if it is an outlier based on the information given.
+
+3. Row 95:
+   - The values in this row are not provided in the partial preview, so it cannot be determined if it is an outlier based on the information given.

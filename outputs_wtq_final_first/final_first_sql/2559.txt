@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1957, 1956, 1954, 1953
+   - Role: Identifier for the year in which the event took place.
+
+2. Network:
+   - Data type: Categorical
+   - 4 representative example values: CBS
+   - Role: Describes the broadcasting network for the event.
+
+3. Race caller:
+   - Data type: Categorical
+   - 4 representative example values: Fred Capossela, Bryan Field
+   - Role: Describes the person who called the race.
+
+4. Color commentator:
+   - Data type: Categorical
+   - 4 representative example values: Bryan Field, Mel Allen, Sam Renick
+   - Role: Describes the person who provided color commentary during the event.
+
+5. Reporters:
+   - Data type: Categorical
+   - 4 representative example values: Phil Sutterfield
+   - Role: Describes the reporters present at the event.
+
+6. Trophy Presentation:
+   - Data type: Categorical
+   - 4 representative example values: Bill Corum, Phil Sutterfield
+   - Role: Describes the person responsible for presenting the trophy at the event.
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or unusual values. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 5:
+   - The values in this row are also consistent with the majority of the table and do not contain any distinctive or unusual values. This row is an ordinary row and does not require special handling.
+
+3. Row 7:
+   - The values in this row are similar to the majority of the table and do not contain any distinctive or unusual values. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Network   | Race caller    | Color commentator               | Reporters        | Trophy Presentation   |
+|-------------:|-------:|:----------|:---------------|:--------------------------------|:-----------------|:----------------------|
+|            0 |   1959 | CBS       | Fred Capossela | Bryan Field and Chris Schenkel  |                  | Chris Schenkel        |
+|            1 |   1958 | CBS       | Fred Capossela | Bryan Field                     |                  |                       |
+|            2 |   1957 | CBS       | Fred Capossela | Bryan Field                     |                  |                       |
+|            3 |   1956 | CBS       | Fred Capossela | Bryan Field                     |                  |                       |
+|            4 |   1955 | CBS       | Fred Capossela | Phil Sutterfield and Win Elliot |                  |                       |
+|            5 |   1954 | CBS       | Bryan Field    | Mel Allen                       |                  | Bill Corum            |
+|            6 |   1953 | CBS       | Bryan Field    | Mel Allen                       | Phil Sutterfield | Phil Sutterfield      |
+|            7 |   1952 | CBS       | Bryan Field    | Sam Renick                      |                  |                       |
+
+Generated Reasoning SQL: The summary provides information about the "Race caller" column, which is categorical and contains the names of individuals who called the race. To determine the last race caller, we need to find the entry with the highest "Year" value and retrieve the corresponding "Race caller" value. We do not need to exclude any outlier rows as they do not affect this specific query.
+
+SQL: 
+SELECT "Race caller" 
+FROM T 
+WHERE "Year" = (SELECT MAX("Year") FROM T);
+Generated Final SQL: SELECT "Race caller" FROM T WHERE "Year" = (SELECT MAX("Year") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Race caller    |
+|:---------------|
+| Fred Capossela |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Kentucky Derby broadcasters
+SQL: SELECT "Race caller" FROM T WHERE "Year" = (SELECT MAX("Year") FROM T);
+
+Race caller
+Fred Capossela
+Question: who was the last race caller?
+A: To find the answer to this question, let’s think step by step.
+Prediction: fred capossela
+[Gold Answer] fred capossela
+

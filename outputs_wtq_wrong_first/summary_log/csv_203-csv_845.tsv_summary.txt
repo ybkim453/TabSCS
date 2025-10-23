@@ -1,0 +1,48 @@
+**Column Analysis:**
+
+1. School Name
+   - Data type: Categorical
+   - 4 representative example values: Bethlehem Lutheran School, Good Shepherd Early Childhood, Immanuel Lutheran School, St Pauls Lutheran School
+   - Role: Identifier
+
+2. Low grade
+   - Data type: Categorical
+   - 4 representative example values: PK, 9
+   - Role: Descriptor
+
+3. High grade
+   - Data type: Categorical
+   - 4 representative example values: 8, K, 12
+   - Role: Descriptor
+
+4. Students (K-12)
+   - Data type: Numeric
+   - 4 representative example values: 182, 20, 82, 155
+   - Role: Measure
+
+5. FTE Teachers
+   - Data type: Numeric
+   - 4 representative example values: 10, 1, 5.6, 9.6
+   - Role: Measure
+
+6. Student/teacher ratio
+   - Data type: Numeric
+   - 4 representative example values: 18.2, 20, 14.64, 16.15
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 19 (Valley Lutheran High School)
+   - The values for Low grade (9) and High grade (12) are within the range of the other schools in the table.
+   - The number of Students (344) and FTE Teachers (21) are higher compared to the other schools, resulting in a lower Student/teacher ratio (16.38).
+   - This row is an outlier due to the significantly higher number of students and teachers, leading to a lower student/teacher ratio.
+
+2. Row 18 (St Pauls Lutheran School)
+   - The values for Low grade (PK) and High grade (8) are consistent with other schools.
+   - The number of Students (155) and FTE Teachers (9.6) are within the range of the other schools, resulting in a similar Student/teacher ratio (16.15).
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 4 (Good Shepherd Early Childhood)
+   - The values for Low grade (PK) and High grade (K) are consistent with other schools.
+   - The number of Students (20) and FTE Teachers (1) are lower compared to the other schools, resulting in a higher Student/teacher ratio (20).
+   - This row is an outlier due to the significantly lower number of students and teachers, leading to a higher student/teacher ratio.

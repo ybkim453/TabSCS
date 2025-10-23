@@ -1,0 +1,126 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Player
+   - Data type: Categorical
+   - 4 representative example values: Stanislav Kostov, Kostadin Stoyanov, Tomislav Kostadinov, Total
+   - Role: Identifier
+
+2. League
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 0, 53
+   - Role: Measure
+
+3. Cup
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 1, 11
+   - Role: Measure
+
+4. Europa League
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 1, 14
+   - Role: Measure
+
+5. Total
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 1, 78
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 17:
+   - The values for League, Cup, and Europa League are all 0, which is significantly lower than the majority of the table where these values are non-zero.
+   - This row is an outlier due to the unusually low values in all three columns compared to the rest of the data.
+
+2. Row 5:
+   - The values for League and Cup are both 0, while Europa League is 1. This combination of values is not common in the table.
+   - This row is an outlier due to the unique combination of values that deviate from the typical patterns seen in the data.
+
+=== Full Table Preview ===
+|   row_number | Player              |   League |   Cup |   Europa\nLeague |   Total |
+|-------------:|:--------------------|---------:|------:|-----------------:|--------:|
+|            0 | Spas Delev          |       13 |     7 |                2 |      22 |
+|            1 | Marquinhos          |        9 |     1 |                3 |      13 |
+|            2 | Michel Platini      |       10 |     0 |                0 |      10 |
+|            3 | Cillian Sheridan    |        4 |     2 |                1 |       7 |
+|            4 | Giuseppe Aquaro     |        3 |     0 |                2 |       5 |
+|            5 | Gregory Nelson      |        3 |     0 |                1 |       4 |
+|            6 | Rumen Trifonov      |        2 |     0 |                1 |       3 |
+|            7 | Aleksandar Tonev    |        2 |     0 |                0 |       2 |
+|            8 | Apostol Popov       |        2 |     0 |                0 |       2 |
+|            9 | Emil Gargorov       |        2 |     0 |                0 |       2 |
+|           10 | Todor Yanchev       |        0 |     1 |                1 |       2 |
+|           11 | Stanislav Kostov    |        1 |     0 |                0 |       1 |
+|           12 | Kostadin Stoyanov   |        1 |     0 |                0 |       1 |
+|           13 | Boris Galchev       |        1 |     0 |                0 |       1 |
+|           14 | Pavel Vidanov       |        0 |     0 |                1 |       1 |
+|           15 | Tomislav Kostadinov |        0 |     0 |                1 |       1 |
+|           16 | Christian Tiboni    |        0 |     0 |                1 |       1 |
+|           17 | Total               |       53 |    11 |               14 |      78 |
+
+Generated Reasoning SQL: Explanation: To determine the top scorer in the season, we need to find the player with the highest total number of goals scored. The "Total" column represents the total number of goals scored by each player, so we will identify the player with the maximum value in this column. We will exclude the outlier row labeled as "Total" since it represents cumulative statistics and not an individual player's performance.
+
+SQL: 
+SELECT "Player"
+FROM T
+WHERE "Player" NOT LIKE '%Total%'
+ORDER BY CAST("Total" AS INTEGER) DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Player" FROM T WHERE "Player" NOT LIKE '%Total%' ORDER BY CAST("Total" AS INTEGER) DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Player     |
+|:-----------|
+| Spas Delev |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2010–11 PFC CSKA Sofia season
+SQL: SELECT "Player" FROM T WHERE "Player" NOT LIKE '%Total%' ORDER BY CAST("Total" AS INTEGER) DESC LIMIT 1;
+
+SQL Execution Result:
+Player
+Spas Delev
+
+Question: who was the top scorer in this season?
+A: To find the answer to this question, let’s think step by step.
+Prediction: spas delev
+[Gold Answer] spas delev
+

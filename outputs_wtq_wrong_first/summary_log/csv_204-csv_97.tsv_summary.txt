@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. DATE
+   - Data type: Categorical
+   - 4 representative example values: March 9, June 10 Commissioner's Cup, June 15, July 1
+   - Role of the column: Identifier for the date of the game
+
+2. OPPONENT
+   - Data type: Categorical
+   - 4 representative example values: SHELL, MOBILINE, BRGY.GINEBRA, POP COLA
+   - Role of the column: Descriptor for the opposing team
+
+3. SCORE
+   - Data type: Categorical
+   - 4 representative example values: 65-58, 97-92, 111-98, 95-79
+   - Role of the column: Measure for the final score of the game
+
+4. TOP SCORER (Total points)
+   - Data type: Categorical
+   - 4 representative example values: nan, Tony Lang (29), nan, nan
+   - Role of the column: Descriptor for the top scorer and their total points in the game
+
+5. VENUE
+   - Data type: Categorical
+   - 4 representative example values: PHILSPORTS ARENA, ARANETA COLISEUM, YNARES CENTER
+   - Role of the column: Descriptor for the location of the game
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Index 7):
+   - The TOP SCORER (Total points) value is "nan", which is different from the other rows where a player's name and total points are provided. This makes the row an outlier as it lacks the usual information present in the column.
+
+2. Row 15 (Index 15):
+   - The DATE value is "October 24", which is consistent with other rows. The OPPONENT value is "BRGY.GINEBRA", which is also a common opponent. The SCORE value is "93-72", which is within the range of scores seen in other rows. This row does not contain any distinctive values that would make it an outlier.
+
+3. Row 10 (Index 10):
+   - The DATE value is "October 14", which is consistent with other rows. The OPPONENT value is "SHELL", which is a common opponent. The SCORE value is "68-62", which is within the range of scores seen in other rows. This row does not contain any distinctive values that would make it an outlier.

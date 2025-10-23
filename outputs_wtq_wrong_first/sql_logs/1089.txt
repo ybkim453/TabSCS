@@ -1,0 +1,138 @@
+=== Table ID ===
+csv/204-csv/315.tsv
+
+=== Question ===
+in which years did piuza not participate in a competition during her career?
+
+=== Sub-table Preview ===
+|   Year | Song        | Album    |   Position | Chart               |
+|-------:|:------------|:---------|-----------:|:--------------------|
+|   1987 | Summergirls | 24/7     |         50 | Billboard Hot 100   |
+|   1989 | 24/7        | 24/7     |         42 | Billboard Hot 100   |
+|   1989 | I Like It   | 24/7     |          7 | Billboard Hot 100   |
+|   1989 | I Like It   | 24/7     |          3 | Hot Dance Club Play |
+|   1989 | Sunshine    | 24/7     |         23 | Billboard Hot 100   |
+|   1990 | Romeo       | Swingin' |          6 | Billboard Hot 100   |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1987, 1989, 1990
+   - Role: Identifier for the year in which the song was released
+
+2. Song:
+   - Data type: Categorical
+   - 4 representative example values: Summergirls, 24/7, I Like It, Sunshine
+   - Role: Descriptor for the title of the song
+
+3. Album:
+   - Data type: Categorical
+   - 4 representative example values: 24/7, Swingin'
+   - Role: Descriptor for the album to which the song belongs
+
+4. Position:
+   - Data type: Numeric
+   - 4 representative example values: 50, 42, 7, 6
+   - Role: Measure indicating the position of the song on the chart
+
+5. Chart:
+   - Data type: Categorical
+   - 4 representative example values: Billboard Hot 100, Hot Dance Club Play
+   - Role: Descriptor for the type of chart on which the song appeared
+
+**Outlier Row Analysis:**
+
+1. Row 4:
+   - The values for Song (Sunshine) and Position (23) are not significantly different from other rows in the table.
+   - This row is an ordinary row and does not require special handling.
+
+2. Row 7:
+   - The values for Song (Romeo) and Position (6) are not significantly different from other rows in the table.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 0:
+   - The values for Song (Summergirls) and Position (50) are not significantly different from other rows in the table.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition           | Venue                | Position   | Event   | Notes   |
+|-------------:|-------:|:----------------------|:---------------------|:-----------|:--------|:--------|
+|            0 |   2003 | All-Africa Games      | Abuja Nigeria        | 11th (h)   | 800 m   | 2:05.19 |
+|            1 |   2006 | Commonwealth Games    | Melbourne Australia  | 9th (sf)   | 800 m   | 2:01.84 |
+|            2 |   2006 | African Championships | Bambous Mauritius    | 13th (h)   | 800 m   | 2:10.50 |
+|            3 |   2006 | Lusophony Games       | Macau                | 1st        | 800 m   | 2:07.34 |
+|            4 |   2007 | All-Africa Games      | Algiers Algeria      | 1st        | 800 m   | 2:02.83 |
+|            5 |   2008 | African Championships | Addis Ababa Ethiopia | 6th        | 800 m   | 2:05.95 |
+|            6 |   2009 | Lusophony Games       | Lisbon Portugal      | 4th        | 800 m   | 2:07.48 |
+|            7 |   2009 | World Championships   | Berlin Germany       | 36th (h)   | 800 m   | 2:06.72 |
+|            8 |   2010 | African Championships | Nairobi Kenya        | 7th        | 800 m   | 2:08.45 |
+|            9 |   2010 | Commonwealth Games    | Delhi India          | –          | 800 m   | DNF     |
+|           10 |   2011 | All-Africa Games      | Maputo Mozambique    | 12th (h)   | 800 m   | 2:06.72 |
+
+Generated Reasoning SQL: To determine the years in which Piuza did not participate in a competition during her career, we need to identify the years where there is no corresponding row for her in the table. Since the "Year" column serves as an identifier for each year, we can look for missing years in the table.
+
+SQL: 
+SELECT DISTINCT "Year"
+FROM T
+WHERE "Year" NOT IN (SELECT DISTINCT "Year" FROM T WHERE "Competition" IS NOT NULL);
+Generated Final SQL: SELECT DISTINCT "Year" FROM T WHERE "Year" NOT IN (SELECT DISTINCT "Year" FROM T WHERE "Competition" IS NOT NULL);
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Leonor Piuza (row_number, Year, Competition, Venue, Position, Event, Notes)
+
+row_number | Year | Competition | Venue | Position | Event | Notes
+0 | 2003 | All-Africa Games | Abuja Nigeria | 11th (h) | 800 m | 2:05.19
+1 | 2006 | Commonwealth Games | Melbourne Australia | 9th (sf) | 800 m | 2:01.84
+2 | 2006 | African Championships | Bambous Mauritius | 13th (h) | 800 m | 2:10.50
+3 | 2006 | Lusophony Games | Macau | 1st | 800 m | 2:07.34
+4 | 2007 | All-Africa Games | Algiers Algeria | 1st | 800 m | 2:02.83
+5 | 2008 | African Championships | Addis Ababa Ethiopia | 6th | 800 m | 2:05.95
+6 | 2009 | Lusophony Games | Lisbon Portugal | 4th | 800 m | 2:07.48
+7 | 2009 | World Championships | Berlin Germany | 36th (h) | 800 m | 2:06.72
+8 | 2010 | African Championships | Nairobi Kenya | 7th | 800 m | 2:08.45
+9 | 2010 | Commonwealth Games | Delhi India | – | 800 m | DNF
+10 | 2011 | All-Africa Games | Maputo Mozambique | 12th (h) | 800 m | 2:06.72
+Question: in which years did piuza not participate in a competition during her career?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: 1. Start by examining the Position column in the full table to identify rows where Piuza did not participate in a competition. These rows will have a dash "-" in the Position column.
+2. Analyze each row where Piuza did not participate and note down the corresponding Year from the Year column.
+3. Compile a list of all the years where Piuza did not participate in a competition based on the information gathered in step 2.
+
+Looking at the full table:
+- Piuza did not participate in a competition in the following years:
+  1. 2010 (Commonwealth Games, Delhi India)
+
+Therefore, Piuza did not participate in a competition in the year 2010 during her career.
+
+Final Answer: 2010
+[Fallback] Prediction: 2010
+[Gold Answer] 2004,2005
+

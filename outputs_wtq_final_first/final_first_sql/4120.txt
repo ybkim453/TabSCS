@@ -1,0 +1,145 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Iteration
+   - Data type: Categorical
+   - 4 representative example values: 5th, 7th, 10th, 12th
+   - Role: Identifier for the specific iteration of the event
+
+2. Year
+   - Data type: Numeric
+   - 4 representative example values: 1988, 1996, 2008, 2016
+   - Role: Descriptor indicating the year of the event
+
+3. Dates
+   - Data type: Categorical
+   - 4 representative example values: 14 August-24 August, 8 September-23 September, 20 July-2 August, TBA
+   - Role: Descriptor specifying the dates of the event
+
+4. Location
+   - Data type: Categorical
+   - 4 representative example values: Townsville, Australia, Apia, Sāmoa, Pago Pago, American Samoa, Tumon, Guam
+   - Role: Descriptor indicating the location of the event
+
+5. Theme
+   - Data type: Categorical
+   - 4 representative example values: Cultural interchange, Unveiling treasures, Threading the Oceania ‘Ula, TBA
+   - Role: Descriptor describing the theme of the event
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values for the Iteration, Year, Dates, and Location columns are missing (TBA).
+   - This row is an outlier because it lacks specific information that is present in other rows, making it distinct from the majority of the table.
+
+2. Row 9:
+   - The Theme is "Threading the Oceania ‘Ula", which is different from the other themes in the table.
+   - This row is an outlier because it has a unique theme compared to the rest of the entries.
+
+3. Row 12:
+   - The values for the Iteration, Year, Dates, and Location columns are missing (TBA).
+   - This row is an outlier due to the missing information, making it distinct from the typical entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Iteration   |   Year | Dates                    | Location                      | Theme                            |
+|-------------:|:------------|-------:|:-------------------------|:------------------------------|:---------------------------------|
+|            0 | 1st         |   1972 | 6 May-20 May             | Suva Fiji                     | "Preserving culture"             |
+|            1 | 2nd         |   1976 | 6 March-13 March         | Rotorua New Zealand           | "Sharing culture"                |
+|            2 | 3rd         |   1980 | 30 June-12 July          | Port Moresby Papua New Guinea | "Pacific awareness"              |
+|            3 | 4th         |   1985 | 29 June-15 July          | Tahiti French Polynesia       | "My Pacific"                     |
+|            4 | 5th         |   1988 | 14 August-24 August      | Townsville Australia          | "Cultural interchange"           |
+|            5 | 6th         |   1992 | 16 October-27 October    | Rarotonga Cook Islands        | "Seafaring heritage"             |
+|            6 | 7th         |   1996 | 8 September-23 September | Apia Sāmoa                    | "Unveiling treasures"            |
+|            7 | 8th         |   2000 | 23 October-3 November    | Nouméa New Caledonia          | "Words of past present future"   |
+|            8 | 9th         |   2004 | 22 July-31 July          | Koror Palau                   | "Nurture Regenerate Celebrate"   |
+|            9 | 10th        |   2008 | 20 July-2 August         | Pago Pago American Samoa      | "Threading the Oceania ‘Ula"     |
+|           10 | 11th        |   2012 | 1–14 July                | Honiara Solomon Islands       | "Culture in Harmony with Nature" |
+|           11 | 12th        |   2016 | TBA                      | Tumon Guam                    | "TBA"                            |
+|           12 | 13th        |   2020 | TBA                      | TBA Hawaii                    | "TBA"                            |
+
+Generated Reasoning SQL: Explanation: To calculate the average length of the festival as of 2012, we need to consider the "Dates" column, which contains the duration of each festival iteration. We will exclude outlier rows with missing or placeholder values in the "Dates" column to ensure accurate calculations. Since the question specifies the year 2012, we will calculate the average duration of the festival up to and including 2012.
+
+SQL: 
+SELECT AVG(julianday(SUBSTR("Dates", 0, INSTR("Dates", '-') - 1, 0, INSTR("Dates", ' ')) - julianday(SUBSTR("Dates", INSTR("Dates", '-') + 1))) AS average_length_of_festival
+FROM T
+WHERE "Year" <= 2012 AND "Dates" NOT LIKE '%TBA%';
+Generated Final SQL: SELECT AVG(julianday(SUBSTR("Dates", 0, INSTR("Dates", '-') - 1, 0, INSTR("Dates", ' ')) - julianday(SUBSTR("Dates", INSTR("Dates", '-') + 1))) AS average_length_of_festival FROM T WHERE "Year" <= 2012 AND "Dates" NOT LIKE '%TBA%';
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT AVG(julianday(SUBSTR("Dates", 0, INSTR("Dates", '-') - 1, 0, INSTR("Dates", ' ')) - julianday(SUBSTR("Dates", INSTR("Dates", '-') + 1))) AS average_length_of_festival FROM T WHERE "Year" <= 2012 AND "Dates" NOT LIKE '%TBA%';': near "AS": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Festival of Pacific Arts (row_number, Iteration, Year, Dates, Location, Theme)
+
+row_number | Iteration | Year | Dates | Location | Theme
+0 | 1st | 1972 | 6 May-20 May | Suva Fiji | "Preserving culture"
+1 | 2nd | 1976 | 6 March-13 March | Rotorua New Zealand | "Sharing culture"
+2 | 3rd | 1980 | 30 June-12 July | Port Moresby Papua New Guinea | "Pacific awareness"
+3 | 4th | 1985 | 29 June-15 July | Tahiti French Polynesia | "My Pacific"
+4 | 5th | 1988 | 14 August-24 August | Townsville Australia | "Cultural interchange"
+5 | 6th | 1992 | 16 October-27 October | Rarotonga Cook Islands | "Seafaring heritage"
+6 | 7th | 1996 | 8 September-23 September | Apia Sāmoa | "Unveiling treasures"
+7 | 8th | 2000 | 23 October-3 November | Nouméa New Caledonia | "Words of past present future"
+8 | 9th | 2004 | 22 July-31 July | Koror Palau | "Nurture Regenerate Celebrate"
+9 | 10th | 2008 | 20 July-2 August | Pago Pago American Samoa | "Threading the Oceania ‘Ula"
+10 | 11th | 2012 | 1–14 July | Honiara Solomon Islands | "Culture in Harmony with Nature"
+11 | 12th | 2016 | TBA | Tumon Guam | "TBA"
+12 | 13th | 2020 | TBA | TBA Hawaii | "TBA"
+Question: what is the average length of the festival as of 2012?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to calculate the length of each festival in days. This can be done by subtracting the start date from the end date.
+
+Then, we need to determine the total length of all festivals up to 2012 and divide it by the number of festivals to find the average length.
+
+Let's calculate the average length of the festival as of 2012:
+
+From the full table:
+- The lengths of the festivals up to 2012 are:
+  1. 1972: 15 days
+  2. 1976: 7 days
+  3. 1980: 13 days
+  4. 1985: 17 days
+  5. 1988: 11 days
+  6. 1992: 11 days
+  7. 1996: 15 days
+  8. 2000: 12 days
+  9. 2004: 10 days
+  10. 2008: 14 days
+  11. 2012: 14 days
+
+Calculating the total length:
+Total length = 15 + 7 + 13 + 17 + 11 + 11 + 15 + 12 + 10 + 14 + 14 = 139 days
+
+Calculating the average length:
+Average length = Total length / Number of festivals
+Average length = 139 days / 11 festivals = 12.64 days
+
+Therefore, the average length of the festival as of 2012 is 12.64 days.
+
+Final Answer: 12.64 days
+[Fallback] Prediction: 12.64 days
+[Gold Answer] 14 days
+

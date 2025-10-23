@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1999, 2003, 2005, 2006
+   - Role: Identifier for the year of the competition
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Youth Championships, European U23 Championships, Olympic Games, European Championships
+   - Role: Descriptor for the type of competition
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Bydgoszcz, Poland, Erfurt, Germany, Gothenburg, Sweden, Beijing, China
+   - Role: Descriptor for the location of the competition
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 13th (q), 7th, 5th, 11th
+   - Role: Measure of the athlete's performance in the competition
+
+5. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 4.60 m, 5.20 m, 5.50 m, 5.65 m
+   - Role: Measure of the athlete's performance in terms of height cleared
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The position is marked as "-" which indicates no specific ranking.
+   - This row is an outlier as it does not have a specific position like the other rows.
+
+2. Row 9:
+   - The position is marked as "NM" which likely stands for "No Mark".
+   - This row is an outlier as the athlete did not record a height clearance, unlike the other rows.
+
+3. Row 0:
+   - The position is marked as "13th (q)" which suggests the athlete qualified in the 13th position.
+   - This row is an outlier as it includes a qualifier "(q)" which is not present in the other rows.

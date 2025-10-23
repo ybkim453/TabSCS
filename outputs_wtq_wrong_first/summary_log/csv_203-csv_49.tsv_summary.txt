@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 8, 9
+   - Role: Identifier for each row
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Where Y'all From, Keep Hustlin, The Autobiography, Worldwide Gunnin'
+   - Role: Descriptor of the title of the track
+
+3. Featured guest(s):
+   - Data type: Categorical
+   - 4 representative example values: nan, E-40 & Too Short, Ron Banks
+   - Role: Descriptor of any featured guest artist(s) on the track
+
+4. Producer(s):
+   - Data type: Categorical
+   - 4 representative example values: Battlecat, Young Tre, Crazy Toones, Skooby Doo
+   - Role: Descriptor of the producer(s) of the track
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 1:11, 3:39, 1:21, 3:25
+   - Role: Measure of the duration of the track
+
+6. Sample(s):
+   - Data type: Categorical
+   - 4 representative example values: nan, *"Yearning for Your Love" by The Gap Band, *"It's Gonna Be Alright" by Crimies
+   - Role: Descriptor of any samples used in the track
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The values in the "Featured guest(s)" and "Producer(s)" columns are missing (nan), which is different from the majority of the table where these columns have specific values. This makes the row an outlier.
+
+2. Row 5:
+   - The value in the "Time" column is 1:00, which is significantly shorter than the average track duration in the table. This makes the row an outlier.
+
+3. Row 16:
+   - The value in the "Featured guest(s)" column is Ron Banks, which is different from the majority of the table where this column contains multiple artists or "nan". Additionally, the sample used in this track is different from the majority. This makes the row an outlier.

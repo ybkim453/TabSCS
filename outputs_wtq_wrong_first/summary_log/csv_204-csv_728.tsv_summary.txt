@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Client
+   - Data type: Categorical
+   - 4 representative example values: Lasmo, OMV, Total, IPLL
+   - Role: Identifier
+
+2. Years of Operation
+   - Data type: Categorical
+   - 4 representative example values: 1993-94, 1997, 1999-current, 2000-01
+   - Role: Descriptor
+
+3. Area of Operation
+   - Data type: Categorical
+   - 4 representative example values: Wadi Borjuj, Field 103, El Mabrouk, El Naka field
+   - Role: Descriptor
+
+4. Country
+   - Data type: Categorical
+   - 4 representative example values: Libya, Libya, Libya, Gabon
+   - Role: Descriptor
+
+5. Services
+   - Data type: Categorical
+   - 4 representative example values: Drilling, workover, Drilling, Drilling, workover
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 13 (Perenco Oil Co.)
+   - The values "2000-01" in the "Years of Operation" column and "Gabon" in the "Country" column make this row distinctive.
+   - This row is an outlier because it is the only entry with "Gabon" as the country, while the majority of the table lists "Libya" as the country.
+
+2. Row 1 (Lasmo)
+   - The values "1993-94" in the "Years of Operation" column and "Wadi Borjuj" in the "Area of Operation" column make this row distinctive.
+   - This row is an outlier because it is one of the earliest years of operation and operates in a specific area compared to the other entries.
+
+3. Row 12 (Veba)
+   - The values "2000" in the "Years of Operation" column and "Libya" in the "Country" column make this row distinctive.
+   - This row is an outlier because it is the only entry with the year "2000" and operates in multiple fields compared to the other entries.
+
+**Note:** The outlier rows have specific values that set them apart from the majority of the table, making them atypical entries that require special attention in the analysis.

@@ -1,0 +1,151 @@
+=== Table ID ===
+csv/203-csv/65.tsv
+
+=== Question ===
+number of consecutive years she finished in top 10
+
+=== Sub-table Preview ===
+|   Year | Competition               | Venue              | Position   | Event         | Notes   |
+|-------:|:--------------------------|:-------------------|:-----------|:--------------|:--------|
+|   2001 | World Youth Championships | Debrecen, Hungary  | 4th        | 400 m         | nan     |
+|   2002 | Asian Games               | Busan, South Korea | 2nd        | 4x400 m relay | nan     |
+|   2006 | Asian Games               | Doha, Qatar        | 2nd        | 4x400 m relay | nan     |
+|   2006 | Asian Games               | Doha, Qatar        | 1st        | 400 m         | nan     |
+|   2007 | Universiade               | Bangkok, Thailand  | 1st        | 400 m         | nan     |
+|   2011 | Universiade               | Shenzhen, China    | –          | 400 m         | DQ      |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2001, 2002, 2006, 2007
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Youth Championships, Asian Games, Universiade
+   - Role: Descriptor for the name of the competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Debrecen, Hungary, Busan, South Korea, Doha, Qatar
+   - Role: Descriptor for the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 4th, 2nd, 1st, DQ
+   - Role: Descriptor for the athlete's position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 400 m, 4x400 m relay
+   - Role: Descriptor for the type of event the athlete participated in.
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Additional notes or remarks related to the athlete's performance.
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The row with Year 2011 and Position DQ is an outlier.
+   - The "DQ" value in the Position column indicates disqualification, which is significantly different from the typical positions (1st, 2nd, 4th).
+   - This row is an outlier due to the unique and atypical nature of the disqualification compared to the other positions in the table.
+
+2. Row 0:
+   - The row with Year 2001 and Position 4th is an ordinary row.
+   - The values in this row (Year, Position) are not significantly different from the majority of the table and do not make it an outlier.
+
+3. Row 1:
+   - The row with Year 2002 and Position 2nd is an ordinary row.
+   - The values in this row (Year, Position) are common and not distinctive compared to the rest of the table.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition               | Venue               | Position   | Event         | Notes   |
+|-------------:|-------:|:--------------------------|:--------------------|:-----------|:--------------|:--------|
+|            0 |   2001 | World Youth Championships | Debrecen Hungary    | 4th        | 400 m         |         |
+|            1 |   2002 | Asian Games               | Busan South Korea   | 2nd        | 4x400 m relay |         |
+|            2 |   2005 | Asian Championships       | Incheon South Korea | 2nd        | 4x400 m relay |         |
+|            3 |   2005 | Universiade               | Izmir Turkey        | 6th        | 4x400 m relay |         |
+|            4 |   2006 | Asian Games               | Doha Qatar          | 2nd        | 4x400 m relay |         |
+|            5 |   2006 | Asian Games               | Doha Qatar          | 1st        | 400 m         |         |
+|            6 |   2006 | World Cup                 | Athens Greece       | 7th        | 400 m         |         |
+|            7 |   2007 | Universiade               | Bangkok Thailand    | 1st        | 400 m         |         |
+|            8 |   2011 | Universiade               | Shenzhen China      | –          | 400 m         | DQ      |
+
+Generated Reasoning SQL: To determine the number of consecutive years Olga Tereshkova finished in the top 10 positions, we need to consider the "Year" and "Position" columns. We are interested in consecutive years where her position was within the top 10 (1st to 10th place).
+
+We will first filter out the outlier row where she was disqualified (Position = 'DQ'). Then, we will count the number of consecutive years where her position was within the top 10.
+
+SQL:
+WITH RankedData AS (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "Year") AS rn
+    FROM T
+    WHERE "Position" NOT LIKE '%DQ%'
+)
+SELECT COUNT(DISTINCT r1.rn) AS consecutive_years_top_10
+FROM RankedData r1
+JOIN RankedData r2 ON r1.rn = r2.rn - 1
+WHERE CAST(r1."Position" AS INTEGER) BETWEEN 1 AND 10
+AND CAST(r2."Position" AS INTEGER) BETWEEN 1 AND 10;
+Generated Final SQL: WITH RankedData AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Year") AS rn FROM T WHERE "Position" NOT LIKE '%DQ%' ) SELECT COUNT(DISTINCT r1.rn) AS consecutive_years_top_10 FROM RankedData r1 JOIN RankedData r2 ON r1.rn = r2.rn - 1 WHERE CAST(r1."Position" AS INTEGER) BETWEEN 1 AND 10 AND CAST(r2."Position" AS INTEGER) BETWEEN 1 AND 10;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   consecutive_years_top_10 |
+|---------------------------:|
+|                          7 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Olga Tereshkova
+SQL: WITH RankedData AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "Year") AS rn FROM T WHERE "Position" NOT LIKE '%DQ%' ) SELECT COUNT(DISTINCT r1.rn) AS consecutive_years_top_10 FROM RankedData r1 JOIN RankedData r2 ON r1.rn = r2.rn - 1 WHERE CAST(r1."Position" AS INTEGER) BETWEEN 1 AND 10 AND CAST(r2."Position" AS INTEGER) BETWEEN 1 AND 10;
+
+SQL Execution Result:
+consecutive_years_top_10
+7
+
+Question: number of consecutive years she finished in top 10
+A: To find the answer to this question, let’s think step by step.
+Prediction: 7
+[Gold Answer] 3
+

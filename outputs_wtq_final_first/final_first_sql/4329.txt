@@ -1,0 +1,152 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Result:
+   - Data type: Categorical
+   - 4 representative example values: Win, Exch, Loss, Draw
+   - Role: Describes the outcome of the match for the boxer
+
+2. Record:
+   - Data type: Categorical
+   - 4 representative example values: 28-1-0, 24-0-0, 23-0-0, 21-0-0
+   - Role: Indicates the boxer's win-loss-draw record at the time of the match
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Frankie Hagan, Herman Zeinman, William Beltran, Lawrence "Larry" O'Neil
+   - Role: Identifies the opponent boxer in the match
+
+4. Method:
+   - Data type: Categorical
+   - 4 representative example values: PTS, KO
+   - Role: Describes the method by which the match was won (e.g., points, knockout)
+
+5. Date:
+   - Data type: Date
+   - 4 representative example values: 1934 Jan 30, 1933 May 21
+   - Role: Indicates the date of the match
+
+6. Round:
+   - Data type: Numeric
+   - 4 representative example values: 3, 1
+   - Role: Represents the round in which the match ended
+
+7. Location:
+   - Data type: Categorical
+   - 4 representative example values: Cambridge, Massachusetts
+   - Role: Specifies the location where the match took place
+
+**Outlier Row Analysis:**
+
+1. Row 18:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not stand out as outliers.
+
+2. Row 5:
+   - The value "Irish Tommy Mitchell" in the Opponent column is different from the other opponents listed in the table. This makes the row an outlier as it deviates from the typical opponents faced by the boxer.
+
+3. Row 0:
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive markers. It is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Result   | Record   | Opponent                | Method   | Date                |   Round | Location                |
+|-------------:|:---------|:---------|:------------------------|:---------|:--------------------|--------:|:------------------------|
+|            0 | Loss     | 31-3-0   | J.H. Isbell             | KO       | 1934-03-31 00:00:00 |       2 | Cambridge Massachusetts |
+|            1 | Loss     | 31-2-0   | "Modest" Bill Smith     | KO       | 1934-02-27 00:00:00 |       2 | Cambridge Massachusetts |
+|            2 | Win      | 31-1-0   | Frankie Hagen           | KO       | 1934-02-24 00:00:00 |       1 | Cambridge Massachusetts |
+|            3 | Win      | 30-1-0   | Harry Gardner           | KO       | 1934-02-21 00:00:00 |       1 | Cambridge Massachusetts |
+|            4 | Win      | 29-1-0   | Sid Stoneman            | KO       | 1934-02-14 00:00:00 |       1 | Cambridge Massachusetts |
+|            5 | Win      | 28-1-0   | Frankie Hagan           | PTS      | 1934-01-30 00:00:00 |       3 | Cambridge Massachusetts |
+|            6 | Win      | 27-1-0   | Basil Barnett           | KO       | 1934-01-24 00:00:00 |       2 | Cambridge Massachusetts |
+|            7 | Win      | 26-1-0   | George Krause           | KO       | 1934-01-16 00:00:00 |       1 | Cambridge Massachusetts |
+|            8 | Win      | 25-1-0   | Bob Delmont             | KO       | 1934-01-07 00:00:00 |       1 | Cambridge Massachusetts |
+|            9 | Loss     | 24-1-0   | Brad Simmons            | KO       | 1934-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           10 | Win      | 24-0-0   | Herman Zeinman          | KO       | 1933-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           11 | Win      | 23-0-0   | William Beltran         | KO       | 1933-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           12 | Win      | 22-0-0   | Lloyd Blake             | KO       | 1933-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           13 | Win      | 21-0-0   | Lawrence "Larry" O'Neil | KO       | 1933-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           14 | Win      | 20-0-0   | Igg Rosenberg           | KO       | 1933-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           15 | Win      | 19-0-0   | Melvin Kenyon           | KO       | 1933-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           16 | Win      | 18-0-0   | Gary Keers              | KO       | 1933-01-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           17 | Win      | 17-0-0   | Samuel Rodgway          | KO       | 1933-05-28 00:00:00 |       1 | Cambridge Massachusetts |
+|           18 | Exch     | 16-0-0   | "Irish" Tommy Mitchell  | KO       | 1933-05-21 00:00:00 |       1 | Cambridge Massachusetts |
+|           19 | Win      | 15-0-0   | Jim Crawford            | KO       | 1933-05-14 00:00:00 |       1 | Cambridge Massachusetts |
+|           20 | Win      | 14-0-0   | Max Levine              | KO       | 1933-05-07 00:00:00 |       1 | Cambridge Massachusetts |
+|           21 | Win      | 13-0-0   | Leo Hart                | KO       | 1933-05-01 00:00:00 |       1 | Cambridge Massachusetts |
+|           22 | Win      | 12-0-0   | Paul Benjamin           | PTS      | 1932-01-01 00:00:00 |       3 | Evanston Illinois       |
+|           23 | Win      | 11-0-0   | Fred Chapman            | KO       | 1932-01-01 00:00:00 |       3 | Evanston Illinois       |
+|           24 | Win      | 10-0-0   | Paul Benjamin           | KO       | 1932-01-01 00:00:00 |       3 | Evanston Illinois       |
+|           25 | Win      | 9-0-0    | Rod Conley              | KO       | 1932-01-01 00:00:00 |       2 | Evanston Illinois       |
+|           26 | Win      | 8-0-0    | Paul Gilmore            | KO       | 1932-01-01 00:00:00 |       1 | Chicago Illinois        |
+|           27 | Win      | 7-0-0    | Jack Lewis              | KO       | 1932-01-01 00:00:00 |       3 | Chicago Illinois        |
+|           28 | Exch     | 6-0-0    | Eddie Mitchell          | KO       | 1932-01-01 00:00:00 |       1 | Chicago Illinois        |
+|           29 | Win      | 5-0-0    | Ernest Brant            | KO       | 1932-01-01 00:00:00 |       1 | Chicago Illinois        |
+|           30 | Win      | 4-0-0    | Karl Brenner-Eggers     | KO       | 1932-01-01 00:00:00 |       1 | Chicago Illinois        |
+|           31 | Win      | 3-0-0    | Norman Martin           | PTS      | 1932-01-01 00:00:00 |       3 | Chicago Illinois        |
+|           32 | Win      | 2-0-0    | Albert Leikman          | KO       | 1932-01-01 00:00:00 |       1 | Chicago Illinois        |
+|           33 | Win      | 1-0-0    | Keith Newman            | KO       | 1932-01-01 00:00:00 |       1 | Chicago Illinois        |
+
+Generated Reasoning SQL: Explanation: To determine which spouse Tom Neal was with the longest, we need to consider the duration of each marriage. This can be calculated by finding the difference between the dates of marriage and divorce for each spouse. We will then select the spouse with the longest duration.
+
+SQL: 
+SELECT "Spouse", MAX(julianday("Divorce Date") - julianday("Marriage Date")) AS longest_duration
+FROM T
+WHERE "Spouse" IS NOT NULL
+GROUP BY "Spouse";
+Generated Final SQL: SELECT "Spouse", MAX(julianday("Divorce Date") - julianday("Marriage Date")) AS longest_duration FROM T WHERE "Spouse" IS NOT NULL GROUP BY "Spouse";
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| "Spouse"   | longest_duration   |
+|:-----------|:-------------------|
+| Spouse     |                    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tom Neal
+SQL: SELECT "Spouse", MAX(julianday("Divorce Date") - julianday("Marriage Date")) AS longest_duration FROM T WHERE "Spouse" IS NOT NULL GROUP BY "Spouse";
+
+SQL Execution Result:
+"Spouse" | longest_duration
+Spouse | None
+
+Question: which spouse was tom neal with the longest?
+A: To find the answer to this question, let’s think step by step.
+Prediction: none
+[Gold Answer] gale bennett
+

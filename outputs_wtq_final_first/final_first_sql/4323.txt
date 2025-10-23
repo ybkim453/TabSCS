@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2005, 2008, 2010, 2011
+   - Role: Identifier for the year in which the laureate(s) received the award.
+
+2. Laureate(s):
+   - Data type: Categorical
+   - 4 representative example values: Peter Lax, John G. Thompson\nJacques Tits, John T. Tate, John Milnor
+   - Role: Descriptor for the name(s) of the laureate(s).
+
+3. Citizenship:
+   - Data type: Categorical
+   - 4 representative example values: American, Belgian, Belgian/French
+   - Role: Descriptor for the citizenship of the laureate(s).
+
+4. Institution:
+   - Data type: Categorical
+   - 4 representative example values: Courant Institute, University of Florida\nCollège de France, University of Texas at Austin, Stony Brook University
+   - Role: Descriptor for the institution associated with the laureate(s).
+
+5. Citation:
+   - Data type: Categorical
+   - 4 representative example values: for his groundbreaking contributions to the theory and application of partial differential equations and to the computation of their solutions, for their profound achievements in algebra and in particular for shaping modern group theory, for his vast and lasting impact on the theory of numbers, for pioneering discoveries in topology, geometry, and algebra
+   - Role: Descriptor for the citation or reason for the laureate(s) receiving the award.
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values for Year, Laureate(s), Citizenship, and Institution are missing.
+   - These missing values make this row an outlier as it does not provide any information about the laureate(s) or their achievements.
+
+2. Row 1:
+   - The laureate is Peter Lax, an American citizen, associated with the Courant Institute.
+   - These values are consistent with other rows in the table and are not distinctive, making this an ordinary row.
+
+3. Row 5:
+   - The laureates are John G. Thompson and Jacques Tits, with Belgian/French citizenship, associated with University of Florida and Collège de France.
+   - While having multiple laureates is less common, it is not unusual for this award. The values are not significantly different from other rows, so this is an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Year | Laureate(s)                    | Citizenship              | Institution                                                        | Citation                                                                                                                                                                                                               |
+|-------------:|-------:|:-------------------------------|:-------------------------|:-------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 |   2003 | Jean-Pierre Serre              | French                   | Collège de France                                                  | "for playing a key role in shaping the modern form of many parts of mathematics including topology algebraic geometry and number theory"                                                                               |
+|            1 |   2004 | Michael Atiyah\nIsadore Singer | British\nAmerican        | University of Edinburgh\nMassachusetts Institute of Technology     | "for their discovery and proof of the index theorem bringing together topology geometry and analysis and their outstanding role in building new bridges between mathematics and theoretical physics"                   |
+|            2 |   2005 | Peter Lax                      | American                 | Courant Institute                                                  | "for his groundbreaking contributions to the theory and application of partial differential equations and to the computation of their solutions"                                                                       |
+|            3 |   2006 | Lennart Carleson               | Swedish                  | Royal Institute of Technology                                      | "for his profound and seminal contributions to harmonic analysis and the theory of smooth dynamical systems"                                                                                                           |
+|            4 |   2007 | S. R. Srinivasa Varadhan       | Indian/American          | Courant Institute                                                  | "for his fundamental contributions to probability theory and in particular for creating a unified theory of large deviation"                                                                                           |
+|            5 |   2008 | John G. Thompson\nJacques Tits | American\nBelgian/French | University of Florida\nCollège de France                           | "for their profound achievements in algebra and in particular for shaping modern group theory"                                                                                                                         |
+|            6 |   2009 | Mikhail Gromov                 | Russian/French           | Institut des Hautes Études Scientifiques\nCourant Institute        | "for his revolutionary contributions to geometry"                                                                                                                                                                      |
+|            7 |   2010 | John T. Tate                   | American                 | University of Texas at Austin                                      | "for his vast and lasting impact on the theory of numbers"                                                                                                                                                             |
+|            8 |   2011 | John Milnor                    | American                 | Stony Brook University                                             | "for pioneering discoveries in topology geometry and algebra"                                                                                                                                                          |
+|            9 |   2012 | Endre Szemerédi                | Hungarian/American       | Alfréd Rényi Institute\nand Rutgers University                     | "for his fundamental contributions to discrete mathematics and theoretical computer science and in recognition of the profound and lasting impact of these contributions on additive number theory and ergodic theory" |
+|           10 |   2013 | Pierre Deligne                 | Belgian                  | Institute for Advanced Study                                       | "for seminal contributions to algebraic geometry and for their transformative impact on number theory representation theory and related fields"                                                                        |
+|           11 |   2014 | Yakov G. Sinai                 | Russian/American         | Landau Institute for Theoretical Physics\nand Princeton University | "for his fundamental contributions to dynamical systems ergodic theory and mathematical physics"                                                                                                                       |
+
+Generated Reasoning SQL: Explanation: To determine the number of Belgians who have won the Abel Prize, we need to count the rows where the "Citizenship" column contains the value "Belgian". The "Citizenship" column is categorical, and we can use it to filter the relevant rows.
+
+SQL: 
+select count(*) from T where "Citizenship" like '%Belgian%';
+Generated Final SQL: select count(*) from T where "Citizenship" like '%Belgian%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(*) |
+|-----------:|
+|          2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Abel Prize
+SQL: select count(*) from T where "Citizenship" like '%Belgian%';
+
+count(*)
+2
+Question: how many belgians have won the abel prize?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

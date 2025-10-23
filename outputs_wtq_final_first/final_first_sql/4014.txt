@@ -1,0 +1,119 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Site
+   - Data type: Categorical
+   - 4 representative example values: Former Mantoku-in Gardens, Itsukushima, Shukkei-en, Jōdo-ji Gardens
+   - Role: Descriptor
+
+2. Municipality
+   - Data type: Categorical
+   - 4 representative example values: Kitahiroshima, Hatsukaichi, Hiroshima, Onomichi
+   - Role: Descriptor
+
+3. Comments
+   - Data type: Categorical
+   - 4 representative example values: nan (missing data), also a Special Historic Site, nan, nan
+   - Role: Descriptor
+
+4. Coordinates
+   - Data type: Categorical
+   - 4 representative example values: 34°43′27″N 132°28′22″E, 34°16′16″N 132°18′22″E, 34°24′02″N 132°28′04″E, 34°24′44″N 133°12′36″E
+   - Role: Descriptor
+
+5. Type
+   - Data type: Categorical
+   - 4 representative example values: 1, 8, 1, 1, 1, 8
+   - Role: Descriptor
+
+6. Ref.
+   - Data type: Categorical
+   - 4 representative example values: [2], [3], [5], [6], [9]
+   - Role: Identifier
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The value "8" in the Type column is different from the majority of the entries which have a Type value of "1".
+   - This makes the row an outlier as it deviates from the common Type value in the table.
+
+2. Row 8 (Index 8):
+   - The Type column has values "1, 8" which is different from the majority of entries having only "1" in the Type column.
+   - This deviation in the Type value makes this row an outlier.
+
+3. Row 1 (Index 0):
+   - The Site value "Former Mantoku-in Gardens" is different from the other entries in the table.
+   - However, without additional context, this value alone does not make the row an outlier as it could be a valid entry in the dataset.
+
+=== Full Table Preview ===
+|   row_number | Site                                                                                              | Municipality         | Comments                                                                                       | Coordinates                                           | Type   | Ref.   |
+|-------------:|:--------------------------------------------------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------------------------------|:------------------------------------------------------|:-------|:-------|
+|            0 | Kikkawa Motoharu Fortified Residence Gardens\n吉川元春館跡庭園\nKikkawa Motoharu yakata ato teien | Kitahiroshima        |                                                                                                | 34°43′01″N 132°27′58″E﻿ / ﻿34.71697004°N 132.46599393°E | 1      | [1]    |
+|            1 | Former Mantoku-in Gardens\n旧万徳院庭園\nkyū-Mantokuin teien                                      | Kitahiroshima        |                                                                                                | 34°43′27″N 132°28′22″E﻿ / ﻿34.72423174°N 132.47265069°E | 1      | [2]    |
+|            2 | *Itsukushima\n厳島\nItsukushima                                                                   | Hatsukaichi          | also a Special Historic Site; Itsukushima Jinja is inscribed on the UNESCO World Heritage List | 34°16′16″N 132°18′22″E﻿ / ﻿34.27116774°N 132.30612348°E | 8      | [3]    |
+|            3 | *Sandan-kyō\n三段峡\nSandan-kyō                                                                   | Akiōta/Kitahiroshima |                                                                                                | 34°36′57″N 132°11′44″E﻿ / ﻿34.61573328°N 132.19561853°E | 3 5 6  | [4]    |
+|            4 | Shukkei-en\n縮景園\nShukukei-en                                                                   | Hiroshima            |                                                                                                | 34°24′02″N 132°28′04″E﻿ / ﻿34.40050182°N 132.46770735°E | 1      | [5]    |
+|            5 | Jōdo-ji Gardens\n浄土寺庭園\nJōdoji teien                                                         | Onomichi             |                                                                                                | 34°24′44″N 133°12′36″E﻿ / ﻿34.41222952°N 133.21012266°E | 1      | [6]    |
+|            6 | Taishaku-kyō\n帝釈川の谷 (帝釈峡)\nTaishaku-gawa no tani (Taishaku-kyō)                           | Shōbara/Jinsekikōgen |                                                                                                | 34°50′58″N 133°13′23″E﻿ / ﻿34.8493628°N 133.2231609°E   | 5 6    | [7]    |
+|            7 | Peace Memorial Park\n平和記念公園\nHeiwa kinen kōen                                               | Hiroshima            | the Hiroshima Peace Memorial (Genbaku Dome) is inscribed on the UNESCO World Heritage List     | 34°23′34″N 132°27′09″E﻿ / ﻿34.39284707°N 132.45251203°E | 1      | [8]    |
+|            8 | Tomo Park\n鞆公園\nTomo kōen                                                                      | Fukuyama             |                                                                                                | 34°23′01″N 133°23′48″E﻿ / ﻿34.3835209°N 133.39662133°E  | 1 8    | [9]    |
+
+Generated Reasoning SQL: Explanation: The summary provides information about the columns in the table, with the "Site" column containing categorical values representing different places of scenic beauty in Japan. The row representing the Hiroshima Peace Memorial is labeled with the site "Peace Memorial Park" and the comment "the Hiroshima Peace Memorial (Genbaku Dome) is inscribed on the UNESCO World Heritage List". To find where the Hiroshima Peace Memorial is inscribed on, we need to filter the row where the site is "Peace Memorial Park" and retrieve the corresponding value in the "Comments" column.
+
+SQL: 
+SELECT "Comments" 
+FROM T 
+WHERE "Site" = 'Peace Memorial Park';
+Generated Final SQL: SELECT "Comments" FROM T WHERE "Site" = 'Peace Memorial Park';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: List of Places of Scenic Beauty of Japan (Hiroshima) (row_number, Site, Municipality, Comments, Coordinates, Type, Ref.)
+
+row_number | Site | Municipality | Comments | Coordinates | Type | Ref.
+0 | Kikkawa Motoharu Fortified Residence Gardens\n吉川元春館跡庭園\nKikkawa Motoharu yakata ato teien | Kitahiroshima | None | 34°43′01″N 132°27′58″E﻿ / ﻿34.71697004°N 132.46599393°E | 1 | [1]
+1 | Former Mantoku-in Gardens\n旧万徳院庭園\nkyū-Mantokuin teien | Kitahiroshima | None | 34°43′27″N 132°28′22″E﻿ / ﻿34.72423174°N 132.47265069°E | 1 | [2]
+2 | *Itsukushima\n厳島\nItsukushima | Hatsukaichi | also a Special Historic Site; Itsukushima Jinja is inscribed on the UNESCO World Heritage List | 34°16′16″N 132°18′22″E﻿ / ﻿34.27116774°N 132.30612348°E | 8 | [3]
+3 | *Sandan-kyō\n三段峡\nSandan-kyō | Akiōta/Kitahiroshima | None | 34°36′57″N 132°11′44″E﻿ / ﻿34.61573328°N 132.19561853°E | 3 5 6 | [4]
+4 | Shukkei-en\n縮景園\nShukukei-en | Hiroshima | None | 34°24′02″N 132°28′04″E﻿ / ﻿34.40050182°N 132.46770735°E | 1 | [5]
+5 | Jōdo-ji Gardens\n浄土寺庭園\nJōdoji teien | Onomichi | None | 34°24′44″N 133°12′36″E﻿ / ﻿34.41222952°N 133.21012266°E | 1 | [6]
+6 | Taishaku-kyō\n帝釈川の谷 (帝釈峡)\nTaishaku-gawa no tani (Taishaku-kyō) | Shōbara/Jinsekikōgen | None | 34°50′58″N 133°13′23″E﻿ / ﻿34.8493628°N 133.2231609°E | 5 6 | [7]
+7 | Peace Memorial Park\n平和記念公園\nHeiwa kinen kōen | Hiroshima | the Hiroshima Peace Memorial (Genbaku Dome) is inscribed on the UNESCO World Heritage List | 34°23′34″N 132°27′09″E﻿ / ﻿34.39284707°N 132.45251203°E | 1 | [8]
+8 | Tomo Park\n鞆公園\nTomo kōen | Fukuyama | None | 34°23′01″N 133°23′48″E﻿ / ﻿34.3835209°N 133.39662133°E | 1 8 | [9]
+Question: where is the hiroshima peace memorial inscribed on?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate the row in the table that corresponds to the Hiroshima Peace Memorial. From the summary, we know that the Peace Memorial Park in Hiroshima includes the Hiroshima Peace Memorial (Genbaku Dome) inscribed on the UNESCO World Heritage List.
+
+Looking at the full table, we find that the Peace Memorial Park is in the Municipality of Hiroshima. The coordinates provided also match the location of Hiroshima.
+
+Therefore, based on the information from both the summary and the full table, the Hiroshima Peace Memorial is inscribed on the UNESCO World Heritage List in Hiroshima.
+
+Final Answer: Hiroshima
+[Fallback] Prediction: hiroshima
+[Gold Answer] unesco world heritage list
+

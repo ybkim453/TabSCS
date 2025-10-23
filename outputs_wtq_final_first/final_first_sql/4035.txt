@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 5, 6
+   - Role: Identifier for each episode
+
+2. **Episode**
+   - Data type: Categorical
+   - 4 representative example values: Wet 'n Wild, Do-Si-Do, As Country as Apple Pie, It's Show Time
+   - Role: Descriptor for the title of each episode
+
+3. **Air Date**
+   - Data type: Date
+   - 4 representative example values: May 14, 2008, May 28, 2008, June 4, 2008, June 11, 2008
+   - Role: Descriptor for the date when the episode aired
+
+4. **Timeslot**
+   - Data type: Categorical
+   - 4 representative example values: 9:00 P.M.
+   - Role: Descriptor for the time slot of each episode
+
+5. **Rating**
+   - Data type: Numeric
+   - 4 representative example values: 1.3, 1.8, 1.5
+   - Role: Measure of the rating for each episode
+
+6. **Share**
+   - Data type: Numeric
+   - 4 representative example values: 2, 3
+   - Role: Measure of the share for each episode
+
+7. **18-49**
+   - Data type: Categorical
+   - 4 representative example values: 0.9/2 (#5), 0.8/2 (#5)
+   - Role: Descriptor for the 18-49 demographic rating for each episode
+
+8. **Viewers**
+   - Data type: Numeric
+   - 4 representative example values: 1.96 (#5), 2.44 (#5), 2.01 (#5), 2.04 (#5)
+   - Role: Measure of the number of viewers for each episode
+
+9. **Weekly Rank**
+   - Data type: Categorical
+   - 4 representative example values: 90/96, 75/87, 79/91, 76/88
+   - Role: Descriptor for the weekly rank of each episode
+
+**Outlier Row Analysis:**
+
+1. **Row 3 (Episode: As Country as Apple Pie)**
+   - The values for Rating (1.3) and Share (2) are lower compared to the other episodes.
+   - The values for 18-49 (0.8/2 (#5)) and Viewers (2.01 (#5)) are also lower than the majority.
+   - These lower values make this row an outlier in terms of ratings and viewership.
+
+2. **Row 2 (Episode: Do-Si-Do)**
+   - The values for Rating (1.8) and Share (3) are higher compared to the other episodes.
+   - The values for Viewers (2.44 (#5)) are also higher than the majority.
+   - These higher values make this row an outlier in terms of ratings and viewership.
+
+3. **Row 0 (Episode: Wet 'n Wild)**
+   - The values for Rating (1.3) and Share (2) are similar to Row 3, making them ordinary values.
+   - The values for 18-49 (0.9/2 (#5)) and Viewers (1.96 (#5)) are also similar to Row 3, making them ordinary values.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   # | Episode                        | Air Date            | Timeslot            |   Rating |   Share | 18-49      | Viewers   | Weekly Rank   |
+|-------------:|----:|:-------------------------------|:--------------------|:--------------------|---------:|--------:|:-----------|:----------|:--------------|
+|            0 |   1 | "Goodbye City...Hello Country" | 2008-04-30 00:00:00 | 2025-09-25 21:00:00 |      1.7 |       3 | 1.0/3 (#5) | 2.37 (#5) | 89/96         |
+|            1 |   2 | "Pigs & Cows & Sheeps...Oh My" | 2008-05-07 00:00:00 | 2025-09-25 21:00:00 |      1.5 |       2 | 1.0/3 (#5) | 2.11 (#5) | 90/97         |
+|            2 |   3 | "Wet 'n Wild"                  | 2008-05-14 00:00:00 | 2025-09-25 21:00:00 |      1.3 |       2 | 0.9/2 (#5) | 1.96 (#5) | 90/96         |
+|            3 |   4 | "Do-Si-Do"                     | 2008-05-28 00:00:00 | 2025-09-25 21:00:00 |      1.8 |       3 | 0.9/2 (#5) | 2.44 (#5) | 75/87         |
+|            4 |   5 | "As Country as Apple Pie"      | 2008-06-04 00:00:00 | 2025-09-25 21:00:00 |      1.3 |       2 | 0.8/2 (#5) | 2.01 (#5) | 79/91         |
+|            5 |   6 | "It's Show Time"               | 2008-06-11 00:00:00 | 2025-09-25 21:00:00 |      1.3 |       2 | 0.8/2 (#5) | 2.04 (#5) | 76/88         |
+|            6 |   7 | "A Family Affair"              | 2008-06-18 00:00:00 | 2025-09-25 21:00:00 |      1.5 |       3 | 0.8/2 (#5) | 2.00 (#5) | TBA           |
+|            7 |   8 | "Farmer Picks a Wife"          | 2008-06-25 00:00:00 | 2025-09-25 21:00:00 |      1.6 |       3 | 1.0/3 (#5) | 2.45 (#5) | TBA           |
+
+Generated Reasoning SQL: Explanation: To determine which episode had more share between episodes 1 and 2, we need to compare the values in the "Share" column for each episode. Since the summary does not mention any outliers or special conditions, we can directly compare the share values for episodes 1 and 2.
+
+SQL: 
+SELECT "Episode", "Share" 
+FROM T 
+WHERE "Episode" = 'Goodbye City...Hello Country' OR "Episode" = 'Pigs & Cows & Sheeps...Oh My';
+Generated Final SQL: SELECT "Episode", "Share" FROM T WHERE "Episode" = 'Goodbye City...Hello Country' OR "Episode" = 'Pigs & Cows & Sheeps...Oh My';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Farmer Wants a Wife (U.S. TV series) (row_number, #, Episode, Air Date, Timeslot, Rating, Share, 18-49, Viewers, Weekly Rank)
+
+row_number | # | Episode | Air Date | Timeslot | Rating | Share | 18-49 | Viewers | Weekly Rank
+0 | 1 | "Goodbye City...Hello Country" | 2008-04-30 00:00:00 | 2025-09-25 21:00:00 | 1.7 | 3 | 1.0/3 (#5) | 2.37 (#5) | 89/96
+1 | 2 | "Pigs & Cows & Sheeps...Oh My" | 2008-05-07 00:00:00 | 2025-09-25 21:00:00 | 1.5 | 2 | 1.0/3 (#5) | 2.11 (#5) | 90/97
+2 | 3 | "Wet 'n Wild" | 2008-05-14 00:00:00 | 2025-09-25 21:00:00 | 1.3 | 2 | 0.9/2 (#5) | 1.96 (#5) | 90/96
+3 | 4 | "Do-Si-Do" | 2008-05-28 00:00:00 | 2025-09-25 21:00:00 | 1.8 | 3 | 0.9/2 (#5) | 2.44 (#5) | 75/87
+4 | 5 | "As Country as Apple Pie" | 2008-06-04 00:00:00 | 2025-09-25 21:00:00 | 1.3 | 2 | 0.8/2 (#5) | 2.01 (#5) | 79/91
+5 | 6 | "It's Show Time" | 2008-06-11 00:00:00 | 2025-09-25 21:00:00 | 1.3 | 2 | 0.8/2 (#5) | 2.04 (#5) | 76/88
+6 | 7 | "A Family Affair" | 2008-06-18 00:00:00 | 2025-09-25 21:00:00 | 1.5 | 3 | 0.8/2 (#5) | 2.00 (#5) | TBA
+7 | 8 | "Farmer Picks a Wife" | 2008-06-25 00:00:00 | 2025-09-25 21:00:00 | 1.6 | 3 | 1.0/3 (#5) | 2.45 (#5) | TBA
+Question: which episode had more share, 1 or 2?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the Share values for episodes 1 and 2 in the full table.
+
+From the summary:
+- The Share column contains the share values for each episode.
+
+From the full table:
+- Episode 1 ("Goodbye City...Hello Country") had a Share of 3.
+- Episode 2 ("Pigs & Cows & Sheeps...Oh My") had a Share of 2.
+
+Therefore, Episode 1 had a higher share value compared to Episode 2.
+
+Final Answer: "Goodbye City...Hello Country"
+[Fallback] Prediction: "goodbye city...hello country"
+[Gold Answer] 1
+

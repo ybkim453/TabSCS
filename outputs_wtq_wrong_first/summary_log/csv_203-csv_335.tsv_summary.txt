@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Route
+   - Data type: Categorical
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier for different bus routes
+
+2. Destinations
+   - Data type: Categorical
+   - 4 representative example values: Montreal Street, Kingston Centre, Princess Street, CFB Kingston
+   - Role: Descriptor of the destinations served by each route
+
+3. Via
+   - Data type: Categorical
+   - 4 representative example values: Downtown, St. Lawrence College, Queen Mary Road, Cataraqui Town Centre
+   - Role: Descriptor of the route taken by the bus
+
+4. Frequency (minutes)
+   - Data type: Numeric
+   - 4 representative example values: 30, 45, 20, 60
+   - Role: Measure of how often the bus runs on the route
+
+5. Peak Hours Only
+   - Data type: Categorical
+   - 4 representative example values: nan, X
+   - Role: Descriptor indicating if the frequency applies only during peak hours
+
+6. Former
+   - Data type: Categorical
+   - 4 representative example values: Cataraqui Town Centre-Woods, nan, Student Circuit
+   - Role: Descriptor of any former names or associations with the route
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and does not contain any distinctive values that make it an outlier.
+
+2. Row 10:
+   - The values in this row are all "nan", similar to Row 11. This row is also an ordinary row and does not contain any distinctive values that make it an outlier.
+
+3. Row 0:
+   - The values in this row are all related to the Cataraqui Town Centre-Woods route. While this may seem like a pattern, it is not significantly different from the other rows in the table. This row is an ordinary row and does not contain any distinctive values that make it an outlier.

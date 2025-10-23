@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Numeric
+   - 4 representative example values: 19, Ret, DNS, 2
+   - Role of the column: Identifier for the position of the rider in the race.
+
+2. Rider:
+   - Data type: Categorical
+   - 4 representative example values: Paolo Casoli, Volker Bähr, Jurgen van den Goorbergh, Nobuatsu Aoki
+   - Role of the column: Descriptor for the name of the rider.
+
+3. Manufacturer:
+   - Data type: Categorical
+   - 4 representative example values: Gilera, Honda, Aprilia
+   - Role of the column: Descriptor for the manufacturer of the rider's bike.
+
+4. Time/Retired:
+   - Data type: Categorical
+   - 4 representative example values: +1:26.061, Retirement, Did not start
+   - Role of the column: Descriptor for the time taken by the rider or reason for retirement.
+
+5. Points:
+   - Data type: Numeric
+   - 4 representative example values: nan, 10, 5, 0
+   - Role of the column: Measure for the points earned by the rider.
+
+**Outlier Row Analysis:**
+
+1. Row 2:
+   - The value "Retirement" in the Time/Retired column is different from the typical time values in the column, making this row an outlier.
+
+2. Row 18:
+   - The value "Did not start" in the Time/Retired column is different from the typical time values in the column, making this row an outlier.
+
+3. Row 32:
+   - The value "Did not start" in the Time/Retired column is different from the typical time values in the column, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Pos   | Rider                     | Manufactuer   | Time/Retired   |   Points |
+|-------------:|:------|:--------------------------|:--------------|:---------------|---------:|
+|            0 | 1     | Doriano Romboni           | Honda         | 33:53.776      |       25 |
+|            1 | 2     | Loris Capirossi           | Honda         | +0.090         |       20 |
+|            2 | 3     | Helmut Bradl              | Honda         | +0.384         |       16 |
+|            3 | 4     | Max Biaggi                | Honda         | +2.346         |       13 |
+|            4 | 5     | Loris Reggiani            | Aprilia       | +2.411         |       11 |
+|            5 | 6     | Tetsuya Harada            | Yamaha        | +2.537         |       10 |
+|            6 | 7     | Pierfrancesco Chili       | Yamaha        | +3.845         |        9 |
+|            7 | 8     | Jean-Philippe Ruggia      | Aprilia       | +3.985         |        8 |
+|            8 | 9     | Carlos Cardús             | Honda         | +4.893         |        7 |
+|            9 | 10    | Luis d'Antin              | Honda         | +25.044        |        6 |
+|           10 | 11    | Alberto Puig              | Honda         | +25.136        |        5 |
+|           11 | 12    | John Kocinski             | Suzuki        | +25.463        |        4 |
+|           12 | 13    | Jochen Schmid             | Yamaha        | +47.065        |        3 |
+|           13 | 14    | Jean-Michel Bayle         | Aprilia       | +1:15.546      |        2 |
+|           14 | 15    | Juan Borja                | Honda         | +1:15.769      |        1 |
+|           15 | 16    | Frédéric Protat           | Aprilia       | +1:15.858      |      nan |
+|           16 | 17    | Adi Stadler               | Honda         | +1:16.349      |      nan |
+|           17 | 18    | Bernd Kassner             | Aprilia       | +1:16:464      |      nan |
+|           18 | 19    | Paolo Casoli              | Gilera        | +1:26.061      |      nan |
+|           19 | 20    | Gabriele Debbia           | Honda         | +1:40.049      |      nan |
+|           20 | 21    | Adrian Bosshard           | Honda         | +1:47.492      |      nan |
+|           21 | 22    | Massimo Pennacchioli      | Honda         | +1:59.498      |      nan |
+|           22 | 23    | Bernard Haenggeli         | Aprilia       | +2:41.806      |      nan |
+|           23 | 24    | Alessandro Gramigni       | Gilera        | +1 Lap         |      nan |
+|           24 | Ret   | Andreas Preining          | Aprilia       | Retirement     |      nan |
+|           25 | Ret   | Volker Bähr               | Honda         | Retirement     |      nan |
+|           26 | Ret   | Jurgen van den Goorbergh  | Aprilia       | Retirement     |      nan |
+|           27 | Ret   | Luis Maurel               | Aprilia       | Retirement     |      nan |
+|           28 | Ret   | Patrick van den Goorbergh | Aprilia       | Retirement     |      nan |
+|           29 | Ret   | Eskil Suter               | Aprilia       | Retirement     |      nan |
+|           30 | Ret   | Wilco Zeelenberg          | Aprilia       | Retirement     |      nan |
+|           31 | Ret   | Jean-Pierre Jeandat       | Aprilia       | Retirement     |      nan |
+|           32 | DNS   | Nobuatsu Aoki             | Honda         | Did not start  |      nan |
+
+Generated Reasoning SQL: Explanation: To find the total number of manufacturers listed in the table, we need to count the distinct values in the "Manufacturer" column. We should exclude any outliers marked in the summary, such as rows with "Retirement" or "Did not start" in the "Time/Retired" column, as they do not represent valid manufacturers. 
+
+SQL: 
+SELECT COUNT(DISTINCT "Manufacturer") AS total_manufacturers 
+FROM T 
+WHERE "Time/Retired" NOT IN ('Retirement', 'Did not start');
+Generated Final SQL: SELECT COUNT(DISTINCT "Manufacturer") AS total_manufacturers FROM T WHERE "Time/Retired" NOT IN ('Retirement', 'Did not start');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_manufacturers |
+|----------------------:|
+|                     1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1993 German motorcycle Grand Prix
+SQL: SELECT COUNT(DISTINCT "Manufacturer") AS total_manufacturers FROM T WHERE "Time/Retired" NOT IN ('Retirement', 'Did not start');
+
+SQL Execution Result:
+total_manufacturers
+1
+
+Question: what is the total number of manufactuers listed in the table?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 5
+

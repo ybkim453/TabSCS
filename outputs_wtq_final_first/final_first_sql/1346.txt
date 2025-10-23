@@ -1,0 +1,126 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Cellulose ethers
+   - Data type: Categorical
+   - 4 representative example values: Ethylcellulose, Ethyl methyl cellulose, Hydroxypropyl cellulose (HPC), Ethyl hydroxyethyl cellulose
+   - Role: Descriptor of different types of cellulose ethers
+
+2. Reagent
+   - Data type: Categorical
+   - 4 representative example values: Reagent, Reagent, Reagent, Reagent
+   - Role: Descriptor of the reagents used in the production of cellulose ethers
+
+3. Example
+   - Data type: Categorical
+   - 4 representative example values: Ethylcellulose, Ethyl methyl cellulose, Hydroxypropyl cellulose (HPC), Ethyl hydroxyethyl cellulose
+   - Role: Descriptor of specific examples of cellulose ethers
+
+4. Reagent.1
+   - Data type: Categorical
+   - 4 representative example values: Chloroethane, Chloromethane and chloroethane, Propylene oxide, Chloroethane and ethylene oxide
+   - Role: Descriptor of additional reagents used in the production of cellulose ethers
+
+5. Group R = H or
+   - Data type: Categorical
+   - 4 representative example values: -CH2CH3, -CH3 or -CH2CH3, -CH2CH(OH)CH3, -CH2CH3 or—CH2CH2OH
+   - Role: Descriptor of the chemical group R in cellulose ethers
+
+6. Water solubility
+   - Data type: Categorical
+   - 4 representative example values: Water insoluble, nan, Cold water soluble, nan
+   - Role: Descriptor of the solubility of cellulose ethers in water
+
+7. Application
+   - Data type: Categorical
+   - 4 representative example values: A commercial thermoplastic used in coatings, inks, binders, and controlled-release drug tablets, nan, nan, Often used as its sodium salt, sodium carboxymethyl cellulose (NaCMC)
+   - Role: Descriptor of the applications of different cellulose ethers
+
+8. E number
+   - Data type: Categorical
+   - 4 representative example values: E462, E465, E463, E467
+   - Role: Identifier for different E numbers assigned to cellulose ethers
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are typical of the majority of the table and do not contain any distinctive markers. This row is an ordinary row and does not require special handling.
+
+2. Row 2:
+   - The values in this row are also typical of the majority of the table and do not contain any distinctive markers. This row is an ordinary row and does not require special handling.
+
+3. Row 8:
+   - The values in this row are consistent with the rest of the table and do not stand out as distinctive. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Cellulose ethers   | Reagent                      | Example                               | Reagent_1                         | Group R = H or        | Water solubility       | Application                                                                                  | E number   |
+|-------------:|:-------------------|:-----------------------------|:--------------------------------------|:----------------------------------|:----------------------|:-----------------------|:---------------------------------------------------------------------------------------------|:-----------|
+|            0 | Alkyl              | Halogenoalkanes              | Methylcellulose                       | Chloromethane                     | -CH3                  | Cold water soluble     |                                                                                              | E461       |
+|            1 |                    |                              | Ethylcellulose                        | Chloroethane                      | -CH2CH3               | Water insoluble        | A commercial thermoplastic used in coatings inks binders and controlled-release drug tablets | E462       |
+|            2 |                    |                              | Ethyl methyl cellulose                | Chloromethane and chloroethane    | -CH3 or -CH2CH3       |                        |                                                                                              | E465       |
+|            3 | Hydroxyalkyl       | Epoxides                     | Hydroxyethyl cellulose                | Ethylene oxide                    | -CH2CH2OH             | Cold/hot water soluble | Gelling and thickening agent                                                                 |            |
+|            4 |                    |                              | Hydroxypropyl cellulose (HPC)         | Propylene oxide                   | -CH2CH(OH)CH3         | Cold water soluble     |                                                                                              | E463       |
+|            5 |                    |                              | Hydroxyethyl methyl cellulose         | Chloromethane and ethylene oxide  | -CH3 or -CH2CH2OH     | Cold water soluble     | Production of cellulose films                                                                |            |
+|            6 |                    |                              | Hydroxypropyl methyl cellulose (HPMC) | Chloromethane and propylene oxide | -CH3 or -CH2CH(OH)CH3 | Cold water soluble     | Viscosity modifier gelling foaming and binding agent                                         | E464       |
+|            7 |                    |                              | Ethyl hydroxyethyl cellulose          | Chloroethane and ethylene oxide   | -CH2CH3 or—CH2CH2OH   |                        |                                                                                              | E467       |
+|            8 | Carboxyalkyl       | Halogenated carboxylic acids | Carboxymethyl cellulose (CMC)         | Chloroacetic acid                 | -CH2COOH              | Cold/Hot water soluble | Often used as its sodium salt sodium carboxymethyl cellulose (NaCMC)                         | E466       |
+
+Generated Reasoning SQL: Explanation: To find the number of examples that begin with the prefix "ethyl", we need to filter rows where the "Example" column starts with the string "ethyl". The "Example" column is categorical, and we can use string comparison to achieve this.
+
+SQL: SELECT COUNT("Example") FROM T WHERE "Example" LIKE 'Ethyl%';
+Generated Final SQL: SELECT COUNT("Example") FROM T WHERE "Example" LIKE 'Ethyl%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Example") |
+|-------------------:|
+|                  3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Cellulose
+SQL: SELECT COUNT("Example") FROM T WHERE "Example" LIKE 'Ethyl%';
+
+COUNT("Example")
+3
+Question: how many examples begin with the prefix ethyl?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 2009, 2012, 2010
+   - Role: Identifier for the year in which the data was recorded
+
+2. Age
+   - Data type: Numeric
+   - 4 representative example values: 22, 25
+   - Role: Descriptor indicating the age of the athlete during the season
+
+3. Overall
+   - Data type: Numeric
+   - 4 representative example values: 7, 24
+   - Role: Measure representing the overall ranking of the athlete
+
+4. Slalom
+   - Data type: Categorical
+   - 4 representative example values: Downhill, Giant Slalom
+   - Role: Descriptor indicating the type of event for the athlete
+
+5. Giant Slalom
+   - Data type: Categorical
+   - 4 representative example values: 6, 16
+   - Role: Descriptor indicating the type of event for the athlete
+
+6. Super G
+   - Data type: Numeric
+   - 4 representative example values: 16, 28
+   - Role: Measure representing the performance in the Super G event
+
+7. Downhill
+   - Data type: Numeric
+   - 4 representative example values: 16, 17
+   - Role: Measure representing the performance in the Downhill event
+
+8. Combined
+   - Data type: Numeric
+   - 4 representative example values: 1, 19
+   - Role: Measure representing the combined performance in all events
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for the event location and type (Garmisch, Germany and Giant Slalom) are different from the majority of the table.
+   - These values make the row an outlier as they are distinct from the typical entries which include event locations like Beaver Creek, USA.
+
+2. Row 1:
+   - The values for the season (2009) and overall ranking (7) are not significantly different from the majority of the table.
+   - These values are ordinary and do not make the row an outlier.
+
+3. Row 2:
+   - The values for the season (2012) and overall ranking (24) are not significantly different from the majority of the table.
+   - These values are ordinary and do not make the row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Season   | Age   | Overall                | Slalom         |   Giant\nSlalom | Super G   | Downhill   | Combined   |
+|-------------:|:---------|:------|:-----------------------|:---------------|----------------:|:----------|:-----------|:-----------|
+|            0 | 2007     | 20    | 130                    | –              |              40 | –         | –          | —          |
+|            1 | 2008     | 21    | 64                     | –              |              28 | 46        | 46         | 31         |
+|            2 | 2009     | 22    | 7                      | –              |               6 | 16        | 16         | 1          |
+|            3 | 2010     | 23    | 1                      | –              |               2 | 6         | 2          | 2          |
+|            4 | 2011     | 24    | 3                      | –              |               5 | 6         | 9          | 6          |
+|            5 | 2012     | 25    | 24                     | –              |              16 | 28        | 17         | 19         |
+|            6 | 2013     | 26    | 48                     | –              |              48 | 27        | 38         | 4          |
+|            7 | 2014     | 27    | 18                     | –              |              25 | 14        | 20         | 11         |
+|            8 | Season   | Date  | Location               | Race           |             nan |           |            |            |
+|            9 | 2009     | 13    | Val d'Isère France     | Giant slalom   |             nan |           |            |            |
+|           10 | 2009     | 16    | Wengen Switzerland     | Super Combined |             nan |           |            |            |
+|           11 | 2010     | 4     | Beaver Creek USA       | Super Combined |             nan |           |            |            |
+|           12 | 2010     | 5     | Beaver Creek USA       | Downhill       |             nan |           |            |            |
+|           13 | 2010     | 6     | Beaver Creek USA       | Giant Slalom   |             nan |           |            |            |
+|           14 | 2010     | 16    | Wengen Switzerland     | Downhill       |             nan |           |            |            |
+|           15 | 2010     | 10    | Garmisch Germany       | Downhill       |             nan |           |            |            |
+|           16 | 2010     | 12    | Garmisch Germany       | Giant Slalom   |             nan |           |            |            |
+|           17 | 2011     | 5     | Kranjska Gora Slovenia | Giant Slalom   |             nan |           |            |            |
+
+Generated Reasoning SQL: To find the season where the athlete scored more than 20 in Giant Slalom but not in Super G, we need to filter rows based on the conditions specified. 
+The "Giant Slalom" and "Super G" columns are both numeric, so we can directly compare their values. 
+We look for rows where "Giant Slalom" > 20 and "Super G" <= 20.
+SQL: 
+select "Season" from T where "Giant\nSlalom" > 20 and "Super G" <= 20;
+Generated Final SQL: select "Season" from T where "Giant\nSlalom" > 20 and "Super G" <= 20;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Season |
+|---------:|
+|     2014 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Carlo Janka
+SQL: select "Season" from T where "Giant\nSlalom" > 20 and "Super G" <= 20;
+
+Season
+2014
+Question: what season had more than 20 in giant slalom but not super g?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2014
+[Gold Answer] 2014
+

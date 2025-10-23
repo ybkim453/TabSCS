@@ -1,0 +1,116 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Clerk
+   - Data type: Categorical
+   - 4 representative example values: William C. Canby, Jr., Heywood H. Davis, Jerome B. Libin, Patrick F. McCartan
+   - Role: Identifier
+
+2. Started
+   - Data type: Numeric
+   - 4 representative example values: 1958, 1958, 1959, 1959
+   - Role: Descriptor
+
+3. Finished
+   - Data type: Numeric
+   - 4 representative example values: 1959, 1959, 1960, 1960
+   - Role: Descriptor
+
+4. School (year)
+   - Data type: Categorical
+   - 4 representative example values: Minnesota (1956), Kansas (1958), Michigan (1959), Notre Dame (1959)
+   - Role: Descriptor
+
+5. Previous clerkship
+   - Data type: Categorical
+   - 4 representative example values: none, none, none, none
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 6 (D. Lawrence Gunnels)
+   - The values in the "Started" and "Finished" columns are 1961 and 1962, respectively, which are different from the majority of the table where clerks started and finished in 1958 or 1959.
+   - This row is an outlier due to the atypical years of clerkship.
+
+2. Row 0 (William C. Canby, Jr.)
+   - The values in the "School (year)" column show Minnesota (1956), which is different from the other clerks who attended schools in 1958 or 1959.
+   - This row is an outlier due to the earlier year of schooling.
+
+3. Row 2 (Jerome B. Libin)
+   - The values in the "Started" and "Finished" columns are 1959 and 1960, respectively, which are different from the majority of the table where clerks started and finished in 1958 or 1959.
+   - This row is an outlier due to the atypical years of clerkship.
+
+=== Full Table Preview ===
+|   row_number | Clerk                |   Started |   Finished | School (year)     | Previous clerkship   |
+|-------------:|:---------------------|----------:|-----------:|:------------------|:---------------------|
+|            0 | Kenneth W. Dam       |      1957 |       1958 | Chicago (1957)    | none                 |
+|            1 | Alan C. Kohn         |      1957 |       1958 | Wash U (1955)     | none                 |
+|            2 | William C. Canby Jr. |      1958 |       1959 | Minnesota (1956)  | none                 |
+|            3 | Heywood H. Davis     |      1958 |       1959 | Kansas (1958)     | none                 |
+|            4 | Jerome B. Libin      |      1959 |       1960 | Michigan (1959)   | none                 |
+|            5 | Patrick F. McCartan  |      1959 |       1960 | Notre Dame (1959) | none                 |
+|            6 | D. Lawrence Gunnels  |      1961 |       1962 | Wash U (1960)     | none                 |
+
+Generated Reasoning SQL: To find the law clerk after Jerome B. Libin and Patrick F. McCartan served as clerks, we need to identify the clerk who started their clerkship after the finishing year of both Jerome B. Libin and Patrick F. McCartan. 
+First, we determine the finishing years for Jerome B. Libin and Patrick F. McCartan. Then, we find the clerk who started their clerkship after the latest finishing year among the two.
+The summary indicates that the "Started" and "Finished" columns are Numeric and can be used to compare years accurately.
+SQL:
+select "Clerk" 
+from T 
+where "Started" > (select max("Finished") from T where "Clerk" = 'Jerome B. Libin' or "Clerk" = 'Patrick F. McCartan');
+Generated Final SQL: select "Clerk" from T where "Started" > (select max("Finished") from T where "Clerk" = 'Jerome B. Libin' or "Clerk" = 'Patrick F. McCartan');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Clerk               |
+|:--------------------|
+| D. Lawrence Gunnels |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of law clerks of the Supreme Court of the United States (Seat 6)
+SQL: select "Clerk" from T where "Started" > (select max("Finished") from T where "Clerk" = 'Jerome B. Libin' or "Clerk" = 'Patrick F. McCartan');
+
+Clerk
+D. Lawrence Gunnels
+Question: who was the law clerk after jerome b. libin and patrick f. mccartan served as clerks?
+A: To find the answer to this question, let’s think step by step.
+Prediction: d. lawrence gunnels
+[Gold Answer] d. lawrence gunnels
+

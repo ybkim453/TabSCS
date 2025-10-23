@@ -1,0 +1,257 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 1971–72, 1978–79, 1990–91, 2006–07
+   - Role: Identifier for the specific season of the game
+
+2. Winning Team
+   - Data type: Categorical
+   - 4 representative example values: Miami Dolphins, Pittsburgh Steelers, Buffalo Bills, Indianapolis Colts
+   - Role: Descriptor of the team that won the game
+
+3. Score
+   - Data type: Numeric
+   - 4 representative example values: 21, 34, 51, 24
+   - Role: Measure of the winning team's score
+
+4. Losing Team
+   - Data type: Categorical
+   - 4 representative example values: Baltimore Colts, Houston Oilers, Los Angeles Raiders, New England Patriots
+   - Role: Descriptor of the team that lost the game
+
+5. Score.1
+   - Data type: Numeric
+   - 4 representative example values: 0, 5, 3, 21
+   - Role: Measure of the losing team's score
+
+6. Location
+   - Data type: Categorical
+   - 4 representative example values: Miami, Florida, Pittsburgh, Pennsylvania, Orchard Park, New York, Indianapolis, Indiana
+   - Role: Descriptor of the city where the game took place
+
+7. Stadium
+   - Data type: Categorical
+   - 4 representative example values: Miami Orange Bowl, Three Rivers Stadium, Ralph Wilson Stadium, RCA Dome
+   - Role: Descriptor of the stadium where the game was held
+
+**Outlier Row Analysis:**
+
+1. Row 20:
+   - The winning team is listed as "New York Jets (1)" which is different from the other winning teams in the table.
+   - This makes the row an outlier as the winning team is not consistent with the majority of the table.
+
+2. Row 36:
+   - The losing team is listed as "San Francisco 49ers" which is different from the other losing teams in the table.
+   - This makes the row an outlier as the losing team is not consistent with the majority of the table.
+
+3. Row 8:
+   - The location is listed as "Foxborough, Massachusetts" which is different from the other locations in the table.
+   - This makes the row an outlier as the location is not consistent with the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Season   | Winning Team             |   Score | Losing Team          |   Score_1 | Location                 | Stadium                             |
+|-------------:|:---------|:-------------------------|--------:|:---------------------|----------:|:-------------------------|:------------------------------------|
+|            0 | 1970–71  | Baltimore Colts (1)      |      27 | Oakland Raiders      |        17 | Baltimore Maryland       | Memorial Stadium                    |
+|            1 | 1971–72  | Miami Dolphins (1)       |      21 | Baltimore Colts      |         0 | Miami Florida            | Miami Orange Bowl                   |
+|            2 | 1972–73  | Miami Dolphins (2)       |      21 | Pittsburgh Steelers  |        17 | Pittsburgh Pennsylvania  | Three Rivers Stadium                |
+|            3 | 1973–74  | Miami Dolphins (3)       |      27 | Oakland Raiders      |        10 | Miami Florida            | Miami Orange Bowl                   |
+|            4 | 1974–75  | Pittsburgh Steelers (1)  |      24 | Oakland Raiders      |        13 | Oakland California       | Oakland Coliseum                    |
+|            5 | 1975–76  | Pittsburgh Steelers (2)  |      16 | Oakland Raiders      |        10 | Pittsburgh Pennsylvania  | Three Rivers Stadium                |
+|            6 | 1976–77  | Oakland Raiders (1)      |      24 | Pittsburgh Steelers  |         7 | Oakland California       | Oakland Coliseum                    |
+|            7 | 1977–78  | Denver Broncos (1)       |      20 | Oakland Raiders      |        17 | Denver Colorado          | Mile High Stadium                   |
+|            8 | 1978–79  | Pittsburgh Steelers (3)  |      34 | Houston Oilers       |         5 | Pittsburgh Pennsylvania  | Three Rivers Stadium                |
+|            9 | 1979–80  | Pittsburgh Steelers (4)  |      27 | Houston Oilers       |        13 | Pittsburgh Pennsylvania  | Three Rivers Stadium                |
+|           10 | 1980–81  | Oakland Raiders (2)      |      34 | San Diego Chargers   |        27 | San Diego California     | Jack Murphy Stadium                 |
+|           11 | 1981–82  | Cincinnati Bengals (1)   |      27 | San Diego Chargers   |         7 | Cincinnati Ohio          | Riverfront Stadium                  |
+|           12 | 1982–83  | Miami Dolphins (4)       |      14 | New York Jets        |         0 | Miami Florida            | Miami Orange Bowl                   |
+|           13 | 1983–84  | Los Angeles Raiders (3)  |      30 | Seattle Seahawks     |        14 | Los Angeles California   | Los Angeles Memorial Coliseum       |
+|           14 | 1984–85  | Miami Dolphins (5)       |      45 | Pittsburgh Steelers  |        28 | Miami Florida            | Miami Orange Bowl                   |
+|           15 | 1985–86  | New England Patriots (1) |      31 | Miami Dolphins       |        14 | Miami Florida            | Miami Orange Bowl                   |
+|           16 | 1986–87  | Denver Broncos (2)       |      23 | Cleveland Browns     |        20 | Cleveland Ohio           | Cleveland Municipal Stadium         |
+|           17 | 1987–88  | Denver Broncos (3)       |      38 | Cleveland Browns     |        33 | Denver Colorado          | Mile High Stadium                   |
+|           18 | 1988–89  | Cincinnati Bengals (2)   |      21 | Buffalo Bills        |        10 | Cincinnati Ohio          | Riverfront Stadium                  |
+|           19 | 1989–90  | Denver Broncos (4)       |      37 | Cleveland Browns     |        21 | Denver Colorado          | Mile High Stadium                   |
+|           20 | 1990–91  | Buffalo Bills (1)        |      51 | Los Angeles Raiders  |         3 | Orchard Park New York    | Ralph Wilson Stadium                |
+|           21 | 1991–92  | Buffalo Bills (2)        |      10 | Denver Broncos       |         7 | Orchard Park New York    | Ralph Wilson Stadium                |
+|           22 | 1992–93  | Buffalo Bills (3)        |      29 | Miami Dolphins       |        10 | Miami Florida            | Joe Robbie Stadium                  |
+|           23 | 1993–94  | Buffalo Bills (4)        |      30 | Kansas City Chiefs   |        13 | Orchard Park New York    | Ralph Wilson Stadium                |
+|           24 | 1994–95  | San Diego Chargers (1)   |      17 | Pittsburgh Steelers  |        13 | Pittsburgh Pennsylvania  | Three Rivers Stadium                |
+|           25 | 1995–96  | Pittsburgh Steelers (5)  |      20 | Indianapolis Colts   |        16 | Pittsburgh Pennsylvania  | Three Rivers Stadium                |
+|           26 | 1996–97  | New England Patriots (2) |      20 | Jacksonville Jaguars |         6 | Foxborough Massachusetts | Foxboro Stadium                     |
+|           27 | 1997–98  | Denver Broncos (5)       |      24 | Pittsburgh Steelers  |        21 | Pittsburgh Pennsylvania  | Three Rivers Stadium                |
+|           28 | 1998–99  | Denver Broncos (6)       |      23 | New York Jets        |        10 | Denver Colorado          | Mile High Stadium                   |
+|           29 | 1999–00  | Tennessee Titans (1)     |      33 | Jacksonville Jaguars |        14 | Jacksonville Florida     | Jacksonville Municipal Stadium      |
+|           30 | 2000–01  | Baltimore Ravens (1)     |      16 | Oakland Raiders      |         3 | Oakland California       | Oakland Coliseum                    |
+|           31 | 2001–02  | New England Patriots (3) |      24 | Pittsburgh Steelers  |        17 | Pittsburgh Pennsylvania  | Heinz Field                         |
+|           32 | 2002–03  | Oakland Raiders (4)      |      41 | Tennessee Titans     |        24 | Oakland California       | Network Associates Coliseum         |
+|           33 | 2003–04  | New England Patriots (4) |      24 | Indianapolis Colts   |        14 | Foxborough Massachusetts | Gillette Stadium                    |
+|           34 | 2004–05  | New England Patriots (5) |      41 | Pittsburgh Steelers  |        27 | Pittsburgh Pennsylvania  | Heinz Field                         |
+|           35 | 2005–06  | Pittsburgh Steelers (6)  |      34 | Denver Broncos       |        17 | Denver Colorado          | Invesco Field at Mile High          |
+|           36 | 2006–07  | Indianapolis Colts (2)   |      38 | New England Patriots |        34 | Indianapolis Indiana     | RCA Dome                            |
+|           37 | 2007–08  | New England Patriots (6) |      21 | San Diego Chargers   |        12 | Foxborough Massachusetts | Gillette Stadium                    |
+|           38 | 2008–09  | Pittsburgh Steelers (7)  |      23 | Baltimore Ravens     |        14 | Pittsburgh Pennsylvania  | Heinz Field                         |
+|           39 | 2009–10  | Indianapolis Colts (3)   |      30 | New York Jets        |        17 | Indianapolis Indiana     | Lucas Oil Stadium                   |
+|           40 | 2010–11  | Pittsburgh Steelers (8)  |      24 | New York Jets        |        19 | Pittsburgh Pennsylvania  | Heinz Field                         |
+|           41 | 2011–12  | New England Patriots (7) |      23 | Baltimore Ravens     |        20 | Foxborough Massachusetts | Gillette Stadium                    |
+|           42 | 2012–13  | Baltimore Ravens (2)     |      28 | New England Patriots |        13 | Foxborough Massachusetts | Gillette Stadium                    |
+|           43 | 2013–14  | Denver Broncos (7)       |      26 | New England Patriots |        16 | Denver Colorado          | Sports Authority Field at Mile High |
+
+Generated Reasoning SQL: Explanation: To determine the team with the longest consecutive win streak in the championship game, we need to identify the team that has won the most consecutive AFC Championship Games. This requires analyzing the "Winning Team" column to track consecutive wins. We should exclude outlier rows that do not align with the majority of the data, as they may skew the results. 
+
+To calculate the consecutive win streak, we can use a window function like ROW_NUMBER() partitioned by the "Winning Team" column and ordered by the "Season" column to assign a sequential number to each win for each team. Then, we can group by the "Winning Team" and find the maximum count of consecutive wins.
+
+SQL: 
+WITH ranked_wins AS (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY "Winning Team" ORDER BY cast("Season" as integer)) as win_rank
+    FROM T
+)
+SELECT "Winning Team", MAX(win_rank) as longest_consecutive_win_streak
+FROM ranked_wins
+GROUP BY "Winning Team";
+Generated Final SQL: WITH ranked_wins AS ( SELECT *, ROW_NUMBER() OVER (PARTITION BY "Winning Team" ORDER BY cast("Season" as integer)) as win_rank FROM T ) SELECT "Winning Team", MAX(win_rank) as longest_consecutive_win_streak FROM ranked_wins GROUP BY "Winning Team";
+SQL 실행 결과 셀 수: 88
+=== SQL 실행 결과 미리보기 ===
+| Winning Team             |   longest_consecutive_win_streak |
+|:-------------------------|---------------------------------:|
+| Baltimore Colts (1)      |                                1 |
+| Baltimore Ravens (1)     |                                1 |
+| Baltimore Ravens (2)     |                                1 |
+| Buffalo Bills (1)        |                                1 |
+| Buffalo Bills (2)        |                                1 |
+| Buffalo Bills (3)        |                                1 |
+| Buffalo Bills (4)        |                                1 |
+| Cincinnati Bengals (1)   |                                1 |
+| Cincinnati Bengals (2)   |                                1 |
+| Denver Broncos (1)       |                                1 |
+| Denver Broncos (2)       |                                1 |
+| Denver Broncos (3)       |                                1 |
+| Denver Broncos (4)       |                                1 |
+| Denver Broncos (5)       |                                1 |
+| Denver Broncos (6)       |                                1 |
+| Denver Broncos (7)       |                                1 |
+| Indianapolis Colts (2)   |                                1 |
+| Indianapolis Colts (3)   |                                1 |
+| Los Angeles Raiders (3)  |                                1 |
+| Miami Dolphins (1)       |                                1 |
+| Miami Dolphins (2)       |                                1 |
+| Miami Dolphins (3)       |                                1 |
+| Miami Dolphins (4)       |                                1 |
+| Miami Dolphins (5)       |                                1 |
+| New England Patriots (1) |                                1 |
+| New England Patriots (2) |                                1 |
+| New England Patriots (3) |                                1 |
+| New England Patriots (4) |                                1 |
+| New England Patriots (5) |                                1 |
+| New England Patriots (6) |                                1 |
+| New England Patriots (7) |                                1 |
+| Oakland Raiders (1)      |                                1 |
+| Oakland Raiders (2)      |                                1 |
+| Oakland Raiders (4)      |                                1 |
+| Pittsburgh Steelers (1)  |                                1 |
+| Pittsburgh Steelers (2)  |                                1 |
+| Pittsburgh Steelers (3)  |                                1 |
+| Pittsburgh Steelers (4)  |                                1 |
+| Pittsburgh Steelers (5)  |                                1 |
+| Pittsburgh Steelers (6)  |                                1 |
+| Pittsburgh Steelers (7)  |                                1 |
+| Pittsburgh Steelers (8)  |                                1 |
+| San Diego Chargers (1)   |                                1 |
+| Tennessee Titans (1)     |                                1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: AFC Championship Game
+SQL: WITH ranked_wins AS ( SELECT *, ROW_NUMBER() OVER (PARTITION BY "Winning Team" ORDER BY cast("Season" as integer)) as win_rank FROM T ) SELECT "Winning Team", MAX(win_rank) as longest_consecutive_win_streak FROM ranked_wins GROUP BY "Winning Team";
+
+SQL Execution Result:
+Winning Team | longest_consecutive_win_streak
+Baltimore Colts (1) | 1
+Baltimore Ravens (1) | 1
+Baltimore Ravens (2) | 1
+Buffalo Bills (1) | 1
+Buffalo Bills (2) | 1
+Buffalo Bills (3) | 1
+Buffalo Bills (4) | 1
+Cincinnati Bengals (1) | 1
+Cincinnati Bengals (2) | 1
+Denver Broncos (1) | 1
+Denver Broncos (2) | 1
+Denver Broncos (3) | 1
+Denver Broncos (4) | 1
+Denver Broncos (5) | 1
+Denver Broncos (6) | 1
+Denver Broncos (7) | 1
+Indianapolis Colts (2) | 1
+Indianapolis Colts (3) | 1
+Los Angeles Raiders (3) | 1
+Miami Dolphins (1) | 1
+Miami Dolphins (2) | 1
+Miami Dolphins (3) | 1
+Miami Dolphins (4) | 1
+Miami Dolphins (5) | 1
+New England Patriots (1) | 1
+New England Patriots (2) | 1
+New England Patriots (3) | 1
+New England Patriots (4) | 1
+New England Patriots (5) | 1
+New England Patriots (6) | 1
+New England Patriots (7) | 1
+Oakland Raiders (1) | 1
+Oakland Raiders (2) | 1
+Oakland Raiders (4) | 1
+Pittsburgh Steelers (1) | 1
+Pittsburgh Steelers (2) | 1
+Pittsburgh Steelers (3) | 1
+Pittsburgh Steelers (4) | 1
+Pittsburgh Steelers (5) | 1
+Pittsburgh Steelers (6) | 1
+Pittsburgh Steelers (7) | 1
+Pittsburgh Steelers (8) | 1
+San Diego Chargers (1) | 1
+Tennessee Titans (1) | 1
+
+Question: which team has the longest consecutive win streak in the championship game?
+A: To find the answer to this question, let’s think step by step.
+Prediction: pittsburgh steelers, 8
+[Gold Answer] buffalo bills
+

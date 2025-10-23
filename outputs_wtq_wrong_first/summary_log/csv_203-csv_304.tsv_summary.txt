@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1997, 1998, 2001, 2005
+   - Role: Identifier for the year in which the awards were given out.
+
+2. MVP:
+   - Data type: Categorical
+   - 4 representative example values: Mauro Biello, Leonardo Di Lorenzo, Philippe Billy
+   - Role: Describes the Most Valuable Player for each year.
+
+3. Defensive Player of the Year:
+   - Data type: Categorical
+   - 4 representative example values: Nevio Pizzolitto, Mauricio Vincello
+   - Role: Describes the player who won the Defensive Player of the Year award.
+
+4. Unsung Hero:
+   - Data type: Categorical
+   - 4 representative example values: Mauricio Vincello, Simon Gatti, Tony Donatelli
+   - Role: Describes the Unsung Hero player for each year.
+
+5. Newcomer of the Year:
+   - Data type: Categorical
+   - 4 representative example values: Masahiro Fukazawa, Matt Jordan, Ali Gerba
+   - Role: Describes the player who won the Newcomer of the Year award.
+
+**Outlier Row Analysis:**
+
+1. Row 17:
+   - The values for MVP, Defensive Player of the Year, Unsung Hero, and Newcomer of the Year are all missing ("-").
+   - This row is an outlier because it lacks any specific player names for the awards, which is unusual compared to the rest of the table.
+
+2. Row 12:
+   - The values for MVP, Defensive Player of the Year, Unsung Hero, and Newcomer of the Year are all missing ("-").
+   - Similar to Row 17, this row is an outlier due to the absence of player names for the awards.
+
+3. Row 14:
+   - The values for MVP, Defensive Player of the Year, Unsung Hero, and Newcomer of the Year are all missing ("-").
+   - This row is also an outlier because it lacks specific player names for the awards, making it different from the majority of the table.

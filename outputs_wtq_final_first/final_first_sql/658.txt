@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Round:
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 7, 7
+   - Role: Identifier for the round in which the player was picked
+
+2. Pick:
+   - Data type: Numeric
+   - 4 representative example values: 39, 170, 174, 223
+   - Role: Identifier for the pick number of the player
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: Mike Brown, Frank Murphy, Paul Edinger, James Cotton
+   - Role: Descriptor for the player's name
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: S, WR, K, DE
+   - Role: Descriptor for the player's position
+
+5. College:
+   - Data type: Categorical
+   - 4 representative example values: Nebraska, Kansas State, Michigan State, Ohio State
+   - Role: Descriptor for the college from which the player graduated
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The values for Round (7) and Pick (254) are consistent with other rows in the table.
+   - The values for Name (Michael Green), Position (S), and College (Northwestern State) are also ordinary.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 0:
+   - The values for Round (2) and Pick (39) are consistent with other rows in the table.
+   - The values for Name (Mike Brown), Position (S), and College (Nebraska) are also ordinary.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 6:
+   - The values for Round (6) and Pick (174) are consistent with other rows in the table.
+   - The values for Name (Paul Edinger), Position (K), and College (Michigan State) are also ordinary.
+   - This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Round |   Pick | Name           | Position   | College            |
+|-------------:|--------:|-------:|:---------------|:-----------|:-------------------|
+|            0 |       1 |      9 | Brian Urlacher | S          | New Mexico         |
+|            1 |       2 |     39 | Mike Brown     | S          | Nebraska           |
+|            2 |       3 |     69 | Dez White      | WR         | Georgia Tech       |
+|            3 |       3 |     87 | Dustin Lyman   | TE         | Wake Forest        |
+|            4 |       4 |    125 | Reggie Austin  | DB         | Wake Forest        |
+|            5 |       6 |    170 | Frank Murphy   | WR         | Kansas State       |
+|            6 |       6 |    174 | Paul Edinger   | K          | Michigan State     |
+|            7 |       7 |    223 | James Cotton   | DE         | Ohio State         |
+|            8 |       7 |    254 | Michael Green  | S          | Northwestern State |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to find the college attended by Dustin Lyman and then identify the player drafted by the Chicago Bears in 2000 who also attended the same college. We will first filter rows where the "Name" is Dustin Lyman to get his college. Then, we will filter rows where the "College" matches Dustin Lyman's college and the "Round" is from the Chicago Bears' 2000 draft.
+SQL: 
+SELECT "Name" 
+FROM T 
+WHERE "College" = (SELECT "College" FROM T WHERE "Name" = 'Dustin Lyman') 
+AND "Round" IN (SELECT "Round" FROM T WHERE "Round" = 2000 AND "Name" = 'Chicago Bears');
+Generated Final SQL: SELECT "Name" FROM T WHERE "College" = (SELECT "College" FROM T WHERE "Name" = 'Dustin Lyman') AND "Round" IN (SELECT "Round" FROM T WHERE "Round" = 2000 AND "Name" = 'Chicago Bears');
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2000 Chicago Bears season (row_number, Round, Pick, Name, Position, College)
+
+row_number | Round | Pick | Name | Position | College
+0 | 1 | 9 | Brian Urlacher | S | New Mexico
+1 | 2 | 39 | Mike Brown | S | Nebraska
+2 | 3 | 69 | Dez White | WR | Georgia Tech
+3 | 3 | 87 | Dustin Lyman | TE | Wake Forest
+4 | 4 | 125 | Reggie Austin | DB | Wake Forest
+5 | 6 | 170 | Frank Murphy | WR | Kansas State
+6 | 6 | 174 | Paul Edinger | K | Michigan State
+7 | 7 | 223 | James Cotton | DE | Ohio State
+8 | 7 | 254 | Michael Green | S | Northwestern State
+Question: who did the chicago bears draft in 2000 that attended the same college as fellow draftee dustin lyman?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we need to focus on the **College** column in the table and identify the college attended by Dustin Lyman. 
+
+From the table:
+- Dustin Lyman attended Wake Forest.
+
+Now, we need to look for another draftee who attended the same college as Dustin Lyman (Wake Forest).
+
+From the table:
+- Reggie Austin was also drafted by the Chicago Bears in the 4th round, Pick 125, and he attended Wake Forest.
+
+Therefore, the Chicago Bears drafted Reggie Austin in 2000 who attended the same college (Wake Forest) as fellow draftee Dustin Lyman.
+
+Final Answer: Reggie Austin
+[Fallback] Prediction: reggie austin
+[Gold Answer] reggie austin
+

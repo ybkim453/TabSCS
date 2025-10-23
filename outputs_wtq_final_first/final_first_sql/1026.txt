@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Golfer
+   - Data type: Categorical
+   - 4 representative example values: Darren Clarke, Ernie Els, Hunter Mahan, Phil Mickelson
+   - Role: Identifier for each golfer
+
+2. Country
+   - Data type: Categorical
+   - 4 representative example values: Northern Ireland, South Africa, United States, England
+   - Role: Descriptor indicating the country of the golfer
+
+3. Wins
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 2, 2
+   - Role: Measure of the number of wins for each golfer
+
+4. Match Play
+   - Data type: Categorical
+   - 4 representative example values: 1: 2000, —, 1: 2012, —
+   - Role: Descriptor indicating the match play performance of the golfer
+
+5. Championship
+   - Data type: Categorical
+   - 4 representative example values: —, 2: 2004, 2010, 1: 2009
+   - Role: Descriptor indicating championship wins for the golfer
+
+6. Invitational
+   - Data type: Categorical
+   - 4 representative example values: 1: 2003, —, 1: 2010, —
+   - Role: Descriptor indicating invitational wins for the golfer
+
+7. Champions
+   - Data type: Categorical
+   - 4 representative example values: —, —, —, 1: 2009, 1: 2012
+   - Role: Descriptor indicating champions wins for the golfer
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Ian Poulter)
+   - The values in the Match Play and Champions columns are different from the majority of the table.
+   - Ian Poulter has 1 win in Match Play and 1 win in Champions, which is not a common combination among the golfers in the table.
+   - These distinctive values make Row 5 an outlier.
+
+2. Row 0 (Darren Clarke)
+   - The values in the Match Play and Invitational columns are different from the majority of the table.
+   - Darren Clarke has 1 win in Match Play and 1 win in Invitational, which is not a common combination among the golfers in the table.
+   - These distinctive values make Row 0 an outlier.
+
+3. Row 3 (Phil Mickelson)
+   - The values in the Championship and Champions columns are different from the majority of the table.
+   - Phil Mickelson has 1 win in Championship and 1 win in Champions, which is not a common combination among the golfers in the table.
+   - These distinctive values make Row 3 an outlier.
+
+=== Full Table Preview ===
+|   row_number | Golfer         | Country          |   Wins | Match Play        | Championship                           | Invitational                                | Champions   |
+|-------------:|:---------------|:-----------------|-------:|:------------------|:---------------------------------------|:--------------------------------------------|:------------|
+|            0 | Tiger Woods    | United States    |     18 | 3: 2003 2004 2008 | 7: 1999 2002 2003\n2005 2006 2007 2013 | 8: 1999 2000 2001 2005\n2006 2007 2009 2013 | —           |
+|            1 | Geoff Ogilvy   | Australia        |      3 | 2: 2006 2009      | 1: 2008                                | —                                           | —           |
+|            2 | Darren Clarke  | Northern Ireland |      2 | 1: 2000           | —                                      | 1: 2003                                     | —           |
+|            3 | Ernie Els      | South Africa     |      2 | —                 | 2: 2004 2010                           | —                                           | —           |
+|            4 | Hunter Mahan   | United States    |      2 | 1: 2012           | —                                      | 1: 2010                                     | —           |
+|            5 | Phil Mickelson | United States    |      2 | —                 | 1: 2009                                | —                                           | 1: 2009     |
+|            6 | Ian Poulter    | England          |      2 | 1: 2010           | —                                      | —                                           | 1: 2012     |
+
+Generated Reasoning SQL: Explanation: To find a golfer who won at three consecutive championships, we need to look for a golfer who has three consecutive values in the "Championship" column. The summary shows that the "Championship" column is categorical and represents championship wins for each golfer. We should consider outliers in the summary, as they may affect the analysis.
+SQL: 
+SELECT "Golfer"
+FROM T
+WHERE "Championship" LIKE '3:%';
+Generated Final SQL: SELECT "Golfer" FROM T WHERE "Championship" LIKE '3:%';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: World Golf Championships (row_number, Golfer, Country, Wins, Match Play, Championship, Invitational, Champions)
+
+row_number | Golfer | Country | Wins | Match Play | Championship | Invitational | Champions
+0 | Tiger Woods | United States | 18 | 3: 2003 2004 2008 | 7: 1999 2002 2003\n2005 2006 2007 2013 | 8: 1999 2000 2001 2005\n2006 2007 2009 2013 | —
+1 | Geoff Ogilvy | Australia | 3 | 2: 2006 2009 | 1: 2008 | — | —
+2 | Darren Clarke | Northern Ireland | 2 | 1: 2000 | — | 1: 2003 | —
+3 | Ernie Els | South Africa | 2 | — | 2: 2004 2010 | — | —
+4 | Hunter Mahan | United States | 2 | 1: 2012 | — | 1: 2010 | —
+5 | Phil Mickelson | United States | 2 | — | 1: 2009 | — | 1: 2009
+6 | Ian Poulter | England | 2 | 1: 2010 | — | — | 1: 2012
+Question: name a golfer than won at three consecutive championships.
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify which golfers have won at least three championships in a row. Looking at the summary, we see that Tiger Woods has won the Championship event in 2005, 2006, and 2007 consecutively. Therefore, Tiger Woods is a golfer who has won at three consecutive championships.
+
+Final Answer: Tiger Woods
+[Fallback] Prediction: tiger woods
+[Gold Answer] tiger woods
+

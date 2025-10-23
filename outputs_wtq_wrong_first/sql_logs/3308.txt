@@ -1,0 +1,140 @@
+=== Table ID ===
+csv/204-csv/989.tsv
+
+=== Question ===
+which school had the highest listed number before 2009?
+
+=== Sub-table Preview ===
+| School                                     |   2007 |   2008 |   2009 |   2010 |   2011 |
+|:-------------------------------------------|-------:|-------:|-------:|-------:|-------:|
+| Oscar De La Hoya Animo Charter High School |    662 |    726 |    709 |    710 |    744 |
+| James A. Garfield High School              |    553 |    597 |    593 |    632 |    705 |
+| Abraham Lincoln High School                |    594 |    609 |    588 |    616 |    643 |
+| Woodrow Wilson High School                 |    582 |    585 |    600 |    615 |    636 |
+| Theodore Roosevelt High School             |    557 |    551 |    576 |    608 |    nan |
+| Santee Education Complex                   |    nan |    502 |    521 |    552 |    565 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. **School:**
+   - Data type: Categorical
+   - 4 representative example values: Oscar De La Hoya Animo Charter High School, James A. Garfield High School, Abraham Lincoln High School, Woodrow Wilson High School
+   - Role: Identifier for each school in the table
+
+2. **2007, 2008, 2009, 2010, 2011:**
+   - Data type: Numeric
+   - 4 representative example values: 662, 726, 709, 710
+   - Role: Measure of some metric related to each school for the respective year
+
+**Outlier Row Analysis:**
+
+1. **Row 8 (Theodore Roosevelt High School):**
+   - The value "nan" in the 2011 column makes this row an outlier as it is not a valid numeric value like the rest of the entries in that column.
+
+2. **Row 2 (James A. Garfield High School):**
+   - The values in this row do not seem significantly different from the majority of the table, so it is an ordinary row and does not require special handling.
+
+3. **Row 6 (Santee Education Complex):**
+   - The value "nan" in the 2007 column makes this row an outlier as it is not a valid numeric value like the rest of the entries in that column.
+
+=== Full Table Preview ===
+|   row_number | School                                     |   2007 |   2008 |   2009 |   2010 |   2011 |
+|-------------:|:-------------------------------------------|-------:|-------:|-------:|-------:|-------:|
+|            0 | Francisco Bravo Medical Magnet High School |    807 |    818 |    815 |    820 |    832 |
+|            1 | Marc and Eva Stern Math and Science School |    718 |    792 |    788 |    788 |    809 |
+|            2 | Oscar De La Hoya Animo Charter High School |    662 |    726 |    709 |    710 |    744 |
+|            3 | James A. Garfield High School              |    553 |    597 |    593 |    632 |    705 |
+|            4 | Abraham Lincoln High School                |    594 |    609 |    588 |    616 |    643 |
+|            5 | Woodrow Wilson High School                 |    582 |    585 |    600 |    615 |    636 |
+|            6 | Theodore Roosevelt High School             |    557 |    551 |    576 |    608 |    nan |
+|            7 | Thomas Jefferson High School               |    457 |    516 |    514 |    546 |    546 |
+|            8 | Santee Education Complex                   |    nan |    502 |    521 |    552 |    565 |
+
+Generated Reasoning SQL: Explanation: To find the school with the highest listed number before 2009, we need to consider the columns "2007", "2008", and "2009" as they represent the metrics for each school in those years. We should exclude any outlier rows that contain non-numeric values in these columns. We will compare the values in these columns for each school and select the one with the highest value.
+
+SQL: 
+SELECT "School"
+FROM T
+WHERE 
+    CAST("2007" AS INTEGER) IS NOT NULL 
+    AND CAST("2008" AS INTEGER) IS NOT NULL 
+    AND CAST("2009" AS INTEGER) IS NOT NULL 
+    AND CAST("2010" AS INTEGER) IS NOT NULL 
+    AND CAST("2011" AS INTEGER) IS NOT NULL 
+    AND CAST("2007" AS INTEGER) < 2009 
+ORDER BY GREATEST(CAST("2007" AS INTEGER), CAST("2008" AS INTEGER), CAST("2009" AS INTEGER)) DESC
+LIMIT 1;
+Generated Final SQL: SELECT "School" FROM T WHERE CAST("2007" AS INTEGER) IS NOT NULL AND CAST("2008" AS INTEGER) IS NOT NULL AND CAST("2009" AS INTEGER) IS NOT NULL AND CAST("2010" AS INTEGER) IS NOT NULL AND CAST("2011" AS INTEGER) IS NOT NULL AND CAST("2007" AS INTEGER) < 2009 ORDER BY GREATEST(CAST("2007" AS INTEGER), CAST("2008" AS INTEGER), CAST("2009" AS INTEGER)) DESC LIMIT 1;
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT "School" FROM T WHERE CAST("2007" AS INTEGER) IS NOT NULL AND CAST("2008" AS INTEGER) IS NOT NULL AND CAST("2009" AS INTEGER) IS NOT NULL AND CAST("2010" AS INTEGER) IS NOT NULL AND CAST("2011" AS INTEGER) IS NOT NULL AND CAST("2007" AS INTEGER) < 2009 ORDER BY GREATEST(CAST("2007" AS INTEGER), CAST("2008" AS INTEGER), CAST("2009" AS INTEGER)) DESC LIMIT 1;': no such function: GREATEST
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Abraham Lincoln High School (Los Angeles) (row_number, School, 2007, 2008, 2009, 2010, 2011)
+
+row_number | School | 2007 | 2008 | 2009 | 2010 | 2011
+0 | Francisco Bravo Medical Magnet High School | 807.0 | 818 | 815 | 820 | 832.0
+1 | Marc and Eva Stern Math and Science School | 718.0 | 792 | 788 | 788 | 809.0
+2 | Oscar De La Hoya Animo Charter High School | 662.0 | 726 | 709 | 710 | 744.0
+3 | James A. Garfield High School | 553.0 | 597 | 593 | 632 | 705.0
+4 | Abraham Lincoln High School | 594.0 | 609 | 588 | 616 | 643.0
+5 | Woodrow Wilson High School | 582.0 | 585 | 600 | 615 | 636.0
+6 | Theodore Roosevelt High School | 557.0 | 551 | 576 | 608 | nan
+7 | Thomas Jefferson High School | 457.0 | 516 | 514 | 546 | 546.0
+8 | Santee Education Complex | nan | 502 | 521 | 552 | 565.0
+Question: which school had the highest listed number before 2009?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The table includes data for different schools over the years 2007 to 2011.
+
+From the full table:
+- The highest number listed before 2009 for each school:
+  1. Francisco Bravo Medical Magnet High School: 818 (2008)
+  2. Marc and Eva Stern Math and Science School: 792 (2008)
+  3. Oscar De La Hoya Animo Charter High School: 726 (2008)
+  4. James A. Garfield High School: 597 (2008)
+  5. Abraham Lincoln High School: 609 (2008)
+  6. Woodrow Wilson High School: 585 (2008)
+  7. Theodore Roosevelt High School: 576 (2009)
+  8. Thomas Jefferson High School: 516 (2008)
+  9. Santee Education Complex: 502 (2009)
+
+Since we are looking for the school with the highest number before 2009, we need to compare the values listed for 2008:
+- Francisco Bravo Medical Magnet High School: 818
+- Marc and Eva Stern Math and Science School: 792
+- Oscar De La Hoya Animo Charter High School: 726
+- James A. Garfield High School: 597
+- Abraham Lincoln High School: 609
+- Woodrow Wilson High School: 585
+- Thomas Jefferson High School: 516
+
+The highest number before 2009 is 818 for Francisco Bravo Medical Magnet High School in 2008.
+
+Final Answer: Francisco Bravo Medical Magnet High School
+[Fallback] Prediction: francisco bravo medical magnet high school
+[Gold Answer] francisco bravo medical magnet high school
+

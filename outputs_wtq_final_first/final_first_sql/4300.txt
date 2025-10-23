@@ -1,0 +1,117 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Month:**
+   - Data type: Categorical
+   - 4 representative example values: Jan, Feb, Mar, Apr
+   - Role: Identifier for the month of the year
+
+2. **Average low °F (°C):**
+   - Data type: Numeric
+   - 4 representative example values: 23.1, 25.2, 31.4, 41.0
+   - Role: Measure of the average low temperature in Fahrenheit and Celsius
+
+3. **Precipitation inches (mm):**
+   - Data type: Numeric
+   - 4 representative example values: 3.10, 2.79, 4.04, 4.13
+   - Role: Measure of the precipitation in inches and millimeters
+
+4. **Snowfall inches (cm):**
+   - Data type: Numeric
+   - 4 representative example values: 6.8, 5.7, 3.2, 0.8
+   - Role: Measure of the snowfall in inches and centimeters
+
+5. **Avg. precipitation days (≥ 0.01 inch):**
+   - Data type: Numeric
+   - 4 representative example values: 10.9, 9.7, 11.3, 11.0
+   - Role: Measure of the average number of days with precipitation of at least 0.01 inch
+
+6. **Avg. snowy days (≥ 0.1 inch):**
+   - Data type: Numeric
+   - 4 representative example values: 5.0, 3.6, 2.4, 0.3
+   - Role: Measure of the average number of days with snowfall of at least 0.1 inch
+
+**Outlier Row Analysis:**
+
+1. **Row 4 (Average low °F (°C)):**
+   - The values for January and February are significantly lower compared to the rest of the months, making this row an outlier in terms of temperature.
+
+2. **Row 5 (Precipitation inches (mm)):**
+   - The values for March and April are higher than the other months, indicating a significant increase in precipitation during those months, making this row an outlier in terms of precipitation.
+
+3. **Row 0 (Month):**
+   - This row is not an outlier as it contains the identifiers for each month, which is a normal and expected pattern in the table.
+
+=== Full Table Preview ===
+|   row_number | Month                                 | Jan          | Feb          | Mar           | Apr           | May          | Jun          | Jul          | Aug           | Sep          | Oct          | Nov          | Dec          | Year            |
+|-------------:|:--------------------------------------|:-------------|:-------------|:--------------|:--------------|:-------------|:-------------|:-------------|:--------------|:-------------|:-------------|:-------------|:-------------|:----------------|
+|            0 | Average high °F (°C)                  | 37.1\n(2.8)  | 39.7\n(4.3)  | 47.2\n(8.4)   | 57.6\n(14.2)  | 67.6\n(19.8) | 77.0\n(25)   | 82.1\n(27.8) | 80.8\n(27.1)  | 74.0\n(23.3) | 63.2\n(17.3) | 53.1\n(11.7) | 42.3\n(5.7)  | 60.1\n(15.6)    |
+|            1 | Average low °F (°C)                   | 23.1\n(−4.9) | 25.2\n(−3.8) | 31.4\n(−0.3)  | 41.0\n(5)     | 50.5\n(10.3) | 60.2\n(15.7) | 66.3\n(19.1) | 65.6\n(18.7)  | 58.0\n(14.4) | 46.4\n(8)    | 37.9\n(3.3)  | 28.4\n(−2)   | 44.5\n(6.9)     |
+|            2 | Precipitation inches (mm)             | 3.10\n(78.7) | 2.79\n(70.9) | 4.04\n(102.6) | 4.13\n(104.9) | 3.80\n(96.5) | 3.64\n(92.5) | 3.46\n(87.9) | 3.96\n(100.6) | 3.48\n(88.4) | 3.64\n(92.5) | 3.39\n(86.1) | 3.33\n(84.6) | 42.75\n(1085.9) |
+|            3 | Snowfall inches (cm)                  | 6.8\n(17.3)  | 5.7\n(14.5)  | 3.2\n(8.1)    | .8\n(2)       | 0\n(0)       | 0\n(0)       | 0\n(0)       | 0\n(0)        | 0\n(0)       | 0\n(0)       | .2\n(0.5)    | 4.8\n(12.2)  | 21.4\n(54.4)    |
+|            4 | Avg. precipitation days (≥ 0.01 inch) | 10.9         | 9.7          | 11.3          | 11.0          | 11.8         | 11.1         | 8.9          | 8.9           | 8.2          | 8.8          | 10.0         | 11.1         | 121.7           |
+|            5 | Avg. snowy days (≥ 0.1 inch)          | 5.0          | 3.6          | 2.4           | .3            | 0            | 0            | 0            | 0             | 0            | 0            | .5           | 3.1          | 15.0            |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter the rows based on the "Average high °F (°C)" column where the temperature in Fahrenheit is greater than 70.0. Since we are interested in the count of months meeting this condition, we will use the COUNT function on the "Month" column.
+
+SQL: SELECT COUNT("Month") 
+FROM T 
+WHERE CAST(SUBSTR("Average high °F (°C)", 1, INSTR("Average high °F (°C)", '\n') - 1) AS FLOAT) > 70.0;
+Generated Final SQL: SELECT COUNT("Month") FROM T WHERE CAST(SUBSTR("Average high °F (°C)", 1, INSTR("Average high °F (°C)", '\n') - 1) AS FLOAT) > 70.0;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Month") |
+|-----------------:|
+|                0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: New London, Connecticut
+SQL: SELECT COUNT("Month") FROM T WHERE CAST(SUBSTR("Average high °F (°C)", 1, INSTR("Average high °F (°C)", '\n') - 1) AS FLOAT) > 70.0;
+
+SQL Execution Result:
+COUNT("Month")
+0
+
+Question: how many months have an average high temperature over 70.0 degrees fahrenheit?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 4
+

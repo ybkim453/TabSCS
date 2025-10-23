@@ -1,0 +1,48 @@
+**Column Analysis:**
+
+1. Licensing model
+   - Data type: Categorical
+   - 4 representative example values: Per server, Per CPU pair + CAL
+   - Role of the column: Descriptor
+
+2. Network Policy and Access Services limits
+   - Data type: Numeric
+   - 4 representative example values: 50, 250, Unlimited
+   - Role of the column: Measure
+
+3. Remote Desktop Services limits
+   - Data type: Numeric
+   - 4 representative example values: 50, Gateway only, Unlimited
+   - Role of the column: Measure
+
+4. Active Directory Lightweight Directory Services
+   - Data type: Categorical
+   - 4 representative example values: Yes
+   - Role of the column: Descriptor
+
+5. Active Directory Rights Management Services
+   - Data type: Categorical
+   - 4 representative example values: Yes
+   - Role of the column: Descriptor
+
+6. Server Manager
+   - Data type: Categorical
+   - 4 representative example values: Yes
+   - Role of the column: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The values "Per server" for Licensing model and "50 RRAS connections and 10 IAS connections" for Network Policy and Access Services limits make this row distinctive.
+   - These values are different from the majority of the table as they represent lower limits compared to the other rows.
+   - This row is an outlier due to the lower limits specified.
+
+2. Row 6:
+   - The values "Per CPU pair + CAL" for Licensing model and "Unlimited" for Network Policy and Access Services limits make this row distinctive.
+   - These values are different from the majority of the table as they represent higher limits compared to the other rows.
+   - This row is an outlier due to the higher limits specified.
+
+3. Row 7:
+   - The values "Per CPU pair + CAL" for Licensing model and "Unlimited" for Network Policy and Access Services limits make this row distinctive.
+   - These values are different from the majority of the table as they represent higher limits compared to the other rows.
+   - This row is an outlier due to the higher limits specified.

@@ -1,0 +1,143 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place
+   - Data type: Numeric
+   - Representative values: 1, 2, 3, 4
+   - Role: Identifier for the ranking of shooters
+
+2. Shooter
+   - Data type: Categorical
+   - Representative values: Otto Olsen, Otto Hultberg, Walter Stokes, Cyril Mackworth-Praed
+   - Role: Descriptor for the shooters participating in the competition
+
+3. 5 pts, 4 pts, 3 pts, 2 pts, 1 pts, 0 pts
+   - Data type: Numeric
+   - Representative values: 1, 6, 3, 8
+   - Role: Measures representing the points scored by each shooter in different categories
+
+4. Total
+   - Data type: Numeric
+   - Representative values: 37, 38, 41, 97
+   - Role: Measure representing the total points scored by each shooter
+
+5. Rank
+   - Data type: Numeric
+   - Representative values: 11, 8, 3, nan
+   - Role: Measure representing the ranking of each shooter
+
+**Outlier Row Analysis:**
+
+1. Row 25 (Hungary (HUN))
+   - The values for 3 pts (17) and 0 pts (9) are significantly higher compared to other rows.
+   - These high values make this row an outlier in terms of points scored in these categories.
+
+2. Row 1 (Otto Olsen)
+   - The value for 4 pts (5) is significantly higher compared to other rows.
+   - This high value makes this row an outlier in terms of points scored in the 4 pts category.
+
+3. Row 16 (Cyril Mackworth-Praed)
+   - The value for 5 pts (6) is significantly higher compared to other rows.
+   - This high value makes this row an outlier in terms of points scored in the 5 pts category.
+
+=== Full Table Preview ===
+|   row_number | Place   | Shooter               | 5 pts   | 4 pts   |   3 pts | 2 pts   | 1 pts   | 0 pts   |   Total |   Rank |
+|-------------:|:--------|:----------------------|:--------|:--------|--------:|:--------|:--------|:--------|--------:|-------:|
+|            0 | 1       | Norway (NOR)          | 12      | 16      |      12 | -       | -       | -       |     160 |    nan |
+|            1 | 1       | Ole Lilloe-Olsen      | 4       | 5       |       1 | -       | -       | -       |      43 |      1 |
+|            2 | 1       | Einar Liberg          | 5       | 2       |       3 | -       | -       | -       |      42 |      2 |
+|            3 | 1       | Harald Natvig         | 2       | 4       |       4 | -       | -       | -       |      38 |      8 |
+|            4 | 1       | Otto Olsen            | 1       | 5       |       4 | -       | -       | -       |      37 |     11 |
+|            5 | 2       | Sweden (SWE)          | 8       | 19      |      12 | 1       | -       | -       |     154 |    nan |
+|            6 | 2       | Alfred Swahn          | 3       | 4       |       3 | -       | -       | -       |      40 |      5 |
+|            7 | 2       | Fredric Landelius     | 2       | 5       |       3 | -       | -       | -       |      39 |      7 |
+|            8 | 2       | Otto Hultberg         | 1       | 6       |       3 | -       | -       | -       |      38 |      8 |
+|            9 | 2       | Mauritz Johansson     | 2       | 4       |       3 | 1       | -       | -       |      37 |     11 |
+|           10 | 3       | United States (USA)   | 7       | 17      |      13 | 3       | -       | -       |     148 |    nan |
+|           11 | 3       | John Boles            | 3       | 5       |       2 | -       | -       | -       |      41 |      3 |
+|           12 | 3       | Walter Stokes         | 1       | 6       |       3 | -       | -       | -       |      38 |      8 |
+|           13 | 3       | Raymond Coulter       | 2       | 4       |       3 | 1       | -       | -       |      37 |     11 |
+|           14 | 3       | Dennis Fenton         | 1       | 2       |       5 | 2       | -       | -       |      32 |     16 |
+|           15 | 4       | Great Britain (GBR)   | 8       | 9       |      18 | 3       | -       | 2       |     136 |    nan |
+|           16 | 4       | Cyril Mackworth-Praed | 6       | -       |       3 | 1       | -       | -       |      41 |      3 |
+|           17 | 4       | Alexander Rogers      | 1       | 2       |       5 | 2       | -       | -       |      32 |     16 |
+|           18 | 4       | John Faunthorpe       | -       | 5       |       4 | -       | -       | 1       |      32 |     16 |
+|           19 | 4       | John O'Leary          | 1       | 2       |       6 | -       | -       | 1       |      31 |     19 |
+|           20 | 5       | Finland (FIN)         | 7       | 10      |      15 | 5       | -       | 3       |     130 |    nan |
+|           21 | 5       | Karl Magnus Wegelius  | 2       | 6       |       2 | -       | -       | -       |      40 |      5 |
+|           22 | 5       | Martti Liuttula       | 3       | 2       |       3 | 2       | -       | -       |      36 |     14 |
+|           23 | 5       | Jalo Autonen          | 1       | 1       |       5 | 2       | -       | 1       |      28 |     21 |
+|           24 | 5       | Toivo Tikkanen        | 1       | 1       |       5 | 1       | -       | 2       |      26 |     22 |
+|           25 | 6       | Hungary (HUN)         | 1       | 8       |      17 | 4       | 1       | 9       |      97 |    nan |
+|           26 | 6       | Gusztáv Szomjas       | -       | 4       |       4 | 1       | -       | 1       |      30 |     20 |
+|           27 | 6       | Rezső Velez           | -       | 1       |       5 | 2       | -       | 2       |      23 |     23 |
+|           28 | 6       | Elemér Takács         | 1       | 2       |       3 | -       | 1       | 3       |      23 |     23 |
+|           29 | 6       | László Szomjas        | -       | 1       |       5 | 1       | -       | 3       |      21 |     25 |
+|           30 | –       | Czechoslovakia (TCH)  | 1       | 2       |       6 | 1       | -       | -       |      33 |    nan |
+|           31 | –       | Miloslav Hlaváč       | 1       | 2       |       6 | 1       | -       | -       |      33 |     15 |
+
+Generated Reasoning SQL: Explanation: To calculate the score difference between the first place team and the third place team, we need to find the total score of the first place team and the total score of the third place team. We will then subtract the total score of the third place team from the total score of the first place team to get the difference in score.
+
+We will filter the rows based on the "Place" column where the value is 1 for the first place team and 3 for the third place team. We will sum the "Total" column values for each team to get their total scores.
+
+SQL:
+SELECT 
+    (SELECT SUM("Total") FROM T WHERE "Place" = 1) - (SELECT SUM("Total") FROM T WHERE "Place" = 3) as score_difference;
+Generated Final SQL: SELECT (SELECT SUM("Total") FROM T WHERE "Place" = 1) - (SELECT SUM("Total") FROM T WHERE "Place" = 3) as score_difference;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   score_difference |
+|-------------------:|
+|                 24 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Shooting at the 1924 Summer Olympics – Men's 100 metre team running deer, single shots
+SQL: SELECT (SELECT SUM("Total") FROM T WHERE "Place" = 1) - (SELECT SUM("Total") FROM T WHERE "Place" = 3) as score_difference;
+
+SQL Execution Result:
+score_difference
+24
+
+Question: what is the difference in score of the first place team and the 3rd place team?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 24
+[Gold Answer] 12
+

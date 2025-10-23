@@ -1,0 +1,153 @@
+=== Table ID ===
+csv/203-csv/867.tsv
+
+=== Question ===
+how many viewers watched the last season of csi: crime scene investigation?
+
+=== Sub-table Preview ===
+|   Season |   Episodes | Time slot (EST)                                                                                       | Original airing\nSeason premiere   | Original airing\nSeason finale   | Original airing\nTV season   | Rank   |   Viewers\n(in millions) |
+|---------:|-----------:|:------------------------------------------------------------------------------------------------------|:-----------------------------------|:---------------------------------|:-----------------------------|:-------|-------------------------:|
+|        1 |         23 | Friday 9pm/8c (October 6, 2000 – January 12, 2001)\nThursday 9pm/8c (February 1, 2001 – May 17, 2001) | October 6, 2000                    | May 17, 2001                     | 2000–2001                    | #10    |                    17.8  |
+|        2 |         23 | Thursday 9pm/8c                                                                                       | September 27, 2001                 | May 16, 2002                     | 2001–2002                    | #2     |                    23.69 |
+|        4 |         23 | Thursday 9pm/8c                                                                                       | September 25, 2003                 | May 20, 2004                     | 2003–2004                    | #2     |                    25.27 |
+|        8 |         17 | Thursday 9pm/8c                                                                                       | September 27, 2007                 | May 15, 2008                     | 2007–2008                    | #9     |                    16.62 |
+|       10 |         23 | Thursday 9pm/8c                                                                                       | September 24, 2009                 | May 20, 2010                     | 2009–2010                    | #12    |                    14.92 |
+|       12 |         22 | Wednesday 10pm/9c                                                                                     | September 21, 2011                 | May 9, 2012                      | 2011–2012                    | #21    |                    12.49 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 4, 8
+   - Role: Identifier for the season of the TV show
+
+2. Episodes
+   - Data type: Numeric
+   - 4 representative example values: 23, 17, 22
+   - Role: Measure of the number of episodes in a season
+
+3. Time slot (EST)
+   - Data type: Categorical
+   - 4 representative example values: Friday 9pm/8c, Thursday 9pm/8c, Wednesday 10pm/9c
+   - Role: Descriptor of the time slot for each season
+
+4. Original airing Season premiere
+   - Data type: Categorical
+   - 4 representative example values: October 6, 2000, September 27, 2001, September 25, 2003
+   - Role: Descriptor of the premiere date for each season
+
+5. Original airing Season finale
+   - Data type: Categorical
+   - 4 representative example values: May 17, 2001, May 16, 2002, May 20, 2004
+   - Role: Descriptor of the finale date for each season
+
+6. Original airing TV season
+   - Data type: Categorical
+   - 4 representative example values: 2000-2001, 2001-2002, 2003-2004
+   - Role: Descriptor of the TV season for each season
+
+7. Rank
+   - Data type: Categorical
+   - 4 representative example values: #10, #2, #9, #12
+   - Role: Descriptor of the rank of the TV show within its season
+
+8. Viewers (in millions)
+   - Data type: Numeric
+   - 4 representative example values: 17.8, 23.69, 25.27, 16.62
+   - Role: Measure of the number of viewers in millions for each season
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The time slot changes from Friday to Thursday, which is different from the other rows.
+   - This change in time slot could potentially impact viewership and the overall performance of the season, making it an outlier.
+
+2. Row 7:
+   - The number of episodes is 17, which is lower than the typical 22-23 episodes in other rows.
+   - This lower number of episodes could indicate a shorter season or a special format, making it an outlier.
+
+3. Row 11:
+   - The time slot is on Wednesday instead of Thursday like the majority of the other rows.
+   - This change in the airing day could affect viewership patterns and make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Season |   Episodes | Time slot (EST)                                                                                   | Original airing\nSeason premiere   | Original airing\nSeason finale   | Original airing\nTV season   | Rank   |   Viewers\n(in millions) |
+|-------------:|---------:|-----------:|:--------------------------------------------------------------------------------------------------|:-----------------------------------|:---------------------------------|:-----------------------------|:-------|-------------------------:|
+|            0 |        1 |         23 | Friday 9pm/8c (October 6 2000 – January 12 2001)\nThursday 9pm/8c (February 1 2001 – May 17 2001) | 2000-10-06 00:00:00                | 2001-05-17 00:00:00              | 2000–2001                    | #10    |                    17.8  |
+|            1 |        2 |         23 | Thursday 9pm/8c                                                                                   | 2001-09-27 00:00:00                | 2002-05-16 00:00:00              | 2001–2002                    | #2     |                    23.69 |
+|            2 |        3 |         23 | Thursday 9pm/8c                                                                                   | 2002-09-26 00:00:00                | 2003-05-15 00:00:00              | 2002–2003                    | #1     |                    26.2  |
+|            3 |        4 |         23 | Thursday 9pm/8c                                                                                   | 2003-09-25 00:00:00                | 2004-05-20 00:00:00              | 2003–2004                    | #2     |                    25.27 |
+|            4 |        5 |         25 | Thursday 9pm/8c                                                                                   | 2004-09-23 00:00:00                | 2005-05-19 00:00:00              | 2004–2005                    | #2     |                    26.26 |
+|            5 |        6 |         24 | Thursday 9pm/8c                                                                                   | 2005-09-22 00:00:00                | 2006-05-18 00:00:00              | 2005–2006                    | #3     |                    24.86 |
+|            6 |        7 |         24 | Thursday 9pm/8c                                                                                   | 2006-09-21 00:00:00                | 2007-05-17 00:00:00              | 2006–2007                    | #4     |                    20.34 |
+|            7 |        8 |         17 | Thursday 9pm/8c                                                                                   | 2007-09-27 00:00:00                | 2008-05-15 00:00:00              | 2007–2008                    | #9     |                    16.62 |
+|            8 |        9 |         24 | Thursday 9pm/8c                                                                                   | 2008-10-09 00:00:00                | 2009-05-14 00:00:00              | 2008–2009                    | #4     |                    18.52 |
+|            9 |       10 |         23 | Thursday 9pm/8c                                                                                   | 2009-09-24 00:00:00                | 2010-05-20 00:00:00              | 2009–2010                    | #12    |                    14.92 |
+|           10 |       11 |         22 | Thursday 9pm/8c                                                                                   | 2010-09-23 00:00:00                | 2011-05-12 00:00:00              | 2010–2011                    | #12    |                    13.52 |
+|           11 |       12 |         22 | Wednesday 10pm/9c                                                                                 | 2011-09-21 00:00:00                | 2012-05-09 00:00:00              | 2011–2012                    | #21    |                    12.49 |
+|           12 |       13 |         22 | Wednesday 10pm/9c                                                                                 | 2012-09-26 00:00:00                | 2013-05-15 00:00:00              | 2012–2013                    | #25    |                    11.63 |
+
+Generated Reasoning SQL: Explanation: To determine the number of viewers who watched the last season of CSI: Crime Scene Investigation, we need to filter the row corresponding to the last season based on the "Season" column. The "Viewers (in millions)" column contains the number of viewers for each season. We should focus on the row where the "Season" is the highest to identify the last season.
+
+SQL: SELECT "Viewers\n(in millions)" 
+FROM T 
+WHERE "Season" = (SELECT MAX("Season") FROM T);
+Generated Final SQL: SELECT "Viewers\n(in millions)" FROM T WHERE "Season" = (SELECT MAX("Season") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Viewers\n(in millions) |
+|-------------------------:|
+|                    11.63 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: CSI (franchise)
+SQL: SELECT "Viewers\n(in millions)" FROM T WHERE "Season" = (SELECT MAX("Season") FROM T);
+
+SQL Execution Result:
+Viewers\n(in millions)
+11.63
+
+Question: how many viewers watched the last season of csi: crime scene investigation?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 11.63
+[Gold Answer] 11.63 million
+

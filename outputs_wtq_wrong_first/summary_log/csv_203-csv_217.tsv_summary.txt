@@ -1,0 +1,51 @@
+**Column Analysis:**
+
+1. Title:
+   - Data type: Categorical
+   - 4 representative example values: 
+     - Rural Telecoms Handbook: Equipment and Manufacturers
+     - Global Turf Wars: Re-Inventing the Telecoms Operator for the Age of Global Competition
+     - The Far Reaching Effects of Broadband
+     - Regulating the Telecoms Market: Competition and Innovation in the Broadband Economy
+   - Role: Descriptor
+
+2. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1992, 1982, 1999, 2003
+   - Role: Identifier
+
+3. Authors:
+   - Data type: Categorical
+   - 4 representative example values: 
+     - Tim Hills, David Cleevely
+     - D. D. Cleevely
+     - David Cleevely, Peter Aknai, Ian Leslie
+     - Tim Hills, David Cleevely, Ross Pow
+   - Role: Descriptor
+
+4. Publisher:
+   - Data type: Categorical
+   - 4 representative example values: 
+     - Analysys Publications
+     - University of Cambridge
+     - Institution of Engineering & Technology
+   - Role: Descriptor
+
+5. Pages:
+   - Data type: Numeric
+   - 4 representative example values: -, 218, 180, 415
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The value in the "Pages" column is 415, which is significantly higher than the other values in the table.
+   - This row is an outlier due to the unusually high number of pages compared to the rest of the entries.
+
+2. Row 6:
+   - The value in the "Pages" column is 35, which is much lower than the other values in the table.
+   - This row is an outlier due to the unusually low number of pages compared to the majority of the entries.
+
+3. Row 1:
+   - The value in the "Authors" column includes two authors, while the other entries have either one author or multiple authors.
+   - This row is an outlier due to the different format of author names compared to the majority of the entries.

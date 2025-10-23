@@ -1,0 +1,153 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Fence
+   - Data type: Categorical
+   - 4 representative example values: 03, 17, ?, ?
+   - Role: Identifier for the fence number where the horse started the race.
+
+2. Name
+   - Data type: Categorical
+   - 4 representative example values: Ronald's Boy, Bold Biri, Blonde Warrior, Black Spot
+   - Role: Descriptor for the name of the horse.
+
+3. Jockey
+   - Data type: Categorical
+   - 4 representative example values: Mr Gay Kindersley, Michael Scudamore, Mr D Crossley-Cooke, J Gamble
+   - Role: Descriptor for the name of the jockey riding the horse.
+
+4. Age
+   - Data type: Numeric
+   - 4 representative example values: 8, 9, 13, 8
+   - Role: Measure for the age of the horse.
+
+5. Handicap (st-lb)
+   - Data type: Categorical
+   - 4 representative example values: 11-1, 10-13, 10-13, 10-13
+   - Role: Descriptor for the handicap weight of the horse.
+
+6. Starting price
+   - Data type: Categorical
+   - 4 representative example values: 100/1, 100/1, 100/1, 100/1
+   - Role: Descriptor for the starting price odds of the horse.
+
+7. Fate
+   - Data type: Categorical
+   - 4 representative example values: Fell, Fell, Fell, Fell
+   - Role: Descriptor for the outcome of the horse in the race.
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The values for Fence, Name, Jockey, Age, Handicap, and Starting price are all marked as "?" which indicates missing data. These values are not distinctive and are ordinary within the context of the table. Therefore, this row is an ordinary row and requires no special handling.
+
+2. Row 8:
+   - Similar to Row 9, all values for Fence, Name, Jockey, Age, Handicap, and Starting price are marked as "?", making this row an ordinary entry and not a special outlier.
+
+3. Row 10:
+   - The values for Fence, Name, Jockey, Age, Handicap, and Starting price are all marked as "?", which are ordinary missing data markers within the table. This row is an ordinary entry and does not stand out as a distinctive outlier.
+
+=== Full Table Preview ===
+|   row_number | Fence   | Name              | Jockey              |   Age | Handicap (st-lb)   | Starting price   | Fate         |
+|-------------:|:--------|:------------------|:--------------------|------:|:-------------------|:-----------------|:-------------|
+|            0 | 26      | Rondetto          | Jeff King           |     9 | 11-6               | 100/8            | Fell         |
+|            1 | 06      | Forgotten Dreams  | R Coonan            |    11 | 11-0               | 22/1             | Fell         |
+|            2 | 22      | Kapeno            | David Dick          |     8 | 11-6               | 100/8            | Fell         |
+|            3 | 01      | Ayala             | Stan Mellor         |    11 | 10-13              | 50/1             | Fell         |
+|            4 | ?       | Time              | Mr Brough Scott     |    10 | 10-13              | 40/1             | Fell         |
+|            5 | 10      | Dark Venetian     | Jim Renfree         |    10 | 10-13              | 100/1            | Fell         |
+|            6 | 04      | Red Tide          | Johnny Haine        |     8 | 10-13              | 33/1             | Fell         |
+|            7 | 24      | Pontin-Go         | Johnny Lehane       |    13 | 10-13              | 50/1             | Fell         |
+|            8 | 18      | Leedsy            | George Robinson     |     7 | 10-13              | 18/1             | Fell         |
+|            9 | 03      | Ronald's Boy      | Mr Gay Kindersley   |     8 | 11-1               | 100/1            | Fell         |
+|           10 | 17      | Bold Biri         | Michael Scudamore   |     9 | 10-13              | 100/1            | Fell         |
+|           11 | 09      | Groomsman         | Beltrán Osorio      |    10 | 10-13              | 100/1            | Fell         |
+|           12 | ?       | Blonde Warrior    | Mr D Crossley-Cooke |    13 | 10-13              | 100/1            | Fell         |
+|           13 | 06      | Nedsmar           | John Hudson         |    11 | 10-13              | 100/1            | Fell         |
+|           14 | ?       | Black Spot        | J Gamble            |     8 | 10-13              | 100/1            | Fell         |
+|           15 | ?       | Lizawake          | Mr George Hartigan  |    12 | 10-13              | 100/1            | Pulled Up    |
+|           16 | ?       | Reproduction      | Robin Langley       |    12 | 10-13              | 40/1             | Pulled-Up    |
+|           17 | ?       | Leslie            | P Jones             |     9 | 10-13              | 33/1             | Pulled Up    |
+|           18 | ?       | Sword Flash       | T Ryan              |    12 | 10-13              | 100/1            | Pulled Up    |
+|           19 | ?       | Vulcano           | Tommy Carberry      |     7 | 10-13              | 50/1             | Pulled Up    |
+|           20 | ?       | Quintin Bay       | Pat Taaffe          |     9 | 10-13              | 25/1             | Pulled Up    |
+|           21 | ?       | Solonace          | RW Jones            |    13 | 10-13              | 100/1            | Pulled Up    |
+|           22 | 04      | Cutlette          | M Roberts           |     8 | 10-13              | 50/1             | Pulled Up    |
+|           23 | ?       | Mr McTaffy        | T Jackson           |    13 | 10-13              | 100/1            | Pulled Up    |
+|           24 | 06      | Barleycroft       | Phil Harvey         |    10 | 10-13              | 100/1            | Brought Down |
+|           25 | 13      | Phebu             | J Morrissey         |     8 | 10-13              | 33/1             | Brought Down |
+|           26 | 06      | Ruby Glen         | Stephen Davenport   |    10 | 10-13              | 33/1             | Brought Down |
+|           27 | 06      | Sizzle-On         | P Hurley            |     9 | 10/13              | 100/1            | Brought Down |
+|           28 | 06      | Crobeg            | Mr Macer Gifford    |    12 | 10-13              | 100/1            | Brought Down |
+|           29 | 08      | Coleen Star       | Johnny Leech        |    11 | 10-13              | 100/1            | Refused      |
+|           30 | 22      | Ballygowan        | A Redmond           |    11 | 10-13              | 66/1             | Refused      |
+|           31 | ?       | Fearless Cavalier | R West              |    14 | 10-13              | 100/1            | Refused      |
+|           32 | ?       | French Cottage    | Mr WA Tellwright    |    13 | 10-13              | 100/1            | Refused      |
+
+Generated Reasoning SQL: Explanation: To determine the number of non-finishers who are at least 10 years old, we need to consider the "Age" column and the "Fate" column. We are interested in counting the rows where the horse's fate is not a finish (e.g., Pulled Up, Brought Down, Refused) and the age of the horse is 10 years or older.
+
+Since the "Age" column is numeric, we can filter rows where the age is greater than or equal to 10. The "Fate" column contains categorical values representing the outcome of the horse in the race. We need to exclude rows where the fate indicates a finish (e.g., Fell) and focus only on non-finishers.
+
+SQL: 
+SELECT COUNT(*) 
+FROM T 
+WHERE "Age" >= 10 
+AND "Fate" NOT LIKE 'Fell%';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Age" >= 10 AND "Fate" NOT LIKE 'Fell%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|         12 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1965 Grand National
+SQL: SELECT COUNT(*) FROM T WHERE "Age" >= 10 AND "Fate" NOT LIKE 'Fell%';
+
+SQL Execution Result:
+COUNT(*)
+12
+
+Question: how many non-finishers are at least 10 years old?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 12
+[Gold Answer] 20
+

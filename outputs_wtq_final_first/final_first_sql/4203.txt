@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Number:
+   - Data type: Categorical
+   - 4 representative example values: D2334, 25322, 37407, 47524
+   - Role: Identifier for each train in the table
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: nan, Tamworth Castle
+   - Role: Descriptor for the name of the train
+
+3. Type:
+   - Data type: Categorical
+   - 4 representative example values: Class 04, Class 25, Class 37, Class 47
+   - Role: Descriptor for the type of train
+
+4. Livery:
+   - Data type: Categorical
+   - 4 representative example values: Green, Ice Cream Van Blue, Transrail Grey, Rail Express Systems
+   - Role: Descriptor for the livery of the train
+
+5. Status:
+   - Data type: Categorical
+   - 4 representative example values: Under Repair, Static Display, Stored, Under restoration
+   - Role: Descriptor for the current status of the train
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: Stopped at Sep 2012 diesel gala after failure, built in 1967. Cosmetically restored in 2008, ~
+   - Role: Additional notes or information about the train
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - Values: 37407, nan, Class 37, Transrail Grey, Stored, ~
+   - This row is an outlier because it has the same values as Row 4, making it a duplicate entry. Duplicate entries are atypical and should be considered outliers.
+
+2. Row 2 (Index 2):
+   - Values: 25322, Tamworth Castle, Class 25, Ice Cream Van Blue, Static Display, built in 1967. Cosmetically restored in 2008
+   - This row is not an outlier as the values are consistent with the majority of the table and do not stand out as unusual.
+
+3. Row 0 (Index 0):
+   - Values: D2334, nan, Class 04, Green, Under Repair, Stopped at Sep 2012 diesel gala after failure
+   - This row is not an outlier as the values are consistent with the majority of the table and do not stand out as unusual.
+
+=== Full Table Preview ===
+|   row_number | Number   | Name                | Type                                   | Livery               | Status            | Notes                                                                                                    |
+|-------------:|:---------|:--------------------|:---------------------------------------|:---------------------|:------------------|:---------------------------------------------------------------------------------------------------------|
+|            0 |          | Brightside          | Yorkshire Engine Company 0-4-0         | Black                | Under Repair      | Currently dismantled for overhaul                                                                        |
+|            1 | 6        | Roger H. Bennett    | Yorkshire Engine Company "Janus" 0-6-0 | NCB Blue             | Operational       | ~                                                                                                        |
+|            2 | D2334    |                     | Class 04                               | Green                | Under Repair      | Stopped at Sep 2012 diesel gala after failure                                                            |
+|            3 | 25322    | Tamworth Castle     | Class 25                               | "Ice Cream Van" Blue | Static Display    | built in 1967. Cosmetically restored in 2008                                                             |
+|            4 | 33021    | Captain Charles     | Class 33                               | Blue                 | Operational       | built in 1960. On loan from Tysley                                                                       |
+|            5 | 33102    | Sophie (Unofficial) | Class 33                               | Blue                 | Operational       | built in 1960. Launched Sep 2012 - restoration still being completed although the loco is now in service |
+|            6 | 37407    |                     | Class 37                               | Transrail Grey       | Stored            | ~                                                                                                        |
+|            7 | 37424    |                     | Class 37                               | Transrail Grey       | Stored            | ~                                                                                                        |
+|            8 | 47524    |                     | Class 47                               | Rail Express Systems | Under restoration | ~                                                                                                        |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Status" column contains categorical values representing the current status of each train. To find the number of locomotives that are currently operational, we count the rows where "Status" = 'Operational'. No outlier rows need to be excluded for this calculation.
+SQL: select count("Number") from T where "Status" = 'Operational';
+Generated Final SQL: select count("Number") from T where "Status" = 'Operational';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Number") |
+|------------------:|
+|                 3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Churnet Valley Railway
+SQL: select count("Number") from T where "Status" = 'Operational';
+
+count("Number")
+3
+Question: how many locomotives are currently operational?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

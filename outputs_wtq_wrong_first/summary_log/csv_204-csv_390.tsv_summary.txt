@@ -1,0 +1,32 @@
+**Column Analysis:**
+
+1. **Nation:**
+   - Data type: Categorical
+   - 4 representative example values: Barbados, South Africa, Netherlands Antilles & Aruba, Mexico
+   - Role: Identifier for the country where the patrol vessels are employed.
+
+2. **Date:**
+   - Data type: Numeric
+   - 4 representative example values: 2007, 2004, 1998, 2012
+   - Role: Indicates the year when the patrol vessels were built or inducted.
+
+3. **Quantity:**
+   - Data type: Numeric
+   - 4 representative example values: 3, 6, nan (missing data)
+   - Role: Represents the number of patrol vessels mentioned for each nation.
+
+4. **Type:**
+   - Data type: Numeric
+   - 4 representative example values: 4207, 4708
+   - Role: Indicates the type or class of patrol vessel mentioned.
+
+**Outlier Row Analysis:**
+
+1. **Row 6 (United States):**
+   - The Quantity value is "nan" which represents missing data. This is not a distinctive value and is a common occurrence in datasets. Therefore, this row is an ordinary row and does not require special handling.
+
+2. **Row 11 (Venezuela):**
+   - The Quantity value is 6, which is consistent with other rows in the table. The Type value of 4207 is also similar to other entries. Therefore, there are no distinctive values that make this row an outlier. It is an ordinary row and does not require special handling.
+
+3. **Row 7 (Mexico):**
+   - The Type value of 4207 is consistent with other entries in the table. The details about the patrol boats being built at ASTIMAR 1 in Tampico, Tamaulipas are specific to this row but do not make it an outlier in terms of the data values. Therefore, this row is an ordinary entry and does not require special handling.

@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Olympics
+   - Data type: Categorical
+   - 4 representative example values: 1952 Winter Olympics, 1994 Winter Olympics, 2000 Summer Olympics, 2014 Winter Olympics
+   - Role: Identifier for the specific Olympic event.
+
+2. Athlete
+   - Data type: Categorical
+   - 4 representative example values: Torbjørn Falkanger, Heikki Savolainen, Adolfo Consolini, Vegard Ulvang
+   - Role: Descriptor for the athlete participating in the Olympics.
+
+3. Judge (Official)
+   - Data type: Categorical
+   - 4 representative example values: -, Kari Kåring, Peter Kerr, Vyacheslav Vedenin, Jr
+   - Role: Descriptor for the official judge associated with the Olympics.
+
+4. Coach
+   - Data type: Categorical
+   - 4 representative example values: -, Anastassia Popkova
+   - Role: Descriptor for the coach of the athlete participating in the Olympics.
+
+5. Language
+   - Data type: Categorical
+   - 4 representative example values: English (Ulvang)/Norwegian (Kåring), English, Russian
+   - Role: Descriptor for the language used by the athlete, coach, or official.
+
+**Outlier Row Analysis:**
+
+1. Row 36:
+   - The row contains missing values for all columns, which is not distinctive and is a common occurrence in the dataset. This row is an ordinary row and does not require special handling.
+
+2. Row 43:
+   - The row contains missing values for all columns, similar to Row 36. These missing values are not distinctive and are common in the dataset. This row is an ordinary row and does not require special handling.
+
+3. Row 33:
+   - The row contains missing values for all columns, which is not distinctive and is a common occurrence in the dataset. This row is an ordinary row and does not require special handling.

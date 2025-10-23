@@ -1,0 +1,133 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Numeric
+   - 4 representative example values: 16, 18, 19, 23
+   - Role: Identifier for the position of the rider in the race.
+
+2. Rider:
+   - Data type: Categorical
+   - 4 representative example values: Luca Boscoscuro, Julien Allemand, Fonsi Nieto, Arno Visscher
+   - Role: Descriptor for the name of the rider.
+
+3. Manufacturer:
+   - Data type: Categorical
+   - 4 representative example values: TSR-Honda, Yamaha, Aprilia, Honda
+   - Role: Descriptor for the manufacturer of the bike.
+
+4. Time/Retired:
+   - Data type: Categorical
+   - 4 representative example values: +56.432, +1:16.347, +1:25.622, +1:40.635
+   - Role: Descriptor for the time taken by the rider or indication of retirement.
+
+5. Points:
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, nan
+   - Role: Measure for the points earned by the rider.
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 15):
+   - Julien Allemand is the rider with a time of +1:16.347.
+   - This row is an outlier as the time taken by Julien Allemand is significantly different from the other time values in the table, making it distinctive.
+
+2. Row 23 (Index 24):
+   - Henk Van De Lagemaat is the rider with a time of +1 Lap.
+   - This row is an outlier as the indication of "+1 Lap" for time is different from the other time values in the table, making it distinctive.
+
+3. Row 15 (Index 16):
+   - Luca Boscoscuro is the rider with a time of +56.432.
+   - This row is an outlier as the time taken by Luca Boscoscuro is significantly different from the other time values in the table, making it distinctive.
+
+=== Full Table Preview ===
+|   row_number | Pos   | Rider                | Manufacturer   | Time/Retired   |   Points |
+|-------------:|:------|:---------------------|:---------------|:---------------|---------:|
+|            0 | 1     | Loris Capirossi      | Honda          | 38:04.730      |       25 |
+|            1 | 2     | Valentino Rossi      | Aprilia        | +0.180         |       20 |
+|            2 | 3     | Jeremy McWilliams    | Aprilia        | +0.534         |       16 |
+|            3 | 4     | Tohru Ukawa          | Honda          | +0.537         |       13 |
+|            4 | 5     | Shinya Nakano        | Yamaha         | +0.742         |       11 |
+|            5 | 6     | Ralf Waldmann        | Aprilia        | +7.019         |       10 |
+|            6 | 7     | Franco Battaini      | Aprilia        | +20.889        |        9 |
+|            7 | 8     | Stefano Perugini     | Honda          | +20.891        |        8 |
+|            8 | 9     | Jason Vincent        | Honda          | +21.310        |        7 |
+|            9 | 10    | Anthony West         | TSR-Honda      | +26.816        |        6 |
+|           10 | 11    | Alex Hofmann         | TSR-Honda      | +26.933        |        5 |
+|           11 | 12    | Sebastian Porto      | Yamaha         | +27.054        |        4 |
+|           12 | 13    | Tomomi Manako        | Yamaha         | +27.903        |        3 |
+|           13 | 14    | Masaki Tokudome      | TSR-Honda      | +33.161        |        2 |
+|           14 | 15    | Jarno Janssen        | TSR-Honda      | +56.248        |        1 |
+|           15 | 16    | Luca Boscoscuro      | TSR-Honda      | +56.432        |      nan |
+|           16 | 17    | Johann Stigefelt     | Yamaha         | +1:07.433      |      nan |
+|           17 | 18    | Julien Allemand      | TSR-Honda      | +1:16.347      |      nan |
+|           18 | 19    | Fonsi Nieto          | Yamaha         | +1:25.622      |      nan |
+|           19 | 20    | Lucas Oliver Bulto   | Yamaha         | +1:25.758      |      nan |
+|           20 | 21    | David Garcia         | Yamaha         | +1:33.867      |      nan |
+|           21 | 22    | Rudie Markink        | Aprilia        | +1:40.280      |      nan |
+|           22 | 23    | Arno Visscher        | Aprilia        | +1:40.635      |      nan |
+|           23 | 24    | Henk Van De Lagemaat | Honda          | +1 Lap         |      nan |
+|           24 | Ret   | Maurice Bolwerk      | TSR-Honda      | Retirement     |      nan |
+|           25 | Ret   | Andre Romein         | Honda          | Retirement     |      nan |
+|           26 | Ret   | Roberto Rolfo        | Aprilia        | Retirement     |      nan |
+|           27 | Ret   | Marcellino Lucchi    | Aprilia        | Retirement     |      nan |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Time/Retired" column contains categorical values representing the time taken by the rider or indication of retirement. Outlier rows are mentioned, including one where the rider has a time of "+1 Lap", indicating they did not finish on the final lap. To find the racer who did not finish on the final lap, we need to filter rows where "Time/Retired" = '+1 Lap' and retrieve the corresponding "Rider" value.
+
+SQL: select "Rider" from T where "Time/Retired" = '+1 Lap';
+Generated Final SQL: select "Rider" from T where "Time/Retired" = '+1 Lap';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Rider                |
+|:---------------------|
+| Henk Van De Lagemaat |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1999 Dutch TT
+SQL: select "Rider" from T where "Time/Retired" = '+1 Lap';
+
+Rider
+Henk Van De Lagemaat
+Question: which racer was the only one not to finish on the final lap?
+A: To find the answer to this question, let’s think step by step.
+Prediction: henk van de lagemaat
+[Gold Answer] henk van de lagemaat
+

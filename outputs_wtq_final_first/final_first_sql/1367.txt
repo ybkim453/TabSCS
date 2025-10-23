@@ -1,0 +1,127 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Chord:
+   - Data type: Categorical
+   - 4 representative example values: D♭mM7, DmM7, EmM7, A♭mM7
+   - Role: Identifier for the specific chord being analyzed
+
+2. Root:
+   - Data type: Categorical
+   - 4 representative example values: D♭, D, E, A♭
+   - Role: Descriptor indicating the root note of the chord
+
+3. Minor Third:
+   - Data type: Categorical
+   - 4 representative example values: F♭ (E), F, G, C♭ (B)
+   - Role: Descriptor indicating the minor third note of the chord
+
+4. Perfect Fifth:
+   - Data type: Categorical
+   - 4 representative example values: A♭, A, B, E♭
+   - Role: Descriptor indicating the perfect fifth note of the chord
+
+5. Major Seventh:
+   - Data type: Categorical
+   - 4 representative example values: C, C♯, D♯, G
+   - Role: Descriptor indicating the major seventh note of the chord
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The chord is EmM7 with the root note E, which is different from the majority of the table where the root notes are flat (♭).
+   - This row is an outlier due to the non-flat root note E.
+
+2. Row 16 (Index 16):
+   - The chord is BmM7 with the perfect fifth note F♯, which is different from the majority of the table where the perfect fifth notes are flat (♭).
+   - This row is an outlier due to the non-flat perfect fifth note F♯.
+
+3. Row 6 (Index 6):
+   - The chord is not specified in the provided preview, so it is not possible to determine the exact values that make it distinctive.
+   - Without more information, it is not possible to determine if this row is an outlier or an ordinary row.
+
+=== Full Table Preview ===
+|   row_number | Chord   | Root   | Minor Third   | Perfect Fifth   | Major Seventh   |
+|-------------:|:--------|:-------|:--------------|:----------------|:----------------|
+|            0 | CmM7    | C      | E♭            | G               | B               |
+|            1 | C♯mM7   | C♯     | E             | G♯              | B♯ (C)          |
+|            2 | D♭mM7   | D♭     | F♭ (E)        | A♭              | C               |
+|            3 | DmM7    | D      | F             | A               | C♯              |
+|            4 | D♯mM7   | D♯     | F♯            | A♯              | C (D)           |
+|            5 | E♭mM7   | E♭     | G♭            | B♭              | D               |
+|            6 | EmM7    | E      | G             | B               | D♯              |
+|            7 | FmM7    | F      | A♭            | C               | E               |
+|            8 | F♯mM7   | F♯     | A             | C♯              | E♯ (F)          |
+|            9 | G♭mM7   | G♭     | B (A)         | D♭              | F               |
+|           10 | GmM7    | G      | B♭            | D               | F♯              |
+|           11 | G♯mM7   | G♯     | B             | D♯              | F (G)           |
+|           12 | A♭mM7   | A♭     | C♭ (B)        | E♭              | G               |
+|           13 | AmM7    | A      | C             | E               | G♯              |
+|           14 | A♯mM7   | A♯     | C♯            | E♯ (F)          | G (A)           |
+|           15 | B♭mM7   | B♭     | D♭            | F               | A               |
+|           16 | BmM7    | B      | D             | F♯              | A♯              |
+
+Generated Reasoning SQL: Explanation: To find the chord that comes after EmM7, we need to look for the row in the table that immediately follows the row where the chord is EmM7. Since the table is ordered based on the chord names, we can simply select the chord from the row that comes after EmM7.
+
+SQL: 
+SELECT "Chord" 
+FROM T 
+WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Chord" = 'EmM7') + 1;
+Generated Final SQL: SELECT "Chord" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Chord" = 'EmM7') + 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Chord   |
+|:--------|
+| FmM7    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Minor major seventh chord
+SQL: SELECT "Chord" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Chord" = 'EmM7') + 1;
+
+SQL Execution Result:
+Chord
+FmM7
+
+Question: what cord comes after emm7?
+A: To find the answer to this question, let’s think step by step.
+Prediction: fmm7
+[Gold Answer] fmm7
+

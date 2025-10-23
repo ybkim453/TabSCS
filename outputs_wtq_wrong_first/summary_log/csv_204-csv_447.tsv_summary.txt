@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative values: 1, 5, 6, 7
+   - Role: Identifier for each row in the table.
+
+2. Date
+   - Data type: Categorical
+   - 4 representative values: September 13, 2010, August 5, 2012, August 20, 2012, August 26, 2012
+   - Role: Descriptor indicating the date of the tournament.
+
+3. Tournament
+   - Data type: Categorical
+   - 4 representative values: Ecuador F2, Manta, Colombia F2, Ecuador F3
+   - Role: Descriptor specifying the name of the tournament.
+
+4. Surface
+   - Data type: Categorical
+   - 4 representative values: Hard, Clay
+   - Role: Descriptor indicating the type of surface the tournament was played on.
+
+5. Partnering
+   - Data type: Categorical
+   - 4 representative values: Roberto Quiroz, Renzo Olivo, Ariel Behar, Sergio Galdós
+   - Role: Descriptor showing the name of the player's partner in the tournament.
+
+6. Opponent in the final
+   - Data type: Categorical
+   - 4 representative values: Peter Aarts\n Christopher Racz, Víctor Estrella\n João Souza, Nicolas Barrientos\n Michael Quintero, Mauricio Echazú\n Guillermo Rivera-Aránguiz
+   - Role: Descriptor indicating the names of the opponents in the final match.
+
+7. Score
+   - Data type: Categorical
+   - 4 representative values: 6–4, 6–4, 6–3, 6–0
+   - Role: Measure showing the final score of the match.
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Index 0):
+   - The values "Ecuador F2" in the Tournament column and "Roberto Quiroz" in the Partnering column are not present in the other outlier rows.
+   - These unique values make this row an outlier compared to the other rows.
+
+2. Row 5 (Index 5):
+   - The value "[10–1]" in the Score column is different from the typical score format seen in the other rows.
+   - This unique score makes this row an outlier in terms of the final match result.
+
+3. Row 4 (Index 4):
+   - The value "May 13, 2013" in the Date column is not present in the other outlier rows.
+   - This unique date makes this row an outlier compared to the other rows.

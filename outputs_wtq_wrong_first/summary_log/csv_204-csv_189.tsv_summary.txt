@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Name:
+   - Data type: Categorical
+   - 4 representative example values: Camelopardalis A, Cassiopeia 1, NGC 1560, NGC 1569
+   - Role: Identifier for the astronomical objects
+
+2. Type:
+   - Data type: Categorical
+   - 4 representative example values: Irr, dIrr, SA(s)d, Sbrst
+   - Role: Descriptor of the type of astronomical object
+
+3. R.A. (J2000):
+   - Data type: Categorical
+   - 4 representative example values: 04h 26m 16.3s, 02h 06m 02.8s, 04h 32m 49.1s, 04h 30m 49.1s
+   - Role: Measure of Right Ascension in J2000 coordinates
+
+4. Dec. (J2000):
+   - Data type: Categorical
+   - 4 representative example values: +72° 48′ 21″, +68° 59′ 59″, +71° 52′ 59″, +64° 50′ 52.6″
+   - Role: Measure of Declination in J2000 coordinates
+
+5. Redshift (km/s):
+   - Data type: Numeric
+   - 4 representative example values: -46 ± 1, 35, -36 ± 5, -104 ± 4
+   - Role: Measure of the redshift in kilometers per second
+
+6. Apparent Magnitude:
+   - Data type: Numeric
+   - 4 representative example values: 14.8, 16.4, 12.2, 11.2
+   - Role: Measure of the apparent brightness of the astronomical object
+
+**Outlier Row Analysis:**
+
+1. UGCA 86:
+   - The redshift value of 67 ± 4 is significantly different from the other redshift values in the table, making this row an outlier.
+
+2. Cassiopeia 1:
+   - The redshift value of 35 is not accompanied by an uncertainty range like the other redshift values, but it is an ordinary value within the context of the table. This row is not an outlier.
+
+3. UGCA 92:
+   - The redshift value of -99 ± 5 is significantly different from the other redshift values in the table, making this row an outlier.

@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Name of place:
+   - Data type: Categorical
+   - 4 representative example values: St. Marys, Schuyler, Schuylkill Township, Scranton
+   - Role: Identifier for the location/place
+
+2. Number of counties:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2
+   - Role: Measure indicating the number of counties associated with the place
+
+3. Principal county:
+   - Data type: Categorical
+   - 4 representative example values: Chester County, Montour County, Lackawanna County, York County
+   - Role: Descriptor identifying the main county associated with the place
+
+4. Lower zip code:
+   - Data type: Numeric
+   - 4 representative example values: 17772, 18501, 17019
+   - Role: Measure representing the lower end of the zip code range for the place
+
+5. Upper zip code:
+   - Data type: Numeric
+   - 4 representative example values: 19
+   - Role: Measure representing the upper end of the zip code range for the place
+
+**Outlier Row Analysis:**
+
+1. Row 465:
+   - The row contains missing values for both lower and upper zip codes, which is not common in the table.
+   - This makes the row an outlier as it deviates from the typical pattern of having zip code information.
+
+2. Row 187:
+   - The row contains a lower zip code of 17772, which is a specific and atypical value compared to the other zip codes in the table.
+   - This makes the row an outlier as it stands out in terms of the zip code range.
+
+3. Row 215:
+   - The row contains an upper zip code of 19, which is significantly lower than the other upper zip codes in the table.
+   - This makes the row an outlier as it is an unusual value for the upper zip code.

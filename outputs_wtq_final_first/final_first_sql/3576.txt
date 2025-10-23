@@ -1,0 +1,113 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Tablet
+   - Data type: Numeric
+   - 4 representative example values: 7, 8, 11, nan
+   - Role: Identifier for each tablet entry
+
+2. Genealogy
+   - Data type: Categorical
+   - 4 representative example values: Terah to Abraham 11:27, Descendants of Ishmael 25:13 - 18, Descendants of Esau 36:10 to 37:1, no genealogy
+   - Role: Describes the genealogy mentioned in the tablet
+
+3. Narrative
+   - Data type: Categorical
+   - 4 representative example values: 11:28 to 25:11, no narrative, no narrative, 37:2 to 50:26
+   - Role: Describes the narrative content of the tablet
+
+4. Colophon
+   - Data type: Categorical
+   - 4 representative example values: This is the account of Abraham's son Ishmael. 25:12 (eldest son), This is the account of Abraham's son Isaac. 25:19, This is the account of Jacob. 37:2, no colophon
+   - Role: Describes the colophon or closing statement of the tablet
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values "Descendants of Esau 36:10 to 37:1" in the Genealogy column and "no narrative" in the Narrative column make this row distinctive.
+   - These values are different from the majority of the table where genealogy is specified and there is a narrative present.
+   - Therefore, this row is an outlier.
+
+2. Row 4:
+   - The values "nan" in the Tablet column and "no genealogy" in the Genealogy column make this row distinctive.
+   - While the absence of genealogy is not uncommon in the table, the presence of "nan" in the Tablet column sets it apart from the other entries.
+   - Therefore, this row is an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Tablet | Genealogy                                    | Narrative      | Colophon                                                                          |
+|-------------:|---------:|:---------------------------------------------|:---------------|:----------------------------------------------------------------------------------|
+|            0 |        1 | Creation of Universe 1:1                     | 1:2 to 2:3     | "This is the account of the heavens and of the earth when they were created." 2:4 |
+|            1 |        2 | Heavens and Earth 2:4                        | 2:5 to 4:26    | "This is the written account of Adam." 5:1                                        |
+|            2 |        3 | Adam to Noah 5:1 - 32                        | 6:1 - 8        | "This is the account of Noah." 6:9                                                |
+|            3 |        4 | Noah to Shem Ham and Japeth 6:9 - 10         | 6:11 to 9:29   | "This is the account of Shem Ham and Japheth Noah's sons." 10:1                   |
+|            4 |        5 | Descendants of Shem Ham and Japeth 10:1 - 32 | 11:1 - 9       | "This is the account of Shem." 11:10                                              |
+|            5 |        6 | Shem to Terah 11:10 - 26                     | no narrative   | "This is the account of Terah." 11:27                                             |
+|            6 |        7 | Terah to Abraham 11:27                       | 11:28 to 25:11 | "This is the account of Abraham's son Ishmael." 25:12 (eldest son)                |
+|            7 |        8 | Descendants of Ishmael 25:13 - 18            | no narrative   | "This is the account of Abraham's son Isaac." 25:19                               |
+|            8 |        9 | Abraham to Isaac 25:19                       | 25:20 to 35:29 | "This is the account of Esau." 36:1 (eldest son)                                  |
+|            9 |       10 | Descendants of Esau 36:2 - 5                 | 36:6 - 8       | "This is the account of Esau." 36:9                                               |
+|           10 |       11 | Descendants of Esau 36:10 to 37:1            | no narrative   | "This is the account of Jacob." 37:2                                              |
+|           11 |      nan | no genealogy                                 | 37:2 to 50:26  | no colophon                                                                       |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Genealogy" column is categorical and contains values describing different genealogies. To find the genealogy that was previous to "Terah to Abraham 11:27", we need to identify the row where the genealogy value is "Terah to Abraham 11:27" and then retrieve the genealogy value from the row immediately preceding it based on the row_number. We will use the row_number as an identifier to determine the previous genealogy.
+
+SQL: 
+SELECT "Genealogy" 
+FROM T 
+WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Genealogy" = 'Terah to Abraham 11:27') - 1;
+Generated Final SQL: SELECT "Genealogy" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Genealogy" = 'Terah to Abraham 11:27') - 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Genealogy                |
+|:-------------------------|
+| Shem to Terah 11:10 - 26 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Wiseman hypothesis
+SQL: SELECT "Genealogy" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Genealogy" = 'Terah to Abraham 11:27') - 1;
+
+Genealogy
+Shem to Terah 11:10 - 26
+Question: which genealogy was previous to terah to abraham 11:27?
+A: To find the answer to this question, let’s think step by step.
+Prediction: shem to terah 11:10 - 26
+[Gold Answer] shem to terah 11:10 - 26
+

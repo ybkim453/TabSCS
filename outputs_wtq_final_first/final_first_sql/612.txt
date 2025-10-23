@@ -1,0 +1,129 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 27 May 1944, 6 October 1944, 27 November 1944, 14 January 1945
+   - Role: Identifier for the specific date of the event
+
+2. Location:
+   - Data type: Categorical
+   - 4 representative example values: North of Strasbourg, France; 20 miles northwest of Berlin, Germany; South of Magdeburg, Germany; Korea
+   - Role: Descriptor for the location of the event
+
+3. Air/Ground:
+   - Data type: Categorical
+   - 4 representative example values: Air
+   - Role: Descriptor indicating whether the event occurred in the air or on the ground
+
+4. Number:
+   - Data type: Numeric
+   - 4 representative example values: 1, 4
+   - Role: Measure indicating the number of aircraft involved in the event
+
+5. Type:
+   - Data type: Categorical
+   - 4 representative example values: Me-109, FW-190, Mig-15
+   - Role: Descriptor for the type of aircraft involved in the event
+
+6. Status:
+   - Data type: Categorical
+   - 4 representative example values: Damaged, Destroyed
+   - Role: Descriptor indicating the outcome of the event
+
+**Outlier Row Analysis:**
+
+1. Row 12:
+   - The values in this row are not provided in the partial preview, so it is not possible to determine if they are distinctive or ordinary. Further information is needed to analyze this row.
+
+2. Row 10:
+   - The values in this row are not provided in the partial preview, so it is not possible to determine if they are distinctive or ordinary. Further information is needed to analyze this row.
+
+3. Row 5:
+   - The location "Korea" stands out as different from the other locations mentioned in the table, which are all in Europe. This makes the row an outlier in terms of location. The rest of the values are ordinary within the context of the table, so this row is an outlier primarily due to the location entry.
+
+=== Full Table Preview ===
+|   row_number | Date                | Location                                | Air/Ground   |   Number | Type   | Status    |
+|-------------:|:--------------------|:----------------------------------------|:-------------|---------:|:-------|:----------|
+|            0 | 1944-03-08 00:00:00 | Near Steinhuder Meer (Lake) Germany     | Air          |      1   | Me-109 | Destroyed |
+|            1 | 1944-03-16 00:00:00 | 20 miles south of Stuttgart Germany     | Air          |      1   | Me-110 | Destroyed |
+|            2 | 1944-04-11 00:00:00 | 20 miles northeast of Magdeburg Germany | Air          |      0.5 | Me-109 | Destroyed |
+|            3 | 1944-04-13 00:00:00 | West of Mannheim Germany                | Air          |      1   | FW-190 | Destroyed |
+|            4 | 1944-04-24 00:00:00 | South of Munich Germany                 | Air          |      3   | Me-110 | Destroyed |
+|            5 | 1944-05-27 00:00:00 | North of Strasbourg France              | Air          |      1   | Me-109 | Damaged   |
+|            6 | 1944-08-18 00:00:00 | 20 miles northeast of Paris France      | Air          |      0.5 | Me-109 | Destroyed |
+|            7 | 1944-09-13 00:00:00 | South of Nordhausen Germany             | Air          |      2.5 | Me-109 | Destroyed |
+|            8 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      1   | Me-109 | Damaged   |
+|            9 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      2   | Me-109 | Destroyed |
+|           10 | 1944-11-27 00:00:00 | South of Magdeburg Germany              | Air          |      4   | FW-190 | Destroyed |
+|           11 | 1945-01-14 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      1   | Me-109 | Destroyed |
+|           12 | 1952-01-25 00:00:00 | Korea                                   | Air          |      1   | Mig-15 | Damaged   |
+
+Generated Reasoning SQL: The summary does not contain information about countries related to the events, so we cannot directly determine the country with more destroyed planes using SQL alone. 
+To answer this question, we would need additional data or context that includes the country information related to each event. 
+Without this information, we cannot construct a SQL query to compare the number of destroyed planes by country.
+Generated Final SQL: 
+[Error] Final SQL 실행 실패: 'NoneType' object is not iterable
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: John B. England (row_number, Date, Location, Air/Ground, Number, Type, Status)
+
+row_number | Date | Location | Air/Ground | Number | Type | Status
+0 | 1944-03-08 00:00:00 | Near Steinhuder Meer (Lake) Germany | Air | 1.0 | Me-109 | Destroyed
+1 | 1944-03-16 00:00:00 | 20 miles south of Stuttgart Germany | Air | 1.0 | Me-110 | Destroyed
+2 | 1944-04-11 00:00:00 | 20 miles northeast of Magdeburg Germany | Air | 0.5 | Me-109 | Destroyed
+3 | 1944-04-13 00:00:00 | West of Mannheim Germany | Air | 1.0 | FW-190 | Destroyed
+4 | 1944-04-24 00:00:00 | South of Munich Germany | Air | 3.0 | Me-110 | Destroyed
+5 | 1944-05-27 00:00:00 | North of Strasbourg France | Air | 1.0 | Me-109 | Damaged
+6 | 1944-08-18 00:00:00 | 20 miles northeast of Paris France | Air | 0.5 | Me-109 | Destroyed
+7 | 1944-09-13 00:00:00 | South of Nordhausen Germany | Air | 2.5 | Me-109 | Destroyed
+8 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany | Air | 1.0 | Me-109 | Damaged
+9 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany | Air | 2.0 | Me-109 | Destroyed
+10 | 1944-11-27 00:00:00 | South of Magdeburg Germany | Air | 4.0 | FW-190 | Destroyed
+11 | 1945-01-14 00:00:00 | 20 miles northwest of Berlin Germany | Air | 1.0 | Me-109 | Destroyed
+12 | 1952-01-25 00:00:00 | Korea | Air | 1.0 | Mig-15 | Damaged
+Question: which country has more destroyed planes?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will use both the summary and the full table.
+
+From the summary:
+- The **Status** column indicates whether a plane was "Destroyed" or "Damaged."
+
+From the full table:
+- Counting the number of "Destroyed" planes by country:
+  - Germany: 7 planes destroyed
+  - France: 1 plane destroyed
+  - Korea: 0 planes destroyed
+
+By combining the information from the summary (knowing which status to look for)  
+and the explicit counts from the full table, we can conclude that Germany has more destroyed planes.
+
+Final Answer: Germany
+[Fallback] Prediction: germany
+[Gold Answer] germany
+

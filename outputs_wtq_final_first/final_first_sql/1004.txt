@@ -1,0 +1,154 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: July 31, September 20, October 4, December 6
+   - Role: Identifier for the date of the match
+
+2. Team:
+   - Data type: Categorical
+   - 4 representative example values: Genk, Anderlecht
+   - Role: Descriptor for the team participating in the match
+
+3. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Champions League, UEFA Cup
+   - Role: Descriptor for the competition in which the match took place
+
+4. Round:
+   - Data type: Categorical
+   - 4 representative example values: Qual. Round 2, Round 1, Group Stage, Round of 32
+   - Role: Descriptor for the round of the competition
+
+5. Leg:
+   - Data type: Categorical
+   - 4 representative example values: Leg 1, Home, Leg 2, Away
+   - Role: Descriptor for the leg of the match (home or away)
+
+6. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Sarajevo, Rapid Wien, Tottenham Hotspur, Bordeaux
+   - Role: Descriptor for the opponent team
+
+7. Location:
+   - Data type: Categorical
+   - 4 representative example values: Cristal Arena, Genk, Constant Vanden Stock Stadium, Anderlecht
+   - Role: Descriptor for the location of the match
+
+8. Score:
+   - Data type: Categorical
+   - 4 representative example values: 1-2, 1-1, 1-0, 2-1
+   - Role: Measure of the match score
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The Date is February 13, which is different from the other dates in the table.
+   - The Round is Round of 32, which is different from the previous rounds.
+   - The Score is 2-1, which is different from the majority of the scores in the table.
+   - Conclusion: This row is an outlier due to the combination of a unique date, round, and score.
+
+2. Row 0 (Index 0):
+   - The Date is July 31, which is different from the other dates in the table.
+   - The Competition is Champions League, which is different from the UEFA Cup competitions.
+   - The Score is 1-2, which is different from the majority of the scores in the table.
+   - Conclusion: This row is an outlier due to the unique date, competition, and score.
+
+3. Row 18 (Index 18):
+   - The Date is missing, which is not a distinctive value.
+   - The Team is Anderlecht, which is consistent with other rows in the table.
+   - The Competition is UEFA Cup, which is consistent with other rows.
+   - The Round is missing, which is not a distinctive value.
+   - The Leg is missing, which is not a distinctive value.
+   - The Opponent is missing, which is not a distinctive value.
+   - The Location is missing, which is not a distinctive value.
+   - The Score is missing, which is not a distinctive value.
+   - Conclusion: This row is an ordinary row with missing data and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Date         | Team           | Competition      | Round         | Leg          | Opponent             | Location                                 | Score   |
+|-------------:|:-------------|:---------------|:-----------------|:--------------|:-------------|:---------------------|:-----------------------------------------|:--------|
+|            0 | July 7       | Gent           | Intertoto Cup    | Round 2       | Leg 1 Home   | Cliftonville         | Jules Ottenstadion Ghent                 | 2-0     |
+|            1 | July 14      | Gent           | Intertoto Cup    | Round 2       | Leg 2 Away   | Cliftonville         | Windsor Park Belfast                     | 4-0     |
+|            2 | July 21      | Gent           | Intertoto Cup    | Round 3       | Leg 1 Home   | Aalborg              | Jules Ottenstadion Ghent                 | 1-1     |
+|            3 | July 29      | Gent           | Intertoto Cup    | Round 3       | Leg 2 Away   | Aalborg              | Energi Nord Arena Aalborg                | 1-2     |
+|            4 | July 31      | Genk           | Champions League | Qual. Round 2 | Leg 1 Home   | Sarajevo             | Cristal Arena Genk                       | 1-2     |
+|            5 | August 8     | Genk           | Champions League | Qual. Round 2 | Leg 2 Away   | Sarajevo             | Asim Ferhatović Hase Stadium Sarajevo    | 1-0     |
+|            6 | August 15    | Anderlecht     | Champions League | Qual. Round 3 | Leg 1 Away   | Fenerbahçe           | Şükrü Saracoğlu Stadium Istanbul         | 0-1     |
+|            7 | August 16    | Standard Liège | UEFA Cup         | Qual. Round 2 | Leg 1 Away   | Käerjeng             | Stade Josy Barthel Luxembourg            | 3-0     |
+|            8 | August 29    | Anderlecht     | Champions League | Qual. Round 3 | Leg 2 Home   | Fenerbahçe           | Constant Vanden Stock Stadium Anderlecht | 0-2     |
+|            9 | August 30    | Standard Liège | UEFA Cup         | Qual. Round 2 | Leg 2 Home   | Käerjeng             | Stade Maurice Dufrasne Liège             | 1-0     |
+|           10 | September 20 | Anderlecht     | UEFA Cup         | Round 1       | Leg 1 Home   | Rapid Wien           | Constant Vanden Stock Stadium Anderlecht | 1-1     |
+|           11 | September 20 | Club Brugge    | UEFA Cup         | Round 1       | Leg 1 Away   | Brann                | Brann Stadion Bergen                     | 1-0     |
+|           12 | September 20 | Standard Liège | UEFA Cup         | Round 1       | Leg 1 Away   | Zenit St. Petersburg | Petrovsky Stadium Saint Petersburg       | 0-3     |
+|           13 | October 4    | Anderlecht     | UEFA Cup         | Round 1       | Leg 2 Away   | Rapid Wien           | Gerhard Hanappi Stadium Vienna           | 1-0     |
+|           14 | October 4    | Club Brugge    | UEFA Cup         | Round 1       | Leg 2 Home   | Brann                | Jan Breydel Stadium Bruges               | 1-2     |
+|           15 | October 4    | Standard Liège | UEFA Cup         | Round 1       | Leg 2 Home   | Zenit St. Petersburg | Stade Maurice Dufrasne Liège             | 1-1     |
+|           16 | October 25   | Anderlecht     | UEFA Cup         | Group Stage   | Match 1 Home | Hapoel Tel Aviv      | Constant Vanden Stock Stadium Anderlecht | 2-0     |
+|           17 | November 8   | Anderlecht     | UEFA Cup         | Group Stage   | Match 2 Away | Aalborg              | Energi Nord Arena Aalborg                | 1-1     |
+|           18 | December 6   | Anderlecht     | UEFA Cup         | Group Stage   | Match 3 Home | Tottenham Hotspur    | Constant Vanden Stock Stadium Anderlecht | 1-1     |
+|           19 | December 19  | Anderlecht     | UEFA Cup         | Group Stage   | Match 4 Away | Getafe               | Coliseum Alfonso Pérez Getafe            | 1-2     |
+|           20 | February 13  | Anderlecht     | UEFA Cup         | Round of 32   | Leg 1 Home   | Bordeaux             | Constant Vanden Stock Stadium Anderlecht | 2-1     |
+|           21 | February 21  | Anderlecht     | UEFA Cup         | Round of 32   | Leg 2 Away   | Bordeaux             | Stade Chaban-Delmas Bordeaux             | 1-1     |
+|           22 | March 6      | Anderlecht     | UEFA Cup         | Round of 16   | Leg 1 Home   | Bayern Munich        | Constant Vanden Stock Stadium Anderlecht | 0-5     |
+|           23 | March 12     | Anderlecht     | UEFA Cup         | Round of 16   | Leg 2 Away   | Bayern Munich        | Allianz Arena Munich                     | 2-1     |
+
+Generated Reasoning SQL: Explanation: To determine how many times the Gent team played, we need to count the number of rows where the "Team" column is equal to "Gent". Each row represents a match played by the team, so counting the rows gives us the total number of matches played by the Gent team.
+SQL: select count("Team") from T where "Team" = 'Gent';
+Generated Final SQL: select count("Team") from T where "Team" = 'Gent';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Team") |
+|----------------:|
+|               4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2007–08 in Belgian football
+SQL: select count("Team") from T where "Team" = 'Gent';
+
+count("Team")
+4
+Question: how many times did the gent team play?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

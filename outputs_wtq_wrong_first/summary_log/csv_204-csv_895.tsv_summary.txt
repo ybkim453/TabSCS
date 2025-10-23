@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. **Chart Year:**
+   - Data type: Numeric
+   - 4 representative example values: 2013, 2011, 2008, 2008
+   - Role: Identifier for the year in which the chart data was recorded.
+
+2. **Artist:**
+   - Data type: Categorical
+   - 4 representative example values: R. Kelly, Justin Bieber, T.I. f/ B.o.B, Usher
+   - Role: Descriptor for the artist who released the album or song.
+
+3. **Album:**
+   - Data type: Categorical
+   - 4 representative example values: Forthcoming Album, We Don't Get Down Like Y'all, Here I Stand, Doll Domination
+   - Role: Descriptor for the album associated with the song.
+
+4. **Song:**
+   - Data type: Categorical
+   - 4 representative example values: Cookie, My Story f/ 2 Chains, Right Here f/ Drake, Moving Mountains
+   - Role: Descriptor for the song released by the artist.
+
+5. **Billboard Hot 100:**
+   - Data type: Numeric
+   - 4 representative example values: New Single, New Single, New Single, 67
+   - Role: Measure indicating the position of the song on the Billboard Hot 100 chart.
+
+6. **Billboard Hot R&B/Hip Hop:**
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, 18
+   - Role: Measure indicating the position of the song on the Billboard Hot R&B/Hip Hop chart.
+
+7. **Unnamed: 6:**
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, nan
+   - Role: Unnamed column with missing data.
+
+**Outlier Row Analysis:**
+
+1. Row 157:
+   - The values in this row are all "nan", which indicates missing data.
+   - These missing values are not distinctive and are common in datasets, making this an ordinary row.
+
+2. Row 160:
+   - The values in this row are all "nan", indicating missing data.
+   - Similar to row 157, these missing values are not distinctive and are ordinary.
+
+3. Row 102:
+   - The values in this row are "67" for Billboard Hot 100 and "18" for Billboard Hot R&B/Hip Hop.
+   - These values are not significantly different from other entries in the table and are not distinctive, making this an ordinary row.

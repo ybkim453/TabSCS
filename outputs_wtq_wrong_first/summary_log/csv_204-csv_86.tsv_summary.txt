@@ -1,0 +1,70 @@
+### Column Analysis:
+
+1. **Episode:**
+   - Data type: Numeric
+   - 4 representative example values: 3, 5, 8, 9
+   - Role: Identifier for each episode of the show
+
+2. **Show #:**
+   - Data type: Categorical
+   - 4 representative example values: IA0509, IA0504, IASP07, IASP08
+   - Role: Identifier for each specific show number
+
+3. **Iron Chef:**
+   - Data type: Categorical
+   - 4 representative example values: Cat Cora, Michael Symon, Cat Cora & Paula Deen
+   - Role: Descriptor of the Iron Chef competing in the episode
+
+4. **Challenger:**
+   - Data type: Categorical
+   - 4 representative example values: Alexandra Guarnaschelli, Mark Tarbell, Ricky Moore, Tyler Florence & Robert Irvine
+   - Role: Descriptor of the Challenger competing against the Iron Chef
+
+5. **Challenger specialty:**
+   - Data type: Categorical
+   - 4 representative example values: French-American, Seasonal Organic, Contemporary American, Southern
+   - Role: Descriptor of the specialty cuisine of the Challenger
+
+6. **Secret ingredient(s) or theme:**
+   - Data type: Categorical
+   - 4 representative example values: Farmers' Market, Apples, Milk and cream, Traditional Thanksgiving
+   - Role: Descriptor of the secret ingredient(s) or theme of the episode
+
+7. **Winner:**
+   - Data type: Categorical
+   - 4 representative example values: Cat Cora, Mark Tarbell, Michael Symon, Cat Cora & Paula Deen
+   - Role: Descriptor of the winner of the episode
+
+8. **Final score:**
+   - Data type: Categorical
+   - 4 representative example values: 45-41, 50-44, 51-46, 49-47
+   - Role: Measure of the final score of the episode
+
+### Outlier Row Analysis:
+
+1. **Row 8:**
+   - Iron Chef: Cat Cora
+   - Challenger: Mary Dumont
+   - Challenger specialty: French-American
+   - Secret ingredient(s) or theme: Milk and cream
+   - Winner: Cat Cora
+   - Final score: 51-46
+   - Explanation: This row is an outlier because the final score of 51-46 is higher than the typical scores in the table.
+
+2. **Row 4:**
+   - Iron Chef: Michael Symon
+   - Challenger: Ricky Moore
+   - Challenger specialty: Contemporary American
+   - Secret ingredient(s) or theme: Traditional Thanksgiving
+   - Winner: Michael Symon
+   - Final score: 51-43
+   - Explanation: This row is an outlier because the final score of 51-43 is higher than the typical scores in the table.
+
+3. **Row 9:**
+   - Iron Chef: Cat Cora & Paula Deen
+   - Challenger: Tyler Florence & Robert Irvine
+   - Challenger specialty: Southern (Deen), Contemporary American (Florence), International (Irvine)
+   - Secret ingredient(s) or theme: Sugar
+   - Winner: Cat Cora & Paula Deen
+   - Final score: 49-47
+   - Explanation: This row is an outlier because the final score of 49-47 is higher than the typical scores in the table.

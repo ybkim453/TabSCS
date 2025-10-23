@@ -1,0 +1,126 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Games
+   - Data type: Categorical
+   - Representative values: "1996 Atlanta", "2000 Sydney", "2012 London", "Total"
+   - Role: Identifier for the Olympic Games
+
+2. Athletes
+   - Data type: Numeric
+   - Representative values: 4, 7, 31, Total
+   - Role: Measure of the number of athletes participating in each Olympic Games
+
+3. Gold
+   - Data type: Numeric
+   - Representative values: 0, 0, 3, 9
+   - Role: Measure of the number of gold medals won in each Olympic Games
+
+4. Silver
+   - Data type: Numeric
+   - Representative values: 0, 0, 0, 5
+   - Role: Measure of the number of silver medals won in each Olympic Games
+
+5. Bronze
+   - Data type: Numeric
+   - Representative values: 0, 0, 3, 6
+   - Role: Measure of the number of bronze medals won in each Olympic Games
+
+6. Total
+   - Data type: Numeric
+   - Representative values: 0, 0, 6, 20
+   - Role: Measure of the total number of medals won in each Olympic Games
+
+7. Rank
+   - Data type: Categorical
+   - Representative values: "-", "-", "37", "54"
+   - Role: Descriptor indicating the ranking of the country based on total medals won
+
+**Outlier Row Analysis:**
+
+1. Row 7 (2012 London)
+   - The values for Gold (3) and Bronze (3) are significantly higher compared to the other rows.
+   - This row stands out as it has a higher number of medals won compared to the other Olympic Games.
+
+2. Row 6 (Total)
+   - The values for Gold (9), Silver (5), Bronze (6), and Total (20) are higher than the individual Olympic Games.
+   - This row represents the total medals won across all Olympic Games and is expected to have higher values. It is not an outlier.
+
+=== Full Table Preview ===
+|   row_number | Games          | Athletes   |   Gold |   Silver |   Bronze |   Total | Rank   |
+|-------------:|:---------------|:-----------|-------:|---------:|---------:|--------:|:-------|
+|            0 | 1988 Seoul     | 14         |      0 |        0 |        1 |       1 | 48     |
+|            1 | 1992 Barcelona | 5          |      0 |        0 |        0 |       0 | –      |
+|            2 | 1996 Atlanta   | 4          |      0 |        0 |        0 |       0 | –      |
+|            3 | 2000 Sydney    | 7          |      0 |        0 |        0 |       0 | –      |
+|            4 | 2004 Athens    | 10         |      2 |        4 |        0 |       6 | 42     |
+|            5 | 2008 Beijing   | 18         |      4 |        1 |        2 |       7 | 32     |
+|            6 | 2012 London    | 31         |      3 |        0 |        3 |       6 | 37     |
+|            7 | Total          | Total      |      9 |        5 |        6 |      20 | 54     |
+
+Generated Reasoning SQL: Explanation: To determine the year when Morocco won the largest number of medals during the Summer Games, we need to consider the total number of medals won in each Olympic Games. We should exclude the "Total" row as it represents the cumulative medals across all games and not a specific year. We will compare the "Total" row with individual game rows to identify the year with the highest total medals won by Morocco.
+
+SQL:
+SELECT Games
+FROM T
+WHERE Games <> 'Total'
+ORDER BY Total DESC
+LIMIT 1;
+Generated Final SQL: SELECT Games FROM T WHERE Games <> 'Total' ORDER BY Total DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Games        |
+|:-------------|
+| 2008 Beijing |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Morocco at the Paralympics
+SQL: SELECT Games FROM T WHERE Games <> 'Total' ORDER BY Total DESC LIMIT 1;
+
+SQL Execution Result:
+Games
+2008 Beijing
+
+Question: what year did morocco win the largest amount of medals during the summer games?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2008 beijing
+[Gold Answer] 2008
+

@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Type
+   - Data type: Categorical
+   - Representative values: PK4 (11/20 PS), C1 (6/18 PS), D7 (42/120 PS), Greif V8
+   - Role: Identifier for the type of vehicle model
+
+2. Construction period
+   - Data type: Numeric (range)
+   - Representative values: 1909–1912, 1909–1915, 1919–1921, 1934–1937
+   - Role: Descriptor indicating the years in which the vehicle model was constructed
+
+3. Cylinder
+   - Data type: Categorical
+   - Representative values: straight-4, straight-6, V8
+   - Role: Descriptor for the type of engine cylinder configuration
+
+4. Capacity
+   - Data type: Numeric
+   - Representative values: 2.544 cc, 1.546 cc, 11.160 cc, 2.489 cc
+   - Role: Measure of the engine capacity in cubic centimeters
+
+5. Power
+   - Data type: Categorical (with numeric values)
+   - Representative values: 20 PS (14,7 kW), 18 PS (13,2 kW), 120 PS (88 kW), 55 PS (40 kW)
+   - Role: Descriptor for the power output of the engine in PS (Pferdestärke) and kW
+
+6. Vmax
+   - Data type: Categorical (with numeric values)
+   - Representative values: 70 km/h (43 mph), 160 km/h (99 mph), 110 km/h (68 mph), 120 km/h (75 mph)–140 km/h (87 mph)
+   - Role: Descriptor for the maximum speed of the vehicle in kilometers per hour and miles per hour
+
+**Outlier Row Analysis:**
+
+1. Row 37 (Arkona)
+   - The values for Construction period (1937–1940) and Vmax (120 km/h (75 mph)–140 km/h (87 mph)) are consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 42 (Arkona)
+   - The values for Construction period (1937–1940) and Vmax (120 km/h (75 mph)–140 km/h (87 mph)) are consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 16 (F6 (6/30 PS))
+   - The value for Power (30 PS (22 kW)) is higher compared to the other rows in the table.
+   - This row is an outlier in terms of power output and may require further investigation to determine if it is a special case.

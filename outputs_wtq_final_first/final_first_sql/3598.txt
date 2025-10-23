@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 3, 5, 7, 8
+   - Role: Identifier, indicating the ranking of the city in terms of passengers.
+
+2. City:
+   - Data type: Categorical
+   - 4 representative example values: Guerrero, Acapulco; Jalisco, Puerto Vallarta; Guerrero, Ixtapa/Zihuatanejo; Baja California, Tijuana
+   - Role: Descriptor, identifying the city where the airport is located.
+
+3. Passengers:
+   - Data type: Numeric
+   - 4 representative example values: 56,069; 43,419; 35,507; 14,906
+   - Role: Measure, indicating the number of passengers at the airport.
+
+4. Ranking:
+   - Data type: Numeric
+   - 4 representative example values: nan, 1
+   - Role: Measure, indicating the ranking of the city in terms of passengers.
+
+5. Airline:
+   - Data type: Categorical
+   - 4 representative example values: Aeroméxico Connect, Interjet; Interjet; Interjet; VivaAerobus
+   - Role: Descriptor, identifying the airline(s) operating at the airport.
+
+**Outlier Row Analysis:**
+
+1. Row 8 (Index 8):
+   - The values in the "Ranking" column are all "nan", which is different from the majority of the table where rankings are provided.
+   - This row is an outlier due to the absence of a ranking value, making it distinctive from the other rows.
+
+2. Row 4 (Index 4):
+   - The values in the "Ranking" column are all "nan", similar to Row 8.
+   - This row is an outlier due to the absence of a ranking value, making it distinctive from the other rows.
+
+3. Row 2 (Index 2):
+   - The "Ranking" value is "1", which is different from the majority of the table where rankings are "nan".
+   - This row is an outlier due to the presence of a ranking value, making it distinctive from the other rows.
+
+=== Full Table Preview ===
+|   row_number |   Rank | City                          |   Passengers |   Ranking | Airline                             |
+|-------------:|-------:|:------------------------------|-------------:|----------:|:------------------------------------|
+|            0 |      1 | Quintana Roo Cancún           |       132046 |       nan | Aeroméxico Connect Interjet Volaris |
+|            1 |      2 | Nuevo León Monterrey          |       106513 |       nan | Aeroméxico Connect Interjet         |
+|            2 |      3 | Guerrero Acapulco             |        56069 |       nan | Aeroméxico Connect Interjet         |
+|            3 |      4 | Jalisco Guadalajara           |        52584 |       nan | Aeroméxico Connect Volaris          |
+|            4 |      5 | Jalisco Puerto Vallarta       |        43419 |         1 | Interjet                            |
+|            5 |      6 | Baja California Sur Los Cabos |        37526 |         1 | Interjet                            |
+|            6 |      7 | Guerrero Ixtapa/Zihuatanejo   |        35507 |       nan | Interjet                            |
+|            7 |      8 | Baja California Tijuana       |        14906 |       nan | Interjet                            |
+|            8 |      9 | Tabasco Villahermosa          |         6928 |         1 | VivaAerobus                         |
+|            9 |     10 | Tamaulipas Tampico            |         3619 |         1 | VivaAerobus                         |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "City" column is categorical and represents the city where the airport is located. The "Passengers" column is numeric and shows the number of passengers at the airport. To find the city that served the most passengers in 2013, we need to filter rows where the year is 2013 and then identify the city with the highest number of passengers. It is important to note that we do not need to consider outlier rows for this query.
+
+SQL: 
+SELECT "City"
+FROM T
+WHERE "Passengers" = (SELECT MAX("Passengers") FROM T WHERE "Year" = 2013);
+Generated Final SQL: SELECT "City" FROM T WHERE "Passengers" = (SELECT MAX("Passengers") FROM T WHERE "Year" = 2013);
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Lic. Adolfo López Mateos International Airport (row_number, Rank, City, Passengers, Ranking, Airline)
+
+row_number | Rank | City | Passengers | Ranking | Airline
+0 | 1 | Quintana Roo Cancún | 132046 | nan | Aeroméxico Connect Interjet Volaris
+1 | 2 | Nuevo León Monterrey | 106513 | nan | Aeroméxico Connect Interjet
+2 | 3 | Guerrero Acapulco | 56069 | nan | Aeroméxico Connect Interjet
+3 | 4 | Jalisco Guadalajara | 52584 | nan | Aeroméxico Connect Volaris
+4 | 5 | Jalisco Puerto Vallarta | 43419 | 1.0 | Interjet
+5 | 6 | Baja California Sur Los Cabos | 37526 | 1.0 | Interjet
+6 | 7 | Guerrero Ixtapa/Zihuatanejo | 35507 | nan | Interjet
+7 | 8 | Baja California Tijuana | 14906 | nan | Interjet
+8 | 9 | Tabasco Villahermosa | 6928 | 1.0 | VivaAerobus
+9 | 10 | Tamaulipas Tampico | 3619 | 1.0 | VivaAerobus
+Question: what city served the most passengers in 2013?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to look at the relevant columns in the summary:
+- The **City** column contains the names of the cities where the airports are located.
+- The **Passengers** column shows the number of passengers served by each airport.
+- There are no special cases or atypical rows mentioned in the summary.
+
+Next, we examine the full table to confirm the city that served the most passengers in 2013:
+- The city of **Quintana Roo Cancún** (Rank 1) served the highest number of passengers, with a total of **132,046** passengers.
+
+Therefore, based on the information provided in both the summary and the full table, the city that served the most passengers in 2013 was **Quintana Roo Cancún**.
+
+Final Answer: Quintana Roo Cancún
+[Fallback] Prediction: quintana roo cancún
+[Gold Answer] quintana roo, cancún
+

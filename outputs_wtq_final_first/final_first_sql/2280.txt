@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Binary
+   - Data type: Categorical
+   - 4 representative example values: 0011 0100, 0011 0101, 0011 0111, 0011 1000
+   - Role of the column: Identifier
+
+2. Octal
+   - Data type: Numeric
+   - 4 representative example values: 64, 65, 67, 70
+   - Role of the column: Descriptor
+
+3. Decimal
+   - Data type: Numeric
+   - 4 representative example values: 52, 53, 55, 56
+   - Role of the column: Measure
+
+4. Hexadecimal
+   - Data type: Categorical
+   - 4 representative example values: 34, 35, 37, 38
+   - Role of the column: Descriptor
+
+5. Glyph
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 7, 8
+   - Role of the column: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The values in this row are 0101, 65, 53, 35, 5.
+   - These values are not significantly different from the majority of the table and are ordinary within the context of the data.
+   - Conclusion: This is an ordinary row and requires no special handling.
+
+2. Row 9:
+   - The values in this row are 1001, 71, 57, 39, 9.
+   - These values are not significantly different from the majority of the table and are ordinary within the context of the data.
+   - Conclusion: This is an ordinary row and requires no special handling.
+
+3. Row 8:
+   - The values in this row are 0111, 67, 55, 37, 7.
+   - These values are not significantly different from the majority of the table and are ordinary within the context of the data.
+   - Conclusion: This is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Binary    |   Octal |   Decimal |   Hexadecimal |   Glyph |
+|-------------:|:----------|--------:|----------:|--------------:|--------:|
+|            0 | 0011 0000 |      60 |        48 |            30 |       0 |
+|            1 | 0011 0001 |      61 |        49 |            31 |       1 |
+|            2 | 0011 0010 |      62 |        50 |            32 |       2 |
+|            3 | 0011 0011 |      63 |        51 |            33 |       3 |
+|            4 | 0011 0100 |      64 |        52 |            34 |       4 |
+|            5 | 0011 0101 |      65 |        53 |            35 |       5 |
+|            6 | 0011 0110 |      66 |        54 |            36 |       6 |
+|            7 | 0011 0111 |      67 |        55 |            37 |       7 |
+|            8 | 0011 1000 |      70 |        56 |            38 |       8 |
+|            9 | 0011 1001 |      71 |        57 |            39 |       9 |
+
+Generated Reasoning SQL: To answer the question, we need to count the number of rows where the "Octal" column is in the 60s or the "Decimal" column is in the 40s. 
+Both "Octal" and "Decimal" columns are relevant for filtering based on the provided summary.
+We will use the LIKE condition to filter rows where the "Octal" column contains values in the 60s and the "Decimal" column contains values in the 40s.
+
+SQL: 
+SELECT COUNT(*) 
+FROM T 
+WHERE "Octal" LIKE '6%' OR "Decimal" LIKE '4%';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Octal" LIKE '6%' OR "Decimal" LIKE '4%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          8 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Arabic numerals
+SQL: SELECT COUNT(*) FROM T WHERE "Octal" LIKE '6%' OR "Decimal" LIKE '4%';
+
+SQL Execution Result:
+COUNT(*)
+8
+
+Question: how many have an octal in the 60s or decimal in the 40s?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 8
+[Gold Answer] 8
+

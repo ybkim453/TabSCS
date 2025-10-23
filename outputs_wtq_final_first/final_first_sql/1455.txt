@@ -1,0 +1,113 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 5, 6, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: North Korea, South Korea, Total
+   - Role: Descriptor
+
+3. Gold:
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 24
+   - Role: Measure
+
+4. Silver:
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 23
+   - Role: Measure
+
+5. Bronze:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 26
+   - Role: Measure
+
+6. Total:
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 73
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+- Row 6 (South Korea):
+   - The values for Gold and Silver (both 0) are different from the majority of the table where these values are higher.
+   - This makes the row an outlier as it has a lower number of Gold and Silver medals compared to other nations in the table.
+   - Therefore, this row is considered an outlier and requires special handling.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation      |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | China       |     13 |        9 |       13 |      35 |
+|            1 | 2      | Japan       |      7 |       10 |        7 |      24 |
+|            2 | 3      | Uzbekistan  |      1 |        2 |        3 |       6 |
+|            3 | 4      | Kazakhstan  |      2 |        2 |        0 |       4 |
+|            4 | 5      | North Korea |      1 |        0 |        1 |       2 |
+|            5 | 6      | South Korea |      0 |        0 |        2 |       2 |
+|            6 | Total  | Total       |     24 |       23 |       26 |      73 |
+
+Generated Reasoning SQL: Explanation: To determine which nation won the most silver medals, we need to consider the "Silver" column, which contains numeric values representing the number of silver medals won by each nation. We should exclude any outlier rows, such as the one for South Korea, as it has significantly lower silver medal counts compared to other nations. We will simply select the nation with the highest count of silver medals.
+
+SQL: 
+SELECT "Nation"
+FROM T
+WHERE "Silver" = (SELECT MAX("Silver") FROM T WHERE "Nation" NOT LIKE '%Total%');
+Generated Final SQL: SELECT "Nation" FROM T WHERE "Silver" = (SELECT MAX("Silver") FROM T WHERE "Nation" NOT LIKE '%Total%');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Nation   |
+|:---------|
+| Japan    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Figure skating at the Asian Winter Games
+SQL: SELECT "Nation" FROM T WHERE "Silver" = (SELECT MAX("Silver") FROM T WHERE "Nation" NOT LIKE '%Total%');
+
+Nation
+Japan
+Question: which nation won the most silver medals?
+A: To find the answer to this question, let’s think step by step.
+Prediction: japan
+[Gold Answer] japan
+

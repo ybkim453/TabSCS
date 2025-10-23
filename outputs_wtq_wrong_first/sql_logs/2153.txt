@@ -1,0 +1,145 @@
+=== Table ID ===
+csv/203-csv/335.tsv
+
+=== Question ===
+what is the name of the last destination listed on this chart?
+
+=== Sub-table Preview ===
+| Route   | Destinations                          | Via                                                | Frequency\n(minutes)   | Peak Hours Only   | Former                      |
+|:--------|:--------------------------------------|:---------------------------------------------------|:-----------------------|:------------------|:----------------------------|
+| 1       | Montreal Street\nSt. Lawrence College | Downtown                                           | 30                     | nan               | Cataraqui Town Centre-Woods |
+| 2       | Kingston Centre\nDivision Street      | St. Lawrence College\nDowntown                     | 30                     | nan               | nan                         |
+| 3       | Kingston Centre\nDowntown             | Queen Mary Road\nSt. Lawrence College\nKing Street | 30                     | nan               | nan                         |
+| 4       | Princess Street                       | Cataraqui Town Centre\nDowntown                    | 30                     | nan               | nan                         |
+| 12A     | CFB Kingston\nDowntown                | nan                                                | 30                     | X                 | nan                         |
+| 18      | Train Station\nBus Terminal           | Downtown\nQueen's University\nSt. Lawrence College | *                      | nan               | Student Circuit             |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Route
+   - Data type: Categorical
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier for different bus routes
+
+2. Destinations
+   - Data type: Categorical
+   - 4 representative example values: Montreal Street, Kingston Centre, Princess Street, CFB Kingston
+   - Role: Descriptor of the destinations served by each route
+
+3. Via
+   - Data type: Categorical
+   - 4 representative example values: Downtown, St. Lawrence College, Queen Mary Road, Cataraqui Town Centre
+   - Role: Descriptor of the route taken by the bus
+
+4. Frequency (minutes)
+   - Data type: Numeric
+   - 4 representative example values: 30, 45, 20, 60
+   - Role: Measure of how often the bus runs on the route
+
+5. Peak Hours Only
+   - Data type: Categorical
+   - 4 representative example values: nan, X
+   - Role: Descriptor indicating if the frequency applies only during peak hours
+
+6. Former
+   - Data type: Categorical
+   - 4 representative example values: Cataraqui Town Centre-Woods, nan, Student Circuit
+   - Role: Descriptor of any former names or associations with the route
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and does not contain any distinctive values that make it an outlier.
+
+2. Row 10:
+   - The values in this row are all "nan", similar to Row 11. This row is also an ordinary row and does not contain any distinctive values that make it an outlier.
+
+3. Row 0:
+   - The values in this row are all related to the Cataraqui Town Centre-Woods route. While this may seem like a pattern, it is not significantly different from the other rows in the table. This row is an ordinary row and does not contain any distinctive values that make it an outlier.
+
+=== Full Table Preview ===
+|   row_number | Route   | Destinations                                          | Via                                                | Frequency\n(minutes)   | Peak Hours Only   | Former                      |
+|-------------:|:--------|:------------------------------------------------------|:---------------------------------------------------|:-----------------------|:------------------|:----------------------------|
+|            0 | 1       | Montreal Street\nSt. Lawrence College                 | Downtown                                           | 30                     |                   | Cataraqui Town Centre-Woods |
+|            1 | 2       | Kingston Centre\nDivision Street                      | St. Lawrence College\nDowntown                     | 30                     |                   |                             |
+|            2 | 3       | Kingston Centre\nDowntown                             | Queen Mary Road\nSt. Lawrence College\nKing Street | 30                     |                   |                             |
+|            3 | 4       | Princess Street                                       | Cataraqui Town Centre\nDowntown                    | 30                     |                   |                             |
+|            4 | 6       | Cataraqui Town Centre\nSt. Lawrence College           | Gardiners Town Centre                              | 30                     |                   | Downtown                    |
+|            5 | 7       | Dalton/Division\nMidland/Gardiners                    | Cataraqui Town Centre\nTrain Station\nBus Terminal | 30                     |                   |                             |
+|            6 | 9       | Downtown\nCataraqui Town Centre                       | Brock St. / Barrie St.\nGardiners Town Centre      | 20                     |                   |                             |
+|            7 | 10      | Amherstview\nCataraqui Town Centre                    | Collins Bay Road                                   | 30                     |                   | Kingston Centre             |
+|            8 | 11      | Kingston Centre\nCataraqui Town Centre                | Bath Road\nGardiners Town Centre                   | 30                     |                   | (formerly Route 71)         |
+|            9 | 12      | Kingston Centre\nHighway 15                           | Downtown\nCFB Kingston (off-peak only)             | 30                     |                   | -                           |
+|           10 | 12A     | CFB Kingston\nDowntown                                |                                                    | 30                     | X                 |                             |
+|           11 | 18      | Train Station\nBus Terminal                           | Downtown\nQueen's University\nSt. Lawrence College | *                      |                   | Student Circuit             |
+|           12 | 19      | Montreal Street\nQueen's University                   | Downtown                                           | 30                     | X                 |                             |
+|           13 | 14      | Train Station\nCataraqui Town Centre / Midland Avenue | Waterloo-Davis\nMultiplex                          | 30                     |                   | (formerly Route A)          |
+|           14 | 15      | Reddendale\nCataraqui Town Centre - Woods             | Gardiners Town Centre                              | 30                     |                   | (formerly Route B)          |
+|           15 | 16      | Train Station\nBus Terminal                           | Kingston Centre                                    | 30                     |                   | (formerly Route C)          |
+
+Generated Reasoning SQL: Explanation: To find the name of the last destination listed on the chart, we need to focus on the "Destinations" column, which contains the names of the destinations served by each route. Since the table is ordered by row_number, we can simply select the last row and retrieve the destination listed in that row.
+
+SQL: 
+SELECT "Destinations" 
+FROM T 
+ORDER BY row_number DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Destinations" FROM T ORDER BY row_number DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Destinations                |
+|:----------------------------|
+| Train Station\nBus Terminal |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Kingston Transit
+SQL: SELECT "Destinations" FROM T ORDER BY row_number DESC LIMIT 1;
+
+SQL Execution Result:
+Destinations
+Train Station\nBus Terminal
+
+Question: what is the name of the last destination listed on this chart?
+A: To find the answer to this question, let’s think step by step.
+Prediction: train station, bus terminal
+[Gold Answer] bus terminal
+

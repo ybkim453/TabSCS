@@ -1,0 +1,152 @@
+=== Table ID ===
+csv/204-csv/559.tsv
+
+=== Question ===
+what is the name of the only ship to become active in 1996?
+
+=== Sub-table Preview ===
+| Team                  |   No | Driver               | Class   | Rounds   |
+|:----------------------|-----:|:---------------------|:--------|:---------|
+| Josef Kaufmann Racing |    5 | Hannes van Asseldonk | R       | All      |
+| Mücke Motorsport      |    7 | Maciej Bernacik      | R       | All      |
+| DAMS                  |   15 | Javier Tarancón      | nan     | All      |
+| DAMS                  |   17 | Fahmi Ilyas          | nan     | 1–6      |
+| Eifelland Racing      |   18 | Facundo Regalia      | nan     | All      |
+| Eifelland Racing      |   19 | Côme Ledogar         | nan     | All      |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team
+   - Data type: Categorical
+   - 4 representative example values: Josef Kaufmann Racing, Mücke Motorsport, DAMS, Eifelland Racing
+   - Role: Identifier for the team associated with each driver
+
+2. No
+   - Data type: Numeric
+   - 4 representative example values: 5, 7, 15, 17
+   - Role: Identifier for the driver number
+
+3. Driver
+   - Data type: Categorical
+   - 4 representative example values: Hannes van Asseldonk, Maciej Bernacik, Javier Tarancón, Fahmi Ilyas
+   - Role: Descriptor for the driver's name
+
+4. Class
+   - Data type: Categorical
+   - 4 representative example values: R, nan
+   - Role: Descriptor for the driver's class
+
+5. Rounds
+   - Data type: Categorical
+   - 4 representative example values: All, 1-6
+   - Role: Descriptor for the rounds the driver participated in
+
+**Outlier Row Analysis:**
+
+1. Row 11 (Eifelland Racing, Côme Ledogar, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+2. Row 1 (Josef Kaufmann Racing, Hannes van Asseldonk, R, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+3. Row 3 (DAMS, Javier Tarancón, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+4. Row 17 (Eifelland Racing, Facundo Regalia, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+5. Row 19 (Eifelland Racing, Côme Ledogar, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Ship               | Hull No.   | Status                                                                                                                                                                                                                                   | Years Active                                   | NVR\nPage   |
+|-------------:|:-------------------|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:------------|
+|            0 | Henry J. Kaiser    | T-AO-187   | Active—Southern California Duty Oiler                                                                                                                                                                                                    | 1986–present                                   | AO187       |
+|            1 | Joshua Humphreys   | T-AO-188   | Inactivated 1996 returned to service 2005                                                                                                                                                                                                | 1987-1996; 2005-2006; 2010-present             | AO188       |
+|            2 | John Lenthall      | T-AO-189   | Active                                                                                                                                                                                                                                   | 1987-1996; 1998–present                        | AO189       |
+|            3 | Andrew J. Higgins  | T-AO-190   | Inactivated May 1996. Sold to the Chilean Navy May 2009. Towed to Atlantic Marine Alabama shipyard Mobile Alabama September 2009 for three-month refit. Commissioned in Chilean Navy on 10 February 2010 and renamed Almirante Montt.[1] | 1987-1996 (USA); 2010–present (Chile)          | AO190       |
+|            4 | Benjamin Isherwood | T-AO-191   | Cancelled when 95.3% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011                                                                                                    | Launched 1988 christened 1991 never in service | AO191       |
+|            5 | Henry Eckford      | T-AO-192   | Cancelled when 84% complete\ntransferred to the Maritime Administration\nlaid up in the James River Reserve Fleet\nscrapped in 2011                                                                                                      | Launched 1989 never in service                 | AO192       |
+|            6 | Walter S. Diehl    | T-AO-193   | Active                                                                                                                                                                                                                                   | 1988–present                                   | AO193       |
+|            7 | John Ericsson      | T-AO-194   | Active                                                                                                                                                                                                                                   | 1991–present                                   | AO194       |
+|            8 | Leroy Grumman      | T-AO-195   | Active                                                                                                                                                                                                                                   | 1989–present                                   | AO195       |
+|            9 | Kanawha            | T-AO-196   | Active                                                                                                                                                                                                                                   | 1991–present                                   | AO196       |
+|           10 | Pecos              | T-AO-197   | Active                                                                                                                                                                                                                                   | 1990–present                                   | AO197       |
+|           11 | Big Horn           | T-AO-198   | Active                                                                                                                                                                                                                                   | 1992–present                                   | AO198       |
+|           12 | Tippecanoe         | T-AO-199   | Active                                                                                                                                                                                                                                   | 1993–present                                   | AO199       |
+|           13 | Guadalupe          | T-AO-200   | Active                                                                                                                                                                                                                                   | 1992–present                                   | AO200       |
+|           14 | Patuxent           | T-AO-201   | Active                                                                                                                                                                                                                                   | 1995–present                                   | AO201       |
+|           15 | Yukon              | T-AO-202   | Active                                                                                                                                                                                                                                   | 1994–present                                   | AO202       |
+|           16 | Laramie            | T-AO-203   | Active                                                                                                                                                                                                                                   | 1996–present                                   | AO203       |
+|           17 | Rappahannock       | T-AO-204   | Active                                                                                                                                                                                                                                   | 1995–present                                   | AO204       |
+
+Generated Reasoning SQL: Explanation: To find the name of the only ship that became active in 1996, we need to filter the rows where the "Years Active" column contains the year 1996 and then select the corresponding ship name. Since we are looking for a specific ship, we do not need to consider outliers or exclude any rows based on the summary information.
+
+SQL: SELECT "Ship" 
+FROM T 
+WHERE "Years Active" LIKE '%1996%'
+Generated Final SQL: SELECT "Ship" FROM T WHERE "Years Active" LIKE '%1996%'
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+| Ship              |
+|:------------------|
+| Joshua Humphreys  |
+| John Lenthall     |
+| Andrew J. Higgins |
+| Laramie           |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Henry J. Kaiser-class oiler
+SQL: SELECT "Ship" FROM T WHERE "Years Active" LIKE '%1996%'
+
+SQL Execution Result:
+Ship
+Joshua Humphreys
+John Lenthall
+Andrew J. Higgins
+Laramie
+
+Question: what is the name of the only ship to become active in 1996?
+A: To find the answer to this question, let’s think step by step.
+Prediction: joshua humphreys, john lenthall, andrew j. higgins, laramie
+[Gold Answer] laramie
+

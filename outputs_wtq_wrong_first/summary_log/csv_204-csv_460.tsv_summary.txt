@@ -1,0 +1,36 @@
+**Column Analysis:**
+
+1. Represents
+   - Data type: Categorical
+   - 4 representative example values: Bocas del Toro, Chiriquí, Coclé, Panamá Este
+   - Role of the column: Identifier for the region represented by each contestant
+
+2. Contestant
+   - Data type: Categorical
+   - 4 representative example values: TBD, TBD, TBD, TBD
+   - Role of the column: Identifier for each contestant
+
+3. Age
+   - Data type: Numeric
+   - 4 representative example values: TBD, TBD, TBD, TBD
+   - Role of the column: Measure of the age of each contestant
+
+4. Height
+   - Data type: Numeric
+   - 4 representative example values: 0.0 m (0 in), 0.0 m (0 in), 0.0 m (0 in), 0.0 m (0 in)
+   - Role of the column: Measure of the height of each contestant
+
+5. Hometown
+   - Data type: Categorical
+   - 4 representative example values: TBD, TBD, TBD, TBD
+   - Role of the column: Descriptor for the hometown of each contestant
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The values for Represents, Contestant, Age, Height, and Hometown are all marked as TBD, which indicates missing data.
+   - This row is an outlier due to the presence of missing data in all columns, making it distinct from the majority of the table.
+
+2. Row 0 (Index 0):
+   - Similar to Row 3, all values for Represents, Contestant, Age, Height, and Hometown are marked as TBD, indicating missing data.
+   - This row is also an outlier due to the presence of missing data in all columns, making it distinct from the majority of the table.

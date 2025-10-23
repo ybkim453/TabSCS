@@ -1,0 +1,46 @@
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 5, 6
+   - Role: Identifier for each row
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: 31 March 1999, 8 September 1999, 26 January 2000
+   - Role: Descriptor indicating the date of the match
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Olimpico, Serravalle, San Marino, Vivero, Badajoz, Spain, Cartagonova, Cartagena, Spain
+   - Role: Descriptor indicating the location of the match
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: San Marino, Cyprus, Poland
+   - Role: Descriptor indicating the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: 0–3, 1–0, 2–0, 4–0
+   - Role: Measure indicating the score of the match
+
+6. Result:
+   - Data type: Categorical
+   - 4 representative example values: 0–6, 8–0, 3–0
+   - Role: Measure indicating the result of the match
+
+7. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Euro 2000 qualifying, Friendly
+   - Role: Descriptor indicating the competition type
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values for Score (4–0) and Result (8–0) are significantly different from the majority of the table, where the scores and results are closer.
+   - These values indicate a high-scoring match where the team performed exceptionally well, making this row an outlier.
+
+2. Row 2:
+   - The values for Score (1–0) and Result (8–0) are not significantly different from the majority of the table, as there are other rows with similar scores and results.
+   - These values are ordinary within the context of the table, so this row is an ordinary entry and does not require special handling.

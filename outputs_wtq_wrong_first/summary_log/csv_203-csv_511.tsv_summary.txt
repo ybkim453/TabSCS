@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: 1, T4, T7
+   - Role: Identifier for the player's ranking in the tournament.
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Retief Goosen, Michael Campbell, K. J. Choi, Tiger Woods
+   - Role: Descriptor for the player's name.
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: South Africa, New Zealand, South Korea, United States
+   - Role: Descriptor for the player's country of origin.
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 207, 211, 213
+   - Role: Measure of the player's total score in the tournament.
+
+5. To par:
+   - Data type: Categorical
+   - 4 representative example values: -3, +1, +3
+   - Role: Descriptor for how the player's score compares to par.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Retief Goosen):
+   - The score of 207 is significantly lower than the other scores in the table, indicating a better performance.
+   - This row is an outlier due to the exceptional performance of Retief Goosen compared to the other players.
+
+2. Row 7 (Peter Hedblom):
+   - The score of 77 in the first round is much higher than the other scores, making it stand out.
+   - This row is an outlier due to the unusually high score in the first round compared to the rest of the players.
+
+3. Row 3 (Michael Campbell):
+   - The score of 211 is slightly higher than the majority of the scores, but not significantly different.
+   - This row contains ordinary values and does not stand out as a distinctive outlier.

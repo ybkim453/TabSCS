@@ -1,0 +1,116 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - Representative values: 1995, 1998, 1999, 2000
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Rider:
+   - Data type: Categorical
+   - Representative values: Carl Fogarty, Troy Bayliss, (Colin Edwards)
+   - Role: Descriptor for the rider's name.
+
+3. Victories:
+   - Data type: Numeric
+   - Representative values: 13, 3, 11, 7
+   - Role: Measure of the number of victories achieved by the rider in a particular year.
+
+4. Bike:
+   - Data type: Categorical
+   - Representative values: Ducati 916, Ducati 996, Honda RC51
+   - Role: Descriptor for the type of bike used by the rider.
+
+5. Manufacturer's Championship:
+   - Data type: Categorical
+   - Representative values: Ducati
+   - Role: Descriptor for the manufacturer that won the championship in a particular year.
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for Rider, Victories, and Bike are different from the majority of the table.
+   - The Manufacturer's Championship value is consistent with the majority.
+   - This row is an outlier due to the different combination of Rider, Victories, and Bike compared to other rows.
+
+2. Row 1:
+   - The values for Rider, Victories, and Bike are different from the majority of the table.
+   - The Manufacturer's Championship value is consistent with the majority.
+   - This row is an outlier due to the different combination of Rider, Victories, and Bike compared to other rows.
+
+3. Row 6:
+   - The values for Rider, Victories, and Bike are different from the majority of the table.
+   - The Manufacturer's Championship value is consistent with the majority.
+   - This row is an outlier due to the different combination of Rider, Victories, and Bike compared to other rows.
+
+=== Full Table Preview ===
+|   row_number |   Year | Rider           | Victories   | Bike         | Manufacturer's Championship   |
+|-------------:|-------:|:----------------|:------------|:-------------|:------------------------------|
+|            0 |   1994 | Carl Fogarty    | 11          | Ducati 916   | Ducati                        |
+|            1 |   1995 | Carl Fogarty    | 13          | Ducati 916   | Ducati                        |
+|            2 |   1996 | Troy Corser     | 7           | Ducati 916   | Ducati                        |
+|            3 |   1998 | Carl Fogarty    | 3           | Ducati 916   | Ducati                        |
+|            4 |   1999 | Carl Fogarty    | 11          | Ducati 996   | Ducati                        |
+|            5 |   2000 | (Colin Edwards) | (7)         | (Honda RC51) | Ducati                        |
+|            6 |   2001 | Troy Bayliss    | 6           | Ducati 996   | Ducati                        |
+
+Generated Reasoning SQL: The summary provides information about the columns "Year", "Rider", and "Victories". 
+To answer the question, we need to filter rows where "Rider" = Carl Fogarty and "Year" is either 1994 or 1995, and then sum the values in the "Victories" column. 
+We must exclude outlier rows that do not represent Carl Fogarty's victories in 1994 and 1995.
+SQL: select sum(cast("Victories" as integer)) as total_victories from T where "Rider" = 'Carl Fogarty' and "Year" in (1994, 1995);
+Generated Final SQL: select sum(cast("Victories" as integer)) as total_victories from T where "Rider" = 'Carl Fogarty' and "Year" in (1994, 1995);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_victories |
+|------------------:|
+|                24 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Ducati 916
+SQL: select sum(cast("Victories" as integer)) as total_victories from T where "Rider" = 'Carl Fogarty' and "Year" in (1994, 1995);
+
+total_victories
+24
+Question: how many total victories did carl fogarty have in 1994 and 1995?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 24
+[Gold Answer] 24
+

@@ -1,0 +1,146 @@
+=== Table ID ===
+csv/203-csv/458.tsv
+
+=== Question ===
+how many years before his 1998 guardian of zion award did herman wouk win the pulitzer prize?
+
+=== Sub-table Preview ===
+| Type           | Construction period   | Cylinder   | Capacity   | Power           | Vmax                                |
+|:---------------|:----------------------|:-----------|:-----------|:----------------|:------------------------------------|
+| PK4 (11/20 PS) | 1909–1912             | straight-4 | 2.544 cc   | 20 PS (14,7 kW) | 70 km/h (43 mph)                    |
+| C1 (6/18 PS)   | 1909–1915             | straight-4 | 1.546 cc   | 18 PS (13,2 kW) | 70 km/h (43 mph)                    |
+| D7 (42/120 PS) | 1919–1921             | straight-6 | 11.160 cc  | 120 PS (88 kW)  | 160 km/h (99 mph)                   |
+| F6 (6/30 PS)   | 1927–1928             | straight-4 | 1.570 cc   | 30 PS (22 kW)   | 70 km/h (43 mph)                    |
+| Greif V8       | 1934–1937             | V8         | 2.489 cc   | 55 PS (40 kW)   | 110 km/h (68 mph)                   |
+| Arkona         | 1937–1940             | straight-6 | 3.610 cc   | 80 PS (59 kW)   | 120 km/h (75 mph)–140 km/h (87 mph) |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Type
+   - Data type: Categorical
+   - Representative values: PK4 (11/20 PS), C1 (6/18 PS), D7 (42/120 PS), Greif V8
+   - Role: Identifier for the type of vehicle model
+
+2. Construction period
+   - Data type: Numeric (range)
+   - Representative values: 1909–1912, 1909–1915, 1919–1921, 1934–1937
+   - Role: Descriptor indicating the years in which the vehicle model was constructed
+
+3. Cylinder
+   - Data type: Categorical
+   - Representative values: straight-4, straight-6, V8
+   - Role: Descriptor for the type of engine cylinder configuration
+
+4. Capacity
+   - Data type: Numeric
+   - Representative values: 2.544 cc, 1.546 cc, 11.160 cc, 2.489 cc
+   - Role: Measure of the engine capacity in cubic centimeters
+
+5. Power
+   - Data type: Categorical (with numeric values)
+   - Representative values: 20 PS (14,7 kW), 18 PS (13,2 kW), 120 PS (88 kW), 55 PS (40 kW)
+   - Role: Descriptor for the power output of the engine in PS (Pferdestärke) and kW
+
+6. Vmax
+   - Data type: Categorical (with numeric values)
+   - Representative values: 70 km/h (43 mph), 160 km/h (99 mph), 110 km/h (68 mph), 120 km/h (75 mph)–140 km/h (87 mph)
+   - Role: Descriptor for the maximum speed of the vehicle in kilometers per hour and miles per hour
+
+**Outlier Row Analysis:**
+
+1. Row 37 (Arkona)
+   - The values for Construction period (1937–1940) and Vmax (120 km/h (75 mph)–140 km/h (87 mph)) are consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 42 (Arkona)
+   - The values for Construction period (1937–1940) and Vmax (120 km/h (75 mph)–140 km/h (87 mph)) are consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 16 (F6 (6/30 PS))
+   - The value for Power (30 PS (22 kW)) is higher compared to the other rows in the table.
+   - This row is an outlier in terms of power output and may require further investigation to determine if it is a special case.
+
+=== Full Table Preview ===
+|   row_number |   Year | Recipient                                      | Nationality    | Profession                                                                                     | Speech   |
+|-------------:|-------:|:-----------------------------------------------|:---------------|:-----------------------------------------------------------------------------------------------|:---------|
+|            0 |   1997 | Elie Wiesel                                    | United States  | Professional writer\nWinner of the Nobel Peace Prize (1986)                                    |          |
+|            1 |   1998 | Herman Wouk                                    | United States  | Professional writer and 1952 Pulitzer Prize winner                                             |          |
+|            2 |   1999 | A.M. Rosenthal                                 | United States  | Former New York Times editor\nFormer New York Daily News columnist                             |          |
+|            3 |   2000 | Sir Martin Gilbert                             | United Kingdom | Historian and writer                                                                           |          |
+|            4 |   2001 | Cynthia Ozick                                  | United States  | Professional writer                                                                            |          |
+|            5 |   2002 | Charles Krauthammer                            | United States  | The Washington Post columnist                                                                  | [1]      |
+|            6 |   2003 | Ruth Roskies Wisse                             | United States  | Yiddish professor of Harvard University                                                        | [2]      |
+|            7 |   2004 | Arthur Cohn                                    | Switzerland    | Filmmaker and writer                                                                           |          |
+|            8 |   2005 | William Safire                                 | United States  | Author journalist and speechwriter\n1978 Pulitzer Prize winner                                 |          |
+|            9 |   2006 | Daniel Pipes                                   | United States  | Author and historian                                                                           |          |
+|           10 |   2007 | Norman Podhoretz                               | United States  | Author columnist                                                                               |          |
+|           11 |   2008 | David Be'eri Mordechai Eliav Rabbi Yehuda Maly | Israel         |                                                                                                |          |
+|           12 |   2009 | Caroline Glick                                 | Israel         | Journalist                                                                                     |          |
+|           13 |   2010 | Malcolm Hoenlein                               | United States  | Executive Vice Chairman of the Conference of Presidents of Major American Jewish Organizations |          |
+
+Generated Reasoning SQL: Explanation: 
+The relevant columns for this question are "Year" and "Profession". We need to find the year when Herman Wouk won the Pulitzer Prize and then calculate the difference between that year and the year he received the Guardian of Zion Award in 1998. Since the "Profession" column contains information about the Pulitzer Prize, we will filter rows where "Profession" like '%Pulitzer Prize%' to identify the year when he won the prize.
+
+SQL:
+SELECT "Year" 
+FROM T 
+WHERE "Recipient" = 'Herman Wouk' AND "Profession" LIKE '%Pulitzer Prize%';
+Generated Final SQL: SELECT "Year" FROM T WHERE "Recipient" = 'Herman Wouk' AND "Profession" LIKE '%Pulitzer Prize%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Year |
+|-------:|
+|   1998 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Guardian of Zion Award
+SQL: SELECT "Year" FROM T WHERE "Recipient" = 'Herman Wouk' AND "Profession" LIKE '%Pulitzer Prize%';
+
+SQL Execution Result:
+Year
+1998
+
+Question: how many years before his 1998 guardian of zion award did herman wouk win the pulitzer prize?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 46
+

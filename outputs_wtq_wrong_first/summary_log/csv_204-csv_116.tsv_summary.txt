@@ -1,0 +1,31 @@
+**Column Analysis:**
+
+1. Polling Firm:
+   - Data type: Categorical
+   - 4 representative example values: Noverna, Evresis, Prime Consulting Ltd
+   - Role of the column: Identifier for the polling firm conducting the survey
+
+2. Source:
+   - Data type: Categorical
+   - 4 representative example values: [3], [10], [12], [20]
+   - Role of the column: Identifier for the source of the polling data
+
+3. Date Published:
+   - Data type: Date
+   - 4 representative example values: 23 September 2012, 27 November 2012, 3 December 2012, 9 February 2013
+   - Role of the column: Descriptor indicating the date when the polling data was published
+
+4. N.Anastasiades, G.Lillikas, S.Malas, Others:
+   - Data type: Numeric (percentage)
+   - 4 representative example values: 35.02%, 19.6%, 20.8%, 3.79%
+   - Role of the column: Measures representing the percentage of votes for each candidate or other options
+
+**Outlier Row Analysis:**
+
+1. Row 22 (Average (only valid votes)):
+   - This row is an outlier because it represents the average of valid votes, which is different from individual polling data rows.
+   - The values in this row are calculated averages and not actual polling results, making it distinctive from the rest of the data.
+
+2. Row 2 (Evresis):
+   - This row is not an outlier as it represents a typical polling data entry with percentages for different candidates.
+   - The values in this row are ordinary polling results and do not deviate significantly from the rest of the data.

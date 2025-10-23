@@ -1,0 +1,44 @@
+**Column Analysis:**
+
+1. Common name:
+   - Data type: Categorical
+   - 4 representative example values: Bamboo, Casuarina, Jack, Mahogany
+   - Role: Descriptor
+
+2. Binomial nomenclature:
+   - Data type: Categorical
+   - 4 representative example values: Family Poaceae, tribe Bambuseae, Casuarina spp., Mangifera caesia, Swietenia spp., Heritiera fomes
+   - Role: Descriptor
+
+3. Colour:
+   - Data type: Categorical
+   - 4 representative example values: nan, Reddish brown, Yellow, darkens with age, Dark brown, Dark red
+   - Role: Descriptor
+
+4. Density ¹:
+   - Data type: Numeric
+   - 4 representative example values: nan, 765 kg/m³, 595 kg/m³, 880 kg/m³, 720 kg/m³, 960 kg/m³
+   - Role: Measure
+
+5. Location:
+   - Data type: Categorical
+   - 4 representative example values: Throughout India, especially Assam and Bengal, Andhra Pradesh, Tamil Nadu, Karnataka, Maharashtra, Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, Bihar, Orissa, Madhya Pradesh, Kerala, Tamil Nadu, Bengal
+   - Role: Descriptor
+
+6. Characteristics, Usage and Status:
+   - Data type: Categorical
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 17 (Sundri):
+   - The values that make it distinctive are "Heritiera fomes" for Binomial nomenclature and "Dark red" for Colour.
+   - These values are not significantly different from the majority of the table, so this row is an ordinary entry.
+
+2. Row 5 (Jack):
+   - The values that make it distinctive are "Mangifera caesia" for Binomial nomenclature and "Yellow, darkens with age" for Colour.
+   - These values are not significantly different from the majority of the table, so this row is an ordinary entry.
+
+3. Row 36 (Mahogany):
+   - The values that make it distinctive are "Swietenia spp." for Binomial nomenclature and "Reddish brown" for Colour.
+   - These values are not significantly different from the majority of the table, so this row is an ordinary entry.

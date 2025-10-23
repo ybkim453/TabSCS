@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Danny Coles, Liam Sercombe, John O'Flynn, Pat Baldwin
+   - Role: Identifier
+
+2. League
+   - Data type: Numeric
+   - 4 representative example values: 3, 1, 11, 20
+   - Role: Measure
+
+3. FA Cup
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 0, 0
+   - Role: Measure
+
+4. League Cup
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 1, 0
+   - Role: Measure
+
+5. JP Trophy
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 0, 0
+   - Role: Measure
+
+6. Total
+   - Data type: Numeric
+   - 4 representative example values: 3, 1, 12, 20
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Jamie Cureton)
+   - Jamie Cureton has a total of 20 League goals, which is significantly higher than the other players in the table. This makes the row an outlier in terms of goal scoring performance.
+
+2. Row 8 (Jake Gosling)
+   - Jake Gosling has only 1 League goal, which is the lowest among the players listed. While this may seem like an outlier, it is not significantly different from the other low-scoring players in the table. Therefore, this row is considered an ordinary entry.
+
+3. Row 7 (Pat Baldwin)
+   - Pat Baldwin has 1 League goal, which is in line with the other low-scoring players. There is nothing particularly distinctive about this row that would make it an outlier. This row is considered an ordinary entry.

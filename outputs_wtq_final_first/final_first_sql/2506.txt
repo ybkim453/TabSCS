@@ -1,0 +1,199 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - 4 representative example values: 2000, 1989, 1985, 1984
+   - Role: Identifier for the year in which the race took place
+
+2. Winner
+   - Data type: Categorical
+   - 4 representative example values: Hal's Hope, Mercedes Won, Proud Truth, Swale
+   - Role: Descriptor for the winning horse
+
+3. Age
+   - Data type: Numeric
+   - 4 representative example values: 3
+   - Role: Measure of the age of the winning horse
+
+4. Jockey
+   - Data type: Categorical
+   - 4 representative example values: Roger Velez, Earlie Fires, Jorge Velasquez, Laffit Pincay, Jr.
+   - Role: Descriptor for the jockey who rode the winning horse
+
+5. Trainer
+   - Data type: Categorical
+   - 4 representative example values: Harold Rose, Arnold Fink, John M. Veitch, Woody Stephens
+   - Role: Descriptor for the trainer of the winning horse
+
+6. Owner
+   - Data type: Categorical
+   - 4 representative example values: Rose Family Stable, Christopher Spencer, Darby Dan Farm, Claiborne Farm
+   - Role: Descriptor for the owner of the winning horse
+
+7. Distance (Miles)
+   - Data type: Categorical
+   - 4 representative example values: 1-1/8
+   - Role: Measure of the distance of the race in miles
+
+8. Time
+   - Data type: Categorical
+   - 4 representative example values: 1:51.49, 1:49.60, 1:50.00, 1:47.60
+   - Role: Measure of the time taken to complete the race
+
+9. Purse
+   - Data type: Categorical
+   - 4 representative example values: $1,000,000, $500,000, $300,000, $130,000
+   - Role: Measure of the prize money awarded for the race
+
+10. Gr
+    - Data type: Categorical
+    - 4 representative example values: I
+    - Role: Descriptor for the grade of the race
+
+**Outlier Row Analysis:**
+
+1. Row 43:
+   - The row contains missing data (nan) in the "Gr" column, which is not a distinctive value.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 30:
+   - The row contains missing data in the "Gr" column, which is not a distinctive value.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 25:
+   - The row contains missing data in the "Gr" column, which is not a distinctive value.
+   - This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Winner              |   Age | Jockey             | Trainer              | Owner                     | Distance\n(Miles)   | Time    | Purse    | Gr   |
+|-------------:|-------:|:--------------------|------:|:-------------------|:---------------------|:--------------------------|:--------------------|:--------|:---------|:-----|
+|            0 |   2014 | Constitution        |     3 | Javier Castellano  | Todd Pletcher        | Winstar Farm              | 1-1/8               | 1:49.17 | $1000000 | I    |
+|            1 |   2013 | Orb                 |     3 | John Velazquez     | Claude McGaughey III | Janney/Phipps Stable      | 1-1/8               | 1:50.87 | $1000000 | I    |
+|            2 |   2012 | Take Charge Indy    |     3 | Calvin Borel       | Patrick B. Byrne     | C & M Sandford            | 1-1/8               | 1:48.79 | $1000000 | I    |
+|            3 |   2011 | Dialed In           |     3 | Julien R. Leparoux | Nick Zito            | Robert V. LaPenta         | 1-1/8               | 1:50.74 | $1000000 | I    |
+|            4 |   2010 | Ice Box             |     3 | Jose Lezcano       | Nick Zito            | Robert V. LaPenta         | 1-1/8               | 1:49.19 | $750000  | I    |
+|            5 |   2009 | Quality Road        |     3 | John Velazquez     | James A. Jerkens     | Edward P. Evans           | 1-1/8               | 1:47.72 | $750000  | I    |
+|            6 |   2008 | Big Brown           |     3 | Kent Desormeaux    | Richard E. Dutrow    | IEAH Stables/Paul Pompa   | 1-1/8               | 1:48.16 | $1000000 | I    |
+|            7 |   2007 | Scat Daddy          |     3 | Edgar Prado        | Todd A. Pletcher     | J. Scatuorchio / M. Tabor | 1-1/8               | 1:49.00 | $1000000 | I    |
+|            8 |   2006 | Barbaro             |     3 | Edgar Prado        | Michael Matz         | Lael Stables              | 1-1/8               | 1:49.01 | $1000000 | I    |
+|            9 |   2005 | High Fly            |     3 | Jerry Bailey       | Nick Zito            | Live Oak Plantation       | 1-1/8               | 1:49.43 | $1000000 | I    |
+|           10 |   2004 | Friends Lake        |     3 | Richard Migliore   | John C. Kimmel       | Chester & Mary Broman     | 1-1/8               | 1:51.38 | $1000000 | I    |
+|           11 |   2003 | Empire Maker        |     3 | Jerry Bailey       | Robert Frankel       | Juddmonte Farms           | 1-1/8               | 1:49.05 | $1000000 | I    |
+|           12 |   2002 | Harlan's Holiday    |     3 | Edgar Prado        | Kenneth McPeek       | Starlight Stable          | 1-1/8               | 1:48.80 | $1000000 | I    |
+|           13 |   2001 | Monarchos           |     3 | Jorge Chavez       | John T. Ward Jr.     | John C. Oxley             | 1-1/8               | 1:49.95 | $1000000 | I    |
+|           14 |   2000 | Hal's Hope          |     3 | Roger Velez        | Harold Rose          | Rose Family Stable        | 1-1/8               | 1:51.49 | $1000000 | I    |
+|           15 |   1999 | Vicar               |     3 | Shane Sellers      | Carl Nafzger         | James B. Tafel            | 1-1/8               | 1:50.83 | $750000  | I    |
+|           16 |   1998 | Cape Town †         |     3 | Shane Sellers      | D. Wayne Lukas       | Overbrook Farm            | 1-1/8               | 1:49.21 | $750000  | I    |
+|           17 |   1997 | Captain Bodgit      |     3 | Alex Solis         | Gary Capuano         | Team Valor                | 1-1/8               | 1:50.60 | $750000  | I    |
+|           18 |   1996 | Unbridled's Song    |     3 | Mike Smith         | James T. Ryerson     | Paraneck Stable           | 1-1/8               | 1:47.85 | $750000  | I    |
+|           19 |   1995 | Thunder Gulch       |     3 | Mike Smith         | D. Wayne Lukas       | Michael Tabor             | 1-1/8               | 1:49.70 | $500000  | I    |
+|           20 |   1994 | Holy Bull           |     3 | Mike Smith         | Warren A. Croll Jr.  | Warren A. Croll Jr.       | 1-1/8               | 1:47.66 | $500000  | I    |
+|           21 |   1993 | Bull In the Heather |     3 | Wigberto Ramos     | Howard M. Tesher     | Arthur Klein              | 1-1/8               | 1:51.38 | $500000  | I    |
+|           22 |   1992 | Technology          |     3 | Jerry Bailey       | Hubert Hine          | Scott Savin               | 1-1/8               | 1:50.72 | $500000  | I    |
+|           23 |   1991 | Fly So Free         |     3 | Jose Santos        | Scotty Schulhofer    | Tommy Valando             | 1-1/8               | 1:50.44 | $500000  | I    |
+|           24 |   1990 | Unbridled           |     3 | Pat Day            | Carl Nafzger         | Genter Stable             | 1-1/8               | 1:52.00 | $500000  | I    |
+|           25 |   1989 | Mercedes Won        |     3 | Earlie Fires       | Arnold Fink          | Christopher Spencer       | 1-1/8               | 1:49.60 | $500000  | I    |
+|           26 |   1988 | Brian's Time        |     3 | Randy Romero       | John M. Veitch       | James W. Phillips         | 1-1/8               | 1:49.80 | $500000  | I    |
+|           27 |   1987 | Cryptoclearance     |     3 | Jose Santos        | Scotty Schulhofer    | Phil Teinowitz            | 1-1/8               | 1:49.60 | $500000  | I    |
+|           28 |   1986 | Snow Chief          |     3 | Alex Solis         | Melvin F. Stute      | Rochelle/Grinstead        | 1-1/8               | 1:51.80 | $500000  | I    |
+|           29 |   1985 | Proud Truth         |     3 | Jorge Velasquez    | John M. Veitch       | Darby Dan Farm            | 1-1/8               | 1:50.00 | $500000  | I    |
+|           30 |   1984 | Swale               |     3 | Laffit Pincay Jr.  | Woody Stephens       | Claiborne Farm            | 1-1/8               | 1:47.60 | $300000  | I    |
+|           31 |   1983 | Croeso              |     3 | Frank Olivares     | Jerry M. Fanning     | Joyce & Roy Fowler        | 1-1/8               | 1:49.80 | $300000  | I    |
+|           32 |   1982 | Timely Writer       |     3 | Jeffrey Fell       | Dominic Imprescia    | Peter & Francis Martin    | 1-1/8               | 1:49.60 | $250000  | I    |
+|           33 |   1981 | Lord Avie           |     3 | Chris McCarron     | Daniel Perlsweig     | David Simon               | 1-1/8               | 1:50.40 | $250000  | I    |
+|           34 |   1980 | Plugged Nickle      |     3 | Buck Thornburg     | Thomas J. Kelly      | John M. Schiff            | 1-1/8               | 1:50.20 | $250000  | I    |
+|           35 |   1979 | Spectacular Bid     |     3 | Ronnie Franklin    | Bud Delp             | Hawksworth Farm           | 1-1/8               | 1:48.80 | $200000  | I    |
+|           36 |   1978 | Alydar              |     3 | Jorge Velasquez    | John M. Veitch       | Calumet Farm              | 1-1/8               | 1:47.00 | $200000  | I    |
+|           37 |   1977 | Ruthie's Native     |     3 | Craig Perret       | Eugene Jacobs        | Ruth A. Perlmutter        | 1-1/8               | 1:50.20 | $125000  | I    |
+|           38 |   1977 | Coined Silver       |     3 | Buck Thornburg     | George T. Poole III  | C. V. Whitney             | 1-1/8               | 1:48.80 | $125000  | I    |
+|           39 |   1976 | Honest Pleasure     |     3 | Braulio Baeza      | LeRoy Jolley         | Bertram R. Firestone      | 1-1/8               | 1:47.80 | $125000  | I    |
+|           40 |   1975 | Prince Thou Art     |     3 | Braulio Baeza      | Lou Rondinello       | Darby Dan Farm            | 1-1/8               | 1:50.40 | $150000  | I    |
+|           41 |   1974 | Judger              |     3 | Laffit Pincay Jr.  | Woody Stephens       | Claiborne Farm            | 1-1/8               | 1:49.00 | $150000  | I    |
+|           42 |   1973 | Royal and Regal     |     3 | Walter Blum        | Warren A. Croll Jr.  | Aisco Stable              | 1-1/8               | 1:47.40 | $130000  | I    |
+|           43 |   1972 | Upper Case          |     3 | Ron Turcotte       | Lucien Laurin        | Meadow Stable             | 1-1/8               | 1:50.00 | $130000  |      |
+|           44 |   1971 | Eastern Fleet       |     3 | Eddie Maple        | Reggie Cornell       | Calumet Farm              | 1-1/8               | 1:47.40 |          |      |
+|           45 |   1970 | My Dad George       |     3 | Ray Broussard      | Frank J. McManus     | Raymond M. Curtis         | 1-1/8               | 1:50.80 |          |      |
+|           46 |   1969 | Top Knight          |     3 | Manuel Ycaza       | Ray Metcalf          | Steven B. Wilson          | 1-1/8               | 1:48.40 |          |      |
+|           47 |   1968 | Forward Pass        |     3 | Don Brumfield      | Henry Forrest        | Calumet Farm              | 1-1/8               | 1:49.00 |          |      |
+|           48 |   1967 | In Reality          |     3 | Earlie Fires       | Melvin Calvert       | Frances A. Genter         | 1-1/8               | 1:50.20 |          |      |
+|           49 |   1966 | Williamston Kid †   |     3 | Robert Stevenson   | James Bartlett       | Ternes & Bartlett         | 1-1/8               | 1:50.60 |          |      |
+|           50 |   1965 | Native Charger      |     3 | John L. Rotz       | Ray Metcalf          | Warner Stable             | 1-1/8               | 1:51.20 |          |      |
+|           51 |   1964 | Northern Dancer     |     3 | Bill Shoemaker     | Horatio Luro         | Windfields Farm           | 1-1/8               | 1:50.80 |          |      |
+|           52 |   1963 | Candy Spots         |     3 | Bill Shoemaker     | Mesh Tenney          | Rex C. Ellsworth          | 1-1/8               | 1:50.60 |          |      |
+|           53 |   1962 | Ridan               |     3 | Manuel Ycaza       | LeRoy Jolley         | Jolley / Woods / Greer    | 1-1/8               | 1:50.40 |          |      |
+|           54 |   1961 | Carry Back          |     3 | Johnny Sellers     | Jack A. Price        | Mrs. Katherine Price      | 1-1/8               | 1:48.80 |          |      |
+|           55 |   1960 | Bally Ache          |     3 | Bobby Ussery       | Homer Pitt           | Edgehill Farm             | 1-1/8               | 1:47.60 |          |      |
+|           56 |   1959 | Easy Spur           |     3 | Bill Hartack       | Paul L. Kelley       | Spring Hill Farm          | 1-1/8               | 1:47.20 |          |      |
+|           57 |   1958 | Tim Tam             |     3 | Bill Hartack       | Horace A. Jones      | Calumet Farm              | 1-1/8               | 1:49.20 |          |      |
+|           58 |   1957 | Gen. Duke           |     3 | Bill Hartack       | Horace A. Jones      | Calumet Farm              | 1-1/8               | 1:46.80 |          |      |
+|           59 |   1956 | Needles             |     3 | David Erb          | Hugh L. Fontaine     | D & H Stable              | 1-1/8               | 1:48.60 |          |      |
+|           60 |   1955 | Nashua              |     3 | Eddie Arcaro       | Jim Fitzsimmons      | Belair Stud               | 1-1/8               | 1:53.20 |          |      |
+|           61 |   1954 | Correlation         |     3 | Bill Shoemaker     | Noble Threewitt      | Robert S. Lytle           | 1-1/8               | 1:55.20 |          |      |
+|           62 |   1953 | Money Broker        |     3 | Alfred Popara      | Vester R. Wright     | G. & G. Stable            | 1-1/8               | 1:53.80 |          |      |
+|           63 |   1952 | Sky Ship            |     3 | Ronnie Nash        | Preston M. Burch     | Brookmeade Stable         | 1-1/8               | 1:50.80 |          |      |
+
+Generated Reasoning SQL: To determine the main age listed for the winning horses in the Florida Derby, we need to analyze the "Age" column, which is numeric and represents the age of the winning horse. Since the question asks for the main age listed, we can find this by identifying the most frequently occurring age value in the dataset.
+
+SQL: 
+SELECT "Age", COUNT("Age") AS age_count
+FROM T
+GROUP BY "Age"
+ORDER BY age_count DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Age", COUNT("Age") AS age_count FROM T GROUP BY "Age" ORDER BY age_count DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   Age |   age_count |
+|------:|------------:|
+|     3 |          64 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Florida Derby
+SQL: SELECT "Age", COUNT("Age") AS age_count FROM T GROUP BY "Age" ORDER BY age_count DESC LIMIT 1;
+
+Age | age_count
+3 | 64
+Question: what is their main age listed?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

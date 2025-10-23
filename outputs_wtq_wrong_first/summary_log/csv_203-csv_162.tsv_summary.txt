@@ -1,0 +1,80 @@
+**Column Analysis:**
+
+1. Title:
+   - Data type: Categorical
+   - 4 representative example values: "Earth Can Be Just Like Heaven", "I Got the Feeling", "Just Us", "It's Raining Men"
+   - Role: Descriptor
+
+2. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1980, 1982, 1985, 1993
+   - Role: Identifier
+
+3. Peak chart positions (US):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, 107, 75
+   - Role: Measure
+
+4. Peak chart positions (US Dance):
+   - Data type: Numeric
+   - 4 representative example values: 2, 1, —, —
+   - Role: Measure
+
+5. Peak chart positions (US Pop):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, 107, —
+   - Role: Measure
+
+6. Peak chart positions (US R&B):
+   - Data type: Numeric
+   - 4 representative example values: —, 34, 76, —
+   - Role: Measure
+
+7. Peak chart positions (GER):
+   - Data type: Numeric
+   - 4 representative example values: —, 43, —, 75
+   - Role: Measure
+
+8. Peak chart positions (NL):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, —, —
+   - Role: Measure
+
+9. Peak chart positions (NOR):
+   - Data type: Numeric
+   - 4 representative example values: —, 8, —, —
+   - Role: Measure
+
+10. Peak chart positions (NZ):
+   - Data type: Numeric
+   - 4 representative example values: —, 13, —, —
+   - Role: Measure
+
+11. Peak chart positions (SWI):
+   - Data type: Numeric
+   - 4 representative example values: —, 95, —, —
+   - Role: Measure
+
+12. Peak chart positions (UK):
+   - Data type: Numeric
+   - 4 representative example values: —, 2, —, —
+   - Role: Measure
+
+13. Album:
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The peak chart position for US R&B is 29, which is significantly higher than the other values in the column.
+   - This row is an outlier due to the unusually high peak chart position in the US R&B category.
+
+2. Row 6:
+   - The peak chart positions for US Pop and US R&B are 107 and 76, respectively, which are notably higher than the other values in those columns.
+   - This row is an outlier due to the unusually high peak chart positions in the US Pop and US R&B categories.
+
+3. Row 5:
+   - The peak chart position for US Pop is 107, which is much higher than the other values in the column.
+   - This row is an outlier due to the unusually high peak chart position in the US Pop category.

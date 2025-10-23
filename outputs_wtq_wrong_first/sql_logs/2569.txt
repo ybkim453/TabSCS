@@ -1,0 +1,138 @@
+=== Table ID ===
+csv/203-csv/628.tsv
+
+=== Question ===
+what was the total number of singles?
+
+=== Sub-table Preview ===
+|   Year | Song      | US Hot 100   | U.S. Modern Rock   | U.S. Mainstream Rock   | Album                               |
+|-------:|:----------|:-------------|:-------------------|:-----------------------|:------------------------------------|
+|   1997 | Pacifier  | -            | -                  | -                      | Pacifier                            |
+|   1997 | One Thing | -            | -                  | -                      | Pacifier                            |
+|   1997 | Defaced   | -            | -                  | -                      | Pacifier                            |
+|   1998 | The Sick  | -            | -                  | -                      | An Audio Guide To Everyday Atrocity |
+|   2001 | Bleeder   | -            | -                  | 32                     | Violence                            |
+|   2003 | Ether     | -            | -                  | -                      | Skeletons                           |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1997, 1998, 2001, 2003
+   - Role: Identifier for the year in which the song was released.
+
+2. Song:
+   - Data type: Categorical
+   - 4 representative example values: Pacifier, One Thing, Defaced, Bleeder
+   - Role: Descriptor for the title of the song.
+
+3. US Hot 100:
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, -
+   - Role: Measure of the song's ranking on the US Hot 100 chart.
+
+4. U.S. Modern Rock:
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, -
+   - Role: Measure of the song's ranking on the U.S. Modern Rock chart.
+
+5. U.S. Mainstream Rock:
+   - Data type: Numeric
+   - 4 representative example values: -, -, -, 32
+   - Role: Measure of the song's ranking on the U.S. Mainstream Rock chart.
+
+6. Album:
+   - Data type: Categorical
+   - 4 representative example values: Pacifier, An Audio Guide To Everyday Atrocity, Violence, Skeletons
+   - Role: Descriptor for the album to which the song belongs.
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The value "32" in the U.S. Mainstream Rock column is significantly different from the "-" values in the other rows for the same column.
+   - This row is an outlier due to the distinct value in the U.S. Mainstream Rock column.
+
+2. Row 6:
+   - The row contains missing values ("-") in all columns except for the Year and Album columns.
+   - These missing values are not distinctive and are common in the table, making this row an ordinary entry.
+
+3. Row 4:
+   - The row contains missing values ("-") in all columns except for the Year and Album columns.
+   - These missing values are not distinctive and are common in the table, making this row an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number |   Year | Song          | US Hot 100   | U.S. Modern Rock   | U.S. Mainstream Rock   | Album                               |
+|-------------:|-------:|:--------------|:-------------|:-------------------|:-----------------------|:------------------------------------|
+|            0 |   1997 | "Pacifier"    | -            | -                  | -                      | Pacifier                            |
+|            1 |   1997 | "One Thing"   | -            | -                  | -                      | Pacifier                            |
+|            2 |   1997 | "Defaced"     | -            | -                  | -                      | Pacifier                            |
+|            3 |   1998 | "Breathe Out" | -            | -                  | -                      | An Audio Guide To Everyday Atrocity |
+|            4 |   1998 | "The Sick"    | -            | -                  | -                      | An Audio Guide To Everyday Atrocity |
+|            5 |   2001 | "Bleeder"     | -            | -                  | 32                     | Violence                            |
+|            6 |   2003 | "Ether"       | -            | -                  | -                      | Skeletons                           |
+
+Generated Reasoning SQL: Explanation: To determine the total number of singles, we need to count the distinct songs in the table. The "Song" column contains the names of the songs, and each row represents a single song. We should exclude any rows with missing values or outliers as they do not contribute to the count of singles.
+
+SQL: 
+SELECT COUNT(DISTINCT "Song") AS total_singles
+FROM T
+WHERE "Song" NOT LIKE '%-%';
+Generated Final SQL: SELECT COUNT(DISTINCT "Song") AS total_singles FROM T WHERE "Song" NOT LIKE '%-%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_singles |
+|----------------:|
+|               7 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Nothingface
+SQL: SELECT COUNT(DISTINCT "Song") AS total_singles FROM T WHERE "Song" NOT LIKE '%-%';
+
+SQL Execution Result:
+total_singles
+7
+
+Question: what was the total number of singles?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 7
+[Gold Answer] 7
+

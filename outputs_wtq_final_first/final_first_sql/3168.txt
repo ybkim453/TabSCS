@@ -1,0 +1,130 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Award
+   - Data type: Categorical
+   - 4 representative example values: Academy Awards, BAFTA, David di Donatello Award, Golden Globe Awards
+   - Role: Descriptor
+
+2. Category
+   - Data type: Categorical
+   - 4 representative example values: Best Supporting Actor, Best Actor, Best Direction, Best Foreign Film
+   - Role: Descriptor
+
+3. Nominee
+   - Data type: Categorical
+   - 4 representative example values: Roy Scheider, Gene Hackman, William Friedkin, Philip D'Antoni
+   - Role: Identifier
+
+4. Result
+   - Data type: Categorical
+   - 4 representative example values: Nominated, Won
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 11:
+   - The values in this row are consistent with the rest of the table and do not stand out as distinctive. This row is an ordinary entry and does not require special handling.
+
+3. Row 5:
+   - The values in this row are typical of the data in the table and do not deviate significantly from the majority. This row is an ordinary entry and does not qualify as an outlier.
+
+=== Full Table Preview ===
+|   row_number | Award                                 | Category                            | Nominee                                | Result    |
+|-------------:|:--------------------------------------|:------------------------------------|:---------------------------------------|:----------|
+|            0 | Academy Awards 1972                   | Best Picture                        | Phillip D'Antoni                       | Won       |
+|            1 | Academy Awards 1972                   | Best Director                       | William Friedkin                       | Won       |
+|            2 | Academy Awards 1972                   | Best Actor                          | Gene Hackman                           | Won       |
+|            3 | Academy Awards 1972                   | Best Adapted Screenplay             | Ernest Tidyman                         | Won       |
+|            4 | Academy Awards 1972                   | Film Editing                        | Gerald B. Greenberg                    | Won       |
+|            5 | Academy Awards 1972                   | Best Supporting Actor               | Roy Scheider                           | Nominated |
+|            6 | Academy Awards 1972                   | Best Cinematography                 | Owen Roizman                           | Nominated |
+|            7 | Academy Awards 1972                   | Best Sound                          | Theodore Soderberg\nChristopher Newman | Nominated |
+|            8 | American Cinema Editors 1972          | Best Edited Feature Film            | Gerald B. Greenberg                    | Nominated |
+|            9 | BAFTA 1972                            | Best Actor                          | Gene Hackman                           | Won       |
+|           10 | BAFTA 1972                            | Best Film Editing                   | Gerald B. Greenberg                    | Won       |
+|           11 | BAFTA 1972                            | Best Direction                      | William Friedkin                       | Nominated |
+|           12 | BAFTA 1972                            | Best Film                           | Philip D'Antoni                        | Nominated |
+|           13 | BAFTA 1972                            | Best Sound Track                    | Christopher Newman\nTheodore Soderberg | Nominated |
+|           14 | David di Donatello Award 1972         | Best Foreign Film                   | Philip D'Antoni                        | Won       |
+|           15 | Directors Guild of America 1972       | Outstanding Directorial Achievement | William Friedkin                       | Won       |
+|           16 | Edgar Allan Poe Awards 1972           | Best Motion Picture                 | Ernest Tidyman                         | Won       |
+|           17 | Golden Globe Awards 1972              | Best Motion Picture                 | Phillip D'Antoni                       | Won       |
+|           18 | Golden Globe Awards 1972              | Best Director                       | William Friedkin                       | Won       |
+|           19 | Golden Globe Awards 1972              | Best Actor                          | Gene Hackman                           | Won       |
+|           20 | Golden Globe Awards 1972              | Best Screenplay                     | Ernest Tidyman                         | Nominated |
+|           21 | Kansas City Film Critics Circle 1972  | Best Actor                          | Gene Hackman                           | Won       |
+|           22 | Kansas City Film Critics Circle 1972  | Best Film                           | Ernest Tidyman                         | Won       |
+|           23 | National Society of Film Critics 1972 | Best Actor                          | Gene Hackman                           | Nominated |
+|           24 | New York Film Critics Circle 1971     | Best Actor                          | Gene Hackman                           | Won       |
+|           25 | New York Film Critics Circle 1971     | Best Film                           | Ernest Tidyman                         | Nominated |
+|           26 | Writers Guild of America 1972         | Best Drama Adaptation               | Ernest Tidyman                         | Nominated |
+
+Generated Reasoning SQL: Explanation: To determine the number of Academy Awards for which "The French Connection" was nominated, we need to count the rows where the "Award" is "Academy Awards" and the "Result" is "Nominated". The "Nominee" column is not relevant for this specific question.
+We will filter the rows based on the "Award" and "Result" columns to get the count of nominations.
+
+SQL: SELECT COUNT(*) 
+FROM T 
+WHERE "Award" = 'Academy Awards' 
+AND "Result" = 'Nominated';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Award" = 'Academy Awards' AND "Result" = 'Nominated';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: The French Connection (film)
+SQL: SELECT COUNT(*) FROM T WHERE "Award" = 'Academy Awards' AND "Result" = 'Nominated';
+
+SQL Execution Result:
+COUNT(*)
+0
+
+Question: for how many academy awards was the french connection nominated?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 8
+

@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 5, 6
+   - Role: Identifier
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Mera Juta Hai Japani, Mudh Mudh Ke Na Dekh, O Janewale, Pyar Hua Iqrar Hua
+   - Role: Descriptor
+
+3. Singer(s):
+   - Data type: Categorical
+   - 4 representative example values: Mukesh, Lata Mangeshkar, Mohammed Rafi, Manna Dey
+   - Role: Descriptor
+
+4. Lyricist:
+   - Data type: Categorical
+   - 4 representative example values: Shailendra, Hasrat Jaipuri
+   - Role: Descriptor
+
+5. Length:
+   - Data type: Numeric
+   - 4 representative example values: 4:33, 6:34, 2:20, 4:22
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Mudh Mudh Ke Na Dekh, Lata Mangeshkar, Manna Dey, Shailendra, 6:34):
+   - The length of the song (6:34) is longer compared to the other songs in the table.
+   - This row is an outlier due to the significantly longer duration of the song.
+
+2. Row 0 (Mera Juta Hai Japani, Mukesh, Shailendra, 4:33):
+   - The title and singer(s) are different from the majority of the table.
+   - The length of the song (4:33) is also different from the other songs.
+   - This row is an outlier due to the unique combination of title, singer(s), and length.
+
+3. Row 2 (O Janewale, Lata Mangeshkar, Hasrat Jaipuri, 2:20):
+   - The lyricist for this song is different from the majority of the table.
+   - The length of the song (2:20) is shorter compared to the other songs.
+   - This row is an outlier due to the distinct lyricist and shorter duration of the song.
+
+=== Full Table Preview ===
+|   row_number |   # | Title                       | Singer(s)                            | Lyricist       | Length   |
+|-------------:|----:|:----------------------------|:-------------------------------------|:---------------|:---------|
+|            0 |   1 | "Dil Ka Haal Sune Dilwaala" | Manna Dey                            | Shailendra     | 5:36     |
+|            1 |   2 | "Ichak Dana Beechak Dana"   | Mukesh Lata Mangeshkar               | Hasrat Jaipuri | 5:08     |
+|            2 |   3 | "Mera Juta Hai Japani"      | Mukesh                               | Shailendra     | 4:33     |
+|            3 |   4 | "Mudh Mudh Ke Na Dekh"      | Lata Mangeshkar Manna Dey            | Shailendra     | 6:34     |
+|            4 |   5 | "O Janewale"                | Lata Mangeshkar                      | Hasrat Jaipuri | 2:20     |
+|            5 |   6 | "Pyar Hua Iqrar Hua"        | Lata Mangeshkar Manna Dey            | Shailendra     | 4:22     |
+|            6 |   7 | "Ramaiya Vastavaiya"        | Mohammed Rafi Lata Mangeshkar Mukesh | Shailendra     | 6:10     |
+|            7 |   8 | "Sham Gayi Raat Aayi"       | Lata Mangeshkar                      | Hasrat Jaipuri | 4:00     |
+
+Generated Reasoning SQL: Explanation: The summary provides information about the columns in the table, including the "Title" and "Singer(s)" columns. To find the song where Mukesh sings along with "Ichak Dana Beechak Dana," we need to search for rows where Mukesh is one of the singers and the title is not "Ichak Dana Beechak Dana."
+We will use the categorical values in the "Title" and "Singer(s)" columns to filter the rows accordingly.
+
+SQL: 
+select "Title" 
+from T 
+where "Singer(s)" like '%Mukesh%' 
+and "Title" != 'Ichak Dana Beechak Dana';
+Generated Final SQL: select "Title" from T where "Singer(s)" like '%Mukesh%' and "Title" != 'Ichak Dana Beechak Dana';
+SQL 실행 결과 셀 수: 3
+=== SQL 실행 결과 미리보기 ===
+| Title                     |
+|:--------------------------|
+| "Ichak Dana Beechak Dana" |
+| "Mera Juta Hai Japani"    |
+| "Ramaiya Vastavaiya"      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Shree 420
+SQL: select "Title" from T where "Singer(s)" like '%Mukesh%' and "Title" != 'Ichak Dana Beechak Dana';
+
+Title
+"Ichak Dana Beechak Dana"
+"Mera Juta Hai Japani"
+"Ramaiya Vastavaiya"
+Question: mukesh sings "ichak dana beechak dana" and what other song on the soundtrack?
+A: To find the answer to this question, let’s think step by step.
+Prediction: mera juta hai japani
+[Gold Answer] "mera juta hai japani"
+

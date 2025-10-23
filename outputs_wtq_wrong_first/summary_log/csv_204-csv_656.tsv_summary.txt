@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2012, 2010, 2005, 2003
+   - Role: Identifier for the year in which the data was recorded.
+
+2. State/Territory Men's Division:
+   - Data type: Categorical
+   - 4 representative example values: Queensland, Western Australia, New South Wales, Northern Territory
+   - Role: Descriptor indicating the state or territory for the men's division.
+
+3. State/Territory Women's Division:
+   - Data type: Categorical
+   - 4 representative example values: New South Wales, nan, nan, nan
+   - Role: Descriptor indicating the state or territory for the women's division.
+
+4. Major Centres Division:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, Alice Springs, Darwin
+   - Role: Descriptor indicating the major centres division.
+
+5. Community Division:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, Alkupitja, nan
+   - Role: Descriptor indicating the community division.
+
+6. Women's Division:
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, Darwin, nan
+   - Role: Descriptor indicating the women's division.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in the State/Territory Men's Division and State/Territory Women's Division columns are Queensland and New South Wales, respectively, which are common values in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row.
+
+2. Row 8:
+   - The values in the Major Centres Division and Community Division columns are both nan, which are common missing data values in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row.
+
+3. Row 11:
+   - The values in the State/Territory Men's Division and Women's Division columns are Tasmania and nan, respectively, which are common values in the table.
+   - This row does not contain any distinctive values that would make it an outlier. It is an ordinary row.

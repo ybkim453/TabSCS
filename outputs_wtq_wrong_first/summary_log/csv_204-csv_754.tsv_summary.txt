@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Departure
+   - Data type: Numeric
+   - 4 representative example values: 11.34, 13.48, 13.49, 17.55
+   - Role: Measure indicating the time of departure for each train.
+
+2. Going to
+   - Data type: Categorical
+   - 4 representative example values: Grantham, March, Nottingham Victoria
+   - Role: Descriptor identifying the destination of each train.
+
+3. Calling at
+   - Data type: Categorical
+   - 4 representative example values: Rauceby, Ancaster, Honington, Helpringham
+   - Role: Descriptor listing the stops the train will make along its route.
+
+4. Arrival
+   - Data type: Numeric
+   - 4 representative example values: 12.05, 14.21, 15.23, 18.46
+   - Role: Measure indicating the time of arrival for each train.
+
+5. Operator
+   - Data type: Categorical
+   - 4 representative example values: GNR, GN&GE
+   - Role: Descriptor identifying the operator of each train.
+
+**Outlier Row Analysis:**
+
+1. Row 16
+   - The row contains "nan" values in the Going to and Calling at columns, which are not typical entries in the table. This makes the row an outlier.
+
+2. Row 28
+   - The row contains "nan" values in the Going to column, which is not a typical entry in the table. This makes the row an outlier.
+
+3. Row 22
+   - The row contains "nan" values in the Going to column, which is not a typical entry in the table. This makes the row an outlier.

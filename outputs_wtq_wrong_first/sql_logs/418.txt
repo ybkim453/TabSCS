@@ -1,0 +1,137 @@
+=== Table ID ===
+csv/203-csv/432.tsv
+
+=== Question ===
+list each district having an open election
+
+=== Sub-table Preview ===
+| Subject     | Robot's Name                  | Who?                    | When?      | Where?                 | Occupation            |
+|:------------|:------------------------------|:------------------------|:-----------|:-----------------------|:----------------------|
+| Corn Flakes | Chef Boy-Robot                | William Kellogg         | 1894       | Battle Creek, Michigan | Cook                  |
+| Microscope  | Slobot                        | Antonie van Leeuwenhoek | 1674       | The Netherlands        | Dirty Person          |
+| Writing     | Eraser-Bot                    | Sumerians               | 3,500 B.C. | Middle East            | Pencil Man            |
+| Sausage     | Sock-Bot                      | Babylonians             | 3,000 B.C. | Middle East            | Sock Man              |
+| Wheel       | Rollin' Road-Bot              | Sumerians               | 3,000 B.C. | Middle East            | Race Starter          |
+| Saxophone   | Bongo-Bot the Six-Armed Robot | Antoine-Joseph Sax      | 1846       | France                 | Six-Armed Drum Player |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Subject
+   - Data type: Categorical
+   - 4 representative example values: Corn Flakes, Microscope, Writing, Sausage
+   - Role: Descriptor
+
+2. Robot's Name
+   - Data type: Categorical
+   - 4 representative example values: Chef Boy-Robot, Slobot, Eraser-Bot, Sock-Bot
+   - Role: Descriptor
+
+3. Who?
+   - Data type: Categorical
+   - 4 representative example values: William Kellogg, Antonie van Leeuwenhoek, Sumerians, Babylonians
+   - Role: Descriptor
+
+4. When?
+   - Data type: Categorical
+   - 4 representative example values: 1894, 1674, 3,500 B.C., 3,000 B.C.
+   - Role: Descriptor
+
+5. Where?
+   - Data type: Categorical
+   - 4 representative example values: Battle Creek, Michigan, The Netherlands, Middle East, France
+   - Role: Descriptor
+
+6. Occupation
+   - Data type: Categorical
+   - 4 representative example values: Cook, Dirty Person, Pencil Man, Sock Man
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values "Saxophone", "Bongo-Bot the Six-Armed Robot", "Antoine-Joseph Sax", "1846", "France", "Six-Armed Drum Player" are consistent with the rest of the table and do not stand out as atypical. This row is an ordinary row and requires no special handling.
+
+2. Row 23:
+   - The values in this row are not provided in the partial preview, so it is not possible to determine if they are distinctive outliers. Further information is needed to analyze this row.
+
+3. Row 14:
+   - The values "Wheel", "Rollin' Road-Bot", "Sumerians", "3,000 B.C.", "Middle East", "Race Starter" are consistent with the other entries in the table. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   District | Incumbent        | 2008 Status   | Democratic    | Republican       |
+|-------------:|-----------:|:-----------------|:--------------|:--------------|:-----------------|
+|            0 |          1 | Diana DeGette    | Re-election   | Diana DeGette | George Lilly     |
+|            1 |          2 | Mark Udall       | Open          | Jared Polis   | Scott Starin     |
+|            2 |          3 | John Salazar     | Re-election   | John Salazar  | Wayne Wolf       |
+|            3 |          4 | Marilyn Musgrave | Re-election   | Betsy Markey  | Marilyn Musgrave |
+|            4 |          5 | Doug Lamborn     | Re-election   | Hal Bidlack   | Doug Lamborn     |
+|            5 |          6 | Tom Tancredo     | Open          | Hank Eng      | Mike Coffman     |
+|            6 |          7 | Ed Perlmutter    | Re-election   | Ed Perlmutter | John W. Lerew    |
+
+Generated Reasoning SQL: Explanation: To list each district with an open election, we need to filter the rows where the "2008 Status" column contains the value "Open". This indicates that the incumbent is not seeking re-election in that district.
+
+SQL: 
+SELECT "District" 
+FROM T 
+WHERE "2008 Status" LIKE '%Open%';
+Generated Final SQL: SELECT "District" FROM T WHERE "2008 Status" LIKE '%Open%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   District |
+|-----------:|
+|          2 |
+|          6 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States House of Representatives elections in Colorado, 2008
+SQL: SELECT "District" FROM T WHERE "2008 Status" LIKE '%Open%';
+
+SQL Execution Result:
+District
+2
+6
+
+Question: list each district having an open election
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2, 6
+[Gold Answer] 2,6
+

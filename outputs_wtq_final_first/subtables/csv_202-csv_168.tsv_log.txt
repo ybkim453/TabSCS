@@ -1,0 +1,16 @@
+
+JSONL 파일에서 인덱스 3779 처리 중: datasets/wtq.jsonl
+  테이블 크기: 14행 5열
+  컬럼 'Station' 분석 중...
+  컬럼 'Station Connections' 분석 중...
+  컬럼 'Date Opened' 분석 중...
+  컬럼 'Station Parking' 분석 중...
+  컬럼 'City/ Neighborhood' 분석 중...
+  특이값 행 선택: 행 10 (컬럼 'City/ Neighborhood', 유사도: 0.6400)
+  특이값 행 선택: 행 3 (컬럼 'Station Parking', 유사도: 0.6226)
+  특이값 행 선택: 행 4 (컬럼 'Station Connections', 유사도: 0.6919)
+  정상값 행 선택: 행 2 (평균 유사도: 0.7611)
+  정상값 행 선택: 행 1 (평균 유사도: 0.7605)
+  정상값 행 선택: 행 5 (평균 유사도: 0.7595)
+  최종 선택된 행 (원본 순서): [1, 2, 3, 4, 5, 10] (총 6개)
+  서브테이블 크기: 7줄

@@ -1,0 +1,129 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: March 20, 2013, June 8, 2013, July 8, 2013, September 6, 2013
+   - Role: Identifier for the specific date of the match
+
+2. Location:
+   - Data type: Categorical
+   - 4 representative example values: Muscat, Oman, Miami, United States, Harrison, United States, Incheon, South Korea
+   - Role: Descriptor for the location where the match took place
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Oman, Spain, Honduras, South Korea
+   - Role: Descriptor for the opposing team in the match
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: 0–3, 1–2, 0–2, 1-4
+   - Role: Measure of the result of the match for the team
+
+5. Competition:
+   - Data type: Categorical
+   - 4 representative example values: F, GC
+   - Role: Descriptor for the competition in which the match took place
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The match against Kosovo ended in a draw (0-0), which is different from the majority of the results in the table where there are clear wins or losses.
+   - This row is an outlier due to the unique result compared to the other matches.
+
+2. Row 9:
+   - The Location is listed as "Unknown", which is not a typical location mentioned in the table.
+   - This row is an outlier due to the unusual location provided for the match.
+
+3. Row 10:
+   - The Result is listed as "Unknown", which is not a typical result format seen in the table.
+   - This row is an outlier due to the ambiguous result provided for the match.
+
+=== Full Table Preview ===
+|   row_number | Date                | Location                         | Opponent            | Result   | Competition   |
+|-------------:|:--------------------|:---------------------------------|:--------------------|:---------|:--------------|
+|            0 | 2013-01-19 00:00:00 | Concepción Chile                 | Chile               | 0–3      | F             |
+|            1 | 2013-02-06 00:00:00 | Santa Cruz de la Sierra Bolivia  | Bolivia             | 1–2      | F             |
+|            2 | 2013-03-20 00:00:00 | Muscat Oman                      | Oman                | 0–3      | F             |
+|            3 | 2013-03-24 00:00:00 | Santo Domingo Dominican Republic | Dominican Republic  | 1–3      | F             |
+|            4 | 2013-06-08 00:00:00 | Miami United States              | Spain               | 1–2      | F             |
+|            5 | 2013-06-11 00:00:00 | Rio de Janeiro Brazil            | Italy               | 2–2      | F             |
+|            6 | 2013-07-08 00:00:00 | Harrison United States           | Honduras            | 0–2      | GC            |
+|            7 | 2013-07-12 00:00:00 | Miami Gardens United States      | Trinidad and Tobago | 2-0      | GC            |
+|            8 | 2013-07-15 00:00:00 | Houston United States            | El Salvador         | 0-1      | GC            |
+|            9 | 2013-09-06 00:00:00 | Incheon South Korea              | South Korea         | 1-4      | F             |
+|           10 | 2014-03-05 00:00:00 | Mitrovica Kosovo                 | Kosovo              | 0–0      | F             |
+
+Generated Reasoning SQL: To determine the total number of goals scored in the game between Haiti and South Korea on September 6, 2013, we need to filter the rows where "Opponent" is South Korea and "Date" is September 6, 2013. The "Result" column contains the goal information in the format of goals scored by each team. We will extract the goals scored by Haiti and South Korea separately and sum them to get the total goals in the match.
+
+SQL: 
+select sum(cast(substr("Result", 1, 1) as integer) + cast(substr("Result", 3, 1) as integer)) as total_goals
+from T
+where "Opponent" = 'South Korea' and "Date" = 'September 6, 2013';
+Generated Final SQL: select sum(cast(substr("Result", 1, 1) as integer) + cast(substr("Result", 3, 1) as integer)) as total_goals from T where "Opponent" = 'South Korea' and "Date" = 'September 6, 2013';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| total_goals   |
+|:--------------|
+|               |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Haiti national football team (row_number, Date, Location, Opponent, Result, Competition)
+
+row_number | Date | Location | Opponent | Result | Competition
+0 | 2013-01-19 00:00:00 | Concepción Chile | Chile | 0–3 | F
+1 | 2013-02-06 00:00:00 | Santa Cruz de la Sierra Bolivia | Bolivia | 1–2 | F
+2 | 2013-03-20 00:00:00 | Muscat Oman | Oman | 0–3 | F
+3 | 2013-03-24 00:00:00 | Santo Domingo Dominican Republic | Dominican Republic | 1–3 | F
+4 | 2013-06-08 00:00:00 | Miami United States | Spain | 1–2 | F
+5 | 2013-06-11 00:00:00 | Rio de Janeiro Brazil | Italy | 2–2 | F
+6 | 2013-07-08 00:00:00 | Harrison United States | Honduras | 0–2 | GC
+7 | 2013-07-12 00:00:00 | Miami Gardens United States | Trinidad and Tobago | 2-0 | GC
+8 | 2013-07-15 00:00:00 | Houston United States | El Salvador | 0-1 | GC
+9 | 2013-09-06 00:00:00 | Incheon South Korea | South Korea | 1-4 | F
+10 | 2014-03-05 00:00:00 | Mitrovica Kosovo | Kosovo | 0–0 | F
+Question: what was the total number of goals scored in the game between haiti and south korea on september 6, 2013?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Opponent** column shows the teams that Haiti played against in each match.
+- The **Result** column displays the outcome of each match in terms of goals scored by each team.
+
+From the full table:
+- Haiti played against South Korea on September 6, 2013.
+- The result of the match was 1-4 in favor of South Korea.
+
+Therefore, the total number of goals scored in the game between Haiti and South Korea on September 6, 2013, was 1 + 4 = 5.
+
+Final Answer: 5
+[Fallback] Prediction: 5
+[Gold Answer] 5
+

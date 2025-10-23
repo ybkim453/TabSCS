@@ -1,0 +1,133 @@
+=== Table ID ===
+csv/204-csv/594.tsv
+
+=== Question ===
+did indonesia earn more medals than malaysia?
+
+=== Sub-table Preview ===
+|   Rank | Nation         |   Gold |   Silver |   Bronze |   Total |
+|-------:|:---------------|-------:|---------:|---------:|--------:|
+|      1 | Malaysia       |      3 |        0 |        1 |       4 |
+|      2 | Indonesia      |      1 |        3 |        2 |       6 |
+|      5 | Chinese Taipei |      0 |        1 |        2 |       3 |
+|      7 | Japan          |      0 |        0 |        2 |       2 |
+|      8 | India          |      0 |        0 |        1 |       1 |
+|      9 | Spain          |      0 |        0 |        1 |       1 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 5, 7
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Malaysia, Indonesia, Chinese Taipei, Japan
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 3, 1, 0, 2
+   - Role: Measures
+
+**Outlier Row Analysis:**
+
+1. Malaysia (Rank 1):
+   - This row has the highest number of Gold medals compared to the other rows.
+   - This makes it an outlier as it stands out in terms of Gold medals won.
+
+2. Indonesia (Rank 2):
+   - This row has the second-highest Total medals won.
+   - While not as extreme as Malaysia, it is still an outlier in terms of Total medals.
+
+3. India (Rank 8):
+   - This row has the lowest Total medals won.
+   - While not a significant outlier, it is still distinctive in terms of Total medals.
+
+4. Spain (Rank 9):
+   - This row also has the lowest Total medals won.
+   - Similar to India, it is an outlier in terms of Total medals but not as extreme.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Nation         |   Gold |   Silver |   Bronze |   Total |
+|-------------:|-------:|:---------------|-------:|---------:|---------:|--------:|
+|            0 |      1 | Malaysia       |      3 |        0 |        1 |       4 |
+|            1 |      2 | Indonesia      |      1 |        3 |        2 |       6 |
+|            2 |      3 | Korea          |      1 |        1 |        2 |       4 |
+|            3 |      4 | Thailand       |      1 |        0 |        0 |       1 |
+|            4 |      5 | Chinese Taipei |      0 |        1 |        2 |       3 |
+|            5 |      6 | Denmark        |      0 |        1 |        0 |       1 |
+|            6 |      7 | Japan          |      0 |        0 |        2 |       2 |
+|            7 |      8 | India          |      0 |        0 |        1 |       1 |
+|            8 |      9 | Spain          |      0 |        0 |        1 |       1 |
+
+Generated Reasoning SQL: Explanation: To compare the total number of medals earned by Indonesia and Malaysia, we need to sum the values in the "Total" column for each country. We will then compare these totals to determine if Indonesia earned more medals than Malaysia.
+
+SQL: 
+SELECT 
+    SUM(CAST("Total" AS INTEGER)) AS total_medals_earned
+FROM 
+    T
+WHERE 
+    "Nation" = 'Indonesia'
+    OR "Nation" = 'Malaysia';
+Generated Final SQL: SELECT SUM(CAST("Total" AS INTEGER)) AS total_medals_earned FROM T WHERE "Nation" = 'Indonesia' OR "Nation" = 'Malaysia';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_medals_earned |
+|----------------------:|
+|                    10 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2011 BWF World Junior Championships
+SQL: SELECT SUM(CAST("Total" AS INTEGER)) AS total_medals_earned FROM T WHERE "Nation" = 'Indonesia' OR "Nation" = 'Malaysia';
+
+SQL Execution Result:
+total_medals_earned
+10
+
+Question: did indonesia earn more medals than malaysia?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 10
+[Gold Answer] yes
+

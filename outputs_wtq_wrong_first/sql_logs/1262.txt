@@ -1,0 +1,200 @@
+=== Table ID ===
+csv/203-csv/194.tsv
+
+=== Question ===
+how many years has there been a lieutenant governor of indiana?
+
+=== Sub-table Preview ===
+|   # | Episode                      | Air Date       | Timeslot   |   Rating |   Share | 18-49      | Viewers   | Weekly Rank   |
+|----:|:-----------------------------|:---------------|:-----------|---------:|--------:|:-----------|:----------|:--------------|
+|   1 | Goodbye City...Hello Country | April 30, 2008 | 9:00 P.M.  |      1.7 |       3 | 1.0/3 (#5) | 2.37 (#5) | 89/96         |
+|   3 | Wet 'n Wild                  | May 14, 2008   | 9:00 P.M.  |      1.3 |       2 | 0.9/2 (#5) | 1.96 (#5) | 90/96         |
+|   4 | Do-Si-Do                     | May 28, 2008   | 9:00 P.M.  |      1.8 |       3 | 0.9/2 (#5) | 2.44 (#5) | 75/87         |
+|   5 | As Country as Apple Pie      | June 4, 2008   | 9:00 P.M.  |      1.3 |       2 | 0.8/2 (#5) | 2.01 (#5) | 79/91         |
+|   6 | It's Show Time               | June 11, 2008  | 9:00 P.M.  |      1.3 |       2 | 0.8/2 (#5) | 2.04 (#5) | 76/88         |
+|   7 | A Family Affair              | June 18, 2008  | 9:00 P.M.  |      1.5 |       3 | 0.8/2 (#5) | 2.00 (#5) | TBA           |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative example values: 1, 3, 4, 5
+   - Role of the column: Identifier for each row
+
+2. **Episode**
+   - Data type: Categorical
+   - 4 representative example values: Goodbye City...Hello Country, Wet 'n Wild, Do-Si-Do, As Country as Apple Pie
+   - Role of the column: Descriptor for each episode
+
+3. **Air Date**
+   - Data type: Date
+   - 4 representative example values: April 30, 2008, May 14, 2008, May 28, 2008, June 4, 2008
+   - Role of the column: Descriptor for the date of each episode
+
+4. **Timeslot**
+   - Data type: Categorical
+   - 4 representative example values: 9:00 P.M.
+   - Role of the column: Descriptor for the time slot of each episode
+
+5. **Rating**
+   - Data type: Numeric
+   - 4 representative example values: 1.7, 1.3, 1.8, 1.5
+   - Role of the column: Measure of the rating for each episode
+
+6. **Share**
+   - Data type: Numeric
+   - 4 representative example values: 3, 2
+   - Role of the column: Measure of the share for each episode
+
+7. **18-49**
+   - Data type: Categorical
+   - 4 representative example values: 1.0/3 (#5), 0.9/2 (#5), 0.8/2 (#5)
+   - Role of the column: Descriptor for the 18-49 demographic rating for each episode
+
+8. **Viewers**
+   - Data type: Numeric
+   - 4 representative example values: 2.37 (#5), 1.96 (#5), 2.44 (#5), 2.01 (#5)
+   - Role of the column: Measure of the number of viewers for each episode
+
+9. **Weekly Rank**
+   - Data type: Categorical
+   - 4 representative example values: 89/96, 90/96, 75/87, 79/91
+   - Role of the column: Descriptor for the weekly rank of each episode
+
+**Outlier Row Analysis:**
+
+1. **Row 3 (Wet 'n Wild)**
+   - The values in this row are not significantly different from the majority of the table. They are ordinary ratings, shares, and viewership numbers. This row is an ordinary row and does not require special handling.
+
+2. **Row 2 (Goodbye City...Hello Country)**
+   - The values in this row are also not significantly different from the majority of the table. They are typical ratings, shares, and viewership numbers. This row is an ordinary row and does not require special handling.
+
+3. **Row 0 (Do-Si-Do)**
+   - The values in this row are similar to the other rows in terms of ratings, shares, and viewership numbers. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | #   | Name                    | Took office         | Left office       | Party                 | Governor             | Notes   |
+|-------------:|:----|:------------------------|:--------------------|:------------------|:----------------------|:---------------------|:--------|
+|            0 | 1   | Christopher Harrison    | 1816-11-07 00:00:00 | December 17 1818  | Democratic-Republican | Jonathan Jennings    |         |
+|            1 | 2   | Ratliff Boon            | 1819-12-08 00:00:00 | September 12 1822 | Democratic-Republican | Jonathan Jennings    |         |
+|            2 | 3   | Ratliff Boon            | 1822-09-12 00:00:00 | January 30 1824   | Democratic-Republican | William Hendricks    |         |
+|            3 | 4   | John H. Thompson        | 1824-01-30 00:00:00 | December 3 1828   | Democratic-Republican | William Hendricks    |         |
+|            4 | 5   | Milton Stapp            | 1828-12-03 00:00:00 | December 7 1831   | Independent           | James B. Ray         |         |
+|            5 | 6   | David Wallace           | 1831-12-07 00:00:00 | December 6 1837   | Whig                  | Noah Noble           |         |
+|            6 | 7   | David Hillis            | 1837-12-06 00:00:00 | December 9 1840   | Whig                  | David Wallace        |         |
+|            7 | 8   | Samuel Hall             | 1840-12-09 00:00:00 | December 6 1843   | Whig                  | Samuel Bigger        |         |
+|            8 | 9   | Jesse D. Bright         | 1843-12-06 00:00:00 | December 6 1845   | Democrat              | James Whitcomb       |         |
+|            9 | 10  | Paris C. Dunning        | 1846-12-09 00:00:00 | December 26 1848  | Democrat              | James Whitcomb       |         |
+|           10 | 11  | James Henry Lane        | 1849-12-05 00:00:00 | January 10 1853   | Democrat              | Joseph A. Wright     |         |
+|           11 | 12  | Ashbel P. Willard       | 1853-01-10 00:00:00 | January 12 1857   | Democrat              | Joseph A. Wright     |         |
+|           12 | 13  | Abram A. Hammond        | 1857-01-12 00:00:00 | October 3 1860    | Democrat              | Ashbel P. Willard    |         |
+|           13 | 14  | Oliver P. Morton        | 1861-01-14 00:00:00 | January 16 1861   | Republican            | Henry Smith Lane     |         |
+|           14 | —   | John R. Cravens         | 1861-01-16 00:00:00 | October 9 1863    | Republican            | Oliver P. Morton     | acting  |
+|           15 | —   | Paris C. Dunning        | 1863-10-09 00:00:00 | January 16 1865   | Democrat              | Oliver P. Morton     | acting  |
+|           16 | 15  | Conrad Baker            | 1865-01-09 00:00:00 | January 23 1867   | Republican            | Oliver P. Morton     |         |
+|           17 | 16  | William Cumback         | 1869-01-11 00:00:00 | January 13 1873   | Republican            | Conrad Baker         |         |
+|           18 | 17  | Leonidas Sexton         | 1873-01-13 00:00:00 | January 13 1877   | Republican            | Thomas A. Hendricks  |         |
+|           19 | 18  | Isaac P. Gray           | 1877-01-13 00:00:00 | November 2 1880   | Democrat              | James D. Williams    |         |
+|           20 | —   | Fredrick Vieche         | 1880-11-20 00:00:00 | January 8 1881    | Democrat              | Isaac P. Gray        | acting  |
+|           21 | 19  | Thomas Hanna            | 1881-01-10 00:00:00 | November 12 1885  | Republican            | Albert G. Porter     |         |
+|           22 | 20  | Mahlon Dickerson Manson | 1885-01-12 00:00:00 | August 3 1886     | Democrat              | Isaac P. Gray        |         |
+|           23 | 21  | Robert S. Robertson     | 1887-01-10 00:00:00 | January 13 1889   | Republican            | Isaac P. Gray        |         |
+|           24 | –   | Alonzo G. Smith         | 1886-11-08 00:00:00 | January 14 1889   | Democrat              | Isaac P. Gray        | acting  |
+|           25 | 22  | Ira Joy Chase           | 1889-01-14 00:00:00 | November 24 1891  | Republican            | Alvin Peterson Hovey | acting  |
+|           26 | —   | Francis M. Griffith     | 1891-11-23 00:00:00 | January 9 1893    | Republican            | Ira Joy Chase        | acting  |
+|           27 | 23  | Mortimer Nye            | 1893-01-09 00:00:00 | January 11 1897   | Democrat              | Claude Matthews      |         |
+|           28 | 24  | William S. Haggard      | 1897-01-11 00:00:00 | January 14 1901   | Republican            | James A. Mount       |         |
+|           29 | 25  | Newton W. Gilbert       | 1901-01-14 00:00:00 | January 9 1905    | Republican            | Winfield T. Durbin   |         |
+|           30 | 26  | Hugh Thomas Miller      | 1905-01-09 00:00:00 | January 11 1909   | Republican            | Frank Hanly          |         |
+|           31 | 27  | Frank J. Hall           | 1909-01-11 00:00:00 | January 13 1913   | Democrat              | Thomas R. Marshall   |         |
+|           32 | 28  | William P. O'Neill      | 1913-01-13 00:00:00 | January 8 1917    | Democrat              | Samuel M. Ralston    |         |
+|           33 | 29  | Edgar D. Bush           | 1917-01-08 00:00:00 | January 10 1921   | Republican            | James P. Goodrich    |         |
+|           34 | 30  | Emmett Forrest Branch   | 1921-01-10 00:00:00 | April 30 1924     | Republican            | Warren T. McCray     |         |
+|           35 | —   | James J. Nejdl          | 1924-04-30 00:00:00 | January 12 1925   | Republican            | Warren T. McCray     | acting  |
+|           36 | 31  | F. Harold Van Orman     | 1925-01-12 00:00:00 | January 14 1929   | Republican            | Edward L. Jackson    |         |
+|           37 | 32  | Edgar D. Bush           | 1929-01-14 00:00:00 | January 9 1933    | Republican            | Harry G. Leslie      |         |
+|           38 | 33  | M. Clifford Townsend    | 1933-01-09 00:00:00 | January 11 1937   | Democrat              | Paul V. McNutt       |         |
+|           39 | 34  | Henry F. Schricker      | 1937-01-11 00:00:00 | January 13 1941   | Democrat              | M. Clifford Townsend |         |
+|           40 | 35  | Charles M. Dawson       | 1941-01-13 00:00:00 | January 8 1945    | Democrat              | Henry F. Schricker   |         |
+|           41 | 36  | Richard T. James        | 1945-01-08 00:00:00 | January 10 1948   | Republican            | Ralph F. Gates       |         |
+|           42 | 37  | Rue J. Alexander        | 1948-04-14 00:00:00 | January 2 1949    | Republican            | Henry F. Schricker   |         |
+|           43 | 38  | John A. Watkins         | 1949-01-10 00:00:00 | January 12 1953   | Democrat              | Henry F. Schricker   |         |
+|           44 | 39  | Harold W. Handley       | 1953-01-12 00:00:00 | January 14 1957   | Republican            | George N. Craig      |         |
+|           45 | 40  | Crawford F. Parker      | 1957-01-14 00:00:00 | January 9 1961    | Republican            | Harold W. Handley    |         |
+|           46 | 41  | Richard O. Ristine      | 1961-01-09 00:00:00 | January 11 1965   | Republican            | Matthew E. Welsh     |         |
+|           47 | 42  | Robert L. Rock          | 1965-01-11 00:00:00 | January 13 1969   | Democrat              | Roger D. Branigin    |         |
+|           48 | 43  | Richard E. Folz         | 1969-01-13 00:00:00 | January 8 1973    | Republican            | Edgar Whitcomb       |         |
+|           49 | 44  | Robert D. Orr           | 1973-01-08 00:00:00 | January 12 1981   | Republican            | Otis R. Bowen        |         |
+|           50 | 45  | John Mutz               | 1981-01-12 00:00:00 | January 9 1989    | Republican            | Robert D. Orr        |         |
+|           51 | 46  | Frank O'Bannon          | 1989-01-09 00:00:00 | January 13 1997   | Democrat              | Evan Bayh            |         |
+|           52 | 47  | Joe E. Kernan           | 1997-01-13 00:00:00 | September 13 2003 | Democrat              | Frank O'Bannon       |         |
+|           53 | 48  | Kathy Davis             | 2003-10-20 00:00:00 | January 10 2005   | Democrat              | Joe E. Kernan        |         |
+|           54 | 49  | Becky Skillman          | 2005-01-10 00:00:00 | January 14 2013   | Republican            | Mitch Daniels        |         |
+|           55 | 50  | Sue Ellspermann         | 2013-01-14 00:00:00 | Incumbent         | Republican            | Mike Pence           |         |
+
+Generated Reasoning SQL: Explanation: To determine the number of years there has been a Lieutenant Governor of Indiana, we need to calculate the difference between the latest "Took office" date and the earliest "Took office" date in the table. This will give us the total number of years the position has been held.
+
+SQL: 
+SELECT 
+    (julianday(MAX("Took office")) - julianday(MIN("Took office"))) / 365 as total_years
+FROM 
+    T;
+Generated Final SQL: SELECT (julianday(MAX("Took office")) - julianday(MIN("Took office"))) / 365 as total_years FROM T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_years |
+|--------------:|
+|       196.318 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Lieutenant Governor of Indiana
+SQL: SELECT (julianday(MAX("Took office")) - julianday(MIN("Took office"))) / 365 as total_years FROM T;
+
+SQL Execution Result:
+total_years
+196.3178082191781
+
+Question: how many years has there been a lieutenant governor of indiana?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 196.32
+[Gold Answer] 198
+

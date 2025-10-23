@@ -1,0 +1,110 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season:
+   - Data type: Categorical
+   - 4 representative example values: 2006/07, 2010/11, 2012/13, ...
+   - Role: Identifier for the specific season the data corresponds to.
+
+2. Level:
+   - Data type: Numeric
+   - 4 representative example values: 4, 4, 4, ...
+   - Role: Descriptor indicating the level of the division.
+
+3. Division:
+   - Data type: Categorical
+   - 4 representative example values: 3ª, 3ª, 3ª, ...
+   - Role: Descriptor specifying the division within the level.
+
+4. Place:
+   - Data type: Categorical
+   - 4 representative example values: 8th, 11th, 9th, ...
+   - Role: Measure indicating the final standing or rank achieved.
+
+**Outlier Row Analysis:**
+
+1. Row [0]:
+   - The values for Season, Level, Division, and Place are all within the range of typical values seen in the table.
+   - There are no distinctive or unusual values that would make this row an outlier.
+   - Conclusion: This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Season   |   Level | Division   | Place   |
+|-------------:|:---------|--------:|:-----------|:--------|
+|            0 | 1950–97  |     nan | Regional   | —       |
+|            1 | 1997/98  |       7 | 2ª Reg.    | 5th     |
+|            2 | 1998/99  |       7 | 2ª Reg.    | 8th     |
+|            3 | 1999/00  |       7 | 2ª Reg.    | 11th    |
+|            4 | 2000/01  |       7 | 2ª Reg.    | 8th     |
+|            5 | 2001/02  |       7 | 2ª Reg.    | 1st     |
+|            6 | 2002/03  |       6 | 1ª Reg.    | 1st     |
+|            7 | 2003/04  |       5 | Reg. Pref. | 6th     |
+|            8 | 2004/05  |       5 | Reg. Pref. | 11th    |
+|            9 | 2005/06  |       5 | Reg. Pref. | 2nd     |
+|           10 | 2006/07  |       4 | 3ª         | 8th     |
+|           11 | 2007/08  |       4 | 3ª         | 5th     |
+|           12 | 2008/09  |       4 | 3ª         | 9th     |
+|           13 | 2009/10  |       4 | 3ª         | 14th    |
+|           14 | 2010/11  |       4 | 3ª         | 11th    |
+|           15 | 2011/12  |       4 | 3ª         | 10th    |
+|           16 | 2012/13  |       4 | 3ª         | 9th     |
+|           17 | 2013/14  |       4 | 3ª         |         |
+
+Generated Reasoning SQL: The summary provides information about the data types of the columns and example values for each column. To answer the question, we need to filter rows where the "Season" is after 1999/2000 and the "Level" is 4. We must exclude outlier rows that do not represent a specific season or level.
+SQL: select count("Season") from T where "Season" > '1999/2000' and "Level" = 4;
+Generated Final SQL: select count("Season") from T where "Season" > '1999/2000' and "Level" = 4;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Season") |
+|------------------:|
+|                 8 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: CD Cudillero
+SQL: select count("Season") from T where "Season" > '1999/2000' and "Level" = 4;
+
+count("Season")
+8
+Question: how many seasons after the 1999/2000 season did the team play at level 4?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 8
+[Gold Answer] 8
+

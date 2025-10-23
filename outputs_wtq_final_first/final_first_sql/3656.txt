@@ -1,0 +1,145 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Heat
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier for the heat number in the race.
+
+2. Rank
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 17, 24
+   - Role: Descriptor indicating the ranking of the athlete in the race.
+
+3. Name
+   - Data type: Categorical
+   - 4 representative example values: Harumi Hiroyama (JPN), Roberta Brunet (ITA), Sonia O'Sullivan (IRL), Restituta Joseph (TAN)
+   - Role: Descriptor identifying the name and nationality of the athlete.
+
+4. Result
+   - Data type: Categorical
+   - 4 representative example values: 15:27.75 Q, 15:29.03 Q, 15:40.82, 15:55.22
+   - Role: Measure indicating the time or result achieved by the athlete in the race.
+
+5. Notes
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Descriptor providing additional information or notes about the athlete's performance.
+
+**Outlier Row Analysis:**
+
+1. Row 23
+   - The values in this row are consistent with the rest of the table and do not contain any distinctive or unusual markers. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 36
+   - The values in this row are also ordinary and do not deviate from the typical entries in the table. This row is not an outlier and should be treated as a regular data row.
+
+3. Row 16
+   - The values in this row do not contain any unique or unusual markers that would make it stand out from the rest of the table. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Heat | Rank   | Name                               | Result     | Notes   |
+|-------------:|-------:|:-------|:-----------------------------------|:-----------|:--------|
+|            0 |      1 | 1      | Gabriela Szabo (ROU)               | 15:26.62 Q |         |
+|            1 |      1 | 2      | Paula Radcliffe (GBR)              | 15:27.25 Q |         |
+|            2 |      2 | 3      | Fernanda Ribeiro (POR)             | 15:27.30 Q |         |
+|            3 |      1 | 4      | Harumi Hiroyama (JPN)              | 15:27.75 Q |         |
+|            4 |      1 | 5      | Roberta Brunet (ITA)               | 15:29.03 Q |         |
+|            5 |      2 | 6      | Liu Jianying (CHN)                 | 15:29.28 Q | PB      |
+|            6 |      1 | 7      | Ayelech Worku (ETH)                | 15:29.37 Q |         |
+|            7 |      1 | 8      | Li Wei (CHN)                       | 15:29.62 Q |         |
+|            8 |      1 | 9      | Libbie Hickman (USA)               | 15:30.56 q | SB      |
+|            9 |      2 | 10     | Lydia Cheromei (KEN)               | 15:32.00 Q |         |
+|           10 |      2 | 11     | Merima Denboba (ETH)               | 15:32.01 Q |         |
+|           11 |      1 | 12     | Gunhild Hall (NOR)                 | 15:32.13 q |         |
+|           12 |      2 | 13     | Naoko Takahashi (JPN)              | 15:32.25 Q |         |
+|           13 |      2 | 14     | Yuko Kawakami (JPN)                | 15:32.71 Q |         |
+|           14 |      1 | 15     | Kate Anderson (AUS)                | 15:36.16 q |         |
+|           15 |      1 | 16     | Yelena Kopytova (RUS)              | 15:37.19   | PB      |
+|           16 |      2 | 17     | Sonia O'Sullivan (IRL)             | 15:40.82   |         |
+|           17 |      2 | 18     | Stela Olteanu (ROU)                | 15:40.86   |         |
+|           18 |      1 | 19     | Adriana Fernandez (MEX)            | 15:41.55   |         |
+|           19 |      2 | 20     | Olivera Jevtić (YUG)               | 15:43.76   |         |
+|           20 |      1 | 21     | Melody Fairchild (USA)             | 15:47.66   |         |
+|           21 |      2 | 22     | Chrystosomia Iakovou (GRE)         | 15:51.14   |         |
+|           22 |      1 | 23     | Marina Bastos (POR)                | 15:54.01   |         |
+|           23 |      2 | 24     | Restituta Joseph (TAN)             | 15:55.22   | NR      |
+|           24 |      1 | 25     | Valerie Vaughan (IRL)              | 15:57.58   |         |
+|           25 |      1 | 26     | Zohra Ouaziz (MAR)                 | 15:58.84   |         |
+|           26 |      2 | 27     | Amy Rudolph (USA)                  | 16:00.87   |         |
+|           27 |      1 | 28     | Genet Gebregiorgis (ETH)           | 16:04.40   | SB      |
+|           28 |      1 | 29     | Laurence Duquenoy (FRA)            | 16:06.02   |         |
+|           29 |      2 | 30     | Una English (IRL)                  | 16:07.09   |         |
+|           30 |      2 | 31     | Jelena Chelnova (LAT)              | 16:27.63   |         |
+|           31 |      2 | 32     | Helena Javornik (SLO)              | 16:28.38   |         |
+|           32 |      1 | 33     | Justine Nahimana (BUR)             | 17:21.77   |         |
+|           33 |      1 | 34     | Nebiat Habtemariam (ERI)           | 18:26.50   |         |
+|           34 |      1 | 35     | Zalia Aliou (TOG)                  | 18:34.45   | NR      |
+|           35 |      1 | 36     | Martha Portobanco (NCA)            | 19:08.44   |         |
+|           36 |      2 | —      | Anne Hare (NZL)                    | DNF        |         |
+|           37 |      2 | —      | Kristina da Fonseca-Wollheim (GER) | DNF        |         |
+|           38 |      1 | —      | Maysa Matrood (IRQ)                | DNS        |         |
+|           39 |      1 | —      | Elana Meyer (RSA)                  | DNS        |         |
+|           40 |      2 | —      | Carol Howe (CAN)                   | DNS        |         |
+|           41 |      2 | —      | Annemari Sandell (FIN)             | DNS        |         |
+
+Generated Reasoning SQL: To determine the number of times the USA was represented in the list, we need to count the occurrences where the "Name" column includes the country identifier "USA". The "Name" column is categorical and contains the names and nationalities of the athletes. By filtering rows where "Name" includes "USA", we can count the instances where the USA was represented.
+
+SQL: 
+select count("Name") from T where "Name" like '%USA%';
+Generated Final SQL: select count("Name") from T where "Name" like '%USA%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Name") |
+|----------------:|
+|               3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1997 World Championships in Athletics – Women's 5000 metres
+SQL: select count("Name") from T where "Name" like '%USA%';
+
+count("Name")
+3
+Question: what were the number of times the usa were represented according to this list?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

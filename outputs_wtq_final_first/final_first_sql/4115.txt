@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 17, 17, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: United States, Australia, Greece, Sweden
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 22, 0, 1, 82
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Rank 2, United States, Gold 22, Silver 18, Bronze 11, Total 51):
+   - This row stands out as it has a significantly higher total medal count compared to the other rows.
+   - The values for Gold, Silver, and Bronze are also higher than the majority of the table.
+
+2. Row 24 (Rank Total, Nation Total, Gold 82, Silver 80, Bronze 80, Total 242):
+   - This row is the total row and includes the sum of all the other rows.
+   - It is not an outlier in terms of individual medal counts, as it is the sum of all the other rows.
+
+3. Row 1 (Rank 17, Australia, Gold 0, Silver 1, Bronze 0, Total 1):
+   - This row has a very low total medal count compared to the other rows.
+   - The values for Gold, Silver, and Bronze are all significantly lower than the majority of the table.
+
+4. Row 17 (Rank 17, Greece, Gold 0, Silver 1, Bronze 0, Total 1):
+   - Similar to Row 1, this row also has a very low total medal count.
+   - The values for Gold, Silver, and Bronze are all significantly lower than the majority of the table.
+
+5. Row 1 (Rank 17, Sweden, Gold 0, Silver 1, Bronze 0, Total 1):
+   - This row is similar to Rows 1 and 17, with a very low total medal count.
+   - The values for Gold, Silver, and Bronze are all significantly lower than the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation         |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:---------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | Soviet Union   |     26 |       17 |       15 |      58 |
+|            1 | 2      | United States  |     22 |       18 |       11 |      51 |
+|            2 | 3      | East Germany   |      8 |        3 |        4 |      15 |
+|            3 | 4      | Italy          |      4 |        4 |        6 |      14 |
+|            4 | 5      | Japan          |      3 |        7 |        5 |      15 |
+|            5 | 6      | Hungary        |      3 |        6 |        6 |      15 |
+|            6 | 7      | West Germany   |      3 |        6 |        4 |      13 |
+|            7 | 8      | United Kingdom |      3 |        4 |        7 |      14 |
+|            8 | 9      | Poland         |      3 |        1 |        5 |       9 |
+|            9 | 10     | Yugoslavia     |      3 |        1 |        1 |       5 |
+|           10 | 11     | Netherlands    |      1 |        1 |        2 |       4 |
+|           11 | 12     | Austria        |      1 |        1 |        1 |       3 |
+|           12 | 12     | Bulgaria       |      1 |        1 |        1 |       3 |
+|           13 | 14     | France         |      1 |        0 |        4 |       5 |
+|           14 | 15     | Romania        |      0 |        4 |        2 |       6 |
+|           15 | 16     | Cuba           |      0 |        2 |        2 |       4 |
+|           16 | 17     | Australia      |      0 |        1 |        0 |       1 |
+|           17 | 17     | Czechoslovakia |      0 |        1 |        0 |       1 |
+|           18 | 17     | Greece         |      0 |        1 |        0 |       1 |
+|           19 | 17     | Sweden         |      0 |        1 |        0 |       1 |
+|           20 | 21     | Canada         |      0 |        0 |        1 |       1 |
+|           21 | 21     | South Korea    |      0 |        0 |        1 |       1 |
+|           22 | 21     | Madagascar     |      0 |        0 |        1 |       1 |
+|           23 | 21     | Panama         |      0 |        0 |        1 |       1 |
+|           24 | Total  | Total          |     82 |       80 |       80 |     242 |
+
+Generated Reasoning SQL: Explanation: The summary shows that the "Nation" column contains categorical values, including Italy. The columns "Gold", "Silver", "Bronze", and "Total" are all numeric and represent the number of medals earned by each nation. To find the total number of medals earned by Italy, we sum the values in the "Total" column where "Nation" = Italy.
+
+SQL: select sum(cast("Total" as integer)) as total_medals from T where "Nation" = 'Italy';
+Generated Final SQL: select sum(cast("Total" as integer)) as total_medals from T where "Nation" = 'Italy';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_medals |
+|---------------:|
+|             14 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1970 Summer Universiade
+SQL: select sum(cast("Total" as integer)) as total_medals from T where "Nation" = 'Italy';
+
+total_medals
+14
+Question: how many medals total did italy earn?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 14
+[Gold Answer] 14
+

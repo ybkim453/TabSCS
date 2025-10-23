@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Route
+   - Data type: Categorical
+   - 4 representative example values: 2, 3, 4, 12A
+   - Role: Identifier for the specific bus route
+
+2. Destinations
+   - Data type: Categorical
+   - 4 representative example values: Kingston Centre, Princess Street, CFB Kingston, Train Station
+   - Role: Descriptor of the destinations covered by the bus route
+
+3. Via
+   - Data type: Categorical
+   - 4 representative example values: St. Lawrence College, Downtown, Cataraqui Town Centre, Queen Mary Road
+   - Role: Descriptor of the route taken by the bus
+
+4. Frequency (minutes)
+   - Data type: Numeric
+   - 4 representative example values: 30, 30, 30, 30
+   - Role: Measure of the frequency of the bus service in minutes
+
+5. Peak Hours Only
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, nan, X
+   - Role: Descriptor indicating if the bus service operates only during peak hours
+
+6. Former
+   - Data type: Categorical
+   - 4 representative example values: nan, nan, nan, Student Circuit
+   - Role: Descriptor of any former status or association with the bus route
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values in this row are not significantly different from the majority of the table and are ordinary entries. Therefore, this row is an ordinary row and requires no special handling.
+
+2. Row 10:
+   - The values in this row are also not distinctive and are ordinary within the context of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 0:
+   - The values in this row are consistent with the majority of the table and do not stand out as outliers. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Route   | Destinations                                          | Via                                                | Frequency\n(minutes)   | Peak Hours Only   | Former                      |
+|-------------:|:--------|:------------------------------------------------------|:---------------------------------------------------|:-----------------------|:------------------|:----------------------------|
+|            0 | 1       | Montreal Street\nSt. Lawrence College                 | Downtown                                           | 30                     |                   | Cataraqui Town Centre-Woods |
+|            1 | 2       | Kingston Centre\nDivision Street                      | St. Lawrence College\nDowntown                     | 30                     |                   |                             |
+|            2 | 3       | Kingston Centre\nDowntown                             | Queen Mary Road\nSt. Lawrence College\nKing Street | 30                     |                   |                             |
+|            3 | 4       | Princess Street                                       | Cataraqui Town Centre\nDowntown                    | 30                     |                   |                             |
+|            4 | 6       | Cataraqui Town Centre\nSt. Lawrence College           | Gardiners Town Centre                              | 30                     |                   | Downtown                    |
+|            5 | 7       | Dalton/Division\nMidland/Gardiners                    | Cataraqui Town Centre\nTrain Station\nBus Terminal | 30                     |                   |                             |
+|            6 | 9       | Downtown\nCataraqui Town Centre                       | Brock St. / Barrie St.\nGardiners Town Centre      | 20                     |                   |                             |
+|            7 | 10      | Amherstview\nCataraqui Town Centre                    | Collins Bay Road                                   | 30                     |                   | Kingston Centre             |
+|            8 | 11      | Kingston Centre\nCataraqui Town Centre                | Bath Road\nGardiners Town Centre                   | 30                     |                   | (formerly Route 71)         |
+|            9 | 12      | Kingston Centre\nHighway 15                           | Downtown\nCFB Kingston (off-peak only)             | 30                     |                   | -                           |
+|           10 | 12A     | CFB Kingston\nDowntown                                |                                                    | 30                     | X                 |                             |
+|           11 | 18      | Train Station\nBus Terminal                           | Downtown\nQueen's University\nSt. Lawrence College | *                      |                   | Student Circuit             |
+|           12 | 19      | Montreal Street\nQueen's University                   | Downtown                                           | 30                     | X                 |                             |
+|           13 | 14      | Train Station\nCataraqui Town Centre / Midland Avenue | Waterloo-Davis\nMultiplex                          | 30                     |                   | (formerly Route A)          |
+|           14 | 15      | Reddendale\nCataraqui Town Centre - Woods             | Gardiners Town Centre                              | 30                     |                   | (formerly Route B)          |
+|           15 | 16      | Train Station\nBus Terminal                           | Kingston Centre                                    | 30                     |                   | (formerly Route C)          |
+
+Generated Reasoning SQL: Explanation: To find the next destination after Princess Street, we need to look at the "Destinations" column and select the row where the "Route" is the same as the one for Princess Street and the row_number is the next consecutive value after Princess Street. This will give us the next destination on the same route.
+
+SQL: 
+SELECT "Destinations" 
+FROM T 
+WHERE "Route" = (SELECT "Route" FROM T WHERE "Destinations" = 'Princess Street') 
+AND "row_number" = (SELECT "row_number" FROM T WHERE "Destinations" = 'Princess Street') + 1;
+Generated Final SQL: SELECT "Destinations" FROM T WHERE "Route" = (SELECT "Route" FROM T WHERE "Destinations" = 'Princess Street') AND "row_number" = (SELECT "row_number" FROM T WHERE "Destinations" = 'Princess Street') + 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Kingston Transit (row_number, Route, Destinations, Via, Frequency\n(minutes), Peak Hours Only, Former)
+
+row_number | Route | Destinations | Via | Frequency\n(minutes) | Peak Hours Only | Former
+0 | 1 | Montreal Street\nSt. Lawrence College | Downtown | 30 | None | Cataraqui Town Centre-Woods
+1 | 2 | Kingston Centre\nDivision Street | St. Lawrence College\nDowntown | 30 | None | None
+2 | 3 | Kingston Centre\nDowntown | Queen Mary Road\nSt. Lawrence College\nKing Street | 30 | None | None
+3 | 4 | Princess Street | Cataraqui Town Centre\nDowntown | 30 | None | None
+4 | 6 | Cataraqui Town Centre\nSt. Lawrence College | Gardiners Town Centre | 30 | None | Downtown
+5 | 7 | Dalton/Division\nMidland/Gardiners | Cataraqui Town Centre\nTrain Station\nBus Terminal | 30 | None | None
+6 | 9 | Downtown\nCataraqui Town Centre | Brock St. / Barrie St.\nGardiners Town Centre | 20 | None | None
+7 | 10 | Amherstview\nCataraqui Town Centre | Collins Bay Road | 30 | None | Kingston Centre
+8 | 11 | Kingston Centre\nCataraqui Town Centre | Bath Road\nGardiners Town Centre | 30 | None | (formerly Route 71)
+9 | 12 | Kingston Centre\nHighway 15 | Downtown\nCFB Kingston (off-peak only) | 30 | None | -
+10 | 12A | CFB Kingston\nDowntown | None | 30 | X | None
+11 | 18 | Train Station\nBus Terminal | Downtown\nQueen's University\nSt. Lawrence College | * | None | Student Circuit
+12 | 19 | Montreal Street\nQueen's University | Downtown | 30 | X | None
+13 | 14 | Train Station\nCataraqui Town Centre / Midland Avenue | Waterloo-Davis\nMultiplex | 30 | None | (formerly Route A)
+14 | 15 | Reddendale\nCataraqui Town Centre - Woods | Gardiners Town Centre | 30 | None | (formerly Route B)
+15 | 16 | Train Station\nBus Terminal | Kingston Centre | 30 | None | (formerly Route C)
+Question: what's the next destination after princess street?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate the Princess Street route in the table. From the full table, we can see that Princess Street is served by Route 4.
+
+Next, we need to look at the Destinations column for Route 4 to determine the next destination after Princess Street. According to the table, the destinations for Route 4 are Cataraqui Town Centre and Downtown.
+
+Therefore, the next destination after Princess Street on Route 4 is Cataraqui Town Centre or Downtown.
+
+Final Answer: Cataraqui Town Centre, Downtown
+[Fallback] Prediction: cataraqui town centre, downtown
+[Gold Answer] cataraqui town centre st. lawrence college
+

@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Chord:
+   - Data type: Categorical
+   - 4 representative example values: D♭mM7, DmM7, EmM7, A♭mM7
+   - Role: Identifier for the type of chord being analyzed
+
+2. Root:
+   - Data type: Categorical
+   - 4 representative example values: D♭, D, E, A♭
+   - Role: Descriptor indicating the root note of the chord
+
+3. Minor Third:
+   - Data type: Categorical
+   - 4 representative example values: F♭ (E), F, G, C♭ (B)
+   - Role: Descriptor indicating the minor third note of the chord
+
+4. Perfect Fifth:
+   - Data type: Categorical
+   - 4 representative example values: A♭, A, B, E♭
+   - Role: Descriptor indicating the perfect fifth note of the chord
+
+5. Major Seventh:
+   - Data type: Categorical
+   - 4 representative example values: C, C♯, D♯, G
+   - Role: Descriptor indicating the major seventh note of the chord
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The values for the Minor Third (G) and Major Seventh (D♯) are different from the majority of the table.
+   - These values are not common in the context of the other rows, making this row an outlier.
+
+2. Row 16 (Index 16):
+   - The values for the Root (B) and Perfect Fifth (F♯) are different from the majority of the table.
+   - These values deviate from the typical pattern seen in other rows, making this row an outlier.
+
+3. Row 6 (Index 6):
+   - The values for the Minor Third (G) and Major Seventh (D♯) are common in the context of the table.
+   - These values are not distinctive or unusual compared to other rows, making this an ordinary row.
+
+=== Full Table Preview ===
+|   row_number | Chord   | Root   | Minor Third   | Perfect Fifth   | Major Seventh   |
+|-------------:|:--------|:-------|:--------------|:----------------|:----------------|
+|            0 | CmM7    | C      | E♭            | G               | B               |
+|            1 | C♯mM7   | C♯     | E             | G♯              | B♯ (C)          |
+|            2 | D♭mM7   | D♭     | F♭ (E)        | A♭              | C               |
+|            3 | DmM7    | D      | F             | A               | C♯              |
+|            4 | D♯mM7   | D♯     | F♯            | A♯              | C (D)           |
+|            5 | E♭mM7   | E♭     | G♭            | B♭              | D               |
+|            6 | EmM7    | E      | G             | B               | D♯              |
+|            7 | FmM7    | F      | A♭            | C               | E               |
+|            8 | F♯mM7   | F♯     | A             | C♯              | E♯ (F)          |
+|            9 | G♭mM7   | G♭     | B (A)         | D♭              | F               |
+|           10 | GmM7    | G      | B♭            | D               | F♯              |
+|           11 | G♯mM7   | G♯     | B             | D♯              | F (G)           |
+|           12 | A♭mM7   | A♭     | C♭ (B)        | E♭              | G               |
+|           13 | AmM7    | A      | C             | E               | G♯              |
+|           14 | A♯mM7   | A♯     | C♯            | E♯ (F)          | G (A)           |
+|           15 | B♭mM7   | B♭     | D♭            | F               | A               |
+|           16 | BmM7    | B      | D             | F♯              | A♯              |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Root" and "Perfect Fifth" columns are categorical and contain values representing musical notes. To determine which root (F or E) has C as its perfect fifth, we need to find the rows where "Perfect Fifth" = C and then check the corresponding "Root" value for those rows. We are looking for a specific relationship between the "Root" and "Perfect Fifth" notes.
+SQL: select "Root" from T where "Perfect Fifth" = 'C';
+Generated Final SQL: select "Root" from T where "Perfect Fifth" = 'C';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Root   |
+|:-------|
+| F      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Minor major seventh chord
+SQL: select "Root" from T where "Perfect Fifth" = 'C';
+
+Root
+F
+Question: which root, f or e, has c as it's perfect fifth?
+A: To find the answer to this question, let’s think step by step.
+Prediction: f
+[Gold Answer] f
+

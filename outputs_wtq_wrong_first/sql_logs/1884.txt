@@ -1,0 +1,136 @@
+=== Table ID ===
+csv/203-csv/831.tsv
+
+=== Question ===
+how long was brian mulroney a party leader?
+
+=== Sub-table Preview ===
+| Political lieutenant   | District\n(Area)                          |   Took Office |   Left Office | Party leader                |
+|:-----------------------|:------------------------------------------|--------------:|--------------:|:----------------------------|
+| Léon Balcer            | Trois-Rivières\n(Mauricie)                |          1957 |          1965 | John George Diefenbaker     |
+| Marcel Faribault       | none                                      |          1967 |          1968 | Robert Stanfield            |
+| Claude Wagner          | Saint-Hyacinthe\n(Montérégie)             |          1972 |          1978 | Robert Stanfield\nJoe Clark |
+| Lucien Bouchard        | Lac-Saint-Jean\n(Saguenay-Lac-Saint-Jean) |          1988 |          1990 | Brian Mulroney              |
+| Benoît Bouchard        | Roberval\n(Saguenay-Lac-Saint-Jean)       |          1990 |          1993 | Brian Mulroney              |
+| Monique Landry         | Blainville—Deux-Montagnes\n(Laurentides)  |          1993 |          1993 | Kim Campbell                |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Political lieutenant
+   - Data type: Categorical
+   - 4 representative example values: Léon Balcer, Marcel Faribault, Claude Wagner, Lucien Bouchard
+   - Role: Descriptor
+
+2. District (Area)
+   - Data type: Categorical
+   - 4 representative example values: Trois-Rivières (Mauricie), Saint-Hyacinthe (Montérégie), Lac-Saint-Jean (Saguenay-Lac-Saint-Jean), Roberval (Saguenay-Lac-Saint-Jean)
+   - Role: Descriptor
+
+3. Took Office
+   - Data type: Numeric
+   - 4 representative example values: 1957, 1967, 1972, 1988
+   - Role: Measure
+
+4. Left Office
+   - Data type: Numeric
+   - 4 representative example values: 1965, 1968, 1978, 1990
+   - Role: Measure
+
+5. Party leader
+   - Data type: Categorical
+   - 4 representative example values: John George Diefenbaker, Robert Stanfield, Brian Mulroney, Kim Campbell
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Marcel Faribault
+   - District (Area) is "none", which is not a typical district name.
+   - This row is an outlier because the district is not specified, unlike the other rows.
+
+2. Claude Wagner
+   - Party leader is listed as "Robert Stanfield\nJoe Clark", which is a joint leadership.
+   - This row is an outlier because it has two party leaders listed, unlike the other rows with a single party leader.
+
+3. Monique Landry
+   - Left Office is listed as 1993, the same year as Benoît Bouchard.
+   - This row is an ordinary row as having the same year as another lieutenant is not unusual in this context.
+
+=== Full Table Preview ===
+|   row_number | Political lieutenant   | District\n(Area)                                             |   Took Office |   Left Office | Party leader                |
+|-------------:|:-----------------------|:-------------------------------------------------------------|--------------:|--------------:|:----------------------------|
+|            0 | Georges-Henri Héon     | Argenteuil\n(Laurentides)                                    |          1949 |          1949 | George A. Drew              |
+|            1 | Léon Balcer            | Trois-Rivières\n(Mauricie)                                   |          1957 |          1965 | John George Diefenbaker     |
+|            2 | Marcel Faribault       | none                                                         |          1967 |          1968 | Robert Stanfield            |
+|            3 | Claude Wagner          | Saint-Hyacinthe\n(Montérégie)                                |          1972 |          1978 | Robert Stanfield\nJoe Clark |
+|            4 | Lucien Bouchard        | Lac-Saint-Jean\n(Saguenay-Lac-Saint-Jean)                    |          1988 |          1990 | Brian Mulroney              |
+|            5 | Benoît Bouchard        | Roberval\n(Saguenay-Lac-Saint-Jean)                          |          1990 |          1993 | Brian Mulroney              |
+|            6 | Monique Landry         | Blainville—Deux-Montagnes\n(Laurentides)                     |          1993 |          1993 | Kim Campbell                |
+|            7 | André Bachand          | Richmond—Arthabaska\n(Centre-du-Québec &\nEastern Townships) |          1998 |          2004 | Joe Clark\nPeter MacKay     |
+
+Generated Reasoning SQL: Explanation: To determine how long Brian Mulroney was a party leader, we need to calculate the duration between when he took office and when he left office. We will filter the rows where "Party leader" = 'Brian Mulroney' and calculate the time span by subtracting the "Took Office" from the "Left Office" values.
+
+SQL: 
+SELECT ("Left Office" - "Took Office") AS party_leader_tenure
+FROM T
+WHERE "Party leader" = 'Brian Mulroney';
+Generated Final SQL: SELECT ("Left Office" - "Took Office") AS party_leader_tenure FROM T WHERE "Party leader" = 'Brian Mulroney';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   party_leader_tenure |
+|----------------------:|
+|                     2 |
+|                     3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Quebec lieutenant
+SQL: SELECT ("Left Office" - "Took Office") AS party_leader_tenure FROM T WHERE "Party leader" = 'Brian Mulroney';
+
+SQL Execution Result:
+party_leader_tenure
+2
+3
+
+Question: how long was brian mulroney a party leader?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2, 3
+[Gold Answer] 5 years
+

@@ -1,0 +1,65 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 2009, 2010, 2012, 2013
+   - Role: Identifier for the racing season
+
+2. Series
+   - Data type: Categorical
+   - 4 representative example values: Asian Formula Renault Challenge, Austria Formula 3 Cup, 59th Macau Grand Prix Formula 3, GP3 Series
+   - Role: Descriptor of the racing series
+
+3. Team
+   - Data type: Categorical
+   - 4 representative example values: Asia Racing Team, Sonangol Motopark, Angola Racing Team, Carlin
+   - Role: Descriptor of the racing team
+
+4. Races
+   - Data type: Numeric
+   - 4 representative example values: 12, 4, 2, 16
+   - Role: Measure of the number of races participated in
+
+5. Wins
+   - Data type: Numeric
+   - 4 representative example values: 6, 1, 0, 0
+   - Role: Measure of the number of wins achieved
+
+6. Poles
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 0, 0
+   - Role: Measure of the number of pole positions achieved
+
+7. F/Laps
+   - Data type: Numeric
+   - 4 representative example values: 4, 3, 0, 0
+   - Role: Measure of the number of fastest laps achieved
+
+8. Podiums
+   - Data type: Numeric
+   - 4 representative example values: 7, 2, 0, 0
+   - Role: Measure of the number of podium finishes achieved
+
+9. Points
+   - Data type: Numeric
+   - 4 representative example values: 287, 35, —, 0
+   - Role: Measure of the total points earned
+
+10. Position
+    - Data type: Categorical
+    - 4 representative example values: 2nd, 9th, 23rd, —
+    - Role: Descriptor of the final position in the championship standings
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The team "Sonangol Motopark" has only participated in 4 races, which is significantly lower than the other entries in the table.
+   - This row is an outlier due to the unusually low number of races compared to the rest of the data.
+
+2. Row 5 (Index 5):
+   - The team "Angola Racing Team" has missing values for all performance metrics (Wins, Poles, F/Laps, Podiums, Points).
+   - This row is an outlier due to the lack of performance data, making it distinct from the other entries in the table.
+
+3. Row 11 (Index 11):
+   - The team "Carlin" has earned 0 points in the GP3 Series, which is significantly lower than the other entries in the table.
+   - This row is an outlier due to the lack of points earned compared to the majority of the data.

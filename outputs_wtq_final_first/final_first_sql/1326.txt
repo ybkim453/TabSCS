@@ -1,0 +1,139 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Subject:
+   - Data type: Categorical
+   - 4 representative example values: Microscope, Writing, Sausage, Wheel, Saxophone
+   - Role: Descriptor
+
+2. Robot's Name:
+   - Data type: Categorical
+   - 4 representative example values: Slobot, Eraser-Bot, Sock-Bot, Rollin' Road-Bot, Bongo-Bot the Six-Armed Robot
+   - Role: Descriptor
+
+3. Who?:
+   - Data type: Categorical
+   - 4 representative example values: Antonie van Leeuwenhoek, Sumerians, Babylonians, Antoine-Joseph Sax
+   - Role: Descriptor
+
+4. When?:
+   - Data type: Categorical
+   - 4 representative example values: 1674, 3,500 B.C., 3,000 B.C., 1846
+   - Role: Descriptor
+
+5. Where?:
+   - Data type: Categorical
+   - 4 representative example values: The Netherlands, Middle East, France
+   - Role: Descriptor
+
+6. Occupation:
+   - Data type: Categorical
+   - 4 representative example values: Dirty Person, Pencil Man, Sock Man, Race Starter, Six-Armed Drum Player
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The value "Dirty Person" in the Occupation column is distinctive compared to the other occupations listed, which are related to specific roles or professions. This makes the row an outlier.
+
+2. Row 23:
+   - The value "6,000 B.C." in the When? column is significantly different from the other time periods listed in the table. This makes the row an outlier.
+
+3. Row 14:
+   - The value "Saxophone" in the Subject column is unique compared to the other subjects listed, which are more common everyday items. This makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Subject      | Robot's Name                  | Who?                    | When?                | Where?                | Occupation            |
+|-------------:|:-------------|:------------------------------|:------------------------|:---------------------|:----------------------|:----------------------|
+|            0 | Solar System | Cosmo-Bot                     | Copernicus              | 1531                 | Poland                | Cosmonaut             |
+|            1 | Olympics     | Rhonda Robot                  | Greeks                  | 776 B.C.             | Greece                | Beauty queen          |
+|            2 | Basketball   | Danny Defrost-Bot             | James Naismith          | 1891                 | United States         | Snowman               |
+|            3 | Nursing      | Dr. Bug-Bot                   | Florence Nightengale    | 1860                 | England               | Doctor                |
+|            4 | Scuba Gear   | Flip the High-Diving Robot    | Jacques Cousteau        | 1946                 | France                | Diver                 |
+|            5 | Helicopter   | Amelia Air-Bot                | Leonardo da Vinci       | 1483                 | Italy                 | Pilot                 |
+|            6 | Corn Flakes  | Chef Boy-Robot                | William Kellogg         | 1894                 | Battle Creek Michigan | Cook                  |
+|            7 | Radium       | Miss Battery-Bot              | Marie Curie             | 1898                 | France                | Battery Lady          |
+|            8 | Chewing Gum  | Bubble-Bot                    | Mayans                  | 400                  | Mexico                | Bubble Man            |
+|            9 | Painting     | Pierro-Bot                    | Stone-Age Humans        | 35000 B.C.           | Europe                | Clown/Artist          |
+|           10 | Phonograph   | Slide the Heavy-Metal Robot   | Thomas Edison           | 1877                 | New Jersey            | Rock Star             |
+|           11 | Paper        | Noshi Origami                 | Ts'ai Lun               | 105                  | China                 | Origami Maker         |
+|           12 | Round Earth  | Vasco da Robot                | Ferdinand Magellan      | 1522                 | Spain                 | Early Sailor          |
+|           13 | Dynamite     | Robby Robot                   | Alfred Nobel            | 1866                 | Sweden                | Prankster             |
+|           14 | Microscope   | Slobot                        | Antonie van Leeuwenhoek | 1674                 | The Netherlands       | Dirty Person          |
+|           15 | Writing      | Eraser-Bot                    | Sumerians               | 3500 B.C.            | Middle East           | Pencil Man            |
+|           16 | Sausage      | Sock-Bot                      | Babylonians             | 3000 B.C.            | Middle East           | Sock Man              |
+|           17 | Bicycle      | Booster-Bot                   | Karl von Drais          | 1816                 | Germany               | Rocket Man            |
+|           18 | Wheel        | Rollin' Road-Bot              | Sumerians               | 3000 B.C.            | Middle East           | Race Starter          |
+|           19 | Germs        | Roast-Bot                     | Louis Pasteur           | 1865                 | France                | Firefighter           |
+|           20 | Boomerang    | Oswald the Mailman Robot      | Aborigines              | 40000 years ago      | Australia             | Mailman               |
+|           21 | Coins        | Verna the Vend-Bot            | Lydians                 | 600 B.C.             | Turkey                | Vending Machine       |
+|           22 | Tools        | Hank the Handyman Robot       | Stone-Age Humans        | 2½ million years ago | Africa                | Mechanic              |
+|           23 | Saxophone    | Bongo-Bot the Six-Armed Robot | Antoine-Joseph Sax      | 1846                 | France                | Six-Armed Drum Player |
+|           24 | Toilet       | Brunwella the Bombshell       | Minoans                 | 2000 B.C.            | Crete                 | Demolisher            |
+
+Generated Reasoning SQL: Explanation: To calculate the time difference between when Cosmo-Bot and Slobot were active, we need to extract the "When?" values for each robot and find the absolute difference between them. The "When?" column contains categorical values representing different time periods, so we need to handle these values appropriately for comparison.
+
+SQL:
+SELECT ABS(CAST("When?" AS INTEGER)) - ABS(CAST("When?" AS INTEGER))
+FROM T
+WHERE "Robot's Name" = 'Cosmo-Bot' OR "Robot's Name" = 'Slobot';
+Generated Final SQL: SELECT ABS(CAST("When?" AS INTEGER)) - ABS(CAST("When?" AS INTEGER)) FROM T WHERE "Robot's Name" = 'Cosmo-Bot' OR "Robot's Name" = 'Slobot';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   ABS(CAST("When?" AS INTEGER)) - ABS(CAST("When?" AS INTEGER)) |
+|----------------------------------------------------------------:|
+|                                                               0 |
+|                                                               0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: JumpStart Adventures 3rd Grade: Mystery Mountain
+SQL: SELECT ABS(CAST("When?" AS INTEGER)) - ABS(CAST("When?" AS INTEGER)) FROM T WHERE "Robot's Name" = 'Cosmo-Bot' OR "Robot's Name" = 'Slobot';
+
+SQL Execution Result:
+ABS(CAST("When?" AS INTEGER)) - ABS(CAST("When?" AS INTEGER))
+0
+0
+
+Question: what is the difference in time between when cosmo-bot was and slobot?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 143 years
+

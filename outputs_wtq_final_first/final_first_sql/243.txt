@@ -1,0 +1,137 @@
+=== Table Summary ===
+### Column Analysis:
+
+1. **Outcome:**
+   - Data type: Categorical
+   - 4 representative example values: Runner-up, Winner
+   - Role of the column: Describes the outcome of the match for the player (e.g., Runner-up, Winner).
+
+2. **No.:**
+   - Data type: Numeric
+   - 4 representative example values: 5, 3, 8, 9
+   - Role of the column: Identifier for the specific match number.
+
+3. **Date:**
+   - Data type: Date
+   - 4 representative example values: January 31, 1994, June 13, 1994, December 18, 1995, January 15, 1996
+   - Role of the column: Describes the date when the match took place.
+
+4. **Championship:**
+   - Data type: Categorical
+   - 4 representative example values: Australian Open, London (Queen's Club), Grand Slam Cup, Sydney
+   - Role of the column: Describes the name and location of the championship.
+
+5. **Surface:**
+   - Data type: Categorical
+   - 4 representative example values: Hard, Grass, Carpet
+   - Role of the column: Describes the type of surface on which the match was played.
+
+6. **Opponent in the final:**
+   - Data type: Categorical
+   - 4 representative example values: Pete Sampras, Goran Ivanišević
+   - Role of the column: Describes the opponent faced by the player in the final match.
+
+7. **Score in the final:**
+   - Data type: Categorical
+   - 4 representative example values: 6–7(4–7), 4–6, 4–6, 7–6(7–4)
+   - Role of the column: Describes the final score of the match.
+
+### Outlier Row Analysis:
+
+1. **Row 9:**
+   - The values in this row are consistent with ordinary entries in the table and do not contain any distinctive or atypical values. Therefore, this row is an ordinary row and requires no special handling.
+
+2. **Row 1:**
+   - The values in this row are also ordinary and not significantly different from the majority of the table. Hence, this row is an ordinary row and does not qualify as an outlier.
+
+3. **Row 11:**
+   - The values in this row are similar to other entries in the table and do not contain any unique or atypical values. Therefore, this row is an ordinary row and does not stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Championship                        | Surface   | Opponent in the final   | Score in the final            |
+|-------------:|:----------|------:|:--------------------|:------------------------------------|:----------|:------------------------|:------------------------------|
+|            0 | Runner-up |     1 | 1993-02-15 00:00:00 | Memphis Tennessee USA               | Hard (i)  | Jim Courier             | 7–5 6–7(4–7) 6–7(4–7)         |
+|            1 | Winner    |     1 | 1993-05-17 00:00:00 | Coral Springs Florida USA           | Clay      | David Wheaton           | 6–3 6–4                       |
+|            2 | Runner-up |     2 | 1993-07-26 00:00:00 | Washington D.C. USA                 | Hard      | Amos Mansdorf           | 6–7(3–7) 5–7                  |
+|            3 | Runner-up |     3 | 1993-08-02 00:00:00 | Montreal Canada                     | Hard      | Mikael Pernfors         | 6–2 2–6 5–7                   |
+|            4 | Runner-up |     4 | 1993-10-18 00:00:00 | Tokyo Japan                         | Carpet    | Ivan Lendl              | 4–6 4–6                       |
+|            5 | Runner-up |     5 | 1994-01-31 00:00:00 | Australian Open Melbourne Australia | Hard      | Pete Sampras            | 6–7(4–7) 4–6 4–6              |
+|            6 | Winner    |     2 | 1994-02-14 00:00:00 | Memphis Tennessee USA               | Hard      | Brad Gilbert            | 6–4 7–5                       |
+|            7 | Runner-up |     6 | 1994-05-02 00:00:00 | Atlanta Georgia USA                 | Clay      | Michael Chang           | 7–6(7–4) 6–7(4–7) 0–6         |
+|            8 | Runner-up |     7 | 1994-05-09 00:00:00 | Pinehurst USA                       | Clay      | Jared Palmer            | 4–6 6–7(5–7)                  |
+|            9 | Winner    |     3 | 1994-06-13 00:00:00 | London (Queen's Club) UK            | Grass     | Pete Sampras            | 7–6(7–4) 7–6(7–4)             |
+|           10 | Winner    |     4 | 1995-02-20 00:00:00 | Memphis Tennessee USA               | Hard      | Paul Haarhuis           | 7–6(7–2) 6–4                  |
+|           11 | Runner-up |     8 | 1995-12-18 00:00:00 | Grand Slam Cup Munich Germany       | Carpet    | Goran Ivanišević        | 6–7(4–7) 3–6 4–6              |
+|           12 | Winner    |     5 | 1996-01-15 00:00:00 | Sydney Australia                    | Hard      | Goran Ivanišević        | 5–7 6–3 6–4                   |
+|           13 | Runner-up |     9 | 1996-02-26 00:00:00 | Memphis Tennessee USA               | Hard (i)  | Pete Sampras            | 4–6 6–7(2–7)                  |
+|           14 | Runner-up |    10 | 1996-08-22 00:00:00 | Stockholm Sweden                    | Hard (i)  | Thomas Enqvist          | 5–7 4–6 6–7(0–7)              |
+|           15 | Winner    |     6 | 1998-04-20 00:00:00 | Barcelona Spain                     | Clay      | Alberto Berasategui     | 6–2 1–6 6–3 6–2               |
+|           16 | Winner    |     7 | 1998-11-16 00:00:00 | Stockholm Sweden                    | Hard      | Thomas Johansson        | 6–3 6–4 6–4                   |
+|           17 | Winner    |     8 | 1999-01-18 00:00:00 | Sydney Australia                    | Hard      | Àlex Corretja           | 6–3 7–6(7–5)                  |
+|           18 | Runner-up |    11 | 1999-04-12 00:00:00 | Estoril Portugal                    | Clay      | Albert Costa            | 6–7(4–7) 6–2 3–6              |
+|           19 | Runner-up |    12 | 1999-09-12 00:00:00 | US Open New York City USA           | Hard      | Andre Agassi            | 4–6 7–6(7–5) 7–6(7–2) 3–6 2–6 |
+
+Generated Reasoning SQL: To find out who Todd Martin faced before he faced David Wheaton in Coral Springs, Florida in 1993, we need to look for the opponent in the final for the match that occurred before the match against David Wheaton. 
+We can filter the rows based on the date being before May 17, 1993, and then retrieve the opponent in the final for that match.
+SQL: 
+SELECT "Opponent in the final" 
+FROM T 
+WHERE "Date" < '1993-05-17' 
+ORDER BY "Date" DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Opponent in the final" FROM T WHERE "Date" < '1993-05-17' ORDER BY "Date" DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Opponent in the final   |
+|:------------------------|
+| Jim Courier             |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Todd Martin
+SQL: SELECT "Opponent in the final" FROM T WHERE "Date" < '1993-05-17' ORDER BY "Date" DESC LIMIT 1;
+
+Opponent in the final
+Jim Courier
+Question: who did this player face before he faced david wheaton in coral springs, florida in 1993?
+A: To find the answer to this question, let’s think step by step.
+Prediction: jim courier
+[Gold Answer] jim courier
+

@@ -1,0 +1,52 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - Representative values: 17 Nov, 18 Nov, 21 Nov, 22 Nov
+   - Role: Identifier for the date of the match
+
+2. Time:
+   - Data type: Categorical
+   - Representative values: 14:00, 16:00, 18:00, 18:10
+   - Role: Descriptor for the time of the match
+
+3. Unnamed: 2:
+   - Data type: Categorical
+   - Representative values: Canada, Russia, Tunisia, South Korea
+   - Role: Descriptor for one of the teams playing
+
+4. Score:
+   - Data type: Categorical
+   - Representative values: 3–0, 0–3, 3–2, 1–3
+   - Role: Measure of the match outcome
+
+5. Unnamed: 4:
+   - Data type: Categorical
+   - Representative values: Kazakhstan, Serbia and Montenegro, South Korea
+   - Role: Descriptor for the other team playing
+
+6. Set 1, Set 2, Set 3, Set 4, Set 5:
+   - Data type: Numeric
+   - Representative values: 25–21, 26–24, 22–25, 18–25
+   - Role: Measures of the scores in each set
+
+7. Total:
+   - Data type: Numeric
+   - Representative values: 76–66, 63–75, 109–112, 90–101
+   - Role: Measure of the total score in the match
+
+8. Report:
+   - Data type: Categorical
+   - Representative values: P2 P3
+   - Role: Descriptor for additional information about the match
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The match between Russia and Serbia and Montenegro ended in a 0–3 score, which is different from the majority of the matches that ended in 3–0 or 3–2 scores. This makes it an outlier.
+
+2. Row 9 (Index 9):
+   - The match between Kazakhstan and Tunisia ended in a 0–3 score, which is different from the majority of the matches that ended in 3–0 or 3–2 scores. This makes it an outlier.
+
+3. Row 5 (Index 5):
+   - The match between Tunisia and Canada had a total score of 103–113, which is higher than the majority of the total scores in the table. This makes it an outlier.

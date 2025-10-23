@@ -1,0 +1,154 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Tie no:
+   - Data type: Numeric
+   - 4 representative values: 5, Replay, 9, 15
+   - Role: Identifier for each match
+
+2. Home team:
+   - Data type: Categorical
+   - 4 representative values: Gillingham, Leeds United, Sheffield United, Farnborough Town
+   - Role: Descriptor for the home team in each match
+
+3. Score:
+   - Data type: Categorical
+   - 4 representative values: 1 – 1, 2 – 1, 4 – 3, 1 – 5
+   - Role: Measure of the score for each match
+
+4. Away team:
+   - Data type: Categorical
+   - 4 representative values: Leeds United, Gillingham, Ipswich Town, Arsenal
+   - Role: Descriptor for the away team in each match
+
+5. Date:
+   - Data type: Categorical
+   - 4 representative values: 25 January 2003, 4 February 2003, 26 January 2003
+   - Role: Descriptor for the date of each match
+
+6. Attendance:
+   - Data type: Numeric
+   - 4 representative values: 11,093, 29,359, 12,757, 35,108
+   - Role: Measure of the attendance for each match
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The "Replay" value in the Tie no column is different from the numeric values in other rows, making it an outlier.
+   - This row is an outlier due to the atypical value in the Tie no column.
+
+2. Row 18:
+   - The presence of "?" in the Score column is not a distinctive outlier as it is a common way to indicate uncertainty in sports scores.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 19:
+   - The "?" in the Score column is not a distinctive outlier as it is a common way to indicate uncertainty in sports scores.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Tie no   | Home team               | Score   | Away team            | Date                |   Attendance |
+|-------------:|:---------|:------------------------|:--------|:---------------------|:--------------------|-------------:|
+|            0 | 1        | Rochdale                | 2 – 0   | Coventry City        | 2003-01-25 00:00:00 |          nan |
+|            1 | 2        | Southampton             | 1 – 1   | Millwall             | 2003-01-25 00:00:00 |        23809 |
+|            2 | Replay   | Millwall                | 1 – 2   | Southampton          | 2003-02-05 00:00:00 |        10197 |
+|            3 | 3        | Watford                 | 1 – 0   | West Bromwich Albion | 2003-01-25 00:00:00 |        16975 |
+|            4 | 4        | Walsall                 | 2 – 0   | Wimbledon            | 2003-01-25 00:00:00 |         6693 |
+|            5 | 5        | Gillingham              | 1 – 1   | Leeds United         | 2003-01-25 00:00:00 |        11093 |
+|            6 | Replay   | Leeds United            | 2 – 1   | Gillingham           | 2003-02-04 00:00:00 |        29359 |
+|            7 | 6        | Blackburn Rovers        | 3 – 3   | Sunderland           | 2003-01-25 00:00:00 |        14315 |
+|            8 | Replay   | Sunderland              | 2 – 2   | Blackburn Rovers     | 2003-02-05 00:00:00 |        15745 |
+|            9 | 7        | Wolverhampton Wanderers | 4 – 1   | Leicester City       | 2003-01-25 00:00:00 |        28164 |
+|           10 | 8        | Shrewsbury Town         | 0 – 4   | Chelsea              | 2003-01-26 00:00:00 |         7950 |
+|           11 | 9        | Sheffield United        | 4 – 3   | Ipswich Town         | 2003-01-25 00:00:00 |        12757 |
+|           12 | 10       | Fulham                  | 3 – 0   | Charlton Athletic    | 2003-01-26 00:00:00 |        12203 |
+|           13 | 11       | Brentford               | 0 – 3   | Burnley              | 2003-01-25 00:00:00 |         9563 |
+|           14 | 12       | Manchester United       | 6 – 0   | West Ham United      | 2003-01-26 00:00:00 |        67181 |
+|           15 | 13       | Norwich City            | 1 – 0   | Dagenham & Redbridge | 2003-01-25 00:00:00 |        21164 |
+|           16 | 14       | Crystal Palace          | 0 – 0   | Liverpool            | 2003-01-26 00:00:00 |        26054 |
+|           17 | Replay   | Liverpool               | 0 – 2   | Crystal Palace       | 2003-02-05 00:00:00 |        35109 |
+|           18 | 15       | Farnborough Town        | 1 – 5   | Arsenal              | 2003-01-25 00:00:00 |        35108 |
+|           19 | 16       | Stoke City              | 3 – 0   | Bournemouth          | 2003-01-26 00:00:00 |        12004 |
+
+Generated Reasoning SQL: Explanation: To find the date with at least 14,315 attendance, we need to filter the rows based on the "Attendance" column. We will select the "Date" column where the "Attendance" is greater than or equal to 14,315.
+
+SQL: SELECT "Date" 
+FROM T 
+WHERE CAST("Attendance" AS INTEGER) >= 14315;
+Generated Final SQL: SELECT "Date" FROM T WHERE CAST("Attendance" AS INTEGER) >= 14315;
+SQL 실행 결과 셀 수: 11
+=== SQL 실행 결과 미리보기 ===
+| Date                |
+|:--------------------|
+| 2003-01-25 00:00:00 |
+| 2003-01-25 00:00:00 |
+| 2003-02-04 00:00:00 |
+| 2003-01-25 00:00:00 |
+| 2003-02-05 00:00:00 |
+| 2003-01-25 00:00:00 |
+| 2003-01-26 00:00:00 |
+| 2003-01-25 00:00:00 |
+| 2003-01-26 00:00:00 |
+| 2003-02-05 00:00:00 |
+| 2003-01-25 00:00:00 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2002–03 FA Cup
+SQL: SELECT "Date" FROM T WHERE CAST("Attendance" AS INTEGER) >= 14315;
+
+SQL Execution Result:
+Date
+2003-01-25 00:00:00
+2003-01-25 00:00:00
+2003-02-04 00:00:00
+2003-01-25 00:00:00
+2003-02-05 00:00:00
+2003-01-25 00:00:00
+2003-01-26 00:00:00
+2003-01-25 00:00:00
+2003-01-26 00:00:00
+2003-02-05 00:00:00
+2003-01-25 00:00:00
+
+Question: which date had at least 14,315
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2003-01-25, 2003-02-04, 2003-02-05, 2003-01-26
+[Gold Answer] 25 january 2003
+

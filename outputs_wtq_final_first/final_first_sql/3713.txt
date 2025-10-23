@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Period
+   - Data type: Categorical
+   - 4 representative example values: 1965-1970, 1970-1975, 1985-1990, 2000-2005
+   - Role: Identifier for the time period of the data
+
+2. Live births per year
+   - Data type: Numeric
+   - 4 representative example values: 13,000, 16,000, 21,000, 15,000
+   - Role: Measure of the number of live births in a year
+
+3. Deaths per year
+   - Data type: Numeric
+   - 4 representative example values: 7,000, 8,000, 5,000
+   - Role: Measure of the number of deaths in a year
+
+4. Natural change per year
+   - Data type: Numeric
+   - 4 representative example values: 7,000, 8,000, 13,000, 11,000
+   - Role: Measure of the natural change in population (live births - deaths) per year
+
+5. CBR1
+   - Data type: Numeric
+   - 4 representative example values: 47.8, 47, 40.4, 25.2
+   - Role: Measure of the crude birth rate per 1,000 population
+
+6. CDR1
+   - Data type: Numeric
+   - 4 representative example values: 24.1, 22, 15, 7.9
+   - Role: Measure of the crude death rate per 1,000 population
+
+7. NC1
+   - Data type: Numeric
+   - 4 representative example values: 23.8, 25.1, 25.3, 17.2
+   - Role: Measure of the natural change rate per 1,000 population
+
+8. TFR1
+   - Data type: Numeric
+   - 4 representative example values: 6.67, 6.11, 3.3, 2.61
+   - Role: Measure of the total fertility rate per woman
+
+9. IMR1
+   - Data type: Numeric
+   - 4 representative example values: 163.1, 149.3, 104, 52.8
+   - Role: Measure of the infant mortality rate per 1,000 live births
+
+**Outlier Row Analysis:**
+
+1. Row 10 (1985-1990)
+   - The values for Live births per year (21,000) and Natural change per year (13,000) are significantly higher compared to the other rows.
+   - These values are distinctively higher and deviate from the pattern seen in the majority of the table, making this row an outlier.
+
+2. Row 7 (2000-2005)
+   - The values for CBR1 (25.2) and NC1 (17.2) are notably lower compared to the other rows.
+   - These values are distinctively lower and deviate from the pattern seen in the majority of the table, making this row an outlier.
+
+3. Row 11 (2005-2010)
+   - The values for CBR1 (21.5) and NC1 (14.4) are notably lower compared to the other rows.
+   - These values are distinctively lower and deviate from the pattern seen in the majority of the table, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Period    |   Live births per year |   Deaths per year |   Natural change per year |   CBR1 |   CDR1 |   NC1 |   TFR1 |   IMR1 |
+|-------------:|:----------|-----------------------:|------------------:|--------------------------:|-------:|-------:|------:|-------:|-------:|
+|            0 | 1950-1955 |                      9 |                 5 |                         4 |   47.9 |   27.1 |  20.8 |   6.67 |  184.8 |
+|            1 | 1955-1960 |                     10 |                 6 |                         5 |   49   |   26.8 |  22.3 |   6.67 |  181.4 |
+|            2 | 1960-1965 |                     12 |                 6 |                         6 |   48.5 |   25.7 |  22.8 |   6.67 |  174.1 |
+|            3 | 1965-1970 |                     13 |                 7 |                         7 |   47.8 |   24.1 |  23.8 |   6.67 |  163.1 |
+|            4 | 1970-1975 |                     16 |                 7 |                         8 |   47   |   22   |  25.1 |   6.67 |  149.3 |
+|            5 | 1975-1980 |                     18 |                 8 |                        10 |   45.8 |   19.6 |  26.2 |   6.67 |  133.2 |
+|            6 | 1980-1985 |                     20 |                 8 |                        12 |   42.7 |   17.1 |  25.6 |   6.39 |  117.1 |
+|            7 | 1985-1990 |                     21 |                 8 |                        13 |   40.4 |   15   |  25.3 |   6.11 |  104   |
+|            8 | 1990-1995 |                     19 |                 7 |                        12 |   35.2 |   12.5 |  22.7 |   5.27 |   87.5 |
+|            9 | 1995-2000 |                     16 |                 5 |                        11 |   29.2 |    9.9 |  19.3 |   4.13 |   69.7 |
+|           10 | 2000-2005 |                     15 |                 5 |                        11 |   25.2 |    7.9 |  17.2 |   3.3  |   52.8 |
+|           11 | 2005-2010 |                     15 |                 5 |                        10 |   21.5 |    7.2 |  14.4 |   2.61 |   44.4 |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Period" column is categorical and the "IMR1" column is numeric, representing the infant mortality rate per 1,000 live births. To find the period with the highest IMR, we need to identify the row where the "IMR1" value is the maximum. We will select the "Period" corresponding to this maximum IMR value.
+
+SQL: 
+SELECT "Period" 
+FROM T 
+WHERE "IMR1" = (SELECT MAX("IMR1") FROM T);
+Generated Final SQL: SELECT "Period" FROM T WHERE "IMR1" = (SELECT MAX("IMR1") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Period    |
+|:----------|
+| 1950-1955 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Demographics of Bhutan
+SQL: SELECT "Period" FROM T WHERE "IMR1" = (SELECT MAX("IMR1") FROM T);
+
+Period
+1950-1955
+Question: which period had the highest imr?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1950-1955
+[Gold Answer] 1950-1955
+

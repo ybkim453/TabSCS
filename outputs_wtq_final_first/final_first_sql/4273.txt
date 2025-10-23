@@ -1,0 +1,138 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 1993–94, 1994–95, 2006–07, 2012–13
+   - Role: Identifier for the specific season of the data
+
+2. Tier
+   - Data type: Numeric
+   - 4 representative example values: 1
+   - Role: Descriptor indicating the tier of the league
+
+3. League
+   - Data type: Categorical
+   - 4 representative example values: Bundesliga
+   - Role: Descriptor for the specific league
+
+4. Pos.
+   - Data type: Categorical
+   - 4 representative example values: 1, Semifinalist, Champion, Third place
+   - Role: Measure indicating the position achieved in the league or tournament
+
+5. Postseason
+   - Data type: Categorical
+   - 4 representative example values: Semifinalist, Champion, Quarterfinalist, Third place
+   - Role: Measure indicating the performance in the postseason
+
+6. German Cup
+   - Data type: Categorical
+   - 4 representative example values: Semifinalist, Third place
+   - Role: Measure indicating the performance in the German Cup
+
+7. European competitions
+   - Data type: Categorical
+   - 4 representative example values: 3 Played Korać Cup, 2 Played ULEB Cup, 1 Euroleague Top 16, 2 Eurocup Last 32
+   - Role: Descriptor for participation and performance in European competitions
+
+**Outlier Row Analysis:**
+
+1. Row 21:
+   - The values "nan" in the Pos. column and "nan" in the Postseason column make this row distinctive.
+   - These values are not typical and indicate missing or incomplete data, making this row an outlier.
+
+2. Row 22:
+   - The values "Third place" in the Pos. column and "1 Euroleague Regular Season\n2 Eurocup Last 32" in the European competitions column make this row distinctive.
+   - While "Third place" is a common value, the format of the European competitions entry is unique, making this row an outlier.
+
+3. Row 2:
+   - The values "Semifinalist" in the Postseason column make this row distinctive.
+   - While "Semifinalist" is a common value, it is not enough to make this row an outlier as it is a regular occurrence in the table.
+
+=== Full Table Preview ===
+|   row_number | Season   |   Tier | League     |   Pos. | Postseason          | German Cup      | European competitions                          |
+|-------------:|:---------|-------:|:-----------|-------:|:--------------------|:----------------|:-----------------------------------------------|
+|            0 | 1991–92  |      1 | Bundesliga |      2 | Semifinalist        | Champion        | –                                              |
+|            1 | 1992–93  |      1 | Bundesliga |      1 | Finalist            | –               | –                                              |
+|            2 | 1993–94  |      1 | Bundesliga |      1 | Semifinalist        | Semifinalist    | –                                              |
+|            3 | 1994–95  |      1 | Bundesliga |      1 | Semifinalist        | –               | 3 Played Korać Cup                             |
+|            4 | 1995–96  |      1 | Bundesliga |      4 | Semifinalist        | Semifinalist    | 3 Played Korać Cup                             |
+|            5 | 1996–97  |      1 | Bundesliga |      3 | Semifinalist        | Semifinalist    | 3 Played Korać Cup                             |
+|            6 | 1997–98  |      1 | Bundesliga |      3 | Semifinalist        | –               | 3 Played Korać Cup                             |
+|            7 | 1998–99  |      1 | Bundesliga |      6 | Quarterfinalist     | Third place     | 3 Played Korać Cup                             |
+|            8 | 1999–00  |      1 | Bundesliga |     10 | Round of 16         | –               | –                                              |
+|            9 | 2000–01  |      1 | Bundesliga |     10 | Relegation playoffs | –               | –                                              |
+|           10 | 2001–02  |      1 | Bundesliga |      7 | Quarterfinalist     | –               | –                                              |
+|           11 | 2002–03  |      1 | Bundesliga |      2 | Finalist            | –               | –                                              |
+|           12 | 2003–04  |      1 | Bundesliga |      2 | Finalist            | –               | 3 Played FIBA Europe League                    |
+|           13 | 2004–05  |      1 | Bundesliga |      1 | Champion            | –               | 2 Played ULEB Cup                              |
+|           14 | 2005–06  |      1 | Bundesliga |      3 | Semifinalist        | Finalist        | 1 Euroleague Top 16                            |
+|           15 | 2006–07  |      1 | Bundesliga |      1 | Champion            | –               | 2 Played ULEB Cup                              |
+|           16 | 2007–08  |      1 | Bundesliga |      7 | Quarterfinalist     | –               | 1 Euroleague Regular Season                    |
+|           17 | 2008–09  |      1 | Bundesliga |      4 | Semifinalist        | –               | 2 Played Eurocup                               |
+|           18 | 2009–10  |      1 | Bundesliga |      1 | Champion            | Champion        | 2 Played Eurocup                               |
+|           19 | 2010–11  |      1 | Bundesliga |      1 | Champion            | Champion        | 1 Euroleague Regular Season                    |
+|           20 | 2011–12  |      1 | Bundesliga |      1 | Champion            | Champion        | 1 Euroleague Regular Season                    |
+|           21 | 2012–13  |      1 | Bundesliga |      1 | Champion            | Quarterfinalist | 1 Euroleague Top 16                            |
+|           22 | 2013–14  |      1 | Bundesliga |    nan |                     | Third place     | 1 Euroleague Regular Season\n2 Eurocup Last 32 |
+
+Generated Reasoning SQL: The summary indicates that the "Season" column is categorical and can be used to filter rows. The "Postseason" column contains categorical values such as "Semifinalist" to indicate performance in the postseason. To answer the question, we count the number of rows where "Season" is after "2000-01" and "Postseason" is "Semifinalist".
+
+SQL: select count("Postseason") from T where "Season" > '2000-01' and "Postseason" = 'Semifinalist';
+Generated Final SQL: select count("Postseason") from T where "Season" > '2000-01' and "Postseason" = 'Semifinalist';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Postseason") |
+|----------------------:|
+|                     2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Brose Baskets
+SQL: select count("Postseason") from T where "Season" > '2000-01' and "Postseason" = 'Semifinalist';
+
+count("Postseason")
+2
+Question: after 2000-01 how many times were they semifinalists in the postseason?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

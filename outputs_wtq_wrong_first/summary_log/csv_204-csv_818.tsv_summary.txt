@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Nr.
+   - Data type: Numeric
+   - 4 representative example values: 1, 3, 4, 5
+   - Role: Identifier for the row number
+
+2. Name
+   - Data type: Categorical
+   - 4 representative example values: Alexandria, Cairo, Gharbia, Giza
+   - Role: Descriptor for the name of the region
+
+3. Area (km²)
+   - Data type: Numeric
+   - 4 representative example values: 2,900, 3,435, 25,400, 85,153
+   - Role: Measure of the area in square kilometers
+
+4. Population (2006)
+   - Data type: Numeric
+   - 4 representative example values: 4,110,015, 7,786,640, 3,790,670, 6,272,571
+   - Role: Measure of the population in 2006
+
+5. Capital
+   - Data type: Categorical
+   - 4 representative example values: Alexandria, Cairo, Tanta, Giza
+   - Role: Descriptor for the capital city of the region
+
+6. Club(s)
+   - Data type: Categorical
+   - 4 representative example values: Al Itthad Al Sakandary, Al-Ahly, Ghazl El-Mehalla, Zamalek
+   - Role: Descriptor for the football clubs in the region
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Cairo)
+   - The population of Cairo (7,786,640) is significantly higher compared to the other regions.
+   - This makes the row an outlier as it has a much larger population than the majority of the table.
+
+2. Row 5 (Giza)
+   - The area of Giza (85,153 km²) is significantly larger than the other regions.
+   - This makes the row an outlier as it has a much larger area compared to the majority of the table.
+
+3. Row 3 (Gharbia)
+   - The population of Gharbia (3,790,670) is lower compared to the other regions.
+   - This makes the row an outlier as it has a smaller population than the majority of the table.

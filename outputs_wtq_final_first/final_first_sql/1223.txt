@@ -1,0 +1,108 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 5, 8, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Turkey, Tunisia, Total
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 23, 68
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Tunisia:
+   - The row for Tunisia has a Silver medal count of 1, which is different from the majority of the table where most countries have 0 Silver medals.
+   - This makes the row an outlier as it has a distinctive value compared to the rest of the data.
+
+2. Total:
+   - The row for Total is not an outlier as it represents the total count of all countries and is an ordinary entry in the context of the table.
+   - It does not have any distinctive values that would make it an outlier.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation     |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:-----------|-------:|---------:|---------:|--------:|
+|            0 | 1      | France     |     11 |        5 |        3 |      19 |
+|            1 | 2      | Greece     |      6 |        7 |        6 |      19 |
+|            2 | 3      | Yugoslavia |      3 |        2 |        1 |       6 |
+|            3 | 4      | Spain      |      1 |        5 |        5 |      11 |
+|            4 | 5      | Morocco    |      1 |        1 |        0 |       2 |
+|            5 | 5      | Turkey     |      1 |        1 |        0 |       2 |
+|            6 | 7      | Egypt      |      0 |        1 |        7 |       8 |
+|            7 | 8      | Tunisia    |      0 |        1 |        0 |       1 |
+|            8 | Totaal | Totaal     |     23 |       23 |       22 |      68 |
+
+Generated Reasoning SQL: Explanation: To find a country with the same medal record as Turkey, we need to compare the Gold, Silver, and Bronze medal counts for each country. 
+We will filter out the row for Turkey and then search for rows where the Gold, Silver, and Bronze counts match those of Turkey.
+Since the summary indicates that the "Nation" column is categorical and the medal columns are numeric, we can use these columns to compare the medal records.
+
+SQL: 
+SELECT "Nation" 
+FROM T 
+WHERE "Gold" = (SELECT "Gold" FROM T WHERE "Nation" = 'Turkey') 
+AND "Silver" = (SELECT "Silver" FROM T WHERE "Nation" = 'Turkey') 
+AND "Bronze" = (SELECT "Bronze" FROM T WHERE "Nation" = 'Turkey') 
+AND "Nation" != 'Turkey';
+Generated Final SQL: SELECT "Nation" FROM T WHERE "Gold" = (SELECT "Gold" FROM T WHERE "Nation" = 'Turkey') AND "Silver" = (SELECT "Silver" FROM T WHERE "Nation" = 'Turkey') AND "Bronze" = (SELECT "Bronze" FROM T WHERE "Nation" = 'Turkey') AND "Nation" != 'Turkey';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Nation   |
+|:---------|
+| Morocco  |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Athletics at the 1959 Mediterranean Games
+SQL: SELECT "Nation" FROM T WHERE "Gold" = (SELECT "Gold" FROM T WHERE "Nation" = 'Turkey') AND "Silver" = (SELECT "Silver" FROM T WHERE "Nation" = 'Turkey') AND "Bronze" = (SELECT "Bronze" FROM T WHERE "Nation" = 'Turkey') AND "Nation" != 'Turkey';
+
+Nation
+Morocco
+Question: name a country that has the same medal record as turkey.
+A: To find the answer to this question, let’s think step by step.
+Prediction: morocco
+[Gold Answer] morocco
+

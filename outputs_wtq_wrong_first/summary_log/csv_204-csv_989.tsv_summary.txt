@@ -1,0 +1,22 @@
+**Column Analysis:**
+
+1. **School:**
+   - Data type: Categorical
+   - 4 representative example values: Oscar De La Hoya Animo Charter High School, James A. Garfield High School, Abraham Lincoln High School, Woodrow Wilson High School
+   - Role: Identifier for each school in the table
+
+2. **2007, 2008, 2009, 2010, 2011:**
+   - Data type: Numeric
+   - 4 representative example values: 662, 726, 709, 710
+   - Role: Measure of some metric related to each school for the respective year
+
+**Outlier Row Analysis:**
+
+1. **Row 8 (Theodore Roosevelt High School):**
+   - The value "nan" in the 2011 column makes this row an outlier as it is not a valid numeric value like the rest of the entries in that column.
+
+2. **Row 2 (James A. Garfield High School):**
+   - The values in this row do not seem significantly different from the majority of the table, so it is an ordinary row and does not require special handling.
+
+3. **Row 6 (Santee Education Complex):**
+   - The value "nan" in the 2007 column makes this row an outlier as it is not a valid numeric value like the rest of the entries in that column.

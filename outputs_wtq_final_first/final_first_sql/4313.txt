@@ -1,0 +1,108 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Games
+   - Data type: Categorical
+   - 4 representative example values: 1996 Atlanta, 2000 Sydney, 2012 London, Total
+   - Role: Identifier for the Olympic Games
+
+2. Athletes
+   - Data type: Numeric
+   - 4 representative example values: 4, 7, 31, Total
+   - Role: Measure of the number of athletes participating in each Olympic Games
+
+3. Gold, Silver, Bronze, Total
+   - Data type: Numeric
+   - 4 representative example values: 0, 3, 9, 20
+   - Role: Measures of the number of gold, silver, bronze, and total medals won in each Olympic Games
+
+4. Rank
+   - Data type: Categorical
+   - 4 representative example values: –, 37, 54
+   - Role: Descriptor indicating the rank of the country based on total medals won
+
+**Outlier Row Analysis:**
+
+1. Row 7 (2012 London)
+   - The values for Gold (3) and Bronze (3) are significantly higher compared to the other rows.
+   - This row stands out as it has a higher number of medals in both Gold and Bronze categories, making it an outlier.
+
+2. Row 6 (2000 Sydney)
+   - The values for Gold, Silver, Bronze, and Total are all 0, which is different from the other rows.
+   - This row is an outlier as it did not win any medals in the Olympic Games, unlike the other rows.
+
+Both Row 7 and Row 6 are considered outliers based on the distinct values they possess compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | Games          | Athletes   |   Gold |   Silver |   Bronze |   Total | Rank   |
+|-------------:|:---------------|:-----------|-------:|---------:|---------:|--------:|:-------|
+|            0 | 1988 Seoul     | 14         |      0 |        0 |        1 |       1 | 48     |
+|            1 | 1992 Barcelona | 5          |      0 |        0 |        0 |       0 | –      |
+|            2 | 1996 Atlanta   | 4          |      0 |        0 |        0 |       0 | –      |
+|            3 | 2000 Sydney    | 7          |      0 |        0 |        0 |       0 | –      |
+|            4 | 2004 Athens    | 10         |      2 |        4 |        0 |       6 | 42     |
+|            5 | 2008 Beijing   | 18         |      4 |        1 |        2 |       7 | 32     |
+|            6 | 2012 London    | 31         |      3 |        0 |        3 |       6 | 37     |
+|            7 | Total          | Total      |      9 |        5 |        6 |      20 | 54     |
+
+Generated Reasoning SQL: The relevant columns for this question are "Games" and "Athletes" from the summary. The summary indicates that the "Games" column contains categorical values representing different Olympic Games, and the "Athletes" column is numeric, representing the number of athletes participating in each Olympic Games. To find the difference in the number of athletes that competed from 2008 to 2012, we need to calculate the difference in the number of athletes for the respective Games.
+SQL: 
+SELECT 
+  (SELECT "Athletes" FROM T WHERE "Games" = '2008 Beijing') - 
+  (SELECT "Athletes" FROM T WHERE "Games" = '2012 London');
+Generated Final SQL: SELECT (SELECT "Athletes" FROM T WHERE "Games" = '2008 Beijing') - (SELECT "Athletes" FROM T WHERE "Games" = '2012 London');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   (SELECT "Athletes" FROM T WHERE "Games" = '2008 Beijing') - (SELECT "Athletes" FROM T WHERE "Games" = '2012 London') |
+|-----------------------------------------------------------------------------------------------------------------------:|
+|                                                                                                                    -13 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Morocco at the Paralympics
+SQL: SELECT (SELECT "Athletes" FROM T WHERE "Games" = '2008 Beijing') - (SELECT "Athletes" FROM T WHERE "Games" = '2012 London');
+
+(SELECT "Athletes" FROM T WHERE "Games" = '2008 Beijing') - (SELECT "Athletes" FROM T WHERE "Games" = '2012 London')
+-13
+Question: what is the difference in amount of athletes that competed from 2008 to 2012?
+A: To find the answer to this question, let’s think step by step.
+Prediction: -13
+[Gold Answer] 13
+

@@ -1,0 +1,117 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Representative
+   - Data type: Categorical
+   - 4 representative example values: Joe Farias, Ruth McClendon, Joe Straus, Mike Villarreal
+   - Role of the column: Identifier for the representative of the district
+
+2. Party
+   - Data type: Categorical
+   - 4 representative example values: D, R
+   - Role of the column: Indicates the political party of the representative
+
+3. Home Town/City
+   - Data type: Categorical
+   - 4 representative example values: San Antonio
+   - Role of the column: Descriptor for the hometown or city of the representative
+
+4. District
+   - Data type: Numeric
+   - 4 representative example values: 118, 120, 121, 123
+   - Role of the column: Identifier for the district number
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Jose Menendez)
+   - The values for Party (D) and Home Town/City (San Antonio) are consistent with the majority of the table.
+   - The District value of 124 is slightly higher than the other districts, but it is within the normal range of district numbers.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+2. Row 4 (Mike Villarreal)
+   - The values for Party (D) and Home Town/City (San Antonio) are consistent with the majority of the table.
+   - The District value of 123 is within the normal range of district numbers.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+3. Row 2 (Ruth McClendon)
+   - The values for Party (D) and Home Town/City (San Antonio) are consistent with the majority of the table.
+   - The District value of 120 is within the normal range of district numbers.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Representative        | Party   | Home Town/City   |   District |
+|-------------:|:----------------------|:--------|:-----------------|-----------:|
+|            0 | Trey Martinez Fischer | D       | San Antonio      |        116 |
+|            1 | Philip Cortez         | D       | San Antonio      |        117 |
+|            2 | Joe Farias            | D       | San Antonio      |        118 |
+|            3 | Roland Gutierrez      | D       | San Antonio      |        119 |
+|            4 | Ruth McClendon        | D       | San Antonio      |        120 |
+|            5 | Joe Straus            | R       | San Antonio      |        121 |
+|            6 | Lyle Larson           | R       | San Antonio      |        122 |
+|            7 | Mike Villarreal       | D       | San Antonio      |        123 |
+|            8 | Jose Menendez         | D       | San Antonio      |        124 |
+|            9 | Justin Rodriguez      | D       | San Antonio      |        125 |
+
+Generated Reasoning SQL: select "Representative" from T where "Party" = 'R';
+Generated Final SQL: 
+[Error] Final SQL 실행 실패: 'NoneType' object is not iterable
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Bexar County, Texas (row_number, Representative, Party, Home Town/City, District)
+
+row_number | Representative | Party | Home Town/City | District
+0 | Trey Martinez Fischer | D | San Antonio | 116
+1 | Philip Cortez | D | San Antonio | 117
+2 | Joe Farias | D | San Antonio | 118
+3 | Roland Gutierrez | D | San Antonio | 119
+4 | Ruth McClendon | D | San Antonio | 120
+5 | Joe Straus | R | San Antonio | 121
+6 | Lyle Larson | R | San Antonio | 122
+7 | Mike Villarreal | D | San Antonio | 123
+8 | Jose Menendez | D | San Antonio | 124
+9 | Justin Rodriguez | D | San Antonio | 125
+Question: what are the only two republican party representatives?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will use both the summary and the full table.
+
+From the summary:
+- The **Party** column specifies the political party affiliation of each representative.
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual representative.
+- Preprocessing Artifacts: none mentioned that affects party affiliation counting.
+
+From the full table:
+- The representatives from the Republican Party (Party = R) are:
+  1. Joe Straus
+  2. Lyle Larson
+
+Therefore, by combining the information from the summary (Party column contains party affiliation; no atypical rows) with the explicit entries in the full table, we can conclude that Joe Straus and Lyle Larson are the only two Republican Party representatives.
+
+Final Answer: Joe Straus, Lyle Larson
+[Fallback] Prediction: joe straus, lyle larson
+[Gold Answer] joe straus,lyle larson
+

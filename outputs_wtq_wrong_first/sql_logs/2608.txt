@@ -1,0 +1,139 @@
+=== Table ID ===
+csv/204-csv/304.tsv
+
+=== Question ===
+how many runners finished with a time below 1:50:00?
+
+=== Sub-table Preview ===
+|   Rank | Name                 | Nationality    | Time    | Notes   |   Points |
+|-------:|:---------------------|:---------------|:--------|:--------|---------:|
+|      4 | Mario Scapini        | Italy          | 1:47.20 | PB      |        9 |
+|      5 | Anis Ananenka        | Belarus        | 1:47.29 | nan     |        8 |
+|      6 | Oleh Kayafa          | Ukraine        | 1:47.42 | nan     |        7 |
+|      8 | Robin Schembera      | Germany        | 1:47.79 | nan     |        5 |
+|     10 | Antonio Manuel Reina | Spain          | 1:48.56 | nan     |        3 |
+|     12 | Milan Kocourek       | Czech Republic | 1:59.28 | nan     |        1 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 6, 8
+   - Role: Identifier, indicates the ranking of the individual in the list
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Mario Scapini, Anis Ananenka, Oleh Kayafa, Robin Schembera
+   - Role: Descriptor, provides the name of the individual
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: Italy, Belarus, Ukraine, Germany
+   - Role: Descriptor, indicates the nationality of the individual
+
+4. Time:
+   - Data type: Numeric (Time)
+   - 4 representative example values: 1:47.20, 1:47.29, 1:47.42, 1:47.79
+   - Role: Measure, represents the time taken by the individual
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: PB, nan
+   - Role: Descriptor, provides additional notes such as personal best (PB) or missing data (nan)
+
+6. Points:
+   - Data type: Numeric
+   - 4 representative example values: 9, 8, 7, 5
+   - Role: Measure, indicates the points earned by the individual
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Rank 8, Robin Schembera, Germany, 1:47.79, nan, 5):
+   - The values in this row are consistent with the majority of the table and do not stand out as distinctive. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 11 (Rank 12, Milan Kocourek, Czech Republic, 1:59.28, nan, 1):
+   - The time value of 1:59.28 is significantly higher compared to the rest of the times in the table, making this row an outlier in terms of time taken. This row can be considered an outlier based on the time value.
+
+3. Row 4 (Rank 10, Antonio Manuel Reina, Spain, 1:48.56, nan, 3):
+   - The time value of 1:48.56 is slightly higher than the times of the individuals ranked above, making this row slightly different but not significantly so. This row can be considered an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Name                 | Nationality    | Time    | Notes   |   Points |
+|-------------:|-------:|:---------------------|:---------------|:--------|:--------|---------:|
+|            0 |      1 | Adam Kszczot         | Poland         | 1:46.50 |         |       12 |
+|            1 |      2 | Jeff Lastennet       | France         | 1:46.70 |         |       11 |
+|            2 |      3 | Gareth Warburton     | Great Britain  | 1:46.95 | SB      |       10 |
+|            3 |      4 | Mario Scapini        | Italy          | 1:47.20 | PB      |        9 |
+|            4 |      5 | Anis Ananenka        | Belarus        | 1:47.29 |         |        8 |
+|            5 |      6 | Oleh Kayafa          | Ukraine        | 1:47.42 |         |        7 |
+|            6 |      7 | Joni Jaako           | Sweden         | 1:47.61 | SB      |        6 |
+|            7 |      8 | Robin Schembera      | Germany        | 1:47.79 |         |        5 |
+|            8 |      9 | Ivan Tukhtachev      | Russia         | 1:48.27 | SB      |        4 |
+|            9 |     10 | Antonio Manuel Reina | Spain          | 1:48.56 |         |        3 |
+|           10 |     11 | António Rodrigues    | Portugal       | 1:50.45 |         |        2 |
+|           11 |     12 | Milan Kocourek       | Czech Republic | 1:59.28 |         |        1 |
+
+Generated Reasoning SQL: Explanation: To find the number of runners who finished with a time below 1:50:00, we need to filter the rows based on the "Time" column and count the occurrences where the time is less than 1:50:00. We will consider all rows in the table as there are no specific outliers mentioned in the summary related to this question.
+
+SQL: SELECT COUNT("Name") 
+FROM T 
+WHERE "Time" < '1:50:00';
+Generated Final SQL: SELECT COUNT("Name") FROM T WHERE "Time" < '1:50:00';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Name") |
+|----------------:|
+|              11 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2011 European Team Championships Super League
+SQL: SELECT COUNT("Name") FROM T WHERE "Time" < '1:50:00';
+
+SQL Execution Result:
+COUNT("Name")
+11
+
+Question: how many runners finished with a time below 1:50:00?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 11
+[Gold Answer] 10
+

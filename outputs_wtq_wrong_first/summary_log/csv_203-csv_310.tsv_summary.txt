@@ -1,0 +1,32 @@
+### Column Analysis:
+
+1. **Tablet:**
+   - Data type: Numeric
+   - 4 representative example values: 5, 7, 8, 11
+   - Role: Identifier for each tablet entry
+
+2. **Genealogy:**
+   - Data type: Categorical
+   - 4 representative example values: Descendants of Shem, Terah to Abraham, Descendants of Ishmael, Descendants of Esau
+   - Role: Descriptor providing information on the lineage or ancestry
+
+3. **Narrative:**
+   - Data type: Categorical
+   - 4 representative example values: 11:1 - 9, 11:28 to 25:11, no narrative, 37:2 to 50:26
+   - Role: Descriptor providing details on the narrative content
+
+4. **Colophon:**
+   - Data type: Categorical
+   - 4 representative example values: This is the account of Shem. 11:10, This is the account of Abraham's son Ishmael. 25:12 (eldest son), This is the account of Abraham's son Isaac. 25:19, This is the account of Jacob. 37:2
+   - Role: Descriptor providing information on the conclusion or closing remarks
+
+### Outlier Row Analysis:
+
+1. **Row 11:**
+   - The genealogy value is "Descendants of Esau 36:10 to 37:1", which is different from the other genealogy entries.
+   - This row stands out as it contains a specific genealogy that is not in line with the rest of the table, making it an outlier.
+
+2. **Row 4:**
+   - The tablet value is "nan", indicating missing data.
+   - The narrative value is "37:2 to 50:26", which is different from the other narrative entries.
+   - Since the tablet value is missing and the narrative value is not significantly different from other entries, this row is considered an ordinary row and does not require special handling.

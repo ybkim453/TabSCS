@@ -1,0 +1,114 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - Representative values: 2003, 2005, 2006, 2007
+   - Role: Identifier for the year in which the team record and playoffs data were recorded.
+
+2. Team Record W:
+   - Data type: Numeric
+   - Representative values: 8, 3, 5, 13
+   - Role: Measure of the number of wins for the team in a particular year.
+
+3. Team Record L:
+   - Data type: Numeric
+   - Representative values: 1, 5, 4
+   - Role: Measure of the number of losses for the team in a particular year.
+
+4. Playoffs:
+   - Data type: Categorical
+   - Representative values: 2nd Qualifier, Did Not Make Playoffs, 4th Qualifier, 1st Qualifier
+   - Role: Descriptor indicating the team's performance in the playoffs for a specific year.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Year: 2007, Team Record W: 13, Team Record L: 1, Playoffs: 1st Qualifier, Region 2):
+   - The team had the highest number of wins (13) and the lowest number of losses (1) compared to other years in the table.
+   - The playoffs entry as 1st Qualifier is also unique and indicates exceptional performance, making this row an outlier.
+
+2. Row 6 (Year: 2008, Team Record W: 7, Team Record L: 4, Playoffs: 2nd Qualifier, Region 2):
+   - The team record of 7 wins and 4 losses is not significantly different from other years.
+   - The playoffs entry as 2nd Qualifier is common in the table, so this row is an ordinary entry and not an outlier.
+
+3. Row 5 (Year: 2006, Team Record W: 5, Team Record L: 4, Playoffs: 4th Qualifier, Region 2):
+   - The team record of 5 wins and 4 losses is within the range of other years.
+   - The playoffs entry as 4th Qualifier is not significantly different from other entries, so this row is an ordinary entry and not an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year |   Team Record\nW |   Team Record\nL | Playoffs               |
+|-------------:|-------:|-----------------:|-----------------:|:-----------------------|
+|            0 |   2001 |                7 |                2 | 3rd Qualifier Region 2 |
+|            1 |   2002 |                8 |                1 | 2nd Qualifier Region 2 |
+|            2 |   2003 |                8 |                1 | 2nd Qualifier Region 2 |
+|            3 |   2004 |                7 |                2 | 2nd Qualifier Region 2 |
+|            4 |   2005 |                3 |                5 | Did Not Make Playoffs  |
+|            5 |   2006 |                5 |                4 | 4th Qualifier Region 2 |
+|            6 |   2007 |               13 |                1 | 1st Qualifier Region 2 |
+|            7 |   2008 |                7 |                4 | 2nd Qualifier Region 2 |
+|            8 |   2009 |                5 |                5 | Did Not Make Playoffs  |
+|            9 |   2010 |                5 |                5 | Did Not Make Playoffs  |
+
+Generated Reasoning SQL: The relevant columns for this question are "Year" and "Team Record W" from the summary. We need to compare the number of wins in 2005 and 2008. To answer this, we count the total wins for each year separately and then compare the counts.
+
+SQL: 
+select sum(cast("Team Record\nW" as integer)) as total_wins_2005 from T where "Year" = 2005;
+select sum(cast("Team Record\nW" as integer)) as total_wins_2008 from T where "Year" = 2008;
+Generated Final SQL: select sum(cast("Team Record\nW" as integer)) as total_wins_2005 from T where "Year" = 2005; select sum(cast("Team Record\nW" as integer)) as total_wins_2008 from T where "Year" = 2008;
+[Error] Final SQL 실행 실패: Execution failed on sql 'select sum(cast("Team Record\nW" as integer)) as total_wins_2005 from T where "Year" = 2005; select sum(cast("Team Record\nW" as integer)) as total_wins_2008 from T where "Year" = 2008;': You can only execute one statement at a time.
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Charles Henderson High School (row_number, Year, Team Record\nW, Team Record\nL, Playoffs)
+
+row_number | Year | Team Record\nW | Team Record\nL | Playoffs
+0 | 2001 | 7 | 2 | 3rd Qualifier Region 2
+1 | 2002 | 8 | 1 | 2nd Qualifier Region 2
+2 | 2003 | 8 | 1 | 2nd Qualifier Region 2
+3 | 2004 | 7 | 2 | 2nd Qualifier Region 2
+4 | 2005 | 3 | 5 | Did Not Make Playoffs
+5 | 2006 | 5 | 4 | 4th Qualifier Region 2
+6 | 2007 | 13 | 1 | 1st Qualifier Region 2
+7 | 2008 | 7 | 4 | 2nd Qualifier Region 2
+8 | 2009 | 5 | 5 | Did Not Make Playoffs
+9 | 2010 | 5 | 5 | Did Not Make Playoffs
+Question: did the team have more wins in 2005 or 2008?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, let's look at the relevant columns in the summary:
+- The **Year** column indicates the year of the team record.
+- The **Team Record\nW** column shows the number of wins the team had in that year.
+
+Now, let's examine the full table:
+- In 2005, the team had 3 wins.
+- In 2008, the team had 7 wins.
+
+By combining the information from the summary (Year and Team Record\nW columns) with the specific data from the full table, we can determine that the team had more wins in 2008 compared to 2005.
+
+Final Answer: 2008
+[Fallback] Prediction: 2008
+[Gold Answer] 2008
+

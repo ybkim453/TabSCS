@@ -1,0 +1,152 @@
+=== Table ID ===
+csv/203-csv/402.tsv
+
+=== Question ===
+what was the total number of awards this film won?
+
+=== Sub-table Preview ===
+| Result    | Date             | Category   | Tournament                 | Surface   | Partnering     | Opponents                         | Score         |
+|:----------|:-----------------|:-----------|:---------------------------|:----------|:---------------|:----------------------------------|:--------------|
+| Winner    | 13 June 1982     | $100,000   | Birmingham, Great Britain  | Grass     | Jo Durie       | Rosie Casals\n Wendy Turnbull     | 6–3, 6–2      |
+| Winner    | 23 May 1983      | $150,000   | Berlin, Germany            | Carpet    | Jo Durie       | Claudia Kohde-Kilsch\n Eva Pfaff  | 6–4, 7–6(7–2) |
+| Runner-up | 19 June 1983     | $150,000   | Eastbourne, Great Britain  | Grass     | Jo Durie       | Martina Navrátilová\n Pam Shriver | 1–6, 0–6      |
+| Winner    | 20 November 1983 | $150,000   | Brisbane, Australia        | Grass     | Wendy Turnbull | Pam Shriver\n Sharon Walsh        | 6–3, 6–4      |
+| Winner    | 27 November 1983 | $150,000   | Sydney, Australia          | Grass     | Wendy Turnbull | Hana Mandlíková\n Helena Suková   | 6–4, 6–3      |
+| Runner-up | 12 December 1983 | Grand Slam | Australian Open, Australia | Grass     | Wendy Turnbull | Martina Navrátilová\n Pam Shriver | 4–6, 7–6, 2–6 |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **Result:**
+   - Data type: Categorical
+   - 4 representative example values: Winner, Runner-up
+   - Role: Describes the outcome of the match for the player/partnership
+
+2. **Date:**
+   - Data type: Date
+   - 4 representative example values: 13 June 1982, 23 May 1983, 20 November 1983, 27 November 1983
+   - Role: Identifies the date when the match took place
+
+3. **Category:**
+   - Data type: Categorical
+   - 4 representative example values: $100,000, $150,000, Grand Slam
+   - Role: Indicates the category or level of the tournament
+
+4. **Tournament:**
+   - Data type: Categorical
+   - 4 representative example values: Birmingham, Great Britain, Berlin, Germany, Brisbane, Australia, Sydney, Australia
+   - Role: Specifies the location of the tournament
+
+5. **Surface:**
+   - Data type: Categorical
+   - 4 representative example values: Grass, Carpet
+   - Role: Describes the type of playing surface for the match
+
+6. **Partnering:**
+   - Data type: Categorical
+   - 4 representative example values: Jo Durie, Wendy Turnbull
+   - Role: Identifies the partner of the player in the doubles match
+
+7. **Opponents:**
+   - Data type: Categorical
+   - 4 representative example values: Rosie Casals, Wendy Turnbull, Martina Navrátilová, Pam Shriver
+   - Role: Lists the opponents faced in the match
+
+8. **Score:**
+   - Data type: Categorical
+   - 4 representative example values: 6–3, 6–2, 6–4, 7–6(7–2)
+   - Role: Displays the set scores of the match
+
+### Outlier Row Analysis:
+
+1. **Row 8:**
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or atypical values. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. **Row 3:**
+   - The values in this row indicate a Runner-up result, a Category of $150,000, and a Tournament in Eastbourne, Great Britain. These values are not significantly different from other rows in the table, making this row an ordinary entry and not an outlier.
+
+3. **Row 2:**
+   - The values in this row show a Winner result, a Category of $150,000, and a Tournament in Berlin, Germany. These values are typical of other rows in the table and do not stand out as distinctive, making this row an ordinary entry and not an outlier.
+
+=== Full Table Preview ===
+|   row_number | Date             | Festival                                     | Location                           | Awards                                                                                                             | Link                 |
+|-------------:|:-----------------|:---------------------------------------------|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------|:---------------------|
+|            0 | Feb 2–5 Feb 11   | Santa Barbara International Film Festival    | Santa Barbara California  USA      | Top 11 "Best of the Fest" Selection                                                                                | sbiff.org            |
+|            1 | May 21–22 Jun 11 | Seattle International Film Festival          | Seattle Washington  USA            |                                                                                                                    | siff.net             |
+|            2 | Jul 18 Jul 25    | Fantasia Festival                            | Montreal Quebec  Canada            | Special Mention\n"for the resourcefulness and unwavering determination by a director to realize his unique vision" | FanTasia             |
+|            3 | Sep 16           | Athens International Film Festival           | Athens Attica\n Greece             | Best Director                                                                                                      | aiff.gr              |
+|            4 | Sep 19           | Lund International Fantastic Film Festival   | Lund Skåne\n Sweden                |                                                                                                                    | fff.se               |
+|            5 | Sep 28           | Fantastic Fest                               | Austin Texas\n USA                 |                                                                                                                    | FantasticFest.com    |
+|            6 | Oct 9            | London Int. Festival of Science Fiction Film | London England\n UK                | Closing Night Film                                                                                                 | Sci-Fi London        |
+|            7 | Oct 9 Oct 11     | Sitges Film Festival                         | Sitges Catalonia\n Spain           |                                                                                                                    | Sitges Festival      |
+|            8 | Oct 1 Oct 15     | Gwacheon International SF Festival           | Gwacheon Gyeonggi-do\n South Korea |                                                                                                                    | gisf.org             |
+|            9 | Oct 17 Oct 20    | Icon TLV                                     | Tel Aviv Central\n Israel          |                                                                                                                    | icon.org.il          |
+|           10 | Oct 23           | Toronto After Dark                           | Toronto Ontario\n Canada           | Best Special Effects\nBest Musical Score                                                                           | torontoafterdark.com |
+|           11 | Nov 11           | Les Utopiales                                | Nantes Pays de la Loire\n France   |                                                                                                                    | utopiales.org        |
+|           12 | Nov 12 Nov 18    | Indonesia Fantastic Film Festival            | Jakarta Bandung\n Indonesia        |                                                                                                                    | inaff.com            |
+|           13 | Nov 16–18        | AFF                                          | Wrocław Lower Silesia\n Poland     |                                                                                                                    | AFF Poland           |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Awards" column contains information about the awards won by the film. The values in this column are categorical and describe the recognition received by the film at various festivals. To calculate the total number of awards won by the film, we need to count the rows where the "Awards" column is not NULL, as each non-NULL value represents an award received by the film.
+
+SQL: 
+SELECT COUNT("Awards") AS total_awards
+FROM T
+WHERE "Awards" IS NOT NULL;
+Generated Final SQL: SELECT COUNT("Awards") AS total_awards FROM T WHERE "Awards" IS NOT NULL;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_awards |
+|---------------:|
+|              5 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Love (2011 film)
+SQL: SELECT COUNT("Awards") AS total_awards FROM T WHERE "Awards" IS NOT NULL;
+
+SQL Execution Result:
+total_awards
+5
+
+Question: what was the total number of awards this film won?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 5
+[Gold Answer] 4
+

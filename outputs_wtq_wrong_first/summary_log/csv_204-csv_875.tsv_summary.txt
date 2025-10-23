@@ -1,0 +1,55 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 2008, 2009, 2010, 2012
+   - Role: Identifier for the year in which the data was recorded
+
+2. Age
+   - Data type: Numeric
+   - 4 representative example values: 21, 22, 25, 5 Dec 2009
+   - Role: Descriptor indicating the age of the athlete during the season
+
+3. Overall
+   - Data type: Numeric
+   - 4 representative example values: 64, 7, 24, Beaver Creek, USA
+   - Role: Measure representing the overall performance ranking
+
+4. Slalom
+   - Data type: Categorical
+   - 4 representative example values: –, Giant Slalom, Downhill
+   - Role: Descriptor indicating the type of event and performance in Slalom
+
+5. Giant Slalom
+   - Data type: Numeric
+   - 4 representative example values: 28, 6, 16, nan
+   - Role: Measure representing the performance ranking in Giant Slalom
+
+6. Super G
+   - Data type: Numeric
+   - 4 representative example values: 46, 16, 28, nan
+   - Role: Measure representing the performance ranking in Super G
+
+7. Downhill
+   - Data type: Numeric
+   - 4 representative example values: 46, 16, 17, nan
+   - Role: Measure representing the performance ranking in Downhill
+
+8. Combined
+   - Data type: Numeric
+   - 4 representative example values: 31, 1, 19, nan
+   - Role: Measure representing the combined performance ranking
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for Season, Age, Overall, and the event location (Beaver Creek, USA) are different from the typical numeric values in the table.
+   - These values are not consistent with the majority of the data and stand out as atypical, making this row an outlier.
+
+2. Row 1:
+   - The values for Season, Age, and Overall are within the typical range seen in the table.
+   - The absence of specific event performance data (marked as "-") in Slalom, Giant Slalom, Super G, Downhill, and Combined does not make this row an outlier as missing data is common in sports statistics.
+
+3. Row 2:
+   - Similar to Row 1, the values for Season, Age, and Overall are ordinary.
+   - The absence of specific event performance data in Slalom, Giant Slalom, Super G, Downhill, and Combined does not make this row an outlier as missing data is common in sports statistics.

@@ -1,0 +1,57 @@
+**Column Analysis:**
+
+1. Atomic no.:
+   - Data type: Numeric
+   - 4 representative example values: 21, 39, 61, 75
+   - Role: Identifier for each element
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Scandium, Yttrium, Promethium, Rhenium
+   - Role: Descriptor for each element
+
+3. Symbol:
+   - Data type: Categorical
+   - 4 representative example values: Sc, Y, Pm, Re
+   - Role: Identifier for each element
+
+4. Group:
+   - Data type: Numeric
+   - 4 representative example values: 3, 7, 4, 9
+   - Role: Descriptor indicating the group of the element
+
+5. Period:
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 6, 7
+   - Role: Descriptor indicating the period of the element
+
+6. Block:
+   - Data type: Categorical
+   - 4 representative example values: d, f
+   - Role: Descriptor indicating the block of the element
+
+7. State at STP:
+   - Data type: Categorical
+   - 4 representative example values: Solid
+   - Role: Descriptor indicating the state of the element at standard temperature and pressure
+
+8. Occurrence:
+   - Data type: Categorical
+   - 4 representative example values: Primordial, Transient, Synthetic
+   - Role: Descriptor indicating the occurrence of the element
+
+9. Description:
+   - Data type: Categorical
+   - 4 representative example values: Transition metal, Lanthanide
+   - Role: Descriptor providing additional information about the element
+
+**Outlier Row Analysis:**
+
+1. Row 103:
+   - The value for Atomic no. is 104 (Rutherfordium), which is a synthetic element, unlike the other primordial elements in the table. This makes it an outlier.
+
+2. Row 60:
+   - The value for Atomic no. is 61 (Promethium), which is a transient element, unlike the other primordial elements in the table. This makes it an outlier.
+
+3. Row 108:
+   - The values for Atomic no. and Name are missing (nan), which is not a distinctive value and is common in missing data. This row is an ordinary row and does not require special handling.

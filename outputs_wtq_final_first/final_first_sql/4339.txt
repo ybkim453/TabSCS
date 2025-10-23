@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Railroad
+   - Data type: Categorical
+   - 4 representative example values: Union Pacific, Conrail, Carajás Railroad (Vale), Norfolk Southern
+   - Role: Identifier for the railroad company associated with the locomotives
+
+2. Qty.
+   - Data type: Numeric
+   - 4 representative example values: 85, 80, 281, 2
+   - Role: Measure indicating the quantity of locomotives
+
+3. Road numbers
+   - Data type: Categorical
+   - 4 representative example values: 6000-6084, 5575-5654, 6085-6365, 601-602
+   - Role: Descriptor providing the road numbers assigned to the locomotives
+
+4. Notes
+   - Data type: Categorical
+   - 4 representative example values: Renumbered UP 2155-2239, After the 1999 Conrail split, Manufactured by Equipment Villares S. A., Last locomotives manufactured by EVSA
+   - Role: Descriptor providing additional information or details about the locomotives
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The row contains information about Union Pacific locomotives renumbered to 2240-2520 except for 6106 & 6165, with 24 units rebuilt into EMD SD32ECOs and renumbered to 9900-9923. This row stands out due to the specific renumbering and rebuilding details, making it an outlier in comparison to the general information provided in other rows.
+
+2. Row 16:
+   - This row pertains to Carajás Railroad (Vale) and mentions locomotives manufactured by Equipment Villares S. A. in 1991, which were the last locomotives manufactured by EVSA before the merger with GE Transportation in Brazil. The uniqueness of this manufacturing information sets it apart from the typical data in the table, making it an outlier.
+
+3. Row 15:
+   - The row discusses Conrail locomotives after the 1999 split, with specific details about the units going to CSX and NS and their renumbering. While this information is specific, it aligns with the pattern of detailed notes provided in other rows, making it an ordinary entry rather than an outlier.
+
+=== Full Table Preview ===
+|   row_number | Railroad                |   Qty. | Road numbers                                                                | Notes                                                                                                                                                                |
+|-------------:|:------------------------|-------:|:----------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Burlington Northern     |      3 | 8300-8302                                                                   | Demonstrators owned by EMD but painted for BN; Now with CSX                                                                                                          |
+|            1 | Chicago & North Western |     55 | 8001-8055                                                                   | Built to SOO Line specifications; SOO was unable to take delivery due to financial conditions & the order was passed to C&NW                                         |
+|            2 | Conrail                 |     25 | 6843-6867                                                                   | After the 1999 Conrail split; 12 units went to CSX and were renumbered CSXT 8710-8721 8790; 15 units went to NS and were renumbered NS 6702-6716                     |
+|            3 | CSX Transportation      |     10 | 8700-8709                                                                   |                                                                                                                                                                      |
+|            4 | EMDX                    |      4 | 1-4                                                                         | Demonstrators; EMD 124 to CR 6840-6842; EMD 3 leased to BNSF as replacement for EMD 9041 (used at DOT Pueblo CO)                                                     |
+|            5 | Kansas City Southern    |     46 | 714-759                                                                     |                                                                                                                                                                      |
+|            6 | Norfolk Southern        |    151 | 6550-6700                                                                   | Slowly rebuilding their SD60s to SD60Es at Juniata Shops                                                                                                             |
+|            7 | Oakway                  |    100 | 9000-9099\n90 now owned by Canadian National 10 still owned by BNSF Railway |                                                                                                                                                                      |
+|            8 | Soo Line                |     58 | 6000-6057                                                                   | SOO 6000-6020 returned to leaser Capital Finance (CIT Group) Former SOO 6021-6057/CP 6221-6257 have now been put up for sale.                                        |
+|            9 | Union Pacific           |     85 | 6000-6084                                                                   | Renumbered UP 2155-2239 (except UP 6014 wrecked & scrapped)                                                                                                          |
+|           10 | Canadian National       |     64 | 5500-5563                                                                   | 5500-5503 are pre-production SD60F's originally classified as SD50AF & built as CN 9900-9903. They look like SD50F's but internally are SD60F's.                     |
+|           11 | Conrail                 |     80 | 5575-5654                                                                   | After the 1999 Conrail split; 35 units went to CSX and were renumbered CSXT 8722-8755 8774; 46 units went to NS and were renumbered NS 6717-6762                     |
+|           12 | Burlington Northern     |    100 | 1991 9200-9298                                                              | Renumbered BNSF 9200-9299 then renumbered BNSF 8100-8199 in 2007-2008                                                                                                |
+|           13 | Conrail                 |     75 | 5500-5574                                                                   | After the 1999 Conrail split; 30 units went to CSX and were renumbered CSXT 8756-8773 8775 - 8786; 44 units went to NS and were renumbered NS 6763-6806              |
+|           14 | Soo Line                |      5 | 6058-6062                                                                   | Former SOO 6058-6062/CP 6258-6262 have now been put up for sale.                                                                                                     |
+|           15 | Union Pacific           |    281 | 6085-6365                                                                   | Renumbered to 2240-2520 except 6106 & 6165. 24 rebuilt into EMD SD32ECOs. UP classifies these as SD59MXs. Renumbered 9900-9923. All 24 have been delivered.          |
+|           16 | Carajás Railroad (Vale) |      2 | 601-602                                                                     | Manufactured by Equipment Villares S. A. (EVSA) in 1991. Last locomotives manufactured by EVSA before the merger with GE Transportation in Brazil leading to GEVISA. |
+
+Generated Reasoning SQL: Explanation: To find the number range of the EMD SD60 locomotives ordered by Burlington Northern, we need to filter the rows where "Railroad" = 'Burlington Northern' and then extract the range from the "Road numbers" column. The "Road numbers" column contains the specific number range assigned to each locomotive, which we can directly use to determine the range for Burlington Northern's order.
+
+SQL: SELECT "Road numbers" 
+FROM T 
+WHERE "Railroad" = 'Burlington Northern';
+Generated Final SQL: SELECT "Road numbers" FROM T WHERE "Railroad" = 'Burlington Northern';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Road numbers   |
+|:---------------|
+| 8300-8302      |
+| 1991 9200-9298 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: EMD SD60
+SQL: SELECT "Road numbers" FROM T WHERE "Railroad" = 'Burlington Northern';
+
+SQL Execution Result:
+Road numbers
+8300-8302
+1991 9200-9298
+
+Question: burlington northern ordered 3 emd sd60s. what is their number range?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 8300-8302, 9200-9298
+[Gold Answer] 8300-8302
+

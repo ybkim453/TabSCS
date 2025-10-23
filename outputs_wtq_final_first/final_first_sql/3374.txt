@@ -1,0 +1,130 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No
+   - Data type: Numeric
+   - 4 representative example values: 14, 20, 34, ?
+   - Role: Identifier for each entry in the table
+
+2. Driver
+   - Data type: Categorical
+   - 4 representative example values: Fritz Caflisch, Arrigo Sartorio, Cesare Pastore, Filippo Sartorio
+   - Role: Descriptor for the driver associated with each entry
+
+3. Entrant
+   - Data type: Categorical
+   - 4 representative example values: Private entry, Enrico or F. Sartorio
+   - Role: Descriptor for the entrant associated with each entry
+
+4. Constructor
+   - Data type: Categorical
+   - 4 representative example values: Mercedes-Benz, Maserati, Alfa Romeo
+   - Role: Descriptor for the constructor associated with each entry
+
+5. Chassis
+   - Data type: Categorical
+   - 4 representative example values: Mercedes-Benz SS, Maserati 26, Alfa Romeo 6C 1750
+   - Role: Descriptor for the chassis associated with each entry
+
+6. Engine
+   - Data type: Categorical
+   - 4 representative example values: 7.1 L6, 1.5 L8, 2.1 L8, 1.8 L6
+   - Role: Descriptor for the engine associated with each entry
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The value "Enrico or F. Sartorio" in the Entrant column is different from the majority of entries which have "Private entry" as the entrant. This makes the row an outlier as it deviates from the typical pattern seen in the table.
+
+2. Row 18 (Index 18):
+   - The value "?" in the No column is ambiguous and does not provide any distinctive information. This row is an ordinary entry and does not require special handling.
+
+3. Row 6 (Index 6):
+   - The value "1.5 L6" in the Engine column is different from the majority of entries which have engines with larger capacities. This makes the row an outlier as it deviates from the typical engine sizes seen in the table.
+
+=== Full Table Preview ===
+|   row_number | No   | Driver                      | Entrant                    | Constructor   | Chassis              | Engine   |
+|-------------:|:-----|:----------------------------|:---------------------------|:--------------|:---------------------|:---------|
+|            0 | 2    | Luigi Arcangeli             | Officine Alfieri Maserati  | Maserati      | Maserati 26M         | 2.5 L8   |
+|            1 | 4    | Louis Chiron                | Automobiles Ettore Bugatti | Bugatti       | Bugatti T35B         | 2.3 L8   |
+|            2 | 6    | Clemente Biondetti          | Scuderia Materassi         | Talbot        | Talbot 700           | 1.5 L8   |
+|            3 | 8    | Pietro Nicolotti            | Private entry              | Alfa Romeo    | Alfa Romeo 6C 1500   | 1.5 L6   |
+|            4 | 10   | Cleto Nenzioni              | Private entry              | Maserati      | Maserati 26B         | 2.1 L8   |
+|            5 | 12   | Luigi Fagioli               | Officine Alfieri Maserati  | Maserati      | Maserati 26          | 1.7 L8   |
+|            6 | 14   | Fritz Caflisch              | Private entry              | Mercedes-Benz | Mercedes-Benz SS     | 7.1 L6   |
+|            7 | 16   | Achille Varzi               | SA Alfa Romeo              | Alfa Romeo    | Alfa Romeo P2        | 2.0 L8   |
+|            8 | 18   | Giuseppe Campari            | Scuderia Ferrari           | Alfa Romeo    | Alfa Romeo 6C 1750GS | 1.8 L6   |
+|            9 | 20   | Arrigo Sartorio             | Private entry              | Maserati      | Maserati 26          | 1.5 L8   |
+|           10 | 22   | Mario Tadini                | Scuderia Ferrari           | Alfa Romeo    | Alfa Romeo 6C 1750GS | 1.8 L6   |
+|           11 | 24   | Heinrich Joachim von Morgen | Private entry              | Bugatti       | Bugatti T35B         | 2.3 L8   |
+|           12 | 26   | Emil Frankl                 | Private entry              | Steyr         | Steyr 4.5 Liter      | 4.5 L6   |
+|           13 | 28   | Tazio Nuvolari              | SA Alfa Romeo              | Alfa Romeo    | Alfa Romeo P2        | 2.0 L8   |
+|           14 | 30   | Guy Bouriat                 | Automobiles Ettore Bugatti | Bugatti       | Bugatti T35B         | 2.3 L8   |
+|           15 | 32   | Cesare Renzi                | Private entry              | Bugatti       | Bugatti T37A         | 1.5 L8   |
+|           16 | 34   | Cesare Pastore              | Private entry              | Maserati      | Maserati 26B         | 2.1 L8   |
+|           17 | 36   | Colonna de Stigliano        | Private entry              | Alfa Romeo    | Alfa Romeo 6C 1750   | 1.8 L6   |
+|           18 | ?    | Filippo Sartorio            | Enrico or F. Sartorio      | Alfa Romeo    | Alfa Romeo 6C 1750   | 1.5 L6   |
+|           19 | ?    | Arrigo Nenzioni             | A. or E. Nenzioni          | Maserati      | Maserati 26          | 1.5 L8   |
+|           20 | ?    | William Grover-Williams     | Automobiles Ettore Bugatti | Bugatti       | Bugatti T35B         | 2.3 L8   |
+|           21 | ?    | ?                           | Scuderia Ferrari           | Alfa Romeo    | Alfa Romeo P2        | 2.0 L8   |
+|           22 | ?    | ?                           | Scuderia Ferrari           | Alfa Romeo    | Alfa Romeo 6C 1500   | 1.5 L6   |
+
+Generated Reasoning SQL: The summary indicates that the "Entrant" column contains categorical values representing different entrants in the race. To find the number of entrants from Scuderia Ferrari, we count the rows where "Entrant" = 'Scuderia Ferrari'.
+It is important to note that we are looking for an exact match, so we use '=' in the condition.
+SQL: select count("Entrant") from T where "Entrant" = 'Scuderia Ferrari';
+Generated Final SQL: select count("Entrant") from T where "Entrant" = 'Scuderia Ferrari';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Entrant") |
+|-------------------:|
+|                  4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1930 Rome Grand Prix
+SQL: select count("Entrant") from T where "Entrant" = 'Scuderia Ferrari';
+
+count("Entrant")
+4
+Question: what is the number of entrants from scuderia ferrari?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 4
+

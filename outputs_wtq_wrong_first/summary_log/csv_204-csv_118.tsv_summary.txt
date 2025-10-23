@@ -1,0 +1,38 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2002, 2003, 2005, 2006
+   - Role: Identifier for the year in which the team record and playoff information is recorded.
+
+2. Team Record W:
+   - Data type: Numeric
+   - 4 representative example values: 8, 3, 13, 7
+   - Role: Measure indicating the number of wins for the team in a particular year.
+
+3. Team Record L:
+   - Data type: Numeric
+   - 4 representative example values: 1, 5, 4
+   - Role: Measure indicating the number of losses for the team in a particular year.
+
+4. Playoffs:
+   - Data type: Categorical
+   - 4 representative example values: 2nd Qualifier, Region 2, Did Not Make Playoffs, 4th Qualifier, Region 2
+   - Role: Descriptor indicating the team's performance in the playoffs for a particular year.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The team record for 2005 shows 3 wins and 5 losses, which is significantly different from the other records in the table.
+   - The playoffs entry states "Did Not Make Playoffs", which is also different from the other entries.
+   - These values make this row an outlier as it represents a year where the team did not perform as well as in other years.
+
+2. Row 6 (Index 6):
+   - The team record for 2008 shows 7 wins and 4 losses, which is not extremely different from other records.
+   - The playoffs entry states "2nd Qualifier, Region 2", which is a common occurrence in the table.
+   - This row is an ordinary entry and does not stand out as an outlier.
+
+3. Row 5 (Index 5):
+   - The team record for 2007 shows 13 wins and 1 loss, which is a standout performance compared to other records.
+   - The playoffs entry states "1st Qualifier, Region 2", which is also different from other entries.
+   - These values make this row an outlier as it represents a year where the team had exceptional performance and qualified as the top team in their region.

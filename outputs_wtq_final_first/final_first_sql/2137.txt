@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Event:
+   - Data type: Categorical
+   - 4 representative example values: K–1 500 m, K–1 1000 m, K–1 5000 m, K–2 500 m
+   - Role: Identifier for the type of canoeing event
+
+2. Gold:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Nicole Reinhardt (GER), Tamara Csipes (HUN), Yvonne Schuring (AUT), Gabriella Szabó (HUN)
+   - Role: Descriptor for the gold medalist in each event
+
+3. Time:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 1:47.066, 4:11.388, 22:19.816, 1:37.071
+   - Role: Measure of the time taken to complete the event
+
+4. Silver:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Danuta Kozák (HUN), Krisztina Fazekas Zur (USA), Franziska Weber (GER), Carolin Leonhardt (GER)
+   - Role: Descriptor for the silver medalist in each event
+
+5. Time.1:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 1:47.396, 4:13.470, 22:26.572, 1:37.275
+   - Role: Measure of the time taken to complete the event
+
+6. Bronze:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Inna Osypenko-Radomska (UKR), Naomi Flood (AUS), Beata Mikołajczyk (POL), Iryna Pamialova (BLR)
+   - Role: Descriptor for the bronze medalist in each event
+
+7. Time.2:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 1:48.668, 4:14.124, 22:37.294, 1:37.803
+   - Role: Measure of the time taken to complete the event
+
+**Outlier Row Analysis:**
+
+1. Row 1 (K–1 500 m):
+   - The values for Gold (Nicole Reinhardt), Silver (Danuta Kozák), and Bronze (Inna Osypenko-Radomska) are different from the majority of the table.
+   - These values are distinctive as they represent the top 3 positions in the event, making this row an outlier.
+
+2. Row 3 (K–1 5000 m):
+   - The values for Gold (Tamara Csipes) and Silver (Lani Belcher) are different from the majority of the table.
+   - These values are distinctive as they represent the top 2 positions in the event, making this row an outlier.
+
+3. Row 0 (K–1 1000 m):
+   - The values for Gold (Tamara Csipes) and Silver (Krisztina Fazekas Zur) are different from the majority of the table.
+   - These values are distinctive as they represent the top 2 positions in the event, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Event             | Gold                                                                      | Time        | Silver                                                                             | Time_1    | Bronze                                                                           | Time_2    |
+|-------------:|:------------------|:--------------------------------------------------------------------------|:------------|:-----------------------------------------------------------------------------------|:----------|:---------------------------------------------------------------------------------|:----------|
+|            0 | K–1 200 m         | Lisa Carrington (NZL)                                                     | 39.998      | Marta Walczykiewicz (POL)                                                          | 40.472    | Inna Osypenko-Radomska (UKR)                                                     | 40.670    |
+|            1 | K–1 500 m         | Nicole Reinhardt (GER)                                                    | 1:47.066    | Danuta Kozák (HUN)                                                                 | 1:47.396  | Inna Osypenko-Radomska (UKR)                                                     | 1:48.668  |
+|            2 | K–1 1000 m        | Tamara Csipes (HUN)                                                       | 4:11.388    | Krisztina Fazekas Zur (USA)                                                        | 4:13.470  | Naomi Flood (AUS)                                                                | 4:14.124  |
+|            3 | K–1 5000 m        | Tamara Csipes (HUN)                                                       | 22:19.816   | Lani Belcher (GBR)                                                                 | 22:26.572 | Maryna Paltaran (BLR)                                                            | 22:37.294 |
+|            4 | K–2 200 m         | Hungary\nKatalin Kovács\nDanuta Kozák                                     | 37.667      | Poland\nKarolina Naja\nMagdalena Krukowska                                         | 38.165    | Australia\nJoanne Brigden-Jones\nHannah Davis                                    | 38.369    |
+|            5 | K–2 500 m         | Austria\nYvonne Schuring\nViktoria Schwarz                                | 1:37.071 WB | Germany\nFranziska Weber\nTina Dietze                                              | 1:37.275  | Poland\nBeata Mikołajczyk\nAneta Konieczna                                       | 1:37.803  |
+|            6 | K–2 1000 m        | Germany\nAnne Knorr\nDebora Niche                                         | 3:50.614    | Bulgaria\nBerenike Faldum\nDaniela Nedeva                                          | 3:50.950  | Hungary\nAlíz Sarudi\nErika Medveczky                                            | 3:53.416  |
+|            7 | K–4 500 m         | Hungary\nGabriella Szabó\nDanuta Kozák\nKatalin Kovács\nDalma Benedek     | 1:36.339    | Germany\nCarolin Leonhardt\nSilke Hörmann\nFranziska Weber\nTina Dietze            | 1:37.521  | Belarus\nIryna Pamialova\nNadzeya Papok\nVolha Khudzenka\nMaryna Paltaran        | 1:37.887  |
+|            8 | K–1 4x200 m Relay | Germany\nNicole Reinhardt\nConny Wassmuth\nTina Dietze\nCarolin Leonhardt | 2:49.541    | Russia\nNatalia Lobova\nAnastasiya Sergeeva\nNatalia Proskurina\nSvetlana Kudinova | 2:50.207  | Poland\nMarta Walczykiewicz\nKarolina Naja\nAneta Konieczna\nEwelina Wojnarowska | 2:50.951  |
+
+Generated Reasoning SQL: Explanation: To find the event where Inna Osypenko-Radomska got a bronze medal, we need to search for rows where her name appears in the "Bronze" column. Since the athlete's name is unique, we can directly filter rows based on the value in the "Bronze" column to find the event where she received a bronze medal.
+
+SQL: 
+SELECT "Event" 
+FROM T 
+WHERE "Bronze" LIKE '%Inna Osypenko-Radomska%';
+Generated Final SQL: SELECT "Event" FROM T WHERE "Bronze" LIKE '%Inna Osypenko-Radomska%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Event     |
+|:----------|
+| K–1 200 m |
+| K–1 500 m |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2011 ICF Canoe Sprint World Championships
+SQL: SELECT "Event" FROM T WHERE "Bronze" LIKE '%Inna Osypenko-Radomska%';
+
+SQL Execution Result:
+Event
+K–1 200 m
+K–1 500 m
+
+Question: inna osypendo-radomska got a bronze in the k-1 200 m and also a bronze in what other event?
+A: To find the answer to this question, let’s think step by step.
+Prediction: k-1 500 m
+[Gold Answer] k-1 500 m
+

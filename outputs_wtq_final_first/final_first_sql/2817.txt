@@ -1,0 +1,134 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Round:
+   - Data type: Categorical
+   - 4 representative values: 1, 3, 5, 6
+   - Role: Identifier for the round of the race
+
+2. Round.1:
+   - Data type: Categorical
+   - 4 representative values: R2, R1
+   - Role: Descriptor for the specific round within a race
+
+3. Race:
+   - Data type: Categorical
+   - 4 representative values: Donington Park, Zolder, Vallelunga, Jerez
+   - Role: Descriptor for the location of the race
+
+4. Date:
+   - Data type: Date
+   - 4 representative values: August 31, October 5, November 2, November 23
+   - Role: Descriptor for the date of the race
+
+5. Pole Position:
+   - Data type: Categorical
+   - 4 representative values: Borussia Dortmund, nan
+   - Role: Descriptor for the club that secured pole position
+
+6. Fastest Lap:
+   - Data type: Categorical
+   - 4 representative values: PSV Eindhoven, Liverpool F.C., Atlético Madrid, Beijing Guoan
+   - Role: Descriptor for the club with the fastest lap time
+
+7. Winning Club:
+   - Data type: Categorical
+   - 4 representative values: Sevilla FC, Liverpool F.C., F.C. Porto, Borussia Dortmund
+   - Role: Descriptor for the club that won the race
+
+8. Winning Team:
+   - Data type: Categorical
+   - 4 representative values: GTA Motor Competición, Hitech Junior Team, Zakspeed
+   - Role: Descriptor for the team that won the race
+
+9. Report:
+   - Data type: Categorical
+   - 4 representative values: Report
+   - Role: Descriptor for the report of the race
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The Pole Position value is "nan", which indicates missing data. This does not make the row distinctive as missing data is common in datasets. Therefore, this row is an ordinary row.
+
+2. Row 1:
+   - The Pole Position value is "Borussia Dortmund", which is different from the majority of the table where "nan" is present. This makes the row an outlier as it has a unique value in the Pole Position column.
+
+3. Row 4:
+   - The Pole Position value is "nan", similar to Row 0. This row is also an ordinary row as missing data is not a distinctive value for outlier analysis.
+
+=== Full Table Preview ===
+|   row_number |   Round | Round_1   | Race           | Date         | Pole Position     | Fastest Lap       | Winning Club      | Winning Team          | Report   |
+|-------------:|--------:|:----------|:---------------|:-------------|:------------------|:------------------|:------------------|:----------------------|:---------|
+|            0 |       1 | R1        | Donington Park | August 31    | Beijing Guoan     | Beijing Guoan     | Beijing Guoan     | Zakspeed              | Report   |
+|            1 |       1 | R2        | Donington Park | August 31    |                   | PSV Eindhoven     | Sevilla FC        | GTA Motor Competición | Report   |
+|            2 |       2 | R1        | Nürburgring    | September 21 | A.C. Milan        | PSV Eindhoven     | A.C. Milan        | Scuderia Playteam     | Report   |
+|            3 |       2 | R2        | Nürburgring    | September 21 |                   | SC Corinthians    | PSV Eindhoven     | Azerti Motorsport     | Report   |
+|            4 |       3 | R1        | Zolder         | October 5    | Borussia Dortmund | Liverpool F.C.    | Liverpool F.C.    | Hitech Junior Team    | Report   |
+|            5 |       3 | R2        | Zolder         | October 5    |                   | Atlético Madrid   | Beijing Guoan     | Zakspeed              | Report   |
+|            6 |       4 | R1        | Estoril        | October 19   | A.S. Roma         | Atlético Madrid   | Liverpool F.C.    | Hitech Junior Team    | Report   |
+|            7 |       4 | R2        | Estoril        | October 19   |                   | Borussia Dortmund | Al Ain            | Azerti Motorsport     | Report   |
+|            8 |       5 | R1        | Vallelunga     | November 2   | Liverpool F.C.    | Beijing Guoan     | Beijing Guoan     | Zakspeed              | Report   |
+|            9 |       5 | R2        | Vallelunga     | November 2   |                   | Atlético Madrid   | F.C. Porto        | Hitech Junior Team    | Report   |
+|           10 |       6 | R1        | Jerez          | November 23  | Liverpool F.C.    | R.S.C. Anderlecht | A.C. Milan        | Scuderia Playteam     | Report   |
+|           11 |       6 | R2        | Jerez          | November 23  |                   | Beijing Guoan     | Borussia Dortmund | Zakspeed              | Report   |
+
+Generated Reasoning SQL: To determine the number of races on the 2008 schedule, we need to count the distinct values in the "Race" column, as each unique race location represents a separate event. The summary indicates that the "Race" column is categorical and provides representative values for different race locations. We do not need to exclude any outlier rows for this calculation.
+
+SQL: select count(distinct "Race") from T;
+Generated Final SQL: select count(distinct "Race") from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(distinct "Race") |
+|-------------------------:|
+|                        6 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2008 Superleague Formula season
+SQL: select count(distinct "Race") from T;
+
+count(distinct "Race")
+6
+Question: how many races were there on the 2008 schedule?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 6
+[Gold Answer] 6
+

@@ -1,0 +1,115 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 6, 8, 9, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Tunisia, Croatia, Egypt, Total
+   - Role: Descriptor
+
+3. Gold:
+   - Data type: Numeric
+   - 4 representative example values: 3, 0, 0, 43
+   - Role: Measure
+
+4. Silver:
+   - Data type: Numeric
+   - 4 representative example values: 0, 3, 1, 41
+   - Role: Measure
+
+5. Bronze:
+   - Data type: Numeric
+   - 4 representative example values: 0, 3, 2, 42
+   - Role: Measure
+
+6. Total:
+   - Data type: Numeric
+   - 4 representative example values: 3, 6, 3, 126
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 9 (Egypt):
+   - The values for Gold, Silver, and Bronze (0, 1, 2) are significantly lower compared to the other rows in the table.
+   - These values are not ambiguous and clearly different from the majority, making this row an outlier.
+
+2. Row 4 (Total):
+   - The values for Nation being "Total" and the values for Gold, Silver, Bronze, and Total being significantly higher than the other rows make this row an outlier.
+   - While the values are not ambiguous, they are not ordinary within the context of the individual country rows, making this row stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation   |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:---------|-------:|---------:|---------:|--------:|
+|            0 | 1      | France   |     14 |        7 |        7 |      28 |
+|            1 | 2      | Italy    |     12 |        8 |       10 |      30 |
+|            2 | 3      | Slovenia |      5 |        4 |        3 |      12 |
+|            3 | 4      | Spain    |      4 |       14 |        6 |      24 |
+|            4 | 5      | Greece   |      3 |        4 |        9 |      16 |
+|            5 | 6      | Tunisia  |      3 |        0 |        0 |       3 |
+|            6 | 7      | Algeria  |      2 |        0 |        2 |       4 |
+|            7 | 8      | Croatia  |      0 |        3 |        3 |       6 |
+|            8 | 9      | Egypt    |      0 |        1 |        2 |       3 |
+|            9 | Total  | Total    |     43 |       41 |       42 |     126 |
+
+Generated Reasoning SQL: The relevant columns for this question are "Nation" and "Gold" from the summary. We need to find the total number of gold medals for Italy and Spain combined. To do this, we sum the "Gold" values for rows where "Nation" is either Italy or Spain.
+SQL: select sum(cast("Gold" as integer)) as total_gold_medals from T where "Nation" = 'Italy' or "Nation" = 'Spain';
+Generated Final SQL: select sum(cast("Gold" as integer)) as total_gold_medals from T where "Nation" = 'Italy' or "Nation" = 'Spain';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_gold_medals |
+|--------------------:|
+|                  16 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Swimming at the 2005 Mediterranean Games
+SQL: select sum(cast("Gold" as integer)) as total_gold_medals from T where "Nation" = 'Italy' or "Nation" = 'Spain';
+
+total_gold_medals
+16
+Question: how many gold medals did italy and spain have combined?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 16
+[Gold Answer] 16
+

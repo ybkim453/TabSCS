@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 4, 8, 17, 17
+   - Role: Identifier, indicates the ranking of the player
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Paul Van Himst, Valery Voronin, Mário Coluna, Amancio Amaro
+   - Role: Descriptor, identifies the name of the player
+
+3. Club:
+   - Data type: Categorical
+   - 4 representative example values: Anderlecht, Torpedo Moskva, Benfica, Real Madrid
+   - Role: Descriptor, specifies the club the player belongs to
+
+4. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: Belgium, Soviet Union, Portugal, Spain
+   - Role: Descriptor, indicates the nationality of the player
+
+5. Points:
+   - Data type: Numeric
+   - 4 representative example values: 25, 9, 2, 2
+   - Role: Measure, represents the points earned by the player
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 17, Mário Coluna, Benfica, Portugal, 2):
+   - The values in this row (Name: Mário Coluna, Club: Benfica, Nationality: Portugal, Points: 2) are not significantly different from other rows in the table.
+   - These values are ordinary and do not make this row an outlier.
+
+2. Row 0 (Index 4, Paul Van Himst, Anderlecht, Belgium, 25):
+   - The values in this row (Name: Paul Van Himst, Club: Anderlecht, Nationality: Belgium, Points: 25) are consistent with the majority of the table.
+   - These values are ordinary and do not make this row an outlier.
+
+3. Row 9 (Index 17, Franz Beckenbauer, Bayern Munich, West Germany, 2):
+   - The values in this row (Name: Franz Beckenbauer, Club: Bayern Munich, Nationality: West Germany, Points: 2) are not significantly different from other rows in the table.
+   - These values are ordinary and do not make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Name                    | Club              | Nationality    |   Points |
+|-------------:|-------:|:------------------------|:------------------|:---------------|---------:|
+|            0 |      1 | Eusébio                 | Benfica           | Portugal       |       67 |
+|            1 |      2 | Giacinto Facchetti      | Internazionale    | Italy          |       59 |
+|            2 |      3 | Luis Suárez             | Internazionale    | Spain          |       45 |
+|            3 |      4 | Paul Van Himst          | Anderlecht        | Belgium        |       25 |
+|            4 |      5 | Bobby Charlton          | Manchester United | England        |       19 |
+|            5 |      6 | Flórián Albert          | Ferencvárosi      | Hungary        |       14 |
+|            6 |      7 | Gianni Rivera           | Milan             | Italy          |       10 |
+|            7 |      8 | Georgi Asparuhov        | Levski Sofia      | Bulgaria       |        9 |
+|            8 |      8 | Alessandro Mazzola      | Internazionale    | Italy          |        9 |
+|            9 |      8 | Valery Voronin          | Torpedo Moskva    | Soviet Union   |        9 |
+|           10 |     11 | Denis Law               | Manchester United | Scotland       |        8 |
+|           11 |     12 | Karl-Heinz Schnellinger | Milan             | West Germany   |        6 |
+|           12 |     13 | Ferenc Puskás           | Real Madrid       | Spain          |        5 |
+|           13 |     13 | Jim Baxter              | Sunderland        | Scotland       |        5 |
+|           14 |     15 | Mario Corso             | Internazionale    | Italy          |        3 |
+|           15 |     15 | Lev Yashin              | Dynamo Moscow     | Soviet Union   |        3 |
+|           16 |     17 | Mário Coluna            | Benfica           | Portugal       |        2 |
+|           17 |     17 | Amancio Amaro           | Real Madrid       | Spain          |        2 |
+|           18 |     17 | Franz Beckenbauer       | Bayern Munich     | West Germany   |        2 |
+|           19 |     17 | Milan Galić             | Partizan Beograd  | Yugoslavia     |        2 |
+|           20 |     17 | Philippe Gondet         | Nantes            | France         |        2 |
+|           21 |     17 | Andrej Kvašňák          | Sparta Praha      | Czechoslovakia |        2 |
+|           22 |     17 | Ferenc Bene             | Ujpest Dozsa      | Hungary        |        2 |
+|           23 |     17 | Slava Metreveli         | Dinamo Tbilisi    | Soviet Union   |        2 |
+|           24 |     25 | Ivor Allchurch          | Cardiff City      | Wales          |        1 |
+|           25 |     25 | Jakob Kühn              | Zürich            | Switzerland    |        1 |
+|           26 |     25 | Sigfried Held           | Borussia Dortmund | West Germany   |        1 |
+
+Generated Reasoning SQL: To find the total number of points for Mario Corso and Lev Yashin combined, we need to sum the "Points" column for rows where the "Name" is either Mario Corso or Lev Yashin. The "Name" column is categorical, and we can filter rows based on the names of the players.
+SQL: select sum(cast("Points" as integer)) as total_points from T where "Name" = 'Mario Corso' or "Name" = 'Lev Yashin';
+Generated Final SQL: select sum(cast("Points" as integer)) as total_points from T where "Name" = 'Mario Corso' or "Name" = 'Lev Yashin';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_points |
+|---------------:|
+|              6 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Ballon d'Or 1965
+SQL: select sum(cast("Points" as integer)) as total_points from T where "Name" = 'Mario Corso' or "Name" = 'Lev Yashin';
+
+total_points
+6
+Question: what is the total number of points for mario corso and lev yashin combined?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 6
+[Gold Answer] 6
+

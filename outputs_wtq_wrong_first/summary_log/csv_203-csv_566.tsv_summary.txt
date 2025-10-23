@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. **Pick #**
+   - Data type: Numeric
+   - 4 representative example values: 148, 154, 155, 157
+   - Role of the column: Identifier for the draft pick number of the player.
+
+2. **Player**
+   - Data type: Categorical
+   - 4 representative example values: Dan McFall, Mitch Lamoureux, Mike Sturgeon, Petri Skriko
+   - Role of the column: Descriptor for the name of the player.
+
+3. **Position**
+   - Data type: Categorical
+   - 4 representative example values: Defence, Centre, Right Wing, Defence
+   - Role of the column: Descriptor for the player's position in the game.
+
+4. **Nationality**
+   - Data type: Categorical
+   - 4 representative example values: United States, Canada, Canada, Finland
+   - Role of the column: Descriptor for the player's nationality.
+
+5. **NHL team**
+   - Data type: Categorical
+   - 4 representative example values: Winnipeg Jets, Pittsburgh Penguins, Edmonton Oilers, Vancouver Canucks
+   - Role of the column: Descriptor for the NHL team the player is associated with.
+
+6. **College/junior/club team**
+   - Data type: Categorical
+   - 4 representative example values: Buffalo Jr. Sabres (NAJHL), Oshawa Generals (OMJHL), Kelowna Buckaroos (BCJHL), Saipa (Finland)
+   - Role of the column: Descriptor for the college, junior, or club team the player is affiliated with.
+
+**Outlier Row Analysis:**
+
+1. **Row 0 (148 | Dan McFall | Defence | United States | Winnipeg Jets | Buffalo Jr. Sabres (NAJHL))**
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. **Row 6 (162 | Dale DeGray | Defence | Canada | Calgary Flames | Oshawa Generals (OMJHL))**
+   - The values in this row are consistent with the majority of the table. They are ordinary entries and do not make this row an outlier.
+
+3. **Row 9 (161 | Armel Parisee | Defence | Canada | Boston Bruins | Chicoutimi Saguenéens (QMJHL))**
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.

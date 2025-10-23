@@ -1,0 +1,158 @@
+=== Table ID ===
+csv/203-csv/329.tsv
+
+=== Question ===
+last year to not have a back sponsor?
+
+=== Sub-table Preview ===
+| Route   | Name                              | Fare Type    | Terminals                        | Terminals.1                                                                           | Major streets                                                                                 | Notes                                                                                                      | History                                                                                                                                                                                          |
+|:--------|:----------------------------------|:-------------|:---------------------------------|:--------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 31      | Wisconsin Avenue Line             | Local        | Friendship Heights station       | Potomac Park (Virginia Av & 21st St NW)                                               | Wisconsin Avenue NW                                                                           | nan                                                                                                        | 31 replaces the Wisconsin Avenue portion of the old 30 (see Pennsylvania Avenue Line)                                                                                                            |
+| 32, 36  | Pennsylvania Avenue Line          | Local        | Friendship Heights station       | 32 Southern Avenue station\n36 Naylor Road station                                    | Wisconsin Avenue NW\nPennsylvania Avenue SE/NW\nBranch Avenue SE (36)\nAlabama Avenue SE (32) | Some weekday 32 and 36 trips terminate at:\n\nFarragut Square\nFoggy Bottom – GWU station                  | 36 replaces a portion of the old 35 (see Pennsylvania Avenue Line)                                                                                                                               |
+| 37      | Wisconsin Avenue Metro Extra Line | Limited Stop | Friendship Heights station       | Archives station (AM End)\nFederal Triangle (10th St & Pennsylvania Av NW) (PM Start) | Wisconsin Avenue NW\nMassachusetts Avenue NW\nPennsylvania Avenue NW                          | Weekday peak hour service only (AM to Archives, PM to Friendship Heights)\nLimited Stops Only              | A prior "incarnation" of the 37 was once known as the Wisconsin Avenue Express Line, running from Tenleytown-AU station to Archives until the early 1990s                                        |
+| 70      | Georgia Avenue-7th Street Line    | Local        | Silver Spring station*           | Archives station                                                                      | Georgia Avenue NW\n7th Street NW                                                              | Silver Spring terminus is located on Wayne Avenue until completion of the Paul S. Sarbanes Transit Center. | See Seventh Street Line\nStarting September 23, 2011, 71 service was discontinued, and the 70 was shortened to Archives. For service to Southwest Waterfront, see route directly below this one. |
+| K2      | Takoma-Fort Totten Line           | Local        | Takoma station                   | Fort Totten station                                                                   | North Capitol Street\nKansas Avenue NE\nEastern Avenue                                        | Weekday peak hour service only                                                                             | K2 operated to Walter Reed Army Medical Center until 2005, when it was replaced by K1 north of Takoma station.                                                                                   |
+| S1      | 16th Street-Potomac Park Line     | Local        | 16th Street & Colorado Avenue NW | Potomac Park (Virginia Av & E St NW)                                                  | 16th Street NW\n18th Street NW (to 16th & Colorado)\n19th Street NW (to Potomac Park)         | Weekday peak hour service only (AM to Potomac Park, PM to 16th & Colorado)                                 | nan                                                                                                                                                                                              |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **Route:**
+   - Data type: Categorical
+   - 4 representative example values: 31, 32, 37, 70
+   - Role: Identifier for the specific bus route.
+
+2. **Name:**
+   - Data type: Categorical
+   - 4 representative example values: Wisconsin Avenue Line, Pennsylvania Avenue Line, Georgia Avenue-7th Street Line, Takoma-Fort Totten Line
+   - Role: Descriptor for the name of the bus route.
+
+3. **Fare Type:**
+   - Data type: Categorical
+   - 4 representative example values: Local, Limited Stop
+   - Role: Descriptor for the type of fare for the bus route.
+
+4. **Terminals:**
+   - Data type: Categorical
+   - 4 representative example values: Friendship Heights station, Silver Spring station, Takoma station
+   - Role: Descriptor for the starting or ending terminal of the bus route.
+
+5. **Terminals.1:**
+   - Data type: Categorical
+   - 4 representative example values: Potomac Park (Virginia Av & 21st St NW), 32 Southern Avenue station, Archives station
+   - Role: Descriptor for the ending terminal of the bus route.
+
+6. **Major streets:**
+   - Data type: Categorical
+   - 4 representative example values: Wisconsin Avenue NW, Georgia Avenue NW, North Capitol Street
+   - Role: Descriptor for the major streets covered by the bus route.
+
+7. **Notes:**
+   - Data type: Categorical
+   - 4 representative example values: nan, Some weekday 32 and 36 trips terminate at:, Weekday peak hour service only
+   - Role: Additional notes or information about the bus route.
+
+8. **History:**
+   - Data type: Categorical
+   - 4 representative example values: 31 replaces the Wisconsin Avenue portion of the old 30, 36 replaces a portion of the old 35, K2 operated to Walter Reed Army Medical Center until 2005
+   - Role: Historical information or changes related to the bus route.
+
+### Outlier Row Analysis:
+
+1. **Row 3:**
+   - Distinctive values: Route 37, Wisconsin Avenue Metro Extra Line, Limited Stop, Friendship Heights station, Archives station (AM End), Federal Triangle (10th St & Pennsylvania Av NW) (PM Start), Wisconsin Avenue NW, Massachusetts Avenue NW, Pennsylvania Avenue NW, Weekday peak hour service only (AM to Archives, PM to Friendship Heights), Limited Stops Only, A prior "incarnation" of the 37 was once known as the Wisconsin Avenue Express Line, running from Tenleytown-AU station to Archives until the early 1990s
+   - Explanation: The detailed information about the route, terminals, and service type make this row distinctive compared to the majority of the table.
+
+2. **Row 36:**
+   - Distinctive values: Route K2, Takoma-Fort Totten Line, Local, Takoma station, Fort Totten station, North Capitol Street, Kansas Avenue NE, Eastern Avenue, Weekday peak hour service only, K2 operated to Walter Reed Army Medical Center until 2005, when it was replaced by K1 north of Takoma station
+   - Explanation: The specific route details and historical information make this row stand out from the rest of the table.
+
+3. **Row 9:**
+   - Distinctive values: Route S1, 16th Street-Potomac Park Line, Local, 16th Street & Colorado Avenue NW, Potomac Park (Virginia Av & E St NW), 16th Street NW, 18th Street NW (to 16th & Colorado), 19th Street NW (to Potomac Park), Weekday peak hour service only (AM to Potomac Park, PM to 16th & Colorado)
+   - Explanation: The unique route, terminals, and service details differentiate this row from the typical entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Year      | Kit Manufacturer   | Shirt Sponsor            | Back of Shirt Sponsor   | Short Sponsor        |
+|-------------:|:----------|:-------------------|:-------------------------|:------------------------|:---------------------|
+|            0 | 1977–1978 |                    | National Express         |                         |                      |
+|            1 | 1982–1985 | Umbro              |                          |                         |                      |
+|            2 | 1985–1986 | Umbro              | Whitbread                |                         |                      |
+|            3 | 1986–1988 | Henson             | Duraflex                 |                         |                      |
+|            4 | 1988–1989 |                    | Gulf Oil                 |                         |                      |
+|            5 | 1991–1993 | Technik            | Gulf Oil                 |                         |                      |
+|            6 | 1993–1994 | Club Sport         | Gulf Oil                 |                         |                      |
+|            7 | 1994–1995 | Klūb Sport         | Empress                  |                         |                      |
+|            8 | 1995–1996 | Matchwinner        | Empress                  |                         |                      |
+|            9 | 1996–1997 | UK                 | Endsleigh Insurance      |                         |                      |
+|           10 | 1997–1999 | Errea              | Endsleigh Insurance      |                         |                      |
+|           11 | 1999–2004 | Errea              | Towergate Insurance      |                         |                      |
+|           12 | 2004–2008 | Errea              | Bence Building Merchants |                         |                      |
+|           13 | 2008–     | Errea              | Mira Showers             |                         |                      |
+|           14 | 2009–2011 | Errea              | Mira Showers             | PSU Technology Group    |                      |
+|           15 | 2011–2013 | Errea              | Mira Showers             | Barr Stadia             | Gloucestershire Echo |
+|           16 | 2013–     | Errea              | Mira Showers             | Gloucestershire College | Gloucestershire Echo |
+
+Generated Reasoning SQL: Explanation: To find the last year without a back sponsor, we need to look for the maximum year where the "Back of Shirt Sponsor" column is NULL. This means we are searching for the most recent year where there was no back sponsor for the shirts.
+
+SQL: 
+SELECT MAX("Year") AS last_year_without_back_sponsor
+FROM T
+WHERE "Back of Shirt Sponsor" IS NULL;
+Generated Final SQL: SELECT MAX("Year") AS last_year_without_back_sponsor FROM T WHERE "Back of Shirt Sponsor" IS NULL;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| last_year_without_back_sponsor   |
+|:---------------------------------|
+| 2008–                            |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Cheltenham Town F.C.
+SQL: SELECT MAX("Year") AS last_year_without_back_sponsor FROM T WHERE "Back of Shirt Sponsor" IS NULL;
+
+SQL Execution Result:
+last_year_without_back_sponsor
+2008–
+
+Question: last year to not have a back sponsor?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2008
+[Gold Answer] 2008
+

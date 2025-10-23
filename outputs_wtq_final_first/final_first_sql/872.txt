@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2004, 2006, 2007
+   - Role of the column: Identifier for the year in which the award was given
+
+2. Recipient:
+   - Data type: Categorical
+   - 4 representative example values: Ruth Roskies Wisse, Arthur Cohn, Daniel Pipes, Norman Podhoretz
+   - Role of the column: Descriptor for the name of the award recipient
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: United States, Switzerland, Israel
+   - Role of the column: Descriptor for the nationality of the recipient
+
+4. Profession:
+   - Data type: Categorical
+   - 4 representative example values: Yiddish professor of Harvard University, Filmmaker and writer, Author and historian, Author, columnist
+   - Role of the column: Descriptor for the profession of the recipient
+
+5. Speech:
+   - Data type: Categorical
+   - 4 representative example values: [2], nan
+   - Role of the column: Descriptor for whether a speech was given or not
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Index 6):
+   - The recipient is David Be'eri, Mordechai Eliav, Rabbi Yehuda Maly, which is a group of recipients rather than an individual.
+   - This row is an outlier as it deviates from the typical format of having a single recipient for the award.
+
+2. Row 6 (Index 5):
+   - The speech value is "nan", indicating that no speech was given.
+   - This row is an outlier if most other rows have a speech mentioned, making this absence of speech distinctive.
+
+3. Row 12 (Index 11):
+   - The profession value is "nan", indicating that the profession of the recipient is not specified.
+   - This row is an outlier if most other rows have a profession mentioned, making this missing data distinctive.
+
+=== Full Table Preview ===
+|   row_number |   Year | Recipient                                      | Nationality    | Profession                                                                                     | Speech   |
+|-------------:|-------:|:-----------------------------------------------|:---------------|:-----------------------------------------------------------------------------------------------|:---------|
+|            0 |   1997 | Elie Wiesel                                    | United States  | Professional writer\nWinner of the Nobel Peace Prize (1986)                                    |          |
+|            1 |   1998 | Herman Wouk                                    | United States  | Professional writer and 1952 Pulitzer Prize winner                                             |          |
+|            2 |   1999 | A.M. Rosenthal                                 | United States  | Former New York Times editor\nFormer New York Daily News columnist                             |          |
+|            3 |   2000 | Sir Martin Gilbert                             | United Kingdom | Historian and writer                                                                           |          |
+|            4 |   2001 | Cynthia Ozick                                  | United States  | Professional writer                                                                            |          |
+|            5 |   2002 | Charles Krauthammer                            | United States  | The Washington Post columnist                                                                  | [1]      |
+|            6 |   2003 | Ruth Roskies Wisse                             | United States  | Yiddish professor of Harvard University                                                        | [2]      |
+|            7 |   2004 | Arthur Cohn                                    | Switzerland    | Filmmaker and writer                                                                           |          |
+|            8 |   2005 | William Safire                                 | United States  | Author journalist and speechwriter\n1978 Pulitzer Prize winner                                 |          |
+|            9 |   2006 | Daniel Pipes                                   | United States  | Author and historian                                                                           |          |
+|           10 |   2007 | Norman Podhoretz                               | United States  | Author columnist                                                                               |          |
+|           11 |   2008 | David Be'eri Mordechai Eliav Rabbi Yehuda Maly | Israel         |                                                                                                |          |
+|           12 |   2009 | Caroline Glick                                 | Israel         | Journalist                                                                                     |          |
+|           13 |   2010 | Malcolm Hoenlein                               | United States  | Executive Vice Chairman of the Conference of Presidents of Major American Jewish Organizations |          |
+
+Generated Reasoning SQL: Explanation: To find the award Elie Wiesel received before winning the Guardian of Zion Award in 1997, we need to look for the row corresponding to Elie Wiesel and the award received in a year prior to 1997. We will filter rows where the "Recipient" is Elie Wiesel and the "Year" is less than 1997, then select the "Profession" column to identify the previous award received by Elie Wiesel.
+
+SQL: 
+SELECT "Profession" 
+FROM T 
+WHERE "Recipient" = 'Elie Wiesel' AND "Year" < 1997;
+Generated Final SQL: SELECT "Profession" FROM T WHERE "Recipient" = 'Elie Wiesel' AND "Year" < 1997;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Guardian of Zion Award (row_number, Year, Recipient, Nationality, Profession, Speech)
+
+row_number | Year | Recipient | Nationality | Profession | Speech
+0 | 1997 | Elie Wiesel | United States | Professional writer\nWinner of the Nobel Peace Prize (1986) | None
+1 | 1998 | Herman Wouk | United States | Professional writer and 1952 Pulitzer Prize winner | None
+2 | 1999 | A.M. Rosenthal | United States | Former New York Times editor\nFormer New York Daily News columnist | None
+3 | 2000 | Sir Martin Gilbert | United Kingdom | Historian and writer | None
+4 | 2001 | Cynthia Ozick | United States | Professional writer | None
+5 | 2002 | Charles Krauthammer | United States | The Washington Post columnist | [1]
+6 | 2003 | Ruth Roskies Wisse | United States | Yiddish professor of Harvard University | [2]
+7 | 2004 | Arthur Cohn | Switzerland | Filmmaker and writer | None
+8 | 2005 | William Safire | United States | Author journalist and speechwriter\n1978 Pulitzer Prize winner | None
+9 | 2006 | Daniel Pipes | United States | Author and historian | None
+10 | 2007 | Norman Podhoretz | United States | Author columnist | None
+11 | 2008 | David Be'eri Mordechai Eliav Rabbi Yehuda Maly | Israel | None | None
+12 | 2009 | Caroline Glick | Israel | Journalist | None
+13 | 2010 | Malcolm Hoenlein | United States | Executive Vice Chairman of the Conference of Presidents of Major American Jewish Organizations | None
+Question: before winning the guardian of zion award in 1997, what other award did elie wiesel receive?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we need to first locate Elie Wiesel in the table and then identify any other awards he received before winning the Guardian of Zion Award in 1997.
+
+From the table:
+- Elie Wiesel won the Guardian of Zion Award in 1997.
+- Elie Wiesel is listed in row 0 as the recipient in 1997.
+
+Now, let's carefully examine the information in row 0 for any mention of other awards received by Elie Wiesel before 1997.
+
+From row 0:
+- Elie Wiesel is described as a "Professional writer" and "Winner of the Nobel Peace Prize (1986)".
+
+Therefore, before winning the Guardian of Zion Award in 1997, Elie Wiesel received the Nobel Peace Prize in 1986.
+
+Final Answer: Nobel Peace Prize
+[Fallback] Prediction: nobel peace prize
+[Gold Answer] professional writer winner of the nobel peace prize (1986)
+

@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season:
+   - Data type: Numeric
+   - 4 representative example values: 2005, 2006, 2007, 2010
+   - Role: Identifier for the specific season the data corresponds to.
+
+2. Team:
+   - Data type: Categorical
+   - 4 representative example values: Shandong Luneng, Chengdu Wuniu, Jiangsu Sainty
+   - Role: Descriptor for the team playing in the season.
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: China
+   - Role: Descriptor for the country the team is from.
+
+4. Division:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2
+   - Role: Descriptor for the division the team is playing in.
+
+5. Apps:
+   - Data type: Numeric
+   - 4 representative example values: 0, 1, 17
+   - Role: Measure of the number of appearances made by a player.
+
+6. Goals:
+   - Data type: Numeric
+   - 4 representative example values: 0
+   - Role: Measure of the number of goals scored by a player.
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 2):
+   - The team "Chengdu Wuniu" is different from the majority of the table where "Shandong Luneng" and "Jiangsu Sainty" are more common.
+   - The division value of 2 is also different from the majority of division 1 entries.
+   - These distinctive values make this row an outlier.
+
+2. Row 7 (Index 6):
+   - The team "Jiangsu Sainty" is consistent with other entries, so it is an ordinary row and does not require special handling.
+
+3. Row 2 (Index 1):
+   - The team "Chengdu Wuniu" is different from the majority of the table where "Shandong Luneng" and "Jiangsu Sainty" are more common.
+   - The division value of 2 is also different from the majority of division 1 entries.
+   - These distinctive values make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Season | Team            | Country   |   Division |   Apps |   Goals |
+|-------------:|---------:|:----------------|:----------|-----------:|-------:|--------:|
+|            0 |     2003 | Shandong Luneng | China     |          1 |      4 |       0 |
+|            1 |     2004 | Shandong Luneng | China     |          1 |      0 |       0 |
+|            2 |     2005 | Shandong Luneng | China     |          1 |      0 |       0 |
+|            3 |     2006 | Chengdu Wuniu   | China     |          2 |      1 |       0 |
+|            4 |     2007 | Shandong Luneng | China     |          1 |      0 |       0 |
+|            5 |     2008 | Jiangsu Sainty  | China     |          2 |     24 |       0 |
+|            6 |     2009 | Jiangsu Sainty  | China     |          1 |     15 |       0 |
+|            7 |     2010 | Jiangsu Sainty  | China     |          1 |     17 |       0 |
+|            8 |     2011 | Jiangsu Sainty  | China     |          1 |      9 |       0 |
+|            9 |     2012 | Jiangsu Sainty  | China     |          1 |      0 |       0 |
+|           10 |     2013 | Jiangsu Sainty  | China     |          1 |     11 |       0 |
+
+Generated Reasoning SQL: To calculate the total combined apps of seasons 2006 and 2007, we need to sum the "Apps" column for rows where "Season" is either 2006 or 2007. The "Season" column is numeric and can be used to filter the rows accordingly.
+
+SQL: 
+select sum("Apps") as total_combined_apps from T where "Season" = 2006 or "Season" = 2007;
+Generated Final SQL: select sum("Apps") as total_combined_apps from T where "Season" = 2006 or "Season" = 2007;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_combined_apps |
+|----------------------:|
+|                     1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Guan Zhen
+SQL: select sum("Apps") as total_combined_apps from T where "Season" = 2006 or "Season" = 2007;
+
+total_combined_apps
+1
+Question: what are the total combined apps of seasons 2006 and season 2007?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 1
+

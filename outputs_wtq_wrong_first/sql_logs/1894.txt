@@ -1,0 +1,143 @@
+=== Table ID ===
+csv/204-csv/719.tsv
+
+=== Question ===
+how many matches were played in the 1990's?
+
+=== Sub-table Preview ===
+|   Year | Matches   | Winner       | Results   | Pakistan\nCaptain   | Pakistan\nCoach     | India\nCaptain   | India\nCoach       |
+|-------:|:----------|:-------------|:----------|:--------------------|:--------------------|:-----------------|:-------------------|
+|   1978 | 4         | Pakistan win | 3 - 1     | Islahuddin Siddique | Sayad A. Hussain    | V. J. Philips    | R. S. Gentle       |
+|   1998 | 8         | Pakistan win | 4 - 3     | Tahir Zaman         | Islahuddin Siddique | Dhanraj Pillay   | V Bhaskaran        |
+|   1999 | 9         | Pakistan win | 5 - 3     | Atif Bashir         | Shahnaz Shaikh      | Anil Aldrin      | V Bhaskaran        |
+|   2006 | 6         | Pakistan win | 3 - 1     | Mohammad Saqlain    | Asif Bajwa          | Ignace Tirkey    | Rajinder Singh Jr. |
+|   2013 | TBA       | TBA          | TBA       | TBA                 | TBA                 | TBA              | TBA                |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1978, 1998, 1999, 2006
+   - Role of the column: Identifier for the year in which the matches took place
+
+2. Matches:
+   - Data type: Numeric
+   - 4 representative example values: 4, 8, 9, 6
+   - Role of the column: Measure indicating the number of matches played in a particular year
+
+3. Winner:
+   - Data type: Categorical
+   - 4 representative example values: Pakistan win
+   - Role of the column: Descriptor indicating the winner of the matches
+
+4. Results:
+   - Data type: Categorical
+   - 4 representative example values: 3 - 1, 4 - 3, 5 - 3, 3 - 1
+   - Role of the column: Descriptor showing the results of the matches
+
+5. Pakistan Captain:
+   - Data type: Categorical
+   - 4 representative example values: Islahuddin Siddique, Tahir Zaman, Atif Bashir, Mohammad Saqlain
+   - Role of the column: Descriptor indicating the captain of the Pakistan team
+
+6. Pakistan Coach:
+   - Data type: Categorical
+   - 4 representative example values: Sayad A. Hussain, Islahuddin Siddique, Shahnaz Shaikh, Asif Bajwa
+   - Role of the column: Descriptor indicating the coach of the Pakistan team
+
+7. India Captain:
+   - Data type: Categorical
+   - 4 representative example values: V. J. Philips, Dhanraj Pillay, Anil Aldrin, Ignace Tirkey
+   - Role of the column: Descriptor indicating the captain of the India team
+
+8. India Coach:
+   - Data type: Categorical
+   - 4 representative example values: R. S. Gentle, V Bhaskaran, V Bhaskaran, Rajinder Singh Jr.
+   - Role of the column: Descriptor indicating the coach of the India team
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The row with index 8 has "TBA" values for all columns, indicating that the data for the year 2013 is missing.
+   - This row is an outlier as it does not provide any information about the matches, winners, captains, or coaches for the year 2013.
+
+2. Row 5:
+   - The row with index 5 has "TBA" values for the Matches, Winner, and Results columns, indicating missing data for the year 2013.
+   - While the missing data may make this row stand out, it is not truly special as it is consistent with the missing information in row 8.
+   - Therefore, row 5 is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Matches   | Winner       | Results   | Pakistan\nCaptain   | Pakistan\nCoach     | India\nCaptain   | India\nCoach       |
+|-------------:|-------:|:----------|:-------------|:----------|:--------------------|:--------------------|:-----------------|:-------------------|
+|            0 |   1978 | 4         | Pakistan win | 3 - 1     | Islahuddin Siddique | Sayad A. Hussain    | V. J. Philips    | R. S. Gentle       |
+|            1 |   1981 | 4         | Pakistan win | 2 - 1     | Akhtar Rasool       | Zakauddin           | Surjeet Singh    | Harmeek Singh      |
+|            2 |   1986 | 7         | India win    | 3 - 2     | Hassan Sardar       | Anwar Ahmad Khan    | Mohmmad Shaheed  | M. P. Ganesh       |
+|            3 |   1988 | 6         | Draw         | 2 - 2     | Nasir Ali           | Manzoor-ul-Hasan    | M. M. Somaya     | M. P. Ganesh       |
+|            4 |   1998 | 8         | Pakistan win | 4 - 3     | Tahir Zaman         | Islahuddin Siddique | Dhanraj Pillay   | V Bhaskaran        |
+|            5 |   1999 | 9         | Pakistan win | 5 - 3     | Atif Bashir         | Shahnaz Shaikh      | Anil Aldrin      | V Bhaskaran        |
+|            6 |   2004 | 8         | Pakistan win | 4 - 2     | Waseem Ahmad        | Roelant Oltmans     | Dileep Tirkey    | Gehard Rach        |
+|            7 |   2006 | 6         | Pakistan win | 3 - 1     | Mohammad Saqlain    | Asif Bajwa          | Ignace Tirkey    | Rajinder Singh Jr. |
+|            8 |   2013 | TBA       | TBA          | TBA       | TBA                 | TBA                 | TBA              | TBA                |
+
+Generated Reasoning SQL: Explanation: To determine the number of matches played in the 1990s, we need to consider all the years within that decade. Since the 1990s span from 1990 to 1999, we should filter the rows based on the "Year" column to include only those years. The "Year" column is numeric and contains representative values such as 1978, 1998, 1999, and 2006. We will exclude any outlier rows that do not provide valid year information.
+
+SQL: SELECT SUM("Matches") AS total_matches_1990s FROM T WHERE "Year" >= 1990 AND "Year" <= 1999;
+Generated Final SQL: SELECT SUM("Matches") AS total_matches_1990s FROM T WHERE "Year" >= 1990 AND "Year" <= 1999;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_matches_1990s |
+|----------------------:|
+|                    17 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: India–Pakistan field hockey rivalry
+SQL: SELECT SUM("Matches") AS total_matches_1990s FROM T WHERE "Year" >= 1990 AND "Year" <= 1999;
+
+SQL Execution Result:
+total_matches_1990s
+17
+
+Question: how many matches were played in the 1990's?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 17
+[Gold Answer] 2
+

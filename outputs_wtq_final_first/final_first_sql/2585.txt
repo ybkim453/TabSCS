@@ -1,0 +1,127 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - 4 representative example values: Maryland 2, Maryland 3, Maryland 4, Maryland 5
+   - Role: Identifier for the district represented in the table
+
+2. Incumbent
+   - Data type: Categorical
+   - 4 representative example values: Robert Ehrlich, Ben Cardin, Albert Wynn, Steny Hoyer
+   - Role: Descriptor of the incumbent for each district
+
+3. Party
+   - Data type: Categorical
+   - 4 representative example values: Republican, Democratic
+   - Role: Descriptor of the political party of the incumbent
+
+4. First elected
+   - Data type: Numeric
+   - 4 representative example values: 1994, 1986, 1992, 1981
+   - Role: Descriptor of the year the incumbent was first elected
+
+5. Result
+   - Data type: Categorical
+   - 4 representative example values: Retired to run for Governor, Re-elected
+   - Role: Descriptor of the outcome of the election for the district
+
+6. Candidates
+   - Data type: Categorical
+   - 4 representative example values: Dutch Ruppersberger (D) 54.16%, Helen Bentley (R) 45.57%, Ben Cardin (D) 65.72%, Scott Conwell (R) 34.18%
+   - Role: Descriptor of the candidates and their respective percentage of votes
+
+**Outlier Row Analysis:**
+
+1. Maryland 3 (Ben Cardin)
+   - The row is not an outlier as the values for Ben Cardin (D) 65.72% and Scott Conwell (R) 34.18% are consistent with the other candidate rows.
+
+2. Maryland 5 (Steny Hoyer)
+   - The row is not an outlier as the values for Steny Hoyer (D) 69.27% and Joseph Crawford (R) 30.52% are consistent with the other candidate rows.
+
+3. Maryland 2 (Robert Ehrlich)
+   - The row is an outlier as the result states "Retired to run for Governor" which is different from the "Re-elected" results of the other rows. This change in outcome makes this row distinctive.
+
+In summary, only the candidate row for Maryland 2 (Robert Ehrlich) is considered an outlier due to the unique result of the election. The other candidate rows are ordinary and do not require special handling.
+
+=== Full Table Preview ===
+|   row_number | District   | Incumbent       | Party      |   First\nelected | Result                                       | Candidates                                                                         |
+|-------------:|:-----------|:----------------|:-----------|-----------------:|:---------------------------------------------|:-----------------------------------------------------------------------------------|
+|            0 | Maryland 1 | Wayne Gilchrest | Republican |             1990 | Re-elected                                   | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%                                  |
+|            1 | Maryland 2 | Robert Ehrlich  | Republican |             1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%                           |
+|            2 | Maryland 3 | Ben Cardin      | Democratic |             1986 | Re-elected                                   | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%                                    |
+|            3 | Maryland 4 | Albert Wynn     | Democratic |             1992 | Re-elected                                   | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%                                     |
+|            4 | Maryland 5 | Steny Hoyer     | Democratic |             1981 | Re-elected                                   | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%                                 |
+|            5 | Maryland 6 | Roscoe Bartlett | Republican |             1992 | Re-elected                                   | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%                              |
+|            6 | Maryland 7 | Elijah Cummings | Democratic |             1996 | Re-elected                                   | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%                                 |
+|            7 | Maryland 8 | Connie Morella  | Republican |             1986 | Lost re-election\nDemocratic gain            | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73% |
+
+Generated Reasoning SQL: Explanation: To determine the last year Connie Morella was elected, we need to filter the row where "Incumbent" is Connie Morella and the "Result" is "Re-elected". Since the "First elected" column represents the year the incumbent was first elected, we need to find the maximum value of "First elected" for Connie Morella.
+We should exclude the outlier row for Maryland 2 (Robert Ehrlich) as it has a different election outcome compared to the other rows.
+SQL: SELECT MAX("First elected") AS last_elected_year
+FROM T
+WHERE "Incumbent" = 'Connie Morella' AND "Result" = 'Re-elected';
+Generated Final SQL: SELECT MAX("First elected") AS last_elected_year FROM T WHERE "Incumbent" = 'Connie Morella' AND "Result" = 'Re-elected';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| last_elected_year   |
+|:--------------------|
+|                     |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: United States House of Representatives elections, 2002 (row_number, District, Incumbent, Party, First\nelected, Result, Candidates)
+
+row_number | District | Incumbent | Party | First\nelected | Result | Candidates
+0 | Maryland 1 | Wayne Gilchrest | Republican | 1990 | Re-elected | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%
+1 | Maryland 2 | Robert Ehrlich | Republican | 1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%
+2 | Maryland 3 | Ben Cardin | Democratic | 1986 | Re-elected | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%
+3 | Maryland 4 | Albert Wynn | Democratic | 1992 | Re-elected | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%
+4 | Maryland 5 | Steny Hoyer | Democratic | 1981 | Re-elected | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%
+5 | Maryland 6 | Roscoe Bartlett | Republican | 1992 | Re-elected | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%
+6 | Maryland 7 | Elijah Cummings | Democratic | 1996 | Re-elected | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%
+7 | Maryland 8 | Connie Morella | Republican | 1986 | Lost re-election\nDemocratic gain | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73%
+Question: connie morella was last elected in which year?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will use both the summary and the full table.
+
+From the summary:
+- The **Incumbent** column lists the current officeholder.
+- Special / Atypical Rows: none listed, so we can assume each row represents a standard election result.
+- Preprocessing Artifacts: none mentioned, so we can assume the data is clean.
+
+From the full table:
+- Connie Morella is listed in District 8 as the Republican incumbent.
+- The election result shows that she lost re-election to Chris Van Hollen in 2002.
+
+Therefore, combining the summary information about the Incumbent column with the specific details in the full table, we can determine that Connie Morella was last elected in 1998.
+
+Final Answer: 1998
+[Fallback] Prediction: 1998
+[Gold Answer] 1986
+

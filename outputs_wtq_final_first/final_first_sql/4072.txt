@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Builder
+   - Data type: Categorical
+   - 4 representative example values: MLW, ALCO
+   - Role: Descriptor
+
+2. Works numbers
+   - Data type: Numeric
+   - 4 representative example values: 42331-42345, 43150-43164, 42046-42060, 43540-43554
+   - Role: Identifier
+
+3. Dates
+   - Data type: Numeric
+   - 4 representative example values: 1907, 1908, 1910, 1911
+   - Role: Descriptor
+
+4. CN numbers
+   - Data type: Categorical
+   - 4 representative example values: 2577-2605, 2661-2662, 2685, 2567-2576
+   - Role: Descriptor
+
+5. GT numbers
+   - Data type: Categorical
+   - 4 representative example values: 721-750, 706-720, 752, 616-630
+   - Role: Descriptor
+
+6. Notes
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - The CN numbers include ranges 2616-2625 and 2677-2678, which are different from the majority of CN numbers in the table.
+   - These values are distinct from the other CN numbers, making this row an outlier.
+
+2. Row 3 (Index 3):
+   - The CN numbers include ranges 2567-2576 and 2606-2615, which are different from the majority of CN numbers in the table.
+   - These values are distinct from the other CN numbers, making this row an outlier.
+
+3. Row 2 (Index 2):
+   - The CN numbers include ranges 2567-2576 and 2606-2615, which are different from the majority of CN numbers in the table.
+   - These values are distinct from the other CN numbers, making this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Builder   |   Works numbers |   Dates | CN numbers                                 | GT numbers                       | Notes                        |
+|-------------:|:----------|----------------:|--------:|:-------------------------------------------|:---------------------------------|:-----------------------------|
+|            0 | MLW       |           39548 |    1906 | 2525-2566\n2663                            | 651-705                          |                              |
+|            1 | MLW       |           42331 |    1907 | 2577-2605\n2661-2662\n2685                 | 721-750                          |                              |
+|            2 | ALCO      |           42046 |    1907 | 2567-2576\n2606-2615\n2664-2665\n2669-2676 | 706-720\n752\n755\n758\n761\n763 |                              |
+|            3 | MLW       |           45163 |    1908 | 2627-2646                                  | 631-650                          |                              |
+|            4 | MLW       |           46880 |    1910 | 2647-2660\n2686                            | 616-630                          |                              |
+|            5 | ALCO      |           49663 |    1911 | 2616-2625\n2677-2678                       | 766-777                          | built at ALCO's Brooks Works |
+|            6 | ALCO      |           50472 |    1911 | 2626\n2666-2668\n2679-2684                 | 779-780\n784\n786-787            |                              |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter rows where the "Builder" is not MLW and the "Dates" is 1907. We are looking for builders other than MLW who released locomotives in 1907. The summary provides the necessary information about the data types of the columns and example values.
+
+SQL: 
+select distinct "Builder" 
+from T 
+where "Builder" <> 'MLW' and "Dates" = 1907;
+Generated Final SQL: select distinct "Builder" from T where "Builder" <> 'MLW' and "Dates" = 1907;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Builder   |
+|:----------|
+| ALCO      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Canadian National class N-4 2-8-0
+SQL: select distinct "Builder" from T where "Builder" <> 'MLW' and "Dates" = 1907;
+
+Builder
+ALCO
+Question: other than mlw, who released one in 1907?
+A: To find the answer to this question, let’s think step by step.
+Prediction: alco
+[Gold Answer] alco
+

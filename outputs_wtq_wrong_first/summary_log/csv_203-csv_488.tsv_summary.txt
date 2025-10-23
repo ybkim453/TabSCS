@@ -1,0 +1,44 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1906, 1922, 1924, 1930
+   - Role: Identifier for the year the title was published
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Spirit of the Border, The Day of the Beast, The Call of the Canyon, The Thundering Herd
+   - Role: Descriptor for the title of the book
+
+3. Genre:
+   - Data type: Categorical
+   - 4 representative example values: Historical, Fiction, Western
+   - Role: Descriptor for the genre of the book
+
+4. Publisher:
+   - Data type: Categorical
+   - 4 representative example values: A. L. Burt & Company, Harper & Brothers, Walter J. Black
+   - Role: Descriptor for the publisher of the book
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: Sequel to Betty Zane, nan
+   - Role: Additional information or notes about the book
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The value "Spirit of the Border" in the Title column is a distinctive value as it is the only title with a specific name mentioned.
+   - The value "Historical" in the Genre column is not common in the table, making this row stand out.
+   - The Notes column has a specific note "Sequel to Betty Zane" which is unique compared to the other rows.
+   - This row is an outlier due to the specific and unique values present in each column.
+
+2. Row 91:
+   - No specific distinctive values found in this row, all values are common and not unique.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 24:
+   - The value "The Camp Robber and other Stories" in the Title column is a distinctive value as it is the only title with multiple stories mentioned.
+   - The value "Western" in the Genre column is common in the table, but the specific title makes this row stand out.
+   - The Publisher column has a specific publisher "Walter J. Black" which is unique compared to the other rows.
+   - This row is an outlier due to the specific title and publisher mentioned.

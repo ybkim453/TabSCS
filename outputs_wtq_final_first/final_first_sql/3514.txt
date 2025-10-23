@@ -1,0 +1,126 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2009, 2006, 2005, 2001
+   - Role: Identifier for the year in which the title was released.
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Infinito, La Vida Inmune, Cuentos De Pelos, Perros Patinadores
+   - Role: Descriptor for the title of the film or series.
+
+3. Rol:
+   - Data type: Categorical
+   - 4 representative example values: nan, Malhora, Differentes personajes en "No es Justo" y "Ponte Bizbo"
+   - Role: Descriptor for the role played by the individual in the production.
+
+4. Format:
+   - Data type: Categorical
+   - 4 representative example values: Short Film, Feature Film, Serie, Capsulas
+   - Role: Descriptor for the format of the production.
+
+5. Related Links:
+   - Data type: Categorical (URL)
+   - 4 representative example values: nan, https://www.youtube.com/watch?v=PQt4RU3usnw, nan, https://www.youtube.com/watch?v=M7YCuvFbFJ0
+   - Role: Descriptor for related links to the production.
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+2. Row 0:
+   - The values in this row are all related to the production "Infinito" and are consistent with the other entries in the table. This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+3. Row 9:
+   - The values in this row are all related to the production "Cuentos De Pelos" and are consistent with the other entries in the table. This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+=== Full Table Preview ===
+|   row_number | Year      | Title                          | Rol                                                     | Format       | Related Links                                               |
+|-------------:|:----------|:-------------------------------|:--------------------------------------------------------|:-------------|:------------------------------------------------------------|
+|            0 | 2010      | Niñas mal (telenovela)         | Piti                                                    | Telenovela   | http://www.novelamtv.com/                                   |
+|            1 | 2010      | Soy tu fan (México)            | Actor                                                   | Serie        | https://www.youtube.com/watch?v=hnCb5GG0E2U                 |
+|            2 | 2010      | Yo Te Estaré Cuidando          | Camilo                                                  | Short Film   |                                                             |
+|            3 | 2009      | Infinito                       |                                                         | Short Film   |                                                             |
+|            4 | 2009      | Me Mueves 2° Temporada         | Arturo                                                  | Serie        | https://www.youtube.com/watch?v=fNE5WHZ_tt8&feature=related |
+|            5 | 2008      | Me Mueves 1° Temporada         | Arturo                                                  | Serie        | https://www.youtube.com/watch?v=lj2Q6rrOK1k                 |
+|            6 | 2008      | La Carretera Es Blanca Y Llana | Peru                                                    | Short Film   | https://www.youtube.com/watch?v=GKehxHZ16rs                 |
+|            7 | 2007      | La Zona                        | Alejandro                                               | Feature Film | https://www.youtube.com/watch?v=W5SzXJe-NMk                 |
+|            8 | 2006–2008 | Skimo                          | Fito                                                    | Serie        | https://www.youtube.com/watch?v=w_6cn3BajE0&feature=related |
+|            9 | 2006      | La Vida Inmune                 | Malhora                                                 | Feature Film | https://www.youtube.com/watch?v=PQt4RU3usnw                 |
+|           10 | 2005      | Cuentos De Pelos               |                                                         | Serie        |                                                             |
+|           11 | 2005      | Quinceañera                    |                                                         | Feature Film |                                                             |
+|           12 | 2004      | El Divan De Valentina          | Dj                                                      | Serie        |                                                             |
+|           13 | 2001      | Perros Patinadores             |                                                         | Short Film   |                                                             |
+|           14 | 1997–2001 | Bizbirije                      | Differentes personajes en "No es Justo" y "Ponte Bizbo" | Capsulas     | https://www.youtube.com/watch?v=M7YCuvFbFJ0                 |
+
+Generated Reasoning SQL: Explanation: To determine the time difference between the roles in "Soy tu fan (México)" and "La Vida Inmune", we need to find the years corresponding to these titles and calculate the difference between them. We will filter rows where the "Title" is either "Soy tu fan (México)" or "La Vida Inmune" and then extract the corresponding years to calculate the time gap.
+
+SQL: 
+SELECT ABS(MAX(CAST("Year" AS INTEGER) - MIN(CAST("Year" AS INTEGER))) AS time_difference
+FROM T
+WHERE "Title" LIKE '%Soy tu fan (México)%' OR "Title" LIKE '%La Vida Inmune%';
+Generated Final SQL: SELECT ABS(MAX(CAST("Year" AS INTEGER) - MIN(CAST("Year" AS INTEGER))) AS time_difference FROM T WHERE "Title" LIKE '%Soy tu fan (México)%' OR "Title" LIKE '%La Vida Inmune%';
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT ABS(MAX(CAST("Year" AS INTEGER) - MIN(CAST("Year" AS INTEGER))) AS time_difference FROM T WHERE "Title" LIKE '%Soy tu fan (México)%' OR "Title" LIKE '%La Vida Inmune%';': near "AS": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Daniel Tovar (row_number, Year, Title, Rol, Format, Related Links)
+
+row_number | Year | Title | Rol | Format | Related Links
+0 | 2010 | Niñas mal (telenovela) | Piti | Telenovela | http://www.novelamtv.com/
+1 | 2010 | Soy tu fan (México) | Actor | Serie | https://www.youtube.com/watch?v=hnCb5GG0E2U
+2 | 2010 | Yo Te Estaré Cuidando | Camilo | Short Film | None
+3 | 2009 | Infinito | None | Short Film | None
+4 | 2009 | Me Mueves 2° Temporada | Arturo | Serie | https://www.youtube.com/watch?v=fNE5WHZ_tt8&feature=related
+5 | 2008 | Me Mueves 1° Temporada | Arturo | Serie | https://www.youtube.com/watch?v=lj2Q6rrOK1k
+6 | 2008 | La Carretera Es Blanca Y Llana | Peru | Short Film | https://www.youtube.com/watch?v=GKehxHZ16rs
+7 | 2007 | La Zona | Alejandro | Feature Film | https://www.youtube.com/watch?v=W5SzXJe-NMk
+8 | 2006–2008 | Skimo | Fito | Serie | https://www.youtube.com/watch?v=w_6cn3BajE0&feature=related
+9 | 2006 | La Vida Inmune | Malhora | Feature Film | https://www.youtube.com/watch?v=PQt4RU3usnw
+10 | 2005 | Cuentos De Pelos | None | Serie | None
+11 | 2005 | Quinceañera | None | Feature Film | None
+12 | 2004 | El Divan De Valentina | Dj | Serie | None
+13 | 2001 | Perros Patinadores | None | Short Film | None
+14 | 1997–2001 | Bizbirije | Differentes personajes en "No es Justo" y "Ponte Bizbo" | Capsulas | https://www.youtube.com/watch?v=M7YCuvFbFJ0
+Question: how long between the roles in soy tu fan (mexico) and la vida immune?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, let's identify the relevant rows for the roles in question:
+- The role in "Soy tu fan (México)" was played by Daniel Tovar in the year 2010.
+- The role in "La Vida Inmune" was played by Daniel Tovar in the year 2006.
+
+Next, we calculate the time difference between the two roles:
+2010 (Role in "Soy tu fan (México)") - 2006 (Role in "La Vida Inmune") = 4 years
+
+Therefore, the time between the roles in "Soy tu fan (México)" and "La Vida Inmune" was 4 years.
+
+Final Answer: 4 years
+[Fallback] Prediction: 4 years
+[Gold Answer] 4 years
+

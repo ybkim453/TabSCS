@@ -1,0 +1,137 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 2005, 2006, 2007, 2011
+   - Role: Identifier for the racing season
+
+2. Class
+   - Data type: Categorical
+   - 4 representative example values: 125cc
+   - Role: Descriptor for the class of motorcycle used
+
+3. Moto
+   - Data type: Categorical
+   - 4 representative example values: Derbi, Aprilia
+   - Role: Descriptor for the type of motorcycle manufacturer
+
+4. Races
+   - Data type: Numeric
+   - 4 representative example values: 13, 16, 17
+   - Role: Measure of the number of races participated in
+
+5. Win
+   - Data type: Numeric
+   - 4 representative example values: 0, 8
+   - Role: Measure of the number of wins achieved
+
+6. Podiums
+   - Data type: Numeric
+   - 4 representative example values: 0, 11
+   - Role: Measure of the number of podium finishes achieved
+
+7. Pole
+   - Data type: Numeric
+   - 4 representative example values: 0, 7
+   - Role: Measure of the number of pole positions achieved
+
+8. Pts
+   - Data type: Numeric
+   - 4 representative example values: 1, 302
+   - Role: Measure of the total points earned
+
+9. Position
+   - Data type: Categorical
+   - 4 representative example values: 36th, 1st, 14th, 22nd
+   - Role: Descriptor for the final position in the championship standings
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 7:
+   - The values in this row are also not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+3. Row 1:
+   - The values in this row are consistent with the rest of the table and do not stand out as unusual. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Season   | Class   | Moto    |   Races |   Win |   Podiums |   Pole |    Pts | Position   |
+|-------------:|:---------|:--------|:--------|--------:|------:|----------:|-------:|-------:|:-----------|
+|            0 | 2004     | 125cc   | Aprilia |       1 |     0 |         0 |      0 |    0   | NC         |
+|            1 | 2005     | 125cc   | Derbi   |      13 |     0 |         0 |      0 |    1   | 36th       |
+|            2 | 2006     | 125cc   | Derbi   |      16 |     0 |         0 |      0 |   53   | 14th       |
+|            3 | 2007     | 125cc   | Derbi   |      17 |     0 |         0 |      0 |   19   | 22nd       |
+|            4 | 2008     | 125cc   | Aprilia |      17 |     1 |         5 |      0 |  176   | 5th        |
+|            5 | 2009     | 125cc   | Aprilia |      16 |     1 |         4 |      0 |  179.5 | 3rd        |
+|            6 | 2010     | 125cc   | Aprilia |      16 |     3 |        14 |      1 |  296   | 2nd        |
+|            7 | 2011     | 125cc   | Aprilia |      16 |     8 |        11 |      7 |  302   | 1st        |
+|            8 | 2012     | Moto2   | Suter   |      17 |     0 |         1 |      0 |   37   | 17th       |
+|            9 | 2013     | Moto2   | Suter   |      17 |     3 |         4 |      1 |  150   | 7th        |
+|           10 | 2014     | Moto2   | Suter   |       1 |     0 |         0 |      0 |    0   | NC*        |
+|           11 | Total    |         |         |     147 |    16 |        39 |      9 | 1213.5 |            |
+
+Generated Reasoning SQL: The summary indicates that the "Season" column is categorical and contains representative example values such as 2005, 2006, 2007, and 2011. To determine if Nicolás Terol raced in 2010 and 2011, we need to check if these specific seasons are present in the dataset.
+
+SQL: 
+select distinct "Season" from T where "Season" in ('2010', '2011');
+Generated Final SQL: select distinct "Season" from T where "Season" in ('2010', '2011');
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   Season |
+|---------:|
+|     2010 |
+|     2011 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Nicolás Terol
+SQL: select distinct "Season" from T where "Season" in ('2010', '2011');
+
+Season
+2010
+2011
+Question: did he race in 2010 and 2011?
+A: To find the answer to this question, let’s think step by step.
+Prediction: yes
+[Gold Answer] yes
+

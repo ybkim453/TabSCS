@@ -1,0 +1,149 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Categorical
+   - 4 representative example values: 1904-05, 1905-06, 1936-37, 1937-38
+   - Role: Identifier for the specific year the data corresponds to
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Mr B. Owen-Jones, Mr G. Constable, Mr W.Pearce, nan
+   - Role: Descriptor for the individual associated with the data
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "Mr B. Owen-Jones", "Mr W.Pearce", and "Mr Ben Steyn" are distinct names compared to the other rows.
+   - These names are not repeated in other rows, making this row unique.
+   - Therefore, this row is an outlier due to the distinct names present.
+
+2. Row 1:
+   - The values "Mr G. Constable" is a distinct name compared to the other rows.
+   - The presence of "nan" in the other columns is not unique and is a common occurrence in the table.
+   - Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Year    | Name              | Year_1   | Name_1             | Year_2   | Name_2              |
+|-------------:|:--------|:------------------|:---------|:-------------------|:---------|:--------------------|
+|            0 | 1903-04 | Mr B. Owen- Jones | 1935-36  | Mr W.Pearce        | 1967-68  | Mr J.F.Serfontein   |
+|            1 | 1904-05 | Mr B. Owen- Jones | 1936-37  | Mr W.Pearce        | 1968-69  | Mr Ben Steyn        |
+|            2 | 1905-06 | Mr G. Constable   | 1937 -38 |                    | 1969-70  |                     |
+|            3 | 1907-08 | Mr T.R.Ziervogel  | 1939 -40 | Mr W.E.Vickers     | 1971-72  | Mr Chris Smith      |
+|            4 | 1908-09 | Mr T.R.Ziervogel  | 1940-41  | Mr P.Venter        | 1972-73  | Mr Ben Steyn        |
+|            5 | 1909-10 | Mr J.Morris       | 1941-42  | Mr P.Venter        | 1973-74  | Mr Issy Kramer      |
+|            6 | 1910-11 |                   | 1942-43  | Mr P.Venter        | 1974-75  |                     |
+|            7 | 1911-12 | Mr B.Owen- Jones  | 1943-44  | Mr P.Venter        | 1975-76  | Mr Sakkie Blanche   |
+|            8 | 1912-13 | Mr J.Johnston     | 1944-45  | Mrs E.Myer         | 1977-78  | Mr Sakkie Blanche   |
+|            9 | 1913-14 | Mr J.Cook         | 1945-46  | Mrs E.Myer         | 1978-79  |                     |
+|           10 | 1914-15 | Mr J.Cook         | 1946-47  | Mrs E.Myer         | 1979 -80 | Mr Kobus Durand     |
+|           11 | 1915-16 | Mr R.Champion     | 1947-48  | Mr C.Chambers      | 1980-81  | Mr Meyer            |
+|           12 | 1916-17 | Mr R.Champion     | 1948-49  | Mrs S.Von Wielligh | 1981-82  | Mr Wiek Steyn       |
+|           13 | 1917-18 | Mr A.Ruffels      | 1949-50  | Mr A.J.Law         | 1982-83  | Mr Andrew Wheeler   |
+|           14 | 1918-19 | Mr J.Campbell     | 1950-51  | Mr P.Venter        | 1983-84  |                     |
+|           15 | 1919-20 | Mr B.Melman       | 1951-52  | Mr P.Venter        | 1984-85  |                     |
+|           16 | 1920-21 | Mr B.Melman       | 1952-53  | Mr Vic Pretorius   | 1985-86  | Mr J.Prins          |
+|           17 | 1921-21 | Mr B.Melman       | 1953-54  | Mr Vic Pretorius   | 1986-87  |                     |
+|           18 | 1922-23 | Mr J.Campbell     | 1954-55  |                    | 1987-88  |                     |
+|           19 | 1923-24 |                   | 1954-56  | Mr J.H.A.Roets     | 1988-89  | Mr Beyers De Klerk  |
+|           20 | 1924-25 | Mr E.Murton       | 1956-57  | Mr P.H.Tredoux     | 1989-90  | Mr Gerrie Wolmarans |
+|           21 | 1925-26 | Mr S.Steenberg    | 1957- 58 |                    | 1990-91  | Mr Gerrie Wolmarans |
+|           22 | 1926-27 |                   | 1958-59  | Mr J.M.Cawood      | 1991-92  | Mr TJ Ferreira      |
+|           23 | 1927-28 | Mr J.Stanbury     | 1959-60  | Mr A.P.Scribante   | 1992-93  | Mr Gerrie Wolmarans |
+|           24 | 1928-29 | Mr E.Murton       | 1960-61  | Mr J.L.Viljoen     | 1993-94  | Mr TJ Ferreira      |
+|           25 | 1929-30 | Mr K.Turner       | 1961-62  | Mr J.L.Viljoen     |          |                     |
+|           26 | 1930-31 | Mr J.E.Bigwood    | 1962-63  | Mrs S.Von Wielligh |          |                     |
+|           27 | 1931-32 | Mr A.Zaretsky     | 1963-64  | Mr F.J.Van Heerden |          |                     |
+|           28 | 1932-33 | Mr G.J.Malan      | 1964-65  |                    |          |                     |
+|           29 | 1933-34 |                   | 1965-66  |                    |          |                     |
+|           30 | 1934-34 |                   | 1966-67  | Mr H.McLennan      |          |                     |
+
+Generated Reasoning SQL: Explanation: The summary provides information about the columns "Year" and "Name" which are relevant for this question. The "Year" column represents the years associated with each individual mayor, and the "Name" column contains the names of the mayors. To determine the first mayor who served more than 3 years, we need to identify the mayor whose consecutive years are present in the table. We will look for rows where the same mayor's name appears in consecutive years and calculate the total number of years they served. 
+
+SQL: 
+SELECT "Name"
+FROM T
+GROUP BY "Name"
+HAVING COUNT("Year") > 3;
+Generated Final SQL: SELECT "Name" FROM T GROUP BY "Name" HAVING COUNT("Year") > 3;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Name   |
+|:-------|
+|        |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Boksburg (row_number, Year, Name, Year_1, Name_1, Year_2, Name_2)
+
+row_number | Year | Name | Year_1 | Name_1 | Year_2 | Name_2
+0 | 1903-04 | Mr B. Owen- Jones | 1935-36 | Mr W.Pearce | 1967-68 | Mr J.F.Serfontein
+1 | 1904-05 | Mr B. Owen- Jones | 1936-37 | Mr W.Pearce | 1968-69 | Mr Ben Steyn
+2 | 1905-06 | Mr G. Constable | 1937 -38 | None | 1969-70 | None
+3 | 1907-08 | Mr T.R.Ziervogel | 1939 -40 | Mr W.E.Vickers | 1971-72 | Mr Chris Smith
+4 | 1908-09 | Mr T.R.Ziervogel | 1940-41 | Mr P.Venter | 1972-73 | Mr Ben Steyn
+5 | 1909-10 | Mr J.Morris | 1941-42 | Mr P.Venter | 1973-74 | Mr Issy Kramer
+6 | 1910-11 | None | 1942-43 | Mr P.Venter | 1974-75 | None
+7 | 1911-12 | Mr B.Owen- Jones | 1943-44 | Mr P.Venter | 1975-76 | Mr Sakkie Blanche
+8 | 1912-13 | Mr J.Johnston | 1944-45 | Mrs E.Myer | 1977-78 | Mr Sakkie Blanche
+9 | 1913-14 | Mr J.Cook | 1945-46 | Mrs E.Myer | 1978-79 | None
+10 | 1914-15 | Mr J.Cook | 1946-47 | Mrs E.Myer | 1979 -80 | Mr Kobus Durand
+11 | 1915-16 | Mr R.Champion | 1947-48 | Mr C.Chambers | 1980-81 | Mr Meyer
+12 | 1916-17 | Mr R.Champion | 1948-49 | Mrs S.Von Wielligh | 1981-82 | Mr Wiek Steyn
+13 | 1917-18 | Mr A.Ruffels | 1949-50 | Mr A.J.Law | 1982-83 | Mr Andrew Wheeler
+14 | 1918-19 | Mr J.Campbell | 1950-51 | Mr P.Venter | 1983-84 | None
+15 | 1919-20 | Mr B.Melman | 1951-52 | Mr P.Venter | 1984-85 | None
+16 | 1920-21 | Mr B.Melman | 1952-53 | Mr Vic Pretorius | 1985-86 | Mr J.Prins
+17 | 1921-21 | Mr B.Melman | 1953-54 | Mr Vic Pretorius | 1986-87 | None
+18 | 1922-23 | Mr J.Campbell | 1954-55 | None | 1987-88 | None
+19 | 1923-24 | None | 1954-56 | Mr J.H.A.Roets | 1988-89 | Mr Beyers De Klerk
+20 | 1924-25 | Mr E.Murton | 1956-57 | Mr P.H.Tredoux | 1989-90 | Mr Gerrie Wolmarans
+21 | 1925-26 | Mr S.Steenberg | 1957- 58 | None | 1990-91 | Mr Gerrie Wolmarans
+22 | 1926-27 | None | 1958-59 | Mr J.M.Cawood | 1991-92 | Mr TJ Ferreira
+23 | 1927-28 | Mr J.Stanbury | 1959-60 | Mr A.P.Scribante | 1992-93 | Mr Gerrie Wolmarans
+24 | 1928-29 | Mr E.Murton | 1960-61 | Mr J.L.Viljoen | 1993-94 | Mr TJ Ferreira
+25 | 1929-30 | Mr K.Turner | 1961-62 | Mr J.L.Viljoen | None | None
+26 | 1930-31 | Mr J.E.Bigwood | 1962-63 | Mrs S.Von Wielligh | None | None
+27 | 1931-32 | Mr A.Zaretsky | 1963-64 | Mr F.J.Van Heerden | None | None
+28 | 1932-33 | Mr G.J.Malan | 1964-65 | None | None | None
+29 | 1933-34 | None | 1965-66 | None | None | None
+30 | 1934-34 | None | 1966-67 | Mr H.McLennan | None | None
+Question: who was the first mayor to have more than 3 years under their belt?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to understand the structure of the data provided in the full table. The table contains information about different mayors over the years, with columns for the mayor's name and the years they served.
+
+Next, we will look for mayors who served more than 3 years by examining the "Year" columns in the table. We will focus on the mayor's name and the years they served to identify the mayor who served the longest.
+
+By scanning through the table, we can identify the mayor who served the longest by looking at the years they were in office. We need to find a mayor who served for more than 3 years consecutively or non-consecutively.
+
+After carefully examining the table, we can see that Mr. P.Venter served as the mayor for four years from 1940-1944. Therefore, Mr. P.Venter was the first mayor to have more than 3 years under their belt.
+
+Final Answer: Mr. P.Venter
+[Fallback] Prediction: mr. p.venter
+[Gold Answer] mr p.venter
+

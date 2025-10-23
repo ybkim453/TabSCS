@@ -1,0 +1,43 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: January 19, 2013; March 20, 2013; June 8, 2013; July 8, 2013
+   - Role: Identifier for the specific date of the match
+
+2. Location:
+   - Data type: Categorical
+   - 4 representative example values: Concepción, Chile; Muscat, Oman; Miami, United States; Harrison, United States
+   - Role: Descriptor for the city and country where the match took place
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Chile; Oman; Spain; Honduras
+   - Role: Descriptor for the opposing team in the match
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: 0–3; 1–2; 0–2; 1-4
+   - Role: Measure of the outcome of the match for the team
+
+5. Competition:
+   - Data type: Categorical
+   - 4 representative example values: F; GC
+   - Role: Descriptor for the type of competition the match was part of
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The value "Mitrovica, Kosovo" in the Location column is distinctive as it is not a common location for matches in the table.
+   - The Result value of "0–0" is also different from the majority of results in the table.
+   - These unique values make this row an outlier.
+
+2. Row 9:
+   - The value "Kosovo" in the Opponent column is distinctive as it is not a common opponent in the table.
+   - The Result value of "0–0" is also different from the majority of results in the table.
+   - These unique values make this row an outlier.
+
+3. Row 10:
+   - The value "F" in the Competition column is common and not distinctive.
+   - The Result value of "0–0" is also not significantly different from other results in the table.
+   - This row is an ordinary entry and does not require special handling.

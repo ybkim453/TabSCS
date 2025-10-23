@@ -1,0 +1,187 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative values: 9, 20, 32, 43
+   - Role: Identifier for each record
+
+2. Score
+   - Data type: Numeric
+   - 4 representative values: 230*, 189*, 109, 103
+   - Role: Measure of the player's score in a particular match
+
+3. Player
+   - Data type: Categorical
+   - 4 representative values: Bert Sutcliffe, Vijay Manjrekar (2/2), Dilip Vengsarkar (1/4), Clive Lloyd
+   - Role: Descriptor for the player who scored in the match
+
+4. Team
+   - Data type: Categorical
+   - 4 representative values: New Zealand, India, West Indies
+   - Role: Descriptor for the team the player belongs to
+
+5. Balls
+   - Data type: Numeric
+   - 4 representative values: NR, 202, 257
+   - Role: Measure of the number of balls faced by the player
+
+6. Inns.
+   - Data type: Numeric
+   - 4 representative values: 1, 2, 3
+   - Role: Measure of the innings in which the player scored
+
+7. Opposing team
+   - Data type: Categorical
+   - 4 representative values: India, England, West Indies
+   - Role: Descriptor for the team against which the player scored
+
+8. Date
+   - Data type: Date
+   - 4 representative values: 16 December 1955, 13 December 1961, 24 January 1979, 29 October 1983
+   - Role: Descriptor for the date of the match
+
+9. Result
+   - Data type: Categorical
+   - 4 representative values: Drawn, Lost
+   - Role: Descriptor for the outcome of the match
+
+**Outlier Row Analysis:**
+
+1. Row 42:
+   - The values for Player (Sunil Gavaskar), Team (India), Balls (NR), and Result (Drawn) are not distinctive and are common in the table. This row is an ordinary entry and does not require special handling.
+
+2. Row 44:
+   - The values for Player (Sunil Gavaskar), Team (India), Balls (NR), and Result (Drawn) are not distinctive and are common in the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 8:
+   - The values for Player (Sunil Gavaskar), Team (India), Balls (NR), and Result (Drawn) are not distinctive and are common in the table. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   No. |   Score | Player                   | Team        | Balls   |   Inns. | Opposing team   | Date                | Result   |
+|-------------:|------:|--------:|:-------------------------|:------------|:--------|--------:|:----------------|:--------------------|:---------|
+|            0 |     1 |     152 | Clyde Walcott            | West Indies | NR      |       1 | India           | 1948-11-10 00:00:00 | Drawn    |
+|            1 |     2 |     101 | Gerry Gomez              | West Indies | NR      |       1 | India           | 1948-11-10 00:00:00 | Drawn    |
+|            2 |     3 |     128 | Everton Weekes           | West Indies | NR      |       1 | India           | 1948-11-10 00:00:00 | Drawn    |
+|            3 |     4 |     107 | Robert Christiani        | West Indies | NR      |       1 | India           | 1948-11-10 00:00:00 | Drawn    |
+|            4 |     5 |     114 | Hemu Adhikari            | India       | NR      |       2 | West Indies     | 1948-11-10 00:00:00 | Drawn    |
+|            5 |     6 |     154 | Vijay Merchant           | India       | NR      |       2 | England         | 1951-11-02 00:00:00 | Drawn    |
+|            6 |     7 |     164 | Vijay Hazare             | India       | NR      |       2 | England         | 1951-11-02 00:00:00 | Drawn    |
+|            7 |     8 |     137 | Allan Watkins            | England     | NR      |       3 | India           | 1951-11-02 00:00:00 | Drawn    |
+|            8 |     9 |     230 | Bert Sutcliffe           | New Zealand | NR      |       1 | India           | 1955-12-16 00:00:00 | Drawn    |
+|            9 |    10 |     119 | John Reid                | New Zealand | NR      |       1 | India           | 1955-12-16 00:00:00 | Drawn    |
+|           10 |    11 |     177 | Vijay Manjrekar (1/2)    | India       | NR      |       2 | New Zealand     | 1955-12-16 00:00:00 | Drawn    |
+|           11 |    12 |     109 | Chandu Borde             | India       | NR      |       1 | West Indies     | 1959-02-06 00:00:00 | Drawn    |
+|           12 |    13 |     123 | John Holt                | West Indies | NR      |       2 | India           | 1959-02-06 00:00:00 | Drawn    |
+|           13 |    14 |     100 | Collie Smith             | West Indies | NR      |       2 | India           | 1959-02-06 00:00:00 | Drawn    |
+|           14 |    15 |     100 | Joe Solomon              | West Indies | NR      |       2 | India           | 1959-02-06 00:00:00 | Drawn    |
+|           15 |    16 |     114 | Neil Harvey              | Australia   | NR      |       2 | India           | 1959-12-12 00:00:00 | Won      |
+|           16 |    17 |     112 | Polly Umrigar            | India       | NR      |       1 | Pakistan        | 1961-02-08 00:00:00 | Drawn    |
+|           17 |    18 |     101 | Mushtaq Mohammad         | Pakistan    | NR      |       2 | India           | 1961-02-08 00:00:00 | Drawn    |
+|           18 |    19 |     127 | Motganhalli Jaisimha     | India       | NR      |       1 | England         | 1961-12-13 00:00:00 | Drawn    |
+|           19 |    20 |     189 | Vijay Manjrekar (2/2)    | India       | NR      |       1 | England         | 1961-12-13 00:00:00 | Drawn    |
+|           20 |    21 |     113 | Ken Barrington           | England     | NR      |       2 | India           | 1961-12-13 00:00:00 | Drawn    |
+|           21 |    22 |     105 | Hanumant Singh           | India       | NR      |       1 | England         | 1964-02-08 00:00:00 | Drawn    |
+|           22 |    23 |     151 | Colin Cowdrey            | England     | NR      |       2 | India           | 1964-02-08 00:00:00 | Drawn    |
+|           23 |    24 |     100 | Budhi Kunderan           | India       | NR      |       3 | England         | 1964-02-08 00:00:00 | Drawn    |
+|           24 |    25 |     203 | Nawab of Pataudi (1/2)   | India       | NR      |       3 | England         | 1964-02-08 00:00:00 | Drawn    |
+|           25 |    26 |     106 | Dilip Sardesai           | India       | NR      |       2 | New Zealand     | 1965-03-19 00:00:00 | Won      |
+|           26 |    27 |     113 | Nawab of Pataudi (2/2)   | India       | NR      |       2 | New Zealand     | 1965-03-19 00:00:00 | Won      |
+|           27 |    28 |     138 | Ian Chappell             | Australia   | NR      |       1 | India           | 1969-11-28 00:00:00 | Lost     |
+|           28 |    29 |     192 | Viv Richards (1/2)       | West Indies | NR      |       2 | India           | 1974-12-11 00:00:00 | Won      |
+|           29 |    30 |     179 | Dennis Amiss             | England     | 397     |       1 | India           | 1976-12-17 00:00:00 | Won      |
+|           30 |    31 |     120 | Sunil Gavaskar (1/3)     | India       | NR      |       1 | West Indies     | 1979-01-24 00:00:00 | Drawn    |
+|           31 |    32 |     109 | Dilip Vengsarkar (1/4)   | India       | NR      |       1 | West Indies     | 1979-01-24 00:00:00 | Drawn    |
+|           32 |    33 |     126 | Kapil Dev                | India       | 124     |       1 | West Indies     | 1979-01-24 00:00:00 | Drawn    |
+|           33 |    34 |     115 | Sunil Gavaskar (2/3)     | India       | 238     |       1 | Australia       | 1979-10-13 00:00:00 | Drawn    |
+|           34 |    35 |     131 | Gundappa Viswanath (1/2) | India       | 207     |       1 | Australia       | 1979-10-13 00:00:00 | Drawn    |
+|           35 |    36 |     100 | Yashpal Sharma           | India       | 239     |       1 | Australia       | 1979-10-13 00:00:00 | Drawn    |
+|           36 |    37 |     146 | Dilip Vengsarkar (2/4)   | India       | 370     |       4 | Pakistan        | 1979-12-04 00:00:00 | Drawn    |
+|           37 |    38 |     105 | Geoff Boycott            | England     | 285     |       1 | India           | 1981-12-23 00:00:00 | Drawn    |
+|           38 |    39 |     149 | Chris Tavaré             | England     | 303     |       1 | India           | 1981-12-23 00:00:00 | Drawn    |
+|           39 |    40 |     107 | Gundappa Viswanath (2/2) | India       | 200     |       2 | England         | 1981-12-23 00:00:00 | Drawn    |
+|           40 |    41 |     121 | Sunil Gavaskar (3/3)     | India       | 128     |       1 | West Indies     | 1983-10-29 00:00:00 | Drawn    |
+|           41 |    42 |     159 | Dilip Vengsarkar (3/4)   | India       | 238     |       1 | West Indies     | 1983-10-29 00:00:00 | Drawn    |
+|           42 |    43 |     103 | Clive Lloyd              | West Indies | 202     |       2 | India           | 1983-10-29 00:00:00 | Drawn    |
+|           43 |    44 |     160 | Tim Robinson             | England     | 390     |       2 | India           | 1984-12-12 00:00:00 | Won      |
+|           44 |    45 |     102 | Dilip Vengsarkar (4/4)   | India       | 257     |       3 | West Indies     | 1987-11-25 00:00:00 | Lost     |
+|           45 |    46 |     109 | Viv Richards (2/2)       | West Indies | 111     |       4 | India           | 1987-11-25 00:00:00 | Won      |
+|           46 |    47 |     227 | Vinod Kambli             | India       | 301     |       1 | Zimbabwe        | 1993-03-13 00:00:00 | Won      |
+|           47 |    48 |     115 | Andy Flower (1/2)        | Zimbabwe    | 236     |       2 | India           | 1993-03-13 00:00:00 | Lost     |
+|           48 |    49 |     152 | Nayan Mongia             | India       | 366     |       2 | Australia       | 1996-10-10 00:00:00 | Won      |
+|           49 |    50 |     183 | Andy Flower (2/2)        | Zimbabwe    | 351     |       1 | India           | 2000-11-18 00:00:00 | Lost     |
+|           50 |    51 |     200 | Rahul Dravid             | India       | 350     |       2 | Zimbabwe        | 2000-11-18 00:00:00 | Won      |
+|           51 |    52 |     122 | Sachin Tendulkar (1/2)   | India       | 233     |       2 | Zimbabwe        | 2000-11-18 00:00:00 | Won      |
+|           52 |    53 |     136 | Sourav Ganguly           | India       | 284     |       2 | Zimbabwe        | 2002-02-28 00:00:00 | Won      |
+|           53 |    54 |     109 | Sachin Tendulkar (2/2)   | India       | 196     |       1 | Sri Lanka       | 2005-12-10 00:00:00 | Won      |
+|           54 |    55 |     206 | Gautam Gambhir           | India       | 380     |       1 | Australia       | 2008-10-29 00:00:00 | Drawn    |
+|           55 |    56 |     200 | VVS Laxman               | India       | 301     |       1 | Australia       | 2008-10-29 00:00:00 | Drawn    |
+|           56 |    57 |     112 | Michael Clarke           | Australia   | 253     |       2 | India           | 2008-10-29 00:00:00 | Drawn    |
+|           57 |    58 |     118 | Shivnarine Chanderpaul   | West Indies | 196     |       1 | India           | 2011-11-06 00:00:00 | Lost     |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter rows where "Team" = 'India', "Result" = 'Drawn', and "Date" is between 1970 and 2000. The "Team" column is categorical, "Result" is also categorical, and "Date" is a date type. We must consider all ordinary rows for this calculation.
+
+SQL: 
+SELECT COUNT(*) 
+FROM T 
+WHERE "Team" = 'India' 
+AND "Result" = 'Drawn' 
+AND "Date" BETWEEN '1970-01-01' AND '2000-12-31';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Team" = 'India' AND "Result" = 'Drawn' AND "Date" BETWEEN '1970-01-01' AND '2000-12-31';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|         10 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of international cricket centuries at the Feroz Shah Kotla
+SQL: SELECT COUNT(*) FROM T WHERE "Team" = 'India' AND "Result" = 'Drawn' AND "Date" BETWEEN '1970-01-01' AND '2000-12-31';
+
+SQL Execution Result:
+COUNT(*)
+10
+
+Question: how many of india's consecutive matches were "drawn" from 1970 - 2000?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 10
+[Gold Answer] 13
+

@@ -1,0 +1,122 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: T4, T7, T7, T7
+   - Role: Identifier for the player's ranking in the tournament.
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Michael Campbell, K. J. Choi, Peter Hedblom, Lee Westwood
+   - Role: Descriptor for the player's name.
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: New Zealand, South Korea, Sweden, England
+   - Role: Descriptor for the player's country of origin.
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 71-69-71=211, 69-70-74=213, 77-66-70=213, 68-72-73=213
+   - Role: Measure of the player's total score in the tournament.
+
+5. To par:
+   - Data type: Numeric
+   - 4 representative example values: 1, 3, 3, 3
+   - Role: Measure of how many strokes the player is under or over par.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Michael Campbell):
+   - The score of 71-69-71=211 is lower than the other scores in the table, indicating a better performance.
+   - This row is an outlier due to the significantly lower score compared to the other players.
+
+2. Row 7 (Lee Westwood):
+   - The country of England is not unique in the table, so it is an ordinary value.
+   - The score of 68-72-73=213 is consistent with the other players, so this row is an ordinary entry.
+
+3. Row 3 (Peter Hedblom):
+   - The score of 77-66-70=213 is lower than the other scores in the table, indicating a better performance.
+   - This row is an outlier due to the significantly lower score compared to the other players.
+
+=== Full Table Preview ===
+|   row_number | Place   | Player           | Country       | Score        | To par   |
+|-------------:|:--------|:-----------------|:--------------|:-------------|:---------|
+|            0 | 1       | Retief Goosen    | South Africa  | 68-70-69=207 | –3       |
+|            1 | T2      | Olin Browne      | United States | 67-71-72=210 | E        |
+|            2 | T2      | Jason Gore       | United States | 71-67-72=210 | E        |
+|            3 | T4      | Michael Campbell | New Zealand   | 71-69-71=211 | +1       |
+|            4 | T4      | Mark Hensby      | Australia     | 71-68-72=211 | +1       |
+|            5 | 6       | David Toms       | United States | 70-72-70=212 | +2       |
+|            6 | T7      | K. J. Choi       | South Korea   | 69-70-74=213 | +3       |
+|            7 | T7      | Peter Hedblom    | Sweden        | 77-66-70=213 | +3       |
+|            8 | T7      | Lee Westwood     | England       | 68-72-73=213 | +3       |
+|            9 | T7      | Tiger Woods      | United States | 70-71-72=213 | +3       |
+
+Generated Reasoning SQL: Explanation: To determine if Retief Goosen is above or below K.J. Choi in ranking, we need to compare their "Place" values. Lower numerical values in the "Place" column indicate a higher ranking. We will filter the rows for Retief Goosen and K.J. Choi, then compare their rankings based on the "Place" column.
+
+SQL: 
+SELECT "Place" 
+FROM T 
+WHERE "Player" = 'Retief Goosen' OR "Player" = 'K. J. Choi';
+Generated Final SQL: SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen' OR "Player" = 'K. J. Choi';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Place   |
+|:--------|
+| 1       |
+| T7      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2005 U.S. Open (golf)
+SQL: SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen' OR "Player" = 'K. J. Choi';
+
+SQL Execution Result:
+Place
+1
+T7
+
+Question: is retief goosen above or below k.j. choi in ranking?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] above
+

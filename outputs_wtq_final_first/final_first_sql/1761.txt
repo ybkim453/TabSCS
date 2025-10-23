@@ -1,0 +1,145 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No. in series
+   - Data type: Numeric
+   - 4 representative example values: 9, 14, 16, 22
+   - Role of the column: Identifier for the episode within a series
+
+2. No. in season
+   - Data type: Numeric
+   - 4 representative example values: 9, 12, 15, 22
+   - Role of the column: Identifier for the episode within a season
+
+3. Title
+   - Data type: Categorical
+   - 4 representative example values: No Exchange on Damaged Merchandise, Three Hours on a Sunday, The Tiger, The Conquest of Maude Murdock
+   - Role of the column: Descriptor for the title of the episode
+
+4. Directed by
+   - Data type: Categorical
+   - 4 representative example values: Leo Penn, Paul Wendkos, Robert Butler
+   - Role of the column: Descriptor for the director of the episode
+
+5. Written by
+   - Data type: Categorical
+   - 4 representative example values: Gary Marshall & Jerry Belson, Morton Fine & David Friedkin, Robert Culp, Stephen Kandell
+   - Role of the column: Descriptor for the writers of the episode
+
+6. Original air date
+   - Data type: Categorical
+   - 4 representative example values: November 10, 1965, December 8, 1965, January 5, 1966, March 2, 1966
+   - Role of the column: Descriptor for the original air date of the episode
+
+7. Prod. code
+   - Data type: Numeric
+   - 4 representative example values: 109, 112, 115, 122
+   - Role of the column: Identifier for the production code of the episode
+
+**Outlier Row Analysis:**
+
+1. Row 26:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not stand out as outliers.
+
+2. Row 3:
+   - The values in this row are also not distinctive compared to the majority of the table. They are ordinary entries and do not qualify as outliers.
+
+3. Row 8:
+   - The values in this row do not deviate significantly from the rest of the table. They are standard entries and do not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   No. in\nseries |   No. in\nseason | Title                                | Directed by      | Written by                                                                    | Original air date   |   Prod.\ncode |
+|-------------:|-----------------:|-----------------:|:-------------------------------------|:-----------------|:------------------------------------------------------------------------------|:--------------------|--------------:|
+|            0 |                3 |                1 | "So Long Patrick Henry"              | Leo Penn         | Robert Culp                                                                   | 1965-09-15 00:00:00 |           101 |
+|            1 |                5 |                2 | "A Cup of Kindness"                  | Leo Penn         | Morton Fine & David Friedkin                                                  | 1965-09-22 00:00:00 |           102 |
+|            2 |                2 |                3 | "Carry Me Back to Old Tsing-Tao"     | Mark Rydell      | David Karp                                                                    | 1965-09-29 00:00:00 |           103 |
+|            3 |                6 |                4 | "Chrysanthemum"                      | David Friedkin   | Edward J. Lakso                                                               | 1965-10-06 00:00:00 |           104 |
+|            4 |                7 |                5 | "Dragon's Teeth"                     | Leo Penn         | Gilbert Ralston                                                               | 1965-10-13 00:00:00 |           105 |
+|            5 |                8 |                6 | "The Loser"                          | Mark Rydell      | Robert Culp                                                                   | 1965-10-20 00:00:00 |           106 |
+|            6 |                4 |                7 | "Danny was a Million Laughs"         | Mark Rydell      | Arthur Dales                                                                  | 1965-10-27 00:00:00 |           107 |
+|            7 |               10 |                8 | "The Time of the Knife"              | Paul Wendkos     | Gilbert Ralston                                                               | 1965-11-03 00:00:00 |           108 |
+|            8 |                9 |                9 | "No Exchange on Damaged Merchandise" | Leo Penn         | Gary Marshall & Jerry Belson                                                  | 1965-11-10 00:00:00 |           109 |
+|            9 |               11 |               10 | "Tatia"                              | David Friedkin   | Robert Lewin                                                                  | 1965-11-17 00:00:00 |           110 |
+|           10 |               12 |               11 | "Weight of the World"                | Paul Wendkos     | Robert Lewin                                                                  | 1965-12-01 00:00:00 |           111 |
+|           11 |               14 |               12 | "Three Hours on a Sunday"            | Paul Wendkos     | Morton Fine & David Friedkin                                                  | 1965-12-08 00:00:00 |           112 |
+|           12 |               13 |               13 | "Tigers of Heaven"                   | Allen Reisner    | Morton Fine & David Friedkin                                                  | 1965-12-15 00:00:00 |           113 |
+|           13 |                1 |               14 | "Affair in T'Sien Cha"               | Sheldon Leonard  | Morton Fine & David Friedkin                                                  | 1965-12-29 00:00:00 |           114 |
+|           14 |               16 |               15 | "The Tiger"                          | Paul Wendkos     | Robert Culp                                                                   | 1966-01-05 00:00:00 |           115 |
+|           15 |               17 |               16 | "The Barter"                         | Allen Reisner    | Harvey Bullock & P.S. Allen                                                   | 1966-01-12 00:00:00 |           116 |
+|           16 |               15 |               17 | "Always Say Goodbye"                 | Allen Reisner    | Robert C. Dennis & Earl Barrett                                               | 1966-01-26 00:00:00 |           117 |
+|           17 |               18 |               18 | "Court of the Lion"                  | Robert Culp      | Robert Culp                                                                   | 1966-02-02 00:00:00 |           118 |
+|           18 |               19 |               19 | "Turkish Delight"                    | Paul Wendkos     | Eric Bercovici                                                                | 1966-02-09 00:00:00 |           119 |
+|           19 |               20 |               20 | "Bet Me a Dollar"                    | Richard Sarafian | David Friedkin & Morton Fine                                                  | 1966-02-16 00:00:00 |           120 |
+|           20 |               21 |               21 | "Return to Glory"                    | Robert Sarafian  | David Friedkin & Morton Fine                                                  | 1966-02-23 00:00:00 |           121 |
+|           21 |               22 |               22 | "The Conquest of Maude Murdock"      | Paul Wendkos     | Robert C. Dennis & Earl Barrett                                               | 1966-03-02 00:00:00 |           122 |
+|           22 |               23 |               23 | "A Day Called 4 Jaguar"              | Richard Sarafian | Michael Zagar                                                                 | 1966-03-09 00:00:00 |           123 |
+|           23 |               25 |               24 | "Crusade to Limbo"                   | Richard Sarafian | Teleplay by: Morton Fine & David Freidkin & Jack Turley Story by: Jack Turley | 1966-03-23 00:00:00 |           124 |
+|           24 |               26 |               25 | "My Mother The Spy"                  | Richard Benedict | Howard Gast                                                                   | 1966-03-30 00:00:00 |           125 |
+|           25 |               27 |               26 | "There was a Little Girl"            | John Rich        | Teleplay by: Stephen Kandell Story by: Robert Bloch                           | 1966-04-06 00:00:00 |           126 |
+|           26 |               28 |               27 | "It's All Done with Mirrors"         | Robert Butler    | Stephen Kandell                                                               | 1966-04-13 00:00:00 |           127 |
+|           27 |               24 |               28 | "One Thousand Fine"                  | Paul Wendkos     | Eric Bercovici                                                                | 1966-04-27 00:00:00 |           128 |
+
+Generated Reasoning SQL: Explanation: To determine the number of episodes written by Morton Fine & David Friedkin, we need to filter the rows where the "Written by" column contains their names. The "Written by" column is categorical, and we can use a LIKE condition to match their names within the strings. We should count all rows that match this condition.
+
+SQL: 
+SELECT COUNT(*) AS episodes_count 
+FROM T 
+WHERE "Written by" LIKE '%Morton Fine & David Friedkin%';
+Generated Final SQL: SELECT COUNT(*) AS episodes_count FROM T WHERE "Written by" LIKE '%Morton Fine & David Friedkin%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   episodes_count |
+|-----------------:|
+|                4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: I Spy (1965 TV series)
+SQL: SELECT COUNT(*) AS episodes_count FROM T WHERE "Written by" LIKE '%Morton Fine & David Friedkin%';
+
+SQL Execution Result:
+episodes_count
+4
+
+Question: how many episodes did morton fine & david friedkin write?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 7
+

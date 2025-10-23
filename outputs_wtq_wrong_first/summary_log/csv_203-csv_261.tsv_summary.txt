@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier, indicating the ranking of the ski jumpers.
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Matti Hautamäki, Tami Kiuru, Janne Ahonen, Adam Małysz
+   - Role: Descriptor, providing the name of the ski jumper.
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: FIN, POL, AUT, CZE
+   - Role: Descriptor, indicating the nationality of the ski jumper.
+
+4. 1st (m):
+   - Data type: Numeric
+   - 4 representative example values: 132, 128.5, 127, 126.5
+   - Role: Measure, representing the length of the ski jump in meters for the first attempt.
+
+5. 2nd (m):
+   - Data type: Numeric
+   - 4 representative example values: 131.5, 130.5, 132, 128.5
+   - Role: Measure, representing the length of the ski jump in meters for the second attempt.
+
+6. Points:
+   - Data type: Numeric
+   - 4 representative example values: 274.3, 264.7, 264, 261.5
+   - Role: Measure, indicating the total points scored by the ski jumper.
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Andreas Kofler - AUT):
+   - The values for 1st (m) and Points are 126.5 and 261.3 respectively, which are lower compared to the majority of the table.
+   - These values are significantly different from the other entries, making this row an outlier.
+
+2. Row 4 (Adam Małysz - POL):
+   - The values for 1st (m) and Points are 127 and 261.5 respectively, which are lower compared to the majority of the table.
+   - These values are significantly different from the other entries, making this row an outlier.
+
+3. Row 1 (Matti Hautamäki - FIN):
+   - The values for 1st (m) and Points are 132 and 274.3 respectively, which are higher compared to the majority of the table.
+   - These values are significantly different from the other entries, making this row an outlier.

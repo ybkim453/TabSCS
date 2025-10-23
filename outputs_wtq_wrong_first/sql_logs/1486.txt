@@ -1,0 +1,160 @@
+=== Table ID ===
+csv/203-csv/260.tsv
+
+=== Question ===
+how long was the longest running title of "oldest us president" by herbert hoover?
+
+=== Sub-table Preview ===
+| President           | Became Oldest Living President   | Ceased to Be Oldest Living President   | Age at Start Date   | Age at End Date                 | Duration (Years, Days)   | Duration (Days)   |
+|:--------------------|:---------------------------------|:---------------------------------------|:--------------------|:--------------------------------|:-------------------------|:------------------|
+| Rutherford B. Hayes | July 23, 1885                    | January 17, 1893                       | 62 years, 292 days  | 70 years, 105 days              | 7 years, 178 days        | 2,735 days        |
+| Benjamin Harrison   | January 17, 1893                 | March 13, 1901                         | 59 years, 150 days  | 67 years, 205 days              | 8 years, 55 days         | 2,976 days        |
+| Grover Cleveland    | March 13, 1901                   | June 24, 1908                          | 63 years, 360 days  | 71 years, 98 days               | 7 years, 103 days        | 2,660 days        |
+| William Howard Taft | February 3, 1924                 | March 8, 1930                          | 66 years, 141 days  | 72 years, 174 days              | 6 years, 33 days         | 2,225 days        |
+| George H. W. Bush   | December 26, 2006                | Current oldest living president        | 82 years, 197 days  | Current oldest living president | 7 years, 173 days        | 2,730 days        |
+| President           | Became Oldest Living President   | Ceased to Be Oldest Living President   | Age at Start Date   | Age at End Date                 | Duration (Years, Days)   | Duration (Days)   |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **President:**
+   - Data type: Categorical
+   - 4 representative example values: Rutherford B. Hayes, Benjamin Harrison, Grover Cleveland, William Howard Taft
+   - Role: Identifier
+
+2. **Became Oldest Living President:**
+   - Data type: Categorical (Date)
+   - 4 representative example values: July 23, 1885, January 17, 1893, March 13, 1901, February 3, 1924
+   - Role: Descriptor
+
+3. **Ceased to Be Oldest Living President:**
+   - Data type: Categorical (Date)
+   - 4 representative example values: January 17, 1893, March 13, 1901, June 24, 1908, March 8, 1930
+   - Role: Descriptor
+
+4. **Age at Start Date:**
+   - Data type: Numeric
+   - 4 representative example values: 62 years, 292 days, 59 years, 150 days, 63 years, 360 days, 66 years, 141 days
+   - Role: Measure
+
+5. **Age at End Date:**
+   - Data type: Numeric
+   - 4 representative example values: 70 years, 105 days, 67 years, 205 days, 71 years, 98 days, 72 years, 174 days
+   - Role: Measure
+
+6. **Duration (Years, Days):**
+   - Data type: Numeric
+   - 4 representative example values: 7 years, 178 days, 8 years, 55 days, 7 years, 103 days, 6 years, 33 days
+   - Role: Measure
+
+7. **Duration (Days):**
+   - Data type: Numeric
+   - 4 representative example values: 2,735 days, 2,976 days, 2,660 days, 2,225 days
+   - Role: Measure
+
+### Outlier Row Analysis:
+
+1. **Row 25 (George H. W. Bush):**
+   - The row is distinctive because the President is the current oldest living president, which is different from the other rows where the presidents have ceased to be the oldest living president.
+   - This row stands out as an outlier due to the unique status of George H. W. Bush as the current oldest living president.
+
+2. **Row 24 (William Howard Taft):**
+   - This row is not an outlier as the values are consistent with the other rows in terms of age and duration.
+
+3. **Row 11 (Grover Cleveland):**
+   - This row is not an outlier as the values are consistent with the other rows in terms of age and duration.
+
+=== Full Table Preview ===
+|   row_number | President           | Became Oldest Living President   | Ceased to Be Oldest Living President   | Age at Start Date   | Age at End Date                 | Duration (Years, Days)   | Duration (Days)   |
+|-------------:|:--------------------|:---------------------------------|:---------------------------------------|:--------------------|:--------------------------------|:-------------------------|:------------------|
+|            0 | George Washington   | April 30 1789                    | December 14 1799                       | 57 years 67 days    | 67 years 295 days               | 10 years 228 days        | 3880 days         |
+|            1 | John Adams          | December 14 1799                 | July 4 1826                            | 64 years 45 days    | 90 years 247 days               | 26 years 202 days        | 9698 days         |
+|            2 | James Madison       | July 4 1826                      | June 28 1836                           | 75 years 110 days   | 85 years 104 days               | 9 years 360 days         | 3647 days         |
+|            3 | Andrew Jackson      | June 28 1836                     | June 8 1845                            | 69 years 105 days   | 78 years 85 days                | 8 years 345 days         | 3267 days         |
+|            4 | John Quincy Adams   | June 8 1845                      | February 23 1848                       | 77 years 332 days   | 80 years 227 days               | 2 years 260 days         | 990 days          |
+|            5 | Martin Van Buren    | February 23 1848                 | July 24 1862                           | 65 years 80 days    | 79 years 231 days               | 14 years 151 days        | 5265 days         |
+|            6 | James Buchanan      | July 24 1862                     | June 1 1868                            | 71 years 92 days    | 77 years 39 days                | 5 years 313 days         | 2139 days         |
+|            7 | Millard Fillmore    | June 1 1868                      | March 8 1874                           | 68 years 146 days   | 74 years 60 days                | 5 years 280 days         | 2106 days         |
+|            8 | Andrew Johnson      | March 8 1874                     | July 31 1875                           | 65 years 69 days    | 66 years 214 days               | 1 year 145 days          | 510 days          |
+|            9 | Ulysses S. Grant    | July 31 1875                     | July 23 1885                           | 53 years 95 days    | 63 years 87 days                | 9 years 357 days         | 3645 days         |
+|           10 | Rutherford B. Hayes | July 23 1885                     | January 17 1893                        | 62 years 292 days   | 70 years 105 days               | 7 years 178 days         | 2735 days         |
+|           11 | Benjamin Harrison   | January 17 1893                  | March 13 1901                          | 59 years 150 days   | 67 years 205 days               | 8 years 55 days          | 2976 days         |
+|           12 | Grover Cleveland    | March 13 1901                    | June 24 1908                           | 63 years 360 days   | 71 years 98 days                | 7 years 103 days         | 2660 days         |
+|           13 | Theodore Roosevelt  | June 24 1908                     | March 4 1909                           | 49 years 241 days   | 50 years 128 days               | 0 years 253 days         | 253 days          |
+|           14 | William Howard Taft | March 4 1909                     | March 4 1913                           | 51 years 170 days   | 55 years 170 days               | 4 years 0 days           | 1461 days         |
+|           15 | Woodrow Wilson      | March 4 1913                     | February 3 1924                        | 56 years 66 days    | 67 years 37 days                | 10 years 336 days        | 3988 days         |
+|           16 | William Howard Taft | February 3 1924                  | March 8 1930                           | 66 years 141 days   | 72 years 174 days               | 6 years 33 days          | 2225 days         |
+|           17 | Calvin Coolidge     | March 8 1930                     | January 5 1933                         | 57 years 247 days   | 60 years 185 days               | 2 years 303 days         | 1034 days         |
+|           18 | Herbert Hoover      | January 5 1933                   | October 20 1964                        | 58 years 148 days   | 90 years 71 days                | 31 years 289 days        | 11611 days        |
+|           19 | Harry S. Truman     | October 20 1964                  | December 26 1972                       | 80 years 165 days   | 88 years 232 days               | 8 years 67 days          | 2989 days         |
+|           20 | Lyndon B. Johnson   | December 26 1972                 | January 22 1973                        | 64 years 121 days   | 64 years 148 days               | 0 years 27 days          | 27 days           |
+|           21 | Richard Nixon       | January 22 1973                  | January 20 1981                        | 60 years 13 days    | 68 years 11 days                | 7 years 364 days         | 2920 days         |
+|           22 | Ronald Reagan       | January 20 1981                  | June 5 2004                            | 69 years 349 days   | 93 years 120 days               | 23 years 137 days        | 8537 days         |
+|           23 | Gerald Ford         | June 5 2004                      | December 26 2006                       | 90 years 327 days   | 93 years 165 days               | 2 years 204 days         | 934 days          |
+|           24 | George H. W. Bush   | December 26 2006                 | Current oldest living president        | 82 years 197 days   | Current oldest living president | 7 years 173 days         | 2730 days         |
+|           25 | President           | Became Oldest Living President   | Ceased to Be Oldest Living President   | Age at Start Date   | Age at End Date                 | Duration (Years Days)    | Duration (Days)   |
+
+Generated Reasoning SQL: Explanation: To determine the duration of the longest running title of "oldest US president" held by Herbert Hoover, we need to find the maximum value in the "Duration (Days)" column where the President is Herbert Hoover. We will filter rows where the President is Herbert Hoover and then select the maximum value in the "Duration (Days)" column.
+
+SQL: 
+SELECT MAX("Duration (Days)") AS longest_title_duration
+FROM T
+WHERE President = 'Herbert Hoover';
+Generated Final SQL: SELECT MAX("Duration (Days)") AS longest_title_duration FROM T WHERE President = 'Herbert Hoover';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| longest_title_duration   |
+|:-------------------------|
+| 11611 days               |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Presidents of the United States by age
+SQL: SELECT MAX("Duration (Days)") AS longest_title_duration FROM T WHERE President = 'Herbert Hoover';
+
+SQL Execution Result:
+longest_title_duration
+11611 days
+
+Question: how long was the longest running title of "oldest us president" by herbert hoover?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 11611
+[Gold Answer] 31 years, 289 days
+

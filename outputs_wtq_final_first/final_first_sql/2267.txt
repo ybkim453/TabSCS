@@ -1,0 +1,158 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Wrestler:
+   - Data type: Categorical
+   - 4 representative example values: Billyken Kid, Super Dolphin, Tigers Mask, Vacated
+   - Role: Identifier for the wrestler competing in the matches
+
+2. Times:
+   - Data type: Numeric
+   - 4 representative example values: 1, nan (missing data), 4
+   - Role: Indicates the number of times a wrestler has achieved a certain feat (e.g., winning a title)
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: August 8, 2004, February 13, 2005, February 12, 2007, May 19, 2013
+   - Role: Descriptor for the date when the wrestling event took place
+
+4. Location:
+   - Data type: Categorical
+   - 4 representative example values: Osaka, Japan
+   - Role: Descriptor for the location where the wrestling event occurred
+
+5. Notes:
+   - Data type: Text
+   - 4 representative example values: nan, Title vacated..., Defeated Billyken Kid..., etc.
+   - Role: Provides additional information or context related to the wrestling matches
+
+**Outlier Row Analysis:**
+
+1. Row 26:
+   - The row with the wrestler "Vacated" and a missing value for "Times" is an outlier.
+   - The value "Vacated" in the wrestler column indicates that the title was vacated, which is not a typical wrestler name.
+   - The missing value for "Times" is also atypical compared to the numeric values in the rest of the table.
+
+2. Row 25:
+   - The row with the wrestler "Tigers Mask" and "4" times is an outlier.
+   - The wrestler "Tigers Mask" winning the title 4 times is a distinctive achievement compared to the other wrestlers in the table.
+   - This row stands out due to the high number of title wins compared to the other entries.
+
+3. Row 0:
+   - The row with the wrestler "Billyken Kid" and "1" time is an outlier.
+   - While winning a title once is not unusual, this row is flagged as an outlier likely due to the specific combination of wrestler and number of times won.
+   - Without further context, this row may not be significantly different from other similar entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Wrestler:            | Times:   | Date:               | Location:   | Notes:                                                                                                                      |
+|-------------:|:---------------------|:---------|:--------------------|:------------|:----------------------------------------------------------------------------------------------------------------------------|
+|            0 | Super Delfin         | 1        | 2000-01-04 00:00:00 | Tokyo Japan | Beat Dick Togo for the championship                                                                                         |
+|            1 | Takehiro Murahama    | 1        | 2000-05-07 00:00:00 | Tokyo Japan |                                                                                                                             |
+|            2 | Super Delfin         | 2        | 2000-06-18 00:00:00 | Osaka Japan |                                                                                                                             |
+|            3 | Gamma                | 1        | 2001-06-24 00:00:00 | Osaka Japan |                                                                                                                             |
+|            4 | Super Delfin         | 3        | 2002-01-03 00:00:00 | Osaka Japan |                                                                                                                             |
+|            5 | Takehiro Murahama    | 2        | 2003-07-06 00:00:00 | Osaka Japan |                                                                                                                             |
+|            6 | Daio QUALLT          | 1        | 2004-04-17 00:00:00 | Osaka Japan |                                                                                                                             |
+|            7 | Billyken Kid         | 1        | 2004-08-08 00:00:00 | Osaka Japan |                                                                                                                             |
+|            8 | “Big Boss” MA-G-MA   | 1        | 2004-10-02 00:00:00 | Osaka Japan |                                                                                                                             |
+|            9 | Super Dolphin        | 1        | 2005-02-13 00:00:00 | Osaka Japan |                                                                                                                             |
+|           10 | Super Delfin         | 4        | 2006-02-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           11 | Billyken Kid         | 2        | 2006-08-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           12 | Tigers Mask          | 1        | 2007-02-12 00:00:00 | Osaka Japan |                                                                                                                             |
+|           13 | Hideyoshi            | 1        | 2008-07-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           14 | Billyken Kid         | 3        | 2009-02-15 00:00:00 | Osaka Japan |                                                                                                                             |
+|           15 | Dick Togo            | 1        | 2009-07-25 00:00:00 | Osaka Japan |                                                                                                                             |
+|           16 | Billyken Kid         | 4        | 2010-02-11 00:00:00 | Osaka Japan |                                                                                                                             |
+|           17 | CIMA                 | 1        | 2010-06-18 00:00:00 | Osaka Japan |                                                                                                                             |
+|           18 | Tigers Mask          | 2        | 2010-07-29 00:00:00 | Osaka Japan |                                                                                                                             |
+|           19 | Asian Cougar / Kuuga | 1        | 2010-08-28 00:00:00 | Osaka Japan | Asian Cougar renamed himself Kuuga during his reign.                                                                        |
+|           20 | Tigers Mask          | 3        | 2011-04-29 00:00:00 | Osaka Japan |                                                                                                                             |
+|           21 | Billyken Kid         | 5        | 2011-08-14 00:00:00 | Osaka Japan |                                                                                                                             |
+|           22 | Daisuke Harada       | 1        | 2012-02-26 00:00:00 | Osaka Japan |                                                                                                                             |
+|           23 | Black Buffalo        | 1        | 2012-03-25 00:00:00 | Osaka Japan |                                                                                                                             |
+|           24 | Daisuke Harada       | 2        | 2012-07-22 00:00:00 | Osaka Japan |                                                                                                                             |
+|           25 | Vacated              | N/A      | 2013-03-30 00:00:00 | Osaka Japan | Title vacated after Harada announced that he was not re-signing with Osaka Pro after his contract ran out on April 29 2013. |
+|           26 | Tigers Mask          | 4        | 2013-05-19 00:00:00 | Osaka Japan | Defeated Billyken Kid in the finals of a four-man tournament to win the vacant title.                                       |
+|           27 | Quiet Storm          | 1        | 2013-07-21 00:00:00 | Osaka Japan |                                                                                                                             |
+|           28 | Zeus                 | 1        | 2014-01-19 00:00:00 | Osaka Japan |                                                                                                                             |
+
+Generated Reasoning SQL: Explanation: The summary provides information about the "Wrestler" column, which is categorical and contains wrestler names. To find the other name of Asian Cougar, we need to look for the row where "Wrestler" = Asian Cougar and retrieve the corresponding value in the "Notes" column, which likely contains the information about the other name used by Asian Cougar.
+
+SQL: select "Notes:" from T where "Wrestler:" = 'Asian Cougar';
+Generated Final SQL: select "Notes:" from T where "Wrestler:" = 'Asian Cougar';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Osaka Pro Wrestling Championship (row_number, Wrestler:, Times:, Date:, Location:, Notes:)
+
+row_number | Wrestler: | Times: | Date: | Location: | Notes:
+0 | Super Delfin | 1 | 2000-01-04 00:00:00 | Tokyo Japan | Beat Dick Togo for the championship
+1 | Takehiro Murahama | 1 | 2000-05-07 00:00:00 | Tokyo Japan | None
+2 | Super Delfin | 2 | 2000-06-18 00:00:00 | Osaka Japan | None
+3 | Gamma | 1 | 2001-06-24 00:00:00 | Osaka Japan | None
+4 | Super Delfin | 3 | 2002-01-03 00:00:00 | Osaka Japan | None
+5 | Takehiro Murahama | 2 | 2003-07-06 00:00:00 | Osaka Japan | None
+6 | Daio QUALLT | 1 | 2004-04-17 00:00:00 | Osaka Japan | None
+7 | Billyken Kid | 1 | 2004-08-08 00:00:00 | Osaka Japan | None
+8 | “Big Boss” MA-G-MA | 1 | 2004-10-02 00:00:00 | Osaka Japan | None
+9 | Super Dolphin | 1 | 2005-02-13 00:00:00 | Osaka Japan | None
+10 | Super Delfin | 4 | 2006-02-26 00:00:00 | Osaka Japan | None
+11 | Billyken Kid | 2 | 2006-08-26 00:00:00 | Osaka Japan | None
+12 | Tigers Mask | 1 | 2007-02-12 00:00:00 | Osaka Japan | None
+13 | Hideyoshi | 1 | 2008-07-26 00:00:00 | Osaka Japan | None
+14 | Billyken Kid | 3 | 2009-02-15 00:00:00 | Osaka Japan | None
+15 | Dick Togo | 1 | 2009-07-25 00:00:00 | Osaka Japan | None
+16 | Billyken Kid | 4 | 2010-02-11 00:00:00 | Osaka Japan | None
+17 | CIMA | 1 | 2010-06-18 00:00:00 | Osaka Japan | None
+18 | Tigers Mask | 2 | 2010-07-29 00:00:00 | Osaka Japan | None
+19 | Asian Cougar / Kuuga | 1 | 2010-08-28 00:00:00 | Osaka Japan | Asian Cougar renamed himself Kuuga during his reign.
+20 | Tigers Mask | 3 | 2011-04-29 00:00:00 | Osaka Japan | None
+21 | Billyken Kid | 5 | 2011-08-14 00:00:00 | Osaka Japan | None
+22 | Daisuke Harada | 1 | 2012-02-26 00:00:00 | Osaka Japan | None
+23 | Black Buffalo | 1 | 2012-03-25 00:00:00 | Osaka Japan | None
+24 | Daisuke Harada | 2 | 2012-07-22 00:00:00 | Osaka Japan | None
+25 | Vacated | N/A | 2013-03-30 00:00:00 | Osaka Japan | Title vacated after Harada announced that he was not re-signing with Osaka Pro after his contract ran out on April 29 2013.
+26 | Tigers Mask | 4 | 2013-05-19 00:00:00 | Osaka Japan | Defeated Billyken Kid in the finals of a four-man tournament to win the vacant title.
+27 | Quiet Storm | 1 | 2013-07-21 00:00:00 | Osaka Japan | None
+28 | Zeus | 1 | 2014-01-19 00:00:00 | Osaka Japan | None
+Question: what other name did asian cougar have?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Wrestler** column contains the names of the wrestlers.
+- The **Notes** column may contain relevant information about the wrestlers.
+
+From the full table:
+- Asian Cougar / Kuuga won the championship on 2010-08-28 in Osaka Japan.
+- The Notes mention that Asian Cougar renamed himself Kuuga during his reign.
+
+Therefore, the other name that Asian Cougar had was Kuuga.
+
+Final Answer: Kuuga
+[Fallback] Prediction: kuuga
+[Gold Answer] kuuga
+

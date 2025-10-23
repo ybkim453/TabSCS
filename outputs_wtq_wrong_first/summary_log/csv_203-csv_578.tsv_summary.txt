@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 4, 8, 17
+   - Role of the column: Identifier
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Eusébio, Paul Van Himst, Valery Voronin, Mário Coluna
+   - Role of the column: Descriptor
+
+3. Club:
+   - Data type: Categorical
+   - 4 representative example values: Benfica, Anderlecht, Torpedo Moskva, Real Madrid
+   - Role of the column: Descriptor
+
+4. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: Portugal, Belgium, Soviet Union, Spain
+   - Role of the column: Descriptor
+
+5. Points:
+   - Data type: Numeric
+   - 4 representative example values: 67, 25, 9, 2
+   - Role of the column: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - Valery Voronin from Torpedo Moskva in Soviet Union with 9 points.
+   - The combination of the player being from Soviet Union and playing for Torpedo Moskva, along with having a relatively low points total compared to the other rows, makes this row an outlier.
+
+2. Row 0 (Index 0):
+   - Eusébio from Benfica in Portugal with 67 points.
+   - This row is not an outlier as Eusébio is a well-known player and having a high points total is expected for a top player.
+
+3. Row 9 (Index 9):
+   - Franz Beckenbauer from Bayern Munich in West Germany with 2 points.
+   - The combination of the player being from West Germany and playing for Bayern Munich, along with having a low points total compared to the other rows, makes this row an outlier.

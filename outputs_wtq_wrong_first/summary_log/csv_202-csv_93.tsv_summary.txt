@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 20 March, 9 August, 4 October, 15 October
+   - Role: Identifier for the specific date of the match
+
+2. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Fukuoka (A), Toyota (A), Tashkent (N)
+   - Role: Descriptor for the location of the match
+
+3. Opponents:
+   - Data type: Categorical
+   - 4 representative example values: Japan, China PR, India, Indonesia
+   - Role: Descriptor for the opposing team in the match
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 2–0, 1–0, 2–2, 5–2
+   - Role: Measure of the score outcome of the match
+
+5. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Sanix Cup, Toyota Cup, AFC U-16 Championship (Group B), AFC U-16 Championship (Semifinal)
+   - Role: Descriptor for the competition in which the match took place
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The match score of 2–2 against Japan in the Toyota Cup is different from the majority of the table where there are clear wins or losses. This draw result makes this row an outlier.
+
+2. Row 1 (Index 1):
+   - The match score of 2–0 against Japan in the Sanix Cup is a clear win, which is consistent with the majority of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 0 (Index 0):
+   - The match score of 2–0 against Japan in the Sanix Cup is a clear win, which is consistent with the majority of the table. This row is an ordinary entry and does not require special handling.

@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: 1, 2, T4, T10
+   - Role: Identifier for the ranking of players in the tournament
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Corey Pavin, Greg Norman, Jay Haas, Vijay Singh
+   - Role: Descriptor for the name of the player
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: United States, Australia, Fiji
+   - Role: Descriptor for the country the player represents
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 72-69-71-68=280, 68-67-74-73=282, 70-73-72-69=284, 70-71-72-72=285
+   - Role: Measure of the total score of the player in the tournament
+
+5. To par:
+   - Data type: Categorical
+   - 4 representative example values: E, +2, +4, +5
+   - Role: Descriptor for the player's score relative to par
+
+6. Money ($):
+   - Data type: Numeric
+   - 4 representative example values: 350,000, 207,000, 66,633, 44,184
+   - Role: Measure of the amount of money won by the player in the tournament
+
+**Outlier Row Analysis:**
+
+1. Row 10 (Vijay Singh):
+   - The values for Score (+5) and To par (+5) are different from the majority of the table where most players have scores closer to par or below.
+   - These values make the row an outlier as Vijay Singh's performance was not as strong as the top players in the tournament.
+
+2. Row 0 (Corey Pavin):
+   - The values for Place (1) and To par (E) are not extreme or unusual compared to the rest of the table.
+   - These values are ordinary within the context of the table, so this row is not an outlier.
+
+3. Row 1 (Greg Norman):
+   - The values for Score (68-67-74-73=282) and To par (+2) are consistent with the majority of the table.
+   - These values are ordinary entries and do not make this row an outlier.

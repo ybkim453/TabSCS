@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 20 March, 9 August, 4 October, 6 October
+   - Role: Identifier for the specific date of the match
+
+2. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Fukuoka (A), Toyota (A), Tashkent (N)
+   - Role: Descriptor for the location of the match
+
+3. Opponents:
+   - Data type: Categorical
+   - 4 representative example values: China PR, Japan, India, Indonesia
+   - Role: Descriptor for the opposing team
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 1-0, 2-2, 5-2, 9-0
+   - Role: Measure of the score of the match
+
+5. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Sanix Cup, Toyota Cup, AFC U-16 Championship (Group B), AFC U-16 Championship (Semifinal)
+   - Role: Descriptor for the competition of the match
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The score of 5-2 against India in the AFC U-16 Championship (Group B) is significantly different from the other scores in the table.
+   - This row stands out as an outlier due to the high number of goals scored compared to the other matches.
+
+2. Row 1 (Index 1):
+   - The score of 1-0 against China PR in the Sanix Cup is not significantly different from the other scores in the table.
+   - This row is an ordinary entry and does not require special handling.
+
+3. Row 0 (Index 0):
+   - The date of 20 March and venue of Fukuoka (A) are not significantly different from the other matches in the table.
+   - This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Date       | Venue        | Opponents            | Score   | Competition                          |
+|-------------:|:-----------|:-------------|:---------------------|:--------|:-------------------------------------|
+|            0 | 20 March   | Fukuoka (A)  | Japan                | 2–0     | Sanix Cup                            |
+|            1 | 20 March   | Fukuoka (A)  | China PR             | 1–0     | Sanix Cup                            |
+|            2 | 8 August   | Toyota (N)   | Brazil               | 0–0     | Toyota Cup                           |
+|            3 | 9 August   | Toyota (A)   | Japan                | 2–2     | Toyota Cup                           |
+|            4 | 10 August  | Toyota (N)   | United Arab Emirates | 6–0     | Toyota Cup                           |
+|            5 | 4 October  | Tashkent (N) | India                | 5–2     | AFC U-16 Championship (Group B)      |
+|            6 | 6 October  | Tashkent (N) | Indonesia            | 9–0     | AFC U-16 Championship (Group B)      |
+|            7 | 8 October  | Tashkent (N) | Syria                | 1–1     | AFC U-16 Championship (Group B)      |
+|            8 | 12 October | Tashkent (A) | Uzbekistan           | 3–0     | AFC U-16 Championship (Quarterfinal) |
+|            9 | 15 October | Tashkent (N) | Japan                | 2–1     | AFC U-16 Championship (Semifinal)    |
+|           10 | 18 October | Tashkent (N) | Iran                 | 1–2     | AFC U-16 Championship (Final)        |
+
+Generated Reasoning SQL: Explanation: To determine the total number of games played against Japan, we need to count the rows where the "Opponents" column contains the value "Japan". We will filter the rows based on this condition to calculate the total number of games played against Japan.
+
+SQL: 
+SELECT COUNT(*) AS total_games_against_japan
+FROM T
+WHERE "Opponents" LIKE '%Japan%';
+Generated Final SQL: SELECT COUNT(*) AS total_games_against_japan FROM T WHERE "Opponents" LIKE '%Japan%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_games_against_japan |
+|----------------------------:|
+|                           3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2008 in South Korean football
+SQL: SELECT COUNT(*) AS total_games_against_japan FROM T WHERE "Opponents" LIKE '%Japan%';
+
+SQL Execution Result:
+total_games_against_japan
+3
+
+Question: what is the total number of games played against japan?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 2
+

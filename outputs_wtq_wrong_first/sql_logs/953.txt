@@ -1,0 +1,146 @@
+=== Table ID ===
+csv/203-csv/388.tsv
+
+=== Question ===
+which tournament besides stuttgart open was not played on a hard surface or a grass surface?
+
+=== Sub-table Preview ===
+|   Year | Award                        | Category                              | Recipient   | Result    |
+|-------:|:-----------------------------|:--------------------------------------|:------------|:----------|
+|   2012 | Cyworld Digital Music Awards | Rookie & Song of the Month (February) | Heaven      | Won       |
+|   2013 | 27th Golden Disk Awards      | Best New Artist                       | Herself     | Won       |
+|   2013 | Mnet Pre-Grammy Awards       | Mnet Rising Star                      | Herself     | Won       |
+|   2013 | 2nd Gaon Chart K-Pop Awards  | New Female Solo Artist                | Herself     | Won       |
+|   2013 | 15th Mnet Asian Music Awards | Best Female Artist                    | Herself     | Nominated |
+|   2014 | 28th Golden Disk Awards      | Digital Bonsang                       | U&I         | Won       |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2012, 2013, 2014, 2015
+   - Role: Identifier for the year in which the award was received.
+
+2. Award:
+   - Data type: Categorical
+   - 4 representative example values: Cyworld Digital Music Awards, 27th Golden Disk Awards, Mnet Pre-Grammy Awards, 2nd Gaon Chart K-Pop Awards
+   - Role: Descriptor of the specific award received.
+
+3. Category:
+   - Data type: Categorical
+   - 4 representative example values: Rookie & Song of the Month (February), Best New Artist, Mnet Rising Star, New Female Solo Artist
+   - Role: Descriptor of the category for which the award was received.
+
+4. Recipient:
+   - Data type: Categorical
+   - 4 representative example values: Heaven, Herself, U&I, XYZ Band
+   - Role: Identifier for the recipient of the award.
+
+5. Result:
+   - Data type: Categorical
+   - 4 representative example values: Won, Nominated, Lost, Pending
+   - Role: Descriptor of the outcome of the award (e.g., Won, Nominated).
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values for "Award" and "Recipient" are "MAMA" and "Himself" respectively, which are different from the majority of the table.
+   - These values are unique and do not align with the typical entries in the table, making this row an outlier.
+
+2. Row 0:
+   - The values for "Year" and "Result" are 2012 and "Won" respectively, which are common in the table.
+   - There are no distinct values in this row that make it stand out, so it is an ordinary row.
+
+3. Row 15:
+   - The value for "Category" is "Best Female Artist", which is a common category in the table.
+   - There are no unique values in this row that differentiate it from the rest, so it is an ordinary row.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament                                       | Surface   | Opponent              | Score                      |
+|-------------:|:----------|------:|:--------------------|:-------------------------------------------------|:----------|:----------------------|:---------------------------|
+|            0 | Runner-up |     1 | 2009-10-25 00:00:00 | Kremlin Cup Russia                               | Hard (i)  | Mikhail Youzhny       | 7–6(7–5) 0–6 4–6           |
+|            1 | Runner-up |     2 | 2010-06-19 00:00:00 | UNICEF Open Netherlands                          | Grass     | Sergiy Stakhovsky     | 3–6 0–6                    |
+|            2 | Runner-up |     3 | 2011-02-27 00:00:00 | International Tennis Championships United States | Hard      | Juan Martín del Potro | 4–6 4–6                    |
+|            3 | Runner-up |     4 | 2011-06-18 00:00:00 | Aegon International United Kingdom               | Grass     | Andreas Seppi         | 6–7(5–7) 6–3 3–5 ret.      |
+|            4 | Winner    |     1 | 2011-10-02 00:00:00 | Malaysian Open Malaysia                          | Hard (i)  | Marcos Baghdatis      | 6–4 7–5                    |
+|            5 | Winner    |     2 | 2011-10-23 00:00:00 | Kremlin Cup Russia                               | Hard (i)  | Viktor Troicki        | 6–4 6–2                    |
+|            6 | Runner-up |     5 | 2011-10-30 00:00:00 | St. Petersburg Open Russia                       | Hard (i)  | Marin Čilić           | 3–6 6–3 2–6                |
+|            7 | Runner-up |     6 | 2012-01-08 00:00:00 | Chennai Open India                               | Hard      | Milos Raonic          | 7–6(7–4) 6–7(4–7) 6–7(4–7) |
+|            8 | Winner    |     3 | 2012-07-15 00:00:00 | Stuttgart Open Germany                           | Clay      | Juan Mónaco           | 6–4 5–7 6–3                |
+|            9 | Runner-up |     7 | 2012-07-22 00:00:00 | Swiss Open Switzerland                           | Clay      | Thomaz Bellucci       | 7–6(8–6) 4–6 2–6           |
+|           10 | Winner    |     4 | 2013-01-06 00:00:00 | Chennai Open India                               | Hard      | Roberto Bautista-Agut | 3–6 6–1 6–3                |
+
+Generated Reasoning SQL: Explanation: To find the tournament besides the Stuttgart Open that was not played on a hard surface or a grass surface, we need to consider the "Tournament" and "Surface" columns. We are looking for tournaments that have a surface different from hard or grass. Outlier rows are not relevant to this question, so we will focus on ordinary rows.
+
+SQL: 
+SELECT "Tournament"
+FROM T
+WHERE "Tournament" != 'Stuttgart Open Germany' 
+AND "Surface" NOT IN ('Hard', 'Grass');
+Generated Final SQL: SELECT "Tournament" FROM T WHERE "Tournament" != 'Stuttgart Open Germany' AND "Surface" NOT IN ('Hard', 'Grass');
+SQL 실행 결과 셀 수: 5
+=== SQL 실행 결과 미리보기 ===
+| Tournament                 |
+|:---------------------------|
+| Kremlin Cup Russia         |
+| Malaysian Open Malaysia    |
+| Kremlin Cup Russia         |
+| St. Petersburg Open Russia |
+| Swiss Open Switzerland     |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Janko Tipsarević
+SQL: SELECT "Tournament" FROM T WHERE "Tournament" != 'Stuttgart Open Germany' AND "Surface" NOT IN ('Hard', 'Grass');
+
+SQL Execution Result:
+Tournament
+Kremlin Cup Russia
+Malaysian Open Malaysia
+Kremlin Cup Russia
+St. Petersburg Open Russia
+Swiss Open Switzerland
+
+Question: which tournament besides stuttgart open was not played on a hard surface or a grass surface?
+A: To find the answer to this question, let’s think step by step.
+Prediction: kremlin cup russia, malaysian open malaysia, st. petersburg open russia, swiss open switzerland
+[Gold Answer] swiss open, switzerland
+

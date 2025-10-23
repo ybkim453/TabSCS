@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Polling Firm
+   - Data type: Categorical
+   - 4 representative example values: Evresis, Prime Consulting Ltd
+   - Role of the column: Identifier for the polling firm conducting the survey
+
+2. Source
+   - Data type: Categorical
+   - 4 representative example values: [10], [12], [20]
+   - Role of the column: Identifier for the source of the polling data
+
+3. Date Published
+   - Data type: Date
+   - 4 representative example values: 27 November 2012, 3 December 2012, 9 February 2013
+   - Role of the column: Descriptor indicating when the polling data was published
+
+4. N.Anastasiades, G.Lillikas, S.Malas, Others
+   - Data type: Numeric (percentage)
+   - 4 representative example values: 37.1%, 19.6%, 20.8%, 0.6%
+   - Role of the columns: Measures representing the percentage of votes for each candidate in the survey
+
+**Outlier Row Analysis:**
+
+1. Row 22 (Prime Consulting Ltd, 9 February 2013)
+   - The values for N.Anastasiades (40.6%) and Others (2.9%) are significantly higher compared to the average values in the table.
+   - These values make the row an outlier as they deviate from the typical percentages seen in other rows.
+
+2. Row 2 (Evresis, 27 November 2012)
+   - The values for N.Anastasiades (37.1%) and S.Malas (20.8%) are notably different from the average values.
+   - However, these values are not extreme outliers and can be considered within the range of normal variation, making this row an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Polling Firm               | Source          | Date Published    | N.Anastasiades   | G.Lillikas   | S.Malas   | Others   |
+|-------------:|:---------------------------|:----------------|:------------------|:-----------------|:-------------|:----------|:---------|
+|            0 | RAI Consultants            | [1][dead link]  | 16 September 2012 | 37.2%            | 14.2%        | 21.9%     | 1.5%     |
+|            1 | Evresis                    | [2]             | 18 September 2012 | 35.2%            | 17.5%        | 19.7%     | 1.7%     |
+|            2 | Noverna                    | [3]             | 23 September 2012 | 35.02%           | 15.81%       | 17.78%    |          |
+|            3 | Prime Consulting Ltd       | [4]             | 7 October 2012    | 34.7%            | 17.4%        | 18.5%     |          |
+|            4 | CMR Cypronetwork / Cybc    | [5][dead link]  | 18 October 2012   | 36.9%            | 17%          | 23.8%     | 1.2%     |
+|            5 | Evresis                    | [6]             | 2 November 2012   | 36.9%            | 17.7%        | 20.6%     | 1.4%     |
+|            6 | RAI Consultants            | [7]             | 4 November 2012   | 38.8%            | 19.8%        | 21.1%     | 2.3%     |
+|            7 | CMR Cypronetwork / Cybc    | [8]             | 15 November 2012  | 36.8%            | 18.9%        | 22.8%     | 1.6%     |
+|            8 | Prime Consulting Ltd       | [9]             | 18 November 2012  | 35.9%            | 18.7%        | 19.6%     | 0.6%     |
+|            9 | Evresis                    | [10]            | 27 November 2012  | 37.1%            | 19.6%        | 20.8%     | 0.6%     |
+|           10 | Noverna                    | [11]            | 2 December 2012   | 35.6%            | 17.2%        | 18.1%     | 4.1%     |
+|           11 | Prime Consulting Ltd       | [12]            | 3 December 2012   | 35%              | 19.1%        | 18.6%     | 1.4%     |
+|           12 | CMR Cypronetwork / Cybc    | [13][dead link] | 17 December 2012  | 37.1%            | 20.4%        | 23.1%     | 3.1%     |
+|           13 | Evresis                    | [14]            | 22 December 2012  | 37.4%            | 19.8%        | 21.8%     | 0.5%     |
+|           14 | RAI Consultants Ltd        | [15][dead link] | 13 January 2013   | 40.3%            | 17.9%        | 20.5%     | 6.1%     |
+|           15 | CMR Cypronetwork / Cybc    | [16]            | 17 January 2013   | 38%              | 19.7%        | 23.7%     | 2.7%     |
+|           16 | Prime Consulting Ltd       | [17]            | 27 January 2013   | 39.2%            | 18.8%        | 19.8%     | 4%       |
+|           17 | Evresis                    | [18]            | 1 February 2013   | 40.8%            | 19.9%        | 22.2%     | 2.5%     |
+|           18 | Prime Consulting Ltd       | [19]            | 4 February 2013   | 39.8%            | 19.3%        | 20%       | 3%       |
+|           19 | Prime Consulting Ltd       | [20]            | 9 February 2013   | 40.6%            | 19.6%        | 20.4%     | 2.9%     |
+|           20 | RAI Consultants Ltd        | [21]            | 9 February 2013   | 42.1%            | 19.4%        | 21.1%     | 4.4%     |
+|           21 | CMR Cypronetwork / Cybc    | [22]            | 9 February 2013   | 39.9%            | 20.2%        | 24.2%     | 3%       |
+|           22 | Average (only valid votes) | –               | –                 | 48.4%            | 22.52%       | 25.29%    | 3.79%    |
+
+Generated Reasoning SQL: Explanation: To compare the number of publications in September 2012 and December 2012, we need to count the rows where the "Date Published" column matches these months. Since the "Date Published" column is in date format, we need to extract the month and year to filter the rows accurately. We will exclude any outlier rows mentioned in the summary.
+
+SQL: 
+SELECT COUNT(*) AS publications_count
+FROM T
+WHERE strftime('%m', "Date Published") = '09' AND strftime('%Y', "Date Published") = '2012'
+OR strftime('%m', "Date Published") = '12' AND strftime('%Y', "Date Published") = '2012';
+Generated Final SQL: SELECT COUNT(*) AS publications_count FROM T WHERE strftime('%m', "Date Published") = '09' AND strftime('%Y', "Date Published") = '2012' OR strftime('%m', "Date Published") = '12' AND strftime('%Y', "Date Published") = '2012';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   publications_count |
+|---------------------:|
+|                    0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Cypriot presidential election, 2013
+SQL: SELECT COUNT(*) AS publications_count FROM T WHERE strftime('%m', "Date Published") = '09' AND strftime('%Y', "Date Published") = '2012' OR strftime('%m', "Date Published") = '12' AND strftime('%Y', "Date Published") = '2012';
+
+SQL Execution Result:
+publications_count
+0
+
+Question: was there more published in september 2012 or december 2012?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] december 2012
+

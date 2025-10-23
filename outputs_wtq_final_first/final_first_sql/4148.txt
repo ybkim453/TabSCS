@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Stations:
+   - Data type: Categorical
+   - 4 representative example values: Woodman, Van Nuys, Woodley, Canoga
+   - Role of the column: Identifier for the different stations
+
+2. Connections:
+   - Data type: Categorical
+   - 4 representative example values: Metro Local:154, 158, Metro Rapid: 761, LADOT DASH: Van Nuys/Studio City, City of Santa Clarita Transit: 793, 798
+   - Role of the column: Describes the transportation connections available at each station
+
+3. City/Neighborhood:
+   - Data type: Categorical
+   - 4 representative example values: Valley Glen, Van Nuys, Canoga Park
+   - Role of the column: Describes the city or neighborhood where the station is located
+
+4. Parking:
+   - Data type: Categorical
+   - 4 representative example values: None, 776 Spaces, 612 Spaces, Park & Ride Lot
+   - Role of the column: Describes the parking facilities available at each station
+
+5. Date Opened:
+   - Data type: Date
+   - 4 representative example values: October 29, 2005, December 27, 2006, June 30, 2012
+   - Role of the column: Indicates the date when each station was opened
+
+**Outlier Row Analysis:**
+
+1. Row 12 (Van Nuys):
+   - The presence of multiple connections from different transportation services (Metro Local, Metro Rapid, LADOT DASH, City of Santa Clarita Transit) sets this row apart from the majority of the table.
+   - This row is an outlier due to the unusually high number of connections compared to other stations.
+
+2. Row 14 (Canoga):
+   - The significant parking capacity of 612 Spaces at the Canoga station makes this row distinctive.
+   - This row is an outlier due to the large parking availability compared to the other stations.
+
+3. Row 1 (Woodman):
+   - The absence of parking facilities (None) at the Woodman station distinguishes it from the majority of the stations in the table.
+   - This row is an outlier due to the lack of parking options compared to other stations.
+
+=== Full Table Preview ===
+|   row_number | Stations        | Connections                                                                                                                                                                             | City/ Neighborhood   | Parking          | Date Opened         |
+|-------------:|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------|:-----------------|:--------------------|
+|            0 | North Hollywood | Metro Red Line  \nMetro Local: 152 154 156 162 183 224 353 656\nLADOT Commuter Express: 549\nCity of Santa Clarita Transit: 757                                                         | North Hollywood      | 951 Spaces       | 2005-10-29 00:00:00 |
+|            1 | Laurel Canyon   | Metro Local: 156 230 656                                                                                                                                                                | Valley Village       | None             | 2005-10-29 00:00:00 |
+|            2 | Valley College  | Metro Local: 156 167 656\nLADOT Commuter Express: 549\nLADOT DASH: Van Nuys/Studio City                                                                                                 | Valley Glen          | None             | 2005-10-29 00:00:00 |
+|            3 | Woodman         | Metro Local:154 158                                                                                                                                                                     | Valley Glen          | None             | 2005-10-29 00:00:00 |
+|            4 | Van Nuys        | Metro Local:154 156 233 237 656\nMetro Rapid: 761\nLADOT DASH: Van Nuys/Studio City\nCity of Santa Clarita Transit: 793 798                                                             | Van Nuys             | 776 Spaces       | 2005-10-29 00:00:00 |
+|            5 | Sepulveda       | Metro Local: 234\nMetro Rapid: 734                                                                                                                                                      | Van Nuys             | 1205 Spaces      | 2005-10-29 00:00:00 |
+|            6 | Woodley         | Metro Local:164 237                                                                                                                                                                     | Van Nuys             | None             | 2005-10-29 00:00:00 |
+|            7 | Balboa          | Metro Local: 164 236 237\nLADOT Commuter Express: 573 574                                                                                                                               | Lake Balboa          | 270 Spaces       | 2005-10-29 00:00:00 |
+|            8 | Reseda          | Metro Rapid: 741\nMetro Local: 240                                                                                                                                                      | Tarzana              | 522 Spaces       | 2005-10-29 00:00:00 |
+|            9 | Tampa           | Metro Local: 242                                                                                                                                                                        | Tarzana              | n/a              | 2005-10-29 00:00:00 |
+|           10 | Pierce College  | Metro Local: 164 243                                                                                                                                                                    | Winnetka             | 373 Spaces       | 2005-10-29 00:00:00 |
+|           11 | De Soto         | Metro Local: 164 244\nCity of Santa Clarita Transit: 796                                                                                                                                | Winnetka             | n/a              | 2005-10-29 00:00:00 |
+|           12 | Canoga          | Metro Local:164 165\nCity of Santa Clarita Transit: 796                                                                                                                                 | Canoga Park          | 612 Spaces       | 2006-12-27 00:00:00 |
+|           13 | Warner Center   | Metro Local: 150 161 164 245 645\nMetro Rapid: 750\nLADOT Commuter Express: 422\nCity of Santa Clarita Transit: 791 796\nVentura Intercity Service Transit Authority: Conejo Connection | Woodland Hills       | n/a              | 2005-10-29 00:00:00 |
+|           14 | Sherman Way     | Metro Local: 162 163                                                                                                                                                                    | Canoga Park          | Park & Ride Lot  | 2012-06-30 00:00:00 |
+|           15 | Roscoe          | Metro Local: 152 353                                                                                                                                                                    | Canoga Park          | n/a              | 2012-06-30 00:00:00 |
+|           16 | Nordhoff        | Metro Local: 166 364\nLADOT DASH Northridge                                                                                                                                             | Chatsworth           | n/a              | 2012-06-30 00:00:00 |
+|           17 | Chatsworth      | Metro Local: 158 166 167 244 245 364\nLADOT Commuter Express: 419\nSimi Valley Transit: C\nSanta Clarita Transit: 791\nMetrolink Ventura County Line\nAmtrak Pacific Surfliner          | Chatsworth           | Parking Expanded | 2012-06-30 00:00:00 |
+
+Generated Reasoning SQL: To determine the total number of neighborhoods served, we need to count the distinct values in the "City/Neighborhood" column. The "City/Neighborhood" column contains categorical values representing different neighborhoods served by the Orange Line stations.
+
+SQL: 
+select count(distinct "City/ Neighborhood") as total_neighborhoods_served from T;
+Generated Final SQL: select count(distinct "City/ Neighborhood") as total_neighborhoods_served from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_neighborhoods_served |
+|-----------------------------:|
+|                           10 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Orange Line (Los Angeles Metro)
+SQL: select count(distinct "City/ Neighborhood") as total_neighborhoods_served from T;
+
+total_neighborhoods_served
+10
+Question: what are the total number of neighborhoods served?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 10
+[Gold Answer] 10
+

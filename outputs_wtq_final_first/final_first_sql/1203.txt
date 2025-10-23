@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - Representative values: September 26, October 10, November 7, January 1
+   - Role: Identifier for the date of the game
+
+2. Opponent#:
+   - Data type: Categorical
+   - Representative values: #6 UCLA*, Indiana, Purdue, at Wisconsin, vs. #12 Washington*
+   - Role: Descriptor for the opponent team
+
+3. Rank#:
+   - Data type: Categorical
+   - Representative values: nan, #15, #13
+   - Role: Descriptor for the rank of the opponent team
+
+4. Site:
+   - Data type: Categorical
+   - Representative values: Kinnick Stadium • Iowa City, Camp Randall Stadium • Madison, Rose Bowl • Pasadena
+   - Role: Descriptor for the location of the game
+
+5. TV:
+   - Data type: Categorical
+   - Representative values: nan, ABC, NBC
+   - Role: Descriptor for the TV channel broadcasting the game
+
+6. Result:
+   - Data type: Categorical
+   - Representative values: W 20-7, W 42-28, W 33-7, W 17-7, L 0-28
+   - Role: Measure of the game result
+
+7. Attendance:
+   - Data type: Numeric
+   - Representative values: 60,004, 60,000, 60,114, 78,731, 105,611
+   - Role: Measure of the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or atypical values. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 4:
+   - The opponent in this row is "at Wisconsin", which is different from the other opponents listed in the table. This unique opponent makes this row an outlier compared to the rest of the data.
+
+3. Row 9:
+   - The rank of the opponent in this row is listed as #13, which is different from the other ranks in the table. This distinctive rank value makes this row an outlier in the context of the data.
+
+=== Full Table Preview ===
+|   row_number | Date         | Opponent#           | Rank#   | Site                                               | TV   | Result   |   Attendance |
+|-------------:|:-------------|:--------------------|:--------|:---------------------------------------------------|:-----|:---------|-------------:|
+|            0 | September 12 | #7 Nebraska*        |         | Kinnick Stadium • Iowa City IA                     |      | W 10-7   |        60160 |
+|            1 | September 19 | at Iowa State*      |         | Cyclone Stadium • Ames IA (Cy-Hawk Trophy)         |      | L 12-23  |        53922 |
+|            2 | September 26 | #6 UCLA*            |         | Kinnick Stadium • Iowa City IA                     |      | W 20-7   |        60004 |
+|            3 | October 3    | at Northwestern     | #18     | Dyche Stadium • Evanston IL                        |      | W 64-0   |        30113 |
+|            4 | October 10   | Indiana             | #15     | Kinnick Stadium • Iowa City IA                     |      | W 42-28  |        60000 |
+|            5 | October 17   | at #5 Michigan      | #12     | Michigan Stadium • Ann Arbor MI                    |      | W 9-7    |       105915 |
+|            6 | October 24   | Minnesota           | #6      | Kinnick Stadium • Iowa City IA (Floyd of Rosedale) | ABC  | L 10-12  |        60000 |
+|            7 | October 31   | at Illinois         | #16     | Memorial Stadium • Champaign IL                    |      | L 7-24   |        66877 |
+|            8 | November 7   | Purdue              |         | Kinnick Stadium • Iowa City IA                     |      | W 33-7   |        60114 |
+|            9 | November 14  | at Wisconsin        |         | Camp Randall Stadium • Madison WI                  | ABC  | W 17-7   |        78731 |
+|           10 | November 21  | Michigan State      | #19     | Kinnick Stadium • Iowa City IA                     |      | W 36-7   |        60103 |
+|           11 | January 1    | vs. #12 Washington* | #13     | Rose Bowl • Pasadena CA (Rose Bowl)                | NBC  | L 0-28   |       105611 |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Site" column contains categorical values representing the location of the game. To find the number of times the site was in Iowa City, we count the rows where "Site" contains the text "Iowa City". We do not need to consider any outliers in this case.
+SQL: select count("Site") from T where "Site" like '%Iowa City%';
+Generated Final SQL: select count("Site") from T where "Site" like '%Iowa City%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Site") |
+|----------------:|
+|               6 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1981 Iowa Hawkeyes football team
+SQL: select count("Site") from T where "Site" like '%Iowa City%';
+
+count("Site")
+6
+Question: what were the number of times the site was in iowa city?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 6
+[Gold Answer] 6
+

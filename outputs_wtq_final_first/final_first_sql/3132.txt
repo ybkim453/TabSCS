@@ -1,0 +1,137 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2006, 2008, 2009
+   - Role: Identifier
+
+2. Total passengers:
+   - Data type: Numeric
+   - 4 representative example values: 1,335,757, 1,764,948, 2,529,395, 2,169,136
+   - Role: Measure
+
+3. Passenger Change:
+   - Data type: Categorical
+   - 4 representative example values: +12.9%, +12.7%, +7.8%, -14.2%
+   - Role: Descriptor
+
+4. Domestic:
+   - Data type: Numeric
+   - 4 representative example values: 879,665, 1,128,489, 1,523,102, 1,290,639
+   - Role: Measure
+
+5. International (total):
+   - Data type: Numeric
+   - 4 representative example values: 456,092, 636,459, 1,006,293, 878,497
+   - Role: Measure
+
+6. International (non-CIS):
+   - Data type: Numeric
+   - 4 representative example values: 297,421, 488,954, 815,124, 727,718
+   - Role: Measure
+
+7. CIS:
+   - Data type: Numeric
+   - 4 representative example values: 158,671, 147,505, 191,169, 150,779
+   - Role: Measure
+
+8. Aircraft Landings:
+   - Data type: Numeric
+   - 4 representative example values: 10,092, 13,289, 16,407, 13,798
+   - Role: Measure
+
+9. Cargo (tonnes):
+   - Data type: Numeric
+   - 4 representative example values: 18,054, 15,519, 17,142, 13,585
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 9 (Year: 2013):
+   - The values in the International (non-CIS) and CIS columns are missing (nan), which is different from the majority of the table where these values are present. This makes the row an outlier.
+
+2. Row 13 (Year: 2013):
+   - The values in the International (non-CIS) and CIS columns are missing (nan), which is different from the majority of the table where these values are present. This makes the row an outlier.
+
+3. Row 2 (Year: 2006):
+   - The values in the International (non-CIS) and CIS columns are different from the majority of the table, but they are not clearly distinctive or special. These values are ordinary within the context of the table, so this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Total\npassengers   | Passenger\nChange   | Domestic   | International\n(total)   | International\n(non-CIS)   | CIS     | Aircraft\nLandings   | Cargo\n(tonnes)   |
+|-------------:|-------:|:--------------------|:--------------------|:-----------|:-------------------------|:---------------------------|:--------|:---------------------|:------------------|
+|            0 |   2000 | 930 251             | +2%                 | 698 957    | 231 294                  | 155 898                    | 75 396  | 8 619                | 18 344            |
+|            1 |   2001 | 1 028 295           | +105%               | 733 022    | 295 273                  | 186 861                    | 108 412 | 9 062                | 22 178            |
+|            2 |   2002 | 1 182 815           | +150%               | 793 295    | 389 520                  | 239 461                    | 150 059 | 10 162               | 20 153            |
+|            3 |   2003 | 1 335 757           | +129%               | 879 665    | 456 092                  | 297 421                    | 158 671 | 10 092               | 18 054            |
+|            4 |   2004 | 1 553 628           | +163%               | 972 287    | 581 341                  | 429 049                    | 152 292 | 11 816               | 20 457            |
+|            5 |   2005 | 1 566 792           | +08%                | 1 006 422  | 560 370                  | 429 790                    | 130 580 | 11 877               | 11 545            |
+|            6 |   2006 | 1 764 948           | +127%               | 1 128 489  | 636 459                  | 488 954                    | 147 505 | 13 289               | 15 519            |
+|            7 |   2007 | 2 345 097           | +329%               | 1 486 888  | 858 209                  | 683 092                    | 175 117 | 16 767               | 16 965            |
+|            8 |   2008 | 2 529 395           | +78%                | 1 523 102  | 1 006 293                | 815 124                    | 191 169 | 16 407               | 17 142            |
+|            9 |   2009 | 2 169 136           | −142%               | 1 290 639  | 878 497                  | 727 718                    | 150 779 | 13 798               | 13 585            |
+|           10 |   2010 | 2 748 919           | +267%               | 1 529 245  | 1 219 674                | 1 017 509                  | 202 165 | 15 989               | 22 946            |
+|           11 |   2011 | 3 355 883           | +221%               | 1 856 948  | 1 498 935                | 1 184 771                  | 314 164 | 20 142               | 24 890            |
+|           12 |   2012 | 3 783 069           | +12.7%              | 1 934 016  | 1 849 053                | 1 448 765                  | 439 668 | 21 728               | 25 866            |
+|           13 |   2013 | 4 293 002           | +13.5%              | 2 180 227  | 2 112 775                |                            |         | 25 728               | 27 800            |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Year" column is numeric and the "Total passengers" column is also numeric. To find the year where the total passengers were 1,764,948, we need to filter rows where "Total passengers" = 1,764,948 and retrieve the corresponding year value.
+SQL: select "Year" from T where "Total\npassengers" = 1,764,948;
+Generated Final SQL: select "Year" from T where "Total\npassengers" = 1,764,948;
+[Error] Final SQL 실행 실패: Execution failed on sql 'select "Year" from T where "Total\npassengers" = 1,764,948;': near ",": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Koltsovo Airport (row_number, Year, Total\npassengers, Passenger\nChange, Domestic, International\n(total), International\n(non-CIS), CIS, Aircraft\nLandings, Cargo\n(tonnes))
+
+row_number | Year | Total\npassengers | Passenger\nChange | Domestic | International\n(total) | International\n(non-CIS) | CIS | Aircraft\nLandings | Cargo\n(tonnes)
+0 | 2000 | 930 251 | +2% | 698 957 | 231 294 | 155 898 | 75 396 | 8 619 | 18 344
+1 | 2001 | 1 028 295 | +105% | 733 022 | 295 273 | 186 861 | 108 412 | 9 062 | 22 178
+2 | 2002 | 1 182 815 | +150% | 793 295 | 389 520 | 239 461 | 150 059 | 10 162 | 20 153
+3 | 2003 | 1 335 757 | +129% | 879 665 | 456 092 | 297 421 | 158 671 | 10 092 | 18 054
+4 | 2004 | 1 553 628 | +163% | 972 287 | 581 341 | 429 049 | 152 292 | 11 816 | 20 457
+5 | 2005 | 1 566 792 | +08% | 1 006 422 | 560 370 | 429 790 | 130 580 | 11 877 | 11 545
+6 | 2006 | 1 764 948 | +127% | 1 128 489 | 636 459 | 488 954 | 147 505 | 13 289 | 15 519
+7 | 2007 | 2 345 097 | +329% | 1 486 888 | 858 209 | 683 092 | 175 117 | 16 767 | 16 965
+8 | 2008 | 2 529 395 | +78% | 1 523 102 | 1 006 293 | 815 124 | 191 169 | 16 407 | 17 142
+9 | 2009 | 2 169 136 | −142% | 1 290 639 | 878 497 | 727 718 | 150 779 | 13 798 | 13 585
+10 | 2010 | 2 748 919 | +267% | 1 529 245 | 1 219 674 | 1 017 509 | 202 165 | 15 989 | 22 946
+11 | 2011 | 3 355 883 | +221% | 1 856 948 | 1 498 935 | 1 184 771 | 314 164 | 20 142 | 24 890
+12 | 2012 | 3 783 069 | +12.7% | 1 934 016 | 1 849 053 | 1 448 765 | 439 668 | 21 728 | 25 866
+13 | 2013 | 4 293 002 | +13.5% | 2 180 227 | 2 112 775 | None | None | 25 728 | 27 800
+Question: the only year that the total passengers was 1,764,948
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, let's look at the Total passengers column in the full table:
+- In the row where the Total passengers are 1,764,948:
+  - Year: 2006
+
+Therefore, the only year that the total passengers were 1,764,948 is 2006.
+
+Final Answer: 2006
+[Fallback] Prediction: 2006
+[Gold Answer] 2006
+

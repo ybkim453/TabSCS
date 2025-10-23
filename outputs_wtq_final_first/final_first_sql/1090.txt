@@ -1,0 +1,127 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2007, 2009, 2010, 2011
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: All-Africa Games, World Championships, African Championships, Commonwealth Games
+   - Role: Descriptor for the name of the competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Algiers, Algeria, Berlin, Germany, Nairobi, Kenya, Delhi, India
+   - Role: Descriptor for the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 1st, 36th (h), 7th, 12th (h)
+   - Role: Measure indicating the athlete's position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 800 m
+   - Role: Descriptor for the type of event (e.g., distance race).
+
+6. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 2:02.83, 2:06.72, 2:08.45, DNF
+   - Role: Measure providing additional information or performance details.
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The row with Year 2010, Competition Commonwealth Games, and Position "-" is an outlier.
+   - The Position "-" is not a typical numerical position and indicates a missing or incomplete result, making this row distinctive.
+
+2. Row 7:
+   - The row with Year 2011, Competition All-Africa Games, and Position 12th (h) is an outlier.
+   - The Position 12th (h) is different from the typical numerical positions and includes a qualifier "(h)" which suggests a heat result, making this row distinctive.
+
+3. Row 0:
+   - The row with Year 2007, Competition All-Africa Games, and Position 1st is not an outlier.
+   - The values in this row are typical and consistent with the majority of the table, indicating an ordinary row that does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition           | Venue                | Position   | Event   | Notes   |
+|-------------:|-------:|:----------------------|:---------------------|:-----------|:--------|:--------|
+|            0 |   2003 | All-Africa Games      | Abuja Nigeria        | 11th (h)   | 800 m   | 2:05.19 |
+|            1 |   2006 | Commonwealth Games    | Melbourne Australia  | 9th (sf)   | 800 m   | 2:01.84 |
+|            2 |   2006 | African Championships | Bambous Mauritius    | 13th (h)   | 800 m   | 2:10.50 |
+|            3 |   2006 | Lusophony Games       | Macau                | 1st        | 800 m   | 2:07.34 |
+|            4 |   2007 | All-Africa Games      | Algiers Algeria      | 1st        | 800 m   | 2:02.83 |
+|            5 |   2008 | African Championships | Addis Ababa Ethiopia | 6th        | 800 m   | 2:05.95 |
+|            6 |   2009 | Lusophony Games       | Lisbon Portugal      | 4th        | 800 m   | 2:07.48 |
+|            7 |   2009 | World Championships   | Berlin Germany       | 36th (h)   | 800 m   | 2:06.72 |
+|            8 |   2010 | African Championships | Nairobi Kenya        | 7th        | 800 m   | 2:08.45 |
+|            9 |   2010 | Commonwealth Games    | Delhi India          | –          | 800 m   | DNF     |
+|           10 |   2011 | All-Africa Games      | Maputo Mozambique    | 12th (h)   | 800 m   | 2:06.72 |
+
+Generated Reasoning SQL: To compare the notes for the years 2003 and 2011, we need to retrieve the "Notes" values for both years and check if they are the same.
+We will filter rows where "Year" = 2003 and 2011, then select the "Notes" column to compare the values.
+SQL: 
+select "Notes" from T where "Year" = 2003
+intersect
+select "Notes" from T where "Year" = 2011;
+Generated Final SQL: select "Notes" from T where "Year" = 2003 intersect select "Notes" from T where "Year" = 2011;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Leonor Piuza (row_number, Year, Competition, Venue, Position, Event, Notes)
+
+row_number | Year | Competition | Venue | Position | Event | Notes
+0 | 2003 | All-Africa Games | Abuja Nigeria | 11th (h) | 800 m | 2:05.19
+1 | 2006 | Commonwealth Games | Melbourne Australia | 9th (sf) | 800 m | 2:01.84
+2 | 2006 | African Championships | Bambous Mauritius | 13th (h) | 800 m | 2:10.50
+3 | 2006 | Lusophony Games | Macau | 1st | 800 m | 2:07.34
+4 | 2007 | All-Africa Games | Algiers Algeria | 1st | 800 m | 2:02.83
+5 | 2008 | African Championships | Addis Ababa Ethiopia | 6th | 800 m | 2:05.95
+6 | 2009 | Lusophony Games | Lisbon Portugal | 4th | 800 m | 2:07.48
+7 | 2009 | World Championships | Berlin Germany | 36th (h) | 800 m | 2:06.72
+8 | 2010 | African Championships | Nairobi Kenya | 7th | 800 m | 2:08.45
+9 | 2010 | Commonwealth Games | Delhi India | – | 800 m | DNF
+10 | 2011 | All-Africa Games | Maputo Mozambique | 12th (h) | 800 m | 2:06.72
+Question: does the year 2003 have the same notes as 2011?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, let's look at the information provided in the summary:
+- The **Notes** column contains additional information about the performance in the 800m event.
+- The **Year** column indicates the specific year of each performance.
+
+Now, let's examine the full table:
+- The notes for the year 2003 are "2:05.19" for the 800m event.
+- The notes for the year 2011 are "2:06.72" for the 800m event.
+
+Therefore, the notes for the year 2003 (2:05.19) are different from the notes for the year 2011 (2:06.72).
+
+Final Answer: No
+[Fallback] Prediction: no
+[Gold Answer] no
+

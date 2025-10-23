@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 5, 6, 7
+   - Role: Identifier, indicates the ranking of the airports based on passengers handled.
+
+2. Airport:
+   - Data type: Categorical
+   - 4 representative example values: London Gatwick, Belfast International, Bristol, Birmingham
+   - Role: Descriptor, identifies the name of the airport.
+
+3. Passengers handled:
+   - Data type: Numeric
+   - 4 representative example values: 607,417, 266,987, 239,666, 208,123
+   - Role: Measure, indicates the number of passengers handled by the airport.
+
+4. Change 2011/12:
+   - Data type: Numeric
+   - 4 representative example values: 7%, 8%, 24%, 2%
+   - Role: Measure, shows the percentage change in passengers handled from 2011 to 2012.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Birmingham):
+   - The value in the "Change 2011/12" column is 2%, which is significantly lower compared to the other airports in the table.
+   - This makes the row an outlier as it has a much lower percentage change in passengers handled.
+
+2. Row 7 (Southampton):
+   - The value in the "Change 2011/12" column is 24%, which is significantly higher compared to the other airports in the table.
+   - This makes the row an outlier as it has a much higher percentage change in passengers handled.
+
+3. Row 6 (Bristol):
+   - The value in the "Change 2011/12" column is 8%, which is consistent with the values of other airports in the table.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Airport               |   Passengers handled | Change\n2011/12   |
+|-------------:|-------:|:----------------------|---------------------:|:------------------|
+|            0 |      1 | London Heathrow       |               828531 | 0%                |
+|            1 |      2 | London Gatwick        |               607417 | 7%                |
+|            2 |      3 | London Stansted       |               331607 | 3%                |
+|            3 |      4 | London Luton          |               276488 | 0%                |
+|            4 |      5 | Belfast International |               266987 | 8%                |
+|            5 |      6 | Bristol               |               239666 | 8%                |
+|            6 |      7 | Birmingham            |               208123 | 2%                |
+|            7 |      8 | Southampton           |               173576 | 24%               |
+|            8 |      9 | London City           |               158239 | 6%                |
+|            9 |     10 | Belfast City          |               100003 | 4%                |
+
+Generated Reasoning SQL: The summary provides information about the columns "Airport" and "Passengers handled", which are relevant to answer the question. The "Passengers handled" column is numeric and represents the number of passengers handled by each airport. To find out how many more passengers London Heathrow had compared to Bristol, we need to calculate the difference in the number of passengers handled by these two airports.
+
+SQL: 
+select (select "Passengers handled" from T where "Airport" = 'London Heathrow') - (select "Passengers handled" from T where "Airport" = 'Bristol') as passengers_difference;
+Generated Final SQL: select (select "Passengers handled" from T where "Airport" = 'London Heathrow') - (select "Passengers handled" from T where "Airport" = 'Bristol') as passengers_difference;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   passengers_difference |
+|------------------------:|
+|                  588865 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Glasgow Airport
+SQL: select (select "Passengers handled" from T where "Airport" = 'London Heathrow') - (select "Passengers handled" from T where "Airport" = 'Bristol') as passengers_difference;
+
+passengers_difference
+588865
+Question: how many more passengers did london heathrow have than bristol?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 588865
+[Gold Answer] 588,865
+

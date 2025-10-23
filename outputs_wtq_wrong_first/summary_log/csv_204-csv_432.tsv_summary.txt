@@ -1,0 +1,60 @@
+### Column Analysis:
+
+1. **Name:**
+   - Data type: Categorical
+   - 4 representative values: Leander, Orion, Neptune, Amphion
+   - Role: Identifier for the ship
+
+2. **Pennant:**
+   - Data type: Numeric
+   - 4 representative values: 75, 85, 20, 29
+   - Role: Descriptor indicating the pennant number of the ship
+
+3. **Namesake:**
+   - Data type: Categorical
+   - 4 representative values: Leander of Abydos, Orion the Hunter, Neptune, Amphion of Thebes
+   - Role: Descriptor indicating the namesake of the ship
+
+4. **Builder:**
+   - Data type: Categorical
+   - 4 representative values: HM Dockyard, Devonport, HM Dockyard, Portsmouth, Swan Hunter
+   - Role: Descriptor indicating the builder of the ship
+
+5. **Ordered:**
+   - Data type: Date
+   - 4 representative values: 18 February 1928, 24 March 1931, 2 March 1931, 1 December 1932
+   - Role: Descriptor indicating the date when the ship was ordered
+
+6. **Laid down:**
+   - Data type: Date
+   - 4 representative values: 1 August 1928, 26 September 1931, 24 September 1931, 22 June 1933
+   - Role: Descriptor indicating the date when the ship was laid down
+
+7. **Launched:**
+   - Data type: Date
+   - 4 representative values: 13 July 1929, 24 November 1932, 31 January 1933, 27 July 1934
+   - Role: Descriptor indicating the date when the ship was launched
+
+8. **Commissioned:**
+   - Data type: Date
+   - 4 representative values: 23 July 1931, 18 January 1934, 23 February 1934, 15 June 1936
+   - Role: Descriptor indicating the date when the ship was commissioned
+
+9. **Fate:**
+   - Data type: Categorical
+   - 4 representative values: Transferred to Royal New Zealand Navy as HMNZS Leander 1941-1945, Broken up at Dalmuir, 1949, Sunk in minefield off Tripoli, 19 December 1941, Sold to Royal Australian Navy as HMAS Perth, 1939
+   - Role: Descriptor indicating the fate of the ship
+
+### Outlier Row Analysis:
+
+1. **Row 7 (Sydney\n(ex-Phaeton)):**
+   - The values "Swan Hunter" in the Builder column and "Sunk in surface action, 19 November 1941" in the Fate column make this row distinctive.
+   - The ship being built by Swan Hunter and its fate of being sunk in surface action set it apart from the majority of the table, making it an outlier.
+
+2. **Row 0 (Leander):**
+   - The values "HM Dockyard, Devonport" in the Builder column and "Transferred to Royal New Zealand Navy as HMNZS Leander 1941-1945" in the Fate column make this row distinctive.
+   - The ship being built at HM Dockyard, Devonport and its transfer to the Royal New Zealand Navy set it apart from the majority of the table, making it an outlier.
+
+3. **Row 5 (Apollo):**
+   - The values "HM Dockyard, Devonport" in the Builder column and "Broken up at Osaka, 1962" in the Fate column make this row distinctive.
+   - The ship being built at HM Dockyard, Devonport and its fate of being broken up at Osaka distinguish it from the majority of the table, making it an outlier.

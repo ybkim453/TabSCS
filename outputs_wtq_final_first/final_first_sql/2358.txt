@@ -1,0 +1,160 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2000, 2001, 2001, 2001
+   - Role: Identifier for the year in which the single was released
+
+2. Single:
+   - Data type: Categorical
+   - 4 representative example values: My Heart Beats Like a Drum (Dam Dam Dam), Why Oh Why, Call on Me, Set Me Free
+   - Role: Descriptor for the title of the single
+
+3. Peak chart positions AUS:
+   - Data type: Numeric
+   - 4 representative example values: 76, —, —, —
+   - Role: Measure indicating the peak chart position in Australia
+
+4. Peak chart positions AUT:
+   - Data type: Numeric
+   - 4 representative example values: 6, 16, —, —
+   - Role: Measure indicating the peak chart position in Austria
+
+5. Peak chart positions BEL (Fl):
+   - Data type: Numeric
+   - 4 representative example values: 11, 39, —, —
+   - Role: Measure indicating the peak chart position in Belgium (Flanders)
+
+6. Peak chart positions BEL (Wa):
+   - Data type: Numeric
+   - 4 representative example values: 3, 15, —, —
+   - Role: Measure indicating the peak chart position in Belgium (Wallonia)
+
+7. Peak chart positions FIN:
+   - Data type: Numeric
+   - 4 representative example values: 12, —, —, —
+   - Role: Measure indicating the peak chart position in Finland
+
+8. Peak chart positions FRA:
+   - Data type: Numeric
+   - 4 representative example values: 39, —, —, —
+   - Role: Measure indicating the peak chart position in France
+
+9. Peak chart positions GER:
+   - Data type: Numeric
+   - 4 representative example values: 3, 16, —, 44
+   - Role: Measure indicating the peak chart position in Germany
+
+10. Peak chart positions NED:
+    - Data type: Numeric
+    - 4 representative example values: 37, —, —, —
+    - Role: Measure indicating the peak chart position in the Netherlands
+
+11. Peak chart positions SWE:
+    - Data type: Numeric
+    - 4 representative example values: 38, —, —, —
+    - Role: Measure indicating the peak chart position in Sweden
+
+12. Peak chart positions SUI:
+    - Data type: Numeric
+    - 4 representative example values: 21, —, —, —
+    - Role: Measure indicating the peak chart position in Switzerland
+
+13. Certifications (sales thresholds):
+    - Data type: Categorical
+    - 4 representative example values: GER: Gold, nan, nan, nan
+    - Role: Descriptor for the certification status of the single
+
+14. Album:
+    - Data type: Categorical
+    - 4 representative example values: Planet Pop, Planet Pop, Touch the Sky, Touch the Sky
+    - Role: Descriptor for the album to which the single belongs
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The values in this row are distinctive because the single "My Heart Beats Like a Drum (Dam Dam Dam)" achieved peak chart positions in multiple countries and received a certification of "GER: Gold". This row stands out as it has notable success metrics compared to the other rows.
+
+2. Row 0:
+   - The values in this row are distinctive because the single "Why Oh Why" achieved peak chart positions in Austria and Belgium (Flanders) and received a certification of "nan". This row is an outlier due to its unique combination of chart positions and certification status.
+
+3. Row 2:
+   - The values in this row are ordinary as all peak chart positions are marked as missing ("—") and there is no certification information. This row does not contain any distinctive values that would make it an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Single                                     | Peak chart positions\nAUS   | Peak chart positions\nAUT   | Peak chart positions\nBEL\n(Fl)   | Peak chart positions\nBEL\n(Wa)   | Peak chart positions\nFIN   | Peak chart positions\nFRA   | Peak chart positions\nGER   | Peak chart positions\nNED   | Peak chart positions\nSWE   | Peak chart positions\nSUI   | Certifications\n(sales thresholds)               | Album         |
+|-------------:|-------:|:-------------------------------------------|:----------------------------|:----------------------------|:----------------------------------|:----------------------------------|:----------------------------|:----------------------------|:----------------------------|:----------------------------|:----------------------------|:----------------------------|:-------------------------------------------------|:--------------|
+|            0 |   2000 | "Around the World (La La La La La)"        | 11                          | 1                           | 10                                | 10                                | 7                           | 12                          | 1                           | 5                           | 8                           | 1                           | GER: Platinum\nAUT: Gold\nSWI: Gold\nFRA: Silver | Planet Pop    |
+|            1 |   2000 | "My Heart Beats Like a Drum (Dam Dam Dam)" | 76                          | 6                           | 11                                | 3                                 | 12                          | 39                          | 3                           | 37                          | 38                          | 21                          | GER: Gold                                        | Planet Pop    |
+|            2 |   2000 | "Why Oh Why"                               | —                           | 16                          | 39                                | 15                                | —                           | —                           | 16                          | —                           | —                           | —                           |                                                  | Planet Pop    |
+|            3 |   2000 | "Thinking of You"                          | —                           | —                           | —                                 | —                                 | —                           | —                           | 46                          | —                           | —                           | 51                          |                                                  | Planet Pop    |
+|            4 |   2001 | "I'm In Heaven (When You Kiss Me)"         | —                           | 27                          | —                                 | —                                 | —                           | —                           | 22                          | —                           | —                           | 31                          |                                                  | Touch the Sky |
+|            5 |   2001 | "Call on Me"                               | —                           | —                           | —                                 | —                                 | —                           | —                           | —                           | —                           | —                           | —                           |                                                  | Touch the Sky |
+|            6 |   2001 | "Set Me Free"                              | —                           | —                           | —                                 | —                                 | —                           | —                           | 44                          | —                           | —                           | —                           |                                                  | Touch the Sky |
+|            7 |   2001 | "New York City"                            | —                           | —                           | —                                 | —                                 | —                           | —                           | —                           | —                           | —                           | —                           |                                                  | Touch the Sky |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter the rows where the "Peak chart positions GER" column is below 5. We will exclude any rows marked as outliers in the summary. Since we are interested in counting the number of singles, we will use the "Single" column for the count.
+
+SQL: 
+SELECT COUNT("Single") 
+FROM T 
+WHERE "Peak chart positions GER" < 5 AND "Peak chart positions GER" IS NOT NULL;
+Generated Final SQL: SELECT COUNT("Single") FROM T WHERE "Peak chart positions GER" < 5 AND "Peak chart positions GER" IS NOT NULL;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Single") |
+|------------------:|
+|                 0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: A Touch of Class (band)
+SQL: SELECT COUNT("Single") FROM T WHERE "Peak chart positions GER" < 5 AND "Peak chart positions GER" IS NOT NULL;
+
+SQL Execution Result:
+COUNT("Single")
+0
+
+Question: how many singles ranked below 5 under the ger peak chart position?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 4
+

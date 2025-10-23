@@ -1,0 +1,39 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 20 March, 9 August, 4 October, 15 October
+   - Role: Identifier for the specific date of the match
+
+2. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Fukuoka (A), Toyota (A), Tashkent (N)
+   - Role: Descriptor for the location of the match
+
+3. Opponents:
+   - Data type: Categorical
+   - 4 representative example values: Japan, China PR, India, Indonesia
+   - Role: Descriptor for the opposing team
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 2–0, 1–0, 5–2, 9–0
+   - Role: Measure of the score of the match
+
+5. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Sanix Cup, Toyota Cup, AFC U-16 Championship
+   - Role: Descriptor for the competition in which the match took place
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The match between Japan and the team in the row ended in a draw (2-2), which is different from the majority of the table where there are clear winners and losers. This makes the row an outlier as it deviates from the typical outcome of matches.
+
+2. Row 1 (Index 1):
+   - The scores in both matches listed in this row are 2-0 and 1-0, which are relatively low-scoring games compared to the other matches in the table. This makes the row an outlier in terms of the score outcomes.
+
+3. Row 0 (Index 0):
+   - The matches listed in this row are part of the Sanix Cup, which is different from the other competitions listed in the table. This makes the row an outlier in terms of the competition context.
+
+Overall, the outlier rows have distinctive values in terms of match outcomes, scores, and competition context compared to the majority of the table, making them stand out as atypical entries.

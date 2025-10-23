@@ -1,0 +1,118 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 5, 7
+   - Role: Identifier, indicating the position of the swimmer in the race.
+
+2. Lane:
+   - Data type: Numeric
+   - 4 representative example values: 4, 3, 7, 8
+   - Role: Descriptor, indicating the lane number assigned to each swimmer.
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: David Smetanine, Kyunghyun Kim, Arnost Petracek, Grant Patterson
+   - Role: Descriptor, identifying the name of each swimmer.
+
+4. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: France, South Korea, Czech Republic, Australia
+   - Role: Descriptor, indicating the nationality of each swimmer.
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 38.97, 40.37, 43.12, 1:03.49
+   - Role: Measure, representing the time taken by each swimmer to complete the race.
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: Q, nan
+   - Role: Descriptor, providing additional information such as qualification status or any notes related to the swimmer.
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - Distinctive values: Grant Patterson, Australia, 55.49
+   - Explanation: The time of 55.49 is significantly higher compared to the other times in the table, making this row an outlier.
+
+2. Row 2:
+   - Distinctive values: David Smetanine, France, 38.97, Q
+   - Explanation: The time of 38.97 is one of the fastest in the table, and the "Q" in the Notes column indicates qualification, making this row an outlier.
+
+3. Row 4:
+   - Distinctive values: Arnost Petracek, Czech Republic, 43.12, nan
+   - Explanation: The time of 43.12 is within a reasonable range compared to other times, and the "nan" in the Notes column is a common placeholder for missing data, making this row an ordinary entry and not an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Rank |   Lane | Name                        | Nationality    | Time    | Notes   |
+|-------------:|-------:|-------:|:----------------------------|:---------------|:--------|:--------|
+|            0 |      1 |      5 | Eskender Mustafaiev         | Ukraine        | 38.77   | Q       |
+|            1 |      2 |      4 | David Smetanine             | France         | 38.97   | Q       |
+|            2 |      3 |      3 | Kyunghyun Kim               | South Korea    | 40.37   | Q       |
+|            3 |      4 |      6 | Christoffer Lindhe          | Sweden         | 41.52   | Q       |
+|            4 |      5 |      7 | Arnost Petracek             | Czech Republic | 43.12   |         |
+|            5 |      6 |      2 | Ronystony Cordeiro da Silva | Brazil         | 44.22   |         |
+|            6 |      7 |      8 | Grant Patterson             | Australia      | 55.49   |         |
+|            7 |      8 |      1 | Arnulfo Castorena           | Mexico         | 1:03.49 |         |
+
+Generated Reasoning SQL: Explanation: To determine who ranked fifth in the heat, we need to identify the swimmer with the Rank value of 5. The Rank column serves as an identifier for the position of the swimmers in the race. We will filter the row where Rank = 5 to find the swimmer who ranked fifth.
+
+SQL: SELECT "Name" FROM T WHERE "Rank" = 5;
+Generated Final SQL: SELECT "Name" FROM T WHERE "Rank" = 5;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Name            |
+|:----------------|
+| Arnost Petracek |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Swimming at the 2012 Summer Paralympics – Men's 50 metre freestyle S4
+SQL: SELECT "Name" FROM T WHERE "Rank" = 5;
+
+Name
+Arnost Petracek
+Question: who ranked fifth in the heat?
+A: To find the answer to this question, let’s think step by step.
+Prediction: arnost petracek
+[Gold Answer] arnost petracek
+

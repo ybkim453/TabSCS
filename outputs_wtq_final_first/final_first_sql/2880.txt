@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 2013, 2014, 2015, 2016
+   - Role: Identifier for the year in which the event took place
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: 1 Mar 2013, 7 Dec 2013, 22 Dec 2013, 24 Jan 2014
+   - Role: Descriptor indicating the specific date of the event
+
+3. Location
+   - Data type: Categorical
+   - 4 representative example values: Garmisch, Germany, Lake Louise, Canada, Val-d'Isère, France, Cortina d'Ampezzo, Italy
+   - Role: Descriptor specifying the location of the event
+
+4. Discipline
+   - Data type: Categorical
+   - 4 representative example values: Super-G, Downhill, Giant slalom
+   - Role: Descriptor indicating the type of skiing discipline
+
+5. Place
+   - Data type: Categorical
+   - 4 representative example values: 1st, 2nd, 3rd, 4th
+   - Role: Measure representing the final ranking achieved in the event
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values in this row are consistent with the majority of the table and are not significantly different from other entries.
+   - Conclusion: Ordinary row, no special handling required.
+
+2. Row 12:
+   - The values in this row are also ordinary and do not stand out as distinctive compared to other entries.
+   - Conclusion: Ordinary row, no special handling required.
+
+3. Row 6:
+   - The values in this row are typical of the data in the table and do not deviate significantly from the majority.
+   - Conclusion: Ordinary row, no special handling required.
+
+=== Full Table Preview ===
+|   row_number |   Season | Date                | Location                | Discipline   | Place   |
+|-------------:|---------:|:--------------------|:------------------------|:-------------|:--------|
+|            0 |     2012 | 2011-12-02 00:00:00 | Lake Louise Canada      | Downhill     | 2nd     |
+|            1 |     2012 | 2012-01-28 00:00:00 | St. Moritz Switzerland  | Downhill     | 3rd     |
+|            2 |     2012 | 2012-02-04 00:00:00 | Garmisch Germany        | Downhill     | 3rd     |
+|            3 |     2012 | 2012-02-05 00:00:00 | Garmisch Germany        | Super-G      | 3rd     |
+|            4 |     2012 | 2012-02-26 00:00:00 | Bansko Bulgaria         | Super-G      | 2nd     |
+|            5 |     2013 | 2012-11-30 00:00:00 | Lake Louise Canada      | Downhill     | 3rd     |
+|            6 |     2013 | 2013-03-01 00:00:00 | Garmisch Germany        | Super-G      | 1st     |
+|            7 |     2014 | 2013-11-29 00:00:00 | Beaver Creek USA        | Downhill     | 2nd     |
+|            8 |     2014 | 2013-12-01 00:00:00 | Beaver Creek USA        | Giant slalom | 3rd     |
+|            9 |     2014 | 2013-12-07 00:00:00 | Lake Louise Canada      | Downhill     | 2nd     |
+|           10 |     2014 | 2013-12-08 00:00:00 | Lake Louise Canada      | Super-G      | 2nd     |
+|           11 |     2014 | 2013-12-14 00:00:00 | St. Moritz Switzerland  | Super-G      | 1st     |
+|           12 |     2014 | 2013-12-22 00:00:00 | Val-d'Isère France      | Giant slalom | 1st     |
+|           13 |     2014 | 2014-01-24 00:00:00 | Cortina d'Ampezzo Italy | Downhill     | 2nd     |
+|           14 |     2014 | 2014-01-25 00:00:00 | Cortina d'Ampezzo Italy | Downhill     | 3rd     |
+|           15 |     2014 | 2014-01-26 00:00:00 | Cortina d'Ampezzo Italy | Super-G      | 2nd     |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Place" column contains categorical values representing the final ranking achieved in the event. To find the number of races where the racer achieved 1st place, we count the rows where "Place" = '1st'.
+SQL: select count("Place") from T where "Place" = '1st';
+Generated Final SQL: select count("Place") from T where "Place" = '1st';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Place") |
+|-----------------:|
+|                3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tina Weirather
+SQL: select count("Place") from T where "Place" = '1st';
+
+count("Place")
+3
+Question: how many races has this racer been 1st?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

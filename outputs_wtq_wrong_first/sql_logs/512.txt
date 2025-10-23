@@ -1,0 +1,152 @@
+=== Table ID ===
+csv/203-csv/690.tsv
+
+=== Question ===
+which manufacturer(s) is/are listed the least on this chart?
+
+=== Sub-table Preview ===
+|   Year | Title                             | Genre      | Publisher            | Notes                |
+|-------:|:----------------------------------|:-----------|:---------------------|:---------------------|
+|   1906 | Spirit of the Border              | Historical | A. L. Burt & Company | Sequel to Betty Zane |
+|   1922 | The Day of the Beast              | Fiction    | Harper & Brothers    | nan                  |
+|   1924 | The Call of the Canyon            | Western    | Harper & Brothers    | nan                  |
+|   1925 | The Thundering Herd               | Western    | Harper & Brothers    | nan                  |
+|   1930 | The Shepherd of Guadaloupe        | Western    | Harper & Brothers    | nan                  |
+|   1979 | The Camp Robber and other Stories | Western    | Walter J. Black      | nan                  |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1906, 1922, 1924, 1930
+   - Role: Identifier for the year the title was published
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Spirit of the Border, The Day of the Beast, The Call of the Canyon, The Thundering Herd
+   - Role: Descriptor for the title of the book
+
+3. Genre:
+   - Data type: Categorical
+   - 4 representative example values: Historical, Fiction, Western
+   - Role: Descriptor for the genre of the book
+
+4. Publisher:
+   - Data type: Categorical
+   - 4 representative example values: A. L. Burt & Company, Harper & Brothers, Walter J. Black
+   - Role: Descriptor for the publisher of the book
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: Sequel to Betty Zane, nan
+   - Role: Additional information or notes about the book
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The value "Spirit of the Border" in the Title column is a distinctive title compared to the other titles in the table.
+   - The value "Historical" in the Genre column is not common among the majority of Western genre entries.
+   - The value "A. L. Burt & Company" in the Publisher column is different from the more common "Harper & Brothers" publishers.
+   - Overall, the combination of these unique values makes this row an outlier.
+
+2. Row 91:
+   - No specific distinctive values were mentioned in the provided table preview for this row, so it is considered an ordinary row and does not require special handling.
+
+3. Row 24:
+   - The value "The Camp Robber and other Stories" in the Title column is different from the typical single-title entries in the table.
+   - The value "Walter J. Black" in the Publisher column is not as common as "Harper & Brothers" publishers.
+   - Since these values are not significantly different from the majority of the table entries, this row is considered an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Year | Manufacturer   | Model               | Length (feet)    |   Quantity | Fleet Series         | Fuel Propulsion        | Powertrain                                |
+|-------------:|-------:|:---------------|:--------------------|:-----------------|-----------:|:---------------------|:-----------------------|:------------------------------------------|
+|            0 |   1996 | New Flyer      | D60                 | 60 (articulated) |         30 | 1901-1930*           | Diesel                 | Detroit Diesel Series 50\nAllison B400R   |
+|            1 |   1998 | NABI           | 416                 | 40               |        133 | 3001-3067 3101-3166* | Diesel                 | Cummins M11E\nAllison B400R               |
+|            2 |   1999 | NABI           | 40-LFW              | 40               |         44 | 4001-4044            | Diesel                 |                                           |
+|            3 |   2000 | NABI           | 40-LFW              | 40               |         23 | 7201-7223            | Diesel                 | Cummins ISM\nAllison B400R                |
+|            4 |   2000 | MCI            | D4500               | 45               |         30 | 6001-6030            | Diesel                 |                                           |
+|            5 |   2001 | MCI            | D4500               | 45               |         10 | 6031-6040            | Diesel                 |                                           |
+|            6 |   2003 | MCI            | D4500               | 45               |         39 | 6041-6079            | Diesel                 |                                           |
+|            7 |   2003 | NABI           | 40-LFW              | 40               |         46 | 4051-4090            | Diesel                 | Cummins ISL\nAllison B400R                |
+|            8 |   2003 | Van Hool       | A330                | 40               |        110 | 1001-1110            | Diesel                 | Cummins ISM\nVoith D864.3E                |
+|            9 |   2003 | Van Hool       | AG300               | 60               |         57 | 2001-2057            | Diesel                 | Cummins ISM\nVoith D864.3E                |
+|           10 |   2005 | Van Hool       | A300FC              | 40               |          3 | FC1-FC3              | Hydrogen               |                                           |
+|           11 |   2006 | Van Hool       | A300K               | 30               |         50 | 5001-5050            | Diesel                 | Cummins ISB\nVoith D864.3E                |
+|           12 |   2007 | Van Hool       | AG300               | 60               |         10 | 2101-2110            | Diesel                 | Cummins ISL\nVoith D864.3E                |
+|           13 |   2007 | Van Hool       | AG300               | 60               |         15 | 2151-2165            | Diesel                 | Cummins ISM\nVoith D864.3E                |
+|           14 |   2008 | Van Hool       | A300L               | 40               |         27 | 1201-1227            | Diesel                 | Cummins ISL\nVoith D864.5                 |
+|           15 |   2008 | Van Hool       | A300K               | 30               |          1 | 5099                 | Diesel-electric hybrid |                                           |
+|           16 |   2008 | Van Hool       | A300K               | 30               |         39 | 5101-5139            | Diesel                 | Cummins ISB\nVoith D854.5                 |
+|           17 |   2010 | Van Hool       | AG300               | 60               |          9 | 2191-2199            | Diesel                 | Cummins ISL\nVoith D864.5                 |
+|           18 |   2010 | Van Hool       | A300L FC            | 40               |         12 | FC4-FC16             | Hydrogen               |                                           |
+|           19 |   2013 | Gillig         | Low-floor Advantage | 40               |         65 | 1301-1365            | Diesel                 | Cummins ISL 280 HP \nAllison B400 6-speed |
+|           20 |   2013 | New Flyer      | Xcelsior D60        | 60               |         23 | 2201-2223            | Diesel                 | Cummins ISL 330 HP\nAllison B400 6-speed  |
+|           21 |   2013 | Gillig         | Low-floor Advantage | 40               |         55 | 6101-6155            | Diesel                 | Cummins ISL 280 HP\nAllison B400 6-speed  |
+
+Generated Reasoning SQL: Explanation: To determine the manufacturer(s) listed the least on the chart, we need to count the occurrences of each manufacturer and identify the one(s) with the lowest count. We will group the data by the "Manufacturer" column and then count the number of occurrences for each manufacturer.
+
+SQL: 
+SELECT "Manufacturer", COUNT(*) AS manufacturer_count
+FROM T
+GROUP BY "Manufacturer"
+ORDER BY manufacturer_count
+LIMIT 1;
+Generated Final SQL: SELECT "Manufacturer", COUNT(*) AS manufacturer_count FROM T GROUP BY "Manufacturer" ORDER BY manufacturer_count LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Manufacturer   |   manufacturer_count |
+|:---------------|---------------------:|
+| Gillig         |                    2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: AC Transit
+SQL: SELECT "Manufacturer", COUNT(*) AS manufacturer_count FROM T GROUP BY "Manufacturer" ORDER BY manufacturer_count LIMIT 1;
+
+SQL Execution Result:
+Manufacturer | manufacturer_count
+Gillig | 2
+
+Question: which manufacturer(s) is/are listed the least on this chart?
+A: To find the answer to this question, let’s think step by step.
+Prediction: gillig
+[Gold Answer] new flyer,gillig
+

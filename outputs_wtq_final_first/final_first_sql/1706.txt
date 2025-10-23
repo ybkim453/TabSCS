@@ -1,0 +1,134 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. **Pick #**
+   - Data type: Numeric
+   - 4 representative example values: 154, 155, 157, 161
+   - Role: Identifier for the draft pick number of the player
+
+2. **Player**
+   - Data type: Categorical
+   - 4 representative example values: Mitch Lamoureux, Mike Sturgeon, Petri Skriko, Armel Parisee
+   - Role: Descriptor for the name of the player
+
+3. **Position**
+   - Data type: Categorical
+   - 4 representative example values: Centre, Defence, Right Wing
+   - Role: Descriptor for the playing position of the player
+
+4. **Nationality**
+   - Data type: Categorical
+   - 4 representative example values: Canada, Finland
+   - Role: Descriptor for the nationality of the player
+
+5. **NHL team**
+   - Data type: Categorical
+   - 4 representative example values: Pittsburgh Penguins, Edmonton Oilers, Vancouver Canucks, Boston Bruins
+   - Role: Descriptor for the NHL team the player is associated with
+
+6. **College/junior/club team**
+   - Data type: Categorical
+   - 4 representative example values: Oshawa Generals (OMJHL), Kelowna Buckaroos (BCJHL), Saipa (Finland), Chicoutimi Saguenéens (QMJHL)
+   - Role: Descriptor for the college, junior, or club team the player is affiliated with
+
+**Outlier Row Analysis:**
+
+1. **Row 0 (Pick # = 154, Player = Mitch Lamoureux, Position = Centre, Nationality = Canada, NHL team = Pittsburgh Penguins, College/junior/club team = Oshawa Generals (OMJHL))**
+   - This row does not contain any distinctive values that make it an outlier. All the values are typical for the table, so it is an ordinary row.
+
+2. **Row 6 (Pick # = 157, Player = Petri Skriko, Position = Right Wing, Nationality = Finland, NHL team = Vancouver Canucks, College/junior/club team = Saipa (Finland))**
+   - This row also does not have any unique values that set it apart from the rest of the table. It is an ordinary row.
+
+3. **Row 9 (Pick # = 162, Player = Dale DeGray, Position = Defence, Nationality = Canada, NHL team = Calgary Flames, College/junior/club team = Oshawa Generals (OMJHL))**
+   - Similar to the previous rows, this row contains typical values and is not an outlier. It is an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Pick # | Player          | Position   | Nationality   | NHL team              | College/junior/club team                    |
+|-------------:|---------:|:----------------|:-----------|:--------------|:----------------------|:--------------------------------------------|
+|            0 |      148 | Dan McFall      | Defence    | United States | Winnipeg Jets         | Buffalo Jr. Sabres (NAJHL)                  |
+|            1 |      149 | Rick Zombo      | Defence    | United States | Detroit Red Wings     | Austin Mavericks (USHL)                     |
+|            2 |      150 | Tony Arima      | Left Wing  | Finland       | Colorado Rockies      | Jokerit (Finland)                           |
+|            3 |      151 | Denis Dore      | Right Wing | Canada        | Hartford Whalers      | Chicoutimi Saguenéens (QMJHL)               |
+|            4 |      152 | Gaetan Duchesne | Left Wing  | Canada        | Washington Capitals   | Quebec Remparts (QMJHL)                     |
+|            5 |      153 | Richard Turmel  | Defence    | Canada        | Toronto Maple Leafs   | Shawinigan Cataractes (QMJHL)               |
+|            6 |      154 | Mitch Lamoureux | Centre     | Canada        | Pittsburgh Penguins   | Oshawa Generals (OMJHL)                     |
+|            7 |      155 | Mike Sturgeon   | Defence    | Canada        | Edmonton Oilers       | Kelowna Buckaroos (BCJHL)                   |
+|            8 |      156 | Ari Lahteenmaki | Right Wing | Finland       | New York Rangers      | HIFK (Finland)                              |
+|            9 |      157 | Petri Skriko    | Right Wing | Finland       | Vancouver Canucks     | Saipa (Finland)                             |
+|           10 |      158 | Andre Cote      | Right Wing | Canada        | Quebec Nordiques      | Quebec Remparts (QMJHL)                     |
+|           11 |      159 | Johan Mellstrom | Left Wing  | Sweden        | Chicago Black Hawks   | Falun (Sweden)                              |
+|           12 |      160 | Kari Kanervo    | Centre     | Finland       | Minnesota North Stars | TPS (Finland)                               |
+|           13 |      161 | Armel Parisee   | Defence    | Canada        | Boston Bruins         | Chicoutimi Saguenéens (QMJHL)               |
+|           14 |      162 | Dale DeGray     | Defence    | Canada        | Calgary Flames        | Oshawa Generals (OMJHL)                     |
+|           15 |      163 | Steve Taylor    | Left Wing  | United States | Philadelphia Flyers   | Providence College (ECAC)                   |
+|           16 |      164 | Gates Orlando   | Centre     | Canada        | Buffalo Sabres        | Providence College (ECAC)                   |
+|           17 |      165 | Dan Brennan     | Left Wing  | Canada        | Los Angeles Kings     | University of North Dakota (WCHA)           |
+|           18 |      166 | Paul Gess       | Left Wing  | United States | Montreal Canadiens    | Bloomington Jefferson High School (USHS-MN) |
+|           19 |      167 | Alain Vigneault | Defence    | Canada        | St. Louis Blues       | Trois-Rivières Draveurs (QMJHL)             |
+|           20 |      168 | Bill Dowd       | Defence    | Canada        | New York Islanders    | Ottawa 67's (OMJHL)                         |
+
+Generated Reasoning SQL: To determine if there were more picks from Canada or Finland, we need to count the number of rows where the "Nationality" column is either Canada or Finland. 
+Since the summary indicates that the "Nationality" column is categorical, we can directly filter based on these two values.
+SQL: 
+select "Nationality", count(*) as total_picks 
+from T 
+where "Nationality" = 'Canada' or "Nationality" = 'Finland'
+group by "Nationality";
+Generated Final SQL: select "Nationality", count(*) as total_picks from T where "Nationality" = 'Canada' or "Nationality" = 'Finland' group by "Nationality";
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+| Nationality   |   total_picks |
+|:--------------|--------------:|
+| Canada        |            12 |
+| Finland       |             4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1981 NHL Entry Draft
+SQL: select "Nationality", count(*) as total_picks from T where "Nationality" = 'Canada' or "Nationality" = 'Finland' group by "Nationality";
+
+Nationality | total_picks
+Canada | 12
+Finland | 4
+Question: were there more picks from canada or finland?
+A: To find the answer to this question, let’s think step by step.
+Prediction: canada
+[Gold Answer] canada
+

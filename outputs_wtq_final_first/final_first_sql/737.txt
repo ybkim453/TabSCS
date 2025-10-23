@@ -1,0 +1,114 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Position:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 6, 8
+   - Role of the column: Identifier for the position held by the officer
+
+2. Officer:
+   - Data type: Categorical
+   - 4 representative example values: Lord High Chancellor, Lord President of the Council, Lord Great Chamberlain, Earl Marshal
+   - Role of the column: Descriptor for the officer's title
+
+3. Current Officers:
+   - Data type: Categorical
+   - 4 representative example values: The Rt Hon Chris Grayling, MP, The Rt Hon Nick Clegg, MP, The Marquess of Cholmondeley, The Duke of Norfolk
+   - Role of the column: Descriptor for the current officers holding the positions
+
+4. Superseded by:
+   - Data type: Categorical
+   - 4 representative example values: nan, Lord High Treasurer, Master of the Horse, Lord Chamberlain
+   - Role of the column: Descriptor for the officer who will supersede the current officer
+
+5. Royal Household:
+   - Data type: Categorical
+   - 4 representative example values: nan, Lord Chamberlain, Master of the Horse, HRH The Duke of Edinburgh
+   - Role of the column: Descriptor for the officer's role within the Royal Household
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are all "nan", which indicates missing data. This row is an ordinary row and does not require special handling.
+
+2. Row 5:
+   - The values in this row are "Lord High Treasurer" and "Lord Chamberlain", which are different from the majority of the table. This row is an outlier as it represents a change in position from Lord Great Chamberlain to Lord High Treasurer.
+
+3. Row 7:
+   - The values in this row are "Master of the Horse" and "nan", which are consistent with the majority of the table. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Position | Officer                       | current officers                 | superseded by       | Royal Household     |
+|-------------:|-----------:|:------------------------------|:---------------------------------|:--------------------|:--------------------|
+|            0 |          1 | Lord High Steward             | vacant                           | Justiciar           | Lord Steward        |
+|            1 |          2 | Lord High Chancellor          | The Rt Hon Chris Grayling MP     |                     |                     |
+|            2 |          3 | Lord High Treasurer           | in commission                    |                     |                     |
+|            3 |          4 | Lord President of the Council | The Rt Hon Nick Clegg MP         |                     |                     |
+|            4 |          5 | Lord Privy Seal               | The Rt Hon Andrew Lansley CBE MP |                     |                     |
+|            5 |          6 | Lord Great Chamberlain        | The Marquess of Cholmondeley     | Lord High Treasurer | Lord Chamberlain    |
+|            6 |          7 | Lord High Constable           | vacant                           | Earl Marshal        | Master of the Horse |
+|            7 |          8 | Earl Marshal                  | The Duke of Norfolk              |                     | Master of the Horse |
+|            8 |          9 | Lord High Admiral             | HRH The Duke of Edinburgh        |                     |                     |
+
+Generated Reasoning SQL: Explanation: To find the officer listed previous to "Lord High Admiral", we need to look at the "Officer" column and find the entry that comes before "Lord High Admiral" based on the numeric order of the "Position" column. We will need to compare the positions of the officers to determine the one listed before "Lord High Admiral".
+
+SQL: 
+SELECT "Officer"
+FROM T
+WHERE "Position" = (SELECT "Position" FROM T WHERE "Officer" = 'Lord High Admiral') - 1;
+Generated Final SQL: SELECT "Officer" FROM T WHERE "Position" = (SELECT "Position" FROM T WHERE "Officer" = 'Lord High Admiral') - 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Officer      |
+|:-------------|
+| Earl Marshal |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Great Officer of State
+SQL: SELECT "Officer" FROM T WHERE "Position" = (SELECT "Position" FROM T WHERE "Officer" = 'Lord High Admiral') - 1;
+
+Officer
+Earl Marshal
+Question: what officer is listed previous to lord high admiral?
+A: To find the answer to this question, let’s think step by step.
+Prediction: earl marshal
+[Gold Answer] earl marshal
+

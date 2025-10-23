@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Place
+   - Data type: Categorical
+   - 4 representative example values: Backer, Dendron, Ga-Ramokgopha, Sekgosese
+   - Role: Identifier for the geographical location
+
+2. Code
+   - Data type: Numeric
+   - 4 representative example values: 91101, 91103, 91104, 91108
+   - Role: Identifier for the specific area code
+
+3. Area (km2)
+   - Data type: Numeric
+   - 4 representative example values: 0.34, 2.98, 11.22, 349.99
+   - Role: Measure of the geographical area in square kilometers
+
+4. Population
+   - Data type: Numeric
+   - 4 representative example values: 1,217, 1,885, 15,806, 46,749
+   - Role: Measure of the population count in the area
+
+5. Most spoken language
+   - Data type: Categorical
+   - 4 representative example values: Northern Sotho, Northern Sotho, Northern Sotho, Northern Sotho
+   - Role: Descriptor for the most commonly spoken language in the area
+
+**Outlier Row Analysis:**
+
+1. Row 8 (Soekmekaar)
+   - The population value of 217 is significantly lower compared to the other rows in the table.
+   - This makes the row an outlier as it deviates from the typical population counts in the dataset.
+
+2. Row 6 (Sekhokho)
+   - The area value of 1.24 is relatively small compared to the other areas in the table.
+   - This makes the row an outlier as it stands out in terms of geographical size.
+
+3. Row 2 (Dendron)
+   - The area value of 2.98 is not significantly different from the other areas in the table.
+   - This row contains ordinary values and does not qualify as a distinctive outlier.

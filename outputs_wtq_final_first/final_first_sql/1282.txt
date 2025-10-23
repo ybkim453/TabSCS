@@ -1,0 +1,125 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 2009-10, 2006-07, 1999-00, 1998-99
+   - Role: Identifier for the specific season of the footballer's performance
+
+2. Footballer
+   - Data type: Categorical
+   - 4 representative example values: Katlego Mphela, Godfrey Sapula, Siyabonga Nomvethe, Roger Feutmba
+   - Role: Descriptor for the name of the footballer
+
+3. Club
+   - Data type: Categorical
+   - 4 representative example values: Mamelodi Sundowns, Kaizer Chiefs, Bush Bucks
+   - Role: Descriptor for the club the footballer belongs to
+
+4. Position
+   - Data type: Categorical
+   - 4 representative example values: FW, MF
+   - Role: Descriptor for the playing position of the footballer
+
+5. Nationality
+   - Data type: Categorical
+   - 4 representative example values: South Africa, Cameroon, Zimbabwe
+   - Role: Descriptor for the nationality of the footballer
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values for Season, Footballer, Club, Position, and Nationality are all consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 16:
+   - The values for Season, Footballer, Club, Position, and Nationality are all consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 0:
+   - The values for Season, Footballer, Club, Position, and Nationality are all consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Season   | Footballer         | Club              | Position   | Nationality   |
+|-------------:|:---------|:-------------------|:------------------|:-----------|:--------------|
+|            0 | 2012-13  | Itumeleng Khune    | Kaizer Chiefs     | GK         | South Africa  |
+|            1 | 2011-12  | Siyabonga Nomvethe | Moroka Swallows   | FW         | South Africa  |
+|            2 | 2010-11  | Thulani Serero     | Ajax Cape Town    | MF         | South Africa  |
+|            3 | 2009-10  | Katlego Mphela     | Mamelodi Sundowns | FW         | South Africa  |
+|            4 | 2008-09  | Teko Modise        | Orlando Pirates   | MF         | South Africa  |
+|            5 | 2007-08  | Itumeleng Khune    | Kaizer Chiefs     | GK         | South Africa  |
+|            6 | 2006-07  | Godfrey Sapula     | Mamelodi Sundowns | MF         | South Africa  |
+|            7 | 2005-06  | Surprise Moriri    | Mamelodi Sundowns | MF         | South Africa  |
+|            8 | 2004-05  | Sandile Ndlovu     | Dynamos           | FW         | South Africa  |
+|            9 | 2003-04  | Tinashe Nengomasha | Kaizer Chiefs     | MF         | Zimbabwe      |
+|           10 | 2002-03  | Moeneeb Josephs    | Ajax Cape Town    | GK         | South Africa  |
+|           11 | 2001-02  | Jabu Pule          | Kaizer Chiefs     | MF         | South Africa  |
+|           12 | 2000-01  | Benjani Mwaruwari  | Jomo Cosmos       | FW         | Zimbabwe      |
+|           13 | 1999-00  | Siyabonga Nomvethe | Kaizer Chiefs     | FW         | South Africa  |
+|           14 | 1998-99  | Roger Feutmba      | Mamelodi Sundowns | MF         | Cameroon      |
+|           15 | 1997-98  | Raphael Chukwu     | Mamelodi Sundowns | FW         | Nigeria       |
+|           16 | 1996-97  | Wilfred Mugeyi     | Bush Bucks        | FW         | Zimbabwe      |
+
+Generated Reasoning SQL: To determine the last year a midfielder (Position = 'MF') won the PSL Players' Player of the Season award, we need to find the maximum value of the "Season" column where the "Position" is 'MF'.
+Since the "Season" column is categorical and represents the specific season, we can filter rows based on the "Position" column to find the desired information.
+SQL: 
+SELECT MAX("Season") 
+FROM T 
+WHERE "Position" = 'MF';
+Generated Final SQL: SELECT MAX("Season") FROM T WHERE "Position" = 'MF';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| MAX("Season")   |
+|:----------------|
+| 2010-11         |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: PSL Players' Player of the Season
+SQL: SELECT MAX("Season") FROM T WHERE "Position" = 'MF';
+
+MAX("Season")
+2010-11
+Question: last year a mf won?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2010-11
+[Gold Answer] 2010-11
+

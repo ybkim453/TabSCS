@@ -1,0 +1,147 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Numeric
+   - 4 representative example values: 3, NC, Ret, Ret
+   - Role: Descriptor indicating the position of the driver in the race.
+
+2. No:
+   - Data type: Numeric
+   - 4 representative example values: 28, 16, 18, 12
+   - Role: Identifier for the driver.
+
+3. Driver:
+   - Data type: Categorical
+   - 4 representative example values: Stefan Johansson, Patrick Tambay, Thierry Boutsen, Ayrton Senna
+   - Role: Descriptor identifying the driver.
+
+4. Constructor:
+   - Data type: Categorical
+   - 4 representative example values: Ferrari, Lola-Ford, Arrows-BMW, Lotus-Renault
+   - Role: Descriptor indicating the constructor of the car.
+
+5. Laps:
+   - Data type: Numeric
+   - 4 representative example values: 81, 70, 50, 43
+   - Role: Measure indicating the number of laps completed.
+
+6. Time/Retired:
+   - Data type: Categorical
+   - 4 representative example values: + 1 Lap, Not Classified, Engine, Engine
+   - Role: Descriptor indicating the reason for retiring or the time difference.
+
+7. Grid:
+   - Data type: Numeric
+   - 4 representative example values: 12, 17, 22, 3
+   - Role: Measure indicating the starting grid position.
+
+8. Points:
+   - Data type: Numeric
+   - 4 representative example values: 4, nan, nan, nan
+   - Role: Measure indicating the points earned by the driver.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "3" in Pos and "Stefan Johansson" in Driver are not distinctive as they are ordinary data.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 2:
+   - The value "Ret" in Pos and "Thierry Boutsen" in Driver are not distinctive as they are ordinary data.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 10:
+   - The value "NC" in Pos and "Patrick Tambay" in Driver are not distinctive as they are ordinary data.
+   - This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Pos   |   No | Driver             | Constructor            |   Laps | Time/Retired   |   Grid |   Points |
+|-------------:|:------|-----:|:-------------------|:-----------------------|-------:|:---------------|-------:|---------:|
+|            0 | 1     |    1 | Alain Prost        | McLaren-TAG            |     82 | 1:54:20.388    |      4 |        9 |
+|            1 | 2     |    6 | Nelson Piquet      | Williams-Honda         |     82 | + 4.205        |      2 |        6 |
+|            2 | 3     |   28 | Stefan Johansson   | Ferrari                |     81 | + 1 Lap        |     12 |        4 |
+|            3 | 4     |    3 | Martin Brundle     | Tyrrell-Renault        |     81 | + 1 Lap        |     16 |        3 |
+|            4 | 5     |    4 | Philippe Streiff   | Tyrrell-Renault        |     80 | Out of Fuel    |     10 |        2 |
+|            5 | 6     |   11 | Johnny Dumfries    | Lotus-Renault          |     80 | + 2 Laps       |     14 |        1 |
+|            6 | 7     |   25 | René Arnoux        | Ligier-Renault         |     79 | + 3 Laps       |      5 |      nan |
+|            7 | 8     |   26 | Philippe Alliot    | Ligier-Renault         |     79 | + 3 Laps       |      8 |      nan |
+|            8 | 9     |   14 | Jonathan Palmer    | Zakspeed               |     77 | + 5 Laps       |     21 |      nan |
+|            9 | 10    |   19 | Teo Fabi           | Benetton-BMW           |     77 | + 5 Laps       |     13 |      nan |
+|           10 | NC    |   16 | Patrick Tambay     | Lola-Ford              |     70 | Not Classified |     17 |      nan |
+|           11 | Ret   |    5 | Nigel Mansell      | Williams-Honda         |     63 | Tyre           |      1 |      nan |
+|           12 | Ret   |    7 | Riccardo Patrese   | Brabham-BMW            |     63 | Electrical     |     19 |      nan |
+|           13 | Ret   |    2 | Keke Rosberg       | McLaren-TAG            |     62 | Tyre           |      7 |      nan |
+|           14 | NC    |   22 | Allen Berg         | Osella-Alfa Romeo      |     61 | Not Classified |     26 |      nan |
+|           15 | Ret   |    8 | Derek Warwick      | Brabham-BMW            |     57 | Brakes         |     20 |      nan |
+|           16 | Ret   |   17 | Christian Danner   | Arrows-BMW             |     52 | Engine         |     24 |      nan |
+|           17 | Ret   |   18 | Thierry Boutsen    | Arrows-BMW             |     50 | Engine         |     22 |      nan |
+|           18 | Ret   |   12 | Ayrton Senna       | Lotus-Renault          |     43 | Engine         |      3 |      nan |
+|           19 | Ret   |   23 | Andrea de Cesaris  | Minardi-Motori Moderni |     40 | Mechanical     |     11 |      nan |
+|           20 | Ret   |   20 | Gerhard Berger     | Benetton-BMW           |     40 | Engine         |      6 |      nan |
+|           21 | Ret   |   29 | Huub Rothengatter  | Zakspeed               |     29 | Suspension     |     23 |      nan |
+|           22 | Ret   |   15 | Alan Jones         | Lola-Ford              |     16 | Engine         |     15 |      nan |
+|           23 | Ret   |   24 | Alessandro Nannini | Minardi-Motori Moderni |     10 | Accident       |     18 |      nan |
+|           24 | Ret   |   21 | Piercarlo Ghinzani | Osella-Alfa Romeo      |      2 | Transmission   |     25 |      nan |
+|           25 | Ret   |   27 | Michele Alboreto   | Ferrari                |      0 | Collision      |      9 |      nan |
+
+Generated Reasoning SQL: To find the number of drivers who had the constructor "Tyrrell-Renault", we need to count the distinct drivers associated with this constructor.
+The summary indicates that the "Constructor" column is categorical and the "Driver" column contains the names of the drivers.
+We will filter rows where "Constructor" = 'Tyrrell-Renault' and count the distinct values in the "Driver" column.
+SQL: select count(distinct "Driver") from T where "Constructor" = 'Tyrrell-Renault';
+Generated Final SQL: select count(distinct "Driver") from T where "Constructor" = 'Tyrrell-Renault';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(distinct "Driver") |
+|---------------------------:|
+|                          2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1986 Australian Grand Prix
+SQL: select count(distinct "Driver") from T where "Constructor" = 'Tyrrell-Renault';
+
+count(distinct "Driver")
+2
+Question: how many drivers had the constructor tyrell-renault?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

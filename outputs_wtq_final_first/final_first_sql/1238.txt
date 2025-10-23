@@ -1,0 +1,103 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1982, 1984, 1986, 1987
+   - Role: Identifier for the year in which the song was released.
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Thanks to You, Thin Line, Say It Again, Send It C.O.D.
+   - Role: Descriptor for the name of the song.
+
+3. Label:
+   - Data type: Categorical
+   - 4 representative example values: Becket, Power House, Spring, New Image
+   - Role: Descriptor for the record label associated with the song.
+
+4. Hot Black Singles:
+   - Data type: Categorical
+   - 4 representative example values: #44, ―
+   - Role: Measure of the song's ranking on the Hot Black Singles chart.
+
+5. Club Play Singles:
+   - Data type: Categorical
+   - 4 representative example values: #1, ―
+   - Role: Measure of the song's ranking on the Club Play Singles chart.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The values in the "Hot Black Singles" and "Club Play Singles" columns are numeric rankings (#44 and #1) which are significantly different from the missing values (―) in the corresponding columns of other rows. This makes row 1 an outlier.
+
+2. Row 3:
+   - Similar to row 1, the values in the "Hot Black Singles" and "Club Play Singles" columns are numeric rankings (#44 and #1) which are distinct from the missing values (―) in other rows. This makes row 3 an outlier.
+
+3. Row 6:
+   - The values in the "Hot Black Singles" and "Club Play Singles" columns are missing (―) which is consistent with the majority of the table. Therefore, row 6 is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Name                       | Label       | Hot Black Singles   | Club Play Singles   |
+|-------------:|-------:|:---------------------------|:------------|:--------------------|:--------------------|
+|            0 |   1982 | "He's Gonna Take You Home" | Becket      | ―                   | ―                   |
+|            1 |   1982 | "Thanks to You"            | Becket      | #44                 | #1                  |
+|            2 |   1983 | "I Need You Now"           | Jive        | ―                   | ―                   |
+|            3 |   1984 | "Thin Line"                | Power House | ―                   | ―                   |
+|            4 |   1986 | "Say It Again"             | Spring      | ―                   | ―                   |
+|            5 |   1986 | "Say It Again"             | Spring      | ―                   | ―                   |
+|            6 |   1987 | "Send It C.O.D."           | New Image   | ―                   | ―                   |
+
+Generated Reasoning SQL: Explanation: The summary provides information about the columns in the table, including the "Year" column which is numeric and represents the year the song was released. The "Name" column is categorical and contains the name of the song. To find Sinnamon's only hit of 1984, we need to filter rows where "Name" = Sinnamon and "Year" = 1984.
+
+SQL: select "Name" from T where "Name" = 'Sinnamon' and cast("Year" as integer) = 1984;
+Generated Final SQL: select "Name" from T where "Name" = 'Sinnamon' and cast("Year" as integer) = 1984;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Sinnamon (row_number, Year, Name, Label, Hot Black Singles, Club Play Singles)
+
+row_number | Year | Name | Label | Hot Black Singles | Club Play Singles
+0 | 1982 | "He's Gonna Take You Home" | Becket | ― | ―
+1 | 1982 | "Thanks to You" | Becket | #44 | #1
+2 | 1983 | "I Need You Now" | Jive | ― | ―
+3 | 1984 | "Thin Line" | Power House | ― | ―
+4 | 1986 | "Say It Again" | Spring | ― | ―
+5 | 1986 | "Say It Again" | Spring | ― | ―
+6 | 1987 | "Send It C.O.D." | New Image | ― | ―
+Question: what is sinnamon's only hit of 1984?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the row that corresponds to Sinnamon's hit in 1984.  
+From the summary, we know that the "Name" column contains the titles of the songs.  
+Looking at the full table, we see that the only entry for Sinnamon in 1984 is "Thin Line" by Power House.  
+Therefore, the only hit of Sinnamon in 1984 is "Thin Line" by Power House.
+
+Final Answer: Thin Line
+[Fallback] Prediction: thin line
+[Gold Answer] "thin line"
+

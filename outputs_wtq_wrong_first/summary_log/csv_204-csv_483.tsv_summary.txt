@@ -1,0 +1,25 @@
+**Column Analysis:**
+
+1. Model
+   - Data type: Categorical
+   - 4 representative example values: Škoda Felicia, Škoda Octavia, Škoda Yeti, Škoda Rapid
+   - Role: Identifier for the car model
+
+2. 1991 - 2013
+   - Data type: Numeric
+   - 4 representative example values: 172,000, 210,000, 261,000, 336,334
+   - Role: Measure of the number of units sold for each year
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Škoda Felicia)
+   - The values for 2001 and 2002 are marked as "-" which indicates missing data.
+   - This row is an outlier because it has missing data for consecutive years, making it different from the majority of the table which has data for those years.
+
+2. Row 0 (Škoda Octavia)
+   - The values for 1991, 1995, and 1996 are marked as "-" which indicates missing data.
+   - This row is an outlier because it has missing data for multiple years, making it different from the majority of the table which has data for those years.
+
+3. Row 8 (Total)
+   - The values for 2011 and 2012 are significantly lower compared to the surrounding years.
+   - This row is an outlier because it has unusually low values for those years, deviating from the increasing trend seen in the rest of the table.

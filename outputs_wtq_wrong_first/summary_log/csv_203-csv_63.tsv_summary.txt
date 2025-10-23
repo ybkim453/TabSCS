@@ -1,0 +1,55 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: July 7, July 31, September 20, October 4
+   - Role: Identifier for the date of the match
+
+2. Team:
+   - Data type: Categorical
+   - 4 representative example values: Gent, Genk, Anderlecht
+   - Role: Descriptor for the team participating in the match
+
+3. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Intertoto Cup, Champions League, UEFA Cup
+   - Role: Descriptor for the competition in which the match took place
+
+4. Round:
+   - Data type: Categorical
+   - 4 representative example values: Round 2, Qual. Round 2, Round 1, Round of 32
+   - Role: Descriptor for the round of the competition
+
+5. Leg:
+   - Data type: Categorical
+   - 4 representative example values: Leg 1, Leg 2
+   - Role: Descriptor for the leg of the match (Home or Away)
+
+6. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Cliftonville, Sarajevo, Rapid Wien, Tottenham Hotspur
+   - Role: Descriptor for the opponent team
+
+7. Location:
+   - Data type: Categorical
+   - 4 representative example values: Jules Ottenstadion, Cristal Arena, Constant Vanden Stock Stadium, Gerhard Hanappi Stadium
+   - Role: Descriptor for the location of the match
+
+8. Score:
+   - Data type: Categorical
+   - 4 representative example values: 2-0, 1-2, 1-1, 2-1
+   - Role: Measure of the match score
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The values for Round (Group Stage) and Leg (Match 3, Home) are different from the majority of the table.
+   - This row is an outlier as it represents a different stage of the competition compared to the other rows.
+
+2. Row 0 (Index 0):
+   - The values for Date (July 7), Team (Gent), Competition (Intertoto Cup), and Leg (Leg 1, Home) are not significantly different from other rows.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 18 (Index 18):
+   - The values for Date (February 13), Team (Anderlecht), Competition (UEFA Cup), and Score (2-1) are consistent with other rows.
+   - This row is an ordinary row and does not require special handling.

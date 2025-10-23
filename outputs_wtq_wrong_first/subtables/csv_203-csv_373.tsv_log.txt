@@ -1,0 +1,18 @@
+
+JSONL 파일에서 인덱스 1370 처리 중: datasets/wtq_wrong.jsonl
+
+JSONL 파일에서 내부 idx=1370 처리 중: datasets/wtq_wrong.jsonl
+  테이블 크기: 24행 5열
+  컬럼 'Rank' 분석 중...
+  컬럼 'Diver' 분석 중...
+  컬럼 'Preliminary\nPoints' 분석 중...
+  컬럼 'Preliminary\nRank' 분석 중...
+  컬럼 'Final\nPoints' 분석 중...
+  특이값 행 선택: 행 7 (컬럼 'Final\nPoints', 유사도: 0.6447)
+  특이값 행 선택: 행 16 (컬럼 'Preliminary\nPoints', 유사도: 0.6708)
+  특이값 행 선택: 행 4 (컬럼 'Diver', 유사도: 0.5825)
+  정상값 행 선택: 행 22 (평균 유사도: 0.6865)
+  정상값 행 선택: 행 18 (평균 유사도: 0.6846)
+  정상값 행 선택: 행 20 (평균 유사도: 0.6845)
+  최종 선택된 행 (원본 순서): [4, 7, 16, 18, 20, 22] (총 6개)
+  서브테이블 크기: 7줄

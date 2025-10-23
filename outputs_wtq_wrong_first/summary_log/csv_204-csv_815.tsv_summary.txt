@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Model
+   - Data type: Categorical
+   - 4 representative example values: Volkswagen Polo 1.4 TDI BLUEMOTION, Fiat 500 1.3 JTD POP, Hyundai i30 1.6 5D M5, Peugeot 607 HDI 2.2 5DR 6SPM P
+   - Role: Identifier
+
+2. Fuel Type
+   - Data type: Categorical
+   - 4 representative example values: diesel, petrol
+   - Role: Descriptor
+
+3. mpg (US gallons)
+   - Data type: Numeric
+   - 4 representative example values: 62, 56, 37.9, 36.7
+   - Role: Measure
+
+4. L/100 km
+   - Data type: Numeric
+   - 4 representative example values: 3.8, 4.2, 6.2, 6.4
+   - Role: Measure
+
+5. NZ Rating (Stars)
+   - Data type: Numeric
+   - 4 representative example values: 5.5, 4.5
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 54 (Volkswagen Touran 103KW TDI 6DSG)
+   - The values for mpg (34.6) and L/100 km (6.8) are significantly lower compared to the other rows in the table, making this row an outlier in terms of fuel efficiency.
+
+2. Row 0 (Volkswagen Polo 1.4 TDI BLUEMOTION)
+   - The values for mpg (62) and L/100 km (3.8) are exceptionally high, indicating superior fuel efficiency compared to the majority of the table. This makes it an outlier in terms of fuel efficiency.
+
+3. Row 4 (BMW 535D SEDAN 6A 4D 3.0L)
+   - Similar to row 54, the values for mpg (34.6) and L/100 km (6.8) are lower than the average, making this row an outlier in terms of fuel efficiency.

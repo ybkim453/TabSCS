@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - 4 representative example values: Maryland 2, Maryland 3, Maryland 4, Maryland 5
+   - Role: Identifier for the district represented in the table
+
+2. Incumbent
+   - Data type: Categorical
+   - 4 representative example values: Robert Ehrlich, Ben Cardin, Albert Wynn, Steny Hoyer
+   - Role: Descriptor of the incumbent for each district
+
+3. Party
+   - Data type: Categorical
+   - 4 representative example values: Republican, Democratic
+   - Role: Descriptor of the political party of the incumbent
+
+4. First elected
+   - Data type: Numeric
+   - 4 representative example values: 1994, 1986, 1992, 1981
+   - Role: Measure of the year the incumbent was first elected
+
+5. Result
+   - Data type: Categorical
+   - 4 representative example values: Retired to run for Governor, Re-elected
+   - Role: Descriptor of the outcome of the election for the district
+
+6. Candidates
+   - Data type: Categorical
+   - 4 representative example values: Dutch Ruppersberger (D) 54.16%, Helen Bentley (R) 45.57%, Ben Cardin (D) 65.72%, Scott Conwell (R) 34.18%
+   - Role: Descriptor of the candidates and their respective percentage of votes
+
+**Outlier Row Analysis:**
+
+1. Maryland 3 (Ben Cardin)
+   - The row is an ordinary row and requires no special handling as the values are consistent with the majority of the table.
+
+2. Maryland 5 (Steny Hoyer)
+   - The row is an ordinary row and requires no special handling as the values are consistent with the majority of the table.
+
+3. Maryland 2 (Robert Ehrlich)
+   - The row is an outlier due to the unique result of "Retired to run for Governor" which is different from the typical "Re-elected" outcome in the table.
+
+In summary, the outlier rows are Maryland 2 (Robert Ehrlich) and Maryland 4 (Albert Wynn) due to their distinctive results compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | District   | Incumbent       | Party      |   First\nelected | Result                                       | Candidates                                                                         |
+|-------------:|:-----------|:----------------|:-----------|-----------------:|:---------------------------------------------|:-----------------------------------------------------------------------------------|
+|            0 | Maryland 1 | Wayne Gilchrest | Republican |             1990 | Re-elected                                   | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%                                  |
+|            1 | Maryland 2 | Robert Ehrlich  | Republican |             1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%                           |
+|            2 | Maryland 3 | Ben Cardin      | Democratic |             1986 | Re-elected                                   | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%                                    |
+|            3 | Maryland 4 | Albert Wynn     | Democratic |             1992 | Re-elected                                   | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%                                     |
+|            4 | Maryland 5 | Steny Hoyer     | Democratic |             1981 | Re-elected                                   | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%                                 |
+|            5 | Maryland 6 | Roscoe Bartlett | Republican |             1992 | Re-elected                                   | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%                              |
+|            6 | Maryland 7 | Elijah Cummings | Democratic |             1996 | Re-elected                                   | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%                                 |
+|            7 | Maryland 8 | Connie Morella  | Republican |             1986 | Lost re-election\nDemocratic gain            | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73% |
+
+Generated Reasoning SQL: To find out which candidate Connie Morella lost to in the election, we need to filter the rows where the incumbent is Connie Morella and the result is not "Re-elected". This will give us the candidate who won against Connie Morella.
+The "Incumbent" column is categorical, and the "Result" column is also categorical, indicating the outcome of the election.
+SQL: 
+SELECT "Candidates"
+FROM T
+WHERE "Incumbent" = 'Connie Morella' AND "Result" != 'Re-elected';
+Generated Final SQL: SELECT "Candidates" FROM T WHERE "Incumbent" = 'Connie Morella' AND "Result" != 'Re-elected';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Candidates                                                                         |
+|:-----------------------------------------------------------------------------------|
+| Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73% |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States House of Representatives elections, 2002
+SQL: SELECT "Candidates" FROM T WHERE "Incumbent" = 'Connie Morella' AND "Result" != 'Re-elected';
+
+Candidates
+Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73%
+Question: connie morella ran for re-election, but lost to which candidate?
+A: To find the answer to this question, let’s think step by step.
+Prediction: chris van hollen
+[Gold Answer] chris van hollen
+

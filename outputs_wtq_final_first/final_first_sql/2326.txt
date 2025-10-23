@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Episode no.
+   - Data type: Numeric
+   - 4 representative example values: 3, 5, 6, 11
+   - Role of the column: Identifier for each episode
+
+2. Airdate
+   - Data type: Categorical
+   - 4 representative example values: 9 May 2013, 23 May 2013, 30 May 2013, 4 July 2013
+   - Role of the column: Descriptor for the date of each episode
+
+3. Viewers
+   - Data type: Numeric
+   - 4 representative example values: 885,000, 1,092,000, 1,094,000, nan
+   - Role of the column: Measure of the number of viewers for each episode
+
+4. BBC Three weekly ranking
+   - Data type: Numeric
+   - 4 representative example values: 1, nan
+   - Role of the column: Measure of the ranking of the episode on BBC Three for that week
+
+5. Multichannels rank
+   - Data type: Numeric
+   - 4 representative example values: 11, 5, 3, nan
+   - Role of the column: Measure of the ranking of the episode on multichannels
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The value for "Viewers" is "nan" which indicates missing data.
+   - This row is an outlier due to the missing data in the "Viewers" column, making it different from the majority of the table.
+
+2. Row 10:
+   - The values for "BBC Three weekly ranking" and "Multichannels rank" are "nan" which indicates missing data.
+   - This row is an outlier due to the missing data in these columns, making it different from the majority of the table.
+
+3. Row 2:
+   - The values for "Viewers" and "Multichannels rank" are within the range of other values in the table.
+   - These values are not distinctive and are ordinary within the context of the table, so this row is not an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Episode no. | Airdate             | Viewers   | BBC Three weekly ranking   | Multichannels rank   |
+|-------------:|--------------:|:--------------------|:----------|:---------------------------|:---------------------|
+|            0 |             1 | 2013-04-25 00:00:00 | 979000    | 2                          | 9                    |
+|            1 |             2 | 2013-05-02 00:00:00 | 978000    | 1                          | 11                   |
+|            2 |             3 | 2013-05-09 00:00:00 | 885000    | 1                          | 11                   |
+|            3 |             4 | 2013-05-16 00:00:00 | 880000    | 1                          | 13                   |
+|            4 |             5 | 2013-05-23 00:00:00 | 1092000   | 1                          | 5                    |
+|            5 |             6 | 2013-05-30 00:00:00 | 1094000   | 1                          | 3                    |
+|            6 |             7 | 2013-06-06 00:00:00 | 975000    | 2                          | 6                    |
+|            7 |             8 | 2013-06-13 00:00:00 | 840000    | 5                          | 19                   |
+|            8 |             9 | 2013-06-20 00:00:00 | 1204000   | 6                          | 9                    |
+|            9 |            10 | 2013-06-27 00:00:00 | 730000    | N/A                        | 28                   |
+|           10 |            11 | 2013-07-04 00:00:00 | N/A       | N/A                        | N/A                  |
+|           11 |            12 | 2013-07-11 00:00:00 |           |                            |                      |
+
+Generated Reasoning SQL: Explanation: To find the episode with the most viewers, we need to consider the "Viewers" column, which contains numeric values representing the number of viewers for each episode. We will filter out any rows with missing or irrelevant data based on the outlier analysis. Since we are looking for the maximum viewership, we will use the MAX function on the "Viewers" column to identify the episode with the highest number of viewers.
+
+SQL: SELECT "Episode no.", "Viewers"
+FROM T
+WHERE "Viewers" IS NOT NULL
+ORDER BY CAST("Viewers" AS INTEGER) DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Episode no.", "Viewers" FROM T WHERE "Viewers" IS NOT NULL ORDER BY CAST("Viewers" AS INTEGER) DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   Episode no. |   Viewers |
+|--------------:|----------:|
+|             9 |   1204000 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Russell Howard's Good News
+SQL: SELECT "Episode no.", "Viewers" FROM T WHERE "Viewers" IS NOT NULL ORDER BY CAST("Viewers" AS INTEGER) DESC LIMIT 1;
+
+SQL Execution Result:
+Episode no. | Viewers
+9 | 1204000
+
+Question: which episode had the most viewers?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 9
+[Gold Answer] 9
+

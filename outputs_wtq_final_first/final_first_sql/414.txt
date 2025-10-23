@@ -1,0 +1,111 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Numeric
+   - Representative values: 3, 4, 5, 6
+   - Role: Identifier for the district number
+
+2. Incumbent
+   - Data type: Categorical
+   - Representative values: John Salazar, Marilyn Musgrave, Doug Lamborn, Tom Tancredo
+   - Role: Descriptor for the incumbent candidate
+
+3. 2008 Status
+   - Data type: Categorical
+   - Representative values: Re-election, Open
+   - Role: Descriptor for the status of the candidate in 2008
+
+4. Democratic
+   - Data type: Categorical
+   - Representative values: John Salazar, Betsy Markey, Hal Bidlack, Hank Eng
+   - Role: Descriptor for the Democratic candidate
+
+5. Republican
+   - Data type: Categorical
+   - Representative values: Wayne Wolf, Marilyn Musgrave, Doug Lamborn, Mike Coffman
+   - Role: Descriptor for the Republican candidate
+
+**Outlier Row Analysis:**
+
+1. Row 1 (District 3, John Salazar)
+   - The incumbent is the same as the Democratic candidate, which is not common in the table.
+   - This makes the row an outlier as it is unusual for the incumbent to also be the Democratic candidate.
+
+2. Row 5 (District 7, Ed Perlmutter)
+   - The Republican candidate is John W. Lerew, which is different from the majority of the table where the Republican candidate is different from the incumbent.
+   - This makes the row an outlier as the Republican candidate is not the typical candidate for this district.
+
+3. Row 3 (District 5, Doug Lamborn)
+   - The incumbent is also the Republican candidate, similar to Row 1.
+   - This makes the row an outlier as it is uncommon for the incumbent to also be the Republican candidate.
+
+=== Full Table Preview ===
+|   row_number |   District | Incumbent        | 2008 Status   | Democratic    | Republican       |
+|-------------:|-----------:|:-----------------|:--------------|:--------------|:-----------------|
+|            0 |          1 | Diana DeGette    | Re-election   | Diana DeGette | George Lilly     |
+|            1 |          2 | Mark Udall       | Open          | Jared Polis   | Scott Starin     |
+|            2 |          3 | John Salazar     | Re-election   | John Salazar  | Wayne Wolf       |
+|            3 |          4 | Marilyn Musgrave | Re-election   | Betsy Markey  | Marilyn Musgrave |
+|            4 |          5 | Doug Lamborn     | Re-election   | Hal Bidlack   | Doug Lamborn     |
+|            5 |          6 | Tom Tancredo     | Open          | Hank Eng      | Mike Coffman     |
+|            6 |          7 | Ed Perlmutter    | Re-election   | Ed Perlmutter | John W. Lerew    |
+
+Generated Reasoning SQL: The summary indicates that the "2008 Status" column contains categorical values such as "Re-election" and "Open". To find the number of districts with open elections, we count the rows where "2008 Status" = 'Open'.
+SQL: select count("District") from T where "2008 Status" = 'Open';
+Generated Final SQL: select count("District") from T where "2008 Status" = 'Open';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("District") |
+|--------------------:|
+|                   2 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States House of Representatives elections in Colorado, 2008
+SQL: select count("District") from T where "2008 Status" = 'Open';
+
+count("District")
+2
+Question: how many districts had open elections?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2
+[Gold Answer] 2
+

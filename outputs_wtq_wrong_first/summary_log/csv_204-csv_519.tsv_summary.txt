@@ -1,0 +1,22 @@
+**Column 1: Preceded by Alfred Scott**
+- Data type: Categorical
+- 4 representative example values: New office, Preceded by Sir Frederick Cawley, New creation
+- Role of the column: Descriptor indicating the individual who held the position before the current individual
+
+**Column 2: Member of Parliament for Ashton-under-Lyne 1910–1916**
+- Data type: Categorical
+- 4 representative example values: Minister of Information 1918, Chancellor of the Duchy of Lancaster 1918, Minister of Aircraft Production 1940–1941
+- Role of the column: Descriptor indicating the specific role or position held by the individual
+
+**Column 3: Succeeded by Albert Stanley**
+- Data type: Categorical
+- 4 representative example values: The Lord Downham, John Moore-Brabazon, Oliver Lyttelton as Minister of Production
+- Role of the column: Descriptor indicating the individual who succeeded the current individual in the position
+
+**Outlier Row Analysis:**
+1. Row 1: New office, Minister of Information 1918, The Lord Downham
+   - The values in this row are different from the typical pattern of preceding and succeeding individuals, making it an outlier.
+2. Row 4: New office, Minister of War Production 1942, Oliver Lyttelton as Minister of Production
+   - The values in this row are different from the majority of the table, indicating an outlier status.
+3. Row 7: New creation, Baronet(of Cherkley) 1916–1964, John William Maxwell Aitken
+   - The values in this row are consistent with the ordinary entries in the table, making it an ordinary row and not a special outlier.

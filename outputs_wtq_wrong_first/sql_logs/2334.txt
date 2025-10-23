@@ -1,0 +1,138 @@
+=== Table ID ===
+csv/203-csv/380.tsv
+
+=== Question ===
+what total number of matches did team usa win after match no. 27?
+
+=== Sub-table Preview ===
+|   Match no. | Match Type   | Team Europe       | Score     | Team USA     | Progressive Total   |
+|------------:|:-------------|:------------------|:----------|:-------------|:--------------------|
+|          26 | Singles      | Osku Palermaa     | 217 - 244 | Tommy Jones  | 14 - 12             |
+|          27 | Singles      | Paul Moor         | 210 - 199 | Tim Mack     | 15 - 12             |
+|          29 | Singles      | Tomas Leandersson | 176 - 258 | Bill Hoffman | 15 - 14             |
+|          30 | Baker        | Team Europe       | 202 - 203 | Team USA     | 15 - 15             |
+|          31 | Singles      | Tore Torgersen    | 202 - 264 | Chris Barnes | 15 - 16             |
+|          32 | Singles      | Osku Palermaa     | 196 - 235 | Tommy Jones  | 15 - 17             |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Match no.:
+   - Data type: Numeric
+   - 4 representative example values: 26, 27, 29, 30
+   - Role: Identifier for each match
+
+2. Match Type:
+   - Data type: Categorical
+   - 4 representative example values: Singles, Baker
+   - Role: Descriptor of the type of match
+
+3. Team Europe:
+   - Data type: Categorical
+   - 4 representative example values: Osku Palermaa, Paul Moor, Tomas Leandersson, Team Europe
+   - Role: Descriptor of the European team participating in the match
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 217 - 244, 210 - 199, 176 - 258, 202 - 203
+   - Role: Measure of the scores for each team in the match
+
+5. Team USA:
+   - Data type: Categorical
+   - 4 representative example values: Tommy Jones, Tim Mack, Bill Hoffman, Team USA
+   - Role: Descriptor of the USA team participating in the match
+
+6. Progressive Total:
+   - Data type: Categorical
+   - 4 representative example values: 14 - 12, 15 - 12, 15 - 14, 15 - 15
+   - Role: Measure of the progressive total score between Team Europe and Team USA
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for Tomas Leandersson (European team) and Bill Hoffman (USA team) have a significant score difference of 176 - 258, which is notably different from the other scores in the table. This row is an outlier due to the large score gap.
+
+2. Row 4:
+   - The Baker match type with a very close score of 202 - 203 is not common in the table where most matches have larger score differences. This row is an outlier due to the unique nature of the Baker match type and the close score.
+
+3. Row 2:
+   - The match between Paul Moor and Tim Mack with a score of 210 - 199 is relatively close compared to other singles matches. However, this is still an ordinary row as the score difference is not significantly different from other matches in the table.
+
+=== Full Table Preview ===
+|   row_number |   Match no. | Match Type   | Team Europe       | Score     | Team USA     | Progressive Total   |
+|-------------:|------------:|:-------------|:------------------|:----------|:-------------|:--------------------|
+|            0 |          25 | Singles      | Mika Koivuniemi   | 217 - 279 | Chris Barnes | 14 - 11             |
+|            1 |          26 | Singles      | Osku Palermaa     | 217 - 244 | Tommy Jones  | 14 - 12             |
+|            2 |          27 | Singles      | Paul Moor         | 210 - 199 | Tim Mack     | 15 - 12             |
+|            3 |          28 | Singles      | Tore Torgersen    | 206 - 275 | Doug Kent    | 15 - 13             |
+|            4 |          29 | Singles      | Tomas Leandersson | 176 - 258 | Bill Hoffman | 15 - 14             |
+|            5 |          30 | Baker        | Team Europe       | 202 - 203 | Team USA     | 15 - 15             |
+|            6 |          31 | Singles      | Tore Torgersen    | 202 - 264 | Chris Barnes | 15 - 16             |
+|            7 |          32 | Singles      | Osku Palermaa     | 196 - 235 | Tommy Jones  | 15 - 17             |
+
+Generated Reasoning SQL: Explanation: To determine the total number of matches that Team USA won after match number 27, we need to filter the rows where Team USA won. The "Progressive Total" column provides the score progression between Team Europe and Team USA, where the first number represents Team Europe's score and the second number represents Team USA's score. We can compare the scores to identify the matches won by Team USA. Since the question specifies after match number 27, we will filter rows with a match number greater than 27.
+
+SQL: 
+SELECT COUNT("row_number") AS total_matches_won
+FROM T
+WHERE "Team USA" = 'Team USA' 
+AND CAST(SUBSTR("Progressive Total", 7, 2) AS INTEGER) > CAST(SUBSTR("Progressive Total", 4, 2) AS INTEGER)
+AND CAST("Match no." AS INTEGER) > 27;
+Generated Final SQL: SELECT COUNT("row_number") AS total_matches_won FROM T WHERE "Team USA" = 'Team USA' AND CAST(SUBSTR("Progressive Total", 7, 2) AS INTEGER) > CAST(SUBSTR("Progressive Total", 4, 2) AS INTEGER) AND CAST("Match no." AS INTEGER) > 27;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_matches_won |
+|--------------------:|
+|                   1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2007 Weber Cup
+SQL: SELECT COUNT("row_number") AS total_matches_won FROM T WHERE "Team USA" = 'Team USA' AND CAST(SUBSTR("Progressive Total", 7, 2) AS INTEGER) > CAST(SUBSTR("Progressive Total", 4, 2) AS INTEGER) AND CAST("Match no." AS INTEGER) > 27;
+
+SQL Execution Result:
+total_matches_won
+1
+
+Question: what total number of matches did team usa win after match no. 27?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1
+[Gold Answer] 5
+

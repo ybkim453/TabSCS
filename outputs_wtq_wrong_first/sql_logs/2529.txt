@@ -1,0 +1,130 @@
+=== Table ID ===
+csv/203-csv/155.tsv
+
+=== Question ===
+who are the only two representatives to not be democrats?
+
+=== Sub-table Preview ===
+| Representative        | Party   | Home Town/City   |   District |
+|:----------------------|:--------|:-----------------|-----------:|
+| Trey Martinez Fischer | D       | San Antonio      |        116 |
+| Joe Farias            | D       | San Antonio      |        118 |
+| Ruth McClendon        | D       | San Antonio      |        120 |
+| Joe Straus            | R       | San Antonio      |        121 |
+| Mike Villarreal       | D       | San Antonio      |        123 |
+| Jose Menendez         | D       | San Antonio      |        124 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Representative
+   - Data type: Categorical
+   - 4 representative example values: Trey Martinez Fischer, Joe Farias, Ruth McClendon, Joe Straus
+   - Role of the column: Identifier for the representative of the district.
+
+2. Party
+   - Data type: Categorical
+   - 4 representative example values: D, R
+   - Role of the column: Descriptor indicating the political party of the representative.
+
+3. Home Town/City
+   - Data type: Categorical
+   - 4 representative example values: San Antonio
+   - Role of the column: Descriptor specifying the hometown or city of the representative.
+
+4. District
+   - Data type: Numeric
+   - 4 representative example values: 116, 118, 120, 121
+   - Role of the column: Identifier for the district number.
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Mike Villarreal | D | San Antonio | 123):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+2. Row 4 (Joe Straus | R | San Antonio | 121):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+3. Row 2 (Joe Farias | D | San Antonio | 118):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Representative        | Party   | Home Town/City   |   District |
+|-------------:|:----------------------|:--------|:-----------------|-----------:|
+|            0 | Trey Martinez Fischer | D       | San Antonio      |        116 |
+|            1 | Philip Cortez         | D       | San Antonio      |        117 |
+|            2 | Joe Farias            | D       | San Antonio      |        118 |
+|            3 | Roland Gutierrez      | D       | San Antonio      |        119 |
+|            4 | Ruth McClendon        | D       | San Antonio      |        120 |
+|            5 | Joe Straus            | R       | San Antonio      |        121 |
+|            6 | Lyle Larson           | R       | San Antonio      |        122 |
+|            7 | Mike Villarreal       | D       | San Antonio      |        123 |
+|            8 | Jose Menendez         | D       | San Antonio      |        124 |
+|            9 | Justin Rodriguez      | D       | San Antonio      |        125 |
+
+Generated Reasoning SQL: Explanation: To identify the representatives who are not Democrats, we need to select the rows where the "Party" column is not equal to 'D'. Since the question asks for the representatives who are not Democrats, we exclude the outlier rows as they do not affect the query result.
+
+SQL: 
+SELECT "Representative"
+FROM T
+WHERE "Party" != 'D';
+Generated Final SQL: SELECT "Representative" FROM T WHERE "Party" != 'D';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Representative   |
+|:-----------------|
+| Joe Straus       |
+| Lyle Larson      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Bexar County, Texas
+SQL: SELECT "Representative" FROM T WHERE "Party" != 'D';
+
+SQL Execution Result:
+Representative
+Joe Straus
+Lyle Larson
+
+Question: who are the only two representatives to not be democrats?
+A: To find the answer to this question, let’s think step by step.
+Prediction: joe straus, lyle larson
+[Gold Answer] joe straus,lyle larson
+

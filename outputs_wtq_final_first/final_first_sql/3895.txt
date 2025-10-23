@@ -1,0 +1,190 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 9 January 1993, 13 February 1993, 22 February 1993, 13 March 1993
+   - Role: Identifier for the specific date of the match
+
+2. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Ipswich Town, Leeds United, Sheffield United, Norwich City
+   - Role: Descriptor for the opposing team
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: A, A, A, A
+   - Role: Descriptor for the location of the match (A for Away)
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: 2–1, 0–2, 0–2, 0–1
+   - Role: Measure of the match outcome
+
+5. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 15,025, 27,654, 14,628, 19,597
+   - Role: Measure of the number of spectators at the match
+
+6. Scorers:
+   - Data type: Categorical
+   - 4 representative example values: Brennan, Bernard, nan, nan, nan, Beckford
+   - Role: Descriptor for the players who scored in the match
+
+**Outlier Row Analysis:**
+
+1. Row 20:
+   - The row contains missing values for all columns except for the Date and Attendance.
+   - These missing values do not make the row distinctive as missing data is common in datasets.
+   - This row is an ordinary row and does not require special handling.
+
+2. Row 38:
+   - The row contains missing values for all columns except for the Date and Attendance.
+   - Similar to Row 20, the missing values do not make the row distinctive.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 16:
+   - The row contains missing values for all columns except for the Date, Opponent, Result, and Attendance.
+   - The missing values in this row do not make it distinctive as they are common in the dataset.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Date                | Opponent            | Venue   | Result   |   Attendance | Scorers                                             |
+|-------------:|:--------------------|:--------------------|:--------|:---------|-------------:|:----------------------------------------------------|
+|            0 | 1992-08-15 00:00:00 | Chelsea             | A       | 1–1      |        20699 | Henry                                               |
+|            1 | 1992-08-19 00:00:00 | Crystal Palace      | H       | 1–1      |        11063 | Sharp                                               |
+|            2 | 1992-08-22 00:00:00 | Nottingham Forest   | H       | 5–3      |        11632 | Adams Sharp Henry Halle Bernard                     |
+|            3 | 1992-08-26 00:00:00 | Arsenal             | A       | 0–2      |        20796 |                                                     |
+|            4 | 1992-08-29 00:00:00 | Manchester City     | A       | 3–3      |        27288 | Jobson Milligan Halle                               |
+|            5 | 1992-09-01 00:00:00 | Leeds United        | H       | 2–2      |        13848 | Olney (2)                                           |
+|            6 | 1992-09-05 00:00:00 | Coventry City       | H       | 0–1      |        11254 |                                                     |
+|            7 | 1992-09-12 00:00:00 | Crystal Palace      | A       | 2–2      |        11224 | Olney Sharp                                         |
+|            8 | 1992-09-19 00:00:00 | Ipswich Town        | H       | 4–2      |        11150 | Marshall Sharp Halle Henry                          |
+|            9 | 1992-09-26 00:00:00 | Blackburn Rovers    | A       | 0–2      |        18393 |                                                     |
+|           10 | 1992-10-04 00:00:00 | Everton             | H       | 1–0      |        13013 | Jobson                                              |
+|           11 | 1992-10-17 00:00:00 | Sheffield Wednesday | A       | 1–2      |        24485 | Milligan                                            |
+|           12 | 1992-10-24 00:00:00 | Aston Villa         | H       | 1–1      |        13457 | Olney                                               |
+|           13 | 1992-10-31 00:00:00 | Southampton         | A       | 0–1      |        10827 |                                                     |
+|           14 | 1992-11-09 00:00:00 | Norwich City        | H       | 2–3      |        11081 | Sharp Marshall                                      |
+|           15 | 1992-11-21 00:00:00 | Manchester United   | A       | 0–3      |        33497 |                                                     |
+|           16 | 1992-11-28 00:00:00 | Middlesbrough       | H       | 4–1      |        12401 | Halle Pointon Sharp Adams                           |
+|           17 | 1992-12-05 00:00:00 | Queens Park Rangers | A       | 2–3      |        11804 | Adams Olney                                         |
+|           18 | 1992-12-12 00:00:00 | Wimbledon           | A       | 2–5      |         3386 | Brennan Milligan                                    |
+|           19 | 1992-12-19 00:00:00 | Tottenham Hotspur   | H       | 2–1      |        11735 | Sharp Olney                                         |
+|           20 | 1993-01-09 00:00:00 | Ipswich Town        | A       | 2–1      |        15025 | Brennan Bernard                                     |
+|           21 | 1993-01-16 00:00:00 | Blackburn Rovers    | H       | 0–1      |        13742 |                                                     |
+|           22 | 1993-01-23 00:00:00 | Coventry City       | A       | 0–3      |        10544 |                                                     |
+|           23 | 1993-01-26 00:00:00 | Manchester City     | H       | 0–1      |        14903 |                                                     |
+|           24 | 1993-01-30 00:00:00 | Nottingham Forest   | A       | 0–2      |        21240 |                                                     |
+|           25 | 1993-02-06 00:00:00 | Chelsea             | H       | 3–1      |        11772 | Henry Adams Brennan                                 |
+|           26 | 1993-02-13 00:00:00 | Leeds United        | A       | 0–2      |        27654 |                                                     |
+|           27 | 1993-02-20 00:00:00 | Arsenal             | H       | 0–1      |        12311 |                                                     |
+|           28 | 1993-02-22 00:00:00 | Sheffield United    | A       | 0–2      |        14628 |                                                     |
+|           29 | 1993-02-27 00:00:00 | Everton             | A       | 2–2      |        18025 | Adams (2 1 pen)                                     |
+|           30 | 1993-03-09 00:00:00 | Manchester United   | H       | 1–0      |        17106 | Adams                                               |
+|           31 | 1993-03-13 00:00:00 | Norwich City        | A       | 0–1      |        19597 |                                                     |
+|           32 | 1993-03-20 00:00:00 | Queens Park Rangers | H       | 2–2      |        10946 | Henry Adams                                         |
+|           33 | 1993-03-22 00:00:00 | Middlesbrough       | A       | 3–2      |        12290 | Bernard Olney Ritchie                               |
+|           34 | 1993-04-03 00:00:00 | Wimbledon           | H       | 6–2      |        11606 | Fashanu (own goal) Bernard Olney (2) Adams Beckford |
+|           35 | 1993-04-07 00:00:00 | Sheffield Wednesday | H       | 1–1      |        12312 | Pointon                                             |
+|           36 | 1993-04-10 00:00:00 | Liverpool           | A       | 0–1      |        36129 |                                                     |
+|           37 | 1993-04-13 00:00:00 | Sheffield United    | H       | 1–1      |        14795 | Ritchie                                             |
+|           38 | 1993-04-17 00:00:00 | Tottenham Hotspur   | A       | 1–4      |        26663 | Beckford                                            |
+|           39 | 1993-05-02 00:00:00 | Aston Villa         | A       | 1–0      |        37247 | Henry                                               |
+|           40 | 1993-05-05 00:00:00 | Liverpool           | H       | 3–2      |        15381 | Beckford Olney (2)                                  |
+|           41 | 1993-05-08 00:00:00 | Southampton         | H       | 4–3      |        14597 | Pointon Olney Ritchie Halle                         |
+
+Generated Reasoning SQL: Explanation: The summary provides information about the columns in the table, including "Date", "Opponent", "Scorers", and other relevant columns. To find the player who scored in the same game as Olney on September 12, 1992, against Crystal Palace, we need to identify the row corresponding to that specific match and then extract the names of all scorers in that row. We will filter the rows based on the date, opponent, and scorer columns to find the relevant information.
+
+SQL: 
+select "Scorers" 
+from T 
+where "Date" = '1992-09-12' 
+and "Opponent" = 'Crystal Palace' 
+and "Scorers" != 'Olney';
+Generated Final SQL: select "Scorers" from T where "Date" = '1992-09-12' and "Opponent" = 'Crystal Palace' and "Scorers" != 'Olney';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1992–93 Oldham Athletic A.F.C. season (row_number, Date, Opponent, Venue, Result, Attendance, Scorers)
+
+row_number | Date | Opponent | Venue | Result | Attendance | Scorers
+0 | 1992-08-15 00:00:00 | Chelsea | A | 1–1 | 20699 | Henry
+1 | 1992-08-19 00:00:00 | Crystal Palace | H | 1–1 | 11063 | Sharp
+2 | 1992-08-22 00:00:00 | Nottingham Forest | H | 5–3 | 11632 | Adams Sharp Henry Halle Bernard
+3 | 1992-08-26 00:00:00 | Arsenal | A | 0–2 | 20796 | None
+4 | 1992-08-29 00:00:00 | Manchester City | A | 3–3 | 27288 | Jobson Milligan Halle
+5 | 1992-09-01 00:00:00 | Leeds United | H | 2–2 | 13848 | Olney (2)
+6 | 1992-09-05 00:00:00 | Coventry City | H | 0–1 | 11254 | None
+7 | 1992-09-12 00:00:00 | Crystal Palace | A | 2–2 | 11224 | Olney Sharp
+8 | 1992-09-19 00:00:00 | Ipswich Town | H | 4–2 | 11150 | Marshall Sharp Halle Henry
+9 | 1992-09-26 00:00:00 | Blackburn Rovers | A | 0–2 | 18393 | None
+10 | 1992-10-04 00:00:00 | Everton | H | 1–0 | 13013 | Jobson
+11 | 1992-10-17 00:00:00 | Sheffield Wednesday | A | 1–2 | 24485 | Milligan
+12 | 1992-10-24 00:00:00 | Aston Villa | H | 1–1 | 13457 | Olney
+13 | 1992-10-31 00:00:00 | Southampton | A | 0–1 | 10827 | None
+14 | 1992-11-09 00:00:00 | Norwich City | H | 2–3 | 11081 | Sharp Marshall
+15 | 1992-11-21 00:00:00 | Manchester United | A | 0–3 | 33497 | None
+16 | 1992-11-28 00:00:00 | Middlesbrough | H | 4–1 | 12401 | Halle Pointon Sharp Adams
+17 | 1992-12-05 00:00:00 | Queens Park Rangers | A | 2–3 | 11804 | Adams Olney
+18 | 1992-12-12 00:00:00 | Wimbledon | A | 2–5 | 3386 | Brennan Milligan
+19 | 1992-12-19 00:00:00 | Tottenham Hotspur | H | 2–1 | 11735 | Sharp Olney
+20 | 1993-01-09 00:00:00 | Ipswich Town | A | 2–1 | 15025 | Brennan Bernard
+21 | 1993-01-16 00:00:00 | Blackburn Rovers | H | 0–1 | 13742 | None
+22 | 1993-01-23 00:00:00 | Coventry City | A | 0–3 | 10544 | None
+23 | 1993-01-26 00:00:00 | Manchester City | H | 0–1 | 14903 | None
+24 | 1993-01-30 00:00:00 | Nottingham Forest | A | 0–2 | 21240 | None
+25 | 1993-02-06 00:00:00 | Chelsea | H | 3–1 | 11772 | Henry Adams Brennan
+26 | 1993-02-13 00:00:00 | Leeds United | A | 0–2 | 27654 | None
+27 | 1993-02-20 00:00:00 | Arsenal | H | 0–1 | 12311 | None
+28 | 1993-02-22 00:00:00 | Sheffield United | A | 0–2 | 14628 | None
+29 | 1993-02-27 00:00:00 | Everton | A | 2–2 | 18025 | Adams (2 1 pen)
+30 | 1993-03-09 00:00:00 | Manchester United | H | 1–0 | 17106 | Adams
+31 | 1993-03-13 00:00:00 | Norwich City | A | 0–1 | 19597 | None
+32 | 1993-03-20 00:00:00 | Queens Park Rangers | H | 2–2 | 10946 | Henry Adams
+33 | 1993-03-22 00:00:00 | Middlesbrough | A | 3–2 | 12290 | Bernard Olney Ritchie
+34 | 1993-04-03 00:00:00 | Wimbledon | H | 6–2 | 11606 | Fashanu (own goal) Bernard Olney (2) Adams Beckford
+35 | 1993-04-07 00:00:00 | Sheffield Wednesday | H | 1–1 | 12312 | Pointon
+36 | 1993-04-10 00:00:00 | Liverpool | A | 0–1 | 36129 | None
+37 | 1993-04-13 00:00:00 | Sheffield United | H | 1–1 | 14795 | Ritchie
+38 | 1993-04-17 00:00:00 | Tottenham Hotspur | A | 1–4 | 26663 | Beckford
+39 | 1993-05-02 00:00:00 | Aston Villa | A | 1–0 | 37247 | Henry
+40 | 1993-05-05 00:00:00 | Liverpool | H | 3–2 | 15381 | Beckford Olney (2)
+41 | 1993-05-08 00:00:00 | Southampton | H | 4–3 | 14597 | Pointon Olney Ritchie Halle
+Question: which other player scored in the same game as olney on september 12, 1992 against crystal palace?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the row for the game on September 12, 1992, against Crystal Palace. Looking at the full table, we see that row 7 corresponds to this match.
+
+Next, we need to check the Scorers column for this row to see who scored in that game along with Olney. From the full table, we see that Olney and Sharp were the scorers in that match.
+
+Therefore, the player who scored in the same game as Olney on September 12, 1992, against Crystal Palace was Sharp.
+
+Final Answer: Sharp
+[Fallback] Prediction: sharp
+[Gold Answer] sharp
+

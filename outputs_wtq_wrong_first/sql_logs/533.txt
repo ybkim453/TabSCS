@@ -1,0 +1,165 @@
+=== Table ID ===
+csv/204-csv/857.tsv
+
+=== Question ===
+what is the date of the game with the largest attendance?
+
+=== Sub-table Preview ===
+| Eps #   |   Prod # | Title                           | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Air Date   |
+|:--------|---------:|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------|
+| 1       |        2 | Menace Of The Mole Men          | The Fantastic Four are off to carry out their experiments on a remote island. The Mole Man, however, has been waiting for them and traps them in a radiation field and plans to submerge the world’s largest cities. The Fantastic Four escape but the Mole Man traps them again. They manage to escape their separate ways. They foil Mole Man’s domination and escape the island once and for all.                                                                                                                                                                                                                    | 9/9/1967   |
+| 5b      |        4 | The Red Ghost                   | Reed is competing with Dr. Kragoff in race to the moon for astronomical research. During the launch, Dr. Kragoff and his primate crew have developed some reverse energy powers. Dr. Kragoff is now transparent and becomes the Red Ghost. Red Ghost kidnaps Susan after counter attacking. She escapes and thwarts Red Ghost’s attempt to eliminate her companions. Using a special device, Reed turns Red Ghost into a plastic statue.                                                                                                                                                                                | 10/7/1967  |
+| 6       |        9 | Prisoners Of Planet X           | A UFO has been sighted. The pilot abducts the Fantastic Four from the Science Center and is setting course for Planet X. There, their dictator Kurrgo requests the Fantastic Four save their planet from another planet knocked off its orbit. Reed manages to formulate a working plan to save the population. While the plan is in process, Kurrgo has other ideas. However, Reed tricks Kurrgo and leaves him on the exploding planet while the micro-sized population and the Fantastic Four get away to safety.                                                                                                    | 10/14/1967 |
+| 7       |       14 | It Started On Yancy Street      | The Fantastic Four face a bunch of old rivals in Yancy Street, but their old enemy Red Ghost and his primates show up and capture them. During their voyage to the moon, the four turn the tables, but Red Ghost gets away and the four are dumped on the moon. They barely manage to get to a source of oxygen which is the Watcher’s laboratory. Using one of the Watcher’s machines, Reed brings down Red Ghost’s ship. Susan gets Dr. Kragoff banished into a trans-nitron machine. Reed uses that machine to get back to Earth.                                                                                    | 10/21/1967 |
+| 10      |       12 | Demon in the Deep               | The Fantastic Four beat the criminal forces working for Dr. Gamma, and blow up the island with its secret weapons. While escaping, Dr. Gamma is infected by the radiation levels in the seabed and morphs into some creature. Johnny is flustered with being moved around and quits from the Fantastic Four. In the town Johnny goes to, there have been sightings of the Gamma Ray. Johnny defeats the Gamma Ray by himself, but he comes back with the hideous giant sea monster Giganto. Johnny rejoins the Fantastic Four. Ben succeeds in eliminating the sea monster. The Gamma Ray is defeated but not finished. | 11/11/1967 |
+| 16      |       17 | Blastaar, The Living Bomb-Burst | On a remote planet, its inhabitants are fighting against Blastaar and are able to banish him. Reed and Johnny enter the dangerous space zone via dimensional transport. As they depart, Blastaar escapes and follows them. Blastaar is too powerful for the four to handle. They lure Blastaar into an evacuated atomic power plant, where they use some atomic matter to put him in a coma. They eject him through the dimensional transport back into the space zone.                                                                                                                                                 | 1/6/1968   |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **Eps #**
+   - Data type: Categorical
+   - 4 representative example values: 1, 5b, 6, 7
+   - Role: Identifier for the episode number
+
+2. **Prod #**
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 9, 14
+   - Role: Identifier for the production number
+
+3. **Title**
+   - Data type: Text
+   - 4 representative example values: Menace Of The Mole Men, The Red Ghost, Prisoners Of Planet X, It Started On Yancy Street
+   - Role: Descriptor for the title of each episode
+
+4. **Summary**
+   - Data type: Text
+   - 4 representative example values: (See above for examples)
+   - Role: Descriptor providing a summary of each episode
+
+5. **Air Date**
+   - Data type: Date
+   - 4 representative example values: 9/9/1967, 10/7/1967, 10/14/1967, 10/21/1967
+   - Role: Measure indicating the date when the episode aired
+
+### Outlier Row Analysis:
+
+1. **Row 16 (Blastaar, The Living Bomb-Burst)**
+   - The values in this row are consistent with the majority of the table and do not contain any ambiguous markers. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. **Row 7 (It Started On Yancy Street)**
+   - The values in this row are also consistent with the majority of the table and do not contain any ambiguous markers. This row is an ordinary entry and does not stand out as an outlier.
+
+3. **Row 5 (The Red Ghost)**
+   - The values in this row are ordinary and do not deviate significantly from the rest of the table. This row is not distinct from the majority and is considered an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Date                | Opponents              | Venue   | Result   | Scorers                          |   Attendance |
+|-------------:|:--------------------|:-----------------------|:--------|:---------|:---------------------------------|-------------:|
+|            0 | 1920-08-28 00:00:00 | Reading                | H       | 0–1      |                                  |        14500 |
+|            1 | 1920-09-01 00:00:00 | Bristol Rovers         | A       | 2–3      | Walker Wolstenholme              |        10000 |
+|            2 | 1920-09-04 00:00:00 | Reading                | A       | 0–4      |                                  |        10000 |
+|            3 | 1920-09-09 00:00:00 | Bristol Rovers         | H       | 0–2      |                                  |         8000 |
+|            4 | 1920-09-11 00:00:00 | Plymouth Argyle        | A       | 1–5      | Wolstenholme                     |        12000 |
+|            5 | 1920-09-18 00:00:00 | Plymouth Argyle        | H       | 0–0      |                                  |         8000 |
+|            6 | 1920-09-25 00:00:00 | Exeter City            | A       | 1–0      | Wolstenholme                     |         8000 |
+|            7 | 1920-10-02 00:00:00 | Exeter City            | H       | 2–0      | Wolstenholme 2                   |         8000 |
+|            8 | 1920-10-09 00:00:00 | Millwall               | H       | 3–1      | Devlin 2 Walker                  |        14000 |
+|            9 | 1920-10-16 00:00:00 | Millwall               | A       | 0–1      |                                  |        20000 |
+|           10 | 1920-10-21 00:00:00 | Swindon Town           | H       | 0–1      |                                  |        10000 |
+|           11 | 1920-10-23 00:00:00 | Portsmouth             | H       | 1–0      | Devlin                           |         9000 |
+|           12 | 1920-10-30 00:00:00 | Portsmouth             | A       | 2–0      | Devlin Dobson                    |        13679 |
+|           13 | 1920-11-06 00:00:00 | Gillingham             | H       | 1–0      | Wolstenholme                     |         7000 |
+|           14 | 1920-11-13 00:00:00 | Gillingham             | A       | 4–1      | Dobson Wolstenholme Blott Devlin |         8000 |
+|           15 | 1920-11-27 00:00:00 | Swindon Town           | A       | 0–5      |                                  |         7000 |
+|           16 | 1920-12-04 00:00:00 | Watford                | H       | 0–2      |                                  |         6000 |
+|           17 | 1920-12-11 00:00:00 | Watford                | A       | 1–5      | Wright                           |         7000 |
+|           18 | 1920-12-18 00:00:00 | Brentford              | A       | 2–2      | Wright Thompson                  |         6000 |
+|           19 | 1920-12-25 00:00:00 | Southend United        | H       | 1–1      | Dobson                           |         9000 |
+|           20 | 1920-12-27 00:00:00 | Southend United        | A       | 1–2      | Walker                           |        10000 |
+|           21 | 1921-01-01 00:00:00 | Brentford              | H       | 3–1      | Dobson Walker Cox                |         7500 |
+|           22 | 1921-01-13 00:00:00 | Norwich City           | H       | 2–0      | Wright Cox                       |         4000 |
+|           23 | 1921-01-22 00:00:00 | Norwich City           | A       | 0–3      |                                  |         5000 |
+|           24 | 1921-01-29 00:00:00 | Northampton Town       | H       | 1–1      | Dobson                           |         8000 |
+|           25 | 1921-02-05 00:00:00 | Northampton Town       | A       | 2–0      | Groves Wright                    |         8000 |
+|           26 | 1921-02-12 00:00:00 | Crystal Palace         | H       | 0–1      |                                  |        12000 |
+|           27 | 1921-02-19 00:00:00 | Crystal Palace         | A       | 0–2      |                                  |         7000 |
+|           28 | 1921-02-26 00:00:00 | Brighton & Hove Albion | H       | 0–4      |                                  |         8000 |
+|           29 | 1921-03-05 00:00:00 | Brighton & Hove Albion | A       | 0–1      |                                  |         8000 |
+|           30 | 1921-03-12 00:00:00 | Grimsby Town           | H       | 2–1      | Devlin Kelson                    |         8000 |
+|           31 | 1921-03-19 00:00:00 | Grimsby Town           | A       | 1–1      | Devlin                           |         9000 |
+|           32 | 1921-03-25 00:00:00 | Merthyr Town           | H       | 0–3      |                                  |        12600 |
+|           33 | 1921-03-26 00:00:00 | Queens Park Rangers    | A       | 0–2      |                                  |        10000 |
+|           34 | 1921-03-28 00:00:00 | Merthyr Town           | A       | 2–1      | Gaughan Devlin                   |         6000 |
+|           35 | 1921-04-02 00:00:00 | Queens Park Rangers    | H       | 1–3      | Devlin                           |         7500 |
+|           36 | 1921-04-09 00:00:00 | Swansea Town           | H       | 1–1      | Walker                           |         6000 |
+|           37 | 1921-04-16 00:00:00 | Swansea Town           | A       | 2–1      | Dobson Wolstenholme              |        14000 |
+|           38 | 1921-04-23 00:00:00 | Luton Town             | A       | 2–2      | Walker Devlin                    |         9000 |
+|           39 | 1921-04-30 00:00:00 | Luton Town             | H       | 2–0      | Devlin 2                         |         5000 |
+|           40 | 1921-05-02 00:00:00 | Southampton            | A       | 0–0      |                                  |         6000 |
+|           41 | 1921-05-07 00:00:00 | Southampton            | H       | 0–0      |                                  |         8000 |
+
+Generated Reasoning SQL: Explanation: To find the date of the game with the largest attendance, we need to identify the row where the "Attendance" column has the maximum value. Since the "Attendance" column is numeric, we can directly compare the values to find the maximum attendance.
+
+SQL: 
+SELECT "Date" 
+FROM T 
+WHERE "Attendance" = (SELECT MAX("Attendance") FROM T);
+Generated Final SQL: SELECT "Date" FROM T WHERE "Attendance" = (SELECT MAX("Attendance") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Date                |
+|:--------------------|
+| 1920-10-16 00:00:00 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1920–21 Newport County A.F.C. season
+SQL: SELECT "Date" FROM T WHERE "Attendance" = (SELECT MAX("Attendance") FROM T);
+
+SQL Execution Result:
+Date
+1920-10-16 00:00:00
+
+Question: what is the date of the game with the largest attendance?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1920-10-16
+[Gold Answer] 16 oct 1920
+

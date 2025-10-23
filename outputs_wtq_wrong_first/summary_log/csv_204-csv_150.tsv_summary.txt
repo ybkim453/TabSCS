@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1982, 2006, 2010, 2015
+   - Role of the column: Identifier for the year in which the supporting actor was nominated.
+
+2. Supporting Actor:
+   - Data type: Categorical
+   - 4 representative example values: Moses Gunn, Terrence Howard, Adam Rodriguez, Denzel Washington
+   - Role of the column: Describes the supporting actor who was nominated for an award.
+
+3. Motion Picture:
+   - Data type: Categorical
+   - 4 representative example values: Ragtime, Crash, I Can Do Bad All by Myself, The Hurt Locker
+   - Role of the column: Describes the motion picture for which the supporting actor was nominated.
+
+4. Nominees:
+   - Data type: Categorical
+   - 4 representative example values: nan, Ludacris-Crash, Anthony Mackie-The Hurt Locker, Danny Glover-2012
+   - Role of the column: Lists the nominees for the supporting actor award in the respective year.
+
+**Outlier Row Analysis:**
+
+1. Row 37:
+   - The row contains "NOT AWARDED" for the Supporting Actor and Motion Picture columns.
+   - This row is an outlier as it does not follow the pattern of listing actual nominees for the supporting actor award.
+
+2. Row 41:
+   - The row contains "NOT AWARDED" for the Supporting Actor and Motion Picture columns.
+   - This row is an outlier as it also does not list any actual nominees for the supporting actor award.
+
+3. Row 13:
+   - The row contains "nan" for the Nominees column.
+   - This row is an outlier as it does not provide any information about the nominees for the supporting actor award.
+
+Overall, the outlier rows 37, 41, and 13 are distinct from the majority of the table as they do not contain typical nominee information and do not follow the expected pattern of listing nominees for the supporting actor award.

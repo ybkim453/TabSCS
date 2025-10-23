@@ -1,0 +1,152 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Unnamed: 0
+   - Data type: Numeric
+   - 4 representative example values: 22, 23, 25, 33
+   - Role of the column: Identifier for the rows in the table
+
+2. Name on the Register
+   - Data type: Categorical
+   - 4 representative example values: Michael Reade House, Religious Society of Friends Meetinghouse, Rollinsford Town Hall, Gen. John Sullivan House
+   - Role of the column: Descriptor for the name of the registered entity
+
+3. Date listed
+   - Data type: Categorical
+   - 4 representative example values: February 12, 1980, February 29, 1980, March 5, 1999, November 28, 1972
+   - Role of the column: Descriptor for the date when the entity was listed
+
+4. Location
+   - Data type: Categorical
+   - 4 representative example values: 43 Main St., 141 Central Ave., 667 Main St., 23 Newmarket Rd.
+   - Role of the column: Descriptor for the physical location of the entity
+
+5. City or town
+   - Data type: Categorical
+   - 4 representative example values: Dover, Rollinsford, Durham
+   - Role of the column: Descriptor for the city or town where the entity is located
+
+6. Summary
+   - Data type: Categorical
+   - 4 representative example values: nan, Home of American Revolutionary War General John Sullivan, elected President of New Hampshire.
+   - Role of the column: Descriptor for a brief summary or information about the entity
+
+**Outlier Row Analysis:**
+
+1. Row 32 (Index 32):
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+2. Row 24 (Index 24):
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+3. Row 36 (Index 36):
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Unnamed: 0 | Name on the Register                         | Date listed                    | Location                                                                                                                           | City or town   | Summary                                                                                      |
+|-------------:|-------------:|:---------------------------------------------|:-------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:---------------|:---------------------------------------------------------------------------------------------|
+|            0 |            1 | Back River Farm                              | June 22 1984\n(#84003236)      | Bay View Rd.\n43°08′21″N 70°51′16″W﻿ / ﻿43.139167°N 70.854444°W                                                                      | Dover          |                                                                                              |
+|            1 |            2 | Canaan Chapel                                | March 11 1982\n(#82001877)     | Canaan Rd.\n43°12′09″N 71°06′04″W﻿ / ﻿43.2025°N 71.101111°W                                                                          | Barrington     |                                                                                              |
+|            2 |            3 | County Farm Bridge                           | May 21 1975\n(#75000237)       | Northwest of Dover on County Farm Rd.\n43°13′14″N 70°56′38″W﻿ / ﻿43.220556°N 70.943889°W                                             | Dover          | Over Cocheco River                                                                           |
+|            3 |            4 | Durham Historic District                     | May 31 1980\n(#80000308)       | Main St. and Newmarket Rd.\n43°07′47″N 70°55′10″W﻿ / ﻿43.129722°N 70.919444°W                                                        | Durham         |                                                                                              |
+|            4 |            5 | Farmington Town Pound                        | September 2 1993\n(#93000884)  | Northwestern side of Pound Rd. 300 ft (91 m) north of the junction of Ten Rod Rd.\n43°21′33″N 71°04′49″W﻿ / ﻿43.359167°N 71.080278°W | Farmington     |                                                                                              |
+|            5 |            6 | First Parish Church                          | March 11 1982\n(#82001696)     | 218 Central Ave.\n43°10′56″N 70°52′27″W﻿ / ﻿43.182222°N 70.874167°W                                                                  | Dover          |                                                                                              |
+|            6 |            7 | First Parish Church Site-Dover Point         | May 27 1983\n(#83001153)       | Dover Point Rd.\n43°08′26″N 70°50′21″W﻿ / ﻿43.140556°N 70.839167°W                                                                   | Dover          |                                                                                              |
+|            7 |            8 | Free Will Baptist Church                     | November 13 1980\n(#80000310)  | Ridge Top Road\n43°23′59″N 71°09′33″W﻿ / ﻿43.399722°N 71.159167°W                                                                    | New Durham     |                                                                                              |
+|            8 |            9 | Garrison Hill Park and Tower                 | September 11 1987\n(#87001413) | Abbie Sawyer Memorial Dr.\n43°12′34″N 70°52′13″W﻿ / ﻿43.209444°N 70.870278°W                                                         | Dover          |                                                                                              |
+|            9 |           10 | Green Street School                          | March 7 1985\n(#85000481)      | 104 Green St.\n43°15′23″N 70°51′50″W﻿ / ﻿43.256389°N 70.863889°W                                                                     | Somersworth    |                                                                                              |
+|           10 |           11 | William Hale House                           | November 18 1980\n(#80000309)  | 5 Hale St.\n43°11′36″N 70°52′29″W﻿ / ﻿43.193376°N 70.874858°W                                                                        | Dover          |                                                                                              |
+|           11 |           12 | Richard Hayes House                          | February 27 1986\n(#86000283)  | 184 Gonic Rd.\n43°15′38″N 70°58′44″W﻿ / ﻿43.260556°N 70.978889°W                                                                     | Rochester      |                                                                                              |
+|           12 |           13 | Jenness Farm                                 | March 2 2001\n(#01000206)      | 626 Pickering Rd.\n43°14′36″N 70°56′12″W﻿ / ﻿43.243333°N 70.936667°W                                                                 | Rochester      |                                                                                              |
+|           13 |           14 | Lehoullier Building                          | December 26 1979\n(#79000211)  | 161-169 Main St.\n43°15′31″N 70°51′46″W﻿ / ﻿43.258611°N 70.862778°W                                                                  | Somersworth    |                                                                                              |
+|           14 |           15 | Milton Town House                            | November 26 1980\n(#80000311)  | NH 125 and Town House Rd.\n43°26′27″N 70°59′05″W﻿ / ﻿43.440833°N 70.984722°W                                                         | Milton         |                                                                                              |
+|           15 |           16 | New Durham Meetinghouse and Pound            | December 8 1980\n(#80000312)   | Old Bay Rd.\n43°25′25″N 71°07′42″W﻿ / ﻿43.423611°N 71.128333°W                                                                       | New Durham     |                                                                                              |
+|           16 |           17 | New Durham Town Hall                         | November 13 1980\n(#80000313)  | Main St. and Ridge Rd.\n43°26′02″N 71°09′55″W﻿ / ﻿43.433889°N 71.165278°W                                                            | New Durham     |                                                                                              |
+|           17 |           18 | Plumer-Jones Farm                            | March 23 1979\n(#79000212)     | North of Milton on NH 125\n43°27′44″N 70°59′37″W﻿ / ﻿43.462222°N 70.993611°W                                                         | Milton         |                                                                                              |
+|           18 |           19 | Plummer Homestead                            | June 14 2002\n(#02000638)      | 1273 White Mountain Highway\n43°27′35″N 70°59′33″W﻿ / ﻿43.459722°N 70.9925°W                                                         | Milton         |                                                                                              |
+|           19 |           20 | Public Market                                | March 7 1985\n(#85000541)      | 93 Washington St.\n43°11′43″N 70°52′31″W﻿ / ﻿43.195278°N 70.875278°W                                                                 | Dover          |                                                                                              |
+|           20 |           21 | Queensbury Mill                              | April 10 1987\n(#86003362)     | 1 Market St.\n43°15′54″N 70°51′58″W﻿ / ﻿43.265°N 70.866111°W                                                                         | Somersworth    |                                                                                              |
+|           21 |           22 | Michael Reade House                          | February 12 1980\n(#80000314)  | 43 Main St.\n43°11′50″N 70°52′21″W﻿ / ﻿43.197222°N 70.8725°W                                                                         | Dover          |                                                                                              |
+|           22 |           23 | Religious Society of Friends Meetinghouse    | February 29 1980\n(#80000421)  | 141 Central Ave.\n43°11′12″N 70°52′25″W﻿ / ﻿43.186667°N 70.873611°W                                                                  | Dover          |                                                                                              |
+|           23 |           24 | Rochester Commercial and Industrial District | April 8 1983\n(#83001154)      | N. Main Wakefield Hanson and S. Main Sts. and Central Square\n43°18′11″N 70°58′34″W﻿ / ﻿43.303056°N 70.976111°W                      | Rochester      |                                                                                              |
+|           24 |           25 | Rollinsford Town Hall                        | March 5 1999\n(#99000268)      | 667 Main St.\n43°14′08″N 70°49′17″W﻿ / ﻿43.235556°N 70.821389°W                                                                      | Rollinsford    |                                                                                              |
+|           25 |           26 | St. Thomas Episcopal Church                  | June 7 1984\n(#84003241)       | 5 Hale St.\n43°11′37″N 70°52′30″W﻿ / ﻿43.193611°N 70.875°W                                                                           | Dover          |                                                                                              |
+|           26 |           27 | Salmon Falls Mill Historic District          | February 29 1980\n(#80000315)  | Front St.\n43°14′10″N 70°49′05″W﻿ / ﻿43.236111°N 70.818056°W                                                                         | Rollinsford    |                                                                                              |
+|           27 |           28 | Sawyer Building                              | May 23 1980\n(#80000316)       | 4-6 Portland St.\n43°11′48″N 70°52′21″W﻿ / ﻿43.196667°N 70.8725°W                                                                    | Dover          |                                                                                              |
+|           28 |           29 | Sawyer Woolen Mills                          | September 13 1989\n(#89001208) | 1 Mill St.\n43°10′44″N 70°52′35″W﻿ / ﻿43.178889°N 70.876389°W                                                                        | Dover          |                                                                                              |
+|           29 |           30 | Smith Chapel                                 | February 13 2013\n(#13000009)  | 45 Mill Pond Rd.\n43°07′42″N 70°55′27″W﻿ / ﻿43.128355°N 70.924292°W                                                                  | Durham         |                                                                                              |
+|           30 |           31 | Strafford County Farm                        | February 25 1981\n(#81000100)  | County Farm Rd.\n43°13′03″N 70°56′31″W﻿ / ﻿43.2175°N 70.941944°W                                                                     | Dover          |                                                                                              |
+|           31 |           32 | Strafford Union Academy                      | September 22 1983\n(#83001155) | NH 126 and NH 202A\n43°16′07″N 71°07′23″W﻿ / ﻿43.268611°N 71.123056°W                                                                | Strafford      |                                                                                              |
+|           32 |           33 | Gen. John Sullivan House                     | November 28 1972\n(#72000089)  | 23 Newmarket Rd.\n43°07′48″N 70°55′05″W﻿ / ﻿43.13°N 70.918056°W                                                                      | Durham         | Home of American Revolutionary War General John Sullivan elected President of New Hampshire. |
+|           33 |           34 | Thompson Hall                                | December 6 1996\n(#96001468)   | Off Main St. University of New Hampshire campus\n43°08′09″N 70°55′59″W﻿ / ﻿43.135833°N 70.933056°W                                   | Durham         |                                                                                              |
+|           34 |           35 | US Post Office-Dover Main                    | July 17 1986\n(#86002273)      | 133-137 Washington St.\n43°11′42″N 70°52′39″W﻿ / ﻿43.195°N 70.8775°W                                                                 | Dover          |                                                                                              |
+|           35 |           36 | US Post Office-Somersworth Main              | July 17 1986\n(#86002246)      | 2 Elm St.\n43°15′33″N 70°52′18″W﻿ / ﻿43.259167°N 70.871667°W                                                                         | Somersworth    |                                                                                              |
+|           36 |           37 | Wiswall Falls Mills Site                     | March 18 1988\n(#88000184)     | John Hatch Park\nSouth of Wiswall Road just east of the Lamprey River\n43°06′15″N 70°57′44″W﻿ / ﻿43.1043°N 70.9621°W                 | Durham         |                                                                                              |
+|           37 |           38 | Woodbury Mill                                | March 25 2013\n(#13000156)     | 1 Dover St.\n43°12′07″N 70°52′29″W﻿ / ﻿43.201985°N 70.874587°W                                                                       | Dover          |                                                                                              |
+|           38 |           39 | Woodman Institute                            | July 24 1980\n(#80000317)      | 182 Central Ave.\n43°11′20″N 70°52′28″W﻿ / ﻿43.188889°N 70.874444°W                                                                  | Dover          |                                                                                              |
+|           39 |           40 | Samuel Wyatt House                           | December 2 1982\n(#82000626)   | 7 Church St.\n43°11′30″N 70°52′31″W﻿ / ﻿43.191667°N 70.875278°W                                                                      | Dover          |                                                                                              |
+
+Generated Reasoning SQL: Explanation: To determine the number of historic places listed in the 1980s, we need to filter the "Date listed" column to include only entries from that decade. The "Date listed" column contains the year when the entity was listed, and we can extract the year from the provided date format. Since we are interested in a specific range of years, we will filter for entries where the year falls between 1980 and 1989, inclusive.
+
+SQL: 
+SELECT COUNT("Name on the Register") 
+FROM T 
+WHERE "Date listed" LIKE '%198%' ESCAPE '|';
+Generated Final SQL: SELECT COUNT("Name on the Register") FROM T WHERE "Date listed" LIKE '%198%' ESCAPE '|';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Name on the Register") |
+|--------------------------------:|
+|                              29 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: National Register of Historic Places listings in Strafford County, New Hampshire
+SQL: SELECT COUNT("Name on the Register") FROM T WHERE "Date listed" LIKE '%198%' ESCAPE '|';
+
+SQL Execution Result:
+COUNT("Name on the Register")
+29
+
+Question: how many historic places were listed in the 1980's?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 29
+[Gold Answer] 29
+

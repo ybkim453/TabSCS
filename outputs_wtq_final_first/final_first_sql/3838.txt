@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Character
+   - Data type: Categorical
+   - 4 representative example values: Green Lantern, Earth-Man, Glorith II, Dragonwing
+   - Role: Identifier for each superhero character
+
+2. Real name
+   - Data type: Categorical
+   - 4 representative example values: Rond Vidar, Kirt Niedrigh, Glorith, Marya Pai
+   - Role: Descriptor providing the real name of each superhero character
+
+3. Home world
+   - Data type: Categorical
+   - 4 representative example values: Earth, Unknown
+   - Role: Descriptor indicating the home world of each superhero character
+
+4. Membership notes
+   - Data type: Text
+   - 4 representative example values: Various membership details for each character
+   - Role: Descriptor providing information about the character's membership in the superhero group
+
+5. Powers
+   - Data type: Text
+   - 4 representative example values: Possesses a Green Lantern power ring, Super-power absorption and duplication, Manipulation of mystical energies, Fire breath and acid absorption
+   - Role: Descriptor listing the powers possessed by each superhero character
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Green Lantern):
+   - The character is the last remaining member of the Green Lantern Corps and was killed by Superboy-Prime.
+   - These unique circumstances make this row an outlier compared to the other superhero characters who are alive and not the last of their kind.
+
+2. Row 3 (Dragonwing):
+   - The character has the powers of fire breath and acid absorption.
+   - While these powers are unique compared to the other characters, they are not extraordinary within the context of superhero abilities, so this row is an ordinary entry.
+
+3. Row 9 (Ordinary row):
+   - This row does not contain any distinctive values that would make it an outlier. It provides information about Harmonia's powers and membership notes, which are consistent with the other entries.
+
+=== Full Table Preview ===
+|   row_number | Character      | Real name      | Home world   | Membership notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Powers                                      |
+|-------------:|:---------------|:---------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------|
+|            0 | Night Girl     | Lydda Jath     | Kathoon      | Pre-Crisis version first appeared in Adventure Comics #306 (March 1963).\nLegion membership first mentioned by Starman in Justice Society of America vol. 3 #6 (July 2007) and confirmed in Action Comics #860 (February 2008).                                                                                                                                                                                                                                                            | Super-strength when not in direct sunlight. |
+|            1 | Chameleon Girl | Yera Allon     | Durla        | Pre-Crisis version first appeared (impersonating Shrinking Violet) in Legion of Super-Heroes vol. 2 #286 (April 1982).\nTrue form and identity revealed in Legion of Super-Heroes vol. 2 #305 (November 1983).\nLegion membership first revealed in Action Comics #861 (March 2008).                                                                                                                                                                                                       | Shapeshifting.                              |
+|            2 | Karate Kid II  | Myg            | Lythyl       | Joined as a replacement for Val Armorr as revealed in Final Crisis: Legion of 3 Worlds #1 (October 2008) unlike his counterpart who did not join the original team prior to Crisis on Infinite Earths.\nKilled by Radiation Roy in Final Crisis: Legion of 3 Worlds #3 (April 2009).                                                                                                                                                                                                       | Mastery of all known martial arts.          |
+|            3 | Green Lantern  | Rond Vidar     | Earth        | Pre-Crisis version first appeared in Adventure Comics #349 (October 1966); granted honorary membership in Adventure Comics #360 (September 1967).\nLast remaining member of the Green Lantern Corps as revealed in Final Crisis: Legion of 3 Worlds #2 (November 2008).\nKilled in the same issue by Superboy-Prime.                                                                                                                                                                       | Possesses a Green Lantern power ring.       |
+|            4 | XS             | Jenni Ognats   | Aarok        | First appeared in Legionnaires #0 (October 1994); granddaughter of Barry Allen and first cousin of Bart Allen.\nNative of the same universe as the post-Infinite Crisis team as revealed in Final Crisis: Legion of 3 Worlds #3 (April 2009).\nJoined the Earth-247 team in Legion of Super-Heroes vol. 4 #62 (November 1994).\nJoined the post-Infinite Crisis team in Final Crisis: Legion of 3 Worlds #5 (September 2009).\nPost-Flashpoint no longer listed as a member of the Legion. | Superspeed.                                 |
+|            5 | Gates          | Ti'julk Mr'asz | Vyrga        | First appeared in Legion of Super-Heroes vol. 4 #66 (March 1995).\nJoined the Earth-247 team in Legion of Super-Heroes vol. 4 #76 (January 1996).\nJoined the post-Infinite Crisis team in Final Crisis: Legion of 3 Worlds #5 (September 2009).                                                                                                                                                                                                                                           | Creation of teleportation "gates".          |
+|            6 | Earth-Man      | Kirt Niedrigh  | Earth        | Pre-Crisis version first appeared (as "Absorbency Boy") in Superboy and the Legion of Super-Heroes #218 (July 1976).\nJoined in Legion of Super-Heroes vol. 6 #2 (August 2010).\nDied battling the Adversary in Legion of Super-Heroes vol. 6 #16 (October 2011).                                                                                                                                                                                                                          | Super-power absorption and duplication.     |
+|            7 | Comet Queen    | Grava          | Extal Colony | Pre-Crisis version first appeared in Legion of Super-Heroes vol. 2 #304 (October 1983) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                          | Space flight comet gas extrusion.           |
+|            8 | Chemical Kid   | Hadru Jamik    | Phlon        | First appeared in Legion of Super-Heroes vol. 6 #6 (December 2010) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                              | Catalyze chemical reactions.                |
+|            9 | Glorith II     | Glorith        | Unknown      | First appeared in Adventure Comics #523 (April 2011) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                                            | Manipulation of mystical energies.          |
+|           10 | Dragonwing     | Marya Pai      | Earth        | First appeared in Legion of Super-Heroes vol. 6 #6 (December 2010) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                              | Fire breath and acid absorption.            |
+|           11 | Harmonia       | Harmonia Li    | Earth        | First appeared in Legion of Super-Heroes vol. 6 #1 (July 2010).\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011).                                                                                                                                                                                                                                                                                                     | Elemental.                                  |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to identify the superhero character who first appeared as "Absorbency Boy" but later changed their identity. We can achieve this by filtering rows where the "Character" column initially equals "Absorbency Boy" and then checking the corresponding "Real name" column to see the updated identity.
+
+SQL: select "Real name" from T where "Character" = 'Absorbency Boy';
+Generated Final SQL: select "Real name" from T where "Character" = 'Absorbency Boy';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: List of Legion of Super-Heroes members (row_number, Character, Real name, Home world, Membership notes, Powers)
+
+row_number | Character | Real name | Home world | Membership notes | Powers
+0 | Night Girl | Lydda Jath | Kathoon | Pre-Crisis version first appeared in Adventure Comics #306 (March 1963).\nLegion membership first mentioned by Starman in Justice Society of America vol. 3 #6 (July 2007) and confirmed in Action Comics #860 (February 2008). | Super-strength when not in direct sunlight.
+1 | Chameleon Girl | Yera Allon | Durla | Pre-Crisis version first appeared (impersonating Shrinking Violet) in Legion of Super-Heroes vol. 2 #286 (April 1982).\nTrue form and identity revealed in Legion of Super-Heroes vol. 2 #305 (November 1983).\nLegion membership first revealed in Action Comics #861 (March 2008). | Shapeshifting.
+2 | Karate Kid II | Myg | Lythyl | Joined as a replacement for Val Armorr as revealed in Final Crisis: Legion of 3 Worlds #1 (October 2008) unlike his counterpart who did not join the original team prior to Crisis on Infinite Earths.\nKilled by Radiation Roy in Final Crisis: Legion of 3 Worlds #3 (April 2009). | Mastery of all known martial arts.
+3 | Green Lantern | Rond Vidar | Earth | Pre-Crisis version first appeared in Adventure Comics #349 (October 1966); granted honorary membership in Adventure Comics #360 (September 1967).\nLast remaining member of the Green Lantern Corps as revealed in Final Crisis: Legion of 3 Worlds #2 (November 2008).\nKilled in the same issue by Superboy-Prime. | Possesses a Green Lantern power ring.
+4 | XS | Jenni Ognats | Aarok | First appeared in Legionnaires #0 (October 1994); granddaughter of Barry Allen and first cousin of Bart Allen.\nNative of the same universe as the post-Infinite Crisis team as revealed in Final Crisis: Legion of 3 Worlds #3 (April 2009).\nJoined the Earth-247 team in Legion of Super-Heroes vol. 4 #62 (November 1994).\nJoined the post-Infinite Crisis team in Final Crisis: Legion of 3 Worlds #5 (September 2009).\nPost-Flashpoint no longer listed as a member of the Legion. | Superspeed.
+5 | Gates | Ti'julk Mr'asz | Vyrga | First appeared in Legion of Super-Heroes vol. 4 #66 (March 1995).\nJoined the Earth-247 team in Legion of Super-Heroes vol. 4 #76 (January 1996).\nJoined the post-Infinite Crisis team in Final Crisis: Legion of 3 Worlds #5 (September 2009). | Creation of teleportation "gates".
+6 | Earth-Man | Kirt Niedrigh | Earth | Pre-Crisis version first appeared (as "Absorbency Boy") in Superboy and the Legion of Super-Heroes #218 (July 1976).\nJoined in Legion of Super-Heroes vol. 6 #2 (August 2010).\nDied battling the Adversary in Legion of Super-Heroes vol. 6 #16 (October 2011). | Super-power absorption and duplication.
+7 | Comet Queen | Grava | Extal Colony | Pre-Crisis version first appeared in Legion of Super-Heroes vol. 2 #304 (October 1983) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011). | Space flight comet gas extrusion.
+8 | Chemical Kid | Hadru Jamik | Phlon | First appeared in Legion of Super-Heroes vol. 6 #6 (December 2010) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011). | Catalyze chemical reactions.
+9 | Glorith II | Glorith | Unknown | First appeared in Adventure Comics #523 (April 2011) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011). | Manipulation of mystical energies.
+10 | Dragonwing | Marya Pai | Earth | First appeared in Legion of Super-Heroes vol. 6 #6 (December 2010) as a student at the Legion Academy.\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011). | Fire breath and acid absorption.
+11 | Harmonia | Harmonia Li | Earth | First appeared in Legion of Super-Heroes vol. 6 #1 (July 2010).\nJoined between Legion of Super-Heroes vol. 6 #16 (October 2011) and Legion of Super-Heroes vol. 7 #1 (November 2011). | Elemental.
+Question: which pre-crisis superhero first appeared as "absorbency boy," but then became someone else?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Character** column contains the superhero names.
+- The **Membership notes** column provides information about the character's history and changes.
+
+From the full table:
+- Earth-Man first appeared as "Absorbency Boy" before becoming Earth-Man.
+- Earth-Man is listed in row 6, and the **Membership notes** mention his initial appearance as "Absorbency Boy."
+
+Therefore, the pre-crisis superhero who first appeared as "Absorbency Boy" but then became someone else is Earth-Man.
+
+Final Answer: Earth-Man
+[Fallback] Prediction: earth-man
+[Gold Answer] earth-man
+

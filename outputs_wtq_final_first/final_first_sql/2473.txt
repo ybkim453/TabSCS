@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative example values: 5, 6, 8, 9
+   - Role: Identifier for each row
+
+2. Score
+   - Data type: Categorical
+   - 4 representative example values: 108*, 134*, 150*, 107
+   - Role: Measure of the player's score in a particular match
+
+3. Player
+   - Data type: Categorical
+   - 4 representative example values: Salman Butt, Graeme Smith, Gautam Gambhir, Virat Kohli
+   - Role: Descriptor for the player who scored in the match
+
+4. Team
+   - Data type: Categorical
+   - 4 representative example values: Pakistan, South Africa, India, Ireland
+   - Role: Descriptor for the team to which the player belongs
+
+5. Balls
+   - Data type: Numeric
+   - 4 representative example values: 130, 124, 137, 114
+   - Role: Measure of the number of balls faced by the player
+
+6. Inns.
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 2, 2
+   - Role: Measure of the innings played by the player in the match
+
+7. Opposing team
+   - Data type: Categorical
+   - 4 representative example values: India, India, Sri Lanka, Netherlands
+   - Role: Descriptor for the team against which the player played
+
+8. Date
+   - Data type: Categorical
+   - 4 representative example values: 13 November 2004, 25 November 2005, 24 December 2009, 24 December 2009
+   - Role: Descriptor for the date of the match
+
+9. Result
+   - Data type: Categorical
+   - 4 representative example values: Won, Won, Won, Won
+   - Role: Measure of the result of the match for the player's team
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values for No. (10), Score (5), and Opposing team (India) are different from the majority of the table.
+   - This row is an outlier due to the combination of these distinctive values.
+
+2. Row 5:
+   - The values for No. (5), Score (108*), and Opposing team (India) are different from the majority of the table.
+   - This row is an outlier due to the combination of these distinctive values.
+
+3. Row 0:
+   - The values for No. (0), Score (134*), and Opposing team (India) are different from the majority of the table.
+   - This row is an outlier due to the combination of these distinctive values.
+
+=== Full Table Preview ===
+|   row_number |   No. | Score   | Player             | Team         |   Balls |   Inns. | Opposing team   | Date                | Result   |
+|-------------:|------:|:--------|:-------------------|:-------------|--------:|--------:|:----------------|:--------------------|:---------|
+|            0 |     1 | 123     | Kris Srikkanth     | India        |     103 |       1 | Pakistan        | 1987-02-18 00:00:00 | Lost     |
+|            1 |     2 | 107*    | Desmond Haynes     | West Indies  |     137 |       1 | Pakistan        | 1989-11-01 00:00:00 | Lost     |
+|            2 |     3 | 100*    | Sachin Tendulkar   | India        |     103 |       2 | Kenya           | 1998-05-31 00:00:00 | Won      |
+|            3 |     4 | 121     | Marcus Trescothick | England      |     109 |       2 | India           | 2002-01-19 00:00:00 | Lost     |
+|            4 |     5 | 108*    | Salman Butt        | Pakistan     |     130 |       2 | India           | 2004-11-13 00:00:00 | Won      |
+|            5 |     6 | 134*    | Graeme Smith       | South Africa |     124 |       2 | India           | 2005-11-25 00:00:00 | Won      |
+|            6 |     7 | 118     | Upul Tharanga      | Sri Lanka    |     128 |       1 | India           | 2009-12-24 00:00:00 | Lost     |
+|            7 |     8 | 150*    | Gautam Gambhir     | India        |     137 |       2 | Sri Lanka       | 2009-12-24 00:00:00 | Won      |
+|            8 |     9 | 107     | Virat Kohli        | India        |     114 |       2 | Sri Lanka       | 2009-12-24 00:00:00 | Won      |
+|            9 |    10 | 106     | Ryan ten Doeschate | Netherlands  |     108 |       1 | Ireland         | 2011-03-18 00:00:00 | Lost     |
+|           10 |    11 | 101     | Paul Stirling      | Ireland      |      72 |       2 | Netherlands     | 2011-03-18 00:00:00 | Won      |
+|           11 |    12 | 106     | Nasir Jamshed      | Pakistan     |     124 |       1 | India           | 2013-01-03 00:00:00 | Won      |
+
+Generated Reasoning SQL: To determine the number of games where a player faced at least 130 balls, we need to consider the "Balls" column, which is numeric and represents the number of balls faced by the player in a match. We will count the rows where the value in the "Balls" column is greater than or equal to 130.
+
+SQL: 
+SELECT COUNT("No.") 
+FROM T 
+WHERE CAST("Balls" AS INTEGER) >= 130;
+Generated Final SQL: SELECT COUNT("No.") FROM T WHERE CAST("Balls" AS INTEGER) >= 130;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("No.") |
+|---------------:|
+|              3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of international cricket centuries at Eden Gardens
+SQL: SELECT COUNT("No.") FROM T WHERE CAST("Balls" AS INTEGER) >= 130;
+
+COUNT("No.")
+3
+Question: how many games had at least 130 balls?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 3
+[Gold Answer] 3
+

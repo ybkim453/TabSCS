@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. **Value**
+   - Data type: Categorical
+   - 4 representative example values: 1 seniti, 2 seniti, 5 seniti, 10 seniti
+   - Role: Identifier for the denomination of the currency
+
+2. **Diameter**
+   - Data type: Numeric
+   - 4 representative example values: 18 mm, 21 mm, 19 mm, 24 mm
+   - Role: Measure of the diameter of the coin
+
+3. **Composition**
+   - Data type: Categorical
+   - 4 representative example values: Bronze, Cupronickel
+   - Role: Descriptor of the material used in the coin
+
+4. **1975–1979 Obverse**
+   - Data type: Categorical
+   - 4 representative example values: Maize, Marrows, Chicken with chicks, King
+   - Role: Descriptor of the design on the obverse side of the coin for the years 1975-1979
+
+5. **1975–1979 Reverse**
+   - Data type: Categorical
+   - 4 representative example values: Pig, Taro, Bananas, Grazing cattle
+   - Role: Descriptor of the design on the reverse side of the coin for the years 1975-1979
+
+6. **1981- Obverse**
+   - Data type: Categorical
+   - 4 representative example values: Maize, Taro, Chicken with chicks, King
+   - Role: Descriptor of the design on the obverse side of the coin from 1981 onwards
+
+7. **1981- Reverse**
+   - Data type: Categorical
+   - 4 representative example values: Vanilla, Planned Families Food for All, Coconuts, Bananas on tree
+   - Role: Descriptor of the design on the reverse side of the coin from 1981 onwards
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 2):
+   - The values "Marrows" and "PLANNED FAMILIES FOOD FOR ALL, six people holding hands" for the 1975–1979 Obverse and Reverse columns respectively are different from the majority of the table.
+   - These unique values make this row an outlier.
+
+2. Row 0 (Index 0):
+   - The values "Maize" and "Pig" for the 1975–1979 Obverse and Reverse columns respectively are not common in the table.
+   - These distinctive values contribute to making this row an outlier.
+
+3. Row 1 (Index 1):
+   - The values "PLANNED FAMILIES FOOD FOR ALL, six people holding hands" for both the 1975–1979 Obverse and Reverse columns are unique compared to the rest of the table.
+   - This uniqueness makes this row an outlier.

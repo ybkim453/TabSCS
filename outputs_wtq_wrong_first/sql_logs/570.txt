@@ -1,0 +1,116 @@
+=== Table ID ===
+csv/200-csv/18.tsv
+
+=== Question ===
+what city has a radio station called the wolf?
+
+=== Sub-table Preview ===
+|   Year | Result    | Award                                                 | Film               |
+|-------:|:----------|:------------------------------------------------------|:-------------------|
+|   1989 | Won       | Bronze Wrangler Theatrical Motion Picture             | Young Guns         |
+|   2007 | Nominated | Teen Choice Award Choice TV Actor: Comedy             | Two and a Half Men |
+|   2007 | Nominated | Emmy Award for Outstanding Lead Actor - Comedy Series | Two and a Half Men |
+|   2008 | Nominated | Teen Choice Awards Choice TV Actor: Comedy            | Two and a Half Men |
+|   2012 | Won       | WWE Slammy Award Top Social Media Ambassador          | WWE Raw            |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1989, 2007, 2008, 2012
+   - Role: Identifier for the year in which the event or award took place.
+
+2. Result:
+   - Data type: Categorical
+   - 4 representative example values: Won, Nominated
+   - Role: Describes the outcome of the nomination or award - whether the individual won or was nominated.
+
+3. Award:
+   - Data type: Categorical
+   - 4 representative example values: Bronze Wrangler Theatrical Motion Picture, Teen Choice Award Choice TV Actor: Comedy, Emmy Award for Outstanding Lead Actor - Comedy Series, WWE Slammy Award Top Social Media Ambassador
+   - Role: Describes the specific award or nomination received.
+
+4. Film:
+   - Data type: Categorical
+   - 4 representative example values: Young Guns, Two and a Half Men, WWE Raw
+   - Role: Describes the film or TV show associated with the award or nomination.
+
+**Outlier Row Analysis:**
+
+1. Row 20:
+   - The values in this row are not provided in the partial preview, so it is not possible to determine the exact values that make it distinctive. Therefore, it is an ordinary row and requires no special handling.
+
+2. Row 0:
+   - The values in this row are also not provided in the partial preview, so it is not possible to determine the exact values that make it distinctive. Therefore, it is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Frequency   | Call sign   | Name                             | Format          | Owner                                                    | Target city/market   | City of license   |
+|-------------:|:------------|:------------|:---------------------------------|:----------------|:---------------------------------------------------------|:---------------------|:------------------|
+|            0 | 89.7 FM     | KUSD        | South Dakota Public Broadcasting | NPR             | SD Board of Directors for Educational Telecommunications | Yankton/Vermillion   | Vermillion        |
+|            1 | 93.1 FM     | KKYA        | KK93                             | Country         | Riverfront Broadcasting LLC                              | Yankton/Vermillion   | Yankton           |
+|            2 | 94.3 FM     | KDAM        | The Dam                          | Mainstream Rock | Riverfront Broadcasting LLC                              | Yankton/Vermillion   | Hartington        |
+|            3 | 104.1 FM    | WNAX-FM     | The Wolf 104.1                   | Country         | Saga Communications                                      | Yankton/Vermillion   | Yankton           |
+|            4 | 106.3 FM    | KVHT        | Classic Hits 106.3               | Classic Hits    | Cullhane Communications Inc.                             | Yankton/Vermillion   | Vermillion        |
+
+Generated Reasoning SQL: Explanation: To find the city with a radio station called "The Wolf", we need to filter rows where the "Name" column contains the value "The Wolf" and retrieve the corresponding "City of license" value.
+
+SQL: SELECT "City of license" FROM T WHERE "Name" LIKE '%The Wolf%';
+Generated Final SQL: SELECT "City of license" FROM T WHERE "Name" LIKE '%The Wolf%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| City of license   |
+|:------------------|
+| Yankton           |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Yankton, South Dakota
+SQL: SELECT "City of license" FROM T WHERE "Name" LIKE '%The Wolf%';
+
+SQL Execution Result:
+City of license
+Yankton
+
+Question: what city has a radio station called the wolf?
+A: To find the answer to this question, let’s think step by step.
+Prediction: yankton
+[Gold Answer] yankton
+

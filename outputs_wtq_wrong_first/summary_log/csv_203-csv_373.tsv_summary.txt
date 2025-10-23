@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 5, 8, 17, 19
+   - Role: Identifier, indicating the ranking of the diver.
+
+2. Diver:
+   - Data type: Categorical
+   - 4 representative example values: Li Qiaoxian (CHN), Debbie Fuller (CAN), Claire Izacard (FRA), Alison Childs (GBR)
+   - Role: Descriptor, identifying the name and nationality of the diver.
+
+3. Preliminary Points:
+   - Data type: Numeric
+   - 4 representative example values: 466.83, 437.04, 403.17, 400.68
+   - Role: Measure, representing the points scored by the diver in the preliminary round.
+
+4. Preliminary Rank:
+   - Data type: Numeric
+   - 4 representative example values: 6, 11, 17, 19
+   - Role: Measure, indicating the ranking of the diver after the preliminary round.
+
+5. Final Points:
+   - Data type: Numeric
+   - 4 representative example values: 487.68, 450.99, nan, nan
+   - Role: Measure, showing the final points scored by the diver.
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Debbie Fuller (CAN)):
+   - The final points value of 450.99 is significantly lower compared to the other divers in the table.
+   - This makes the row an outlier as it deviates from the trend of higher final points among the top-ranked divers.
+
+2. Row 16 (Claire Izacard (FRA)):
+   - The final points value is missing (nan), which is different from the other rows where final points are provided.
+   - This missing data makes the row an outlier as it does not conform to the pattern of having final points recorded for all divers.
+
+3. Row 4 (Alison Childs (GBR)):
+   - The final points value is missing (nan), similar to row 16.
+   - This missing data is an ordinary occurrence in the table and does not make the row a distinctive outlier.

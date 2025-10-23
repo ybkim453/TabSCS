@@ -1,0 +1,42 @@
+### Column Analysis:
+
+1. **Name:**
+   - Data type: Categorical
+   - 4 representative example values: Radio Radicale, Rai Radio 1, Rai Radio 2, Rai Radio 3
+   - Role: Identifier
+
+2. **Owner:**
+   - Data type: Categorical
+   - 4 representative example values: Radical Party, RAI, nan
+   - Role: Descriptor
+
+3. **Location:**
+   - Data type: Categorical
+   - 4 representative example values: Rome, Cividate al piano. (BG), nan
+   - Role: Descriptor
+
+4. **Notes:**
+   - Data type: Categorical
+   - 4 representative example values: Community; News/Talk, Public; News/Talk; Generalist, Public; Popular music; Entertainment, Local; News/Talk
+   - Role: Descriptor
+
+5. **Transmission:**
+   - Data type: Categorical
+   - 4 representative example values: FM, DAB, DVB-S, T-DMB
+   - Role: Descriptor
+
+6. **Website:**
+   - Data type: Categorical
+   - 4 representative example values: http://www.radioradicale.it, http://www.radio1.rai.it, http://www.radio2.rai.it, http://www.radio3.rai.it
+   - Role: Descriptor
+
+### Outlier Row Analysis:
+
+1. **Row 27:**
+   - The Location is "nan" which is not a typical location entry in the table, making this row an outlier.
+
+2. **Row 23:**
+   - The Owner is "nan" which is not a typical owner entry in the table, making this row an outlier.
+
+3. **Row 12:**
+   - The Location is "Cividate al piano. (BG)" which is different from the majority of locations listed as Rome, making this row an outlier.

@@ -1,0 +1,35 @@
+**Column Analysis:**
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative example values: 7, 10, 11, 13
+   - Role: Identifier for each row
+
+2. **Directed By**
+   - Data type: Categorical
+   - 4 representative example values: Frank W. Smith, John Reardon, Douglas MacKinnon, Graham Moore
+   - Role: Descriptor indicating the director of the episode
+
+3. **Written By**
+   - Data type: Categorical
+   - 4 representative example values: Fran Carroll, Simon J. Sharkey, Neil McKay
+   - Role: Descriptor indicating the writer of the episode
+
+4. **Original Air Date**
+   - Data type: Date
+   - 4 representative example values: November 9, 1997, November 30, 1997, January 4, 1998, February 8, 1998
+   - Role: Descriptor indicating the original air date of the episode
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values in this row are: 16, Douglas MacKinnon, Neil McKay, February 8, 1998
+   - These values are not significantly different from the majority of the table and are ordinary entries. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 16:
+   - The values in this row are: 17, Graham Moore, Simon J. Sharkey, February 15, 1998
+   - These values are not significantly different from the majority of the table and are ordinary entries. Therefore, this row is an ordinary row and does not require special handling.
+
+3. Row 15:
+   - The values in this row are not provided in the given preview.
+   - Without the specific values, it is not possible to determine if this row is an outlier or an ordinary entry.

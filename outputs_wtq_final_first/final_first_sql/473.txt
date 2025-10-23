@@ -1,0 +1,137 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Strasbourg Cathedral, St Nikolai, Notre-Dame Cathedral, Cologne Cathedral
+   - Role: Identifier
+
+2. Country
+   - Data type: Categorical
+   - 4 representative example values: Germany and/or France (today France), Germany, France, United States
+   - Role: Descriptor
+
+3. Town
+   - Data type: Categorical
+   - 4 representative example values: Strasbourg, Hamburg, Rouen, Cologne
+   - Role: Descriptor
+
+4. Height metres / ft
+   - Data type: Numeric
+   - 4 representative example values: 142 / 470, 147.3 / 483, 151 / 500, 157.4 / 516
+   - Role: Measure
+
+5. Structural type
+   - Data type: Categorical
+   - 4 representative example values: Church, Skyscraper
+   - Role: Descriptor
+
+6. Held record
+   - Data type: Categorical
+   - 4 representative example values: 1647–1874, 1874–1876, 1876–1880, 1880–1884
+   - Role: Descriptor
+
+7. Notes
+   - Data type: Categorical
+   - 4 representative example values: nan, Due to aerial bombing in World War II the nave was demolished; only the spire remains.
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Empire State Building)
+   - The values for Height (448 / 1,472) are significantly higher than the other entries in the table, making it an outlier in terms of height.
+   - This row is an outlier due to the extreme height of the Empire State Building compared to the other structures listed.
+
+2. Row 0 (Strasbourg Cathedral)
+   - The values for Country (Germany and/or France) are different from the majority of the entries, as it mentions two countries.
+   - This row is an outlier due to the unique historical context of Strasbourg Cathedral being located in both Germany and France.
+
+3. Row 3 (Cologne Cathedral)
+   - The values for Held record (1880–1884) are different from the majority of the entries, indicating a different time period.
+   - This row is an outlier due to the specific time frame of the record held by Cologne Cathedral.
+
+=== Full Table Preview ===
+|   row_number | Name                  | Country                              | Town            | Height\nmetres / ft   | Structural type   | Held record   | Notes                                                                                  |
+|-------------:|:----------------------|:-------------------------------------|:----------------|:----------------------|:------------------|:--------------|:---------------------------------------------------------------------------------------|
+|            0 | Great Pyramid of Giza | Egypt                                | Giza            | 146 / 480             | Mausoleum         | 2570 BC–1311  | Due to erosion today it stands at the height of 138.8 metres (455 ft).                 |
+|            1 | Lincoln Cathedral     | England                              | Lincoln         | 159.7 / 524           | Church            | 1311–1549     | Spire collapsed in 1549; today stands at a height of 83 metres (272 ft).               |
+|            2 | St. Mary's Church     | Germany                              | Stralsund       | 151 / 500             | Church            | 1549–1647     | Spire destroyed by lightning in 1647; today stands at a height of 104 metres (341 ft). |
+|            3 | Strasbourg Cathedral  | Germany and/or France (today France) | Strasbourg      | 142 / 470             | Church            | 1647–1874     |                                                                                        |
+|            4 | St Nikolai            | Germany                              | Hamburg         | 147.3 / 483           | Church            | 1874–1876     | Due to aerial bombing in World War II the nave was demolished; only the spire remains. |
+|            5 | Notre-Dame Cathedral  | France                               | Rouen           | 151 / 500             | Church            | 1876–1880     |                                                                                        |
+|            6 | Cologne Cathedral     | Germany                              | Cologne         | 157.4 / 516           | Church            | 1880–1884     |                                                                                        |
+|            7 | Washington Monument   | United States                        | Washington D.C. | 169.3 / 555           | Monument          | 1884–1889     |                                                                                        |
+|            8 | Eiffel Tower          | France                               | Paris           | 300.6 / 986           | Tower             | 1889–1930     | Currently stands at a height of 324 metres (1063 ft).                                  |
+|            9 | Chrysler Building     | United States                        | New York City   | 319 / 1046            | Skyscraper        | 1930–1931     |                                                                                        |
+|           10 | Empire State Building | United States                        | New York City   | 448 / 1472            | Skyscraper        | 1931–1967     |                                                                                        |
+|           11 | Ostankino Tower       | Russia                               | Moscow          | 540 / 1772            | Tower             | 1967–1976     |                                                                                        |
+|           12 | CN Tower              | Canada                               | Toronto         | 553 / 1815            | Tower             | 1976–2007     |                                                                                        |
+|           13 | Burj Khalifa          | United Arab Emirates                 | Dubai           | 829.8 / 2722          | Skyscraper        | 2007–present  | Topped-out on 17 January 2009                                                          |
+
+Generated Reasoning SQL: Explanation: To determine when the United States had the tallest building last, we need to identify the entry with the highest height in meters/feet. Since the question specifically asks about buildings, we should focus on the "Structural type" column to filter out non-building structures. We also need to exclude outliers like the Empire State Building, which is significantly taller than the other entries. By selecting the entry with the maximum height that is not the Empire State Building, we can find the answer.
+
+SQL: 
+SELECT "Name", "Height\nmetres / ft" 
+FROM T 
+WHERE "Structural type" = 'Skyscraper' 
+AND "Name" != 'Empire State Building' 
+ORDER BY CAST(SUBSTR("Height\nmetres / ft", 1, INSTR("Height\nmetres / ft", ' ') - 1) AS FLOAT) DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Name", "Height\nmetres / ft" FROM T WHERE "Structural type" = 'Skyscraper' AND "Name" != 'Empire State Building' ORDER BY CAST(SUBSTR("Height\nmetres / ft", 1, INSTR("Height\nmetres / ft", ' ') - 1) AS FLOAT) DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Name         | Height\nmetres / ft   |
+|:-------------|:----------------------|
+| Burj Khalifa | 829.8 / 2722          |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of tallest freestanding structures in the world
+SQL: SELECT "Name", "Height\nmetres / ft" FROM T WHERE "Structural type" = 'Skyscraper' AND "Name" != 'Empire State Building' ORDER BY CAST(SUBSTR("Height\nmetres / ft", 1, INSTR("Height\nmetres / ft", ' ') - 1) AS FLOAT) DESC LIMIT 1;
+
+SQL Execution Result:
+Name | Height\nmetres / ft
+Burj Khalifa | 829.8 / 2722
+
+Question: when did the united states have the tallest building last?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2008
+[Gold Answer] 1967
+

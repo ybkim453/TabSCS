@@ -1,0 +1,34 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 5, 7
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Malaysia, Indonesia, Chinese Taipei, Japan
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 3, 1, 0, 2
+   - Role: Measures
+
+**Outlier Row Analysis:**
+
+1. Malaysia (Rank 1):
+   - This row has the highest number of Gold medals compared to the other rows.
+   - This makes it an outlier as it stands out in terms of Gold medals won.
+
+2. Indonesia (Rank 2):
+   - This row has the second-highest Total medals won.
+   - While not as extreme as Malaysia, it is still an outlier in terms of Total medals.
+
+3. India (Rank 8):
+   - This row has the lowest Total medals won.
+   - While not a significant outlier, it is still distinctive in terms of Total medals.
+
+4. Spain (Rank 9):
+   - This row also has the lowest Total medals won.
+   - Similar to India, it is an outlier in terms of Total medals but not as extreme.

@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 1999, 2006, 2013
+   - Role: Identifier for the year in which the matches took place
+
+2. Matches:
+   - Data type: Numeric
+   - 4 representative example values: 8, 9, 6, TBA
+   - Role: Measure of the number of matches played in a particular year
+
+3. Winner:
+   - Data type: Categorical
+   - 4 representative example values: Pakistan win
+   - Role: Descriptor indicating the winning team for a particular year
+
+4. Results:
+   - Data type: Categorical
+   - 4 representative example values: 4 - 3, 5 - 3, 3 - 1, TBA
+   - Role: Descriptor showing the results of the matches played
+
+5. Pakistan Captain:
+   - Data type: Categorical
+   - 4 representative example values: Tahir Zaman, Atif Bashir, Mohammad Saqlain, TBA
+   - Role: Descriptor indicating the captain of the Pakistan team for a particular year
+
+6. Pakistan Coach:
+   - Data type: Categorical
+   - 4 representative example values: Islahuddin Siddique, Shahnaz Shaikh, Asif Bajwa, TBA
+   - Role: Descriptor showing the coach of the Pakistan team for a particular year
+
+7. India Captain:
+   - Data type: Categorical
+   - 4 representative example values: Dhanraj Pillay, Anil Aldrin, Ignace Tirkey, TBA
+   - Role: Descriptor indicating the captain of the India team for a particular year
+
+8. India Coach:
+   - Data type: Categorical
+   - 4 representative example values: V Bhaskaran, V Bhaskaran, Rajinder Singh Jr., TBA
+   - Role: Descriptor showing the coach of the India team for a particular year
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The row with the index 8 has "TBA" values for all columns, which indicates that the data for the year 2013 is not available yet. This row is an outlier as it does not provide any specific information compared to the other rows with complete data.
+
+2. Row 5:
+   - The row with the index 5 has "TBA" values for the Matches column, which is different from the other rows that have a numeric value for this column. This inconsistency makes this row an outlier as it does not follow the pattern of the rest of the data.
+
+=== Full Table Preview ===
+|   row_number |   Year | Matches   | Winner       | Results   | Pakistan\nCaptain   | Pakistan\nCoach     | India\nCaptain   | India\nCoach       |
+|-------------:|-------:|:----------|:-------------|:----------|:--------------------|:--------------------|:-----------------|:-------------------|
+|            0 |   1978 | 4         | Pakistan win | 3 - 1     | Islahuddin Siddique | Sayad A. Hussain    | V. J. Philips    | R. S. Gentle       |
+|            1 |   1981 | 4         | Pakistan win | 2 - 1     | Akhtar Rasool       | Zakauddin           | Surjeet Singh    | Harmeek Singh      |
+|            2 |   1986 | 7         | India win    | 3 - 2     | Hassan Sardar       | Anwar Ahmad Khan    | Mohmmad Shaheed  | M. P. Ganesh       |
+|            3 |   1988 | 6         | Draw         | 2 - 2     | Nasir Ali           | Manzoor-ul-Hasan    | M. M. Somaya     | M. P. Ganesh       |
+|            4 |   1998 | 8         | Pakistan win | 4 - 3     | Tahir Zaman         | Islahuddin Siddique | Dhanraj Pillay   | V Bhaskaran        |
+|            5 |   1999 | 9         | Pakistan win | 5 - 3     | Atif Bashir         | Shahnaz Shaikh      | Anil Aldrin      | V Bhaskaran        |
+|            6 |   2004 | 8         | Pakistan win | 4 - 2     | Waseem Ahmad        | Roelant Oltmans     | Dileep Tirkey    | Gehard Rach        |
+|            7 |   2006 | 6         | Pakistan win | 3 - 1     | Mohammad Saqlain    | Asif Bajwa          | Ignace Tirkey    | Rajinder Singh Jr. |
+|            8 |   2013 | TBA       | TBA          | TBA       | TBA                 | TBA                 | TBA              | TBA                |
+
+Generated Reasoning SQL: To determine the largest number of consecutive wins for Pakistan, we need to analyze the "Winner" column to identify when Pakistan won matches consecutively. The "Matches" column provides the total number of matches played in a particular year, and the "Year" column helps in grouping the matches by year.
+
+We can achieve this by using a window function to assign a row number within each partition of consecutive wins for Pakistan. Then, we can count the number of consecutive wins by finding the maximum count of row numbers within the partition.
+
+SQL:
+WITH consecutive_wins AS (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY "Winner" ORDER BY "Year") - ROW_NUMBER() OVER (PARTITION BY "Winner" ORDER BY "Year") AS grp
+    FROM T
+    WHERE "Winner" = 'Pakistan win'
+)
+SELECT MAX(COUNT(*)) AS max_consecutive_wins
+FROM consecutive_wins
+GROUP BY grp;
+Generated Final SQL: WITH consecutive_wins AS ( SELECT *, ROW_NUMBER() OVER (PARTITION BY "Winner" ORDER BY "Year") - ROW_NUMBER() OVER (PARTITION BY "Winner" ORDER BY "Year") AS grp FROM T WHERE "Winner" = 'Pakistan win' ) SELECT MAX(COUNT(*)) AS max_consecutive_wins FROM consecutive_wins GROUP BY grp;
+[Error] Final SQL 실행 실패: Execution failed on sql 'WITH consecutive_wins AS ( SELECT *, ROW_NUMBER() OVER (PARTITION BY "Winner" ORDER BY "Year") - ROW_NUMBER() OVER (PARTITION BY "Winner" ORDER BY "Year") AS grp FROM T WHERE "Winner" = 'Pakistan win' ) SELECT MAX(COUNT(*)) AS max_consecutive_wins FROM consecutive_wins GROUP BY grp;': misuse of aggregate function COUNT()
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: India–Pakistan field hockey rivalry (row_number, Year, Matches, Winner, Results, Pakistan\nCaptain, Pakistan\nCoach, India\nCaptain, India\nCoach)
+
+row_number | Year | Matches | Winner | Results | Pakistan\nCaptain | Pakistan\nCoach | India\nCaptain | India\nCoach
+0 | 1978 | 4 | Pakistan win | 3 - 1 | Islahuddin Siddique | Sayad A. Hussain | V. J. Philips | R. S. Gentle
+1 | 1981 | 4 | Pakistan win | 2 - 1 | Akhtar Rasool | Zakauddin | Surjeet Singh | Harmeek Singh
+2 | 1986 | 7 | India win | 3 - 2 | Hassan Sardar | Anwar Ahmad Khan | Mohmmad Shaheed | M. P. Ganesh
+3 | 1988 | 6 | Draw | 2 - 2 | Nasir Ali | Manzoor-ul-Hasan | M. M. Somaya | M. P. Ganesh
+4 | 1998 | 8 | Pakistan win | 4 - 3 | Tahir Zaman | Islahuddin Siddique | Dhanraj Pillay | V Bhaskaran
+5 | 1999 | 9 | Pakistan win | 5 - 3 | Atif Bashir | Shahnaz Shaikh | Anil Aldrin | V Bhaskaran
+6 | 2004 | 8 | Pakistan win | 4 - 2 | Waseem Ahmad | Roelant Oltmans | Dileep Tirkey | Gehard Rach
+7 | 2006 | 6 | Pakistan win | 3 - 1 | Mohammad Saqlain | Asif Bajwa | Ignace Tirkey | Rajinder Singh Jr.
+8 | 2013 | TBA | TBA | TBA | TBA | TBA | TBA | TBA
+Question: what is the largest number of consecutive wins for pakistan?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to look at the data in the "Winner" column to identify the consecutive wins for Pakistan. Based on the summary, we see that the "Winner" column indicates whether Pakistan won or not in each match.
+
+Next, we will examine the "Winner" column in the full table to identify the consecutive wins for Pakistan. By analyzing the data, we can determine the largest number of consecutive wins for Pakistan.
+
+Finally, we will look for the longest streak of consecutive wins for Pakistan in the "Winner" column.
+
+Final Answer: 4
+[Fallback] Prediction: 4
+[Gold Answer] 4
+

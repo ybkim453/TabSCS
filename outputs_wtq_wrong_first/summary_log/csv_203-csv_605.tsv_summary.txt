@@ -1,0 +1,62 @@
+**Column Analysis:**
+
+1. Conference
+   - Data type: Categorical
+   - 4 representative example values: Southeastern, Big Ten, Atlantic Coast, Missouri Valley
+   - Role of the column: Identifier for the conference each team belongs to
+
+2. # of Bids
+   - Data type: Numeric
+   - 4 representative example values: 6, 5, 3, 2
+   - Role of the column: Measure indicating the number of bids each conference received
+
+3. Record
+   - Data type: Categorical
+   - 4 representative example values: 10–6, 9–5, 9–2, 2–2
+   - Role of the column: Descriptor showing the win-loss record of teams in the conference
+
+4. Win %
+   - Data type: Numeric
+   - 4 representative example values: .625, .643, .818, .500
+   - Role of the column: Measure representing the winning percentage of teams in the conference
+
+5. Round of 32
+   - Data type: Numeric
+   - 4 representative example values: 5, 4, 3, 2
+   - Role of the column: Measure indicating the number of teams from the conference that reached the Round of 32
+
+6. Sweet Sixteen
+   - Data type: Numeric
+   - 4 representative example values: 3, 2, 1, 0
+   - Role of the column: Measure showing the number of teams from the conference that reached the Sweet Sixteen
+
+7. Elite Eight
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 1, 0
+   - Role of the column: Measure indicating the number of teams from the conference that reached the Elite Eight
+
+8. Final Four
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 1, 0
+   - Role of the column: Measure showing the number of teams from the conference that reached the Final Four
+
+9. Championship Game
+   - Data type: Categorical
+   - 4 representative example values: –, –, 1, –
+   - Role of the column: Descriptor indicating whether a team from the conference reached the Championship Game
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Big Sky)
+   - The values in the Round of 32, Sweet Sixteen, Elite Eight, Final Four, and Championship Game columns are all 0, which is significantly lower than the other conferences.
+   - This row is an outlier due to the lack of teams advancing to the later rounds of the tournament.
+
+2. Row 0 (Southeastern)
+   - The Southeastern conference has the highest number of bids (6) compared to the other conferences.
+   - This row is an outlier in terms of the number of bids received.
+
+3. Row 1 (Big Ten)
+   - The Big Ten conference has a win percentage of .643, which is higher than the win percentages of the other conferences.
+   - This row is an outlier in terms of win percentage.
+
+Overall, the identified outlier rows have values that deviate significantly from the majority of the table, making them stand out as atypical cases.

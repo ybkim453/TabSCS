@@ -1,0 +1,115 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 1999, 2001, 2004
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Cross Country Championships, All-Africa Games, IAAF Grand Prix Final, World Athletics Final
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Marrakech, Morocco, Johannesburg, South Africa, Munich, Germany, Melbourne, Australia
+   - Role: Descriptor of the location where the competition took place.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 8th, 1st, 4th
+   - Role: Measure of the athlete's position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: Short race, 3000 m st.
+   - Role: Descriptor of the specific event within the competition.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The value "8th" in the Position column is different from the majority of the table where positions are 1st or 4th. This makes the row an outlier as it represents a lower position compared to the other rows.
+
+2. Row 3:
+   - The value "nan" in the Year column is not a valid year and stands out from the numeric years in the table. This makes the row an outlier as it does not conform to the expected data type for the Year column.
+
+3. Row 0:
+   - The values in this row are not significantly different from the majority of the table and do not contain any ambiguous markers. Therefore, this row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition                       | Venue                     | Position   | Event      |
+|-------------:|-------:|:----------------------------------|:--------------------------|:-----------|:-----------|
+|            0 |   1996 | World Junior Championships        | Sydney Australia          | 2nd        | 3000 m st. |
+|            1 |   1998 | World Cross Country Championships | Marrakech Morocco         | 8th        | Short race |
+|            2 |    nan | Commonwealth Games                | Kuala Lumpur Malaysia     | 3rd        | 3000 m st. |
+|            3 |   1999 | All-Africa Games                  | Johannesburg South Africa | 1st        | 3000 m st. |
+|            4 |    nan | IAAF Grand Prix Final             | Munich Germany            | 4th        | 3000 m st. |
+|            5 |   2001 | IAAF Grand Prix Final             | Melbourne Australia       | 4th        | 3000 m st. |
+|            6 |   2004 | World Athletics Final             | Monte Carlo Monaco        | 4th        | 3000 m st. |
+|            7 |   2005 | World Athletics Final             | Monte Carlo Monaco        | 8th        | 3000 m st. |
+
+Generated Reasoning SQL: Explanation: To determine the competition where Kipkurui Misoi had his top finish, we need to consider the "Position" column to identify the highest position achieved. Since the "Position" values are categorical and represent the athlete's performance in each event, we should look for the competition corresponding to the highest position, which is "1st". We will filter the rows where "Position" = '1st' and select the corresponding "Competition" value.
+
+SQL: 
+SELECT "Competition" 
+FROM T 
+WHERE "Position" = '1st';
+Generated Final SQL: SELECT "Competition" FROM T WHERE "Position" = '1st';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Competition      |
+|:-----------------|
+| All-Africa Games |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Kipkurui Misoi
+SQL: SELECT "Competition" FROM T WHERE "Position" = '1st';
+
+SQL Execution Result:
+Competition
+All-Africa Games
+
+Question: in what competition was his top finish?
+A: To find the answer to this question, let’s think step by step.
+Prediction: all-africa games
+[Gold Answer] all-africa games
+

@@ -1,0 +1,43 @@
+**Column Analysis:**
+
+1. Team
+   - Data type: Categorical
+   - 4 representative example values: Josef Kaufmann Racing, Mücke Motorsport, DAMS, Eifelland Racing
+   - Role: Identifier for the team associated with each driver
+
+2. No
+   - Data type: Numeric
+   - 4 representative example values: 5, 7, 15, 17
+   - Role: Identifier for the driver number
+
+3. Driver
+   - Data type: Categorical
+   - 4 representative example values: Hannes van Asseldonk, Maciej Bernacik, Javier Tarancón, Fahmi Ilyas
+   - Role: Descriptor for the driver's name
+
+4. Class
+   - Data type: Categorical
+   - 4 representative example values: R, nan
+   - Role: Descriptor for the driver's class
+
+5. Rounds
+   - Data type: Categorical
+   - 4 representative example values: All, 1-6
+   - Role: Descriptor for the rounds the driver participated in
+
+**Outlier Row Analysis:**
+
+1. Row 11 (Eifelland Racing, Côme Ledogar, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+2. Row 1 (Josef Kaufmann Racing, Hannes van Asseldonk, R, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+3. Row 3 (DAMS, Javier Tarancón, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+4. Row 17 (Eifelland Racing, Facundo Regalia, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.
+
+5. Row 19 (Eifelland Racing, Côme Ledogar, nan, All):
+   - The values in this row are consistent with the majority of the table, so it is an ordinary row and does not require special handling.

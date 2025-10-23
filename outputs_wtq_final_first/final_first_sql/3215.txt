@@ -1,0 +1,153 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: October 3, 1981; September 26, 1987; September 30, 1989; November 30, 2013
+   - Role: Identifier for the specific date of the game
+
+2. Site:
+   - Data type: Categorical
+   - 4 representative example values: Colorado Springs, Fort Collins
+   - Role: Descriptor for the location of the game
+
+3. Winning team:
+   - Data type: Categorical
+   - 4 representative example values: Air Force, Colorado State
+   - Role: Descriptor for the team that won the game
+
+4. Winning team.1:
+   - Data type: Numeric
+   - 4 representative example values: 28, 27, 46, 58
+   - Role: Measure for the score of the winning team
+
+5. Losing team:
+   - Data type: Categorical
+   - 4 representative example values: Colorado State, Air Force
+   - Role: Descriptor for the team that lost the game
+
+6. Losing team.1:
+   - Data type: Numeric
+   - 4 representative example values: 14, 19, 21, 13
+   - Role: Measure for the score of the losing team
+
+7. Series:
+   - Data type: Categorical
+   - 4 representative example values: AFA 12–7–1, AFA 17–8–1, AFA 19–8–1, AFA 20–13–1, AFA 31–20–1
+   - Role: Descriptor for the series record between the two teams
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The values in this row are not significantly different from the majority of the table. They represent a typical game outcome between Air Force and Colorado State. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 33:
+   - The values in this row are consistent with the other entries in the table. There are no distinctive values that make this row an outlier. It is an ordinary entry and does not require special handling.
+
+3. Row 0:
+   - The values in this row are typical of the other entries in the table. There are no unique or atypical values that make this row stand out. Therefore, this row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Date                | Site             | Winning team   |   Winning team_1 | Losing team    |   Losing team_1 | Series      |
+|-------------:|:--------------------|:-----------------|:---------------|-----------------:|:---------------|----------------:|:------------|
+|            0 | 1980-09-06 00:00:00 | Fort Collins     | Colorado State |               21 | Air Force      |               9 | AFA 11–7–1  |
+|            1 | 1981-10-03 00:00:00 | Colorado Springs | Air Force      |               28 | Colorado State |              14 | AFA 12–7–1  |
+|            2 | 1982-10-16 00:00:00 | Colorado Springs | Colorado State |               21 | Air Force      |              11 | AFA 12–8–1  |
+|            3 | 1983-09-03 00:00:00 | Fort Collins     | Air Force      |               34 | Colorado State |              13 | AFA 13–8–1  |
+|            4 | 1984-09-29 00:00:00 | Colorado Springs | Air Force      |               52 | Colorado State |              10 | AFA 14–8–1  |
+|            5 | 1985-10-19 00:00:00 | Fort Collins     | #10 Air Force  |               35 | Colorado State |              19 | AFA 15–8–1  |
+|            6 | 1986-09-27 00:00:00 | Colorado Springs | Air Force      |               24 | Colorado State |               7 | AFA 16–8–1  |
+|            7 | 1987-09-26 00:00:00 | Fort Collins     | Air Force      |               27 | Colorado State |              19 | AFA 17–8–1  |
+|            8 | 1988-09-03 00:00:00 | Fort Collins     | Air Force      |               29 | Colorado State |              23 | AFA 18–8–1  |
+|            9 | 1989-09-30 00:00:00 | Fort Collins     | Air Force      |               46 | Colorado State |              21 | AFA 19–8–1  |
+|           10 | 1990-09-01 00:00:00 | Colorado Springs | Colorado State |               35 | Air Force      |              33 | AFA 19–9–1  |
+|           11 | 1991-09-07 00:00:00 | Fort Collins     | Air Force      |               31 | Colorado State |              26 | AFA 20–9–1  |
+|           12 | 1992-10-17 00:00:00 | Colorado Springs | Colorado State |               32 | Air Force      |              28 | AFA 20–10–1 |
+|           13 | 1993-09-11 00:00:00 | Fort Collins     | Colorado State |                8 | Air Force      |               5 | AFA 20–11–1 |
+|           14 | 1994-09-03 00:00:00 | Colorado Springs | Colorado State |               34 | Air Force      |              21 | AFA 20–12–1 |
+|           15 | 1995-09-16 00:00:00 | Colorado Springs | Colorado State |               27 | Air Force      |              20 | AFA 20–13–1 |
+|           16 | 1996-11-02 00:00:00 | Colorado Springs | Colorado State |               42 | Air Force      |              41 | AFA 20–14–1 |
+|           17 | 1997-09-20 00:00:00 | Fort Collins     | Air Force      |               24 | Colorado State |               0 | AFA 21–14–1 |
+|           18 | 1998-09-17 00:00:00 | Colorado Springs | Air Force      |               30 | Colorado State |              27 | AFA 22–14–1 |
+|           19 | 1999-11-18 00:00:00 | Fort Collins     | Colorado State |               41 | Air Force      |              21 | AFA 22–15–1 |
+|           20 | 2000-11-11 00:00:00 | Colorado Springs | Air Force      |               44 | Colorado State |              40 | AFA 23–15–1 |
+|           21 | 2001-11-08 00:00:00 | Fort Collins     | Colorado State |               28 | Air Force      |              21 | AFA 23–16–1 |
+|           22 | 2002-10-31 00:00:00 | Colorado Springs | Colorado State |               31 | Air Force      |              12 | AFA 23–17–1 |
+|           23 | 2003-10-16 00:00:00 | Fort Collins     | Colorado State |               30 | Air Force      |              20 | AFA 23–18–1 |
+|           24 | 2004-11-20 00:00:00 | Colorado Springs | Air Force      |               47 | Colorado State |              17 | AFA 24–18–1 |
+|           25 | 2005-09-29 00:00:00 | Fort Collins     | Colorado State |               41 | Air Force      |              23 | AFA 24–19–1 |
+|           26 | 2006-10-12 00:00:00 | Colorado Springs | Air Force      |               24 | Colorado State |              21 | AFA 25–19–1 |
+|           27 | 2007-10-13 00:00:00 | Fort Collins     | Air Force      |               45 | Colorado State |              21 | AFA 26–19–1 |
+|           28 | 2008-11-08 00:00:00 | Colorado Springs | Air Force      |               38 | Colorado State |              17 | AFA 27–19–1 |
+|           29 | 2009-10-31 00:00:00 | Fort Collins     | Air Force      |               34 | Colorado State |              16 | AFA 28–19–1 |
+|           30 | 2010-10-09 00:00:00 | Colorado Springs | Air Force      |               49 | Colorado State |              27 | AFA 29–19–1 |
+|           31 | 2011-11-26 00:00:00 | Fort Collins     | Air Force      |               45 | Colorado State |              21 | AFA 30–19–1 |
+|           32 | 2012-09-29 00:00:00 | Colorado Springs | Air Force      |               42 | Colorado State |              21 | AFA 31–19–1 |
+|           33 | 2013-11-30 00:00:00 | Fort Collins     | Colorado State |               58 | Air Force      |              13 | AFA 31–20–1 |
+
+Generated Reasoning SQL: Explanation: To determine the most consecutive games won by Air Force in the trophy era, we need to analyze the "Series" column, which represents the series record between the two teams. The "Series" column contains the format "AFA X-Y-Z", where X represents the number of wins by Air Force, Y represents the number of wins by Colorado State, and Z represents the number of ties. We are interested in finding the maximum consecutive wins by Air Force, which corresponds to the highest value of X in the "Series" column.
+
+To achieve this, we will extract the X values from the "Series" column for Air Force wins, order them in descending order, and select the highest value to determine the most consecutive games won by Air Force in the trophy era.
+
+SQL: 
+SELECT MAX(CAST(SUBSTR("Series", 5, INSTR("Series", '-') - 5) AS INTEGER)) AS max_consecutive_wins
+FROM T
+WHERE "Winning team" = 'Air Force';
+Generated Final SQL: SELECT MAX(CAST(SUBSTR("Series", 5, INSTR("Series", '-') - 5) AS INTEGER)) AS max_consecutive_wins FROM T WHERE "Winning team" = 'Air Force';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   max_consecutive_wins |
+|-----------------------:|
+|                      0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Air Force–Colorado State football rivalry
+SQL: SELECT MAX(CAST(SUBSTR("Series", 5, INSTR("Series", '-') - 5) AS INTEGER)) AS max_consecutive_wins FROM T WHERE "Winning team" = 'Air Force';
+
+SQL Execution Result:
+max_consecutive_wins
+0
+
+Question: what is the most consecutive games won by air force in the trophy era?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 7
+

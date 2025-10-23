@@ -1,0 +1,240 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Atomic no.:
+   - Data type: Numeric
+   - 4 representative example values: 39, 61, 75, 104
+   - Role: Identifier for each element
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Yttrium, Promethium, Rhenium, Rutherfordium
+   - Role: Descriptor for the element's name
+
+3. Symbol:
+   - Data type: Categorical
+   - 4 representative example values: Y, Pm, Re, Rf
+   - Role: Identifier for the element's symbol
+
+4. Group:
+   - Data type: Numeric
+   - 4 representative example values: 3, 7, 4, 9
+   - Role: Descriptor for the element's group number
+
+5. Period:
+   - Data type: Numeric
+   - 4 representative example values: 5, 6, 7
+   - Role: Descriptor for the element's period number
+
+6. Block:
+   - Data type: Categorical
+   - 4 representative example values: d, f
+   - Role: Descriptor for the element's block in the periodic table
+
+7. State at STP:
+   - Data type: Categorical
+   - 4 representative example values: Solid
+   - Role: Descriptor for the element's state at standard temperature and pressure
+
+8. Occurrence:
+   - Data type: Categorical
+   - 4 representative example values: Primordial, Transient, Synthetic
+   - Role: Descriptor for the occurrence of the element
+
+9. Description:
+   - Data type: Categorical
+   - 4 representative example values: Transition metal, Lanthanide
+   - Role: Descriptor for the element's description
+
+**Outlier Row Analysis:**
+
+1. Row 104 (Rutherfordium):
+   - The State at STP value is "nan" which is not a typical state for an element at standard temperature and pressure. This makes the row an outlier.
+
+2. Row 61 (Promethium):
+   - The State at STP value is "Solid" which is a typical state for an element at standard temperature and pressure. This row is an ordinary entry and does not require special handling.
+
+3. Row 109 (Meitnerium):
+   - The State at STP value is "nan" which is not a typical state for an element at standard temperature and pressure. This makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Atomic\nno. | Name          | Symbol   |   Group |   Period | Block   | State at\nSTP   | Occurrence   | Description          |
+|-------------:|--------------:|:--------------|:---------|--------:|---------:|:--------|:----------------|:-------------|:---------------------|
+|            0 |             1 | Hydrogen      | H        |       1 |        1 | s       | Gas             | Primordial   | Non-metal            |
+|            1 |             2 | Helium        | He       |      18 |        1 | s       | Gas             | Primordial   | Noble gas            |
+|            2 |             3 | Lithium       | Li       |       1 |        2 | s       | Solid           | Primordial   | Alkali metal         |
+|            3 |             4 | Beryllium     | Be       |       2 |        2 | s       | Solid           | Primordial   | Alkaline earth metal |
+|            4 |             5 | Boron         | B        |      13 |        2 | p       | Solid           | Primordial   | Metalloid            |
+|            5 |             6 | Carbon        | C        |      14 |        2 | p       | Solid           | Primordial   | Non-metal            |
+|            6 |             7 | Nitrogen      | N        |      15 |        2 | p       | Gas             | Primordial   | Non-metal            |
+|            7 |             8 | Oxygen        | O        |      16 |        2 | p       | Gas             | Primordial   | Non-metal            |
+|            8 |             9 | Fluorine      | F        |      17 |        2 | p       | Gas             | Primordial   | Halogen              |
+|            9 |            10 | Neon          | Ne       |      18 |        2 | p       | Gas             | Primordial   | Noble gas            |
+|           10 |            11 | Sodium        | Na       |       1 |        3 | s       | Solid           | Primordial   | Alkali metal         |
+|           11 |            12 | Magnesium     | Mg       |       2 |        3 | s       | Solid           | Primordial   | Alkaline earth metal |
+|           12 |            13 | Aluminium     | Al       |      13 |        3 | p       | Solid           | Primordial   | Metal                |
+|           13 |            14 | Silicon       | Si       |      14 |        3 | p       | Solid           | Primordial   | Metalloid            |
+|           14 |            15 | Phosphorus    | P        |      15 |        3 | p       | Solid           | Primordial   | Non-metal            |
+|           15 |            16 | Sulfur        | S        |      16 |        3 | p       | Solid           | Primordial   | Non-metal            |
+|           16 |            17 | Chlorine      | Cl       |      17 |        3 | p       | Gas             | Primordial   | Halogen              |
+|           17 |            18 | Argon         | Ar       |      18 |        3 | p       | Gas             | Primordial   | Noble gas            |
+|           18 |            19 | Potassium     | K        |       1 |        4 | s       | Solid           | Primordial   | Alkali metal         |
+|           19 |            20 | Calcium       | Ca       |       2 |        4 | s       | Solid           | Primordial   | Alkaline earth metal |
+|           20 |            21 | Scandium      | Sc       |       3 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           21 |            22 | Titanium      | Ti       |       4 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           22 |            23 | Vanadium      | V        |       5 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           23 |            24 | Chromium      | Cr       |       6 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           24 |            25 | Manganese     | Mn       |       7 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           25 |            26 | Iron          | Fe       |       8 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           26 |            27 | Cobalt        | Co       |       9 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           27 |            28 | Nickel        | Ni       |      10 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           28 |            29 | Copper        | Cu       |      11 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           29 |            30 | Zinc          | Zn       |      12 |        4 | d       | Solid           | Primordial   | Transition metal     |
+|           30 |            31 | Gallium       | Ga       |      13 |        4 | p       | Solid           | Primordial   | Metal                |
+|           31 |            32 | Germanium     | Ge       |      14 |        4 | p       | Solid           | Primordial   | Metalloid            |
+|           32 |            33 | Arsenic       | As       |      15 |        4 | p       | Solid           | Primordial   | Metalloid            |
+|           33 |            34 | Selenium      | Se       |      16 |        4 | p       | Solid           | Primordial   | Non-metal            |
+|           34 |            35 | Bromine       | Br       |      17 |        4 | p       | Liquid          | Primordial   | Halogen              |
+|           35 |            36 | Krypton       | Kr       |      18 |        4 | p       | Gas             | Primordial   | Noble gas            |
+|           36 |            37 | Rubidium      | Rb       |       1 |        5 | s       | Solid           | Primordial   | Alkali metal         |
+|           37 |            38 | Strontium     | Sr       |       2 |        5 | s       | Solid           | Primordial   | Alkaline earth metal |
+|           38 |            39 | Yttrium       | Y        |       3 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           39 |            40 | Zirconium     | Zr       |       4 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           40 |            41 | Niobium       | Nb       |       5 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           41 |            42 | Molybdenum    | Mo       |       6 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           42 |            43 | Technetium    | Tc       |       7 |        5 | d       | Solid           | Transient    | Transition metal     |
+|           43 |            44 | Ruthenium     | Ru       |       8 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           44 |            45 | Rhodium       | Rh       |       9 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           45 |            46 | Palladium     | Pd       |      10 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           46 |            47 | Silver        | Ag       |      11 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           47 |            48 | Cadmium       | Cd       |      12 |        5 | d       | Solid           | Primordial   | Transition metal     |
+|           48 |            49 | Indium        | In       |      13 |        5 | p       | Solid           | Primordial   | Metal                |
+|           49 |            50 | Tin           | Sn       |      14 |        5 | p       | Solid           | Primordial   | Metal                |
+|           50 |            51 | Antimony      | Sb       |      15 |        5 | p       | Solid           | Primordial   | Metalloid            |
+|           51 |            52 | Tellurium     | Te       |      16 |        5 | p       | Solid           | Primordial   | Metalloid            |
+|           52 |            53 | Iodine        | I        |      17 |        5 | p       | Solid           | Primordial   | Halogen              |
+|           53 |            54 | Xenon         | Xe       |      18 |        5 | p       | Gas             | Primordial   | Noble gas            |
+|           54 |            55 | Caesium       | Cs       |       1 |        6 | s       | Solid           | Primordial   | Alkali metal         |
+|           55 |            56 | Barium        | Ba       |       2 |        6 | s       | Solid           | Primordial   | Alkaline earth metal |
+|           56 |            57 | Lanthanum     | La       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           57 |            58 | Cerium        | Ce       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           58 |            59 | Praseodymium  | Pr       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           59 |            60 | Neodymium     | Nd       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           60 |            61 | Promethium    | Pm       |       3 |        6 | f       | Solid           | Transient    | Lanthanide           |
+|           61 |            62 | Samarium      | Sm       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           62 |            63 | Europium      | Eu       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           63 |            64 | Gadolinium    | Gd       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           64 |            65 | Terbium       | Tb       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           65 |            66 | Dysprosium    | Dy       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           66 |            67 | Holmium       | Ho       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           67 |            68 | Erbium        | Er       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           68 |            69 | Thulium       | Tm       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           69 |            70 | Ytterbium     | Yb       |       3 |        6 | f       | Solid           | Primordial   | Lanthanide           |
+|           70 |            71 | Lutetium      | Lu       |       3 |        6 | d       | Solid           | Primordial   | Lanthanide           |
+|           71 |            72 | Hafnium       | Hf       |       4 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           72 |            73 | Tantalum      | Ta       |       5 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           73 |            74 | Tungsten      | W        |       6 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           74 |            75 | Rhenium       | Re       |       7 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           75 |            76 | Osmium        | Os       |       8 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           76 |            77 | Iridium       | Ir       |       9 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           77 |            78 | Platinum      | Pt       |      10 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           78 |            79 | Gold          | Au       |      11 |        6 | d       | Solid           | Primordial   | Transition metal     |
+|           79 |            80 | Mercury       | Hg       |      12 |        6 | d       | Liquid          | Primordial   | Transition metal     |
+|           80 |            81 | Thallium      | Tl       |      13 |        6 | p       | Solid           | Primordial   | Metal                |
+|           81 |            82 | Lead          | Pb       |      14 |        6 | p       | Solid           | Primordial   | Metal                |
+|           82 |            83 | Bismuth       | Bi       |      15 |        6 | p       | Solid           | Primordial   | Metal                |
+|           83 |            84 | Polonium      | Po       |      16 |        6 | p       | Solid           | Transient    | Metal                |
+|           84 |            85 | Astatine      | At       |      17 |        6 | p       | Solid           | Transient    | Halogen              |
+|           85 |            86 | Radon         | Rn       |      18 |        6 | p       | Gas             | Transient    | Noble gas            |
+|           86 |            87 | Francium      | Fr       |       1 |        7 | s       | Solid           | Transient    | Alkali metal         |
+|           87 |            88 | Radium        | Ra       |       2 |        7 | s       | Solid           | Transient    | Alkaline earth metal |
+|           88 |            89 | Actinium      | Ac       |       3 |        7 | f       | Solid           | Transient    | Actinide             |
+|           89 |            90 | Thorium       | Th       |       3 |        7 | f       | Solid           | Primordial   | Actinide             |
+|           90 |            91 | Protactinium  | Pa       |       3 |        7 | f       | Solid           | Transient    | Actinide             |
+|           91 |            92 | Uranium       | U        |       3 |        7 | f       | Solid           | Primordial   | Actinide             |
+|           92 |            93 | Neptunium     | Np       |       3 |        7 | f       | Solid           | Transient    | Actinide             |
+|           93 |            94 | Plutonium     | Pu       |       3 |        7 | f       | Solid           | Primordial   | Actinide             |
+|           94 |            95 | Americium     | Am       |       3 |        7 | f       | Solid           | Transient    | Actinide             |
+|           95 |            96 | Curium        | Cm       |       3 |        7 | f       | Solid           | Transient    | Actinide             |
+|           96 |            97 | Berkelium     | Bk       |       3 |        7 | f       | Solid           | Transient    | Actinide             |
+|           97 |            98 | Californium   | Cf       |       3 |        7 | f       | Solid           | Transient    | Actinide             |
+|           98 |            99 | Einsteinium   | Es       |       3 |        7 | f       | Solid           | Synthetic    | Actinide             |
+|           99 |           100 | Fermium       | Fm       |       3 |        7 | f       | Solid           | Synthetic    | Actinide             |
+|          100 |           101 | Mendelevium   | Md       |       3 |        7 | f       | Solid           | Synthetic    | Actinide             |
+|          101 |           102 | Nobelium      | No       |       3 |        7 | f       | Solid           | Synthetic    | Actinide             |
+|          102 |           103 | Lawrencium    | Lr       |       3 |        7 | d       | Solid           | Synthetic    | Actinide             |
+|          103 |           104 | Rutherfordium | Rf       |       4 |        7 | d       |                 | Synthetic    | Transition metal     |
+|          104 |           105 | Dubnium       | Db       |       5 |        7 | d       |                 | Synthetic    | Transition metal     |
+|          105 |           106 | Seaborgium    | Sg       |       6 |        7 | d       |                 | Synthetic    | Transition metal     |
+|          106 |           107 | Bohrium       | Bh       |       7 |        7 | d       |                 | Synthetic    | Transition metal     |
+|          107 |           108 | Hassium       | Hs       |       8 |        7 | d       |                 | Synthetic    | Transition metal     |
+|          108 |           109 | Meitnerium    | Mt       |       9 |        7 | d       |                 | Synthetic    |                      |
+|          109 |           110 | Darmstadtium  | Ds       |      10 |        7 | d       |                 | Synthetic    |                      |
+|          110 |           111 | Roentgenium   | Rg       |      11 |        7 | d       |                 | Synthetic    |                      |
+|          111 |           112 | Copernicium   | Cn       |      12 |        7 | d       |                 | Synthetic    | Transition metal     |
+|          112 |           113 | (Ununtrium)   | Uut      |      13 |        7 | p       |                 | Synthetic    |                      |
+|          113 |           114 | Flerovium     | Fl       |      14 |        7 | p       |                 | Synthetic    |                      |
+|          114 |           115 | (Ununpentium) | Uup      |      15 |        7 | p       |                 | Synthetic    |                      |
+|          115 |           116 | Livermorium   | Lv       |      16 |        7 | p       |                 | Synthetic    |                      |
+|          116 |           117 | (Ununseptium) | Uus      |      17 |        7 | p       |                 | Synthetic    |                      |
+|          117 |           118 | (Ununoctium)  | Uuo      |      18 |        7 | p       |                 | Synthetic    |                      |
+
+Generated Reasoning SQL: The summary indicates that the "Atomic no." column is numeric and serves as the identifier for each element. To answer the question, we need to count the number of rows where the "Atomic no." is greater than 100. Since we are only interested in the count of elements meeting this condition, we do not need to consider any outliers or placeholders in this case.
+
+SQL: select count("Atomic\nno.") from T where cast("Atomic\nno." as integer) > 100;
+Generated Final SQL: select count("Atomic\nno.") from T where cast("Atomic\nno." as integer) > 100;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Atomic\nno.") |
+|-----------------------:|
+|                     18 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Chemical element
+SQL: select count("Atomic\nno.") from T where cast("Atomic\nno." as integer) > 100;
+
+count("Atomic\nno.")
+18
+Question: how many elements have an atomic number of more than 100?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 18
+[Gold Answer] 18
+

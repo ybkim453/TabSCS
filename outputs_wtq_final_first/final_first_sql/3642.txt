@@ -1,0 +1,128 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 7, 8, 9, 12
+   - Role: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: October 29, November 5, November 12, December 3
+   - Role: Descriptor for the date of the game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Green Bay Packers, New Orleans Saints, Detroit Lions, Chicago Bears
+   - Role: Descriptor for the opposing team
+
+4. Results\nFinal score:
+   - Data type: Categorical
+   - 4 representative example values: W 27–13, W 37–6, W 16–14, W 23–10
+   - Role: Measure of the final score of the game
+
+5. Results\nTeam record:
+   - Data type: Categorical
+   - 4 representative example values: 3–4, 4–4, 5–4, 7–5
+   - Role: Measure of the team's record after the game
+
+6. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Lambeau Field, Metropolitan Stadium, Candlestick Park
+   - Role: Descriptor for the location of the game
+
+7. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 56,263, 49,784, 61,214
+   - Role: Measure of the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 13:
+   - The values for Week, Date, Opponent, Results\nFinal score, Results\nTeam record, Venue, and Attendance are all missing.
+   - This row is an outlier due to the absence of data in all columns, making it distinct from the rest of the table.
+
+2. Row 6:
+   - The Results\nFinal score is L 20–17, which is a loss compared to the other rows which mostly have wins.
+   - This row is an outlier due to the different outcome of the game compared to the majority of the table.
+
+3. Row 3:
+   - The Results\nFinal score is W 16–14, which is a close win compared to the other rows which have more decisive victories.
+   - This row is an outlier due to the narrow margin of victory, making it distinct from the majority of the table.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date         | Opponent               | Results\nFinal score   | Results\nTeam record   | Venue                         |   Attendance |
+|-------------:|-------:|:-------------|:-----------------------|:-----------------------|:-----------------------|:------------------------------|-------------:|
+|            0 |      1 | September 18 | Washington Redskins    | L 24–21                | 0–1                    | Metropolitan Stadium          |        47900 |
+|            1 |      2 | September 24 | at Detroit Lions       | W 34–10                | 1–1                    | Tiger Stadium                 |        54418 |
+|            2 |      3 | October 1    | Miami Dolphins         | L 16–14                | 1–2                    | Metropolitan Stadium          |        47900 |
+|            3 |      4 | October 8    | St. Louis Cardinals    | L 19–17                | 1–3                    | Metropolitan Stadium          |        49687 |
+|            4 |      5 | October 15   | at Denver Broncos      | W 23–20                | 2–3                    | Mile High Stadium             |        51656 |
+|            5 |      6 | October 23   | at Chicago Bears       | L 13–10                | 2–4                    | Soldier Field                 |        55701 |
+|            6 |      7 | October 29   | at Green Bay Packers   | W 27–13                | 3–4                    | Lambeau Field                 |        56263 |
+|            7 |      8 | November 5   | New Orleans Saints     | W 37–6                 | 4–4                    | Metropolitan Stadium          |        49784 |
+|            8 |      9 | November 12  | Detroit Lions          | W 16–14                | 5–4                    | Metropolitan Stadium          |        49784 |
+|            9 |     10 | November 19  | at Los Angeles Rams    | W 45–41                | 6–4                    | Los Angeles Memorial Coliseum |        77982 |
+|           10 |     11 | November 26  | at Pittsburgh Steelers | L 23–10                | 6–5                    | Three Rivers Stadium          |        50348 |
+|           11 |     12 | December 3   | Chicago Bears          | W 23–10                | 7–5                    | Metropolitan Stadium          |        49784 |
+|           12 |     13 | December 10  | Green Bay Packers      | L 23–7                 | 7–6                    | Metropolitan Stadium          |        49784 |
+|           13 |     14 | December 16  | at San Francisco 49ers | L 20–17                | 7–7                    | Candlestick Park              |        61214 |
+
+Generated Reasoning SQL: The summary indicates that the "Date" column contains categorical values representing the date of the game. To find the number of attendees for the October 1 game, we need to filter rows where "Date" = October 1 and retrieve the value in the "Attendance" column.
+SQL: select "Attendance" from T where "Date" = 'October 1';
+Generated Final SQL: select "Attendance" from T where "Date" = 'October 1';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Attendance |
+|-------------:|
+|        47900 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1972 Minnesota Vikings season
+SQL: select "Attendance" from T where "Date" = 'October 1';
+
+Attendance
+47900
+Question: what was the number of attendees for the october 1 game?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 47900
+[Gold Answer] 47,900
+

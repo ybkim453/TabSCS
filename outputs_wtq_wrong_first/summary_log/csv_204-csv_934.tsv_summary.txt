@@ -1,0 +1,48 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier for the ranking of the pairs in the table
+
+2. Pair:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Identifier for the pairs participating in the event
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: Norway, Germany, Poland, United States
+   - Role: Descriptor for the country each pair represents
+
+4. Athletes:
+   - Data type: Categorical
+   - 4 representative example values: Sven Kramer, Koen Verweij, Jan Blokhuijsen, Shani Davis
+   - Role: Descriptor for the athletes in each pair
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 3:41.43, 3:43.42, 3:43.62, 3:46.33
+   - Role: Measure of the time taken by each pair in the event
+
+6. Deficit:
+   - Data type: Numeric
+   - 4 representative example values: nan, 1.99, 2.19, 4.9
+   - Role: Measure of the time deficit compared to the winning pair
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 4):
+   - The "Rank" value is 5, which is different from the majority of the table where ranks are 1-4.
+   - The "Deficit" value of 4.9 is significantly higher compared to the deficits of other pairs.
+   - Conclusion: This row is an outlier due to its high deficit and lower rank.
+
+2. Row 1 (Index 0):
+   - The "Rank" value is nan, which is not a typical rank value seen in the table.
+   - The "Deficit" value is also missing (nan), making it stand out from the rows with deficit values.
+   - Conclusion: This row is an outlier due to missing rank and deficit values.
+
+3. Row 2 (Index 1):
+   - The "Rank" value is nan, which is not a typical rank value seen in the table.
+   - The "Deficit" value of 1.99 is relatively low compared to other deficits.
+   - Conclusion: This row is an outlier due to missing rank and a relatively low deficit value.

@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 1993, 1994, 1994, 1994
+   - Role: Identifier for the year in which the event took place
+
+2. Date
+   - Data type: Date
+   - 4 representative example values: 27 Feb 1993, 12 Dec 1993, 29 Dec 1993, 12 Mar 1994
+   - Role: Descriptor indicating the specific date of the event
+
+3. Location
+   - Data type: Categorical
+   - 4 representative example values: Whistler, BC, Canada, Val-d'Isère, France, Bormio, Italy, Vail, CO, USA
+   - Role: Descriptor specifying the location of the event
+
+4. Discipline
+   - Data type: Categorical
+   - 4 representative example values: Downhill, Super G, Downhill, Downhill
+   - Role: Descriptor indicating the type of skiing discipline
+
+5. Place
+   - Data type: Categorical
+   - 4 representative example values: 2nd, 3rd, 3rd, 3rd
+   - Role: Measure representing the final ranking achieved in the event
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values that make it distinctive are Season = 1993, Date = 27 Feb 1993, Location = Whistler, BC, Canada, Discipline = Downhill, Place = 2nd.
+   - This row is not an outlier as it contains typical values that are seen in other rows.
+
+2. Row 4:
+   - The values that make it distinctive are Season = 1994, Date = 13 Mar 1994, Location = Whistler, BC, Canada, Discipline = Super G, Place = 1st.
+   - This row is an outlier as it has a 1st place finish in the Super G discipline, which is different from the majority of 3rd place finishes in Downhill events.
+
+3. Row 1:
+   - The values that make it distinctive are Season = 1994, Date = 12 Dec 1993, Location = Val-d'Isère, France, Discipline = Super G, Place = 3rd.
+   - This row is not an outlier as it contains typical values that are seen in other rows.

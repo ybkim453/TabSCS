@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Season:
+   - Data type: Categorical
+   - 4 representative example values: 2012-13, 2009-10, 2006-07, 1999-00
+   - Role: Identifier for the specific season of the footballer's performance.
+
+2. Footballer:
+   - Data type: Categorical
+   - 4 representative example values: Itumeleng Khune, Katlego Mphela, Godfrey Sapula, Siyabonga Nomvethe
+   - Role: Descriptor for the name of the footballer.
+
+3. Club:
+   - Data type: Categorical
+   - 4 representative example values: Kaizer Chiefs, Mamelodi Sundowns, Bush Bucks
+   - Role: Descriptor for the club the footballer belongs to.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: GK, FW, MF
+   - Role: Descriptor for the playing position of the footballer.
+
+5. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: South Africa, Cameroon, Zimbabwe
+   - Role: Descriptor for the nationality of the footballer.
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values for Season (2012-13), Footballer (Itumeleng Khune), Club (Kaizer Chiefs), Position (GK), and Nationality (South Africa) are all ordinary and consistent with other entries in the table. This row is an ordinary row and does not require special handling.
+
+2. Row 16:
+   - The values for Season (1998-99), Footballer (Roger Feutmba), Club (Mamelodi Sundowns), Position (MF), and Nationality (Cameroon) are all ordinary and consistent with other entries in the table. This row is an ordinary row and does not require special handling.
+
+3. Row 0:
+   - The values for Season (2012-13), Footballer (Itumeleng Khune), Club (Kaizer Chiefs), Position (GK), and Nationality (South Africa) are all ordinary and consistent with other entries in the table. This row is an ordinary row and does not require special handling.

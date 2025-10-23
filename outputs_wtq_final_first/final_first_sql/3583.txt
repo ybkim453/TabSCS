@@ -1,0 +1,147 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Location:
+   - Data type: Categorical
+   - 4 representative example values: Chernobyl-4, Kursk-1, Kursk-2, Leningrad-2
+   - Role: Identifier for the nuclear power plant location
+
+2. Reactor type:
+   - Data type: Categorical
+   - 4 representative example values: RBMK-1000, MKER-1000
+   - Role: Descriptor for the type of reactor used at each plant
+
+3. Status:
+   - Data type: Categorical
+   - 4 representative example values: destroyed in the 1986 accident, operational until 2021, construction begin was 1985, since then shelved
+   - Role: Descriptor indicating the current status of the reactor
+
+4. Net Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 925
+   - Role: Measure of the net capacity of the reactor in Megawatts electrical
+
+5. Gross Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 1,000
+   - Role: Measure of the gross capacity of the reactor in Megawatts electrical
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Chernobyl-4):
+   - The reactor at Chernobyl-4 was destroyed in the 1986 accident, which is a unique and extreme event compared to the operational or under construction status of other reactors. This makes it an outlier.
+
+2. Row 16 (Kursk-5):
+   - The construction of the reactor at Kursk-5 began in 1985 and has since been shelved, which is different from the operational status of other reactors. This unique status makes it an outlier.
+
+3. Row 3 (Kursk-2):
+   - The operational status of the reactor at Kursk-2 until 2024 is different from the operational until 2021 status of other reactors. This makes it an outlier.
+
+=== Full Table Preview ===
+|   row_number | Location    | Reactor type   | Status                                         |   Net\nCapacity\n(MWe) |   Gross\nCapacity\n(MWe) |
+|-------------:|:------------|:---------------|:-----------------------------------------------|-----------------------:|-------------------------:|
+|            0 | Chernobyl-1 | RBMK-1000      | shut down in 1996                              |                    740 |                      800 |
+|            1 | Chernobyl-2 | RBMK-1000      | shut down in 1991                              |                    925 |                     1000 |
+|            2 | Chernobyl-3 | RBMK-1000      | shut down in 2000                              |                    925 |                     1000 |
+|            3 | Chernobyl-4 | RBMK-1000      | destroyed in the 1986 accident                 |                    925 |                     1000 |
+|            4 | Chernobyl-5 | RBMK-1000      | construction cancelled in 1988                 |                    950 |                     1000 |
+|            5 | Chernobyl-6 | RBMK-1000      | construction cancelled in 1988                 |                    950 |                     1000 |
+|            6 | Ignalina-1  | RBMK-1500      | shut down in 2004                              |                   1185 |                     1300 |
+|            7 | Ignalina-2  | RBMK-1500      | shut down in 2009                              |                   1185 |                     1300 |
+|            8 | Ignalina-3  | RBMK-1500      | construction cancelled in 1988                 |                   1380 |                     1500 |
+|            9 | Ignalina-4  | RBMK-1500      | plan cancelled in 1988                         |                   1380 |                     1500 |
+|           10 | Kostroma-1  | RBMK-1500      | construction cancelled in 1980s                |                   1380 |                     1500 |
+|           11 | Kostroma-2  | RBMK-1500      | construction cancelled in 1980s                |                   1380 |                     1500 |
+|           12 | Kursk-1     | RBMK-1000      | operational until 2021                         |                    925 |                     1000 |
+|           13 | Kursk-2     | RBMK-1000      | operational until 2024                         |                    925 |                     1000 |
+|           14 | Kursk-3     | RBMK-1000      | operational until March 2014                   |                    925 |                     1000 |
+|           15 | Kursk-4     | RBMK-1000      | operational until February 2016                |                    925 |                     1000 |
+|           16 | Kursk-5     | MKER-1000      | construction begin was 1985 since then shelved |                    925 |                     1000 |
+|           17 | Kursk-6     | RBMK-1000      | construction cancelled in 1993                 |                    925 |                     1000 |
+|           18 | Leningrad-1 | RBMK-1000      | operational                                    |                    925 |                     1000 |
+|           19 | Leningrad-2 | RBMK-1000      | operational until 2021                         |                    925 |                     1000 |
+|           20 | Leningrad-3 | RBMK-1000      | operational until June 2025                    |                    925 |                     1000 |
+|           21 | Leningrad-4 | RBMK-1000      | operational until August 2026                  |                    925 |                     1000 |
+|           22 | Smolensk-1  | RBMK-1000      | operational until December 2022                |                    925 |                     1000 |
+|           23 | Smolensk-2  | RBMK-1000      | operational until July 2015                    |                    925 |                     1000 |
+|           24 | Smolensk-3  | RBMK-1000      | operational until July 2023                    |                    925 |                     1000 |
+|           25 | Smolensk-4  | RBMK-1000      | construction cancelled in 1993                 |                    925 |                     1000 |
+
+Generated Reasoning SQL: The summary provides information about the "Location" column, which contains the names of nuclear power plant locations, and the "Status" column, which describes the current status of the reactors. 
+To answer the question, we need to find the reactor where the construction was canceled in the same year as Smolensk-4. 
+We can filter rows where "Status" contains the phrase "construction begin was" and extract the year from the status description to compare with Smolensk-4's construction year.
+SQL: 
+select "Reactor type" 
+from T 
+where "Status" like '%construction begin was%' 
+and substr("Status", -4) = (select substr("Status", -4) from T where "Location" = 'Smolensk-4');
+Generated Final SQL: select "Reactor type" from T where "Status" like '%construction begin was%' and substr("Status", -4) = (select substr("Status", -4) from T where "Location" = 'Smolensk-4');
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: RBMK (row_number, Location, Reactor type, Status, Net\nCapacity\n(MWe), Gross\nCapacity\n(MWe))
+
+row_number | Location | Reactor type | Status | Net\nCapacity\n(MWe) | Gross\nCapacity\n(MWe)
+0 | Chernobyl-1 | RBMK-1000 | shut down in 1996 | 740 | 800
+1 | Chernobyl-2 | RBMK-1000 | shut down in 1991 | 925 | 1000
+2 | Chernobyl-3 | RBMK-1000 | shut down in 2000 | 925 | 1000
+3 | Chernobyl-4 | RBMK-1000 | destroyed in the 1986 accident | 925 | 1000
+4 | Chernobyl-5 | RBMK-1000 | construction cancelled in 1988 | 950 | 1000
+5 | Chernobyl-6 | RBMK-1000 | construction cancelled in 1988 | 950 | 1000
+6 | Ignalina-1 | RBMK-1500 | shut down in 2004 | 1185 | 1300
+7 | Ignalina-2 | RBMK-1500 | shut down in 2009 | 1185 | 1300
+8 | Ignalina-3 | RBMK-1500 | construction cancelled in 1988 | 1380 | 1500
+9 | Ignalina-4 | RBMK-1500 | plan cancelled in 1988 | 1380 | 1500
+10 | Kostroma-1 | RBMK-1500 | construction cancelled in 1980s | 1380 | 1500
+11 | Kostroma-2 | RBMK-1500 | construction cancelled in 1980s | 1380 | 1500
+12 | Kursk-1 | RBMK-1000 | operational until 2021 | 925 | 1000
+13 | Kursk-2 | RBMK-1000 | operational until 2024 | 925 | 1000
+14 | Kursk-3 | RBMK-1000 | operational until March 2014 | 925 | 1000
+15 | Kursk-4 | RBMK-1000 | operational until February 2016 | 925 | 1000
+16 | Kursk-5 | MKER-1000 | construction begin was 1985 since then shelved | 925 | 1000
+17 | Kursk-6 | RBMK-1000 | construction cancelled in 1993 | 925 | 1000
+18 | Leningrad-1 | RBMK-1000 | operational | 925 | 1000
+19 | Leningrad-2 | RBMK-1000 | operational until 2021 | 925 | 1000
+20 | Leningrad-3 | RBMK-1000 | operational until June 2025 | 925 | 1000
+21 | Leningrad-4 | RBMK-1000 | operational until August 2026 | 925 | 1000
+22 | Smolensk-1 | RBMK-1000 | operational until December 2022 | 925 | 1000
+23 | Smolensk-2 | RBMK-1000 | operational until July 2015 | 925 | 1000
+24 | Smolensk-3 | RBMK-1000 | operational until July 2023 | 925 | 1000
+25 | Smolensk-4 | RBMK-1000 | construction cancelled in 1993 | 925 | 1000
+Question: which reactor had construction cancelled the same year as the smolensk-4?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the construction year for Smolensk-4. Looking at the full table, we see that Smolensk-4 had its construction cancelled in 1993.
+
+Next, we need to find the reactor that also had its construction cancelled in 1993. From the table, we can see that Kursk-6 is the reactor where construction was cancelled in 1993.
+
+Therefore, the reactor that had construction cancelled the same year as Smolensk-4 is Kursk-6.
+
+Final Answer: Kursk-6
+[Fallback] Prediction: kursk-6
+[Gold Answer] kursk-6
+

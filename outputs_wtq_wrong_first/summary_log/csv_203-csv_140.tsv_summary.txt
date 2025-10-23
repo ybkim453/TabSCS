@@ -1,0 +1,65 @@
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 09–09, 09–24, 12–09, 01–02
+   - Role: Identifier for the date of the tournament
+
+2. Date.1:
+   - Data type: Categorical
+   - 4 representative example values: 09–15, 09–29, 12–15, 01–05
+   - Role: Identifier for the end date of the tournament
+
+3. Unnamed: 2:
+   - Data type: Categorical
+   - 4 representative example values: THA, SCO, GER, ENG
+   - Role: Identifier for the country where the tournament took place
+
+4. Rank:
+   - Data type: Categorical
+   - 4 representative example values: WR, nan
+   - Role: Descriptor for the ranking of the tournament
+
+5. Tournament name:
+   - Data type: Categorical
+   - 4 representative example values: Asian Classic, Scottish Masters, German Open, Charity Challenge
+   - Role: Descriptor for the name of the tournament
+
+6. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Riverside Montien Hotel, Civic Centre, NAAFI, International Convention Centre
+   - Role: Descriptor for the venue of the tournament
+
+7. City:
+   - Data type: Categorical
+   - 4 representative example values: Bangkok, Motherwell, Osnabrück, Birmingham
+   - Role: Descriptor for the city where the tournament took place
+
+8. Winner:
+   - Data type: Categorical
+   - 4 representative example values: Ronnie O'Sullivan, Peter Ebdon, Stephen Hendry, Ken Doherty
+   - Role: Descriptor for the winner of the tournament
+
+9. Runner-up:
+   - Data type: Categorical
+   - 4 representative example values: Brian Morgan, Alan McManus, Alain Robidoux, Andy Hicks
+   - Role: Descriptor for the runner-up of the tournament
+
+10. Score:
+   - Data type: Categorical
+   - 4 representative example values: 9–8, 9–6, 9–7, 18–12
+   - Role: Descriptor for the final score of the tournament
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The Rank value is "WR" which is different from the majority of "nan" values in the column.
+   - This row is an outlier due to the distinctive Rank value.
+
+2. Row 17:
+   - The Rank value is "WR" which is different from the majority of "nan" values in the column.
+   - This row is an outlier due to the distinctive Rank value.
+
+3. Row 16:
+   - The Rank value is "nan" which is consistent with the majority of values in the column.
+   - This row is an ordinary row and does not require special handling.

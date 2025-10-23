@@ -1,0 +1,72 @@
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 7, 8
+   - Role: Identifier for the position of the team in the table
+
+2. Team:
+   - Data type: Categorical
+   - 4 representative example values: ÍBV, ÍA, Breiðablik, Fram
+   - Role: Descriptor for the name of the team
+
+3. Played:
+   - Data type: Numeric
+   - 4 representative example values: 18, 18, 18, 18
+   - Role: Measure of the number of games played by each team
+
+4. Won:
+   - Data type: Numeric
+   - 4 representative example values: 8, 7, 5, 4
+   - Role: Measure of the number of games won by each team
+
+5. Draw:
+   - Data type: Numeric
+   - 4 representative example values: 5, 5, 3, 5
+   - Role: Measure of the number of games drawn by each team
+
+6. Lost:
+   - Data type: Numeric
+   - 4 representative example values: 5, 6, 10, 9
+   - Role: Measure of the number of games lost by each team
+
+7. Goals For:
+   - Data type: Numeric
+   - 4 representative example values: 29, 21, 29, 22
+   - Role: Measure of the total goals scored by each team
+
+8. Goals Against:
+   - Data type: Numeric
+   - 4 representative example values: 17, 17, 35, 33
+   - Role: Measure of the total goals conceded by each team
+
+9. Goal Difference:
+   - Data type: Numeric
+   - 4 representative example values: 12, 4, -6, -11
+   - Role: Measure of the difference between goals scored and goals conceded by each team
+
+10. Points:
+    - Data type: Numeric
+    - 4 representative example values: 29, 26, 18, 17
+    - Role: Measure of the total points earned by each team
+
+11. Notes:
+    - Data type: Categorical
+    - 4 representative example values: Inter-Toto Cup, nan, nan, nan
+    - Role: Descriptor for any additional notes or achievements of the team
+
+**Outlier Row Analysis:**
+
+1. Row 6 (Leiftur):
+   - The values in the "Goal Difference" and "Points" columns (-15 and 16, respectively) are significantly lower compared to the other teams in the table, indicating poor performance.
+   - These values are distinct outliers as they deviate significantly from the majority of the table.
+
+2. Row 3 (Breiðablik):
+   - The "Goals Against" value of 35 is notably higher than the other teams, indicating a weaker defense.
+   - This value makes the row an outlier as it is significantly different from the rest of the table.
+
+3. Row 9 (Stjarnan):
+   - The "Notes" column states "Relegated", indicating that this team has been relegated from the league.
+   - While relegation is not uncommon in sports leagues, within the context of this table, it makes this row an outlier as it represents a different status compared to the majority of the teams.
+
+Overall, the identified outlier rows have distinct values that set them apart from the majority of the table, making them outliers that require special attention in analysis.

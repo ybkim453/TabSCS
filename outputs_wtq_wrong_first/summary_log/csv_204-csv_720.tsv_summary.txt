@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. Event:
+   - Data type: Categorical
+   - 4 representative example values: K-1 200 m, K-1 500 m, K-1 1000 m, K-1 5000 m
+   - Role: Identifier for the type of canoeing event
+
+2. Gold:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Lisa Carrington (NZL), Nicole Reinhardt (GER), Tamara Csipes (HUN), Yvonne Schuring (Austria)
+   - Role: Descriptor for the gold medalist in each event
+
+3. Time:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 39.998, 1:47.066, 4:11.388, 1:37.071
+   - Role: Measure of the time taken to complete the event
+
+4. Silver:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Marta Walczykiewicz (POL), Danuta Kozák (HUN), Krisztina Fazekas Zur (USA), Franziska Weber (Germany)
+   - Role: Descriptor for the silver medalist in each event
+
+5. Time.1:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 40.472, 1:47.396, 4:13.470, 1:37.275
+   - Role: Measure of the time taken to complete the event
+
+6. Bronze:
+   - Data type: Categorical (Athlete names)
+   - 4 representative example values: Inna Osypenko-Radomska (UKR), Inna Osypenko-Radomska (UKR), Naomi Flood (AUS), Beata Mikołajczyk (Poland)
+   - Role: Descriptor for the bronze medalist in each event
+
+7. Time.2:
+   - Data type: Numeric (Time in seconds)
+   - 4 representative example values: 40.670, 1:48.668, 4:14.124, 1:37.803
+   - Role: Measure of the time taken to complete the event
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Event: K-1 200 m):
+   - The values for Gold (Lisa Carrington (NZL)), Silver (Marta Walczykiewicz (POL)), and Bronze (Inna Osypenko-Radomska (UKR)) are significantly faster than the corresponding values in other rows for the same event. This row stands out as the gold, silver, and bronze medalists achieved notably faster times compared to the other events.
+
+2. Row 3 (Event: K-1 1000 m):
+   - The time for the gold medalist (Tamara Csipes (HUN)) is notably faster than the gold medal times in other events. This row is an outlier due to the exceptional performance of the gold medalist in the K-1 1000 m event.
+
+3. Row 0 (Event: K-1 500 m):
+   - The time for the gold medalist (Nicole Reinhardt (GER)) is significantly faster than the gold medal times in other events. This row is an outlier because of the exceptional performance of the gold medalist in the K-1 500 m event.

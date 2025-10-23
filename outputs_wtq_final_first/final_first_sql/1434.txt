@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Player
+   - Data type: Categorical
+   - 4 representative example values: Stanislav Kostov, Kostadin Stoyanov, Tomislav Kostadinov, Total
+   - Role: Identifier
+
+2. League
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 0, 53
+   - Role: Measure
+
+3. Cup
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 1, 11
+   - Role: Measure
+
+4. Europa League
+   - Data type: Numeric
+   - 4 representative example values: 0, 0, 1, 14
+   - Role: Measure
+
+5. Total
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 1, 78
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 17:
+   - The values for League, Cup, and Europa League are all 0, which is different from the majority of the table where these values are non-zero.
+   - This row is an outlier because it does not follow the pattern of the other rows in terms of participation in the different competitions.
+
+2. Row 5:
+   - The values for League and Cup are both 0, while Europa League is 1. This combination of values is not common in the table.
+   - This row is an outlier because it has a unique combination of participation in the different competitions compared to the other rows.
+
+=== Full Table Preview ===
+|   row_number | Player              |   League |   Cup |   Europa\nLeague |   Total |
+|-------------:|:--------------------|---------:|------:|-----------------:|--------:|
+|            0 | Spas Delev          |       13 |     7 |                2 |      22 |
+|            1 | Marquinhos          |        9 |     1 |                3 |      13 |
+|            2 | Michel Platini      |       10 |     0 |                0 |      10 |
+|            3 | Cillian Sheridan    |        4 |     2 |                1 |       7 |
+|            4 | Giuseppe Aquaro     |        3 |     0 |                2 |       5 |
+|            5 | Gregory Nelson      |        3 |     0 |                1 |       4 |
+|            6 | Rumen Trifonov      |        2 |     0 |                1 |       3 |
+|            7 | Aleksandar Tonev    |        2 |     0 |                0 |       2 |
+|            8 | Apostol Popov       |        2 |     0 |                0 |       2 |
+|            9 | Emil Gargorov       |        2 |     0 |                0 |       2 |
+|           10 | Todor Yanchev       |        0 |     1 |                1 |       2 |
+|           11 | Stanislav Kostov    |        1 |     0 |                0 |       1 |
+|           12 | Kostadin Stoyanov   |        1 |     0 |                0 |       1 |
+|           13 | Boris Galchev       |        1 |     0 |                0 |       1 |
+|           14 | Pavel Vidanov       |        0 |     0 |                1 |       1 |
+|           15 | Tomislav Kostadinov |        0 |     0 |                1 |       1 |
+|           16 | Christian Tiboni    |        0 |     0 |                1 |       1 |
+|           17 | Total               |       53 |    11 |               14 |      78 |
+
+Generated Reasoning SQL: To find the number of players who scored below 5 total points in the season, we need to consider the "Total" column, which represents the total points scored by each player. 
+We will filter the rows where the "Total" column is less than 5 and count the number of such rows.
+Since the "Total" column is numeric, we can directly compare it to the value 5.
+SQL: select count("Player") from T where cast("Total" as integer) < 5;
+Generated Final SQL: select count("Player") from T where cast("Total" as integer) < 5;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Player") |
+|------------------:|
+|                12 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2010–11 PFC CSKA Sofia season
+SQL: select count("Player") from T where cast("Total" as integer) < 5;
+
+count("Player")
+12
+Question: how many players scored below 5 total points in the season?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 12
+[Gold Answer] 12
+

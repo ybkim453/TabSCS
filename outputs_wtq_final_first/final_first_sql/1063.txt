@@ -1,0 +1,122 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1962, 1965, 1966, 1968
+   - Role: Identifier for the year in which the single was released.
+
+2. Single:
+   - Data type: Categorical
+   - 4 representative example values: Callin' Dr. Casey, That Ain't All, Silver Cloud Talkin' Blues, You're the Guilty One
+   - Role: Descriptor for the title of the single.
+
+3. Chart Positions US Country:
+   - Data type: Numeric
+   - 4 representative example values: — (missing data), 20, — (missing data), — (missing data)
+   - Role: Measure indicating the chart position on the US Country charts.
+
+4. Chart Positions US:
+   - Data type: Numeric
+   - 4 representative example values: 83, — (missing data), — (missing data), — (missing data)
+   - Role: Measure indicating the chart position on the overall US charts.
+
+5. Album:
+   - Data type: Categorical
+   - 4 representative example values: singles only, A Bizarre Collection of the Most Unusual Songs
+   - Role: Descriptor for the album associated with the single.
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The values for Chart Positions US Country and Chart Positions US are both missing (—), which is different from the majority of the table where these values are typically numbers. This makes the row an outlier.
+
+2. Row 2:
+   - The value for Chart Positions US Country is 20, which is a specific number and different from the missing values in other rows. This makes the row an outlier.
+
+3. Row 9:
+   - The values for Chart Positions US Country and Chart Positions US are both missing (—), similar to Row 8. This indicates that this row is an outlier as well.
+
+=== Full Table Preview ===
+|   row_number |   Year | Single                                        | Chart Positions\nUS Country   | Chart Positions\nUS   | Album                                          |
+|-------------:|-------:|:----------------------------------------------|:------------------------------|:----------------------|:-----------------------------------------------|
+|            0 |   1957 | "Sittin' in the Balcony"                      | —                             | 38                    | single only                                    |
+|            1 |   1961 | "Language of Love"                            | —                             | 32                    | Language of Love                               |
+|            2 |   1962 | "Thou Shalt Not Steal"                        | —                             | 73                    | singles only                                   |
+|            3 |   1962 | "Callin' Dr. Casey"                           | —                             | 83                    | singles only                                   |
+|            4 |   1962 | "Road Hog"                                    | —                             | 65                    | Twelve Sides                                   |
+|            5 |   1963 | "Bad News" (b/w "Guitar Player(Her and Him)") | 23                            | —                     | singles only                                   |
+|            6 |   1964 | "Blue Train (Of the Heartbreak Line)"         | 44                            | 132                   | singles only                                   |
+|            7 |   1964 | "Th' Wife"                                    | 45                            | —                     | singles only                                   |
+|            8 |   1965 | "That Ain't All"                              | 20                            | —                     | singles only                                   |
+|            9 |   1966 | "Silver Cloud Talkin' Blues"                  | —                             | —                     | A Bizarre Collection of the Most Unusual Songs |
+|           10 |   1966 | "You're the Guilty One"                       | —                             | —                     | single only                                    |
+|           11 |   1967 | "It's My Time"                                | 51                            | —                     | Suburban Attitudes in Country Verse            |
+|           12 |   1968 | "Odd Folks of Okracoke"                       | —                             | —                     | single only                                    |
+|           13 |   1969 | "Brown Girl"                                  | —                             | —                     | The Open Mind of John D. Loudermilk            |
+|           14 |   1971 | "Lord Have Mercy"                             | —                             | —                     | Volume 1-Elloree                               |
+|           15 |   1979 | "Every Day I Learn a Little More About Love"  | —                             | —                     | Just Passing Through                           |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Single" column contains categorical values representing the title of the single, and the "Year" column is numeric. To find the single that came out in 1964 besides "th' wife", we need to filter rows where "Year" = 1964 and "Single" is not equal to "th' wife".
+
+SQL: select "Single" from T where cast("Year" as integer) = 1964 and "Single" != 'th\' wife';
+Generated Final SQL: select "Single" from T where cast("Year" as integer) = 1964 and "Single" != 'th\' wife';
+[Error] Final SQL 실행 실패: Execution failed on sql 'select "Single" from T where cast("Year" as integer) = 1964 and "Single" != 'th\' wife';': near "wife": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: John D. Loudermilk (row_number, Year, Single, Chart Positions\nUS Country, Chart Positions\nUS, Album)
+
+row_number | Year | Single | Chart Positions\nUS Country | Chart Positions\nUS | Album
+0 | 1957 | "Sittin' in the Balcony" | — | 38 | single only
+1 | 1961 | "Language of Love" | — | 32 | Language of Love
+2 | 1962 | "Thou Shalt Not Steal" | — | 73 | singles only
+3 | 1962 | "Callin' Dr. Casey" | — | 83 | singles only
+4 | 1962 | "Road Hog" | — | 65 | Twelve Sides
+5 | 1963 | "Bad News" (b/w "Guitar Player(Her and Him)") | 23 | — | singles only
+6 | 1964 | "Blue Train (Of the Heartbreak Line)" | 44 | 132 | singles only
+7 | 1964 | "Th' Wife" | 45 | — | singles only
+8 | 1965 | "That Ain't All" | 20 | — | singles only
+9 | 1966 | "Silver Cloud Talkin' Blues" | — | — | A Bizarre Collection of the Most Unusual Songs
+10 | 1966 | "You're the Guilty One" | — | — | single only
+11 | 1967 | "It's My Time" | 51 | — | Suburban Attitudes in Country Verse
+12 | 1968 | "Odd Folks of Okracoke" | — | — | single only
+13 | 1969 | "Brown Girl" | — | — | The Open Mind of John D. Loudermilk
+14 | 1971 | "Lord Have Mercy" | — | — | Volume 1-Elloree
+15 | 1979 | "Every Day I Learn a Little More About Love" | — | — | Just Passing Through
+Question: besides "th' wife", what other single came out in 1964?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify all singles released in 1964 from the full table. Based on the data provided:
+- "Blue Train (Of the Heartbreak Line)" was released in 1964.
+- "Th' Wife" was released in 1964 as well.
+
+Therefore, besides "Th' Wife", the single "Blue Train (Of the Heartbreak Line)" also came out in 1964.
+
+Final Answer: Blue Train (Of the Heartbreak Line)
+[Fallback] Prediction: blue train (of the heartbreak line)
+[Gold Answer] "blue train (of the heartbreak line)"
+

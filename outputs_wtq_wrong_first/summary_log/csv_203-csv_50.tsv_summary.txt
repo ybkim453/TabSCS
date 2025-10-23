@@ -1,0 +1,52 @@
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 4, 6
+   - Role: Identifier for each row in the table
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: April 4, 1985, August 13, 1988, July 3, 1991, March 14, 1993
+   - Role: Descriptor indicating the date of the match
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Portland, Oregon, St. Louis, Missouri, Los Angeles, California, Tokyo, Japan
+   - Role: Descriptor indicating the location of the match
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Canada, Jamaica, Costa Rica, China PR
+   - Role: Descriptor indicating the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: nan, 2–1, 2–2, 1–0
+   - Role: Measure indicating the score of the match
+
+6. Result:
+   - Data type: Categorical
+   - 4 representative example values: 1–1, 5-1, 3–2, 1–3
+   - Role: Measure indicating the result of the match
+
+7. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Friendly, 1990 World Cup qualifying, 1991 CONCACAF Gold Cup
+   - Role: Descriptor indicating the competition of the match
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The Score value is "nan", which is not a typical score entry.
+   - This makes the row an outlier as it contains missing data in the Score column.
+
+2. Row 0:
+   - The Score value is missing ("nan") and the Result is "1–1", which is a common result.
+   - These values are not distinctive and do not make the row an outlier.
+
+3. Row 1:
+   - The Score value is "2–1" and the Result is "5-1", which is a significant difference in the result.
+   - This makes the row an outlier as the result is not consistent with the majority of the table.
+
+In summary, Row 3 is an outlier due to missing data, while Row 1 is an outlier due to a significant difference in the match result. Row 0 contains ordinary values and is not considered an outlier.

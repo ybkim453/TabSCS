@@ -1,0 +1,149 @@
+=== Table ID ===
+csv/201-csv/47.tsv
+
+=== Question ===
+how many domestic routes out of houston intercontinental have united as a carrier?
+
+=== Sub-table Preview ===
+| Cellulose ethers   | Reagent                      | Example                       | Reagent.1                       | Group R = H or      | Water solubility       | Application                                                                                     | E number   |
+|:-------------------|:-----------------------------|:------------------------------|:--------------------------------|:--------------------|:-----------------------|:------------------------------------------------------------------------------------------------|:-----------|
+| Alkyl              | Halogenoalkanes              | Methylcellulose               | Chloromethane                   | -CH3                | Cold water soluble     | nan                                                                                             | E461       |
+| nan                | nan                          | Ethylcellulose                | Chloroethane                    | -CH2CH3             | Water insoluble        | A commercial thermoplastic used in coatings, inks, binders, and controlled-release drug tablets | E462       |
+| nan                | nan                          | Ethyl methyl cellulose        | Chloromethane and chloroethane  | -CH3 or -CH2CH3     | nan                    | nan                                                                                             | E465       |
+| nan                | nan                          | Hydroxypropyl cellulose (HPC) | Propylene oxide                 | -CH2CH(OH)CH3       | Cold water soluble     | nan                                                                                             | E463       |
+| nan                | nan                          | Ethyl hydroxyethyl cellulose  | Chloroethane and ethylene oxide | -CH2CH3 or—CH2CH2OH | nan                    | nan                                                                                             | E467       |
+| Carboxyalkyl       | Halogenated carboxylic acids | Carboxymethyl cellulose (CMC) | Chloroacetic acid               | -CH2COOH            | Cold/Hot water soluble | Often used as its sodium salt, sodium carboxymethyl cellulose (NaCMC)                           | E466       |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Cellulose ethers
+   - Data type: Categorical
+   - 4 representative example values: Alkyl, nan, Carboxyalkyl
+   - Role of the column: Descriptor of the type of cellulose ether
+
+2. Reagent
+   - Data type: Categorical
+   - 4 representative example values: Halogenoalkanes, nan, Halogenated carboxylic acids
+   - Role of the column: Descriptor of the reagent used in the production of the cellulose ether
+
+3. Example
+   - Data type: Categorical
+   - 4 representative example values: Methylcellulose, Ethylcellulose, Ethyl methyl cellulose, Hydroxypropyl cellulose (HPC)
+   - Role of the column: Descriptor of specific examples of cellulose ethers
+
+4. Reagent.1
+   - Data type: Categorical
+   - 4 representative example values: Chloromethane, Chloroethane, Propylene oxide, Chloroacetic acid
+   - Role of the column: Descriptor of the specific reagents used in the production process
+
+5. Group R = H or
+   - Data type: Categorical
+   - 4 representative example values: -CH3, -CH2CH3, -CH3 or -CH2CH3, -CH2CH(OH)CH3
+   - Role of the column: Descriptor of the chemical group present in the cellulose ether
+
+6. Water solubility
+   - Data type: Categorical
+   - 4 representative example values: Cold water soluble, Water insoluble, nan
+   - Role of the column: Descriptor of the solubility of the cellulose ether in water
+
+7. Application
+   - Data type: Categorical
+   - 4 representative example values: A commercial thermoplastic used in coatings, inks, binders, and controlled-release drug tablets, nan
+   - Role of the column: Descriptor of the applications of the cellulose ether
+
+8. E number
+   - Data type: Categorical
+   - 4 representative example values: E461, E462, E465, E463
+   - Role of the column: Identifier for the E number classification of the cellulose ether
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are typical and consistent with the majority of the table. This is an ordinary row and does not require special handling.
+
+2. Row 2:
+   - The values in this row are also typical and consistent with the majority of the table. This is an ordinary row and does not require special handling.
+
+3. Row 8:
+   - The values in this row are also ordinary and not significantly different from the majority of the table. This is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rank | City                 |   Passengers | Top Carriers           |
+|-------------:|-------:|:---------------------|-------------:|:-----------------------|
+|            0 |      1 | Los Angeles CA       |       700000 | American Spirit United |
+|            1 |      2 | Chicago IL           |       673000 | American Spirit United |
+|            2 |      3 | Denver CO            |       654000 | Frontier Spirit United |
+|            3 |      4 | San Francisco CA     |       492000 | United                 |
+|            4 |      5 | Dallas/Fort Worth TX |       488000 | American United        |
+|            5 |      6 | Newark NJ            |       480000 | United                 |
+|            6 |      7 | Las Vegas NV         |       442000 | Spirit United          |
+|            7 |      8 | Charlotte NC         |       441000 | United US Airways      |
+|            8 |      9 | Atlanta GA           |       400000 | Delta United           |
+|            9 |     10 | Phoenix AZ           |       393000 | United US Airways      |
+
+Generated Reasoning SQL: Explanation: To answer the question, we need to filter the rows where "City" is Houston and "Top Carriers" contain the carrier "United". The "City" column is relevant for filtering the airport, and the "Top Carriers" column contains the carriers for each airport route. We will use the LIKE condition to match the carrier name within the longer string in the "Top Carriers" column.
+
+SQL: 
+SELECT COUNT(*) 
+FROM T 
+WHERE "City" LIKE '%Houston%' 
+AND "Top Carriers" LIKE '%United%';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "City" LIKE '%Houston%' AND "Top Carriers" LIKE '%United%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: George Bush Intercontinental Airport
+SQL: SELECT COUNT(*) FROM T WHERE "City" LIKE '%Houston%' AND "Top Carriers" LIKE '%United%';
+
+SQL Execution Result:
+COUNT(*)
+0
+
+Question: how many domestic routes out of houston intercontinental have united as a carrier?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 10
+

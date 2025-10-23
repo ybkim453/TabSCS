@@ -1,0 +1,134 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. №
+   - Data type: Numeric
+   - 4 representative example values: 2, 10, 13, 14
+   - Role of the column: Identifier for the episode number
+
+2. #
+   - Data type: Numeric
+   - 4 representative example values: 2, 10, 13, 14
+   - Role of the column: Identifier for the episode number
+
+3. Title
+   - Data type: Categorical
+   - 4 representative example values: The Green Room, Isn't it Romantic?, Slumber Party, East Side Story
+   - Role of the column: Descriptor for the title of the episode
+
+4. Directed by
+   - Data type: Categorical
+   - 4 representative example values: Michael Uno, Nancy Malone, Charles Braverman, Dan Attias
+   - Role of the column: Descriptor for the director of the episode
+
+5. Written by
+   - Data type: Categorical
+   - 4 representative example values: David Stenn, Charles Rosin, Darren Star, Charles Rosin
+   - Role of the column: Descriptor for the writer of the episode
+
+6. Original air date
+   - Data type: Categorical
+   - 4 representative example values: October 11, 1990, January 3, 1991, January 31, 1991, February 14, 1991
+   - Role of the column: Descriptor for the original air date of the episode
+
+7. Production code
+   - Data type: Numeric
+   - 4 representative example values: 2190001, 2190009, 2190012, 2190013
+   - Role of the column: Identifier for the production code of the episode
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 1:
+   - The values in this row are also not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+3. Row 9:
+   - The values in this row are consistent with the rest of the table and do not stand out as atypical. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   № |   # | Title                             | Directed by       | Written by                      | Original air date   | Production\ncode   |
+|-------------:|----:|----:|:----------------------------------|:------------------|:--------------------------------|:--------------------|:-------------------|
+|            0 |   1 |   1 | "Class of Beverly Hills"          | Tim Hunter        | Darren Star                     | 1990-10-04 00:00:00 | –                  |
+|            1 |   2 |   2 | "The Green Room"                  | Michael Uno       | David Stenn                     | 1990-10-11 00:00:00 | 2190001            |
+|            2 |   3 |   3 | "Every Dream Has Its Price (Tag)" | Catlin Adams      | Amy Spies                       | 1990-10-18 00:00:00 | 2190002            |
+|            3 |   4 |   4 | "The First Time"                  | Bethany Rooney    | Darren Star                     | 1990-10-25 00:00:00 | 2190003            |
+|            4 |   5 |   5 | "One on One"                      | Artie Mandelberg  | Charles Rosin                   | 1990-11-01 00:00:00 | 2190004            |
+|            5 |   6 |   6 | "Higher Education"                | Artie Mandelberg  | Jordan Budde                    | 1990-11-15 00:00:00 | 2190005            |
+|            6 |   7 |   7 | "Perfect Mom"                     | Bethany Rooney    | Darren Star                     | 1990-11-22 00:00:00 | 2190006            |
+|            7 |   8 |   8 | "The 17-Year Itch"                | Jefferson Kibbee  | Amy Spies                       | 1990-11-29 00:00:00 | 2190007            |
+|            8 |   9 |   9 | "The Gentle Art of Listening"     | Dan Attias        | Charles Rosin                   | 1990-12-06 00:00:00 | 2190008            |
+|            9 |  10 |  10 | "Isn't it Romantic?"              | Nancy Malone      | Charles Rosin                   | 1991-01-03 00:00:00 | 2190009            |
+|           10 |  11 |  11 | "B.Y.O.B."                        | Miles Watkins     | Jordan Budde                    | 1991-01-10 00:00:00 | 2190010            |
+|           11 |  12 |  12 | "One Man and a Baby"              | Burt Brinckerhoff | Amy Spies                       | 1991-01-24 00:00:00 | 2190011            |
+|           12 |  13 |  13 | "Slumber Party"                   | Charles Braverman | Darren Star                     | 1991-01-31 00:00:00 | 2190012            |
+|           13 |  14 |  14 | "East Side Story"                 | Dan Attias        | Charles Rosin                   | 1991-02-14 00:00:00 | 2190013            |
+|           14 |  15 |  15 | "A Fling in Palm Springs"         | Jefferson Kibbee  | Jordan Budde                    | 1991-02-21 00:00:00 | 2190014            |
+|           15 |  16 |  16 | "Fame is Where You Find It"       | Paul Schneider    | Charles Rosin & Karen Rosin     | 1991-02-28 00:00:00 | 2190015            |
+|           16 |  17 |  17 | "Stand (Up) and Deliver"          | Burt Brinckerhoff | Amy Spies                       | 1991-03-07 00:00:00 | 2190016            |
+|           17 |  18 |  18 | "It's Only a Test"                | Charles Braverman | Darren Star                     | 1991-03-28 00:00:00 | 2190017            |
+|           18 |  19 |  19 | "April is the Cruelest Month"     | Dan Attias        | Steve Wasserman & Jessica Klein | 1991-04-11 00:00:00 | 2190018            |
+|           19 |  20 |  20 | "Spring Training"                 | Burt Brinckerhoff | Charles Rosin                   | 1991-04-25 00:00:00 | 2190019            |
+|           20 |  21 |  21 | "Spring Dance"                    | Darren Star       | Darren Star                     | 1991-05-02 00:00:00 | 2190020            |
+|           21 |  22 |  22 | "Home Again"                      | Charles Braverman | Amy Spies                       | 1991-05-09 00:00:00 | 2190021            |
+
+Generated Reasoning SQL: To determine the title of the last episode, we need to find the episode with the highest episode number. The columns "№" and "#" both represent the episode number, which is a numeric identifier for each episode. We will select the title of the episode where the episode number is the highest.
+
+SQL: SELECT "Title" FROM T WHERE "№" = (SELECT MAX("№") FROM T);
+Generated Final SQL: SELECT "Title" FROM T WHERE "№" = (SELECT MAX("№") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Title        |
+|:-------------|
+| "Home Again" |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Beverly Hills, 90210 episodes
+SQL: SELECT "Title" FROM T WHERE "№" = (SELECT MAX("№") FROM T);
+
+Title
+"Home Again"
+Question: what was the title of the last episode?
+A: To find the answer to this question, let’s think step by step.
+Prediction: home again
+[Gold Answer] "home again"
+

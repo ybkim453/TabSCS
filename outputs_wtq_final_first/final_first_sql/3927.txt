@@ -1,0 +1,152 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Outcome:
+   - Data type: Categorical
+   - 4 representative example values: Winner, Runner-up
+   - Role: Describes the outcome of the match for the player
+
+2. No.:
+   - Data type: Numeric
+   - 4 representative example values: 1, 4, 5, 7
+   - Role: Identifier for each match
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: 25 July 2006, 31 July 2006, 13 March 2007, 9 April 2007
+   - Role: Indicates the date of the match
+
+4. Tournament:
+   - Data type: Categorical
+   - 4 representative example values: Monteroni D'Arbia, Italy, Martina Franca, Italy, Orange, USA, Civitavecchia, Italy
+   - Role: Describes the location of the tournament
+
+5. Surface:
+   - Data type: Categorical
+   - 4 representative example values: Clay, Hard
+   - Role: Describes the type of surface the match was played on
+
+6. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Edina Gallovits-Hall, Margalita Chakhnashvili, Naomi Cavaday, Darya Kustova
+   - Role: Describes the opponent player in the match
+
+7. Score:
+   - Data type: Categorical
+   - 4 representative example values: 6–2, 6–1, 6–3, 7–5
+   - Role: Describes the score of the match
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The outcome is "Runner-up" which is different from the other outlier rows where the outcome is "Winner".
+   - The tournament location is "Biella, Italy" which is different from the other outlier rows.
+   - The opponent is "Agnieszka Radwańska" which is different from the other outlier rows.
+   - This row is an outlier due to the combination of these distinctive values.
+
+2. Row 3:
+   - The outcome is "Runner-up" which is different from the other outlier rows where the outcome is "Winner".
+   - The surface is "Hard" which is different from the other outlier rows.
+   - The opponent is "Naomi Cavaday" which is different from the other outlier rows.
+   - This row is an outlier due to the combination of these distinctive values.
+
+3. Row 1:
+   - The outcome is "Winner" which is different from the other outlier rows where the outcome is "Runner-up".
+   - The tournament location is "Monteroni D'Arbia, Italy" which is different from the other outlier rows.
+   - The opponent is "Edina Gallovits-Hall" which is different from the other outlier rows.
+   - This row is an outlier due to the combination of these distinctive values.
+
+=== Full Table Preview ===
+|   row_number | Outcome   |   No. | Date                | Tournament               | Surface   | Opponent                    | Score       |
+|-------------:|:----------|------:|:--------------------|:-------------------------|:----------|:----------------------------|:------------|
+|            0 | Runner-up |     1 | 2003-10-06 00:00:00 | Bari Italy               | Clay      | Bettina Pirker              | 6–2 7–5     |
+|            1 | Runner-up |     2 | 2005-06-14 00:00:00 | Lenzerheide Switzerland  | Clay      | Danica Krstajić             | 6–2 7–5     |
+|            2 | Runner-up |     3 | 2006-05-01 00:00:00 | Catania Italy            | Clay      | María José Martínez Sánchez | 6–3 4–6 6–4 |
+|            3 | Winner    |     1 | 2006-07-25 00:00:00 | Monteroni D'Arbia Italy  | Clay      | Edina Gallovits-Hall        | 6–2 6–1     |
+|            4 | Runner-up |     4 | 2006-07-31 00:00:00 | Martina Franca Italy     | Clay      | Margalita Chakhnashvili     | 6–3 7–5     |
+|            5 | Runner-up |     5 | 2007-03-13 00:00:00 | Orange USA               | Hard      | Naomi Cavaday               | 6–1 6–1     |
+|            6 | Runner-up |     6 | 2007-04-03 00:00:00 | Dinan France             | Clay (i)  | Maša Zec Peškirič           | 6–4 6–2     |
+|            7 | Runner-up |     7 | 2007-04-09 00:00:00 | Civitavecchia Italy      | Clay      | Darya Kustova               | 3–6 6–4 6–4 |
+|            8 | Runner-up |     8 | 2007-07-09 00:00:00 | Biella Italy             | Clay      | Agnieszka Radwańska         | 6–3 6–3     |
+|            9 | Runner-up |     9 | 2010-10-11 00:00:00 | Settimo San Pietro Italy | Clay      | Anastasia Grymalska         | 4–6 6–2 7–5 |
+|           10 | Winner    |     2 | 2010-10-18 00:00:00 | Seville Spain            | Clay      | Andrea Gámiz                | 6–0 6–1     |
+|           11 | Runner-up |    10 | 2010-11-16 00:00:00 | Mallorca Spain           | Clay      | Diana Enache                | 6–4 6–2     |
+|           12 | Winner    |     3 | 2011-06-07 00:00:00 | Campobasso Italy         | Clay      | Alizé Lim                   | 6–2 6–4     |
+|           13 | Runner-up |    11 | 2011-06-14 00:00:00 | Padova Italy             | Clay      | Kristina Mladenovic         | 3–6 6–4 6–0 |
+|           14 | Winner    |     4 | 2011-06-20 00:00:00 | Rome Italy               | Clay      | Laura Thorpe                | 6–3 6–0     |
+|           15 | Runner-up |    12 | 2012-08-27 00:00:00 | Bagnatica Italy          | Clay      | Maria-Elena Camerin         | 7–6(5) 6–4  |
+|           16 | Winner    |     5 | 2012-09-04 00:00:00 | Mestre Italy             | Clay      | Estrella Cabeza Candela     | 6–1 3–6 6–1 |
+|           17 | Runner-up |    13 | 2013-05-12 00:00:00 | Trnava Slovakia          | Clay      | Barbora Záhlavová-Strýcová  | 6–2 6–4     |
+
+Generated Reasoning SQL: Explanation: To determine if the number of wins is higher than the number of runner-up outcomes, we need to count the occurrences of each outcome separately. We will filter the rows where the "Outcome" is either "Winner" or "Runner-up" and then compare the counts of each outcome.
+
+SQL: 
+SELECT 
+    Outcome,
+    COUNT(*) AS outcome_count
+FROM 
+    T
+WHERE 
+    Outcome IN ('Winner', 'Runner-up')
+GROUP BY 
+    Outcome;
+Generated Final SQL: SELECT Outcome, COUNT(*) AS outcome_count FROM T WHERE Outcome IN ('Winner', 'Runner-up') GROUP BY Outcome;
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+| Outcome   |   outcome_count |
+|:----------|----------------:|
+| Runner-up |              13 |
+| Winner    |               5 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Karin Knapp
+SQL: SELECT Outcome, COUNT(*) AS outcome_count FROM T WHERE Outcome IN ('Winner', 'Runner-up') GROUP BY Outcome;
+
+SQL Execution Result:
+Outcome | outcome_count
+Runner-up | 13
+Winner | 5
+
+Question: is the number of wins higher than the number of runner-up?
+A: To find the answer to this question, let’s think step by step.
+Prediction: no
+[Gold Answer] no
+

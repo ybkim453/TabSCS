@@ -1,0 +1,121 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 10, 11, 13, 14
+   - Role of the column: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: November 8, 1981, November 15, 1981, November 29, 1981, December 3, 1981
+   - Role of the column: Descriptor for the date of the game
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Oakland Raiders, Kansas City Chiefs, Atlanta Falcons, Cleveland Browns
+   - Role of the column: Descriptor for the opposing team
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: W 17–16, L 23–10, L 31–27, W 17–13
+   - Role of the column: Measure for the outcome of the game
+
+5. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: 45,519, 73,984, 40,201, 44,502
+   - Role of the column: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The result is W 17–16, which is different from the majority of the rows that have L as the result. This makes the row an outlier as it represents a win in contrast to the losses in other rows.
+
+2. Row 12:
+   - The opponent is not provided in the preview, so it is an ordinary row and requires no special handling.
+
+3. Row 1:
+   - The week is 10, which is consistent with other rows, so it is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date                | Opponent                | Result   |   Attendance |
+|-------------:|-------:|:--------------------|:------------------------|:---------|-------------:|
+|            0 |      1 | 1981-09-06 00:00:00 | at Los Angeles Rams     | W 27–20  |        63198 |
+|            1 |      2 | 1981-09-13 00:00:00 | at Cleveland Browns     | W 9–3    |        79483 |
+|            2 |      3 | 1981-09-20 00:00:00 | Miami Dolphins          | L 16–10  |        47379 |
+|            3 |      4 | 1981-09-27 00:00:00 | at New York Jets        | L 33–17  |        50309 |
+|            4 |      5 | 1981-10-04 00:00:00 | Cincinnati Bengals      | W 17–10  |        44350 |
+|            5 |      6 | 1981-10-11 00:00:00 | Seattle Seahawks        | W 35–17  |        42671 |
+|            6 |      7 | 1981-10-18 00:00:00 | at New England Patriots | L 38–10  |        60474 |
+|            7 |      8 | 1981-10-26 00:00:00 | at Pittsburgh Steelers  | L 26–13  |        52732 |
+|            8 |      9 | 1981-11-01 00:00:00 | at Cincinnati Bengals   | L 34–21  |        54736 |
+|            9 |     10 | 1981-11-08 00:00:00 | Oakland Raiders         | W 17–16  |        45519 |
+|           10 |     11 | 1981-11-15 00:00:00 | at Kansas City Chiefs   | L 23–10  |        73984 |
+|           11 |     12 | 1981-11-22 00:00:00 | New Orleans Saints      | L 27–24  |        49581 |
+|           12 |     13 | 1981-11-29 00:00:00 | Atlanta Falcons         | L 31–27  |        40201 |
+|           13 |     14 | 1981-12-03 00:00:00 | Cleveland Browns        | W 17–13  |        44502 |
+|           14 |     15 | 1981-12-13 00:00:00 | at San Francisco 49ers  | L 28–6   |        55707 |
+|           15 |     16 | 1981-12-20 00:00:00 | Pittsburgh Steelers     | W 21–20  |        41056 |
+
+Generated Reasoning SQL: To calculate the total attendance for October, we need to extract the month from the "Date" column and sum the "Attendance" values for all rows where the month is October. The "Date" column is categorical and contains specific dates, so we must extract the month information to filter for October.
+
+SQL: 
+SELECT SUM(CAST("Attendance" AS INTEGER)) AS total_attendance_october
+FROM T
+WHERE strftime('%m', "Date") = '10';
+Generated Final SQL: SELECT SUM(CAST("Attendance" AS INTEGER)) AS total_attendance_october FROM T WHERE strftime('%m', "Date") = '10';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   total_attendance_october |
+|---------------------------:|
+|                     200227 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1981 Houston Oilers season
+SQL: SELECT SUM(CAST("Attendance" AS INTEGER)) AS total_attendance_october FROM T WHERE strftime('%m', "Date") = '10';
+
+total_attendance_october
+200227
+Question: what is the total attendance for october?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 200227
+[Gold Answer] 200,227
+

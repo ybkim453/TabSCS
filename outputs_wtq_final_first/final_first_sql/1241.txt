@@ -1,0 +1,109 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1982, 1984, 1986, 1987
+   - Role: Identifier for the year in which the song was released.
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Thanks to You, Thin Line, Say It Again, Send It C.O.D.
+   - Role: Descriptor for the name of the song.
+
+3. Label:
+   - Data type: Categorical
+   - 4 representative example values: Becket, Power House, Spring, New Image
+   - Role: Descriptor for the record label associated with the song.
+
+4. Hot Black Singles:
+   - Data type: Categorical
+   - 4 representative example values: #44, ―
+   - Role: Measure of the song's ranking on the Hot Black Singles chart.
+
+5. Club Play Singles:
+   - Data type: Categorical
+   - 4 representative example values: #1, ―
+   - Role: Measure of the song's ranking on the Club Play Singles chart.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The values in the "Hot Black Singles" and "Club Play Singles" columns are numeric rankings (#44 and #1) which are significantly different from the missing values (―) in the corresponding columns of other rows. This makes row 1 an outlier.
+
+2. Row 3:
+   - Similar to row 1, the values in the "Hot Black Singles" and "Club Play Singles" columns are numeric rankings (#44 and #1) which are distinct from the missing values (―) in other rows. This makes row 3 an outlier.
+
+3. Row 6:
+   - The values in the "Hot Black Singles" and "Club Play Singles" columns are missing (―) which is consistent with the majority of the table. Therefore, row 6 is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Name                       | Label       | Hot Black Singles   | Club Play Singles   |
+|-------------:|-------:|:---------------------------|:------------|:--------------------|:--------------------|
+|            0 |   1982 | "He's Gonna Take You Home" | Becket      | ―                   | ―                   |
+|            1 |   1982 | "Thanks to You"            | Becket      | #44                 | #1                  |
+|            2 |   1983 | "I Need You Now"           | Jive        | ―                   | ―                   |
+|            3 |   1984 | "Thin Line"                | Power House | ―                   | ―                   |
+|            4 |   1986 | "Say It Again"             | Spring      | ―                   | ―                   |
+|            5 |   1986 | "Say It Again"             | Spring      | ―                   | ―                   |
+|            6 |   1987 | "Send It C.O.D."           | New Image   | ―                   | ―                   |
+
+Generated Reasoning SQL: The summary indicates that the "Label" column contains categorical values representing record labels associated with songs. To find the number of unique labels Sinnamon recorded under, we need to count the distinct values in the "Label" column. Since the summary does not mention any outliers or placeholder rows, we can include all rows in the count.
+
+SQL: select count(distinct "Label") from T;
+Generated Final SQL: select count(distinct "Label") from T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count(distinct "Label") |
+|--------------------------:|
+|                         5 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Sinnamon
+SQL: select count(distinct "Label") from T;
+
+count(distinct "Label")
+5
+Question: how many labels did sinnamon record under?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 5
+[Gold Answer] 5
+

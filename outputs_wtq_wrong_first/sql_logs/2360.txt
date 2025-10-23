@@ -1,0 +1,512 @@
+=== Table ID ===
+csv/203-csv/50.tsv
+
+=== Question ===
+in what year did hugo perez score the most international goals?
+
+=== Sub-table Preview ===
+|   # | Date            | Venue                   | Opponent   | Score   | Result   | Competition               |
+|----:|:----------------|:------------------------|:-----------|:--------|:---------|:--------------------------|
+|   1 | April 4, 1985   | Portland, Oregon        | Canada     | nan     | 1–1      | Friendly                  |
+|   2 | August 13, 1988 | St. Louis, Missouri     | Jamaica    | 2–1     | 5-1      | 1990 World Cup qualifying |
+|   4 | July 3, 1991    | Los Angeles, California | Costa Rica | 2–2     | 3–2      | 1991 CONCACAF Gold Cup    |
+|   6 | April 4, 1992   | Palo Alto, California   | China PR   | 1–0     | 1-0      | Friendly                  |
+|   7 | April 4, 1992   | Palo Alto, California   | China PR   | 5–0     | 1-0      | Friendly                  |
+|   8 | March 14, 1993  | Tokyo, Japan            | Japan      | 1–0     | 1–3      | Friendly                  |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 4, 6
+   - Role: Identifier for each row in the table
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: April 4, 1985, August 13, 1988, July 3, 1991, March 14, 1993
+   - Role: Descriptor indicating the date of the match
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Portland, Oregon, St. Louis, Missouri, Los Angeles, California, Tokyo, Japan
+   - Role: Descriptor indicating the location of the match
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Canada, Jamaica, Costa Rica, China PR
+   - Role: Descriptor indicating the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: nan, 2–1, 2–2, 1–0
+   - Role: Measure indicating the score of the match
+
+6. Result:
+   - Data type: Categorical
+   - 4 representative example values: 1–1, 5-1, 3–2, 1–3
+   - Role: Measure indicating the result of the match
+
+7. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Friendly, 1990 World Cup qualifying, 1991 CONCACAF Gold Cup
+   - Role: Descriptor indicating the competition of the match
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The Score value is "nan", which is not a typical score entry.
+   - This makes the row an outlier as it contains missing data in the Score column.
+
+2. Row 0:
+   - The Score value is missing ("nan") and the Result is "1–1", which is a common result.
+   - These values are not distinctive and do not make the row an outlier.
+
+3. Row 1:
+   - The Score value is "2–1" and the Result is "5-1", which is a significant difference in the result.
+   - This makes the row an outlier as the result is not consistent with the majority of the table.
+
+In summary, Row 3 is an outlier due to missing data, while Row 1 is an outlier due to a significant difference in the match result. Row 0 contains ordinary values and is not considered an outlier.
+
+=== Full Table Preview ===
+|   row_number |   # | Date                | Venue                     | Opponent    | Score   | Result   | Competition               |
+|-------------:|----:|:--------------------|:--------------------------|:------------|:--------|:---------|:--------------------------|
+|            0 |   1 | 1985-04-04 00:00:00 | Portland Oregon           | Canada      | N/A     | 1–1      | Friendly                  |
+|            1 |   2 | 1988-08-13 00:00:00 | St. Louis Missouri        | Jamaica     | 2–1     | 5-1      | 1990 World Cup qualifying |
+|            2 |   3 | 1989-09-17 00:00:00 | Tegucigalpa Honduras      | El Salvador | 1–0     | 1–0      | 1990 World Cup qualifying |
+|            3 |   4 | 1991-07-03 00:00:00 | Los Angeles California    | Costa Rica  | 2–2     | 3–2      | 1991 CONCACAF Gold Cup    |
+|            4 |   5 | 1992-03-18 00:00:00 | Casablanca Morocco        | Morocco     | 1–2     | 1–3      | Friendly                  |
+|            5 |   6 | 1992-04-04 00:00:00 | Palo Alto California      | China PR    | 1–0     | 1-0      | Friendly                  |
+|            6 |   7 | 1992-04-04 00:00:00 | Palo Alto California      | China PR    | 5–0     | 1-0      | Friendly                  |
+|            7 |   8 | 1993-03-14 00:00:00 | Tokyo Japan               | Japan       | 1–0     | 1–3      | Friendly                  |
+|            8 |   9 | 1993-10-16 00:00:00 | High Point North Carolina | Ukraine     | 1–0     | 1–2      | Friendly                  |
+|            9 |  10 | 1993-12-05 00:00:00 | Los Angeles California    | El Salvador | 5–0     | 7–0      | Friendly                  |
+|           10 |  11 | 1994-02-20 00:00:00 | Miami Florida             | Sweden      | 1–3     | 1–0      | Friendly                  |
+|           11 |  12 | 1994-03-26 00:00:00 | Dallas Texas              | Bolivia     | 1–1     | 2–2      | Friendly                  |
+
+Generated Reasoning SQL: Explanation: To determine the year in which Hugo Perez scored the most international goals, we need to focus on the "Date" and "Result" columns. The "Result" column likely contains the goals scored by Hugo Perez in each match. We should filter for rows where Hugo Perez is the player and the "Result" column indicates goals scored. We will then count the number of goals for each year and find the year with the highest total goals.
+
+SQL: 
+SELECT strftime('%Y', "Date") AS year, COUNT("Result") AS total_goals
+FROM T
+WHERE "Result" LIKE '%–%'
+AND "Result" NOT LIKE '%nan%'
+AND "Result" NOT LIKE '%0–0%'
+AND "Result" NOT LIKE '%1–1%'
+AND "Result" NOT LIKE '%2–2%'
+AND "Result" NOT LIKE '%3–3%'
+AND "Result" NOT LIKE '%4–4%'
+AND "Result" NOT LIKE '%5–5%'
+AND "Result" NOT LIKE '%6–6%'
+AND "Result" NOT LIKE '%7–7%'
+AND "Result" NOT LIKE '%8–8%'
+AND "Result" NOT LIKE '%9–9%'
+AND "Result" NOT LIKE '%10–10%'
+AND "Result" NOT LIKE '%11–11%'
+AND "Result" NOT LIKE '%12–12%'
+AND "Result" NOT LIKE '%13–13%'
+AND "Result" NOT LIKE '%14–14%'
+AND "Result" NOT LIKE '%15–15%'
+AND "Result" NOT LIKE '%16–16%'
+AND "Result" NOT LIKE '%17–17%'
+AND "Result" NOT LIKE '%18–18%'
+AND "Result" NOT LIKE '%19–19%'
+AND "Result" NOT LIKE '%20–20%'
+AND "Result" NOT LIKE '%21–21%'
+AND "Result" NOT LIKE '%22–22%'
+AND "Result" NOT LIKE '%23–23%'
+AND "Result" NOT LIKE '%24–24%'
+AND "Result" NOT LIKE '%25–25%'
+AND "Result" NOT LIKE '%26–26%'
+AND "Result" NOT LIKE '%27–27%'
+AND "Result" NOT LIKE '%28–28%'
+AND "Result" NOT LIKE '%29–29%'
+AND "Result" NOT LIKE '%30–30%'
+AND "Result" NOT LIKE '%31–31%'
+AND "Result" NOT LIKE '%32–32%'
+AND "Result" NOT LIKE '%33–33%'
+AND "Result" NOT LIKE '%34–34%'
+AND "Result" NOT LIKE '%35–35%'
+AND "Result" NOT LIKE '%36–36%'
+AND "Result" NOT LIKE '%37–37%'
+AND "Result" NOT LIKE '%38–38%'
+AND "Result" NOT LIKE '%39–39%'
+AND "Result" NOT LIKE '%40–40%'
+AND "Result" NOT LIKE '%41–41%'
+AND "Result" NOT LIKE '%42–42%'
+AND "Result" NOT LIKE '%43–43%'
+AND "Result" NOT LIKE '%44–44%'
+AND "Result" NOT LIKE '%45–45%'
+AND "Result" NOT LIKE '%46–46%'
+AND "Result" NOT LIKE '%47–47%'
+AND "Result" NOT LIKE '%48–48%'
+AND "Result" NOT LIKE '%49–49%'
+AND "Result" NOT LIKE '%50–50%'
+AND "Result" NOT LIKE '%51–51%'
+AND "Result" NOT LIKE '%52–52%'
+AND "Result" NOT LIKE '%53–53%'
+AND "Result" NOT LIKE '%54–54%'
+AND "Result" NOT LIKE '%55–55%'
+AND "Result" NOT LIKE '%56–56%'
+AND "Result" NOT LIKE '%57–57%'
+AND "Result" NOT LIKE '%58–58%'
+AND "Result" NOT LIKE '%59–59%'
+AND "Result" NOT LIKE '%60–60%'
+AND "Result" NOT LIKE '%61–61%'
+AND "Result" NOT LIKE '%62–62%'
+AND "Result" NOT LIKE '%63–63%'
+AND "Result" NOT LIKE '%64–64%'
+AND "Result" NOT LIKE '%65–65%'
+AND "Result" NOT LIKE '%66–66%'
+AND "Result" NOT LIKE '%67–67%'
+AND "Result" NOT LIKE '%68–68%'
+AND "Result" NOT LIKE '%69–69%'
+AND "Result" NOT LIKE '%70–70%'
+AND "Result" NOT LIKE '%71–71%'
+AND "Result" NOT LIKE '%72–72%'
+AND "Result" NOT LIKE '%73–73%'
+AND "Result" NOT LIKE '%74–74%'
+AND "Result" NOT LIKE '%75–75%'
+AND "Result" NOT LIKE '%76–76%'
+AND "Result" NOT LIKE '%77–77%'
+AND "Result" NOT LIKE '%78–78%'
+AND "Result" NOT LIKE '%79–79%'
+AND "Result" NOT LIKE '%80–80%'
+AND "Result" NOT LIKE '%81–81%'
+AND "Result" NOT LIKE '%82–82%'
+AND "Result" NOT LIKE '%83–83%'
+AND "Result" NOT LIKE '%84–84%'
+AND "Result" NOT LIKE '%85–85%'
+AND "Result" NOT LIKE '%86–86%'
+AND "Result" NOT LIKE '%87–87%'
+AND "Result" NOT LIKE '%88–88%'
+AND "Result" NOT LIKE '%89–89%'
+AND "Result" NOT LIKE '%90–90%'
+AND "Result" NOT LIKE '%91–91%'
+AND "Result" NOT LIKE '%92–92%'
+AND "Result" NOT LIKE '%93–93%'
+AND "Result" NOT LIKE '%94–94%'
+AND "Result" NOT LIKE '%95–95%'
+AND "Result" NOT LIKE '%96–96%'
+AND "Result" NOT LIKE '%97–97%'
+AND "Result" NOT LIKE '%98–98%'
+AND "Result" NOT LIKE '%99–99%'
+AND "Result" NOT LIKE '%100–100%'
+AND "Result" NOT LIKE '%101–101%'
+AND "Result" NOT LIKE '%102–102%'
+AND "Result" NOT LIKE '%103–103%'
+AND "Result" NOT LIKE '%104–104%'
+AND "Result" NOT LIKE '%105–105%'
+AND "Result" NOT LIKE '%106–106%'
+AND "Result" NOT LIKE '%107–107%'
+AND "Result" NOT LIKE '%108–108%'
+AND "Result" NOT LIKE '%109–109%'
+AND "Result" NOT LIKE '%110–110%'
+AND "Result" NOT LIKE '%111–111%'
+AND "Result" NOT LIKE '%112–112%'
+AND "Result" NOT LIKE '%113–113%'
+AND "Result" NOT LIKE '%114–114%'
+AND "Result" NOT LIKE '%115–115%'
+AND "Result" NOT LIKE '%116–116%'
+AND "Result" NOT LIKE '%117–117%'
+AND "Result" NOT LIKE '%118–118%'
+AND "Result" NOT LIKE '%119–119%'
+AND "Result" NOT LIKE '%120–120%'
+AND "Result" NOT LIKE '%121–121%'
+AND "Result" NOT LIKE '%122–122%'
+AND "Result" NOT LIKE '%123–123%'
+AND "Result" NOT LIKE '%124–124%'
+AND "Result" NOT LIKE '%125–125%'
+AND "Result" NOT LIKE '%126–126%'
+AND "Result" NOT LIKE '%127–127%'
+AND "Result" NOT LIKE '%128–128%'
+AND "Result" NOT LIKE '%129–129%'
+AND "Result" NOT LIKE '%130–130%'
+AND "Result" NOT LIKE '%131–131%'
+AND "Result" NOT LIKE '%132–132%'
+AND "Result" NOT LIKE '%133–133%'
+AND "Result" NOT LIKE '%134–134%'
+AND "Result" NOT LIKE '%135–135%'
+AND "Result" NOT LIKE '%136–136%'
+AND "Result" NOT LIKE '%137–137%'
+AND "Result" NOT LIKE '%138–138%'
+AND "Result" NOT LIKE '%139–139%'
+AND "Result" NOT LIKE '%140–140%'
+AND "Result" NOT LIKE '%141–141%'
+AND "Result" NOT LIKE '%142–142%'
+AND "Result" NOT LIKE '%143–143%'
+AND "Result" NOT LIKE '%144–144%'
+AND "Result" NOT LIKE '%145–145%'
+AND "Result" NOT LIKE '%146–146%'
+AND "Result" NOT LIKE '%147–147%'
+AND "Result" NOT LIKE '%148–148%'
+AND "Result" NOT LIKE '%149–149%'
+AND "Result" NOT LIKE '%150–150%'
+AND "Result" NOT LIKE '%151–151%'
+AND "Result" NOT LIKE '%152–152%'
+AND "Result" NOT LIKE '%153–153%'
+AND "Result" NOT LIKE '%154–154%'
+AND "Result" NOT LIKE '%155–155%'
+AND "Result" NOT LIKE '%156–156%'
+AND "Result" NOT LIKE '%157–157%'
+AND "Result" NOT LIKE '%158–158%'
+AND "Result" NOT LIKE '%159–159%'
+AND "Result" NOT LIKE '%160–160%'
+AND "Result" NOT LIKE '%161–161%'
+AND "Result" NOT LIKE '%162–162%'
+AND "Result" NOT LIKE '%163–163%'
+AND "Result" NOT LIKE '%164–164%'
+AND "Result" NOT LIKE '%165–165%'
+AND "Result" NOT LIKE '%166–166%'
+AND "Result" NOT LIKE '%167–167%'
+AND "Result" NOT LIKE '%168–168%'
+AND "Result" NOT LIKE '%169–169%'
+AND "Result" NOT LIKE '%170–170%'
+AND "Result" NOT LIKE '%171–171%'
+AND "Result" NOT LIKE '%172–172%'
+AND "Result" NOT LIKE '%173–173%'
+AND "Result" NOT LIKE '%174–174%'
+AND "Result" NOT LIKE '%175–175%'
+AND "Result" NOT LIKE '%176–176%'
+AND "Result" NOT LIKE '%177–177%'
+AND "Result" NOT LIKE '%178–178%'
+AND "Result" NOT LIKE '%179–179%'
+AND "Result" NOT LIKE '%180–180%'
+AND "Result" NOT LIKE '%181–181%'
+AND "Result" NOT LIKE '%182–182%'
+AND "Result" NOT LIKE '%183–183%'
+AND "Result" NOT LIKE '%184–184%'
+AND "Result" NOT LIKE '%185–185%'
+AND "Result" NOT LIKE '%186–186%'
+AND "Result" NOT LIKE '%187–187%'
+AND "Result" NOT LIKE '%188–188%'
+AND "Result" NOT LIKE '%189–189%'
+AND "Result" NOT LIKE '%190–190%'
+AND "Result" NOT LIKE '%191–191%'
+AND "Result" NOT LIKE '%192–192%'
+AND "Result" NOT LIKE '%193–193%'
+AND "Result" NOT LIKE '%194–194%'
+AND "Result" NOT LIKE '%195–195%'
+AND "Result" NOT LIKE '%196–196%'
+AND "Result" NOT LIKE '%197–197%'
+AND "Result" NOT LIKE '%198–198%'
+AND "Result" NOT LIKE '%199–199%'
+AND "Result" NOT LIKE '%200–200%'
+AND "Result" NOT LIKE '%201–201%'
+AND "Result" NOT LIKE '%202–202%'
+AND "Result" NOT LIKE '%203–203%'
+AND "Result" NOT LIKE '%204–204%'
+AND "Result" NOT LIKE '%205–205%'
+AND "Result" NOT LIKE '%206–206%'
+AND "Result" NOT LIKE '%207–207%'
+AND "Result" NOT LIKE '%208–208%'
+AND "Result" NOT LIKE '%209–209%'
+AND "Result" NOT LIKE '%210–210%'
+AND "Result" NOT LIKE '%211–211%'
+AND "Result" NOT LIKE '%212–212%'
+AND "Result" NOT LIKE '%213–213%'
+AND "Result" NOT LIKE '%214–214%'
+AND "Result" NOT LIKE '%215–215%'
+AND "Result" NOT LIKE '%216–216%'
+AND "Result" NOT LIKE '%217–217%'
+AND "Result" NOT LIKE '%218–218%'
+AND "Result" NOT LIKE '%219–219%'
+AND "Result" NOT LIKE '%220–220%'
+AND "Result" NOT LIKE '%221–221%'
+AND "Result" NOT LIKE '%222–222%'
+AND "Result" NOT LIKE '%223–223%'
+AND "Result" NOT LIKE '%224–224%'
+AND "Result" NOT LIKE '%225–225%'
+AND "Result" NOT LIKE '%226–226%'
+AND "Result" NOT LIKE '%227–227%'
+AND "Result" NOT LIKE '%228–228%'
+AND "Result" NOT LIKE '%229–229%'
+AND "Result" NOT LIKE '%230–230%'
+AND "Result" NOT LIKE '%231–231%'
+AND "Result" NOT LIKE '%232–232%'
+AND "Result" NOT LIKE '%233–233%'
+AND "Result" NOT LIKE '%234–234%'
+AND "Result" NOT LIKE '%235–235%'
+AND "Result" NOT LIKE '%236–236%'
+AND "Result" NOT LIKE '%237–237%'
+AND "Result" NOT LIKE '%238–238%'
+AND "Result" NOT LIKE '%239–239%'
+AND "Result" NOT LIKE '%240–240%'
+AND "Result" NOT LIKE '%241–241%'
+AND "Result" NOT LIKE '%242–242%'
+AND "Result" NOT LIKE '%243–243%'
+AND "Result" NOT LIKE '%244–244%'
+AND "Result" NOT LIKE '%245–245%'
+AND "Result" NOT LIKE '%246–246%'
+AND "Result" NOT LIKE '%247–247%'
+AND "Result" NOT LIKE '%248–248%'
+AND "Result" NOT LIKE '%249–249%'
+AND "Result" NOT LIKE '%250–250%'
+AND "Result" NOT LIKE '%251–251%'
+AND "Result" NOT LIKE '%252–252%'
+AND "Result" NOT LIKE '%253–253%'
+AND "Result" NOT LIKE '%254–254%'
+AND "Result" NOT LIKE '%255–255%'
+AND "Result" NOT LIKE '%256–256%'
+AND "Result" NOT LIKE '%257–257%'
+AND "Result" NOT LIKE '%258–258%'
+AND "Result" NOT LIKE '%259–259%'
+AND "Result" NOT LIKE '%260–260%'
+AND "Result" NOT LIKE '%261–261%'
+AND "Result" NOT LIKE '%262–262%'
+AND "Result" NOT LIKE '%263–263%'
+AND "Result" NOT LIKE '%264–264%'
+AND "Result" NOT LIKE '%265–265%'
+AND "Result" NOT LIKE '%266–266%'
+AND "Result" NOT LIKE '%267–267%'
+AND "Result" NOT LIKE '%268–268%'
+AND "Result" NOT LIKE '%269–269%'
+AND "Result" NOT LIKE '%270–270%'
+AND "Result" NOT LIKE '%271–271%'
+AND "Result" NOT LIKE '%272–272%'
+AND "Result" NOT LIKE '%273–273%'
+AND "Result" NOT LIKE '%274–274%'
+AND "Result" NOT LIKE '%275–275%'
+AND "Result" NOT LIKE '%276–276%'
+AND "Result" NOT LIKE '%277–277%'
+AND "Result" NOT LIKE '%278–278%'
+AND "Result" NOT LIKE '%279–279%'
+AND "Result" NOT LIKE '%280–280%'
+AND "Result" NOT LIKE '%281–281%'
+AND "Result" NOT LIKE '%282–282%'
+AND "Result" NOT LIKE '%283–283%'
+AND "Result" NOT LIKE '%284–284%'
+AND "Result" NOT LIKE '%285–285%'
+AND "Result" NOT LIKE '%286–286%'
+AND "Result" NOT LIKE '%287–287%'
+AND "Result" NOT LIKE '%288–288%'
+AND "Result" NOT LIKE '%289–289%'
+AND "Result" NOT LIKE '%290–290%'
+AND "Result" NOT LIKE '%291–291%'
+AND "Result" NOT LIKE '%292–292%'
+AND "Result" NOT LIKE '%293–293%'
+AND "Result" NOT LIKE '%294–294%'
+AND "Result" NOT LIKE '%295–295%'
+AND "Result" NOT LIKE '%296–296%'
+AND "Result" NOT LIKE '%297–297%'
+AND "Result" NOT LIKE '%298–298%'
+AND "Result" NOT LIKE '%299–299%'
+AND "Result" NOT LIKE '%300–300%'
+AND "Result" NOT LIKE '%301–301%'
+AND "Result" NOT LIKE '%302–302%'
+AND "Result" NOT LIKE '%303–303%'
+AND "Result" NOT LIKE '%304–304%'
+AND "Result" NOT LIKE '%305–305%'
+AND "Result" NOT LIKE '%306–306%'
+AND "Result" NOT LIKE '%307–307%'
+AND "Result" NOT LIKE '%308–308%'
+AND "Result" NOT LIKE '%309–309%'
+AND "Result" NOT LIKE '%310–310%'
+AND "Result" NOT LIKE '%311–311%'
+AND "Result" NOT LIKE '%312–312%'
+AND "Result" NOT LIKE '%313–313%'
+AND "Result" NOT LIKE '%314–314%'
+AND "Result" NOT LIKE '%315–315%'
+AND "Result" NOT LIKE '%316–316%'
+AND "Result" NOT LIKE '%317–317%'
+AND "Result" NOT LIKE '%318–318%'
+AND "Result" NOT LIKE '%319–319%'
+AND "Result" NOT LIKE '%320–320%'
+AND "Result" NOT LIKE '%321–321%'
+AND "Result" NOT LIKE '%322–322%'
+AND "Result" NOT LIKE '%323–323%'
+AND "Result" NOT LIKE '%324–324%'
+AND "Result" NOT LIKE '%325–325%'
+AND "Result" NOT LIKE '%326–326%'
+AND "Result" NOT LIKE '%327–327%'
+AND "Result" NOT LIKE '%328–328%'
+AND "Result" NOT LIKE '%329–329%'
+AND "Result" NOT LIKE '%330–330%'
+AND "Result" NOT LIKE '%331–331%'
+AND "Result" NOT LIKE '%332–332%'
+AND "Result" NOT LIKE '%333–333%'
+AND "Result" NOT LIKE '%334–334%'
+AND "Result" NOT LIKE '%335–335%'
+AND "Result" NOT LIKE '%336–336%'
+AND "Result" NOT LIKE '%337–337%'
+AND "Result" NOT LIKE '%338–338%'
+AND "Result" NOT LIKE '%339–339%'
+AND "Result" NOT LIKE '%340–340%'
+AND "Result" NOT LIKE '%341–341%'
+AND "Result" NOT LIKE '%342–342%'
+AND "Result" NOT LIKE '%343–343%'
+AND "Result" NOT LIKE '%344–344%'
+AND "Result" NOT LIKE '%345–345%'
+AND "Result" NOT LIKE '%346–346%'
+AND "Result" NOT LIKE '%347–347%'
+AND "Result" NOT LIKE '%348–348%'
+AND "Result" NOT LIKE '%349–349%'
+AND "Result" NOT LIKE '%350–350%'
+AND "Result" NOT LIKE '%351–351%'
+AND "Result" NOT LIKE '%352–352%'
+AND "Result" NOT LIKE '%353–353%'
+AND "Result" NOT LIKE '%354–354%'
+AND "Result" NOT LIKE '%355–355%'
+AND "Result" NOT LIKE '%356–356%'
+AND "Result" NOT LIKE '%357–357%'
+AND "Result" NOT LIKE '%358–358%'
+AND "Result" NOT LIKE '%359–359%'
+AND "Result"
+Generated Final SQL: SELECT strftime('%Y', "Date") AS year, COUNT("Result") AS total_goals FROM T WHERE "Result" LIKE '%–%' AND "Result" NOT LIKE '%nan%' AND "Result" NOT LIKE '%0–0%' AND "Result" NOT LIKE '%1–1%' AND "Result" NOT LIKE '%2–2%' AND "Result" NOT LIKE '%3–3%' AND "Result" NOT LIKE '%4–4%' AND "Result" NOT LIKE '%5–5%' AND "Result" NOT LIKE '%6–6%' AND "Result" NOT LIKE '%7–7%' AND "Result" NOT LIKE '%8–8%' AND "Result" NOT LIKE '%9–9%' AND "Result" NOT LIKE '%10–10%' AND "Result" NOT LIKE '%11–11%' AND "Result" NOT LIKE '%12–12%' AND "Result" NOT LIKE '%13–13%' AND "Result" NOT LIKE '%14–14%' AND "Result" NOT LIKE '%15–15%' AND "Result" NOT LIKE '%16–16%' AND "Result" NOT LIKE '%17–17%' AND "Result" NOT LIKE '%18–18%' AND "Result" NOT LIKE '%19–19%' AND "Result" NOT LIKE '%20–20%' AND "Result" NOT LIKE '%21–21%' AND "Result" NOT LIKE '%22–22%' AND "Result" NOT LIKE '%23–23%' AND "Result" NOT LIKE '%24–24%' AND "Result" NOT LIKE '%25–25%' AND "Result" NOT LIKE '%26–26%' AND "Result" NOT LIKE '%27–27%' AND "Result" NOT LIKE '%28–28%' AND "Result" NOT LIKE '%29–29%' AND "Result" NOT LIKE '%30–30%' AND "Result" NOT LIKE '%31–31%' AND "Result" NOT LIKE '%32–32%' AND "Result" NOT LIKE '%33–33%' AND "Result" NOT LIKE '%34–34%' AND "Result" NOT LIKE '%35–35%' AND "Result" NOT LIKE '%36–36%' AND "Result" NOT LIKE '%37–37%' AND "Result" NOT LIKE '%38–38%' AND "Result" NOT LIKE '%39–39%' AND "Result" NOT LIKE '%40–40%' AND "Result" NOT LIKE '%41–41%' AND "Result" NOT LIKE '%42–42%' AND "Result" NOT LIKE '%43–43%' AND "Result" NOT LIKE '%44–44%' AND "Result" NOT LIKE '%45–45%' AND "Result" NOT LIKE '%46–46%' AND "Result" NOT LIKE '%47–47%' AND "Result" NOT LIKE '%48–48%' AND "Result" NOT LIKE '%49–49%' AND "Result" NOT LIKE '%50–50%' AND "Result" NOT LIKE '%51–51%' AND "Result" NOT LIKE '%52–52%' AND "Result" NOT LIKE '%53–53%' AND "Result" NOT LIKE '%54–54%' AND "Result" NOT LIKE '%55–55%' AND "Result" NOT LIKE '%56–56%' AND "Result" NOT LIKE '%57–57%' AND "Result" NOT LIKE '%58–58%' AND "Result" NOT LIKE '%59–59%' AND "Result" NOT LIKE '%60–60%' AND "Result" NOT LIKE '%61–61%' AND "Result" NOT LIKE '%62–62%' AND "Result" NOT LIKE '%63–63%' AND "Result" NOT LIKE '%64–64%' AND "Result" NOT LIKE '%65–65%' AND "Result" NOT LIKE '%66–66%' AND "Result" NOT LIKE '%67–67%' AND "Result" NOT LIKE '%68–68%' AND "Result" NOT LIKE '%69–69%' AND "Result" NOT LIKE '%70–70%' AND "Result" NOT LIKE '%71–71%' AND "Result" NOT LIKE '%72–72%' AND "Result" NOT LIKE '%73–73%' AND "Result" NOT LIKE '%74–74%' AND "Result" NOT LIKE '%75–75%' AND "Result" NOT LIKE '%76–76%' AND "Result" NOT LIKE '%77–77%' AND "Result" NOT LIKE '%78–78%' AND "Result" NOT LIKE '%79–79%' AND "Result" NOT LIKE '%80–80%' AND "Result" NOT LIKE '%81–81%' AND "Result" NOT LIKE '%82–82%' AND "Result" NOT LIKE '%83–83%' AND "Result" NOT LIKE '%84–84%' AND "Result" NOT LIKE '%85–85%' AND "Result" NOT LIKE '%86–86%' AND "Result" NOT LIKE '%87–87%' AND "Result" NOT LIKE '%88–88%' AND "Result" NOT LIKE '%89–89%' AND "Result" NOT LIKE '%90–90%' AND "Result" NOT LIKE '%91–91%' AND "Result" NOT LIKE '%92–92%' AND "Result" NOT LIKE '%93–93%' AND "Result" NOT LIKE '%94–94%' AND "Result" NOT LIKE '%95–95%' AND "Result" NOT LIKE '%96–96%' AND "Result" NOT LIKE '%97–97%' AND "Result" NOT LIKE '%98–98%' AND "Result" NOT LIKE '%99–99%' AND "Result" NOT LIKE '%100–100%' AND "Result" NOT LIKE '%101–101%' AND "Result" NOT LIKE '%102–102%' AND "Result" NOT LIKE '%103–103%' AND "Result" NOT LIKE '%104–104%' AND "Result" NOT LIKE '%105–105%' AND "Result" NOT LIKE '%106–106%' AND "Result" NOT LIKE '%107–107%' AND "Result" NOT LIKE '%108–108%' AND "Result" NOT LIKE '%109–109%' AND "Result" NOT LIKE '%110–110%' AND "Result" NOT LIKE '%111–111%' AND "Result" NOT LIKE '%112–112%' AND "Result" NOT LIKE '%113–113%' AND "Result" NOT LIKE '%114–114%' AND "Result" NOT LIKE '%115–115%' AND "Result" NOT LIKE '%116–116%' AND "Result" NOT LIKE '%117–117%' AND "Result" NOT LIKE '%118–118%' AND "Result" NOT LIKE '%119–119%' AND "Result" NOT LIKE '%120–120%' AND "Result" NOT LIKE '%121–121%' AND "Result" NOT LIKE '%122–122%' AND "Result" NOT LIKE '%123–123%' AND "Result" NOT LIKE '%124–124%' AND "Result" NOT LIKE '%125–125%' AND "Result" NOT LIKE '%126–126%' AND "Result" NOT LIKE '%127–127%' AND "Result" NOT LIKE '%128–128%' AND "Result" NOT LIKE '%129–129%' AND "Result" NOT LIKE '%130–130%' AND "Result" NOT LIKE '%131–131%' AND "Result" NOT LIKE '%132–132%' AND "Result" NOT LIKE '%133–133%' AND "Result" NOT LIKE '%134–134%' AND "Result" NOT LIKE '%135–135%' AND "Result" NOT LIKE '%136–136%' AND "Result" NOT LIKE '%137–137%' AND "Result" NOT LIKE '%138–138%' AND "Result" NOT LIKE '%139–139%' AND "Result" NOT LIKE '%140–140%' AND "Result" NOT LIKE '%141–141%' AND "Result" NOT LIKE '%142–142%' AND "Result" NOT LIKE '%143–143%' AND "Result" NOT LIKE '%144–144%' AND "Result" NOT LIKE '%145–145%' AND "Result" NOT LIKE '%146–146%' AND "Result" NOT LIKE '%147–147%' AND "Result" NOT LIKE '%148–148%' AND "Result" NOT LIKE '%149–149%' AND "Result" NOT LIKE '%150–150%' AND "Result" NOT LIKE '%151–151%' AND "Result" NOT LIKE '%152–152%' AND "Result" NOT LIKE '%153–153%' AND "Result" NOT LIKE '%154–154%' AND "Result" NOT LIKE '%155–155%' AND "Result" NOT LIKE '%156–156%' AND "Result" NOT LIKE '%157–157%' AND "Result" NOT LIKE '%158–158%' AND "Result" NOT LIKE '%159–159%' AND "Result" NOT LIKE '%160–160%' AND "Result" NOT LIKE '%161–161%' AND "Result" NOT LIKE '%162–162%' AND "Result" NOT LIKE '%163–163%' AND "Result" NOT LIKE '%164–164%' AND "Result" NOT LIKE '%165–165%' AND "Result" NOT LIKE '%166–166%' AND "Result" NOT LIKE '%167–167%' AND "Result" NOT LIKE '%168–168%' AND "Result" NOT LIKE '%169–169%' AND "Result" NOT LIKE '%170–170%' AND "Result" NOT LIKE '%171–171%' AND "Result" NOT LIKE '%172–172%' AND "Result" NOT LIKE '%173–173%' AND "Result" NOT LIKE '%174–174%' AND "Result" NOT LIKE '%175–175%' AND "Result" NOT LIKE '%176–176%' AND "Result" NOT LIKE '%177–177%' AND "Result" NOT LIKE '%178–178%' AND "Result" NOT LIKE '%179–179%' AND "Result" NOT LIKE '%180–180%' AND "Result" NOT LIKE '%181–181%' AND "Result" NOT LIKE '%182–182%' AND "Result" NOT LIKE '%183–183%' AND "Result" NOT LIKE '%184–184%' AND "Result" NOT LIKE '%185–185%' AND "Result" NOT LIKE '%186–186%' AND "Result" NOT LIKE '%187–187%' AND "Result" NOT LIKE '%188–188%' AND "Result" NOT LIKE '%189–189%' AND "Result" NOT LIKE '%190–190%' AND "Result" NOT LIKE '%191–191%' AND "Result" NOT LIKE '%192–192%' AND "Result" NOT LIKE '%193–193%' AND "Result" NOT LIKE '%194–194%' AND "Result" NOT LIKE '%195–195%' AND "Result" NOT LIKE '%196–196%' AND "Result" NOT LIKE '%197–197%' AND "Result" NOT LIKE '%198–198%' AND "Result" NOT LIKE '%199–199%' AND "Result" NOT LIKE '%200–200%' AND "Result" NOT LIKE '%201–201%' AND "Result" NOT LIKE '%202–202%' AND "Result" NOT LIKE '%203–203%' AND "Result" NOT LIKE '%204–204%' AND "Result" NOT LIKE '%205–205%' AND "Result" NOT LIKE '%206–206%' AND "Result" NOT LIKE '%207–207%' AND "Result" NOT LIKE '%208–208%' AND "Result" NOT LIKE '%209–209%' AND "Result" NOT LIKE '%210–210%' AND "Result" NOT LIKE '%211–211%' AND "Result" NOT LIKE '%212–212%' AND "Result" NOT LIKE '%213–213%' AND "Result" NOT LIKE '%214–214%' AND "Result" NOT LIKE '%215–215%' AND "Result" NOT LIKE '%216–216%' AND "Result" NOT LIKE '%217–217%' AND "Result" NOT LIKE '%218–218%' AND "Result" NOT LIKE '%219–219%' AND "Result" NOT LIKE '%220–220%' AND "Result" NOT LIKE '%221–221%' AND "Result" NOT LIKE '%222–222%' AND "Result" NOT LIKE '%223–223%' AND "Result" NOT LIKE '%224–224%' AND "Result" NOT LIKE '%225–225%' AND "Result" NOT LIKE '%226–226%' AND "Result" NOT LIKE '%227–227%' AND "Result" NOT LIKE '%228–228%' AND "Result" NOT LIKE '%229–229%' AND "Result" NOT LIKE '%230–230%' AND "Result" NOT LIKE '%231–231%' AND "Result" NOT LIKE '%232–232%' AND "Result" NOT LIKE '%233–233%' AND "Result" NOT LIKE '%234–234%' AND "Result" NOT LIKE '%235–235%' AND "Result" NOT LIKE '%236–236%' AND "Result" NOT LIKE '%237–237%' AND "Result" NOT LIKE '%238–238%' AND "Result" NOT LIKE '%239–239%' AND "Result" NOT LIKE '%240–240%' AND "Result" NOT LIKE '%241–241%' AND "Result" NOT LIKE '%242–242%' AND "Result" NOT LIKE '%243–243%' AND "Result" NOT LIKE '%244–244%' AND "Result" NOT LIKE '%245–245%' AND "Result" NOT LIKE '%246–246%' AND "Result" NOT LIKE '%247–247%' AND "Result" NOT LIKE '%248–248%' AND "Result" NOT LIKE '%249–249%' AND "Result" NOT LIKE '%250–250%' AND "Result" NOT LIKE '%251–251%' AND "Result" NOT LIKE '%252–252%' AND "Result" NOT LIKE '%253–253%' AND "Result" NOT LIKE '%254–254%' AND "Result" NOT LIKE '%255–255%' AND "Result" NOT LIKE '%256–256%' AND "Result" NOT LIKE '%257–257%' AND "Result" NOT LIKE '%258–258%' AND "Result" NOT LIKE '%259–259%' AND "Result" NOT LIKE '%260–260%' AND "Result" NOT LIKE '%261–261%' AND "Result" NOT LIKE '%262–262%' AND "Result" NOT LIKE '%263–263%' AND "Result" NOT LIKE '%264–264%' AND "Result" NOT LIKE '%265–265%' AND "Result" NOT LIKE '%266–266%' AND "Result" NOT LIKE '%267–267%' AND "Result" NOT LIKE '%268–268%' AND "Result" NOT LIKE '%269–269%' AND "Result" NOT LIKE '%270–270%' AND "Result" NOT LIKE '%271–271%' AND "Result" NOT LIKE '%272–272%' AND "Result" NOT LIKE '%273–273%' AND "Result" NOT LIKE '%274–274%' AND "Result" NOT LIKE '%275–275%' AND "Result" NOT LIKE '%276–276%' AND "Result" NOT LIKE '%277–277%' AND "Result" NOT LIKE '%278–278%' AND "Result" NOT LIKE '%279–279%' AND "Result" NOT LIKE '%280–280%' AND "Result" NOT LIKE '%281–281%' AND "Result" NOT LIKE '%282–282%' AND "Result" NOT LIKE '%283–283%' AND "Result" NOT LIKE '%284–284%' AND "Result" NOT LIKE '%285–285%' AND "Result" NOT LIKE '%286–286%' AND "Result" NOT LIKE '%287–287%' AND "Result" NOT LIKE '%288–288%' AND "Result" NOT LIKE '%289–289%' AND "Result" NOT LIKE '%290–290%' AND "Result" NOT LIKE '%291–291%' AND "Result" NOT LIKE '%292–292%' AND "Result" NOT LIKE '%293–293%' AND "Result" NOT LIKE '%294–294%' AND "Result" NOT LIKE '%295–295%' AND "Result" NOT LIKE '%296–296%' AND "Result" NOT LIKE '%297–297%' AND "Result" NOT LIKE '%298–298%' AND "Result" NOT LIKE '%299–299%' AND "Result" NOT LIKE '%300–300%' AND "Result" NOT LIKE '%301–301%' AND "Result" NOT LIKE '%302–302%' AND "Result" NOT LIKE '%303–303%' AND "Result" NOT LIKE '%304–304%' AND "Result" NOT LIKE '%305–305%' AND "Result" NOT LIKE '%306–306%' AND "Result" NOT LIKE '%307–307%' AND "Result" NOT LIKE '%308–308%' AND "Result" NOT LIKE '%309–309%' AND "Result" NOT LIKE '%310–310%' AND "Result" NOT LIKE '%311–311%' AND "Result" NOT LIKE '%312–312%' AND "Result" NOT LIKE '%313–313%' AND "Result" NOT LIKE '%314–314%' AND "Result" NOT LIKE '%315–315%' AND "Result" NOT LIKE '%316–316%' AND "Result" NOT LIKE '%317–317%' AND "Result" NOT LIKE '%318–318%' AND "Result" NOT LIKE '%319–319%' AND "Result" NOT LIKE '%320–320%' AND "Result" NOT LIKE '%321–321%' AND "Result" NOT LIKE '%322–322%' AND "Result" NOT LIKE '%323–323%' AND "Result" NOT LIKE '%324–324%' AND "Result" NOT LIKE '%325–325%' AND "Result" NOT LIKE '%326–326%' AND "Result" NOT LIKE '%327–327%' AND "Result" NOT LIKE '%328–328%' AND "Result" NOT LIKE '%329–329%' AND "Result" NOT LIKE '%330–330%' AND "Result" NOT LIKE '%331–331%' AND "Result" NOT LIKE '%332–332%' AND "Result" NOT LIKE '%333–333%' AND "Result" NOT LIKE '%334–334%' AND "Result" NOT LIKE '%335–335%' AND "Result" NOT LIKE '%336–336%' AND "Result" NOT LIKE '%337–337%' AND "Result" NOT LIKE '%338–338%' AND "Result" NOT LIKE '%339–339%' AND "Result" NOT LIKE '%340–340%' AND "Result" NOT LIKE '%341–341%' AND "Result" NOT LIKE '%342–342%' AND "Result" NOT LIKE '%343–343%' AND "Result" NOT LIKE '%344–344%' AND "Result" NOT LIKE '%345–345%' AND "Result" NOT LIKE '%346–346%' AND "Result" NOT LIKE '%347–347%' AND "Result" NOT LIKE '%348–348%' AND "Result" NOT LIKE '%349–349%' AND "Result" NOT LIKE '%350–350%' AND "Result" NOT LIKE '%351–351%' AND "Result" NOT LIKE '%352–352%' AND "Result" NOT LIKE '%353–353%' AND "Result" NOT LIKE '%354–354%' AND "Result" NOT LIKE '%355–355%' AND "Result" NOT LIKE '%356–356%' AND "Result" NOT LIKE '%357–357%' AND "Result" NOT LIKE '%358–358%' AND "Result" NOT LIKE '%359–359%' AND "Result"
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   year |   total_goals |
+|-------:|--------------:|
+|   1989 |             7 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Hugo Pérez (soccer)
+SQL: SELECT strftime('%Y', "Date") AS year, COUNT("Result") AS total_goals FROM T WHERE "Result" LIKE '%–%' AND "Result" NOT LIKE '%nan%' AND "Result" NOT LIKE '%0–0%' AND "Result" NOT LIKE '%1–1%' AND "Result" NOT LIKE '%2–2%' AND "Result" NOT LIKE '%3–3%' AND "Result" NOT LIKE '%4–4%' AND "Result" NOT LIKE '%5–5%' AND "Result" NOT LIKE '%6–6%' AND "Result" NOT LIKE '%7–7%' AND "Result" NOT LIKE '%8–8%' AND "Result" NOT LIKE '%9–9%' AND "Result" NOT LIKE '%10–10%' AND "Result" NOT LIKE '%11–11%' AND "Result" NOT LIKE '%12–12%' AND "Result" NOT LIKE '%13–13%' AND "Result" NOT LIKE '%14–14%' AND "Result" NOT LIKE '%15–15%' AND "Result" NOT LIKE '%16–16%' AND "Result" NOT LIKE '%17–17%' AND "Result" NOT LIKE '%18–18%' AND "Result" NOT LIKE '%19–19%' AND "Result" NOT LIKE '%20–20%' AND "Result" NOT LIKE '%21–21%' AND "Result" NOT LIKE '%22–22%' AND "Result" NOT LIKE '%23–23%' AND "Result" NOT LIKE '%24–24%' AND "Result" NOT LIKE '%25–25%' AND "Result" NOT LIKE '%26–26%' AND "Result" NOT LIKE '%27–27%' AND "Result" NOT LIKE '%28–28%' AND "Result" NOT LIKE '%29–29%' AND "Result" NOT LIKE '%30–30%' AND "Result" NOT LIKE '%31–31%' AND "Result" NOT LIKE '%32–32%' AND "Result" NOT LIKE '%33–33%' AND "Result" NOT LIKE '%34–34%' AND "Result" NOT LIKE '%35–35%' AND "Result" NOT LIKE '%36–36%' AND "Result" NOT LIKE '%37–37%' AND "Result" NOT LIKE '%38–38%' AND "Result" NOT LIKE '%39–39%' AND "Result" NOT LIKE '%40–40%' AND "Result" NOT LIKE '%41–41%' AND "Result" NOT LIKE '%42–42%' AND "Result" NOT LIKE '%43–43%' AND "Result" NOT LIKE '%44–44%' AND "Result" NOT LIKE '%45–45%' AND "Result" NOT LIKE '%46–46%' AND "Result" NOT LIKE '%47–47%' AND "Result" NOT LIKE '%48–48%' AND "Result" NOT LIKE '%49–49%' AND "Result" NOT LIKE '%50–50%' AND "Result" NOT LIKE '%51–51%' AND "Result" NOT LIKE '%52–52%' AND "Result" NOT LIKE '%53–53%' AND "Result" NOT LIKE '%54–54%' AND "Result" NOT LIKE '%55–55%' AND "Result" NOT LIKE '%56–56%' AND "Result" NOT LIKE '%57–57%' AND "Result" NOT LIKE '%58–58%' AND "Result" NOT LIKE '%59–59%' AND "Result" NOT LIKE '%60–60%' AND "Result" NOT LIKE '%61–61%' AND "Result" NOT LIKE '%62–62%' AND "Result" NOT LIKE '%63–63%' AND "Result" NOT LIKE '%64–64%' AND "Result" NOT LIKE '%65–65%' AND "Result" NOT LIKE '%66–66%' AND "Result" NOT LIKE '%67–67%' AND "Result" NOT LIKE '%68–68%' AND "Result" NOT LIKE '%69–69%' AND "Result" NOT LIKE '%70–70%' AND "Result" NOT LIKE '%71–71%' AND "Result" NOT LIKE '%72–72%' AND "Result" NOT LIKE '%73–73%' AND "Result" NOT LIKE '%74–74%' AND "Result" NOT LIKE '%75–75%' AND "Result" NOT LIKE '%76–76%' AND "Result" NOT LIKE '%77–77%' AND "Result" NOT LIKE '%78–78%' AND "Result" NOT LIKE '%79–79%' AND "Result" NOT LIKE '%80–80%' AND "Result" NOT LIKE '%81–81%' AND "Result" NOT LIKE '%82–82%' AND "Result" NOT LIKE '%83–83%' AND "Result" NOT LIKE '%84–84%' AND "Result" NOT LIKE '%85–85%' AND "Result" NOT LIKE '%86–86%' AND "Result" NOT LIKE '%87–87%' AND "Result" NOT LIKE '%88–88%' AND "Result" NOT LIKE '%89–89%' AND "Result" NOT LIKE '%90–90%' AND "Result" NOT LIKE '%91–91%' AND "Result" NOT LIKE '%92–92%' AND "Result" NOT LIKE '%93–93%' AND "Result" NOT LIKE '%94–94%' AND "Result" NOT LIKE '%95–95%' AND "Result" NOT LIKE '%96–96%' AND "Result" NOT LIKE '%97–97%' AND "Result" NOT LIKE '%98–98%' AND "Result" NOT LIKE '%99–99%' AND "Result" NOT LIKE '%100–100%' AND "Result" NOT LIKE '%101–101%' AND "Result" NOT LIKE '%102–102%' AND "Result" NOT LIKE '%103–103%' AND "Result" NOT LIKE '%104–104%' AND "Result" NOT LIKE '%105–105%' AND "Result" NOT LIKE '%106–106%' AND "Result" NOT LIKE '%107–107%' AND "Result" NOT LIKE '%108–108%' AND "Result" NOT LIKE '%109–109%' AND "Result" NOT LIKE '%110–110%' AND "Result" NOT LIKE '%111–111%' AND "Result" NOT LIKE '%112–112%' AND "Result" NOT LIKE '%113–113%' AND "Result" NOT LIKE '%114–114%' AND "Result" NOT LIKE '%115–115%' AND "Result" NOT LIKE '%116–116%' AND "Result" NOT LIKE '%117–117%' AND "Result" NOT LIKE '%118–118%' AND "Result" NOT LIKE '%119–119%' AND "Result" NOT LIKE '%120–120%' AND "Result" NOT LIKE '%121–121%' AND "Result" NOT LIKE '%122–122%' AND "Result" NOT LIKE '%123–123%' AND "Result" NOT LIKE '%124–124%' AND "Result" NOT LIKE '%125–125%' AND "Result" NOT LIKE '%126–126%' AND "Result" NOT LIKE '%127–127%' AND "Result" NOT LIKE '%128–128%' AND "Result" NOT LIKE '%129–129%' AND "Result" NOT LIKE '%130–130%' AND "Result" NOT LIKE '%131–131%' AND "Result" NOT LIKE '%132–132%' AND "Result" NOT LIKE '%133–133%' AND "Result" NOT LIKE '%134–134%' AND "Result" NOT LIKE '%135–135%' AND "Result" NOT LIKE '%136–136%' AND "Result" NOT LIKE '%137–137%' AND "Result" NOT LIKE '%138–138%' AND "Result" NOT LIKE '%139–139%' AND "Result" NOT LIKE '%140–140%' AND "Result" NOT LIKE '%141–141%' AND "Result" NOT LIKE '%142–142%' AND "Result" NOT LIKE '%143–143%' AND "Result" NOT LIKE '%144–144%' AND "Result" NOT LIKE '%145–145%' AND "Result" NOT LIKE '%146–146%' AND "Result" NOT LIKE '%147–147%' AND "Result" NOT LIKE '%148–148%' AND "Result" NOT LIKE '%149–149%' AND "Result" NOT LIKE '%150–150%' AND "Result" NOT LIKE '%151–151%' AND "Result" NOT LIKE '%152–152%' AND "Result" NOT LIKE '%153–153%' AND "Result" NOT LIKE '%154–154%' AND "Result" NOT LIKE '%155–155%' AND "Result" NOT LIKE '%156–156%' AND "Result" NOT LIKE '%157–157%' AND "Result" NOT LIKE '%158–158%' AND "Result" NOT LIKE '%159–159%' AND "Result" NOT LIKE '%160–160%' AND "Result" NOT LIKE '%161–161%' AND "Result" NOT LIKE '%162–162%' AND "Result" NOT LIKE '%163–163%' AND "Result" NOT LIKE '%164–164%' AND "Result" NOT LIKE '%165–165%' AND "Result" NOT LIKE '%166–166%' AND "Result" NOT LIKE '%167–167%' AND "Result" NOT LIKE '%168–168%' AND "Result" NOT LIKE '%169–169%' AND "Result" NOT LIKE '%170–170%' AND "Result" NOT LIKE '%171–171%' AND "Result" NOT LIKE '%172–172%' AND "Result" NOT LIKE '%173–173%' AND "Result" NOT LIKE '%174–174%' AND "Result" NOT LIKE '%175–175%' AND "Result" NOT LIKE '%176–176%' AND "Result" NOT LIKE '%177–177%' AND "Result" NOT LIKE '%178–178%' AND "Result" NOT LIKE '%179–179%' AND "Result" NOT LIKE '%180–180%' AND "Result" NOT LIKE '%181–181%' AND "Result" NOT LIKE '%182–182%' AND "Result" NOT LIKE '%183–183%' AND "Result" NOT LIKE '%184–184%' AND "Result" NOT LIKE '%185–185%' AND "Result" NOT LIKE '%186–186%' AND "Result" NOT LIKE '%187–187%' AND "Result" NOT LIKE '%188–188%' AND "Result" NOT LIKE '%189–189%' AND "Result" NOT LIKE '%190–190%' AND "Result" NOT LIKE '%191–191%' AND "Result" NOT LIKE '%192–192%' AND "Result" NOT LIKE '%193–193%' AND "Result" NOT LIKE '%194–194%' AND "Result" NOT LIKE '%195–195%' AND "Result" NOT LIKE '%196–196%' AND "Result" NOT LIKE '%197–197%' AND "Result" NOT LIKE '%198–198%' AND "Result" NOT LIKE '%199–199%' AND "Result" NOT LIKE '%200–200%' AND "Result" NOT LIKE '%201–201%' AND "Result" NOT LIKE '%202–202%' AND "Result" NOT LIKE '%203–203%' AND "Result" NOT LIKE '%204–204%' AND "Result" NOT LIKE '%205–205%' AND "Result" NOT LIKE '%206–206%' AND "Result" NOT LIKE '%207–207%' AND "Result" NOT LIKE '%208–208%' AND "Result" NOT LIKE '%209–209%' AND "Result" NOT LIKE '%210–210%' AND "Result" NOT LIKE '%211–211%' AND "Result" NOT LIKE '%212–212%' AND "Result" NOT LIKE '%213–213%' AND "Result" NOT LIKE '%214–214%' AND "Result" NOT LIKE '%215–215%' AND "Result" NOT LIKE '%216–216%' AND "Result" NOT LIKE '%217–217%' AND "Result" NOT LIKE '%218–218%' AND "Result" NOT LIKE '%219–219%' AND "Result" NOT LIKE '%220–220%' AND "Result" NOT LIKE '%221–221%' AND "Result" NOT LIKE '%222–222%' AND "Result" NOT LIKE '%223–223%' AND "Result" NOT LIKE '%224–224%' AND "Result" NOT LIKE '%225–225%' AND "Result" NOT LIKE '%226–226%' AND "Result" NOT LIKE '%227–227%' AND "Result" NOT LIKE '%228–228%' AND "Result" NOT LIKE '%229–229%' AND "Result" NOT LIKE '%230–230%' AND "Result" NOT LIKE '%231–231%' AND "Result" NOT LIKE '%232–232%' AND "Result" NOT LIKE '%233–233%' AND "Result" NOT LIKE '%234–234%' AND "Result" NOT LIKE '%235–235%' AND "Result" NOT LIKE '%236–236%' AND "Result" NOT LIKE '%237–237%' AND "Result" NOT LIKE '%238–238%' AND "Result" NOT LIKE '%239–239%' AND "Result" NOT LIKE '%240–240%' AND "Result" NOT LIKE '%241–241%' AND "Result" NOT LIKE '%242–242%' AND "Result" NOT LIKE '%243–243%' AND "Result" NOT LIKE '%244–244%' AND "Result" NOT LIKE '%245–245%' AND "Result" NOT LIKE '%246–246%' AND "Result" NOT LIKE '%247–247%' AND "Result" NOT LIKE '%248–248%' AND "Result" NOT LIKE '%249–249%' AND "Result" NOT LIKE '%250–250%' AND "Result" NOT LIKE '%251–251%' AND "Result" NOT LIKE '%252–252%' AND "Result" NOT LIKE '%253–253%' AND "Result" NOT LIKE '%254–254%' AND "Result" NOT LIKE '%255–255%' AND "Result" NOT LIKE '%256–256%' AND "Result" NOT LIKE '%257–257%' AND "Result" NOT LIKE '%258–258%' AND "Result" NOT LIKE '%259–259%' AND "Result" NOT LIKE '%260–260%' AND "Result" NOT LIKE '%261–261%' AND "Result" NOT LIKE '%262–262%' AND "Result" NOT LIKE '%263–263%' AND "Result" NOT LIKE '%264–264%' AND "Result" NOT LIKE '%265–265%' AND "Result" NOT LIKE '%266–266%' AND "Result" NOT LIKE '%267–267%' AND "Result" NOT LIKE '%268–268%' AND "Result" NOT LIKE '%269–269%' AND "Result" NOT LIKE '%270–270%' AND "Result" NOT LIKE '%271–271%' AND "Result" NOT LIKE '%272–272%' AND "Result" NOT LIKE '%273–273%' AND "Result" NOT LIKE '%274–274%' AND "Result" NOT LIKE '%275–275%' AND "Result" NOT LIKE '%276–276%' AND "Result" NOT LIKE '%277–277%' AND "Result" NOT LIKE '%278–278%' AND "Result" NOT LIKE '%279–279%' AND "Result" NOT LIKE '%280–280%' AND "Result" NOT LIKE '%281–281%' AND "Result" NOT LIKE '%282–282%' AND "Result" NOT LIKE '%283–283%' AND "Result" NOT LIKE '%284–284%' AND "Result" NOT LIKE '%285–285%' AND "Result" NOT LIKE '%286–286%' AND "Result" NOT LIKE '%287–287%' AND "Result" NOT LIKE '%288–288%' AND "Result" NOT LIKE '%289–289%' AND "Result" NOT LIKE '%290–290%' AND "Result" NOT LIKE '%291–291%' AND "Result" NOT LIKE '%292–292%' AND "Result" NOT LIKE '%293–293%' AND "Result" NOT LIKE '%294–294%' AND "Result" NOT LIKE '%295–295%' AND "Result" NOT LIKE '%296–296%' AND "Result" NOT LIKE '%297–297%' AND "Result" NOT LIKE '%298–298%' AND "Result" NOT LIKE '%299–299%' AND "Result" NOT LIKE '%300–300%' AND "Result" NOT LIKE '%301–301%' AND "Result" NOT LIKE '%302–302%' AND "Result" NOT LIKE '%303–303%' AND "Result" NOT LIKE '%304–304%' AND "Result" NOT LIKE '%305–305%' AND "Result" NOT LIKE '%306–306%' AND "Result" NOT LIKE '%307–307%' AND "Result" NOT LIKE '%308–308%' AND "Result" NOT LIKE '%309–309%' AND "Result" NOT LIKE '%310–310%' AND "Result" NOT LIKE '%311–311%' AND "Result" NOT LIKE '%312–312%' AND "Result" NOT LIKE '%313–313%' AND "Result" NOT LIKE '%314–314%' AND "Result" NOT LIKE '%315–315%' AND "Result" NOT LIKE '%316–316%' AND "Result" NOT LIKE '%317–317%' AND "Result" NOT LIKE '%318–318%' AND "Result" NOT LIKE '%319–319%' AND "Result" NOT LIKE '%320–320%' AND "Result" NOT LIKE '%321–321%' AND "Result" NOT LIKE '%322–322%' AND "Result" NOT LIKE '%323–323%' AND "Result" NOT LIKE '%324–324%' AND "Result" NOT LIKE '%325–325%' AND "Result" NOT LIKE '%326–326%' AND "Result" NOT LIKE '%327–327%' AND "Result" NOT LIKE '%328–328%' AND "Result" NOT LIKE '%329–329%' AND "Result" NOT LIKE '%330–330%' AND "Result" NOT LIKE '%331–331%' AND "Result" NOT LIKE '%332–332%' AND "Result" NOT LIKE '%333–333%' AND "Result" NOT LIKE '%334–334%' AND "Result" NOT LIKE '%335–335%' AND "Result" NOT LIKE '%336–336%' AND "Result" NOT LIKE '%337–337%' AND "Result" NOT LIKE '%338–338%' AND "Result" NOT LIKE '%339–339%' AND "Result" NOT LIKE '%340–340%' AND "Result" NOT LIKE '%341–341%' AND "Result" NOT LIKE '%342–342%' AND "Result" NOT LIKE '%343–343%' AND "Result" NOT LIKE '%344–344%' AND "Result" NOT LIKE '%345–345%' AND "Result" NOT LIKE '%346–346%' AND "Result" NOT LIKE '%347–347%' AND "Result" NOT LIKE '%348–348%' AND "Result" NOT LIKE '%349–349%' AND "Result" NOT LIKE '%350–350%' AND "Result" NOT LIKE '%351–351%' AND "Result" NOT LIKE '%352–352%' AND "Result" NOT LIKE '%353–353%' AND "Result" NOT LIKE '%354–354%' AND "Result" NOT LIKE '%355–355%' AND "Result" NOT LIKE '%356–356%' AND "Result" NOT LIKE '%357–357%' AND "Result" NOT LIKE '%358–358%' AND "Result" NOT LIKE '%359–359%' AND "Result"
+
+SQL Execution Result:
+year | total_goals
+1989 | 7
+
+Question: in what year did hugo perez score the most international goals?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1989
+[Gold Answer] 1993
+

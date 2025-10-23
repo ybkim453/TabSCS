@@ -1,0 +1,116 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team 1
+   - Data type: Categorical
+   - 4 representative example values: Deportivo Saprissa, Duurly's, Real C.D. España, C.D. Motagua
+   - Role: Identifier for the first team in each match
+
+2. Agg.
+   - Data type: Numeric
+   - 4 representative example values: 8, 0, 6, 2
+   - Role: Measure representing the aggregate score of the two legs
+
+3. Team 2
+   - Data type: Categorical
+   - 4 representative example values: Real Estelí, C.D. Luis Ángel Firpo, Acros Real Verdes, CSD Comunicaciones
+   - Role: Identifier for the second team in each match
+
+4. 1st leg
+   - Data type: Numeric
+   - 4 representative example values: 4, 0, 5, 1
+   - Role: Measure representing the score of the first leg of the match
+
+5. 2nd leg
+   - Data type: Numeric
+   - 4 representative example values: 1, 4, 0, 1
+   - Role: Measure representing the score of the second leg of the match
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Index 7):
+   - The aggregate score is 0-1 (Replay), which is different from the regular aggregate scores in the table.
+   - This row is an outlier due to the replay match and the unique aggregate score.
+
+2. Row 3 (Index 3):
+   - The aggregate score is 6-0, which is significantly higher than the other aggregate scores in the table.
+   - This row is an outlier due to the high aggregate score compared to the rest of the data.
+
+3. Row 0 (Index 0):
+   - The aggregate score is 8-2, which is the highest aggregate score in the table.
+   - This row is an outlier due to the high aggregate score compared to the other matches.
+
+Overall, the outlier rows have distinctive aggregate scores that set them apart from the majority of the data, making them atypical in the context of the table.
+
+=== Full Table Preview ===
+|   row_number | Team 1             |   Agg. | Team 2                |   1st leg |   2nd leg |
+|-------------:|:-------------------|-------:|:----------------------|----------:|----------:|
+|            0 | Tauro F.C.         |      5 | América Managua       |         5 |         0 |
+|            1 | Deportivo Saprissa |      8 | Real Estelí           |         4 |         4 |
+|            2 | L.D. Alajuelense   |     11 | C.D. Plaza Amador     |         4 |         7 |
+|            3 | Duurly's           |      0 | C.D. Luis Ángel Firpo |         0 |         0 |
+|            4 | Real C.D. España   |      6 | Acros Real Verdes     |         5 |         1 |
+|            5 | CSD Municipal      |      3 | Alianza F.C.          |         2 |         1 |
+|            6 | C.D. Motagua       |      2 | CSD Comunicaciones    |         1 |         1 |
+|            7 | C.D. Motagua       |      0 | CSD Comunicaciones    |       nan |       nan |
+
+Generated Reasoning SQL: Explanation: To find the team listed before "Duurly's", we need to identify the row where "Team 2" is equal to "Duurly's" and retrieve the corresponding value in the "Team 1" column from the previous row. The "Team 1" and "Team 2" columns are categorical, and the row_number column can be used to order the rows appropriately.
+
+SQL: 
+SELECT "Team 1" 
+FROM T 
+WHERE row_number = (SELECT row_number FROM T WHERE "Team 2" = 'Duurly''s') - 1;
+Generated Final SQL: SELECT "Team 1" FROM T WHERE row_number = (SELECT row_number FROM T WHERE "Team 2" = 'Duurly''s') - 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1991 CONCACAF Champions' Cup (row_number, Team 1, Agg., Team 2, 1st leg, 2nd leg)
+
+row_number | Team 1 | Agg. | Team 2 | 1st leg | 2nd leg
+0 | Tauro F.C. | 5 | América Managua | 5.0 | 0.0
+1 | Deportivo Saprissa | 8 | Real Estelí | 4.0 | 4.0
+2 | L.D. Alajuelense | 11 | C.D. Plaza Amador | 4.0 | 7.0
+3 | Duurly's | 0 | C.D. Luis Ángel Firpo | 0.0 | 0.0
+4 | Real C.D. España | 6 | Acros Real Verdes | 5.0 | 1.0
+5 | CSD Municipal | 3 | Alianza F.C. | 2.0 | 1.0
+6 | C.D. Motagua | 2 | CSD Comunicaciones | 1.0 | 1.0
+7 | C.D. Motagua | 0 | CSD Comunicaciones | nan | nan
+Question: what team is listed before duurly's?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we need to look at the row_number column and find the team listed before "Duurly's" in the table.
+
+From the table:
+- The team listed before "Duurly's" in the row_number column is at index 2.
+- At index 2, the team listed is "L.D. Alajuelense".
+
+Therefore, the team listed before "Duurly's" is "L.D. Alajuelense".
+
+Final Answer: L.D. Alajuelense
+[Fallback] Prediction: l.d. alajuelense
+[Gold Answer] l.d. alajuelense
+

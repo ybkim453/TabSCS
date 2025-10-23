@@ -1,0 +1,140 @@
+=== Table ID ===
+csv/204-csv/434.tsv
+
+=== Question ===
+when was the first enemy aircraft destroyed?
+
+=== Sub-table Preview ===
+|   Year | Single                                    |   Peak chart\npositions\nUS Country | Peak chart\npositions\nCAN Country   | Album                         |
+|-------:|:------------------------------------------|------------------------------------:|:-------------------------------------|:------------------------------|
+|   1974 | Loving You Has Changed My Life            |                                   9 | 21                                   | Hey There Girl                |
+|   1975 | It Takes a Whole Lot of Livin' in a House |                                  60 | —                                    | Whole Lotta Livin' in a House |
+|   1977 | The Lady and the Baby                     |                                  76 | —                                    | singles only                  |
+|   1979 | You Are My Rainbow                        |                                  36 | —                                    | singles only                  |
+|   1979 | You're Amazing                            |                                  39 | —                                    | singles only                  |
+|   1984 | I'm a Country Song                        |                                  72 | —                                    | singles only                  |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1974, 1975, 1977, 1979
+   - Role of the column: Identifier for the year the single was released.
+
+2. Single:
+   - Data type: Categorical
+   - 4 representative example values: Loving You Has Changed My Life, It Takes a Whole Lot of Livin' in a House, The Lady and the Baby, You Are My Rainbow
+   - Role of the column: Descriptor for the title of the single.
+
+3. Peak chart positions US Country:
+   - Data type: Numeric
+   - 4 representative example values: 9, 60, 76, 36
+   - Role of the column: Measure indicating the peak chart position on the US Country charts.
+
+4. Peak chart positions CAN Country:
+   - Data type: Numeric
+   - 4 representative example values: 21, —, —, —
+   - Role of the column: Measure indicating the peak chart position on the Canadian Country charts.
+
+5. Album:
+   - Data type: Categorical
+   - 4 representative example values: Hey There Girl, Whole Lotta Livin' in a House, singles only, singles only
+   - Role of the column: Descriptor for the album associated with the single.
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The peak chart position for US Country is 1, which is significantly lower than the other values in the table.
+   - This makes the row an outlier as it has a distinctively low peak chart position compared to the majority of the data.
+
+2. Row 18:
+   - The peak chart position for US Country is 5th?, which is an ambiguous marker.
+   - However, within the context of the table, this is an ordinary value as it represents missing or uncertain data.
+   - Therefore, this row is an ordinary entry and does not require special handling.
+
+3. Row 37:
+   - The peak chart position for US Country is 1, which is significantly lower than the other values in the table.
+   - This makes the row an outlier as it has a distinctively low peak chart position compared to the majority of the data.
+
+=== Full Table Preview ===
+|   row_number | Date                | Location                                | Air/Ground   |   Number | Type   | Status    |
+|-------------:|:--------------------|:----------------------------------------|:-------------|---------:|:-------|:----------|
+|            0 | 1944-03-08 00:00:00 | Near Steinhuder Meer (Lake) Germany     | Air          |      1   | Me-109 | Destroyed |
+|            1 | 1944-03-16 00:00:00 | 20 miles south of Stuttgart Germany     | Air          |      1   | Me-110 | Destroyed |
+|            2 | 1944-04-11 00:00:00 | 20 miles northeast of Magdeburg Germany | Air          |      0.5 | Me-109 | Destroyed |
+|            3 | 1944-04-13 00:00:00 | West of Mannheim Germany                | Air          |      1   | FW-190 | Destroyed |
+|            4 | 1944-04-24 00:00:00 | South of Munich Germany                 | Air          |      3   | Me-110 | Destroyed |
+|            5 | 1944-05-27 00:00:00 | North of Strasbourg France              | Air          |      1   | Me-109 | Damaged   |
+|            6 | 1944-08-18 00:00:00 | 20 miles northeast of Paris France      | Air          |      0.5 | Me-109 | Destroyed |
+|            7 | 1944-09-13 00:00:00 | South of Nordhausen Germany             | Air          |      2.5 | Me-109 | Destroyed |
+|            8 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      1   | Me-109 | Damaged   |
+|            9 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      2   | Me-109 | Destroyed |
+|           10 | 1944-11-27 00:00:00 | South of Magdeburg Germany              | Air          |      4   | FW-190 | Destroyed |
+|           11 | 1945-01-14 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      1   | Me-109 | Destroyed |
+|           12 | 1952-01-25 00:00:00 | Korea                                   | Air          |      1   | Mig-15 | Damaged   |
+
+Generated Reasoning SQL: Explanation: To determine when the first enemy aircraft was destroyed, we need to look for the earliest date where the "Status" column indicates the aircraft was "Destroyed". The "Date" column contains the date of each event, and we are interested in the earliest occurrence of "Destroyed" in the "Status" column.
+
+SQL: 
+SELECT MIN("Date") AS first_destroyed_date
+FROM T
+WHERE "Status" = 'Destroyed';
+Generated Final SQL: SELECT MIN("Date") AS first_destroyed_date FROM T WHERE "Status" = 'Destroyed';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| first_destroyed_date   |
+|:-----------------------|
+| 1944-03-08 00:00:00    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: John B. England
+SQL: SELECT MIN("Date") AS first_destroyed_date FROM T WHERE "Status" = 'Destroyed';
+
+SQL Execution Result:
+first_destroyed_date
+1944-03-08 00:00:00
+
+Question: when was the first enemy aircraft destroyed?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1944-03-08
+[Gold Answer] 8 march 1944
+

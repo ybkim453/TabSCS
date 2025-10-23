@@ -1,0 +1,176 @@
+=== Table ID ===
+csv/203-csv/326.tsv
+
+=== Question ===
+what is the number of the most consecutive (acting) chiefs?
+
+=== Sub-table Preview ===
+| Number   | Name                  | Service   | From              | To                |
+|:---------|:----------------------|:----------|:------------------|:------------------|
+| (Acting) | MG John F. Williams   | USA       | January 31, 1944  | January 31, 1946  |
+| (Acting) | MG Raymond H. Fleming | USA       | September 5, 1950 | August 13, 1951   |
+| (Acting) | Maj Gen Earl T. Ricks | USAF      | February 16, 1953 | June 21, 1953     |
+| 16       | MG Donald W. McGowan  | USA       | July 20, 1959     | August 30, 1963   |
+| (Acting) | MG Raymond F. Rees    | USA       | January 2, 1994   | July 31, 1994     |
+| 26       | Gen Craig R. McKinley | USAF      | November 17, 2008 | September 6, 2012 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Number:
+   - Data type: Categorical
+   - 4 representative example values: (Acting), 16, 26
+   - Role: Identifier for the individual's position or rank
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: MG John F. Williams, Gen Craig R. McKinley
+   - Role: Descriptor for the individual's name
+
+3. Service:
+   - Data type: Categorical
+   - 4 representative example values: USA, USAF
+   - Role: Descriptor for the branch of military service
+
+4. From:
+   - Data type: Date
+   - 4 representative example values: January 31, 1944, July 20, 1959
+   - Role: Descriptor for the start date of the individual's service
+
+5. To:
+   - Data type: Date
+   - 4 representative example values: January 31, 1946, September 6, 2012
+   - Role: Descriptor for the end date of the individual's service
+
+**Outlier Row Analysis:**
+
+1. Row 22:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary entries and do not make this row an outlier.
+
+2. Row 25:
+   - The values in this row are consistent with the rest of the table and do not stand out as distinctive. This row is an ordinary entry and does not require special handling.
+
+3. Row 39:
+   - The values in this row do not deviate from the typical entries in the table. They are ordinary and do not make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number | Number   | Name                      | Service   | From                | To                |
+|-------------:|:---------|:--------------------------|:----------|:--------------------|:------------------|
+|            0 | 1        | COL Erasmus M. Weaver Jr. | USA       | 1908-02-14 00:00:00 | March 14 1911     |
+|            1 | 2        | BG Robert K. Evans        | USA       | 1911-03-15 00:00:00 | August 31 1912    |
+|            2 | 3        | MG Albert L. Mills        | USA       | 1912-09-01 00:00:00 | September 18 1916 |
+|            3 | (Acting) | COL George W. McIver      | USA       | 1916-09-18 00:00:00 | October 26 1916   |
+|            4 | 4        | MG William A. Mann        | USA       | 1916-10-26 00:00:00 | November 26 1917  |
+|            5 | 5        | MG Jesse McI. Carter      | USA       | 1917-11-26 00:00:00 | August 15 1918    |
+|            6 | (Acting) | BG John W. Heavey         | USA       | 1918-08-15 00:00:00 | February 5 1919   |
+|            7 | 5        | MG Jesse McI. Carter      | USA       | 1919-02-05 00:00:00 | June 28 1921      |
+|            8 | 6        | MG George C. Rickards     | USA       | 1921-06-29 00:00:00 | June 28 1925      |
+|            9 | 7        | MG Creed C. Hammond       | USA       | 1925-06-29 00:00:00 | June 28 1929      |
+|           10 | (Acting) | COL Ernest R. Redmond     | USA       | 1929-06-29 00:00:00 | September 30 1929 |
+|           11 | 8        | MG William G. Everson     | USA       | 1929-10-01 00:00:00 | November 30 1931  |
+|           12 | 9        | MG George E. Leach        | USA       | 1931-12-01 00:00:00 | November 30 1935  |
+|           13 | (Acting) | COL Herold J. Weiler      | USA       | 1935-12-01 00:00:00 | January 16 1936   |
+|           14 | (Acting) | COL John F. Williams      | USA       | 1936-01-17 00:00:00 | January 30 1936   |
+|           15 | 10       | MG Albert H. Blanding     | USA       | 1936-01-31 00:00:00 | January 30 1940   |
+|           16 | 11       | MG John F. Williams       | USA       | 1940-01-31 00:00:00 | January 30 1944   |
+|           17 | (Acting) | MG John F. Williams       | USA       | 1944-01-31 00:00:00 | January 31 1946   |
+|           18 | 12       | MG Butler B. Miltonberger | USA       | 1946-02-01 00:00:00 | September 29 1947 |
+|           19 | 13       | MG Kenneth F. Cramer      | USA       | 1947-09-30 00:00:00 | September 4 1950  |
+|           20 | (Acting) | MG Raymond H. Fleming     | USA       | 1950-09-05 00:00:00 | August 13 1951    |
+|           21 | 14       | MG Raymond H. Fleming     | USA       | 1951-08-14 00:00:00 | February 15 1953  |
+|           22 | (Acting) | Maj Gen Earl T. Ricks     | USAF      | 1953-02-16 00:00:00 | June 21 1953      |
+|           23 | 15       | MG Edgar C. Erickson      | USA       | 1953-06-22 00:00:00 | May 31 1959       |
+|           24 | (Acting) | Maj Gen Winston P. Wilson | USAF      | 1959-06-01 00:00:00 | July 19 1959      |
+|           25 | 16       | MG Donald W. McGowan      | USA       | 1959-07-20 00:00:00 | August 30 1963    |
+|           26 | 17       | Maj Gen Winston P. Wilson | USAF      | 1963-08-31 00:00:00 | August 31 1971    |
+|           27 | 18       | MG Francis S. Greenlief   | USA       | 1971-09-01 00:00:00 | June 23 1974      |
+|           28 | 19       | LTG La Vern E. Weber      | USA       | 1974-08-16 00:00:00 | August 15 1982    |
+|           29 | 20       | LTG Emmett H. Walker Jr.  | USA       | 1982-08-16 00:00:00 | August 15 1986    |
+|           30 | 21       | LTG Herbert R. Temple Jr. | USA       | 1986-08-16 00:00:00 | January 31 1990   |
+|           31 | 22       | Lt Gen John B. Conaway    | USAF      | 1990-02-01 00:00:00 | December 1 1993   |
+|           32 | (Acting) | Maj Gen Philip G. Killey  | USAF      | 1993-12-02 00:00:00 | January 1 1994    |
+|           33 | (Acting) | MG Raymond F. Rees        | USA       | 1994-01-02 00:00:00 | July 31 1994      |
+|           34 | (Acting) | MG John R. D'Araujo Jr.   | USA       | 1994-08-01 00:00:00 | September 30 1994 |
+|           35 | 23       | LTG Edward D. Baca        | USA       | 1994-10-01 00:00:00 | July 31 1998      |
+|           36 | 24       | Lt Gen Russell C. Davis   | USAF      | 1998-08-04 00:00:00 | August 3 2002     |
+|           37 | (Acting) | MG Raymond F. Rees        | USA       | 2002-08-04 00:00:00 | April 10 2003     |
+|           38 | 25       | LTG H Steven Blum         | USA       | 2003-04-11 00:00:00 | November 17 2008  |
+|           39 | 26       | Gen Craig R. McKinley     | USAF      | 2008-11-17 00:00:00 | September 6 2012  |
+|           40 | 27       | GEN Frank J. Grass        | USA       | 2012-09-07 00:00:00 | Present           |
+
+Generated Reasoning SQL: Explanation: To determine the number of the most consecutive (acting) chiefs, we need to identify the consecutive instances where the "Number" column has the value "(Acting)". This involves counting the continuous occurrences of "(Acting)" in the "Number" column. We will need to consider the order of entries based on the "From" date column to determine the consecutive nature of the acting chiefs.
+
+SQL: 
+WITH ranked_table AS (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "From") AS rn
+    FROM T
+    WHERE "Number" = '(Acting)'
+)
+SELECT COUNT(*)
+FROM (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY "From") - rn AS grp
+    FROM ranked_table
+) AS groups
+GROUP BY grp
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+Generated Final SQL: WITH ranked_table AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "From") AS rn FROM T WHERE "Number" = '(Acting)' ) SELECT COUNT(*) FROM ( SELECT *, ROW_NUMBER() OVER (ORDER BY "From") - rn AS grp FROM ranked_table ) AS groups GROUP BY grp ORDER BY COUNT(*) DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|         13 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Chief of the National Guard Bureau
+SQL: WITH ranked_table AS ( SELECT *, ROW_NUMBER() OVER (ORDER BY "From") AS rn FROM T WHERE "Number" = '(Acting)' ) SELECT COUNT(*) FROM ( SELECT *, ROW_NUMBER() OVER (ORDER BY "From") - rn AS grp FROM ranked_table ) AS groups GROUP BY grp ORDER BY COUNT(*) DESC LIMIT 1;
+
+SQL Execution Result:
+COUNT(*)
+13
+
+Question: what is the number of the most consecutive (acting) chiefs?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 13
+[Gold Answer] 3
+

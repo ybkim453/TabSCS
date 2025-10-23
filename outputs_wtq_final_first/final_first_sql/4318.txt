@@ -1,0 +1,129 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Numeric
+   - 4 representative example values: 1994, 1997, 2008, 2012
+   - Role: Identifier for the year in which the project was completed
+
+2. Title
+   - Data type: Categorical
+   - 4 representative example values: The Lion King, Smart Guy, Love For Sale, Dysfunctional Friends
+   - Role: Descriptor for the title of the project
+
+3. Role
+   - Data type: Categorical
+   - 4 representative example values: Young Simba, Marcus Henderson, Vince, Gary
+   - Role: Descriptor for the role played by the actor in each project
+
+4. Notes
+   - Data type: Categorical
+   - 4 representative example values: Cub singing voice, 51 episodes, nan
+   - Role: Descriptor for any additional notes or information related to the project
+
+**Outlier Row Analysis:**
+
+1. Row 6:
+   - The values in the "Year" column are 2012, "Title" column is Note to Self, "Role" column is Jay Lewis, and "Notes" column is nan.
+   - These values are consistent with the majority of the table and do not stand out as distinctive. This row is an ordinary row and requires no special handling.
+
+2. Row 8:
+   - The values in the "Year" column are 2012, "Title" column is Note to Self, "Role" column is Jay Lewis, and "Notes" column is nan.
+   - These values are consistent with the majority of the table and do not stand out as distinctive. This row is an ordinary row and requires no special handling.
+
+3. Row 2:
+   - The values in the "Year" column are 1997 to 1999, "Title" column is Smart Guy, "Role" column is Marcus Henderson, and "Notes" column is 51 episodes.
+   - The range of years (1997 to 1999) for this row is slightly different from the single year entries in the majority of the table. However, this is a common practice for TV series that span multiple years. Therefore, this row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Title                           | Role                        | Notes             |
+|-------------:|-------:|:--------------------------------|:----------------------------|:------------------|
+|            0 |   1990 | The Kid Who Loved Christmas     | Ernie                       | Television movie  |
+|            1 |   1990 | Brewster Place                  | Matthew Thomas              | 5 episodes        |
+|            2 |   1990 | The Long Walk Home              | Franklin Cotter             |                   |
+|            3 |   1992 | The Jacksons: An American Dream | Michael Jackson (aged 9–14) | Miniseries        |
+|            4 |   1993 | Thea                            | Jerome Turrell              | 19 episodes       |
+|            5 |   1994 | Summertime Switch               | Fast Freddie Egan           | Television movie  |
+|            6 |   1994 | The Lion King                   | Young Simba                 | Cub singing voice |
+|            7 |   1996 | Sister Sister                   | Darnell\nNicky              | 2 episodes        |
+|            8 |   1997 | Smart Guy                       | Marcus Henderson            | 51 episodes       |
+|            9 |   2000 | Freedom Song                    | Isaac Hawkins               | Television movie  |
+|           10 |   2002 | Drumline                        | Ernest                      |                   |
+|           11 |   2004 | The Ladykillers                 | Weemack Funthes             |                   |
+|           12 |   2006 | ATL                             | Teddy                       |                   |
+|           13 |   2008 | Jada                            | Jamal                       |                   |
+|           14 |   2008 | Love For Sale                   | Vince                       |                   |
+|           15 |   2008 | Diary of a Champion             | TJ Lawson                   |                   |
+|           16 |   2010 | Lottery Ticket                  | Ray Ray                     |                   |
+|           17 |   2011 | The LeBrons                     | Condor                      | 9 episodes        |
+|           18 |   2011 | He's Mine Not Yours             | Kent                        | Television movie  |
+|           19 |   2011 | Timothy Hodge Show              | Jason Weaver                |                   |
+|           20 |   2012 | Dysfunctional Friends           | Gary                        |                   |
+|           21 |   2012 | Note to Self                    | Jay Lewis                   |                   |
+|           22 |   2012 | Wal-Bob's                       | Keith Harrington            |                   |
+
+Generated Reasoning SQL: To determine which show had the most episodes, we need to consider the "Title" and "Notes" columns. The "Notes" column contains information about the number of episodes for each show. We should filter out rows where the "Notes" column is not a numeric value to focus only on rows where the number of episodes is specified. Then, we can group by the "Title" column and calculate the maximum number of episodes for each show.
+
+SQL: 
+SELECT "Title", MAX(CAST("Notes" AS INTEGER)) AS max_episodes
+FROM T
+WHERE "Notes" NOT LIKE '%[^0-9]%'
+GROUP BY "Title"
+ORDER BY max_episodes DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Title", MAX(CAST("Notes" AS INTEGER)) AS max_episodes FROM T WHERE "Notes" NOT LIKE '%[^0-9]%' GROUP BY "Title" ORDER BY max_episodes DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Title     |   max_episodes |
+|:----------|---------------:|
+| Smart Guy |             51 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Jason Weaver
+SQL: SELECT "Title", MAX(CAST("Notes" AS INTEGER)) AS max_episodes FROM T WHERE "Notes" NOT LIKE '%[^0-9]%' GROUP BY "Title" ORDER BY max_episodes DESC LIMIT 1;
+
+Title | max_episodes
+Smart Guy | 51
+Question: which show had the most episodes?
+A: To find the answer to this question, let’s think step by step.
+Prediction: smart guy
+[Gold Answer] smart guy
+

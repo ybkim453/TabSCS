@@ -1,0 +1,139 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Categorical
+   - 4 representative example values: 1904-05, 1905-06, 1936-37, 1937-38
+   - Role: Identifier
+
+2. Name
+   - Data type: Categorical
+   - 4 representative example values: Mr B. Owen-Jones, Mr G. Constable, Mr W.Pearce, nan
+   - Role: Descriptor
+
+3. Year.1
+   - Data type: Categorical
+   - 4 representative example values: 1936-37, 1937-38, 1968-69, 1969-70
+   - Role: Identifier
+
+4. Name.1
+   - Data type: Categorical
+   - 4 representative example values: Mr W.Pearce, nan
+   - Role: Descriptor
+
+5. Year.2
+   - Data type: Categorical
+   - 4 representative example values: 1968-69, 1969-70
+   - Role: Identifier
+
+6. Name.2
+   - Data type: Categorical
+   - 4 representative example values: Mr Ben Steyn, nan
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+- Candidate Row [0]:
+   - The values Mr B. Owen-Jones, Mr W.Pearce, and Mr Ben Steyn are distinct from the majority of the table entries.
+   - These names do not appear to be common or repeated in other rows, making this row an outlier.
+   - Therefore, this row is a distinctive outlier and should be further investigated.
+
+=== Full Table Preview ===
+|   row_number | Year    | Name              | Year_1   | Name_1             | Year_2   | Name_2              |
+|-------------:|:--------|:------------------|:---------|:-------------------|:---------|:--------------------|
+|            0 | 1903-04 | Mr B. Owen- Jones | 1935-36  | Mr W.Pearce        | 1967-68  | Mr J.F.Serfontein   |
+|            1 | 1904-05 | Mr B. Owen- Jones | 1936-37  | Mr W.Pearce        | 1968-69  | Mr Ben Steyn        |
+|            2 | 1905-06 | Mr G. Constable   | 1937 -38 |                    | 1969-70  |                     |
+|            3 | 1907-08 | Mr T.R.Ziervogel  | 1939 -40 | Mr W.E.Vickers     | 1971-72  | Mr Chris Smith      |
+|            4 | 1908-09 | Mr T.R.Ziervogel  | 1940-41  | Mr P.Venter        | 1972-73  | Mr Ben Steyn        |
+|            5 | 1909-10 | Mr J.Morris       | 1941-42  | Mr P.Venter        | 1973-74  | Mr Issy Kramer      |
+|            6 | 1910-11 |                   | 1942-43  | Mr P.Venter        | 1974-75  |                     |
+|            7 | 1911-12 | Mr B.Owen- Jones  | 1943-44  | Mr P.Venter        | 1975-76  | Mr Sakkie Blanche   |
+|            8 | 1912-13 | Mr J.Johnston     | 1944-45  | Mrs E.Myer         | 1977-78  | Mr Sakkie Blanche   |
+|            9 | 1913-14 | Mr J.Cook         | 1945-46  | Mrs E.Myer         | 1978-79  |                     |
+|           10 | 1914-15 | Mr J.Cook         | 1946-47  | Mrs E.Myer         | 1979 -80 | Mr Kobus Durand     |
+|           11 | 1915-16 | Mr R.Champion     | 1947-48  | Mr C.Chambers      | 1980-81  | Mr Meyer            |
+|           12 | 1916-17 | Mr R.Champion     | 1948-49  | Mrs S.Von Wielligh | 1981-82  | Mr Wiek Steyn       |
+|           13 | 1917-18 | Mr A.Ruffels      | 1949-50  | Mr A.J.Law         | 1982-83  | Mr Andrew Wheeler   |
+|           14 | 1918-19 | Mr J.Campbell     | 1950-51  | Mr P.Venter        | 1983-84  |                     |
+|           15 | 1919-20 | Mr B.Melman       | 1951-52  | Mr P.Venter        | 1984-85  |                     |
+|           16 | 1920-21 | Mr B.Melman       | 1952-53  | Mr Vic Pretorius   | 1985-86  | Mr J.Prins          |
+|           17 | 1921-21 | Mr B.Melman       | 1953-54  | Mr Vic Pretorius   | 1986-87  |                     |
+|           18 | 1922-23 | Mr J.Campbell     | 1954-55  |                    | 1987-88  |                     |
+|           19 | 1923-24 |                   | 1954-56  | Mr J.H.A.Roets     | 1988-89  | Mr Beyers De Klerk  |
+|           20 | 1924-25 | Mr E.Murton       | 1956-57  | Mr P.H.Tredoux     | 1989-90  | Mr Gerrie Wolmarans |
+|           21 | 1925-26 | Mr S.Steenberg    | 1957- 58 |                    | 1990-91  | Mr Gerrie Wolmarans |
+|           22 | 1926-27 |                   | 1958-59  | Mr J.M.Cawood      | 1991-92  | Mr TJ Ferreira      |
+|           23 | 1927-28 | Mr J.Stanbury     | 1959-60  | Mr A.P.Scribante   | 1992-93  | Mr Gerrie Wolmarans |
+|           24 | 1928-29 | Mr E.Murton       | 1960-61  | Mr J.L.Viljoen     | 1993-94  | Mr TJ Ferreira      |
+|           25 | 1929-30 | Mr K.Turner       | 1961-62  | Mr J.L.Viljoen     |          |                     |
+|           26 | 1930-31 | Mr J.E.Bigwood    | 1962-63  | Mrs S.Von Wielligh |          |                     |
+|           27 | 1931-32 | Mr A.Zaretsky     | 1963-64  | Mr F.J.Van Heerden |          |                     |
+|           28 | 1932-33 | Mr G.J.Malan      | 1964-65  |                    |          |                     |
+|           29 | 1933-34 |                   | 1965-66  |                    |          |                     |
+|           30 | 1934-34 |                   | 1966-67  | Mr H.McLennan      |          |                     |
+
+Generated Reasoning SQL: Explanation: To find the previous mayor before Mr. G. Constable in 1905-06, we need to look at the row where Mr. G. Constable appears and find the corresponding entry in the "Name" column. Since the "Name" column represents the mayors, we can filter the row based on the "Year" column to get the mayor before Mr. G. Constable.
+
+SQL: 
+SELECT "Name" 
+FROM T 
+WHERE "Year" = '1905-06';
+Generated Final SQL: SELECT "Name" FROM T WHERE "Year" = '1905-06';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Name            |
+|:----------------|
+| Mr G. Constable |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Boksburg
+SQL: SELECT "Name" FROM T WHERE "Year" = '1905-06';
+
+SQL Execution Result:
+Name
+Mr G. Constable
+
+Question: mr. g constable was the mayor in 1905-6, who was the previous mayor?
+A: To find the answer to this question, let’s think step by step.
+Prediction: (no data available)
+[Gold Answer] mr b. owen- jones
+

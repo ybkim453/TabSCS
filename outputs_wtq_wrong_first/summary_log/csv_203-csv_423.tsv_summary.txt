@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - Representative values: Maryland 1, Maryland 2, Maryland 3, Maryland 4
+   - Role: Identifier for the district where the election took place
+
+2. Incumbent
+   - Data type: Categorical
+   - Representative values: Wayne Gilchrest, Robert Ehrlich, Ben Cardin, Albert Wynn
+   - Role: Descriptor for the incumbent candidate in the election
+
+3. Party
+   - Data type: Categorical
+   - Representative values: Republican, Democratic
+   - Role: Descriptor for the political party of the candidate
+
+4. First elected
+   - Data type: Numeric
+   - Representative values: 1990, 1994, 1986, 1981
+   - Role: Descriptor for the year the candidate was first elected
+
+5. Result
+   - Data type: Categorical
+   - Representative values: Re-elected, Retired to run for Governor
+   - Role: Descriptor for the outcome of the election
+
+6. Candidates
+   - Data type: Categorical
+   - Representative values: Wayne Gilchrest (R) 76.67%, Dutch Ruppersberger (D) 54.16%, Ben Cardin (D) 65.72%, Steny Hoyer (D) 69.27%
+   - Role: Descriptor for the candidates running in the election and their respective percentage of votes
+
+**Outlier Row Analysis:**
+
+1. Maryland 2 - Robert Ehrlich (Republican)
+   - The row is an outlier because the incumbent, Robert Ehrlich, retired to run for Governor, resulting in a Democratic gain. This outcome is different from the majority of the table where incumbents were re-elected.
+
+2. Maryland 4 - Albert Wynn (Democratic)
+   - The row is an outlier because Albert Wynn received a significantly higher percentage of votes (78.57%) compared to the other candidates in the table. This makes it distinctive as an outlier.
+
+3. Maryland 1 - Wayne Gilchrest (Republican)
+   - The row is an outlier because Wayne Gilchrest received a very high percentage of votes (76.67%), which is notably higher than the other candidates in the table. This makes it stand out as an outlier.

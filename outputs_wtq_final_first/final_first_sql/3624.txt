@@ -1,0 +1,133 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Boat:
+   - Data type: Categorical
+   - 4 representative example values: M4-Coxless four, M4x-Quad sculls, M8+-Eight, LM4-Lightweight coxless four
+   - Role: Descriptor
+
+2. Time:
+   - Data type: Numeric
+   - 4 representative example values: 5:37.86, 5:33.15, 5:19.35, 5:45.60
+   - Role: Measure
+
+3. Crew:
+   - Data type: Categorical
+   - 4 representative example values: Andrew Triggs-Hodge, Tom James, Pete Reed, Alex Gregory
+   - Role: Descriptor
+
+4. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Great Britain, Russia, Canada, Denmark
+   - Role: Descriptor
+
+5. Date:
+   - Data type: Numeric
+   - 4 representative example values: 2012, 1999, 1992
+   - Role: Identifier
+
+6. Meet:
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Descriptor
+
+7. Location:
+   - Data type: Categorical
+   - 4 representative example values: Lucerne, Switzerland, Montreal, Canada
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Index 1):
+   - The crew members listed are Andrew Triggs-Hodge, Tom James, Pete Reed, Alex Gregory, which are different from the crew compositions in other rows.
+   - This row is an outlier because the crew members are unique compared to the rest of the table.
+
+2. Row 11 (Index 7):
+   - The crew members listed are Gabriel Bergen, Douglas Csima, Robert Gibson, Conlin McCabe, Malcolm Howard, Andrew Byrnes, Jeremiah Brown, Will Crothers, Brian Price (coxswain), which are different from the crew compositions in other rows.
+   - This row is an outlier because the crew members are unique compared to the rest of the table.
+
+3. Row 7 (Index 11):
+   - The crew members listed are Klaus Altena, Christian Dahlke, Thomas Melges, Bernhard Stomporowski, Michael Kobor, Uwe Maerz, Michael Buchheit, Kai von Warburg, Olaf Kaska (coxswain), which are different from the crew compositions in other rows.
+   - This row is an outlier because the crew members are unique compared to the rest of the table.
+
+=== Full Table Preview ===
+|   row_number | Boat                            | Time    | Crew                                                                                                                                                     | Nation        |   Date | Meet            | Location                   |
+|-------------:|:--------------------------------|:--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:----------------|:---------------------------|
+|            0 | M1x\nSingle sculls              | 6:33.35 | Mahé Drysdale                                                                                                                                            | New Zealand   |   2009 |                 | Poznań Poland              |
+|            1 | M2-\nCoxless pairs              | 6:08.50 | Hamish Bond\nEric Murray                                                                                                                                 | New Zealand   |   2012 | Summer Olympics | Eton Dorney England        |
+|            2 | M2+\nCoxed pairs                | 6:42.16 | Igor Boraska\nTihomir Franković\nMilan Razov (coxswain)                                                                                                  | Croatia       |   1994 |                 | Indianapolis United States |
+|            3 | M2x\nDouble sculls              | 6:03.25 | Adrien Hardy\nJean-Baptiste Macquet                                                                                                                      | France        |   2006 |                 | Poznań Poland              |
+|            4 | M4-\nCoxless four               | 5:37.86 | Andrew Triggs-Hodge\nTom James\nPete Reed\nAlex Gregory                                                                                                  | Great Britain |   2012 |                 | Lucerne Switzerland        |
+|            5 | M4+\nCoxed four                 | 5:58.96 | Matthias Ungemach\nArmin Eichholz\nArmin Weyrauch\nBahne Rabe\nJoerg Dederding (coxswain)                                                                | Germany       |   1991 |                 | Vienna Austria             |
+|            6 | M4x\nQuad sculls                | 5:33.15 | Vladislav Ryabcev\nAlexey Svirin\nNikita Morgachev\nSergei Fedorovtsev                                                                                   | Russia        |   2012 |                 | LucerneSwitzerland         |
+|            7 | M8+\nEight                      | 5:19.35 | Gabriel Bergen\nDouglas Csima\nRobert Gibson\nConlin McCabe\nMalcolm Howard\nAndrew Byrnes\nJeremiah Brown\nWill Crothers\nBrian Price (coxswain)        | Canada        |   2012 |                 | Lucerne Switzerland        |
+|            8 | LM1x\nLightweight single sculls | 6:46.93 | Jeremie Azou                                                                                                                                             | France        |   2011 |                 | Amsterdam Netherlands      |
+|            9 | LM2-\nLightweight coxless pairs | 6:26.21 | Tony O'Connor\nNeville Maxwell                                                                                                                           | Ireland       |   1994 |                 | Paris France               |
+|           10 | LM2x\nLightweight double sculls | 6:10.02 | Mads Rasmussen\nRasmus Quist                                                                                                                             | Denmark       |   2007 |                 | Amsterdam Netherlands      |
+|           11 | LM4-\nLightweight coxless four  | 5:45.60 | Thomas Poulsen\nThomas Ebert\nEskild Ebbesen\nVictor Feddersen                                                                                           | Denmark       |   1999 |                 | Lucerne Switzerland        |
+|           12 | LM4x\nLightweight quad sculls   | 5:45.18 | Francesco Esposito\nMassimo Lana\nMichelangelo Crispi\nMassimo Guglielmi                                                                                 | Italy         |   1992 |                 | Montreal Canada            |
+|           13 | LM8+\nLightweight eight         | 5:30.24 | Klaus Altena\nChristian Dahlke\nThomas Melges\nBernhard Stomporowski\nMichael Kobor\nUwe Maerz\nMichael Buchheit\nKai von Warburg\nOlaf Kaska (coxswain) | Germany       |   1992 |                 | Montreal Canada            |
+
+Generated Reasoning SQL: To determine which nation had the fastest record, we need to consider the "Time" column, which is numeric and represents the time taken to set the record, and the "Nation" column, which contains categorical values representing the nations. 
+We must find the minimum time value to identify the fastest record and then retrieve the corresponding nation.
+It is important to note that outlier rows with unique crew compositions should be excluded from the analysis as they do not represent typical records.
+SQL: 
+SELECT "Nation" 
+FROM T 
+WHERE "Time" = (SELECT MIN("Time") FROM T WHERE "Crew" NOT LIKE '%unique_crew_member%');
+Generated Final SQL: SELECT "Nation" FROM T WHERE "Time" = (SELECT MIN("Time") FROM T WHERE "Crew" NOT LIKE '%unique_crew_member%');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Nation   |
+|:---------|
+| Canada   |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of world records in rowing
+SQL: SELECT "Nation" FROM T WHERE "Time" = (SELECT MIN("Time") FROM T WHERE "Crew" NOT LIKE '%unique_crew_member%');
+
+Nation
+Canada
+Question: which nation had the fastest record?
+A: To find the answer to this question, let’s think step by step.
+Prediction: canada
+[Gold Answer] canada
+

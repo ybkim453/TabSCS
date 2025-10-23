@@ -1,0 +1,187 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season/Torneo
+   - Data type: Categorical
+   - 4 representative example values: 1994-1995 Season, Clausura 2007, Clausura 2009, Apertura 2009
+   - Role: Descriptor, identifies the specific season or tournament
+
+2. Jornada or Other
+   - Data type: Numeric
+   - 4 representative example values: 11, 14, 13
+   - Role: Descriptor, indicates the round or matchday number
+
+3. Home Team
+   - Data type: Categorical
+   - 4 representative example values: Chivas, América
+   - Role: Descriptor, identifies the home team for each match
+
+4. Result
+   - Data type: Categorical
+   - 4 representative example values: 3-4, 1-0
+   - Role: Measure, indicates the final score of the match
+
+5. Away Team
+   - Data type: Categorical
+   - 4 representative example values: América, Chivas
+   - Role: Descriptor, identifies the away team for each match
+
+6. Stadium
+   - Data type: Categorical
+   - 4 representative example values: Estadio Jalisco, Estadio Azteca
+   - Role: Descriptor, indicates the stadium where the match was played
+
+7. Date
+   - Data type: Categorical
+   - 4 representative example values: November 13, 1994, March 18, 2007
+   - Role: Descriptor, specifies the date of the match
+
+**Outlier Row Analysis:**
+
+1. Row 69:
+   - The values in this row are not provided, so it is an ordinary row and requires no special handling.
+
+2. Row 28:
+   - The values in this row are not provided, so it is an ordinary row and requires no special handling.
+
+3. Row 15:
+   - The values in this row are not provided, so it is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Season/Torneo     | Jornada or Other     | Home Team   | Result   | Away Team   | Stadium          | Date                |
+|-------------:|:------------------|:---------------------|:------------|:---------|:------------|:-----------------|:--------------------|
+|            0 | 1983–1984 season  | 2                    | Chivas      | 1–1      | América     | Estadio Jalisco  | 1983-09-11 00:00:00 |
+|            1 | 1983–1984 season  | 21                   | América     | 1–1      | Chivas      | Estadio Azteca   | 1984-01-22 00:00:00 |
+|            2 | 1983–1984 season  | Final Ida            | Chivas      | 2–2      | América     | Estadio Jalisco  | 1984-06-07 00:00:00 |
+|            3 | 1983–1984 season  | Final Vuelta         | América     | 3–1      | Chivas      | Estadio Azteca   | 1984-06-10 00:00:00 |
+|            4 | 1984–1985 season  | 13                   | América     | 0–0      | Chivas      | Estadio Azteca   | 1984-12-11 00:00:00 |
+|            5 | 1984–1985 season  | 32                   | Chivas      | 0–0      | América     | Estadio Jalisco  | 1985-03-24 00:00:00 |
+|            6 | 1984–1985 season  | Quarterfinals Ida    | Chivas      | 0–2      | América     | Estadio Jalisco  | 1985-05-07 00:00:00 |
+|            7 | 1984–1985 season  | Quarterfinals Vuelta | América     | 1–0      | Chivas      | Estadio Azteca   | 1985-05-12 00:00:00 |
+|            8 | 1986–1987 season  | 3                    | América     | 1–0      | Chivas      | Estadio Azteca   | 1986-08-17 00:00:00 |
+|            9 | 1986–1987 season  | 24                   | Chivas      | 2–2      | América     | Estadio Jalisco  | 1987-01-11 00:00:00 |
+|           10 | 1987–1988 Season  | 15                   | América     | 1–0      | Chivas      | Estadio Azteca   | 1987-12-20 00:00:00 |
+|           11 | 1987–1988 season  | 34                   | Chivas      | 3–2      | América     | Estadio Jalisco  | 1988-05-15 00:00:00 |
+|           12 | 1988–1989 season  | 12                   | Chivas      | 2–2      | América     | Estadio Jalisco  | 1988-12-29 00:00:00 |
+|           13 | 1988–1989 season  | 31                   | América     | 3–1      | Chivas      | Estadio Azteca   | 1989-04-30 00:00:00 |
+|           14 | 1988-1989 Season  | Liguilla             | América     | 2-1      | Chivas      | Estadio Azteca   | 1989-06-22 00:00:00 |
+|           15 | 1988-1989 Season  | Liquilla             | Chivas      | 1-2      | América     | Estadio Jalisco  | 1989-06-25 00:00:00 |
+|           16 | 1989-1990 Season  | 3                    | Chivas      | 2-2      | América     | Estadio Jalisco  | 1989-09-24 00:00:00 |
+|           17 | 1989-1990 Season  | 22                   | América     | 2-2      | Chivas      | Estadio Azteca   | 1990-01-14 00:00:00 |
+|           18 | 1990-1991 Season  | 12                   | Chivas      | 1-1      | América     | Estadio Jalisco  | 1990-12-09 00:00:00 |
+|           19 | 1990-1991 Season  | 31                   | América     | 2-2      | Chivas      | Estadio Azteca   | 1991-04-14 00:00:00 |
+|           20 | 1990-1991 Season  | Semifinals Ida       | Chivas      | 0-2      | América     | Estadio Jalisco  | 1991-06-13 00:00:00 |
+|           21 | 1990-1991 Season  | Semifinals Vuelta    | América     | 3-0      | Chivas      | Estadio Azteca   | 1991-06-16 00:00:00 |
+|           22 | 1991-1992 Season  | 2                    | América     | 1-1      | Chivas      | Estadio Azteca   | 1991-09-22 00:00:00 |
+|           23 | 1991-1992 Season  | 21                   | Chivas      | 0-0      | América     | Estadio Jalisco  | 1992-01-19 00:00:00 |
+|           24 | 1992-1993 Season  | 3                    | Chivas      | 1-0      | América     | Estadio Jalisco  | 1992-08-30 00:00:00 |
+|           25 | 1992-1993 Season  | 22                   | América     | 2-1      | Chivas      | Estadio Azteca   | 1993-01-10 00:00:00 |
+|           26 | 1993-1994 Season  | 4                    | Chivas      | 0-0      | América     | Estadio Jalisco  | 1993-09-05 00:00:00 |
+|           27 | 1993-1994 Season  | 23                   | América     | 1-0      | Chivas      | Estadio Azteca   | 1994-01-05 00:00:00 |
+|           28 | 1994-1995 Season  | 11                   | Chivas      | 3-4      | América     | Estadio Jalisco  | 1994-11-13 00:00:00 |
+|           29 | 1994-1995 Season  | 30                   | América     | 0-0      | Chivas      | Estadio Azteca   | 1995-03-19 00:00:00 |
+|           30 | 1995-1996 Season  | 9                    | Chivas      | 0-2      | América     | Estadio Jalisco  | 1995-10-22 00:00:00 |
+|           31 | 1995-1996 Season  | 26                   | América     | 2-3      | Chivas      | Estadio Azteca   | 1996-02-18 00:00:00 |
+|           32 | Invierno 1996     | 3                    | Chivas      | 5-0      | América     | Estadio Jalisco  | 1996-08-25 00:00:00 |
+|           33 | Verano 1997       | 3                    | América     | 0-0      | Chivas      | Estadio Azteca   | 1997-01-27 00:00:00 |
+|           34 | Invierno 1997     | 4                    | Chivas      | 1-2      | América     | Estadio Jalisco  | 1997-08-10 00:00:00 |
+|           35 | Invierno 1997     | Quarterfinals Ida    | Chivas      | 1-3      | América     | Estadio Jalisco  | 1997-11-18 00:00:00 |
+|           36 | Invierno 1997     | Quarterfinals Vuelta | América     | 1-0      | Chivas      | Estadio Azteca   | 1997-11-21 00:00:00 |
+|           37 | Verano 1998       | 4                    | América     | 0-0      | Chivas      | Estadio Azteca   | 1998-01-15 00:00:00 |
+|           38 | Invierno 1998     | 8                    | Chivas      | 1-0      | América     | Estadio Jalisco  | 1998-09-20 00:00:00 |
+|           39 | Verano 1999       | 8                    | América     | 0-1      | Chivas      | Estadio Azteca   | 1999-03-07 00:00:00 |
+|           40 | Invierno 1999     | 5                    | América     | 2-0      | Chivas      | Estadio Azteca   | 1999-09-12 00:00:00 |
+|           41 | Invierno 1999     | Quarterfinals Ida    | Chivas      | 0-0      | América     | Estadio Jalisco  | 1999-12-02 00:00:00 |
+|           42 | Invierno 1999     | Quarterfinals Vuelta | América     | 1-0      | Chivas      | Estadio Azteca   | 1999-12-05 00:00:00 |
+|           43 | Verano 2000       | 5                    | Chivas      | 3-0      | América     | Estadio Jalisco  | 2000-02-13 00:00:00 |
+|           44 | Invierno 2000     | 7                    | América     | 0-3      | Chivas      | Estadio Azteca   | 2000-09-10 00:00:00 |
+|           45 | Verano 2001       | 7                    | Chivas      | 1-2      | América     | Estadio Jalisco  | 2001-02-14 00:00:00 |
+|           46 | Invierno 2001     | 14                   | Chivas      | 1-1      | América     | Estadio Jalisco  | 2001-10-21 00:00:00 |
+|           47 | Verano 2002       | 14                   | América     | 2-3      | Chivas      | Estadio Azteca   | 2002-03-31 00:00:00 |
+|           48 | Apertura 2002     | 2                    | Chivas      | 0-1      | América     | Estadio Jalisco  | 2002-08-11 00:00:00 |
+|           49 | Clausura 2003     | 2                    | América     | 1-1      | Chivas      | Estadio Azteca   | 2002-01-19 00:00:00 |
+|           50 | Apertura 2003     | 17                   | América     | 1-2      | Chivas      | Estadio Azteca   | 2003-11-09 00:00:00 |
+|           51 | Clausura 2004     | 17                   | Chivas      | 0-1      | América     | Estadio Jalisco  | 2004-05-01 00:00:00 |
+|           52 | Apertura 2004     | 9                    | Chivas      | 1-1      | América     | Estadio Jalisco  | 2004-10-02 00:00:00 |
+|           53 | Clausura 2005     | 9                    | América     | 3-3      | Chivas      | Estadio Azteca   | 2005-03-13 00:00:00 |
+|           54 | Apertura 2005     | 7                    | América     | 0-0      | Chivas      | Estadio Azteca   | 2005-09-11 00:00:00 |
+|           55 | Clausura 2006     | 7                    | Chivas      | 1-0      | América     | Estadio Jalisco  | 2006-02-26 00:00:00 |
+|           56 | Apertura 2006     | 11                   | Chivas      | 2-0      | América     | Estadio Jalisco  | 2006-09-30 00:00:00 |
+|           57 | Apertura 2006     | Semifinals Ida       | Chivas      | 2-0      | América     | Estadio Jalisco  | 2006-11-30 00:00:00 |
+|           58 | Apertura 2006     | Semifinals Vuelta    | América     | 0-0      | Chivas      | Estadio Azteca   | 2006-12-03 00:00:00 |
+|           59 | Clausura 2007     | 11                   | América     | 1-0      | Chivas      | Estadio Azteca   | 2007-03-18 00:00:00 |
+|           60 | Clausura 2007     | Semifinals Ida       | América     | 1-0      | Chivas      | Estadio Azteca   | 2007-05-17 00:00:00 |
+|           61 | Clausura 2007     | Semifinals Vuelta    | Chivas      | 0-1      | América     | Estadio Jalisco  | 2007-05-20 00:00:00 |
+|           62 | Apertura 2007     | 14                   | América     | 2-1      | Chivas      | Estadio Azteca   | 2007-10-28 00:00:00 |
+|           63 | Clausura 2008     | 14                   | Chivas      | 3-2      | América     | Estadio Jalisco  | 2008-04-13 00:00:00 |
+|           64 | Apertura 2008     | 14                   | América     | 1-2      | Chivas      | Estadio Azteca   | 2008-10-26 00:00:00 |
+|           65 | Clausura 2009     | 14                   | Chivas      | 1-0      | América     | Estadio Jalisco  | 2009-04-19 00:00:00 |
+|           66 | Apertura 2009     | 13                   | America     | 1-0      | Chivas      | Estadio Azteca   | 2009-10-25 00:00:00 |
+|           67 | Bicentenario 2010 | 13                   | Chivas      | 1-0      | America     | Estadio Jalisco  | 2010-04-04 00:00:00 |
+|           68 | Apertura 2010     | 13                   | América     | 0-0      | Chivas      | Estadio Azteca   | 2010-10-24 00:00:00 |
+|           69 | Clausura 2011     | 13                   | Chivas      | 3-0      | America     | Estadio Omnilife | 2011-04-10 00:00:00 |
+|           70 | Apertura 2011     | 14                   | America     | 1-3      | Chivas      | Estadio Azteca   | 2011-10-23 00:00:00 |
+|           71 | Clausura 2012     | 14                   | Chivas      | 0-1      | America     | Estadio Omnilife | 2012-04-08 00:00:00 |
+|           72 | Apertura 2012     | 12                   | America     | 1-3      | Chivas      | Estadio Azteca   | 2012-10-06 00:00:00 |
+|           73 | Clausura 2013     | 12                   | Chivas      | 0-2      | America     | Estadio Omnilife | 2013-03-31 00:00:00 |
+|           74 | Apertura 2013     | 13                   | America     | 2-0      | Chivas      | Estadio Azteca   | 2013-10-05 00:00:00 |
+|           75 | Clausura 2014     | 13                   | Chivas      | 0-4      | América     | Estadio Omnilife | 2014-03-30 00:00:00 |
+
+Generated Reasoning SQL: To determine the result of the first season listed on the table, we need to filter the rows based on the "Season/Torneo" column and select the "Result" column for that specific season. Since the "Season/Torneo" column is categorical and the first season is "1983–1984 season", we filter the rows where "Season/Torneo" = '1983–1984 season' and retrieve the "Result" value.
+SQL: SELECT "Result" FROM T WHERE "Season/Torneo" = '1983–1984 season' LIMIT 1;
+Generated Final SQL: SELECT "Result" FROM T WHERE "Season/Torneo" = '1983–1984 season' LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Result   |
+|:---------|
+| 1–1      |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: El Clásico de Clásicos
+SQL: SELECT "Result" FROM T WHERE "Season/Torneo" = '1983–1984 season' LIMIT 1;
+
+Result
+1–1
+Question: what was the result of the first season listed on the table?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1-1
+[Gold Answer] 11
+

@@ -1,0 +1,136 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place
+   - Data type: Numeric
+   - Representative values: 8, 10, 12, 13
+   - Role: Identifier for the ranking of the riders
+
+2. Rider
+   - Data type: Categorical
+   - Representative values: Gaston Rahier, Dave Bickers, Andy Roberton, Vlastimil Valek
+   - Role: Descriptor for the name of the rider
+
+3. Country
+   - Data type: Categorical
+   - Representative values: Belgium, United Kingdom, Czechoslovakia, United States
+   - Role: Descriptor for the country of the rider
+
+4. Team
+   - Data type: Categorical
+   - Representative values: ČZ, Husqvarna, Montesa
+   - Role: Descriptor for the team the rider belongs to
+
+5. Points
+   - Data type: Numeric
+   - Representative values: 1112, 1076, 810, 709
+   - Role: Measure of the points earned by the rider
+
+6. Wins
+   - Data type: Numeric
+   - Representative values: 0
+   - Role: Measure of the number of wins by the rider
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4)
+   - The rider is Peter Lamppu from the United States riding for Montesa with 309 points and 0 wins.
+   - This row is not an outlier as the values are within the range of the other rows in the table.
+
+2. Row 19 (Index 19)
+   - The details for this row are not provided in the partial preview of the table.
+
+3. Row 12 (Index 12)
+   - The rider is Andy Roberton from the United Kingdom riding for Husqvarna with 810 points and 0 wins.
+   - This row is not an outlier as the values are within the range of the other rows in the table.
+
+=== Full Table Preview ===
+|   row_number |   Place | Rider             | Country        | Team      |   Points |   Wins |
+|-------------:|--------:|:------------------|:---------------|:----------|---------:|-------:|
+|            0 |       1 | Sylvain Geboers   | Belgium        | Suzuki    |     3066 |      3 |
+|            1 |       2 | Adolf Weil        | Germany        | Maico     |     2331 |      2 |
+|            2 |       3 | Torlief Hansen    | Sweden         | Husqvarna |     2052 |      0 |
+|            3 |       4 | Roger De Coster   | Belgium        | Suzuki    |     1865 |      3 |
+|            4 |       5 | Joel Robert       | Belgium        | Suzuki    |     1730 |      1 |
+|            5 |       6 | Heikki Mikkola    | Finland        | Husqvarna |     1680 |      2 |
+|            6 |       7 | Willy Bauer       | Germany        | Maico     |     1276 |      0 |
+|            7 |       8 | Gaston Rahier     | Belgium        | ČZ        |     1112 |      0 |
+|            8 |       9 | Pierre Karsmakers | Netherlands    | Husqvarna |     1110 |      0 |
+|            9 |      10 | Dave Bickers      | United Kingdom | ČZ        |     1076 |      0 |
+|           10 |      11 | John Banks        | United Kingdom | ČZ        |      971 |      0 |
+|           11 |      12 | Andy Roberton     | United Kingdom | Husqvarna |      810 |      0 |
+|           12 |      13 | Vlastimil Valek   | Czechoslovakia | ČZ        |      709 |      0 |
+|           13 |      14 | Mark Blackwell    | United States  | Husqvarna |      604 |      0 |
+|           14 |      15 | Brad Lackey       | United States  | ČZ        |      603 |      0 |
+|           15 |      16 | Gary Jones        | United States  | Yamaha    |      439 |      0 |
+|           16 |      17 | John DeSoto       | United States  | Suzuki    |      425 |      0 |
+|           17 |      18 | Chris Horsefield  | United Kingdom | ČZ        |      416 |      0 |
+|           18 |      19 | Uno Palm          | Sweden         | Husqvarna |      324 |      0 |
+|           19 |      20 | Peter Lamppu      | United States  | Montesa   |      309 |      0 |
+
+Generated Reasoning SQL: To determine if the Maico team earned more points than the ČZ team, we need to compare the total points for each team. The relevant columns for this comparison are "Team" and "Points". We will sum the points for the Maico team and the ČZ team separately and then compare the totals.
+
+SQL:
+SELECT 
+    SUM(CAST("Points" AS INTEGER)) AS maico_total_points,
+    (SELECT SUM(CAST("Points" AS INTEGER)) FROM T WHERE "Team" LIKE '%ČZ%') AS cz_total_points
+FROM T
+WHERE "Team" LIKE '%Maico%';
+Generated Final SQL: SELECT SUM(CAST("Points" AS INTEGER)) AS maico_total_points, (SELECT SUM(CAST("Points" AS INTEGER)) FROM T WHERE "Team" LIKE '%ČZ%') AS cz_total_points FROM T WHERE "Team" LIKE '%Maico%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   maico_total_points |   cz_total_points |
+|---------------------:|------------------:|
+|                 3607 |              4887 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1971 Trans-AMA motocross series
+SQL: SELECT SUM(CAST("Points" AS INTEGER)) AS maico_total_points, (SELECT SUM(CAST("Points" AS INTEGER)) FROM T WHERE "Team" LIKE '%ČZ%') AS cz_total_points FROM T WHERE "Team" LIKE '%Maico%';
+
+SQL Execution Result:
+maico_total_points | cz_total_points
+3607 | 4887
+
+Question: did the maico team earn more points than the cz team?
+A: To find the answer to this question, let’s think step by step.
+Prediction: no
+[Gold Answer] no
+

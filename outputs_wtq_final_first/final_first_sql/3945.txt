@@ -1,0 +1,161 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 6, 10, 18, 21
+   - Role: Identifier, indicating the ranking of the diver.
+
+2. Diver:
+   - Data type: Categorical
+   - 4 representative example values: Abby Johnston, Olena Fedorova, Inge Jansen, Jennifer Benitez
+   - Role: Descriptor, identifying the name of the diver.
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: United States, Ukraine, Netherlands, Spain
+   - Role: Descriptor, indicating the nationality of the diver.
+
+4. Preliminary Points:
+   - Data type: Numeric
+   - 4 representative example values: 282.4, 258.3, 241.95, 232.5
+   - Role: Measure, representing the points scored in the preliminary round.
+
+5. Preliminary Rank:
+   - Data type: Numeric
+   - 4 representative example values: 4, 9, 18, 21
+   - Role: Measure, indicating the ranking of the diver in the preliminary round.
+
+6. Final Points:
+   - Data type: Numeric
+   - 4 representative example values: 282.85, 274.15, nan, nan
+   - Role: Measure, representing the points scored in the final round.
+
+7. Final Rank:
+   - Data type: Numeric
+   - 4 representative example values: 6, 10, nan, nan
+   - Role: Measure, indicating the ranking of the diver in the final round.
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 18 - Inge Jansen):
+   - The Final Points and Final Rank values are missing (nan).
+   - This row is an outlier because it lacks data that is present in the majority of the table, making it distinctive.
+
+2. Row 9 (Index 21 - Jennifer Benitez):
+   - The Final Points and Final Rank values are missing (nan).
+   - This row is an outlier due to the missing data, which sets it apart from the majority of the table.
+
+3. Row 5 (Index 34 - Maria Florencia Betancourt):
+   - The Final Points and Final Rank values are missing (nan).
+   - This row is an outlier based on the missing data, making it different from the typical entries in the table.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Diver                      | Nationality    |   Preliminary\nPoints |   Preliminary\nRank |   Final\nPoints |   Final\nRank |
+|-------------:|-------:|:---------------------------|:---------------|----------------------:|--------------------:|----------------:|--------------:|
+|            0 |    nan | Shi Tingmao                | China          |                294.65 |                   2 |          318.65 |             1 |
+|            1 |    nan | Wang Han                   | China          |                306.6  |                   1 |          310.2  |             2 |
+|            2 |    nan | Tania Cagnotto             | Italy          |                253.15 |                  12 |          295.45 |             3 |
+|            3 |      4 | Maria Marconi              | Italy          |                264.25 |                   6 |          290.15 |             4 |
+|            4 |      5 | Nadezhda Bazhina           | Russia         |                262.75 |                   7 |          286.2  |             5 |
+|            5 |      6 | Abby Johnston              | United States  |                282.4  |                   4 |          282.85 |             6 |
+|            6 |      7 | Sharleen Stratton          | Australia      |                282.45 |                   3 |          281.65 |             7 |
+|            7 |      8 | Anna Lindberg              | Sweden         |                276.05 |                   5 |          279.55 |             8 |
+|            8 |      9 | Kelci Bryant               | United States  |                257    |                  11 |          274.25 |             9 |
+|            9 |     10 | Olena Fedorova             | Ukraine        |                258.3  |                   9 |          274.15 |            10 |
+|           10 |     11 | Brittany Broben            | Australia      |                257.1  |                  10 |          267.2  |            11 |
+|           11 |     12 | Anastasia Pozdniakova      | Russia         |                260    |                   8 |          251.7  |            12 |
+|           12 |     13 | Hanna Pysmenska            | Ukraine        |                251.4  |                  13 |          nan    |           nan |
+|           13 |     14 | Jennifer Abel              | Canada         |                250.95 |                  14 |          nan    |           nan |
+|           14 |     15 | Sophie Somloi              | Austria        |                249.45 |                  15 |          nan    |           nan |
+|           15 |     16 | Uschi Freitag              | Germany        |                247.7  |                  16 |          nan    |           nan |
+|           16 |     17 | Sharon Chan                | Hong Kong      |                245.1  |                  17 |          nan    |           nan |
+|           17 |     18 | Inge Jansen                | Netherlands    |                241.95 |                  18 |          nan    |           nan |
+|           18 |     19 | Jun Hoong Cheong           | Malaysia       |                241.95 |                  18 |          nan    |           nan |
+|           19 |     20 | Sayaka Shibusawa           | Japan          |                240.8  |                  20 |          nan    |           nan |
+|           20 |     21 | Jennifer Benitez           | Spain          |                232.5  |                  21 |          nan    |           nan |
+|           21 |     22 | Arantxa Chavez             | Mexico         |                232.35 |                  22 |          nan    |           nan |
+|           22 |     23 | Vianey Hernandez           | Mexico         |                227.85 |                  23 |          nan    |           nan |
+|           23 |     24 | Fanny Bouvet               | France         |                227.1  |                  24 |          nan    |           nan |
+|           24 |     25 | Hannah Starling            | Great Britain  |                226.4  |                  25 |          nan    |           nan |
+|           25 |     26 | Choi Sut Ian               | Macau          |                224.5  |                  26 |          nan    |           nan |
+|           26 |     27 | Marion Farissier           | France         |                221.65 |                  27 |          nan    |           nan |
+|           27 |     28 | Julia Loennegren           | Sweden         |                221.05 |                  28 |          nan    |           nan |
+|           28 |     29 | Yuka Mabuchi               | Japan          |                219.5  |                  29 |          nan    |           nan |
+|           29 |     30 | Alicia Blagg               | Great Britain  |                212.5  |                  30 |          nan    |           nan |
+|           30 |     31 | Beannelys Velasquez        | Venezuela      |                211.3  |                  31 |          nan    |           nan |
+|           31 |     32 | Diana Pineda               | Colombia       |                209.6  |                  32 |          nan    |           nan |
+|           32 |     33 | Tina Punzel                | Germany        |                206.05 |                  33 |          nan    |           nan |
+|           33 |     34 | Maria Florencia Betancourt | Venezuela      |                204.9  |                  34 |          nan    |           nan |
+|           34 |     35 | Sari Ambarwati             | Indonesia      |                200.05 |                  35 |          nan    |           nan |
+|           35 |     36 | Lei Sio I                  | Macau          |                192    |                  36 |          nan    |           nan |
+|           36 |     37 | Leyre Eizaguirre           | Spain          |                189.95 |                  37 |          nan    |           nan |
+|           37 |     38 | Huang En-Tien              | Chinese Taipei |                187.25 |                  38 |          nan    |           nan |
+|           38 |     39 | Carolina Murillo           | Colombia       |                181.85 |                  39 |          nan    |           nan |
+|           39 |     40 | Hsu Shi-Han                | Chinese Taipei |                146.15 |                  40 |          nan    |           nan |
+
+Generated Reasoning SQL: Explanation: To calculate Shi Tingmao's average score between the preliminary and final rounds, we need to consider the "Diver" column to filter for Shi Tingmao and then calculate the average of her scores in the "Preliminary Points" and "Final Points" columns. We should exclude outlier rows with missing values in the "Final Points" column to ensure accurate calculations.
+
+SQL: 
+SELECT AVG("Preliminary Points" + "Final Points") AS average_score
+FROM T
+WHERE "Diver" = 'Shi Tingmao'
+AND "Final Points" IS NOT NULL;
+Generated Final SQL: SELECT AVG("Preliminary Points" + "Final Points") AS average_score FROM T WHERE "Diver" = 'Shi Tingmao' AND "Final Points" IS NOT NULL;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   average_score |
+|----------------:|
+|               0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Diving at the 2011 World Aquatics Championships – Women's 1 metre springboard
+SQL: SELECT AVG("Preliminary Points" + "Final Points") AS average_score FROM T WHERE "Diver" = 'Shi Tingmao' AND "Final Points" IS NOT NULL;
+
+SQL Execution Result:
+average_score
+0.0
+
+Question: what was shi tingmao's average score between the preliminary and final?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0.0
+[Gold Answer] 306.65
+

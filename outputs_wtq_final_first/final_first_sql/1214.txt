@@ -1,0 +1,103 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 5, 8, Total
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Turkey, Tunisia, Total
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 1, 0, 23, 68
+   - Role: Measures
+
+**Outlier Row Analysis:**
+
+1. Tunisia:
+   - The row for Tunisia has a Silver medal count of 1, which is different from the majority of the table where most nations have 0 Silver medals.
+   - This makes the row an outlier as it has a distinctive value in the Silver column compared to other nations.
+
+2. Total:
+   - The row for Total is not an outlier as it represents the total count of medals and is a common practice in sports tables to have a row for the total count.
+   - The values in this row are not distinctive or atypical compared to the rest of the table.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation     |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:-----------|-------:|---------:|---------:|--------:|
+|            0 | 1      | France     |     11 |        5 |        3 |      19 |
+|            1 | 2      | Greece     |      6 |        7 |        6 |      19 |
+|            2 | 3      | Yugoslavia |      3 |        2 |        1 |       6 |
+|            3 | 4      | Spain      |      1 |        5 |        5 |      11 |
+|            4 | 5      | Morocco    |      1 |        1 |        0 |       2 |
+|            5 | 5      | Turkey     |      1 |        1 |        0 |       2 |
+|            6 | 7      | Egypt      |      0 |        1 |        7 |       8 |
+|            7 | 8      | Tunisia    |      0 |        1 |        0 |       1 |
+|            8 | Totaal | Totaal     |     23 |       23 |       22 |      68 |
+
+Generated Reasoning SQL: Explanation: To find the country that Greece won 3 more gold medals than and 5 less gold medals than, we need to compare the gold medal counts of Greece with other countries. We will exclude the outlier row for Tunisia as it has a distinctive value in the Silver column. We will compare the gold medal counts of Greece with other countries to determine the countries that fit the given conditions.
+
+SQL:
+SELECT "Nation" 
+FROM T 
+WHERE "Gold" = (SELECT "Gold" FROM T WHERE "Nation" = 'Greece') + 3 
+AND "Gold" = (SELECT "Gold" FROM T WHERE "Nation" = 'Greece') - 5 
+AND "Nation" != 'Greece' 
+AND "Nation" != 'Tunisia';
+Generated Final SQL: SELECT "Nation" FROM T WHERE "Gold" = (SELECT "Gold" FROM T WHERE "Nation" = 'Greece') + 3 AND "Gold" = (SELECT "Gold" FROM T WHERE "Nation" = 'Greece') - 5 AND "Nation" != 'Greece' AND "Nation" != 'Tunisia';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Athletics at the 1959 Mediterranean Games (row_number, Rank, Nation, Gold, Silver, Bronze, Total)
+
+row_number | Rank | Nation | Gold | Silver | Bronze | Total
+0 | 1 | France | 11 | 5 | 3 | 19
+1 | 2 | Greece | 6 | 7 | 6 | 19
+2 | 3 | Yugoslavia | 3 | 2 | 1 | 6
+3 | 4 | Spain | 1 | 5 | 5 | 11
+4 | 5 | Morocco | 1 | 1 | 0 | 2
+5 | 5 | Turkey | 1 | 1 | 0 | 2
+6 | 7 | Egypt | 0 | 1 | 7 | 8
+7 | 8 | Tunisia | 0 | 1 | 0 | 1
+8 | Totaal | Totaal | 23 | 23 | 22 | 68
+Question: greece won 3 more gold medals than____ but 5 less gold medals than ____.
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we know that Greece won 6 gold medals.  
+Next, we need to find out who won 3 more gold medals than Greece.  
+To do this, we can add 3 to Greece's gold medal count: 6 (Greece) + 3 = 9 gold medals.  
+From the table, we see that France won 11 gold medals, which is 5 more gold medals than Greece.  
+Therefore, the country that won 3 more gold medals than Greece is **France**, and the country that won 5 less gold medals than France is **Greece**.
+
+Final Answer: France, Greece
+[Fallback] Prediction: france, greece
+[Gold Answer] yugoslavia,france
+

@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Opus
+   - Data type: Numeric
+   - 4 representative example values: 3, 4, 6, 7
+   - Role: Identifier
+
+2. Title
+   - Data type: Categorical
+   - 4 representative example values: Der Kobold, Bruder Lustig, Banadietrich, Schwarzschwanenreich
+   - Role: Descriptor
+
+3. Sub­divisions
+   - Data type: Categorical
+   - 4 representative example values: 3 acts, 4 acts
+   - Role: Descriptor
+
+4. Compo-sition
+   - Data type: Numeric
+   - 4 representative example values: 1903, 1904, 1909, 1910
+   - Role: Measure
+
+5. Première date
+   - Data type: Date
+   - 4 representative example values: 29 January 1904, 13 October 1905, 23 January 1910, 5 November 1918
+   - Role: Descriptor
+
+6. Place, theatre
+   - Data type: Categorical
+   - 4 representative example values: Hamburg, Stadttheater, Karlsruhe, Hoftheater, Kiel
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 11
+   - The Première date is "nan" (not a date), which is not a valid date entry and stands out from the other rows where valid dates are present. This makes the row an outlier.
+
+2. Row 17
+   - The Compo-sition is "nan" (not a valid year), which is not a valid composition year entry and differs from the other rows where valid years are present. This makes the row an outlier.
+
+3. Row 3
+   - The Première date is "29 January 1904", which is the same as the first row. This row is not an outlier and is an ordinary entry.

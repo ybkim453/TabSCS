@@ -1,0 +1,154 @@
+=== Table ID ===
+csv/204-csv/993.tsv
+
+=== Question ===
+which team did the rough riders lose to by the most points?
+
+=== Sub-table Preview ===
+|   Hand |   Auto |   Wind | Athlete                | Nationality    | Birthdate   | Location   | Date       |
+|-------:|-------:|-------:|:-----------------------|:---------------|:------------|:-----------|:-----------|
+|  nan   |  10.6  |  nan   | Bill Collins           | United States  | 20.11.1950  | nan        | 06.06.1992 |
+|  nan   |  10.84 |    1.8 | Erik Oostweegel        | Netherlands    | 29.04.1960  | Tilburg    | 10.06.2000 |
+|  nan   |  10.87 |  nan   | Eddie Hart             | United States  | 24.04.1949  | Eugene     | 03.08.1989 |
+|  nan   |  10.9  |  nan   | Thaddeus Bell          | United States  | 28.11.1942  | Raleigh    | 01.05.1988 |
+|   10.7 | nan    |  nan   | Klaus Jürgen Schneider | Germany        | 02.03.1942  | Stuttgart  | 07.07.1982 |
+|  nan   |  10.95 |  nan   | George McNeill         | United Kingdom | 19.02.1947  | Melbourne  | 31.11.1987 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Hand
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, 10.7
+   - Role: Measure
+
+2. Auto
+   - Data type: Numeric
+   - 4 representative example values: 10.6, 10.84, 10.87, nan
+   - Role: Measure
+
+3. Wind
+   - Data type: Numeric
+   - 4 representative example values: nan, 1.8, nan, nan
+   - Role: Measure
+
+4. Athlete
+   - Data type: Categorical
+   - 4 representative example values: Bill Collins, Erik Oostweegel, Eddie Hart, Klaus Jürgen Schneider
+   - Role: Descriptor
+
+5. Nationality
+   - Data type: Categorical
+   - 4 representative example values: United States, Netherlands, United States, Germany
+   - Role: Descriptor
+
+6. Birthdate
+   - Data type: Date
+   - 4 representative example values: 20.11.1950, 29.04.1960, 24.04.1949, 02.03.1942
+   - Role: Descriptor
+
+7. Location
+   - Data type: Categorical
+   - 4 representative example values: nan, Tilburg, Eugene, Stuttgart
+   - Role: Descriptor
+
+8. Date
+   - Data type: Date
+   - 4 representative example values: 06.06.1992, 10.06.2000, 03.08.1989, 07.07.1982
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The values in the "Wind" column are significantly different from the majority of the table, where most entries have "nan" values. This makes the row an outlier.
+
+2. Row 7:
+   - The value in the "Auto" column is significantly different from the majority of the table, where most entries have "nan" values. This makes the row an outlier.
+
+3. Row 10:
+   - The value in the "Auto" column is significantly different from the majority of the table, where most entries have values around 10.9. This makes the row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date    | Opponent                | Score   | Result   | Record   |
+|-------------:|-------:|:--------|:------------------------|:--------|:---------|:---------|
+|            0 |      1 | Aug 28  | at Toronto Argonauts    | 13–6    | Loss     | 0–1      |
+|            1 |      2 | Sept 4  | at Montreal Alouettes   | 21–2    | Loss     | 0–2      |
+|            2 |      2 | Sept 6  | vs. Montreal Alouettes  | 20–11   | Loss     | 0–3      |
+|            3 |      3 | Sept 11 | at Toronto Argonauts    | 12–5    | Win      | 1–3      |
+|            4 |      4 | Sept 18 | vs. Toronto Argonauts   | 34–6    | Loss     | 1–4      |
+|            5 |      5 | Sept 25 | vs. Hamilton Tiger-Cats | 38–12   | Loss     | 1–5      |
+|            6 |      6 | Oct 2   | at Hamilton Tiger-Cats  | 45–0    | Loss     | 1–6      |
+|            7 |      7 | Oct 9   | vs. Montreal Alouettes  | 25–11   | Loss     | 1–7      |
+|            8 |      7 | Oct 11  | at Montreal Alouettes   | 24–6    | Loss     | 1–8      |
+|            9 |      8 | Oct 16  | vs. Toronto Argonauts   | 27–11   | Loss     | 1–9      |
+|           10 |      9 | Oct 23  | at Hamilton Tiger-Cats  | 25–17   | Loss     | 1–10     |
+|           11 |     10 | Oct 30  | vs. Hamilton Tiger-Cats | 30–9    | Loss     | 1–11     |
+|           12 |     11 | Nov 6   | at Toronto Argonauts    | 18–12   | Loss     | 1–12     |
+|           13 |     12 | Nov 13  | vs. Montreal Alouettes  | 14–12   | Win      | 2–12     |
+
+Generated Reasoning SQL: Explanation: To find the team that the Rough Riders lost to by the most points, we need to calculate the maximum point difference in the "Score" column where the "Result" is 'Loss'. We will subtract the losing score from the opponent's score to determine the point difference.
+
+SQL: 
+SELECT "Opponent"
+FROM T
+WHERE "Result" = 'Loss'
+ORDER BY ABS(SUBSTR("Score", INSTR("Score", '–') + 1) - CAST(SUBSTR("Score", 1, INSTR("Score", '–') - 1) AS INTEGER)) DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Opponent" FROM T WHERE "Result" = 'Loss' ORDER BY ABS(SUBSTR("Score", INSTR("Score", '–') + 1) - CAST(SUBSTR("Score", 1, INSTR("Score", '–') - 1) AS INTEGER)) DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Opponent               |
+|:-----------------------|
+| at Hamilton Tiger-Cats |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1954 Ottawa Rough Riders season
+SQL: SELECT "Opponent" FROM T WHERE "Result" = 'Loss' ORDER BY ABS(SUBSTR("Score", INSTR("Score", '–') + 1) - CAST(SUBSTR("Score", 1, INSTR("Score", '–') - 1) AS INTEGER)) DESC LIMIT 1;
+
+SQL Execution Result:
+Opponent
+at Hamilton Tiger-Cats
+
+Question: which team did the rough riders lose to by the most points?
+A: To find the answer to this question, let’s think step by step.
+Prediction: at hamilton tiger-cats
+[Gold Answer] hamilton tiger-cats
+

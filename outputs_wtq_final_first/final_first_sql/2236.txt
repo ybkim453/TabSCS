@@ -1,0 +1,130 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 2005, 2006, 2007, 2010
+   - Role: Identifier for the specific season of the data
+
+2. Team
+   - Data type: Categorical
+   - 4 representative example values: Shandong Luneng, Chengdu Wuniu, Jiangsu Sainty
+   - Role: Descriptor for the team name
+
+3. Country
+   - Data type: Categorical
+   - 4 representative example values: China
+   - Role: Descriptor for the country of the team
+
+4. Division
+   - Data type: Numeric
+   - 4 representative example values: 1, 2
+   - Role: Descriptor for the division level of the team
+
+5. Apps
+   - Data type: Numeric
+   - 4 representative example values: 0, 1, 17
+   - Role: Measure for the number of appearances
+
+6. Goals
+   - Data type: Numeric
+   - 4 representative example values: 0
+   - Role: Measure for the number of goals scored
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 2):
+   - The team "Chengdu Wuniu" in Division 2 with 1 appearance and 0 goals is different from the majority of the table where teams are in Division 1. This makes it an outlier.
+
+2. Row 7 (Index 3):
+   - The team "Jiangsu Sainty" with 17 appearances and 0 goals in 2010 is different from the majority of the table where most teams have 0 or very few appearances. This makes it an outlier.
+
+3. Row 2 (Index 7):
+   - The team "Shandong Luneng" in Division 1 with 0 appearances and 0 goals is consistent with other entries in the table. This is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Season | Team            | Country   |   Division |   Apps |   Goals |
+|-------------:|---------:|:----------------|:----------|-----------:|-------:|--------:|
+|            0 |     2003 | Shandong Luneng | China     |          1 |      4 |       0 |
+|            1 |     2004 | Shandong Luneng | China     |          1 |      0 |       0 |
+|            2 |     2005 | Shandong Luneng | China     |          1 |      0 |       0 |
+|            3 |     2006 | Chengdu Wuniu   | China     |          2 |      1 |       0 |
+|            4 |     2007 | Shandong Luneng | China     |          1 |      0 |       0 |
+|            5 |     2008 | Jiangsu Sainty  | China     |          2 |     24 |       0 |
+|            6 |     2009 | Jiangsu Sainty  | China     |          1 |     15 |       0 |
+|            7 |     2010 | Jiangsu Sainty  | China     |          1 |     17 |       0 |
+|            8 |     2011 | Jiangsu Sainty  | China     |          1 |      9 |       0 |
+|            9 |     2012 | Jiangsu Sainty  | China     |          1 |      0 |       0 |
+|           10 |     2013 | Jiangsu Sainty  | China     |          1 |     11 |       0 |
+
+Generated Reasoning SQL: Explanation: To find the season with at most 1 appearance, we need to filter the rows where "Apps" is less than or equal to 1. Since the question does not specify a particular team or country, we will consider all entries in the table. The "Season" column is numeric and represents the specific season of the data, while the "Apps" column is also numeric and indicates the number of appearances.
+
+SQL: SELECT "Season" 
+FROM T 
+WHERE "Apps" <= 1;
+Generated Final SQL: SELECT "Season" FROM T WHERE "Apps" <= 1;
+SQL 실행 결과 셀 수: 5
+=== SQL 실행 결과 미리보기 ===
+|   Season |
+|---------:|
+|     2004 |
+|     2005 |
+|     2006 |
+|     2007 |
+|     2012 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Guan Zhen
+SQL: SELECT "Season" FROM T WHERE "Apps" <= 1;
+
+SQL Execution Result:
+Season
+2004
+2005
+2006
+2007
+2012
+
+Question: which season had, at most, 1 app?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2004, 2005, 2006, 2007, 2012
+[Gold Answer] 2006
+

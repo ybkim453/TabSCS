@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 4, nan, 3, 8
+   - Role: Descriptor, indicates the ranking of the athlete in the heat.
+
+2. Heat:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 4
+   - Role: Descriptor, indicates the heat number in which the athlete competed.
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: Chintake De Zoysa, Khalil Al-Hanahneh, Shen Yunbao, Chaleunsouk Oudomphanh
+   - Role: Identifier, uniquely identifies the athlete.
+
+4. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: Sri Lanka, Jordan, China, Laos
+   - Role: Descriptor, indicates the nationality of the athlete.
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 10.78, DNS, 10.72, 11.76
+   - Role: Measure, indicates the time taken by the athlete in the race.
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: q, nan, Q, SB
+   - Role: Descriptor, provides additional notes or qualifiers for the athlete's performance.
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The row contains a missing value (nan) in the "Rank" column, which is different from the majority of the table where ranks are specified. This makes it an outlier.
+
+2. Row 7:
+   - The row contains a DNS (Did Not Start) value in the "Time" column, which is different from the numeric time values in the majority of the table. This makes it an outlier.
+
+3. Row 31:
+   - The row contains a DQ (Disqualified) value in the "Time" column, which is different from the numeric time values in the majority of the table. This makes it an outlier.

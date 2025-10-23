@@ -1,0 +1,167 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year
+   - Data type: Categorical
+   - 4 representative example values: 1982, 1984, 1992, Career Totals
+   - Role: Identifier for the year the data was recorded
+
+2. Team
+   - Data type: Categorical
+   - 4 representative example values: San Diego Chargers, Cincinnati Bengals, Tampa Bay Buccaneers, Cleveland Browns
+   - Role: Descriptor for the team associated with the data
+
+3. GP (Games Played)
+   - Data type: Numeric
+   - 4 representative example values: 9, 15, 2, 4
+   - Role: Measure of the number of games played
+
+4. Att (Attempts)
+   - Data type: Numeric
+   - 4 representative example values: 87, 103, 5, 13
+   - Role: Measure of the number of attempts made
+
+5. Yds (Yards)
+   - Data type: Numeric
+   - 4 representative example values: 430, 396, 6, 38
+   - Role: Measure of the total yards gained
+
+6. Avg (Average)
+   - Data type: Numeric
+   - 4 representative example values: 4.9, 3.8, 1.2, 2.9
+   - Role: Measure of the average yards gained per attempt
+
+7. Long (Longest Run)
+   - Data type: Numeric
+   - 4 representative example values: 48, 33, 4, 13
+   - Role: Measure of the longest run in yards
+
+8. Rush TD (Rushing Touchdowns)
+   - Data type: Numeric
+   - 4 representative example values: 6, 2, 0, 0
+   - Role: Measure of the number of rushing touchdowns scored
+
+9. Rec (Receptions)
+   - Data type: Numeric
+   - 4 representative example values: 13, 34, 0, 2
+   - Role: Measure of the number of receptions made
+
+10. Yds.1 (Receiving Yards)
+    - Data type: Numeric
+    - 4 representative example values: 66, 268, 0, -1
+    - Role: Measure of the total receiving yards gained
+
+11. Avg.1 (Receiving Average)
+    - Data type: Numeric
+    - 4 representative example values: 5.1, 7.9, 0, -0.5
+    - Role: Measure of the average receiving yards gained per reception
+
+12. Long.1 (Longest Reception)
+    - Data type: Numeric
+    - 4 representative example values: 12, 27, 0, 4
+    - Role: Measure of the longest reception in yards
+
+13. Rec TD (Receiving Touchdowns)
+    - Data type: Numeric
+    - 4 representative example values: 0, 2, 0, 0
+    - Role: Measure of the number of receiving touchdowns scored
+
+**Outlier Row Analysis:**
+
+1. Row 13 (Career Totals)
+   - This row is an outlier as it represents the total career statistics for the player, which is significantly different from individual season data.
+   - The values in this row are not atypical within the context of career totals and are not erroneous data points.
+
+2. Row 11 (1992, Tampa Bay Buccaneers)
+   - This row has very low values for all statistical measures compared to other rows.
+   - The low values are consistent with a player having minimal impact or playing time during that season, making it an outlier in terms of performance.
+
+3. Row 12 (1992, Cleveland Browns)
+   - Similar to Row 11, this row also has very low values for statistical measures.
+   - The low values indicate limited contribution or playing time, making it an outlier in terms of performance.
+
+=== Full Table Preview ===
+|   row_number | Year          | Team                 |   GP |   Att |   Yds |   Avg |   Long |   Rush TD |   Rec |   Yds_1 |   Avg_1 |   Long_1 |   Rec TD |
+|-------------:|:--------------|:---------------------|-----:|------:|------:|------:|-------:|----------:|------:|--------:|--------:|---------:|---------:|
+|            0 | 1981          | San Diego Chargers   |   14 |   109 |   525 |   4.8 |     28 |         3 |    46 |     329 |     7.2 |       29 |        3 |
+|            1 | 1982          | San Digeo Chargers   |    9 |    87 |   430 |   4.9 |     48 |         6 |    13 |      66 |     5.1 |       12 |        0 |
+|            2 | 1983          | San Diego Chargers   |   15 |   127 |   516 |   4.1 |     61 |         3 |    25 |     215 |     8.6 |       36 |        0 |
+|            3 | 1984          | Cincinnati Bengals   |   15 |   103 |   396 |   3.8 |     33 |         2 |    34 |     268 |     7.9 |       27 |        2 |
+|            4 | 1985          | Cincinnati Bengals   |   16 |   192 |   929 |   4.8 |     39 |         7 |    55 |     576 |    10.5 |       57 |        5 |
+|            5 | 1986          | Cincinnati Bengals   |   16 |   205 |  1087 |   5.3 |     56 |         5 |    54 |     686 |    12.7 |       54 |        4 |
+|            6 | 1987          | Cincinnati Bengals   |    9 |    94 |   280 |   3.1 |     18 |         1 |    22 |     272 |    12.4 |       46 |        2 |
+|            7 | 1988          | Cincinnati Bengals   |   15 |   182 |   931 |   5.1 |     51 |         8 |    29 |     287 |     9.9 |       28 |        6 |
+|            8 | 1989          | Cincinnati Bengals   |   16 |   221 |  1239 |   5.6 |     65 |         7 |    37 |     306 |     8.3 |       25 |        2 |
+|            9 | 1990          | Cincinnati Bengals   |   16 |   195 |  1004 |   5.1 |     56 |         5 |    26 |     269 |    10.3 |       35 |        4 |
+|           10 | 1991          | Cincinnati Bengals   |   15 |   152 |   571 |   3.8 |     25 |         2 |    40 |     348 |     8.7 |       40 |        2 |
+|           11 | 1992          | Tampa Bay Buccaneers |    2 |     5 |     6 |   1.2 |      4 |         0 |     0 |       0 |     0   |        0 |        0 |
+|           12 | 1992          | Cleveland Browns     |    4 |    13 |    38 |   2.9 |     13 |         0 |     2 |      -1 |    -0.5 |        4 |        0 |
+|           13 | Career Totals |                      |  162 |  1685 |  7962 |   4.7 |     65 |        49 |   383 |    3621 |     9.5 |       57 |       30 |
+
+Generated Reasoning SQL: Explanation: To determine which team had the best rushing attempts, we need to compare the total rushing attempts across all seasons for each team. We will sum the "Att" column for each team, excluding the outlier rows representing career totals. This will give us the team with the highest total rushing attempts.
+
+SQL: 
+SELECT "Team", SUM(CAST("Att" AS INTEGER)) AS total_rushing_attempts
+FROM T
+WHERE "Team" NOT LIKE '%Career Totals%'
+GROUP BY "Team"
+ORDER BY total_rushing_attempts DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Team", SUM(CAST("Att" AS INTEGER)) AS total_rushing_attempts FROM T WHERE "Team" NOT LIKE '%Career Totals%' GROUP BY "Team" ORDER BY total_rushing_attempts DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Team               |   total_rushing_attempts |
+|:-------------------|-------------------------:|
+| Cincinnati Bengals |                     1344 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: James Brooks (American football)
+SQL: SELECT "Team", SUM(CAST("Att" AS INTEGER)) AS total_rushing_attempts FROM T WHERE "Team" NOT LIKE '%Career Totals%' GROUP BY "Team" ORDER BY total_rushing_attempts DESC LIMIT 1;
+
+SQL Execution Result:
+Team | total_rushing_attempts
+Cincinnati Bengals | 1344
+
+Question: which team had the best rushing attempts?
+A: To find the answer to this question, let’s think step by step.
+Prediction: cincinnati bengals
+[Gold Answer] cincinnati bengals
+

@@ -1,0 +1,137 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 27 May 1944, 6 October 1944, 27 November 1944, 14 January 1945
+   - Role: Identifier
+
+2. Location:
+   - Data type: Categorical
+   - 4 representative example values: North of Strasbourg, France; 20 miles northwest of Berlin, Germany; South of Magdeburg, Germany; Korea
+   - Role: Descriptor
+
+3. Air/Ground:
+   - Data type: Categorical
+   - 4 representative example values: Air
+   - Role: Descriptor
+
+4. Number:
+   - Data type: Numeric
+   - 4 representative example values: 1, 4
+   - Role: Measure
+
+5. Type:
+   - Data type: Categorical
+   - 4 representative example values: Me-109, FW-190, Mig-15
+   - Role: Descriptor
+
+6. Status:
+   - Data type: Categorical
+   - 4 representative example values: Damaged, Destroyed
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 12:
+   - The values in this row are not provided in the partial preview, so it cannot be determined if they are truly distinctive. Therefore, this row should be considered an ordinary row until further information is available.
+
+2. Row 10:
+   - The values in this row are not provided in the partial preview, so it cannot be determined if they are truly distinctive. Therefore, this row should be considered an ordinary row until further information is available.
+
+3. Row 5:
+   - The values in this row are not provided in the partial preview, so it cannot be determined if they are truly distinctive. Therefore, this row should be considered an ordinary row until further information is available.
+
+=== Full Table Preview ===
+|   row_number | Date                | Location                                | Air/Ground   |   Number | Type   | Status    |
+|-------------:|:--------------------|:----------------------------------------|:-------------|---------:|:-------|:----------|
+|            0 | 1944-03-08 00:00:00 | Near Steinhuder Meer (Lake) Germany     | Air          |      1   | Me-109 | Destroyed |
+|            1 | 1944-03-16 00:00:00 | 20 miles south of Stuttgart Germany     | Air          |      1   | Me-110 | Destroyed |
+|            2 | 1944-04-11 00:00:00 | 20 miles northeast of Magdeburg Germany | Air          |      0.5 | Me-109 | Destroyed |
+|            3 | 1944-04-13 00:00:00 | West of Mannheim Germany                | Air          |      1   | FW-190 | Destroyed |
+|            4 | 1944-04-24 00:00:00 | South of Munich Germany                 | Air          |      3   | Me-110 | Destroyed |
+|            5 | 1944-05-27 00:00:00 | North of Strasbourg France              | Air          |      1   | Me-109 | Damaged   |
+|            6 | 1944-08-18 00:00:00 | 20 miles northeast of Paris France      | Air          |      0.5 | Me-109 | Destroyed |
+|            7 | 1944-09-13 00:00:00 | South of Nordhausen Germany             | Air          |      2.5 | Me-109 | Destroyed |
+|            8 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      1   | Me-109 | Damaged   |
+|            9 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      2   | Me-109 | Destroyed |
+|           10 | 1944-11-27 00:00:00 | South of Magdeburg Germany              | Air          |      4   | FW-190 | Destroyed |
+|           11 | 1945-01-14 00:00:00 | 20 miles northwest of Berlin Germany    | Air          |      1   | Me-109 | Destroyed |
+|           12 | 1952-01-25 00:00:00 | Korea                                   | Air          |      1   | Mig-15 | Damaged   |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter the rows where the Date column corresponds to April 1944 and the Status column indicates that the aircraft was either damaged or destroyed. We will count the Number of enemy aircraft in these filtered rows.
+
+SQL: 
+SELECT SUM(Number) AS total_enemy_aircraft
+FROM T
+WHERE Date LIKE '%April 1944%' 
+AND Status IN ('Damaged', 'Destroyed');
+Generated Final SQL: SELECT SUM(Number) AS total_enemy_aircraft FROM T WHERE Date LIKE '%April 1944%' AND Status IN ('Damaged', 'Destroyed');
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| total_enemy_aircraft   |
+|:-----------------------|
+|                        |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: John B. England (row_number, Date, Location, Air/Ground, Number, Type, Status)
+
+row_number | Date | Location | Air/Ground | Number | Type | Status
+0 | 1944-03-08 00:00:00 | Near Steinhuder Meer (Lake) Germany | Air | 1.0 | Me-109 | Destroyed
+1 | 1944-03-16 00:00:00 | 20 miles south of Stuttgart Germany | Air | 1.0 | Me-110 | Destroyed
+2 | 1944-04-11 00:00:00 | 20 miles northeast of Magdeburg Germany | Air | 0.5 | Me-109 | Destroyed
+3 | 1944-04-13 00:00:00 | West of Mannheim Germany | Air | 1.0 | FW-190 | Destroyed
+4 | 1944-04-24 00:00:00 | South of Munich Germany | Air | 3.0 | Me-110 | Destroyed
+5 | 1944-05-27 00:00:00 | North of Strasbourg France | Air | 1.0 | Me-109 | Damaged
+6 | 1944-08-18 00:00:00 | 20 miles northeast of Paris France | Air | 0.5 | Me-109 | Destroyed
+7 | 1944-09-13 00:00:00 | South of Nordhausen Germany | Air | 2.5 | Me-109 | Destroyed
+8 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany | Air | 1.0 | Me-109 | Damaged
+9 | 1944-10-06 00:00:00 | 20 miles northwest of Berlin Germany | Air | 2.0 | Me-109 | Destroyed
+10 | 1944-11-27 00:00:00 | South of Magdeburg Germany | Air | 4.0 | FW-190 | Destroyed
+11 | 1945-01-14 00:00:00 | 20 miles northwest of Berlin Germany | Air | 1.0 | Me-109 | Destroyed
+12 | 1952-01-25 00:00:00 | Korea | Air | 1.0 | Mig-15 | Damaged
+Question: how many enemy aircraft did he damage or destroy in april 1944?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To answer this question, we will follow these steps:
+
+1. **Identify the relevant columns from the summary:**
+   - We are interested in the **Date** and **Status** columns to determine the number of enemy aircraft damaged or destroyed in April 1944.
+
+2. **Check the full table for entries in April 1944:**
+   - From the full table, we find the following relevant entries for April 1944:
+     - 1944-04-11: 0.5 enemy aircraft destroyed
+     - 1944-04-13: 1 enemy aircraft destroyed
+     - Total for April 1944: 0.5 + 1 = 1.5 enemy aircraft damaged or destroyed
+
+Based on the explicit entries in the full table for April 1944, we can conclude that John B. England damaged or destroyed 1.5 enemy aircraft during that month.
+
+Final Answer: 1.5 enemy aircraft
+[Fallback] Prediction: 1.5 enemy aircraft
+[Gold Answer] 4.5
+

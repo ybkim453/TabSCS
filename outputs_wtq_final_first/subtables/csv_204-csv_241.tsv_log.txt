@@ -1,0 +1,16 @@
+
+JSONL 파일에서 인덱스 1494 처리 중: datasets/wtq.jsonl
+  테이블 크기: 14행 5열
+  컬럼 'Player' 분석 중...
+  컬럼 'Friendlies' 분석 중...
+  컬럼 'FIFA Confederations Cup' 분석 중...
+  컬럼 'FIFA World Cup Qual.' 분석 중...
+  컬럼 'Total Goals' 분석 중...
+  특이값 행 선택: 행 0 (컬럼 'FIFA Confederations Cup', 유사도: 0.6315)
+  특이값 행 선택: 행 1 (컬럼 'Friendlies', 유사도: 0.6864)
+  특이값 행 선택: 행 2 (컬럼 'FIFA World Cup Qual.', 유사도: 0.7018)
+  정상값 행 선택: 행 8 (평균 유사도: 0.8060)
+  정상값 행 선택: 행 11 (평균 유사도: 0.8059)
+  정상값 행 선택: 행 10 (평균 유사도: 0.8040)
+  최종 선택된 행 (원본 순서): [0, 1, 2, 8, 10, 11] (총 6개)
+  서브테이블 크기: 7줄

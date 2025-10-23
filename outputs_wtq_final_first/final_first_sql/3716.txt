@@ -1,0 +1,110 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, nan (missing data), ...
+   - Role: Identifier
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: October 1875, March 1947, Normal / Avg flow, ...
+   - Role: Descriptor
+
+3. Level at Trent Bridge (m)
+   - Data type: Numeric
+   - 4 representative example values: 24.38, 24.3, 20.7, ...
+   - Role: Measure
+
+4. Level at Trent Bridge (ft)
+   - Data type: Numeric
+   - 4 representative example values: 80, 79.7, 68, ...
+   - Role: Measure
+
+5. Peak Flow (m3/s)
+   - Data type: Numeric
+   - 4 representative example values: 1,274, 1,107, 84, ...
+   - Role: Measure
+
+6. Peak Flow (cfs)
+   - Data type: Numeric
+   - 4 representative example values: 45,000, 39,100, 3,000, ...
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+- Row 5:
+  - The values in this row are significantly higher than the normal/average flow values in the table.
+  - The Peak Flow values are much larger compared to the other rows, indicating an atypical event.
+  - Therefore, this row is an outlier and requires special attention.
+
+=== Full Table Preview ===
+|   row_number |   Rank\n | Date\n            |   Level at Trent Bridge\nm |   Level at Trent Bridge\nft |   Peak Flow\nm3/s |   Peak Flow\ncfs |
+|-------------:|---------:|:------------------|---------------------------:|----------------------------:|------------------:|-----------------:|
+|            0 |        1 | February 1795     |                      24.55 |                        80.5 |              1416 |            50000 |
+|            1 |        2 | October 1875      |                      24.38 |                        80   |              1274 |            45000 |
+|            2 |        3 | March 1947        |                      24.3  |                        79.7 |              1107 |            39100 |
+|            3 |        4 | November 1852     |                      24.26 |                        79.6 |              1082 |            38200 |
+|            4 |        5 | November 2000     |                      23.8  |                        78.1 |              1019 |            36000 |
+|            5 |      nan | Normal / Avg flow |                      20.7  |                        68   |                84 |             3000 |
+
+Generated Reasoning SQL: To find the date when the peak flow was greater than 45,000 cfs, we need to filter rows where "Peak Flow\ncfs" > 45000 and then select the maximum date from those rows. 
+Since the "Date\n" column is categorical, we need to ensure that the date values are in the correct format for comparison.
+SQL: 
+select max("Date\n") from T where "Peak Flow\ncfs" > 45000;
+Generated Final SQL: select max("Date\n") from T where "Peak Flow\ncfs" > 45000;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| max("Date\n")   |
+|:----------------|
+| February 1795   |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: River Trent
+SQL: select max("Date\n") from T where "Peak Flow\ncfs" > 45000;
+
+max("Date\n")
+February 1795
+Question: when was the last time peak flow was greater than 45,000 cfs?
+A: To find the answer to this question, let’s think step by step.
+Prediction: february 1795
+[Gold Answer] february 1795
+

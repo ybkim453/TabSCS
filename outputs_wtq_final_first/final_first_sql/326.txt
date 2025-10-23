@@ -1,0 +1,146 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Contestant
+   - Data type: Categorical
+   - 4 representative example values: Viktor Gusev, Marina Aleksandrova, Ivar Kalnynsh, Aleksandr Lykov
+   - Role: Identifier for each contestant in the reality show
+
+2. Original Tribe
+   - Data type: Categorical
+   - 4 representative example values: Pelicans, Barracudas, nan
+   - Role: Descriptor indicating the original tribe of each contestant
+
+3. Switched Tribe
+   - Data type: Categorical
+   - 4 representative example values: Pelicans, Barracudas, nan
+   - Role: Descriptor indicating the tribe to which a contestant switched during the show
+
+4. Merged Tribe
+   - Data type: Categorical
+   - 4 representative example values: Crocodiles
+   - Role: Descriptor indicating the tribe formed after the merge in the show
+
+5. Finish
+   - Data type: Categorical
+   - 4 representative example values: 7th Voted Out, 9th Voted Out, Sole Survivor
+   - Role: Descriptor indicating the finishing position of each contestant in the reality show
+
+6. Total Votes
+   - Data type: Numeric
+   - 4 representative example values: 6, 3
+   - Role: Measure representing the total number of votes received by a contestant during the show
+
+**Outlier Row Analysis:**
+
+1. Row 12 (Viktor Gusev)
+   - The values "Pelicans" in Original Tribe, Switched Tribe, and Merged Tribe columns are consistent with other rows.
+   - The Finish value "7th Voted Out, 1st Jury Member, Day 21" is not significantly different from other voted out contestants.
+   - The Total Votes value of 6 is also not unusual compared to other contestants.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+2. Row 18 (Marina Aleksandrova)
+   - The values "Barracudas" in Original Tribe and "Pelicans" in Switched Tribe are consistent with other rows.
+   - The Finish value "9th Voted Out, 4th Jury Member, Day 27" is not significantly different from other voted out contestants.
+   - The Total Votes value of 6 is also not unusual compared to other contestants.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+3. Row 0 (Ivar Kalnynsh)
+   - The value "nan" in Original Tribe and Switched Tribe columns may indicate missing data rather than a distinctive outlier.
+   - The Merged Tribe value "Crocodiles" is consistent with other rows.
+   - The Finish value "10th Voted Out, 5th Jury Member, Day 30" is not significantly different from other voted out contestants.
+   - The Total Votes value of 3 is also not unusual compared to other contestants.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Contestant                              | Original Tribe   | Switched Tribe   | Merged Tribe   | Finish                                  |   Total Votes |
+|-------------:|:----------------------------------------|:-----------------|:-----------------|:---------------|:----------------------------------------|--------------:|
+|            0 | Yelena Kondulaynen\n44.the actress      | Pelicans         |                  |                | 1st Voted Out\nDay 3                    |             5 |
+|            1 | Kris Kelmi\n47.the singer               | Barracudas       |                  |                | 2nd Voted Out\nDay 6                    |             1 |
+|            2 | Aleksandr Pashutin\n60.the actor        | Barracudas       |                  |                | 3rd Voted Out\nDay 9                    |             7 |
+|            3 | Igor' Livanov\n49.the actor             | Pelicans         |                  |                | Eliminated\nDay 11                      |             0 |
+|            4 | Dana Borisova\n26.the TV presenter      | Pelicans         | Barracudas       |                | 4th Voted Out\nDay 12                   |             5 |
+|            5 | Aleksandr Byalko\n50.the physicist      | Pelicans         | Barracudas       |                | 5th Voted Out\nDay 15                   |             6 |
+|            6 | Tatyana Dogileva\n45.the actress        | Pelicans         | Barracudas       |                | 6th Voted Out\nDay 18                   |             3 |
+|            7 | Tat'yana Ovsiyenko\n36.the singer       | Barracudas       | Pelicans         |                | Eliminated\nDay 19                      |             1 |
+|            8 | Viktor Gusev\n47.the sport commentator  | Pelicans         | Pelicans         | Crocodiles     | 7th Voted Out\n1st Jury Member\nDay 21  |             6 |
+|            9 | Ivan Demidov\n39.the TV presenter       | Barracudas       | Pelicans         | Crocodiles     | Eliminated\n2nd Jury Member\nDay 23     |             3 |
+|           10 | Yelena Proklova\n49.the TV presenter    | Pelicans         | Barracudas       | Crocodiles     | 8th Voted Out\n3rd Jury Member\nDay 24  |             4 |
+|           11 | Marina Aleksandrova\n20.the actress     | Barracudas       | Pelicans         | Crocodiles     | 9th Voted Out\n4th Jury Member\nDay 27  |             6 |
+|           12 | Ivar Kalnynsh\n54.the actor             |                  |                  | Crocodiles     | 10th Voted Out\n5th Jury Member\nDay 30 |             3 |
+|           13 | Vera Glagoleva\n46.the actress          |                  |                  | Crocodiles     | 11th Voted Out\n6th Jury Member\nDay 33 |             4 |
+|           14 | Larisa Verbitskaya\n43.the TV presenter | Barracudas       | Pelicans         | Crocodiles     | 12th Voted Out\n7th Jury Member\nDay 36 |            11 |
+|           15 | Aleksandr Lykov\n41.the actor           | Barracudas       | Barracudas       | Crocodiles     | 13th Voted Out\n8th Jury Member\nDay 37 |             6 |
+|           16 | Olga Orlova\n25.the singer              | Barracudas       | Baracudas        | Crocodiles     | Eliminated\n9th Jury Member\nDay 38     |            10 |
+|           17 | Yelena Perova\n26.the singer            | Pelicans         | Pelicans         | Crocodiles     | Runner-Up                               |             2 |
+|           18 | Vladimir Presnyakov Jr.\n34.the singer  | Pelicans         | Pelicans         | Crocodiles     | Sole Survivor                           |             6 |
+
+Generated Reasoning SQL: To determine who was the first voted out, we need to find the contestant with the "Finish" value of "1st Voted Out". 
+The "Finish" column contains categorical values representing the finishing position of each contestant. 
+We can filter the row where "Finish" = '1st Voted Out' and retrieve the corresponding contestant.
+SQL: select "Contestant" from T where "Finish" = '1st Voted Out';
+Generated Final SQL: select "Contestant" from T where "Finish" = '1st Voted Out';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Last Hero 3 (row_number, Contestant, Original Tribe, Switched Tribe, Merged Tribe, Finish, Total Votes)
+
+row_number | Contestant | Original Tribe | Switched Tribe | Merged Tribe | Finish | Total Votes
+0 | Yelena Kondulaynen\n44.the actress | Pelicans | None | None | 1st Voted Out\nDay 3 | 5
+1 | Kris Kelmi\n47.the singer | Barracudas | None | None | 2nd Voted Out\nDay 6 | 1
+2 | Aleksandr Pashutin\n60.the actor | Barracudas | None | None | 3rd Voted Out\nDay 9 | 7
+3 | Igor' Livanov\n49.the actor | Pelicans | None | None | Eliminated\nDay 11 | 0
+4 | Dana Borisova\n26.the TV presenter | Pelicans | Barracudas | None | 4th Voted Out\nDay 12 | 5
+5 | Aleksandr Byalko\n50.the physicist | Pelicans | Barracudas | None | 5th Voted Out\nDay 15 | 6
+6 | Tatyana Dogileva\n45.the actress | Pelicans | Barracudas | None | 6th Voted Out\nDay 18 | 3
+7 | Tat'yana Ovsiyenko\n36.the singer | Barracudas | Pelicans | None | Eliminated\nDay 19 | 1
+8 | Viktor Gusev\n47.the sport commentator | Pelicans | Pelicans | Crocodiles | 7th Voted Out\n1st Jury Member\nDay 21 | 6
+9 | Ivan Demidov\n39.the TV presenter | Barracudas | Pelicans | Crocodiles | Eliminated\n2nd Jury Member\nDay 23 | 3
+10 | Yelena Proklova\n49.the TV presenter | Pelicans | Barracudas | Crocodiles | 8th Voted Out\n3rd Jury Member\nDay 24 | 4
+11 | Marina Aleksandrova\n20.the actress | Barracudas | Pelicans | Crocodiles | 9th Voted Out\n4th Jury Member\nDay 27 | 6
+12 | Ivar Kalnynsh\n54.the actor | None | None | Crocodiles | 10th Voted Out\n5th Jury Member\nDay 30 | 3
+13 | Vera Glagoleva\n46.the actress | None | None | Crocodiles | 11th Voted Out\n6th Jury Member\nDay 33 | 4
+14 | Larisa Verbitskaya\n43.the TV presenter | Barracudas | Pelicans | Crocodiles | 12th Voted Out\n7th Jury Member\nDay 36 | 11
+15 | Aleksandr Lykov\n41.the actor | Barracudas | Barracudas | Crocodiles | 13th Voted Out\n8th Jury Member\nDay 37 | 6
+16 | Olga Orlova\n25.the singer | Barracudas | Baracudas | Crocodiles | Eliminated\n9th Jury Member\nDay 38 | 10
+17 | Yelena Perova\n26.the singer | Pelicans | Pelicans | Crocodiles | Runner-Up | 2
+18 | Vladimir Presnyakov Jr.\n34.the singer | Pelicans | Pelicans | Crocodiles | Sole Survivor | 6
+Question: who was the first voted out?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the column that indicates the finish position of each contestant in the table. From the summary, we can see that the "Finish" column contains this information. 
+
+Next, we are looking for the contestant who was "1st Voted Out" based on the question. 
+
+Looking at the "Finish" column in the full table, we find that the contestant with the finish position "1st Voted Out" is Yelena Kondulaynen (44.the actress) from the Pelicans tribe.
+
+Therefore, the first contestant to be voted out was Yelena Kondulaynen.
+
+Final Answer: Yelena Kondulaynen
+[Fallback] Prediction: yelena kondulaynen
+[Gold Answer] yelena kondulaynen
+

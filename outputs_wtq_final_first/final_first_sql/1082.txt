@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Tour
+   - Data type: Categorical
+   - 4 representative example values: 4, 5, 8, 10
+   - Role: Identifier for the specific tour event
+
+2. Official title
+   - Data type: Categorical
+   - 4 representative example values: Swiss Open Super Series, Singapore Super Series, Japan Super Series, French Super Series
+   - Role: Descriptor for the official title of the event
+
+3. Venue
+   - Data type: Categorical
+   - 4 representative example values: St. Jakobshalle, Singapore Indoor Stadium, Tokyo Metropolitan Gymnasium, Stade Pierre de Coubertin
+   - Role: Descriptor for the venue where the event takes place
+
+4. City
+   - Data type: Categorical
+   - 4 representative example values: Basel, Singapore, Tokyo, Paris
+   - Role: Descriptor for the city where the event is held
+
+5. Date Start
+   - Data type: Date
+   - 4 representative example values: March 12, May 1, September 11, October 30
+   - Role: Measure indicating the start date of the event
+
+6. Date Finish
+   - Data type: Date
+   - 4 representative example values: March 18, May 6, September 16, November 4
+   - Role: Measure indicating the finish date of the event
+
+7. Prize money USD
+   - Data type: Numeric
+   - 4 representative example values: 200,000
+   - Role: Measure indicating the prize money in USD for the event
+
+8. Report
+   - Data type: Categorical
+   - 4 representative example values: Report
+   - Role: Descriptor indicating the availability of a report for the event
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Tour = 4, Official title = Swiss Open Super Series, Venue = St. Jakobshalle, City = Basel, Date Start = March 12, Date Finish = March 18, Prize money USD = 200,000, Report = Report)
+   - This row does not contain any distinctive values that make it an outlier. All the values are typical and consistent with the majority of the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 11 (Tour = 12, Official title = Hong Kong Super Series, Venue = Ma On Shan Sports Centre Queen Elizabeth Stadium, City = Ma On Shan Wan Chai, Date Start = November 26, Date Finish = December 2, Prize money USD = 200,000, Report = Report)
+   - Similar to Row 1, all the values in this row are ordinary and consistent with the majority of the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+3. Row 3 (Tour = 8, Official title = Japan Super Series, Venue = Tokyo Metropolitan Gymnasium, City = Tokyo, Date Start = September 11, Date Finish = September 16, Prize money USD = 200,000, Report = Report)
+   - Once again, all the values in this row are typical and not distinctive compared to the rest of the table. This row is an ordinary entry and does not stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Tour | Official title             | Venue                                             | City                 | Date\nStart   | Date\nFinish   |   Prize money\nUSD | Report   |
+|-------------:|-------:|:---------------------------|:--------------------------------------------------|:---------------------|:--------------|:---------------|-------------------:|:---------|
+|            0 |      1 | Malaysia Super Series      | Stadium Badminton Kuala Lumpur                    | Kuala Lumpur         | January 16    | January 21     |             200000 | Report   |
+|            1 |      2 | Korea Open Super Series    | Seoul National University Gymnasium               | Seoul                | January 23    | January 28     |             300000 | Report   |
+|            2 |      3 | All England Super Series   | National Indoor Arena                             | Birmingham           | March 6       | March 11       |             200000 | Report   |
+|            3 |      4 | Swiss Open Super Series    | St. Jakobshalle                                   | Basel                | March 12      | March 18       |             200000 | Report   |
+|            4 |      5 | Singapore Super Series     | Singapore Indoor Stadium                          | Singapore            | May 1         | May 6          |             200000 | Report   |
+|            5 |      6 | Indonesia Super Series     | Bung Karno Stadium                                | Jakarta              | May 7         | May 13         |             250000 | Report   |
+|            6 |      7 | China Masters Super Series | Sichuan Provincial Gymnasium                      | Chengdu              | July 10       | July 15        |             250000 | Report   |
+|            7 |      8 | Japan Super Series         | Tokyo Metropolitan Gymnasium                      | Tokyo                | September 11  | September 16   |             200000 | Report   |
+|            8 |      9 | Denmark Super Series       | Arena Fyn                                         | Odense               | October 23    | October 28     |             200000 | Report   |
+|            9 |     10 | French Super Series        | Stade Pierre de Coubertin                         | Paris                | October 30    | November 4     |             200000 | Report   |
+|           10 |     11 | China Open Super Series    | Tianhe Gymnasium                                  | Guangzhou            | November 20   | November 25    |             250000 | Report   |
+|           11 |     12 | Hong Kong Super Series     | Ma On Shan Sports Centre\nQueen Elizabeth Stadium | Ma On Shan\nWan Chai | November 26   | December 2     |             200000 | Report   |
+|           12 |     13 | Super Series Finals        | Cancelled                                         | Cancelled            | Cancelled     | Cancelled      |             500000 | Report   |
+
+Generated Reasoning SQL: To determine which series has the largest money prize, we need to compare the "Prize money USD" values for each series and identify the maximum value.
+Since the "Prize money USD" column is numeric, we can directly compare the values to find the series with the highest prize money.
+No outlier rows need to be excluded as all rows contain valid prize money values.
+SQL: select "Official title" from T where "Prize money\nUSD" = (select max(cast("Prize money\nUSD" as integer)) from T);
+Generated Final SQL: select "Official title" from T where "Prize money\nUSD" = (select max(cast("Prize money\nUSD" as integer)) from T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Official title      |
+|:--------------------|
+| Super Series Finals |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2007 BWF Super Series
+SQL: select "Official title" from T where "Prize money\nUSD" = (select max(cast("Prize money\nUSD" as integer)) from T);
+
+Official title
+Super Series Finals
+Question: which series has the largest money prize?
+A: To find the answer to this question, let’s think step by step.
+Prediction: super series finals
+[Gold Answer] super series finals
+

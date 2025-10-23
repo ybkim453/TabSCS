@@ -1,0 +1,172 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Hvitträsk Studio and Home, Grasshopper Chair, Drake University plan and buildings, University of Michigan School of Music
+   - Role: Descriptor
+
+2. City
+   - Data type: Categorical
+   - 4 representative example values: Kirkkonummi, nan, Des Moines, Ann Arbor
+   - Role: Descriptor
+
+3. State/Country
+   - Data type: Categorical
+   - 4 representative example values: Finland, nan, Iowa, Michigan
+   - Role: Descriptor
+
+4. Designed
+   - Data type: Numeric
+   - 4 representative example values: 1929, 1943, 1945, 1951
+   - Role: Measure
+
+5. Completed
+   - Data type: Numeric
+   - 4 representative example values: 1937, 1946, 1957, 1956
+   - Role: Measure
+
+6. Other Information
+   - Data type: Categorical
+   - 4 representative example values: Remodel, Chair design for Knoll Associates, Harvey Ingham Hall of Science, nan
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 21 (University of Michigan School of Music)
+   - The values in this row are consistent with the majority of the table and do not contain any distinctive or atypical values. This row is an ordinary entry and requires no special handling.
+
+2. Row 14 (Eero Saarinen & Associates Building)
+   - The values in this row are also ordinary and not significantly different from the rest of the table. This row is an ordinary entry and does not qualify as an outlier.
+
+3. Row 3 (Drake University plan and buildings)
+   - The values in this row include specific buildings and their completion years, which are different from the other entries in the table. This row contains detailed information about multiple buildings and their completion dates, making it distinctive from the majority of the table. Therefore, this row qualifies as an outlier.
+
+=== Full Table Preview ===
+|   row_number | Name                                                                                        | City                | State/Country        |   Designed |   Completed | Other Information                                                                                                                                                                                                                               |
+|-------------:|:--------------------------------------------------------------------------------------------|:--------------------|:---------------------|-----------:|------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Cranbrook School for Boys furnishings                                                       | Bloomfield Hills    | Michigan             |       1925 |        1931 | With Eliel Saarinen                                                                                                                                                                                                                             |
+|            1 | Saarinen House furnishings                                                                  | Bloomfield Hills    | Michigan             |       1928 |        1930 |                                                                                                                                                                                                                                                 |
+|            2 | Kingswood School for Girls furnishings                                                      | Bloomfield Hills    | Michigan             |       1929 |        1931 |                                                                                                                                                                                                                                                 |
+|            3 | Hvitträsk Studio and Home                                                                   | Kirkkonummi         | Finland              |       1929 |        1937 | Remodel                                                                                                                                                                                                                                         |
+|            4 | Swedish Theatre                                                                             | Helsinki            | Finland              |       1935 |        1936 | Remodel. With Eliel Saarinen                                                                                                                                                                                                                    |
+|            5 | Fenton Community Center                                                                     | Fenton              | Michigan             |       1937 |        1938 | With Eliel Saarinen                                                                                                                                                                                                                             |
+|            6 | J. F. Spencer House                                                                         | Huntington Woods    | Michigan             |       1937 |        1938 | First building designed independently                                                                                                                                                                                                           |
+|            7 | Charles and Ingrid Koebel House                                                             | Grosse Pointe Farms | Michigan             |       1937 |        1940 | With Eliel Saarinen and J. Robert F. Swanson                                                                                                                                                                                                    |
+|            8 | Kleinhans Music Hall                                                                        | Buffalo             | New York             |       1938 |        1940 | With Eliel Saarinen. Designated a National Historic Landmark in 1989                                                                                                                                                                            |
+|            9 | Crow Island School                                                                          | Winnetka            | Illinois             |       1938 |        1942 | With Eliel Saarinen and Perkins & Will. Designated a National Historic Landmark in 1990                                                                                                                                                         |
+|           10 | Berskhire Music Center buildings                                                            | Lenox               | Massachusetts        |       1938 |        1959 | Tanglewood Shed in 1938 (with Eliel Saarinen and Joseph Franz) Chamber Music Shed in 1947 (with Eliel Saarinen) Edmund Haws Talbot Orchestra Canopy in 1959                                                                                     |
+|           11 | Center Line Defense Housing                                                                 | Center Line         | Michigan             |       1941 |        1942 | With Eliel Saarinen and J. Robert F. Swanson. 477 housing units                                                                                                                                                                                 |
+|           12 | Albert and Muriel Wermuth House                                                             | Fort Wayne          | Indiana              |       1941 |        1942 |                                                                                                                                                                                                                                                 |
+|           13 | Willow Lodge                                                                                | Willow Run          | Michigan             |       1942 |        1943 | Demolished                                                                                                                                                                                                                                      |
+|           14 | Grasshopper Chair                                                                           | n/a                 | n/a                  |       1943 |        1946 | Chair design for Knoll Associates                                                                                                                                                                                                               |
+|           15 | Lincoln Heights Housing                                                                     | Washington          | District of Columbia |       1944 |        1946 | With Eliel Saarinen and J. Robert F. Swanson.                                                                                                                                                                                                   |
+|           16 | Hugh Taylor Birch Hall at Antioch College                                                   | Yellow Springs      | Ohio                 |       1944 |        1947 | With Eliel Saarinen and J. Robert F. Swanson.                                                                                                                                                                                                   |
+|           17 | Des Moines Art Center                                                                       | Des Moines          | Iowa                 |       1944 |        1948 | With Eliel Saarinen and J. Robert F. Swanson. Listed on the National Register of Historic Places in 2004                                                                                                                                        |
+|           18 | Case Study House #9                                                                         | Los Angeles         | California           |       1945 |        1949 | With Charles Eames. Saarinen also provided an original plan for House #8 but Eames completely redesigned it. Listed on the National Register of Historic Places in 2013                                                                         |
+|           19 | Models 71 and 73                                                                            | n/a                 | n/a                  |       1945 |        1950 | Chair design for Knoll Associates                                                                                                                                                                                                               |
+|           20 | Birmingham High School                                                                      | Birmingham          | Michigan             |       1945 |        1952 | With Eliel Saarinen and J. Robert F. Swanson                                                                                                                                                                                                    |
+|           21 | Drake University plan and buildings                                                         | Des Moines          | Iowa                 |       1945 |        1957 | Harvey Ingham Hall of Science Fitch Hall of Pharmacy Women's Dormitory & Dining Hall (all in 1945 with Eliel Saarinen and J. Robert F. Swanson) Bible School & Prayer Chapel in 1952 Women's Dormitory #4 in 1957 Jewett Union addition in 1957 |
+|           22 | Womb Chair & Ottoman                                                                        | n/a                 | n/a                  |       1946 |        1948 | Chair design for Knoll Associates                                                                                                                                                                                                               |
+|           23 | Christ Church Lutheran                                                                      | Minneapolis         | Minnesota            |       1947 |        1949 | With Eliel Saarinen; solo addition in 1962. Designated a National Historic Landmark in 2009.                                                                                                                                                    |
+|           24 | Eero Saarinen House                                                                         | Bloomfield Hills    | Michigan             |       1947 |        1959 | Renovation of a Victorian house                                                                                                                                                                                                                 |
+|           25 | Gateway Arch                                                                                | St. Louis           | Missouri             |       1947 |        1965 | Designated a National Historic Landmark in 1987                                                                                                                                                                                                 |
+|           26 | UAW–CIO Cooperative                                                                         | Flint               | Michigan             |       1948 |        1948 | Renovation. Demolished.                                                                                                                                                                                                                         |
+|           27 | General Motors Technical Center                                                             | Warren              | Michigan             |       1948 |        1956 | Listed on the National Register of Historic Places in 2000                                                                                                                                                                                      |
+|           28 | Aspen Music Center                                                                          | Aspen               | Colorado             |       1949 |        1949 | With Eliel Saarinen. Demolished in 1963.                                                                                                                                                                                                        |
+|           29 | Brandeis University plan and buildings                                                      | Waltham             | Massachusetts        |       1949 |        1952 | With Matthew Nowicki. Ridgewood Quadrangle Dormitories (1950) Hamilton Quadrangle Dormitory & Student Center (1952) Sherman Student Center (1952)                                                                                               |
+|           30 | Loja Saarinen House                                                                         | Bloomfield Hills    | Michigan             |       1950 |        1950 | House for Saarinen's widowed mother                                                                                                                                                                                                             |
+|           31 | J. Irwin and Xenia Miller Cottage                                                           | District of Muskoka | Ontario              |       1950 |        1952 |                                                                                                                                                                                                                                                 |
+|           32 | Irwin Union Bank and Trust                                                                  | Columbus            | Indiana              |       1950 |        1954 | Designated a National Historic Landmark in 2000                                                                                                                                                                                                 |
+|           33 | Massachusetts Institute of Technology buildings                                             | Cambridge           | Massachusetts        |       1950 |        1955 | Kresge Chapel and Kresge Auditorium                                                                                                                                                                                                             |
+|           34 | University of Michigan School of Music                                                      | Ann Arbor           | Michigan             |       1951 |        1956 |                                                                                                                                                                                                                                                 |
+|           35 | Milwaukee County War Memorial                                                               | Milwaukee           | Wisconsin            |       1952 |        1957 |                                                                                                                                                                                                                                                 |
+|           36 | Eero Saarinen & Associates Building                                                         | Bloomfield Hills    | Michigan             |       1953 |        1953 |                                                                                                                                                                                                                                                 |
+|           37 | Stephens College Chapel                                                                     | Columbia            | Missouri             |       1953 |        1956 |                                                                                                                                                                                                                                                 |
+|           38 | Miller House                                                                                | Columbus            | Indiana              |       1953 |        1957 | Designated a National Historic Landmark in 2000                                                                                                                                                                                                 |
+|           39 | Concordia Senior College                                                                    | Fort Wayne          | Indiana              |       1953 |        1958 |                                                                                                                                                                                                                                                 |
+|           40 | Pedestal Series                                                                             | n/a                 | n/a                  |       1954 |        1957 | Furniture design for Knoll Associates. Includes the tulip chair                                                                                                                                                                                 |
+|           41 | Emma Hartman Noyes House at Vassar College                                                  | Poughkeepsie        | New York             |       1954 |        1958 |                                                                                                                                                                                                                                                 |
+|           42 | United States Chancellery Building                                                          | Oslo                | Norway               |       1955 |        1959 |                                                                                                                                                                                                                                                 |
+|           43 | United States Chancellery Building                                                          | London              | England              |       1955 |        1960 |                                                                                                                                                                                                                                                 |
+|           44 | University of Chicago plan and buildings                                                    | Chicago             | Illinois             |       1955 |        1960 | Women's Dormitory & Dining Hall (1958; demolished 2001) Law School (1960)                                                                                                                                                                       |
+|           45 | David S. Ingalls Rink                                                                       | New Haven           | Connecticut          |       1956 |        1958 |                                                                                                                                                                                                                                                 |
+|           46 | IBM Manufacturing & Training Facility                                                       | Rochester           | Minnesota            |       1956 |        1958 |                                                                                                                                                                                                                                                 |
+|           47 | TWA Terminal                                                                                | New York City       | New York             |       1956 |        1962 | Listed on the National Register of Historic Places in 2005                                                                                                                                                                                      |
+|           48 | Hill Hall                                                                                   | Philadelphia        | Pennsylvania         |       1957 |        1960 |                                                                                                                                                                                                                                                 |
+|           49 | IBM Thomas J. Watson Research Center                                                        | Yorktown Heights    | New York             |       1957 |        1961 |                                                                                                                                                                                                                                                 |
+|           50 | Bell Telephone Corporate Laboratories                                                       | Holmdel             | New Jersey           |       1957 |        1962 |                                                                                                                                                                                                                                                 |
+|           51 | Deere & Co. Administrative Center                                                           | Moline              | Illinois             |       1957 |        1963 |                                                                                                                                                                                                                                                 |
+|           52 | Ezra Stiles & Morse College                                                                 | New Haven           | Connecticut          |       1958 |        1962 |                                                                                                                                                                                                                                                 |
+|           53 | Dulles International Airport                                                                | Chantilly           | Virginia             |       1958 |        1963 |                                                                                                                                                                                                                                                 |
+|           54 | Vivian Beaumont Repertory Theater & Lincoln Center for the Performing Arts Library & Museum | New York City       | New York             |       1958 |        1965 |                                                                                                                                                                                                                                                 |
+|           55 | North Christian Church                                                                      | Columbus            | Indiana              |       1959 |        1964 | Designated a National Historic Landmark in 2000                                                                                                                                                                                                 |
+|           56 | Hamden Office                                                                               | Hamden              | Connecticut          |       1960 |        1961 | Became new headquarters                                                                                                                                                                                                                         |
+|           57 | Saarinen House                                                                              | New Haven           | Connecticut          |       1960 |        1961 | Renovation of a Tudor Revival house                                                                                                                                                                                                             |
+|           58 | CBS Building                                                                                | New York City       | New York             |       1960 |        1965 |                                                                                                                                                                                                                                                 |
+|           59 | Athens Airport                                                                              | Athens              | Greece               |       1960 |        1969 |                                                                                                                                                                                                                                                 |
+
+Generated Reasoning SQL: Explanation: To calculate the number of years it took to build the Cranbrook School for Boys, we need to subtract the "Designed" year from the "Completed" year for that specific project. The "Name" column contains the name of the project, and we will filter for rows where "Name" = 'Cranbrook School for Boys furnishings" to isolate this specific project.
+
+SQL: 
+SELECT ("Completed" - "Designed") AS construction_years
+FROM T
+WHERE "Name" = 'Cranbrook School for Boys furnishings';
+Generated Final SQL: SELECT ("Completed" - "Designed") AS construction_years FROM T WHERE "Name" = 'Cranbrook School for Boys furnishings';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   construction_years |
+|---------------------:|
+|                    6 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of works by Eero Saarinen
+SQL: SELECT ("Completed" - "Designed") AS construction_years FROM T WHERE "Name" = 'Cranbrook School for Boys furnishings';
+
+SQL Execution Result:
+construction_years
+6
+
+Question: how many years, from design to completion, did it take to build the cranbrook school for boys?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 6
+[Gold Answer] 6
+

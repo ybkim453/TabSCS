@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1996, 1998, 1999, 2001
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Junior Championships, World Cross Country Championships, All-Africa Games, IAAF Grand Prix Final
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Sydney, Australia, Marrakech, Morocco, Johannesburg, South Africa, Munich, Germany
+   - Role: Descriptor of the location where the competition was held.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 2nd, 8th, 1st, 4th
+   - Role: Measure of the athlete's finishing position in the event.
+
+5. Event:
+   - Data type: Categorical
+   - 4 representative example values: 3000 m st., Short race
+   - Role: Descriptor of the specific event or race participated in.
+
+**Outlier Row Analysis:**
+
+1. Row 1:
+   - The position value of "2nd" in the Year 1996 for the World Junior Championships is distinctive as it indicates a high finishing position compared to the other rows.
+   - This row is an outlier due to the exceptional performance represented by the 2nd place finish.
+
+2. Row 3:
+   - The position value of "1st" in the Year 1999 for the All-Africa Games is distinctive as it indicates a first-place finish, which is a significant achievement.
+   - This row is an outlier due to the exceptional performance represented by the 1st place finish.
+
+3. Row 0:
+   - The missing value in the Year column (nan) makes this row distinctive as it does not have a specific year associated with it.
+   - This row is an outlier due to the missing data in the Year column, making it different from the other rows.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table and represent exceptional or missing data points.

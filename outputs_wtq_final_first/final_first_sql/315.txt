@@ -1,0 +1,151 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 1990-91, 1999-00, 2004-05, 2010-11
+   - Role: Identifier for the specific season the data corresponds to.
+
+2. League Pos.
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 9
+   - Role: Measure indicating the position of the team in the league for that season.
+
+3. League Competition
+   - Data type: Categorical
+   - 4 representative example values: 1991 Superliga, 1999-00 Superliga, 2004-05 Superliga, 2010-11 Superliga
+   - Role: Descriptor for the specific league competition the team participated in.
+
+4. League Top scorer
+   - Data type: Categorical
+   - 4 representative example values: Bent Christensen (11), Thomas Kahlenberg (13), Michael Krohn-Dehli (11), Simon Makienok Christoffersen (10)
+   - Role: Descriptor for the top goal scorer of the team in that season.
+
+5. Danish Cup
+   - Data type: Categorical
+   - 4 representative example values: Semi-final, Winner, nan
+   - Role: Descriptor for the team's performance in the Danish Cup competition.
+
+6. Europe
+   - Data type: Categorical
+   - 4 representative example values: EC3 semi-final, EC1 qual 3rd round, EC3 qual 2nd round, nan
+   - Role: Descriptor for the team's performance in European competitions.
+
+7. Others
+   - Data type: Categorical
+   - 4 representative example values: nan, Royal League group stage
+   - Role: Descriptor for any other relevant information not covered in the previous columns.
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - League Top scorer = Thomas Kahlenberg (13), Danish Cup = Winner
+   - These values are not significantly different from the majority of the table and are ordinary entries. This row is an ordinary row and does not require special handling.
+
+2. Row 30:
+   - League Pos. = 3, League Top scorer = Michael Krohn-Dehli (11)
+   - These values are not significantly different from the majority of the table and are ordinary entries. This row is an ordinary row and does not require special handling.
+
+3. Row 29:
+   - League Pos. = 9, League Top scorer = Simon Makienok Christoffersen (10)
+   - These values are not significantly different from the majority of the table and are ordinary entries. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Season   |   League\nPos. | League\nCompetition   | League\nTop scorer                                              | Danish Cup    | Europe                                     | Others                                             |
+|-------------:|:---------|---------------:|:----------------------|:----------------------------------------------------------------|:--------------|:-------------------------------------------|:---------------------------------------------------|
+|            0 | 1981-82  |              4 | 1982 1st Division     | Michael Laudrup (15)                                            | 4th round     |                                            |                                                    |
+|            1 | 1982-83  |              4 | 1983 1st Division     | Brian Chrøis (12)                                               | 4th round     |                                            |                                                    |
+|            2 | 1983-84  |              4 | 1984 1st Division     | Jens Kolding (11)                                               | 3rd round     |                                            |                                                    |
+|            3 | 1984-85  |              1 | 1985 1st Division     | Claus Nielsen (17)                                              | 3rd round     |                                            |                                                    |
+|            4 | 1985-86  |              2 | 1986 1st Division     | Claus Nielsen (16)                                              | Quarter-final |                                            |                                                    |
+|            5 | 1986-87  |              1 | 1987 1st Division     | Claus Nielsen (20)                                              | 4th round     | EC1 quarter-final                          |                                                    |
+|            6 | 1987-88  |              1 | 1988 1st Division     | Bent Christensen (21)                                           | Finalist      | EC3 2nd round                              |                                                    |
+|            7 | 1988-89  |              2 | 1989 1st Division     | Bent Christensen (10)                                           | Winner        | EC1 1st round                              |                                                    |
+|            8 | 1989-90  |              1 | 1990 1st Division     | Bent Christensen (17)                                           | Quarter-final | EC1 1st round                              |                                                    |
+|            9 | 1990-91  |              1 | 1991 Superliga        | Bent Christensen (11)                                           | Semi-final    | EC3 semi-final                             |                                                    |
+|           10 | 1991-92  |              7 | 1991-92 Superliga     | Kim Vilfort (9)                                                 | 4th round     | EC1 2nd round                              |                                                    |
+|           11 | 1992-93  |              3 | 1992-93 Superliga     | Kim Vilfort (10)                                                | 5th round     |                                            |                                                    |
+|           12 | 1993-94  |              3 | 1993-94 Superliga     | Mark Strudal (13)                                               | Winner        | EC3 3rd round                              |                                                    |
+|           13 | 1994-95  |              2 | 1994-95 Superliga     | Mark Strudal (12)                                               | Quarter-final | EC2 2nd round                              | Danish Supercup winner                             |
+|           14 | 1995-96  |              1 | 1995-96 Superliga     | Peter Møller (15)                                               | Finalist      | EC3 3rd round                              |                                                    |
+|           15 | 1996-97  |              1 | 1996-97 Superliga     | Peter Møller (22)                                               | Semi-final    | EC1 qualification round\nEC3 quarter-final | Danish Supercup winner                             |
+|           16 | 1997-98  |              1 | 1997-98 Superliga     | Ebbe Sand (28)                                                  | Winner        | EC1 qual 2nd round\nEC3 1st round          | Danish Supercup winner                             |
+|           17 | 1998-99  |              2 | 1998-99 Superliga     | Ebbe Sand (19)                                                  | Semi-final    | EC1 group stage                            |                                                    |
+|           18 | 1999-00  |              2 | 1999-00 Superliga     | Bent Christensen (13)                                           | Semi-final    | EC1 qual 3rd round\nEC3 1st round          |                                                    |
+|           19 | 2000-01  |              2 | 2000-01 Superliga     | Peter Graulund (21)                                             | Quarter-final | EC1 qual 3rd round\nEC3 1st round          |                                                    |
+|           20 | 2001-02  |              1 | 2001-02 Superliga     | Peter Madsen (22)                                               | 5th round     | EC3 3rd round                              |                                                    |
+|           21 | 2002-03  |              2 | 2002-03 Superliga     | Mattias Jonson (11)                                             | Winner        | EC1 qual 3rd round\nEC3 1st round          | Danish Supercup winner                             |
+|           22 | 2003-04  |              2 | 2003-04 Superliga     | Thomas Kahlenberg (11)                                          | Semi-final    | EC3 3rd round                              |                                                    |
+|           23 | 2004-05  |              1 | 2004-05 Superliga     | Thomas Kahlenberg (13)                                          | Winner        | EC3 qual 2nd round                         | Royal League group stage                           |
+|           24 | 2005-06  |              2 | 2005-06 Superliga     | Johan Elmander (13)                                             | Semi-final    | EC1 qual 3rd round\nEC3 group stage        | Royal League group stage\nDanish League Cup winner |
+|           25 | 2006-07  |              6 | 2006-07 Superliga     | Morten Rasmussen (15)                                           | 4th round     | EC3 1st round                              | Royal League winner\nDanish League Cup winner      |
+|           26 | 2007-08  |              8 | 2007-08 Superliga     | Morten Rasmussen (7)\nMartin Ericsson (7)                       | Winner        |                                            |                                                    |
+|           27 | 2008-09  |              3 | 2008-09 Superliga     | Morten Rasmussen (9)\nAlexander Farnerud (9)\nOusman Jallow (9) | Semi-final    | EC3 1st round                              |                                                    |
+|           28 | 2009-10  |              3 | 2009-10 Superliga     | Morten Rasmussen (12)                                           | 4th round     | EC3 qual play-off round                    |                                                    |
+|           29 | 2010-11  |              3 | 2010-11 Superliga     | Michael Krohn-Dehli (11)                                        |               |                                            |                                                    |
+|           30 | 2011-12  |              9 | 2011-12 Superliga     | Simon Makienok Christoffersen (10)                              |               |                                            |                                                    |
+
+Generated Reasoning SQL: Explanation: To determine the number of seasons Morten Rasmussen was the top scorer, we need to count the rows where "League Top scorer" contains his name. The "League Top scorer" column is categorical and contains the names of the top scorers for each season. We will use a LIKE condition to match any occurrence of Morten Rasmussen in the column.
+
+SQL: 
+SELECT COUNT(*) AS seasons_with_top_scorer
+FROM T
+WHERE "League Top scorer" LIKE '%Morten Rasmussen%';
+Generated Final SQL: SELECT COUNT(*) AS seasons_with_top_scorer FROM T WHERE "League Top scorer" LIKE '%Morten Rasmussen%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   seasons_with_top_scorer |
+|--------------------------:|
+|                         0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Brøndby IF seasons
+SQL: SELECT COUNT(*) AS seasons_with_top_scorer FROM T WHERE "League Top scorer" LIKE '%Morten Rasmussen%';
+
+SQL Execution Result:
+seasons_with_top_scorer
+0
+
+Question: how many seasons was morten rasmussen the top scorer?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 4
+

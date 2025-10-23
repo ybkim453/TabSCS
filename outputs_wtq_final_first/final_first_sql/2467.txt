@@ -1,0 +1,143 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative example values: 5, 6, 8, 9
+   - Role: Identifier for each row
+
+2. Score
+   - Data type: Categorical
+   - 4 representative example values: 108*, 134*, 150*, 107
+   - Role: Measure of the player's score in a particular match
+
+3. Player
+   - Data type: Categorical
+   - 4 representative example values: Salman Butt, Graeme Smith, Gautam Gambhir, Virat Kohli
+   - Role: Descriptor for the player who scored in the match
+
+4. Team
+   - Data type: Categorical
+   - 4 representative example values: Pakistan, South Africa, India, Ireland
+   - Role: Descriptor for the team to which the player belongs
+
+5. Balls
+   - Data type: Numeric
+   - 4 representative example values: 130, 124, 137, 114
+   - Role: Measure of the number of balls faced by the player
+
+6. Inns.
+   - Data type: Numeric
+   - 4 representative example values: 2, 2, 2, 2
+   - Role: Measure of the innings played by the player in the match
+
+7. Opposing team
+   - Data type: Categorical
+   - 4 representative example values: India, India, Sri Lanka, Netherlands
+   - Role: Descriptor for the team against which the player played
+
+8. Date
+   - Data type: Categorical
+   - 4 representative example values: 13 November 2004, 25 November 2005, 24 December 2009, 24 December 2009
+   - Role: Descriptor for the date of the match
+
+9. Result
+   - Data type: Categorical
+   - 4 representative example values: Won, Won, Won, Won
+   - Role: Measure of the result of the match for the player's team
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values for No. (10), Score (5), and Opposing team (India) are different from the majority of the table.
+   - This row is an outlier due to the combination of these distinctive values.
+
+2. Row 5:
+   - The values for No. (5), Score (108*), and Opposing team (India) are different from the majority of the table.
+   - This row is an outlier due to the combination of these distinctive values.
+
+3. Row 0:
+   - The values for No. (0), Score (134*), and Opposing team (India) are different from the majority of the table.
+   - This row is an outlier due to the combination of these distinctive values.
+
+=== Full Table Preview ===
+|   row_number |   No. | Score   | Player             | Team         |   Balls |   Inns. | Opposing team   | Date                | Result   |
+|-------------:|------:|:--------|:-------------------|:-------------|--------:|--------:|:----------------|:--------------------|:---------|
+|            0 |     1 | 123     | Kris Srikkanth     | India        |     103 |       1 | Pakistan        | 1987-02-18 00:00:00 | Lost     |
+|            1 |     2 | 107*    | Desmond Haynes     | West Indies  |     137 |       1 | Pakistan        | 1989-11-01 00:00:00 | Lost     |
+|            2 |     3 | 100*    | Sachin Tendulkar   | India        |     103 |       2 | Kenya           | 1998-05-31 00:00:00 | Won      |
+|            3 |     4 | 121     | Marcus Trescothick | England      |     109 |       2 | India           | 2002-01-19 00:00:00 | Lost     |
+|            4 |     5 | 108*    | Salman Butt        | Pakistan     |     130 |       2 | India           | 2004-11-13 00:00:00 | Won      |
+|            5 |     6 | 134*    | Graeme Smith       | South Africa |     124 |       2 | India           | 2005-11-25 00:00:00 | Won      |
+|            6 |     7 | 118     | Upul Tharanga      | Sri Lanka    |     128 |       1 | India           | 2009-12-24 00:00:00 | Lost     |
+|            7 |     8 | 150*    | Gautam Gambhir     | India        |     137 |       2 | Sri Lanka       | 2009-12-24 00:00:00 | Won      |
+|            8 |     9 | 107     | Virat Kohli        | India        |     114 |       2 | Sri Lanka       | 2009-12-24 00:00:00 | Won      |
+|            9 |    10 | 106     | Ryan ten Doeschate | Netherlands  |     108 |       1 | Ireland         | 2011-03-18 00:00:00 | Lost     |
+|           10 |    11 | 101     | Paul Stirling      | Ireland      |      72 |       2 | Netherlands     | 2011-03-18 00:00:00 | Won      |
+|           11 |    12 | 106     | Nasir Jamshed      | Pakistan     |     124 |       1 | India           | 2013-01-03 00:00:00 | Won      |
+
+Generated Reasoning SQL: To find the player listed after the player who scored on November 13, we need to identify the player who scored on November 13 and then retrieve the next player in the list based on the row_number. 
+First, we need to select the player who scored on November 13 by filtering the rows where the "Date" is '13 November 2004'. Then, we can find the player listed after this player based on the row_number.
+SQL: 
+SELECT "Player" 
+FROM T 
+WHERE "Date" = '13 November 2004'
+UNION
+SELECT "Player"
+FROM T
+WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Date" = '13 November 2004') + 1;
+Generated Final SQL: SELECT "Player" FROM T WHERE "Date" = '13 November 2004' UNION SELECT "Player" FROM T WHERE "row_number" = (SELECT "row_number" FROM T WHERE "Date" = '13 November 2004') + 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: List of international cricket centuries at Eden Gardens (row_number, No., Score, Player, Team, Balls, Inns., Opposing team, Date, Result)
+
+row_number | No. | Score | Player | Team | Balls | Inns. | Opposing team | Date | Result
+0 | 1 | 123 | Kris Srikkanth | India | 103 | 1 | Pakistan | 1987-02-18 00:00:00 | Lost
+1 | 2 | 107* | Desmond Haynes | West Indies | 137 | 1 | Pakistan | 1989-11-01 00:00:00 | Lost
+2 | 3 | 100* | Sachin Tendulkar | India | 103 | 2 | Kenya | 1998-05-31 00:00:00 | Won
+3 | 4 | 121 | Marcus Trescothick | England | 109 | 2 | India | 2002-01-19 00:00:00 | Lost
+4 | 5 | 108* | Salman Butt | Pakistan | 130 | 2 | India | 2004-11-13 00:00:00 | Won
+5 | 6 | 134* | Graeme Smith | South Africa | 124 | 2 | India | 2005-11-25 00:00:00 | Won
+6 | 7 | 118 | Upul Tharanga | Sri Lanka | 128 | 1 | India | 2009-12-24 00:00:00 | Lost
+7 | 8 | 150* | Gautam Gambhir | India | 137 | 2 | Sri Lanka | 2009-12-24 00:00:00 | Won
+8 | 9 | 107 | Virat Kohli | India | 114 | 2 | Sri Lanka | 2009-12-24 00:00:00 | Won
+9 | 10 | 106 | Ryan ten Doeschate | Netherlands | 108 | 1 | Ireland | 2011-03-18 00:00:00 | Lost
+10 | 11 | 101 | Paul Stirling | Ireland | 72 | 2 | Netherlands | 2011-03-18 00:00:00 | Won
+11 | 12 | 106 | Nasir Jamshed | Pakistan | 124 | 1 | India | 2013-01-03 00:00:00 | Won
+Question: name the player listed after the the player that one who scored on november 13.
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the player who scored on November 13, which is Salman Butt according to the table.  
+Next, we look for the player listed after Salman Butt, which is Graeme Smith.  
+
+Therefore, the player listed after the one who scored on November 13 is Graeme Smith.
+
+Final Answer: Graeme Smith
+[Fallback] Prediction: graeme smith
+[Gold Answer] graeme smith
+

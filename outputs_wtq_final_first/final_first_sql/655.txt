@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Round:
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 7, 7
+   - Role: Identifier for the round in which the player was picked
+
+2. Pick:
+   - Data type: Numeric
+   - 4 representative example values: 39, 170, 174, 223
+   - Role: Identifier for the pick number of the player
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: Mike Brown, Frank Murphy, Paul Edinger, James Cotton
+   - Role: Descriptor for the player's name
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: S, WR, K, DE
+   - Role: Descriptor for the player's position
+
+5. College:
+   - Data type: Categorical
+   - 4 representative example values: Nebraska, Kansas State, Michigan State, Ohio State
+   - Role: Descriptor for the college from which the player graduated
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The values for Round (7) and Pick (254) are consistent with other rows in the table.
+   - The values for Name (Michael Green), Position (S), and College (Northwestern State) are also ordinary.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 0:
+   - The values for Round (2) and Pick (39) are consistent with other rows in the table.
+   - The values for Name (Mike Brown), Position (S), and College (Nebraska) are also ordinary.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 6:
+   - The values for Round (6) and Pick (174) are consistent with other rows in the table.
+   - The values for Name (Paul Edinger), Position (K), and College (Michigan State) are also ordinary.
+   - This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Round |   Pick | Name           | Position   | College            |
+|-------------:|--------:|-------:|:---------------|:-----------|:-------------------|
+|            0 |       1 |      9 | Brian Urlacher | S          | New Mexico         |
+|            1 |       2 |     39 | Mike Brown     | S          | Nebraska           |
+|            2 |       3 |     69 | Dez White      | WR         | Georgia Tech       |
+|            3 |       3 |     87 | Dustin Lyman   | TE         | Wake Forest        |
+|            4 |       4 |    125 | Reggie Austin  | DB         | Wake Forest        |
+|            5 |       6 |    170 | Frank Murphy   | WR         | Kansas State       |
+|            6 |       6 |    174 | Paul Edinger   | K          | Michigan State     |
+|            7 |       7 |    223 | James Cotton   | DE         | Ohio State         |
+|            8 |       7 |    254 | Michael Green  | S          | Northwestern State |
+
+Generated Reasoning SQL: Explanation: To determine the positions played by Dez White and Frank Murphy, we need to filter the rows where the "Name" column matches either "Dez White" or "Frank Murphy" and then retrieve the corresponding "Position" values.
+The "Name" column is categorical, and the "Position" column is also categorical, representing the player's position.
+We will filter the rows based on the names of the players and then select the "Position" column to find out their positions.
+
+SQL: 
+SELECT "Position" 
+FROM T 
+WHERE "Name" IN ('Dez White', 'Frank Murphy');
+Generated Final SQL: SELECT "Position" FROM T WHERE "Name" IN ('Dez White', 'Frank Murphy');
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Position   |
+|:-----------|
+| WR         |
+| WR         |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2000 Chicago Bears season
+SQL: SELECT "Position" FROM T WHERE "Name" IN ('Dez White', 'Frank Murphy');
+
+Position
+WR
+WR
+Question: dez white and frank murphy play what position?
+A: To find the answer to this question, let’s think step by step.
+Prediction: wr
+[Gold Answer] wr
+

@@ -1,0 +1,54 @@
+**Column Analysis:**
+
+1. Contestant
+   - Data type: Categorical
+   - 4 representative example values: Ana Mitrić, Nikola Kovačević, Pece Kotevski, Ana Stojanovska
+   - Role: Identifier for each contestant
+
+2. Original Tribe
+   - Data type: Categorical
+   - 4 representative example values: Ga 'dang, Manobo
+   - Role: Descriptor indicating the original tribe of the contestant
+
+3. First Switch
+   - Data type: Categorical
+   - 4 representative example values: Manobo, Ga 'dang
+   - Role: Descriptor indicating the tribe the contestant switched to for the first time
+
+4. Second Switch
+   - Data type: Categorical
+   - 4 representative example values: Ga 'dang
+   - Role: Descriptor indicating the tribe the contestant switched to for the second time
+
+5. Merged Tribe
+   - Data type: Categorical
+   - 4 representative example values: Diwata
+   - Role: Descriptor indicating the merged tribe of the contestant
+
+6. Finish
+   - Data type: Categorical
+   - 4 representative example values: 3rd Voted Out Day 10, Sole Survivor
+   - Role: Descriptor indicating the final outcome of the contestant
+
+7. Ghost Island
+   - Data type: Categorical
+   - 4 representative example values: 3rd Eliminated Day 15, Ghost Island Winner Day 32
+   - Role: Descriptor indicating the contestant's involvement with Ghost Island
+
+8. Total Votes
+   - Data type: Numeric
+   - 4 representative example values: 7, 0
+   - Role: Measure indicating the total number of votes received by the contestant
+
+**Outlier Row Analysis:**
+
+1. Ana Mitrić 23, Belgrade
+   - The values in the columns "First Switch" and "Second Switch" are missing (nan), which is different from the majority of the table where these values are filled. This makes the row an outlier.
+
+2. Nikola Kovačević Returned to game from Ghost Island
+   - The contestant's journey of returning from Ghost Island is unique compared to the other contestants. This makes the row an outlier.
+
+3. Pece Kotevski 42, Bitola, Macedonia
+   - The contestant was both voted out and eliminated, which is not a common occurrence in the table. This makes the row an outlier.
+
+Overall, the identified outlier rows have distinct values or circumstances that set them apart from the majority of the table, making them outliers that require special attention in analysis.

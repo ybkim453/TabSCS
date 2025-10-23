@@ -1,0 +1,130 @@
+=== Table ID ===
+csv/203-csv/811.tsv
+
+=== Question ===
+did chinese tapei win more or les gold medals than macau?
+
+=== Sub-table Preview ===
+| Rank   | Nation               |   Gold |   Silver |   Bronze |   Total |
+|:-------|:---------------------|-------:|---------:|---------:|--------:|
+| 2      | Japan (JPN)          |     46 |       56 |       77 |     179 |
+| 3      | South Korea (KOR)    |     32 |       48 |       65 |     145 |
+| 4      | Chinese Taipei (TPE) |     12 |       34 |       26 |      72 |
+| 8      | Mongolia (MGL)       |      1 |        1 |        6 |       8 |
+| 9      | Guam (GUM)           |      0 |        0 |        1 |       1 |
+| Total  | Total                |    237 |      230 |      254 |     721 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 4, 8
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: Japan (JPN), South Korea (KOR), Chinese Taipei (TPE), Mongolia (MGL)
+   - Role: Descriptor
+
+3. Gold, Silver, Bronze, Total:
+   - Data type: Numeric
+   - 4 representative example values: 46, 32, 12, 1
+   - Role: Measures
+
+**Outlier Row Analysis:**
+
+1. Guam (GUM):
+   - The values for Gold, Silver, and Bronze are all 0, which is significantly lower than the other nations in the table.
+   - This makes the row an outlier as it has no medals compared to the other nations.
+
+2. Japan (JPN):
+   - Japan has the highest total number of medals (179) compared to the other nations in the table.
+   - While this may seem like an outlier, Japan is a powerhouse in sports and it is not unusual for them to have a high medal count.
+   - Therefore, this row is an ordinary entry and does not require special handling.
+
+3. Mongolia (MGL):
+   - Mongolia has only 1 Gold, 1 Silver, and 6 Bronze medals, which is significantly lower than the other nations.
+   - This makes the row an outlier in terms of medal count.
+
+Overall, Guam and Mongolia are outliers in terms of medal count, while Japan is an ordinary entry despite having a high medal count.
+
+=== Full Table Preview ===
+|   row_number | Rank   | Nation               |   Gold |   Silver |   Bronze |   Total |
+|-------------:|:-------|:---------------------|-------:|---------:|---------:|--------:|
+|            0 | 1      | China (CHN)          |    127 |       63 |       33 |     223 |
+|            1 | 2      | Japan (JPN)          |     46 |       56 |       77 |     179 |
+|            2 | 3      | South Korea (KOR)    |     32 |       48 |       65 |     145 |
+|            3 | 4      | Chinese Taipei (TPE) |     12 |       34 |       26 |      72 |
+|            4 | 5      | Macau (MAC)          |     11 |       16 |       17 |      44 |
+|            5 | 6      | North Korea (PRK)    |      6 |       10 |       20 |      36 |
+|            6 | 7      | Hong Kong (HKG)      |      2 |        2 |        9 |      13 |
+|            7 | 8      | Mongolia (MGL)       |      1 |        1 |        6 |       8 |
+|            8 | 9      | Guam (GUM)           |      0 |        0 |        1 |       1 |
+|            9 | Total  | Total                |    237 |      230 |      254 |     721 |
+
+Generated Reasoning SQL: Explanation: To compare the number of gold medals won by Chinese Taipei and Macau, we need to filter the rows for these two nations and retrieve their respective gold medal counts. We will then compare these counts to determine if Chinese Taipei won more or fewer gold medals than Macau.
+
+SQL:
+SELECT "Gold" AS chinese_taipei_gold, 
+       (SELECT "Gold" FROM T WHERE "Nation" LIKE '%Macau%') AS macau_gold
+FROM T
+WHERE "Nation" LIKE '%Chinese Taipei%';
+Generated Final SQL: SELECT "Gold" AS chinese_taipei_gold, (SELECT "Gold" FROM T WHERE "Nation" LIKE '%Macau%') AS macau_gold FROM T WHERE "Nation" LIKE '%Chinese Taipei%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   chinese_taipei_gold |   macau_gold |
+|----------------------:|-------------:|
+|                    12 |           11 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2005 East Asian Games
+SQL: SELECT "Gold" AS chinese_taipei_gold, (SELECT "Gold" FROM T WHERE "Nation" LIKE '%Macau%') AS macau_gold FROM T WHERE "Nation" LIKE '%Chinese Taipei%';
+
+SQL Execution Result:
+chinese_taipei_gold | macau_gold
+12 | 11
+
+Question: did chinese tapei win more or les gold medals than macau?
+A: To find the answer to this question, let’s think step by step.
+Prediction: chinese taipei
+[Gold Answer] more
+

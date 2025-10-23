@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Wrestler:
+   - Data type: Categorical
+   - 4 representative example values: Lanny Poffo, Randy Savage, Paul Christy, Joe Banek
+   - Role: Identifier for the wrestler who held the championship reign
+
+2. Reigns:
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3
+   - Role: Measure indicating the number of times a wrestler held the championship
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: May 10, 1978, March 13, 1979, 1981, November 13, 1983
+   - Role: Descriptor indicating the date when the championship reign started
+
+4. Place:
+   - Data type: Categorical
+   - 4 representative example values: San Francisco, California, Halifax, Nova Scotia, Springfield, Illinois, Unknown
+   - Role: Descriptor indicating the location where the championship reign took place
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: Defeated Joe Banek to become the first champion, nan
+   - Role: Descriptor providing additional information about the championship reign
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values "Lanny Poffo", "1", "May 10, 1978", and "San Francisco, California" are all ordinary and consistent with the majority of the table. This row is an ordinary row and does not require special handling.
+
+2. Row 6:
+   - The values "Paul Christy", "1", "November 13, 1983", and "Springfield, Illinois" are all ordinary and consistent with the majority of the table. This row is an ordinary row and does not require special handling.
+
+3. Row 1:
+   - The values "Randy Savage", "1", "March 13, 1979", and "Halifax, Nova Scotia" are all ordinary and consistent with the majority of the table. This row is an ordinary row and does not require special handling.

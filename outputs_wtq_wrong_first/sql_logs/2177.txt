@@ -1,0 +1,140 @@
+=== Table ID ===
+csv/202-csv/264.tsv
+
+=== Question ===
+which location is a cape and is home to a single lighthouse?
+
+=== Sub-table Preview ===
+| Name              | Location                                              | Date Formed        | Area                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|:------------------|:------------------------------------------------------|:-------------------|:-----------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Assateague Island | Maryland, Virginia\n38°05′N 75°13′W﻿ / ﻿38.08°N 75.21°W | September 21, 1965 | 39,726.75 acres (160.8 km2)  | As a barrier island, Assateague Island is continually shaped by wind and waves. It is known for its feral horses and is also home to deer, crabs, fox, and migrating snow geese. Main vegetation includes American beach grass, saltmarsh cordgrass and sea rocket.                                                                                                                                                                 |
+| Canaveral         | Florida\n28°46′N 80°47′W﻿ / ﻿28.77°N 80.78°W            | January 3, 1975    | 57,661.69 acres (233.3 km2)  | Adjacent to the Kennedy Space Center, this barrier island has a variety of recreational activities including hiking, boating, and fishing. The Seminole Rest features an ancient Native American mound, and Eldora Statehouse shows historic life on the lagoon. Florida's longest undeveloped Atlantic beach surrounds Mosquito Lagoon, which is home to dolphins, manatees, and sea turtles, along with a variety of sea grasses. |
+| Cape Hatteras     | North Carolina\n35°18′N 75°31′W﻿ / ﻿35.30°N 75.51°W     | January 12, 1953   | 30,350.65 acres (122.8 km2)  | Located in the Outer Banks, Cape Hatteras is known for its Bodie Island and Cape Hatteras Lighthouses. Popular recreation activities include windsurfing, birdwatching, fishing, shell collecting, and kayaking. Constantly changing from ocean activity, this barrier island provides refuge for the endangered piping plover, seabeach amaranth, and sea turtles.                                                                 |
+| Cape Lookout      | North Carolina\n34°37′N 76°32′W﻿ / ﻿34.61°N 76.54°W     | March 10, 1966     | 28,243.36 acres (114.3 km2)  | Cape Lookout National Seashore is made up of three islands of the Outer Banks. It is known for its wild horses and the Cape Lookout Lighthouse. Hiking, camping, fishing, and birdwatching are popular recreational activities. It is also home to two historic villages.                                                                                                                                                           |
+| Cumberland Island | Georgia\n30°50′N 81°27′W﻿ / ﻿30.83°N 81.45°W            | October 23, 1972   | 36,415.13 acres (147.4 km2)  | Cumberland Island is the site of the Plum Orchard estate, Thomas Carnegie's ruined Dungeness mansion, and an African Baptist church. The museum on the mainland preserves Timucua Indian history, Nathaniel Green and Eli Whitney's works, and War of 1812 battles.                                                                                                                                                                 |
+| Padre Island      | Texas\n27°00′N 97°23′W﻿ / ﻿27°N 97.38°W                 | April 6, 1968      | 130,434.27 acres (527.8 km2) | Padre Island, the world's longest undeveloped barrier island, is a nesting ground for the Kemp's ridley sea turtle and a migratory site for Least Terns, Brown Pelicans, and Piping Plovers. Malaquite Beach provides a variety of recreational activities, and Novillo Line Camp has the remains of a cattle ranch. The military used part of the island as a bombing range during WWII.                                           |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **Name:**
+   - Data type: Categorical
+   - 4 representative values: Assateague Island, Canaveral, Cape Hatteras, Cumberland Island
+   - Role: Identifier for the national seashores
+
+2. **Location:**
+   - Data type: Categorical
+   - 4 representative values: Maryland, Virginia; Florida; North Carolina; Georgia
+   - Role: Descriptor indicating the geographical location of the national seashores
+
+3. **Date Formed:**
+   - Data type: Categorical
+   - 4 representative values: September 21, 1965; January 3, 1975; January 12, 1953; October 23, 1972
+   - Role: Descriptor indicating the date when the national seashores were established
+
+4. **Area:**
+   - Data type: Numeric
+   - 4 representative values: 39,726.75 acres, 57,661.69 acres, 30,350.65 acres, 36,415.13 acres
+   - Role: Measure representing the total area of the national seashores
+
+5. **Description:**
+   - Data type: Text
+   - 4 representative values: Description of the natural features, wildlife, and recreational activities of the national seashores
+   - Role: Descriptor providing detailed information about each national seashore
+
+### Outlier Row Analysis:
+
+1. **Cumberland Island:**
+   - The values "Georgia" in the Location column and "October 23, 1972" in the Date Formed column make this row distinctive.
+   - These values are different from the majority of the table as they represent a unique location and establishment date.
+   - Therefore, this row is an outlier.
+
+2. **Assateague Island:**
+   - The values "Maryland, Virginia" in the Location column and "September 21, 1965" in the Date Formed column make this row distinctive.
+   - These values are different from the majority of the table as they represent a unique location and establishment date.
+   - Therefore, this row is an outlier.
+
+3. **Canaveral:**
+   - The values "Florida" in the Location column and "January 3, 1975" in the Date Formed column make this row distinctive.
+   - These values are different from the majority of the table as they represent a unique location and establishment date.
+   - Therefore, this row is an outlier.
+
+=== Full Table Preview ===
+|   row_number | Name              | Location                                               | Date Formed         | Area                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|-------------:|:------------------|:-------------------------------------------------------|:--------------------|:----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Assateague Island | Maryland Virginia\n38°05′N 75°13′W﻿ / ﻿38.08°N 75.21°W   | 1965-09-21 00:00:00 | 39726.75 acres (160.8 km2)  | As a barrier island Assateague Island is continually shaped by wind and waves. It is known for its feral horses and is also home to deer crabs fox and migrating snow geese. Main vegetation includes American beach grass saltmarsh cordgrass and sea rocket.                                                                                                                                                              |
+|            1 | Canaveral         | Florida\n28°46′N 80°47′W﻿ / ﻿28.77°N 80.78°W             | 1975-01-03 00:00:00 | 57661.69 acres (233.3 km2)  | Adjacent to the Kennedy Space Center this barrier island has a variety of recreational activities including hiking boating and fishing. The Seminole Rest features an ancient Native American mound and Eldora Statehouse shows historic life on the lagoon. Florida's longest undeveloped Atlantic beach surrounds Mosquito Lagoon which is home to dolphins manatees and sea turtles along with a variety of sea grasses. |
+|            2 | Cape Cod          | Massachusetts\n41°57′N 70°00′W﻿ / ﻿41.95°N 70.00°W       | 1961-08-07 00:00:00 | 43608.48 acres (176.5 km2)  | Beyond its nearly 40 miles of beaches this historic area has Marconi Station the Three Sisters Lighthouses and the former North Truro Air Force Station. Cranberry bogs marshes and hiking trails provide a look into the flora and fauna of Cape Cod.                                                                                                                                                                      |
+|            3 | Cape Hatteras     | North Carolina\n35°18′N 75°31′W﻿ / ﻿35.30°N 75.51°W      | 1953-01-12 00:00:00 | 30350.65 acres (122.8 km2)  | Located in the Outer Banks Cape Hatteras is known for its Bodie Island and Cape Hatteras Lighthouses. Popular recreation activities include windsurfing birdwatching fishing shell collecting and kayaking. Constantly changing from ocean activity this barrier island provides refuge for the endangered piping plover seabeach amaranth and sea turtles.                                                                 |
+|            4 | Cape Lookout      | North Carolina\n34°37′N 76°32′W﻿ / ﻿34.61°N 76.54°W      | 1966-03-10 00:00:00 | 28243.36 acres (114.3 km2)  | Cape Lookout National Seashore is made up of three islands of the Outer Banks. It is known for its wild horses and the Cape Lookout Lighthouse. Hiking camping fishing and birdwatching are popular recreational activities. It is also home to two historic villages.                                                                                                                                                      |
+|            5 | Cumberland Island | Georgia\n30°50′N 81°27′W﻿ / ﻿30.83°N 81.45°W             | 1972-10-23 00:00:00 | 36415.13 acres (147.4 km2)  | Cumberland Island is the site of the Plum Orchard estate Thomas Carnegie's ruined Dungeness mansion and an African Baptist church. The museum on the mainland preserves Timucua Indian history Nathaniel Green and Eli Whitney's works and War of 1812 battles.                                                                                                                                                             |
+|            6 | Fire Island       | New York\n40°42′N 72°59′W﻿ / ﻿40.70°N 72.98°W            | 1964-09-11 00:00:00 | 19579.47 acres (79.2 km2)   | Fire Island a barrier island south of Long Island has the historic William Floyd House and Fire Island Lighthouse. The beaches and dunes are complemented by a sunken forest wetlands and seventeen communities.                                                                                                                                                                                                            |
+|            7 | Gulf Islands      | Florida Mississippi\n30°22′N 86°58′W﻿ / ﻿30.36°N 86.97°W | 1971-01-08 00:00:00 | 137990.97 acres (558.4 km2) | Seven main islands have four historic forts built by the Spanish British and Americans that were used for defense in the Civil War. Apache Indians once lived here including Geronimo. There are nature trails for wildlife viewing and long beaches for snorkeling biking and other activities.                                                                                                                            |
+|            8 | Padre Island      | Texas\n27°00′N 97°23′W﻿ / ﻿27°N 97.38°W                  | 1968-04-06 00:00:00 | 130434.27 acres (527.8 km2) | Padre Island the world's longest undeveloped barrier island is a nesting ground for the Kemp's ridley sea turtle and a migratory site for Least Terns Brown Pelicans and Piping Plovers. Malaquite Beach provides a variety of recreational activities and Novillo Line Camp has the remains of a cattle ranch. The military used part of the island as a bombing range during WWII.                                        |
+|            9 | Point Reyes       | California\n38°00′N 123°00′W﻿ / ﻿38.00°N 123.00°W        | 1972-10-20 00:00:00 | 71067.78 acres (287.6 km2)  | Historic locations on Point Reyes Peninsula include the Point Reyes Lighthouse and Lifeboat Station and a recreated Coast Miwok village. Gray whales can be seen as they migrate near the seashore and tule elk and elephant seals populate the wilderness area.                                                                                                                                                            |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter the rows where the "Name" contains the word "Cape" and the "Description" mentions a single lighthouse. We will use the LIKE operator to match the word "Cape" in the "Name" column and search for the phrase "single lighthouse" in the "Description" column.
+
+SQL: 
+SELECT "Location" 
+FROM T 
+WHERE "Name" LIKE '%Cape%' 
+AND "Description" LIKE '%single lighthouse%';
+Generated Final SQL: SELECT "Location" FROM T WHERE "Name" LIKE '%Cape%' AND "Description" LIKE '%single lighthouse%';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: List of United States national lakeshores and seashores (row_number, Name, Location, Date Formed, Area, Description)
+
+row_number | Name | Location | Date Formed | Area | Description
+0 | Assateague Island | Maryland Virginia\n38°05′N 75°13′W﻿ / ﻿38.08°N 75.21°W | 1965-09-21 00:00:00 | 39726.75 acres (160.8 km2) | As a barrier island Assateague Island is continually shaped by wind and waves. It is known for its feral horses and is also home to deer crabs fox and migrating snow geese. Main vegetation includes American beach grass saltmarsh cordgrass and sea rocket.
+1 | Canaveral | Florida\n28°46′N 80°47′W﻿ / ﻿28.77°N 80.78°W | 1975-01-03 00:00:00 | 57661.69 acres (233.3 km2) | Adjacent to the Kennedy Space Center this barrier island has a variety of recreational activities including hiking boating and fishing. The Seminole Rest features an ancient Native American mound and Eldora Statehouse shows historic life on the lagoon. Florida's longest undeveloped Atlantic beach surrounds Mosquito Lagoon which is home to dolphins manatees and sea turtles along with a variety of sea grasses.
+2 | Cape Cod | Massachusetts\n41°57′N 70°00′W﻿ / ﻿41.95°N 70.00°W | 1961-08-07 00:00:00 | 43608.48 acres (176.5 km2) | Beyond its nearly 40 miles of beaches this historic area has Marconi Station the Three Sisters Lighthouses and the former North Truro Air Force Station. Cranberry bogs marshes and hiking trails provide a look into the flora and fauna of Cape Cod.
+3 | Cape Hatteras | North Carolina\n35°18′N 75°31′W﻿ / ﻿35.30°N 75.51°W | 1953-01-12 00:00:00 | 30350.65 acres (122.8 km2) | Located in the Outer Banks Cape Hatteras is known for its Bodie Island and Cape Hatteras Lighthouses. Popular recreation activities include windsurfing birdwatching fishing shell collecting and kayaking. Constantly changing from ocean activity this barrier island provides refuge for the endangered piping plover seabeach amaranth and sea turtles.
+4 | Cape Lookout | North Carolina\n34°37′N 76°32′W﻿ / ﻿34.61°N 76.54°W | 1966-03-10 00:00:00 | 28243.36 acres (114.3 km2) | Cape Lookout National Seashore is made up of three islands of the Outer Banks. It is known for its wild horses and the Cape Lookout Lighthouse. Hiking camping fishing and birdwatching are popular recreational activities. It is also home to two historic villages.
+5 | Cumberland Island | Georgia\n30°50′N 81°27′W﻿ / ﻿30.83°N 81.45°W | 1972-10-23 00:00:00 | 36415.13 acres (147.4 km2) | Cumberland Island is the site of the Plum Orchard estate Thomas Carnegie's ruined Dungeness mansion and an African Baptist church. The museum on the mainland preserves Timucua Indian history Nathaniel Green and Eli Whitney's works and War of 1812 battles.
+6 | Fire Island | New York\n40°42′N 72°59′W﻿ / ﻿40.70°N 72.98°W | 1964-09-11 00:00:00 | 19579.47 acres (79.2 km2) | Fire Island a barrier island south of Long Island has the historic William Floyd House and Fire Island Lighthouse. The beaches and dunes are complemented by a sunken forest wetlands and seventeen communities.
+7 | Gulf Islands | Florida Mississippi\n30°22′N 86°58′W﻿ / ﻿30.36°N 86.97°W | 1971-01-08 00:00:00 | 137990.97 acres (558.4 km2) | Seven main islands have four historic forts built by the Spanish British and Americans that were used for defense in the Civil War. Apache Indians once lived here including Geronimo. There are nature trails for wildlife viewing and long beaches for snorkeling biking and other activities.
+8 | Padre Island | Texas\n27°00′N 97°23′W﻿ / ﻿27°N 97.38°W | 1968-04-06 00:00:00 | 130434.27 acres (527.8 km2) | Padre Island the world's longest undeveloped barrier island is a nesting ground for the Kemp's ridley sea turtle and a migratory site for Least Terns Brown Pelicans and Piping Plovers. Malaquite Beach provides a variety of recreational activities and Novillo Line Camp has the remains of a cattle ranch. The military used part of the island as a bombing range during WWII.
+9 | Point Reyes | California\n38°00′N 123°00′W﻿ / ﻿38.00°N 123.00°W | 1972-10-20 00:00:00 | 71067.78 acres (287.6 km2) | Historic locations on Point Reyes Peninsula include the Point Reyes Lighthouse and Lifeboat Station and a recreated Coast Miwok village. Gray whales can be seen as they migrate near the seashore and tule elk and elephant seals populate the wilderness area.
+Question: which location is a cape and is home to a single lighthouse?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Location** column contains the geographical coordinates for each national lakeshore and seashore.
+- The **Description** column provides information about each location, including any notable landmarks or features.
+
+From the full table:
+- We need to look for a location that is specifically mentioned as a cape and is home to a single lighthouse.
+- Scanning through the **Description** column, we should focus on mentions of lighthouses and capes.
+
+After examining the full table, we find that "Cape Hatteras" in North Carolina fits the criteria. The description mentions the Cape Hatteras Lighthouse, making it the location that is a cape and is home to a single lighthouse.
+
+Final Answer: Cape Hatteras
+[Fallback] Prediction: cape hatteras
+[Gold Answer] cape lookout
+

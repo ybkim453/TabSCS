@@ -1,0 +1,34 @@
+**Column Analysis:**
+
+1. Divisions:
+   - Data type: Categorical
+   - 4 representative example values: All, 2nd, 4th, Sub
+   - Role of the column: Identifier for different prize divisions
+
+2. Prize (EUR):
+   - Data type: Numeric
+   - 4 representative example values: 45,000.00, 750.00, 450.00, 300.00
+   - Role of the column: Measure of the prize amount in Euros
+
+3. Odds of winning (1 in):
+   - Data type: Numeric
+   - 4 representative example values: 3.54, 2,000, 105.3
+   - Role of the column: Measure of the odds of winning in a specific division
+
+4. Number of winning tickets:
+   - Data type: Numeric
+   - 4 representative example values: 565, 1, 57
+   - Role of the column: Measure of the number of winning tickets in a specific division
+
+5. In order to win:
+   - Data type: Categorical
+   - 4 representative example values: Any Prize, Match all 5 in order, Last 2 Digits of 1st, 2nd & 3rd
+   - Role of the column: Descriptor of the requirements to win in each division
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are ordinary and not distinctive. It contains information about winning in any prize division, which is a common occurrence in the table. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 11:
+   - The values in this row are also ordinary and not distinctive. It provides information about winning with the last 2 digits of the 1st, 2nd, and 3rd numbers, which is a specific requirement for winning in the "Sub" division. Since this is a valid and expected condition within the context of the table, this row is an ordinary entry and does not require special handling.

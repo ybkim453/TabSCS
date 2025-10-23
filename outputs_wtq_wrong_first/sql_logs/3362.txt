@@ -1,0 +1,187 @@
+=== Table ID ===
+csv/203-csv/625.tsv
+
+=== Question ===
+which is the only toggle series to use an underground tunnel?
+
+=== Sub-table Preview ===
+| Name                              | Date time (UT)               | Local time zone   | Location                                                            | Elevation + height                         | Delivery          | Purpose             | Yield           | Venting                   | Notes                                                                                   |
+|:----------------------------------|:-----------------------------|:------------------|:--------------------------------------------------------------------|:-------------------------------------------|:------------------|:--------------------|:----------------|:--------------------------|:----------------------------------------------------------------------------------------|
+| Solano - 3 (with Cebolla,Cuchillo | 9 August 1972 13:03:11.04    | PST (-8 hrs)      | NTS Area U3jx 37°00′11″N 116°01′03″W﻿ / ﻿37.00315°N 116.01757°W       | 1,179 m (3,868 ft) +                       | underground shaft | safety experiment   | less than 5 kt  | nan                       | Simultaneous, separate holes.                                                           |
+| Flax-Source                       | 21 December 1972 20:00:15.24 | PST (-8 hrs)      | NTS Area U2dj 37°08′24″N 116°05′03″W﻿ / ﻿37.13997°N 116.08415°W       | 1,296 m (4,252 ft) - 440 m (1,440 ft)      | underground shaft | weapons development | 20 kt           | nan                       | nan                                                                                     |
+| Alumroot                          | 14 February 1973 15:00:30.16 | PST (-8 hrs)      | NTS Area U9cj 37°08′49″N 116°03′03″W﻿ / ﻿37.14704°N 116.05096°W       | 1,264 m (4,147 ft) - 182.88 m (600.0 ft)   | underground shaft | weapons development | less than 20 kt | nan                       | nan                                                                                     |
+| Miera                             | 8 March 1973 16:00:10.19     | PST (-8 hrs)      | NTS Area U7ad 37°06′13″N 116°01′39″W﻿ / ﻿37.10354°N 116.02759°W       | 1,279 m (4,196 ft) - 568.39 m (1,864.8 ft) | underground shaft | weapons development | 67 kt           | I-131 venting detected, 0 | nan                                                                                     |
+| Natoma                            | 5 April 1973 14:00:50.16     | PST (-8 hrs)      | NTS Area U10aw 37°10′40″N 116°03′17″W﻿ / ﻿37.17783°N 116.05476°W      | 1,283 m (4,209 ft) - 243.84 m (800.0 ft)   | underground shaft | weapons development | less than 20 kt | nan                       | nan                                                                                     |
+| Rio Blanco - 1                    | 17 May 1973 16:00:00.12      | MST (-7 hrs)      | near Rifle, Colorado 39°47′36″N 108°22′02″W﻿ / ﻿39.79322°N 108.3672°W | 1,938 m (6,358 ft) - 1,758 m (5,768 ft)    | underground shaft | peaceful research   | 33 kt           | nan                       | Operation Plowshare - AEC/Gas industry enhancement experiment. Simultaneous, same hole. |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Solano - 3 (with Cebolla,Cuchillo), Flax-Source, Alumroot, Miera
+   - Role: Identifier for the nuclear test sites
+
+2. Date time (UT)
+   - Data type: Date and time
+   - 4 representative example values: 9 August 1972 13:03:11.04, 21 December 1972 20:00:15.24, 14 February 1973 15:00:30.16, 8 March 1973 16:00:10.19
+   - Role: Descriptor indicating the date and time of the nuclear tests in Coordinated Universal Time (UTC)
+
+3. Local time zone
+   - Data type: Categorical
+   - 4 representative example values: PST (-8 hrs), MST (-7 hrs)
+   - Role: Descriptor indicating the local time zone of the nuclear test site
+
+4. Location
+   - Data type: Categorical
+   - 4 representative example values: NTS Area U3jx, NTS Area U2dj, NTS Area U9cj, NTS Area U7ad
+   - Role: Descriptor specifying the location of the nuclear test site
+
+5. Elevation + height
+   - Data type: Numeric
+   - 4 representative example values: 1,179 m (3,868 ft), 1,296 m (4,252 ft) - 440 m (1,440 ft), 1,264 m (4,147 ft) - 182.88 m (600.0 ft), 1,279 m (4,196 ft) - 568.39 m (1,864.8 ft)
+   - Role: Measure indicating the elevation and height of the nuclear test site
+
+6. Delivery
+   - Data type: Categorical
+   - 4 representative example values: underground shaft
+   - Role: Descriptor specifying the method of delivery for the nuclear test
+
+7. Purpose
+   - Data type: Categorical
+   - 4 representative example values: safety experiment, weapons development, peaceful research
+   - Role: Descriptor indicating the purpose of the nuclear test
+
+8. Yield
+   - Data type: Numeric
+   - 4 representative example values: less than 5 kt, 20 kt, less than 20 kt, 67 kt
+   - Role: Measure indicating the yield (explosive power) of the nuclear test
+
+9. Venting
+   - Data type: Categorical
+   - 4 representative example values: nan, I-131 venting detected, 0
+   - Role: Descriptor indicating the presence or absence of venting during the nuclear test
+
+10. Notes
+   - Data type: Categorical
+   - 4 representative example values: Simultaneous, separate holes., nan, Operation Plowshare - AEC/Gas industry enhancement experiment. Simultaneous, same hole.
+   - Role: Descriptor providing additional notes or details about the nuclear test
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The distinctive value is "I-131 venting detected" in the Venting column.
+   - This row is an outlier because it indicates the detection of I-131 venting, which is not a common occurrence in the majority of the table entries.
+
+2. Row 25 (Index 25):
+   - The distinctive value is "Operation Plowshare - AEC/Gas industry enhancement experiment. Simultaneous, same hole." in the Notes column.
+   - This row is an outlier due to the specific operation mentioned in the Notes column, which differs from the typical nuclear test purposes listed in the table.
+
+3. Row 17 (Index 17):
+   - The distinctive value is "peaceful research" in the Purpose column.
+   - This row is an outlier because it deviates from the common purpose of weapons development for the nuclear tests in the table.
+
+=== Full Table Preview ===
+|   row_number | Name                               | Date time (UT)             | Local time zone   | Location                                                           |   Elevation + height | Delivery           | Purpose             |   Yield | Venting                             | Notes                                                                                  |
+|-------------:|:-----------------------------------|:---------------------------|:------------------|:-------------------------------------------------------------------|---------------------:|:-------------------|:--------------------|--------:|:------------------------------------|:---------------------------------------------------------------------------------------|
+|            0 | Diamond Sculls                     | 1972-07-20 17:00:16.160000 | PST (-8 hrs)      | NTS Area U12t.02 37°12′52″N 116°11′02″W﻿ / ﻿37.21439°N 116.18382°W   |                 2113 | underground tunnel | weapon effect       |    21   |                                     |                                                                                        |
+|            1 | Atarque                            | 1972-07-25 13:00:30.060000 | PST (-8 hrs)      | NTS Area U3ht 37°00′45″N 116°00′57″W﻿ / ﻿37.01247°N 116.01577°W      |                 1182 | underground shaft  | weapons development |     1.5 | Venting detected                    |                                                                                        |
+|            2 | Cebolla - 1 (with CuchilloSolano)  | 1972-08-09 13:03:11.040000 | PST (-8 hrs)      | NTS Area U3jc 37°00′26″N 116°01′11″W﻿ / ﻿37.00717°N 116.01976°W      |                 1180 | underground shaft  | weapons development |     5   | Venting detected                    | Simultaneous separate holes.                                                           |
+|            3 | Cuchillo - 2 (with Cebolla Solano) | 1972-08-09 13:03:11.040000 | PST (-8 hrs)      | NTS Area U3jt 37°00′13″N 116°01′11″W﻿ / ﻿37.00373°N 116.01982°W      |                 1179 | underground shaft  | weapons development |     5   |                                     | Simultaneous separate holes.                                                           |
+|            4 | Solano - 3 (with CebollaCuchillo   | 1972-08-09 13:03:11.040000 | PST (-8 hrs)      | NTS Area U3jx 37°00′11″N 116°01′03″W﻿ / ﻿37.00315°N 116.01757°W      |                 1179 | underground shaft  | safety experiment   |     5   |                                     | Simultaneous separate holes.                                                           |
+|            5 | Oscuro                             | 1972-09-21 15:00:30.190000 | PST (-8 hrs)      | NTS Area U7z 37°04′55″N 116°02′15″W﻿ / ﻿37.08201°N 116.03742°W       |                 1225 | underground shaft  | weapons development |   160   |                                     |                                                                                        |
+|            6 | Delphinium                         | 1972-09-26 14:00:30.160000 | PST (-8 hrs)      | NTS Area U2dp 37°07′17″N 116°05′12″W﻿ / ﻿37.12135°N 116.08667°W      |                 1276 | underground shaft  | weapons development |    15   |                                     |                                                                                        |
+|            7 | Akbar                              | 1972-11-09 15:00:15.160000 | PST (-8 hrs)      | NTS Area U10ax 37°09′43″N 116°02′03″W﻿ / ﻿37.16202°N 116.03405°W     |                 1295 | underground shaft  | weapons development |   600   |                                     |                                                                                        |
+|            8 | Arsenate                           | 1972-11-09 18:00:15.160000 | PST (-8 hrs)      | NTS Area U9ci 37°07′17″N 116°02′00″W﻿ / ﻿37.12151°N 116.03326°W      |                 1268 | underground shaft  | weapons development |   600   | Venting detected 12 Ci (440 GBq)    |                                                                                        |
+|            9 | Canna-Limoges - 2                  | 1972-11-17 18:00:00.160000 | PST (-8 hrs)      | NTS Area U9itsyz26 37°08′22″N 116°02′00″W﻿ / ﻿37.13953°N 116.03324°W |                 1273 | underground shaft  | safety experiment   |    20   |                                     | Simultaneous same hole.                                                                |
+|           10 | Canna-Umbrinus - 1                 | 1972-11-17 18:00:00.160000 | PST (-8 hrs)      | NTS Area U9itsyz2 37°08′22″N 116°02′00″W﻿ / ﻿37.13953°N 116.03324°W  |                 1273 | underground shaft  | weapons development |    20   |                                     | Simultaneous same hole.                                                                |
+|           11 | Tuloso                             | 1972-12-12 16:00:30.040000 | PST (-8 hrs)      | NTS Area U3gi 37°01′53″N 116°01′19″W﻿ / ﻿37.03128°N 116.02196°W      |                 1189 | underground shaft  | weapons development |   200   |                                     |                                                                                        |
+|           12 | Solanum                            | 1972-12-14 15:00:30.160000 | PST (-8 hrs)      | NTS Area U9itsw24 37°08′17″N 116°02′08″W﻿ / ﻿37.13804°N 116.03559°W  |                 1267 | underground shaft  | weapons development |    20   | Venting detected                    |                                                                                        |
+|           13 | Flax-Source                        | 1972-12-21 20:00:15.240000 | PST (-8 hrs)      | NTS Area U2dj 37°08′24″N 116°05′03″W﻿ / ﻿37.13997°N 116.08415°W      |                 1296 | underground shaft  | weapons development |    20   |                                     |                                                                                        |
+|           14 | Flax-Backup - 2                    | 1972-12-21 20:15:24.350000 | PST (-8 hrs)      | NTS Area U2dj 37°08′24″N 116°05′03″W﻿ / ﻿37.13997°N 116.08415°W      |                 1296 | underground shaft  | weapon effect       |    20   |                                     |                                                                                        |
+|           15 | Flax-Test - 1                      | 1972-12-21 20:15:24.350000 | PST (-8 hrs)      | NTS Area U2dj 37°08′24″N 116°05′03″W﻿ / ﻿37.13997°N 116.08415°W      |                 1296 | underground shaft  | weapon effect       |    20   |                                     |                                                                                        |
+|           16 | Alumroot                           | 1973-02-14 15:00:30.160000 | PST (-8 hrs)      | NTS Area U9cj 37°08′49″N 116°03′03″W﻿ / ﻿37.14704°N 116.05096°W      |                 1264 | underground shaft  | weapons development |    20   |                                     |                                                                                        |
+|           17 | Miera                              | 1973-03-08 16:00:10.190000 | PST (-8 hrs)      | NTS Area U7ad 37°06′13″N 116°01′39″W﻿ / ﻿37.10354°N 116.02759°W      |                 1279 | underground shaft  | weapons development |    67   | I-131 venting detected 0            |                                                                                        |
+|           18 | Gazook                             | 1973-03-23 20:00:15.170000 | PST (-8 hrs)      | NTS Area U2do 37°07′02″N 116°05′16″W﻿ / ﻿37.11727°N 116.08779°W      |                 1274 | underground shaft  | weapons development |   200   | Venting detected 12 Ci (440 GBq)    |                                                                                        |
+|           19 | Natoma                             | 1973-04-05 14:00:50.160000 | PST (-8 hrs)      | NTS Area U10aw 37°10′40″N 116°03′17″W﻿ / ﻿37.17783°N 116.05476°W     |                 1283 | underground shaft  | weapons development |    20   |                                     |                                                                                        |
+|           20 | Angus - 1 (with Velarde)           | 1973-04-25 22:00:25.030000 | PST (-8 hrs)      | NTS Area U3jg 37°00′17″N 116°01′45″W﻿ / ﻿37.00483°N 116.0292°W       |                 1180 | underground shaft  | weapons development |     9   | Venting detected 0.6 Ci (22 GBq)    | Simultaneous separate holes.                                                           |
+|           21 | Velarde - 2 (with Angus)           | 1973-04-25 22:00:25.070000 | PST (-8 hrs)      | NTS Area U3jk 36°59′37″N 116°01′18″W﻿ / ﻿36.99367°N 116.02173°W      |                 1176 | underground shaft  | weapons development |     8   | Venting detected 250 Ci (9200 GBq)  | Simultaneous separate holes.                                                           |
+|           22 | Colmor                             | 1973-04-26 15:00:15.040000 | PST (-8 hrs)      | NTS Area U3hv 37°00′44″N 116°01′15″W﻿ / ﻿37.01214°N 116.0207°W       |                 1182 | underground shaft  | weapons development |   500   | Venting detected                    |                                                                                        |
+|           23 | Starwort                           | 1973-04-26 17:00:15.160000 | PST (-8 hrs)      | NTS Area U2bs 37°07′23″N 116°03′34″W﻿ / ﻿37.12301°N 116.05937°W      |                 1261 | underground shaft  | weapons development |    90   | Venting detected 10 Ci (370 GBq)    |                                                                                        |
+|           24 | Mesita                             | 1973-05-09 13:00:30.040000 | PST (-8 hrs)      | NTS Area U3jd 37°00′23″N 116°01′01″W﻿ / ﻿37.00626°N 116.01681°W      |                 1180 | underground shaft  | weapons development |    20   | Venting detected                    |                                                                                        |
+|           25 | Rio Blanco - 1                     | 1973-05-17 16:00:00.120000 | MST (-7 hrs)      | near Rifle Colorado 39°47′36″N 108°22′02″W﻿ / ﻿39.79322°N 108.3672°W |                 1938 | underground shaft  | peaceful research   |    33   |                                     | Operation Plowshare - AEC/Gas industry enhancement experiment. Simultaneous same hole. |
+|           26 | Rio Blanco - 2                     | 1973-05-17 16:00:00.120000 | MST (-7 hrs)      | near Rifle Colorado 39°47′36″N 108°22′02″W﻿ / ﻿39.79322°N 108.3672°W |                 1938 | underground shaft  | peaceful research   |    33   |                                     | Project Plowshare - AEC/Gas industry enhancement experiment. Simultaneous same hole.   |
+|           27 | Rio Blanco - 3                     | 1973-05-17 16:00:00.120000 | MST (-7 hrs)      | near Rifle Colorado 39°47′36″N 108°22′02″W﻿ / ﻿39.79322°N 108.3672°W |                 1938 | underground shaft  | peaceful research   |    33   |                                     | Project Plowshare - AEC/Gas industry enhancement experiment. Simultaneous same hole.   |
+|           28 | Cabresto                           | 1973-05-24 13:00:30.040000 | PST (-8 hrs)      | NTS Area U7h 37°04′41″N 116°01′54″W﻿ / ﻿37.078°N 116.03164°W         |                 1228 | underground shaft  | weapons development |    15   |                                     |                                                                                        |
+|           29 | Kashan                             | 1973-05-24 14:00:30.160000 | PST (-8 hrs)      | NTS Area U10av 37°09′44″N 116°03′25″W﻿ / ﻿37.16222°N 116.05689°W     |                 1277 | underground shaft  | weapons development |     2   | Venting detected 270 Ci (10000 GBq) |                                                                                        |
+|           30 | Dido Queen                         | 1973-06-05 17:00:00.170000 | PST (-8 hrs)      | NTS Area U12e.14 37°11′06″N 116°12′58″W﻿ / ﻿37.18498°N 116.21599°W   |                 2247 | underground tunnel | weapon effect       |    18   |                                     |                                                                                        |
+|           31 | Almendro                           | 1973-06-06 13:00:00.080000 | PST (-8 hrs)      | NTS Area U19v - 37°14′42″N 116°20′49″W﻿ / ﻿37.245°N 116.34691°W      |                 2069 | underground shaft  | weapons development |   250   |                                     |                                                                                        |
+|           32 | Potrillo                           | 1973-06-21 14:00:45.080000 | PST (-8 hrs)      | NTS Area U7af 37°05′31″N 116°01′41″W﻿ / ﻿37.09199°N 116.02809°W      |                 1255 | underground shaft  | weapons development |    58   | Venting detected                    |                                                                                        |
+|           33 | Portulaca                          | 1973-06-28 19:15:12.400000 | PST (-8 hrs)      | NTS Area U2bv 37°08′54″N 116°05′12″W﻿ / ﻿37.14837°N 116.08673°W      |                 1311 | underground shaft  | weapons development |    24   | I-131 venting detected 0            |                                                                                        |
+|           34 | Silene                             | 1973-06-28 19:00:45.160000 | PST (-8 hrs)      | NTS Area U9ck 37°06′53″N 116°02′30″W﻿ / ﻿37.11486°N 116.04179°W      |                 1254 | underground shaft  | weapons development |     5   |                                     |                                                                                        |
+
+Generated Reasoning SQL: Explanation: To identify the toggle series that used an underground tunnel, we need to filter the rows where the "Delivery" column value is specifically "underground tunnel". Since the "Delivery" column is categorical and contains the method of delivery for the nuclear tests, we can directly filter based on this column value.
+
+SQL: SELECT "Name" 
+FROM T 
+WHERE "Delivery" LIKE '%underground tunnel%';
+Generated Final SQL: SELECT "Name" FROM T WHERE "Delivery" LIKE '%underground tunnel%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Name           |
+|:---------------|
+| Diamond Sculls |
+| Dido Queen     |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Operation Toggle
+SQL: SELECT "Name" FROM T WHERE "Delivery" LIKE '%underground tunnel%';
+
+SQL Execution Result:
+Name
+Diamond Sculls
+Dido Queen
+
+Question: which is the only toggle series to use an underground tunnel?
+A: To find the answer to this question, let’s think step by step.
+Prediction: diamond sculls, dido queen
+[Gold Answer] diamond sculls
+

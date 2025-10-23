@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team
+   - Data type: Categorical
+   - 4 representative example values: Mücke Motorsport, DAMS, Eifelland Racing, Team X
+   - Role of the column: Identifier for the team associated with the driver
+
+2. No
+   - Data type: Numeric
+   - 4 representative example values: 7, 15, 18, 19
+   - Role of the column: Identifier for the driver number
+
+3. Driver
+   - Data type: Categorical
+   - 4 representative example values: Maciej Bernacik, Javier Tarancón, Facundo Regalia, Côme Ledogar
+   - Role of the column: Descriptor for the driver's name
+
+4. Class
+   - Data type: Categorical
+   - 4 representative example values: R, nan
+   - Role of the column: Descriptor for the driver's class
+
+5. Rounds
+   - Data type: Categorical
+   - 4 representative example values: All, 1-6
+   - Role of the column: Descriptor for the rounds participated by the driver
+
+**Outlier Row Analysis:**
+
+1. Row 11 (Eifelland Racing, 19, Côme Ledogar, nan, All)
+   - The values in this row are consistent with the majority of the table and do not stand out as distinctive. This row is an ordinary entry and does not require special handling.
+
+2. Row 1 (Mücke Motorsport, 7, Maciej Bernacik, R, All)
+   - The values in this row are also ordinary and not significantly different from the rest of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 3 (DAMS, 17, Fahmi Ilyas, nan, 1-6)
+   - The values in this row are typical for the table and do not deviate from the overall pattern. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Team                  |   No | Driver                | Class   | Rounds   |
+|-------------:|:----------------------|-----:|:----------------------|:--------|:---------|
+|            0 | Josef Kaufmann Racing |    4 | Robin Frijns          |         | All      |
+|            1 | Josef Kaufmann Racing |    5 | Hannes van Asseldonk  | R       | All      |
+|            2 | Josef Kaufmann Racing |    6 | Petri Suvanto         | R       | All      |
+|            3 | Mücke Motorsport      |    7 | Maciej Bernacik       | R       | All      |
+|            4 | Mücke Motorsport      |    8 | Timmy Hansen          |         | All      |
+|            5 | EuroInternational     |   11 | Daniil Kvyat          | R       | All      |
+|            6 | EuroInternational     |   12 | Carlos Sainz Jr.      | R       | All      |
+|            7 | EuroInternational     |   14 | Michael Lewis         |         | All      |
+|            8 | DAMS                  |   15 | Javier Tarancón       |         | All      |
+|            9 | DAMS                  |   16 | Dustin Sofyan         |         | 5        |
+|           10 | DAMS                  |   16 | Luciano Bacheta       |         | 7–8      |
+|           11 | DAMS                  |   17 | Fahmi Ilyas           |         | 1–6      |
+|           12 | DAMS                  |   17 | Dustin Sofyan         |         | 8        |
+|           13 | Eifelland Racing      |   18 | Facundo Regalia       |         | All      |
+|           14 | Eifelland Racing      |   19 | Côme Ledogar          |         | All      |
+|           15 | Eifelland Racing      |   20 | Marc Coleselli        | R       | All      |
+|           16 | Fortec Motorsport     |   24 | Jack Harvey           |         | All      |
+|           17 | Fortec Motorsport     |   25 | George Katsinis       |         | All      |
+|           18 | Fortec Motorsport     |   26 | Christof von Grünigen |         | All      |
+
+Generated Reasoning SQL: Explanation: To find the team that only had two drivers, we need to count the number of unique driver numbers associated with each team and filter for teams with exactly two unique driver numbers. The "Team" and "No" columns are relevant for this analysis. We will group by the "Team" column and count the distinct "No" values for each team. Then, we will filter the results to only include teams with a count of 2.
+SQL: 
+SELECT "Team"
+FROM T
+GROUP BY "Team"
+HAVING COUNT(DISTINCT "No") = 2;
+Generated Final SQL: SELECT "Team" FROM T GROUP BY "Team" HAVING COUNT(DISTINCT "No") = 2;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Team             |
+|:-----------------|
+| Mücke Motorsport |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2010 Formula BMW Europe season
+SQL: SELECT "Team" FROM T GROUP BY "Team" HAVING COUNT(DISTINCT "No") = 2;
+
+Team
+Mücke Motorsport
+Question: which team only had two drivers?
+A: To find the answer to this question, let’s think step by step.
+Prediction: mücke motorsport
+[Gold Answer] mücke motorsport
+

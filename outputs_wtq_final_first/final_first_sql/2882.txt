@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 2013, 2014, 2015, 2016
+   - Role: Identifier for the year in which the event took place
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: 1 Mar 2013, 7 Dec 2013, 22 Dec 2013, 24 Jan 2014
+   - Role: Descriptor indicating the specific date of the event
+
+3. Location
+   - Data type: Categorical
+   - 4 representative example values: Garmisch, Germany, Lake Louise, Canada, Val-d'Isère, France, Cortina d'Ampezzo, Italy
+   - Role: Descriptor specifying the location of the event
+
+4. Discipline
+   - Data type: Categorical
+   - 4 representative example values: Super-G, Downhill, Giant slalom
+   - Role: Descriptor indicating the type of skiing discipline
+
+5. Place
+   - Data type: Categorical
+   - 4 representative example values: 1st, 2nd, 3rd, 4th
+   - Role: Measure representing the final ranking achieved in the event
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values in this row are consistent with the majority of the table and are not significantly different from other entries. Therefore, this row is an ordinary row and does not require special handling.
+
+2. Row 12:
+   - The values in this row are also ordinary and not distinct from the rest of the table. Hence, this row is an ordinary entry and does not stand out as an outlier.
+
+3. Row 6:
+   - The values in this row are typical and do not deviate from the general pattern observed in the table. Therefore, this row is an ordinary entry and does not qualify as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Season | Date                | Location                | Discipline   | Place   |
+|-------------:|---------:|:--------------------|:------------------------|:-------------|:--------|
+|            0 |     2012 | 2011-12-02 00:00:00 | Lake Louise Canada      | Downhill     | 2nd     |
+|            1 |     2012 | 2012-01-28 00:00:00 | St. Moritz Switzerland  | Downhill     | 3rd     |
+|            2 |     2012 | 2012-02-04 00:00:00 | Garmisch Germany        | Downhill     | 3rd     |
+|            3 |     2012 | 2012-02-05 00:00:00 | Garmisch Germany        | Super-G      | 3rd     |
+|            4 |     2012 | 2012-02-26 00:00:00 | Bansko Bulgaria         | Super-G      | 2nd     |
+|            5 |     2013 | 2012-11-30 00:00:00 | Lake Louise Canada      | Downhill     | 3rd     |
+|            6 |     2013 | 2013-03-01 00:00:00 | Garmisch Germany        | Super-G      | 1st     |
+|            7 |     2014 | 2013-11-29 00:00:00 | Beaver Creek USA        | Downhill     | 2nd     |
+|            8 |     2014 | 2013-12-01 00:00:00 | Beaver Creek USA        | Giant slalom | 3rd     |
+|            9 |     2014 | 2013-12-07 00:00:00 | Lake Louise Canada      | Downhill     | 2nd     |
+|           10 |     2014 | 2013-12-08 00:00:00 | Lake Louise Canada      | Super-G      | 2nd     |
+|           11 |     2014 | 2013-12-14 00:00:00 | St. Moritz Switzerland  | Super-G      | 1st     |
+|           12 |     2014 | 2013-12-22 00:00:00 | Val-d'Isère France      | Giant slalom | 1st     |
+|           13 |     2014 | 2014-01-24 00:00:00 | Cortina d'Ampezzo Italy | Downhill     | 2nd     |
+|           14 |     2014 | 2014-01-25 00:00:00 | Cortina d'Ampezzo Italy | Downhill     | 3rd     |
+|           15 |     2014 | 2014-01-26 00:00:00 | Cortina d'Ampezzo Italy | Super-G      | 2nd     |
+
+Generated Reasoning SQL: To determine the location that comes before Beaver Creek, we need to consider the "Location" column and find the location that precedes Beaver Creek based on the alphabetical order of locations.
+
+SQL: 
+SELECT DISTINCT "Location"
+FROM T
+WHERE "Location" < 'Beaver Creek'
+ORDER BY "Location" DESC;
+Generated Final SQL: SELECT DISTINCT "Location" FROM T WHERE "Location" < 'Beaver Creek' ORDER BY "Location" DESC;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Location        |
+|:----------------|
+| Bansko Bulgaria |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Tina Weirather
+SQL: SELECT DISTINCT "Location" FROM T WHERE "Location" < 'Beaver Creek' ORDER BY "Location" DESC;
+
+SQL Execution Result:
+Location
+Bansko Bulgaria
+
+Question: what location comes before beaver creek
+A: To find the answer to this question, let’s think step by step.
+Prediction: bansko bulgaria
+[Gold Answer] garmisch, germany
+

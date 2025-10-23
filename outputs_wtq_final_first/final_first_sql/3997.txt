@@ -1,0 +1,116 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 5, 7
+   - Role: Identifier, indicating the ranking of the individual in the competition.
+
+2. Lane:
+   - Data type: Numeric
+   - 4 representative example values: 4, 3, 7, 8
+   - Role: Descriptor, specifying the lane number in which the individual competed.
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: David Smetanine, Kyunghyun Kim, Arnost Petracek, Grant Patterson
+   - Role: Descriptor, identifying the name of the individual.
+
+4. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: France, South Korea, Czech Republic, Australia
+   - Role: Descriptor, indicating the nationality of the individual.
+
+5. Time:
+   - Data type: Numeric
+   - 4 representative example values: 38.97, 40.37, 43.12, 55.49
+   - Role: Measure, representing the time taken by the individual in the competition.
+
+6. Notes:
+   - Data type: Categorical
+   - 4 representative example values: Q, nan
+   - Role: Descriptor, providing additional information about the individual's performance.
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The time value of 55.49 is significantly higher compared to the other times in the table.
+   - This row is an outlier due to the unusually high time recorded by Grant Patterson.
+
+2. Row 2:
+   - The time value of 38.97 is one of the lowest in the table.
+   - This row is an outlier due to the exceptionally fast time recorded by David Smetanine.
+
+3. Row 4:
+   - The time value of 43.12 is higher than the majority of the times in the table.
+   - This row is an outlier due to the relatively slower time recorded by Arnost Petracek.
+
+=== Full Table Preview ===
+|   row_number |   Rank |   Lane | Name                        | Nationality    | Time    | Notes   |
+|-------------:|-------:|-------:|:----------------------------|:---------------|:--------|:--------|
+|            0 |      1 |      5 | Eskender Mustafaiev         | Ukraine        | 38.77   | Q       |
+|            1 |      2 |      4 | David Smetanine             | France         | 38.97   | Q       |
+|            2 |      3 |      3 | Kyunghyun Kim               | South Korea    | 40.37   | Q       |
+|            3 |      4 |      6 | Christoffer Lindhe          | Sweden         | 41.52   | Q       |
+|            4 |      5 |      7 | Arnost Petracek             | Czech Republic | 43.12   |         |
+|            5 |      6 |      2 | Ronystony Cordeiro da Silva | Brazil         | 44.22   |         |
+|            6 |      7 |      8 | Grant Patterson             | Australia      | 55.49   |         |
+|            7 |      8 |      1 | Arnulfo Castorena           | Mexico         | 1:03.49 |         |
+
+Generated Reasoning SQL: Explanation: To identify the participants in heat 2 with times under 40 seconds, we need to filter the rows where "Lane" = 2 (representing heat 2) and "Time" < 40. Since the question specifies a time threshold, we directly compare the "Time" column to 40 seconds.
+
+SQL: SELECT "Name" 
+FROM T 
+WHERE "Lane" = 2 AND "Time" < 40;
+Generated Final SQL: SELECT "Name" FROM T WHERE "Lane" = 2 AND "Time" < 40;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Swimming at the 2012 Summer Paralympics – Men's 50 metre freestyle S4 (row_number, Rank, Lane, Name, Nationality, Time, Notes)
+
+row_number | Rank | Lane | Name | Nationality | Time | Notes
+0 | 1 | 5 | Eskender Mustafaiev | Ukraine | 38.77 | Q
+1 | 2 | 4 | David Smetanine | France | 38.97 | Q
+2 | 3 | 3 | Kyunghyun Kim | South Korea | 40.37 | Q
+3 | 4 | 6 | Christoffer Lindhe | Sweden | 41.52 | Q
+4 | 5 | 7 | Arnost Petracek | Czech Republic | 43.12 | None
+5 | 6 | 2 | Ronystony Cordeiro da Silva | Brazil | 44.22 | None
+6 | 7 | 8 | Grant Patterson | Australia | 55.49 | None
+7 | 8 | 1 | Arnulfo Castorena | Mexico | 1:03.49 | None
+Question: who were the only participants in heat 2 with times under 40 seconds?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the participants in heat 2 from the full table. The participants in heat 2 are:
+- David Smetanine from France with a time of 38.97 seconds
+- Kyunghyun Kim from South Korea with a time of 40.37 seconds
+
+Since we are looking for the participants with times under 40 seconds in heat 2, the only participant that meets this criteria is David Smetanine from France.
+
+Final Answer: David Smetanine
+[Fallback] Prediction: david smetanine
+[Gold Answer] eskender mustafaiev,david smetanine
+

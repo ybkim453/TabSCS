@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. State (linked to summaries below):
+   - Data type: Categorical
+   - 4 representative example values: Maine, Massachusetts, Minnesota, Utah
+   - Role: Identifier for the state where the incumbent senator is running for re-election.
+
+2. Incumbent Senator:
+   - Data type: Categorical
+   - 4 representative example values: Angus King, Elizabeth Warren, Amy Klobuchar, Orrin Hatch
+   - Role: Descriptor for the name of the incumbent senator.
+
+3. Incumbent Party:
+   - Data type: Categorical
+   - 4 representative example values: Independent, Democratic, Republican
+   - Role: Descriptor for the political party of the incumbent senator.
+
+4. Incumbent Electoral History:
+   - Data type: Categorical
+   - 4 representative example values: Angus King (I) 52.9%, Elizabeth Warren (D) 53.7%, Amy Klobuchar (D) 65.2%, Orrin Hatch (R) 65.3%
+   - Role: Descriptor for the incumbent senator's electoral history, including party affiliation and percentage of votes received.
+
+5. Most recent election results:
+   - Data type: Categorical
+   - 4 representative example values: 2012, 2006, 1976, 2012
+   - Role: Descriptor for the year of the most recent election results.
+
+6. 2018 intent:
+   - Data type: Categorical
+   - 4 representative example values: Retiring, [Data unknown/missing. You can help!]
+   - Role: Descriptor for the incumbent senator's intention for the 2018 election.
+
+7. Candidates:
+   - Data type: Categorical
+   - 4 representative example values: [Data unknown/missing. You can help!], [Data unknown/missing. You can help!], [Data unknown/missing. You can help!], [Data unknown/missing. You can help!]
+   - Role: Descriptor for the candidates running for the senatorial seat in the state.
+
+**Outlier Row Analysis:**
+
+1. Utah:
+   - The row is an outlier because the incumbent senator, Orrin Hatch, is noted as "Retiring" in the 2018 intent column, which is different from the other incumbent senators who have intentions listed as "[Data unknown/missing. You can help!]".
+  
+2. Virginia:
+   - This row is an ordinary row as there are no distinctive values that make it an outlier. The data provided for Tim Kaine's electoral history and the most recent election results are consistent with the other entries in the table.
+
+3. State (linked to summaries below):
+   - This row is an ordinary row as it contains column headers and does not represent a candidate entry.

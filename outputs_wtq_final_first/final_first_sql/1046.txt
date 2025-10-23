@@ -1,0 +1,97 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - 4 representative example values: Notre Dame-Cathedral Latin, Saint Anselm School, Saint Helen's School, Saint Mary's School
+   - Role of the column: Identifier for the school district
+
+2. Location
+   - Data type: Categorical
+   - 4 representative example values: Munson Township, Chester Township, Newbury, Chardon
+   - Role of the column: Descriptor for the location of the school
+
+3. Communities served
+   - Data type: Categorical
+   - 4 representative example values: Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not, Roman Catholic Diocese of Cleveland K - 8th grade; preschool, Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners, Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners
+   - Role of the column: Descriptor for the communities served by the school
+
+**Outlier Row Analysis:**
+
+1. Saint Anselm School
+   - The outlier row for Saint Anselm School has "K - 8th grade; preschool" as the community served, which is different from the other rows where the communities served are specified as "parishioners and non-parishioners". This makes the row an outlier as it represents a different type of community served compared to the majority of the table.
+
+2. Saint Mary's School
+   - The outlier row for Saint Mary's School has "preschool - 8th grade; parishioners and non-parishioners" as the community served, which is different from the other rows where the communities served are specified as "parishioners and non-parishioners". This makes the row an outlier as it represents a different grade range served compared to the majority of the table.
+
+=== Full Table Preview ===
+|   row_number | District                                        | Location                                    | Communities served                                                                                                                     |
+|-------------:|:------------------------------------------------|:--------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | Agape Christian Academy                         | Burton Township Ohio and Troy Township Ohio | Accepts applications prior to the start of each school year                                                                            |
+|            1 | Hawken School                                   | Gates Mills Ohio                            | College preparatory day school: online application site visit and testing                                                              |
+|            2 | Hershey Montessori Farm School                  | Huntsburg Township Ohio                     | parent-owned and chartered by Ohio Department of Education: application deadline January each year                                     |
+|            3 | Notre Dame-Cathedral Latin                      | Munson Township Ohio                        | Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not |
+|            4 | Solon/Bainbridge Montessori School of Languages | Bainbridge Township Ohio                    | nonsectarian Montessori School: quarterly enrollment periods                                                                           |
+|            5 | Saint Anselm School                             | Chester Township Ohio                       | Roman Catholic Diocese of Cleveland K - 8th grade; preschool                                                                           |
+|            6 | Saint Helen's School                            | Newbury Ohio                                | Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners                                                   |
+|            7 | Saint Mary's School                             | Chardon Ohio                                | Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners                                           |
+
+Generated Reasoning SQL: The relevant columns for this question are "District" and "Location". The summary shows that "District" contains the names of schools, and "Location" contains the city names where the schools are located. We need to find the city where Saint Helen's School is located, which is specified in the "District" column.
+
+SQL: SELECT "Location" 
+FROM T 
+WHERE "District" = 'Saint Helen\'s School';
+Generated Final SQL: SELECT "Location" FROM T WHERE "District" = 'Saint Helen\'s School';
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT "Location" FROM T WHERE "District" = 'Saint Helen\'s School';': near "s": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Geauga County, Ohio (row_number, District, Location, Communities served)
+
+row_number | District | Location | Communities served
+0 | Agape Christian Academy | Burton Township Ohio and Troy Township Ohio | Accepts applications prior to the start of each school year
+1 | Hawken School | Gates Mills Ohio | College preparatory day school: online application site visit and testing
+2 | Hershey Montessori Farm School | Huntsburg Township Ohio | parent-owned and chartered by Ohio Department of Education: application deadline January each year
+3 | Notre Dame-Cathedral Latin | Munson Township Ohio | Roman Catholic Diocese of Cleveland: open to 8th grade students who have attended a Catholic elementary school and others who have not
+4 | Solon/Bainbridge Montessori School of Languages | Bainbridge Township Ohio | nonsectarian Montessori School: quarterly enrollment periods
+5 | Saint Anselm School | Chester Township Ohio | Roman Catholic Diocese of Cleveland K - 8th grade; preschool
+6 | Saint Helen's School | Newbury Ohio | Roman Catholic Diocese of Cleveland K - 8th grade; parishioners and non-parishioners
+7 | Saint Mary's School | Chardon Ohio | Roman Catholic Diocese of Cleveland preschool - 8th grade; parishioners and non-parishioners
+Question: in what city is saint helen's school located?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the location of Saint Helen's School, we need to analyze the "Location" column in the table. 
+
+From the table:
+- Saint Helen's School is listed in row 6.
+- The "Location" column for row 6 states that Saint Helen's School is located in Newbury Ohio.
+
+Therefore, based on the information provided in the table, Saint Helen's School is located in Newbury, Ohio.
+
+Final Answer: Newbury
+[Fallback] Prediction: newbury
+[Gold Answer] newbury, ohio
+

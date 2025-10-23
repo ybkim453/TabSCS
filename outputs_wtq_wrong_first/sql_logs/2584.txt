@@ -1,0 +1,141 @@
+=== Table ID ===
+csv/203-csv/423.tsv
+
+=== Question ===
+congressmen re-elected with at least 60% of the vote
+
+=== Sub-table Preview ===
+| District   | Incumbent       | Party      |   First\nelected | Result                                       | Candidates                                               |
+|:-----------|:----------------|:-----------|-----------------:|:---------------------------------------------|:---------------------------------------------------------|
+| Maryland 1 | Wayne Gilchrest | Republican |             1990 | Re-elected                                   | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%        |
+| Maryland 2 | Robert Ehrlich  | Republican |             1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57% |
+| Maryland 3 | Ben Cardin      | Democratic |             1986 | Re-elected                                   | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%          |
+| Maryland 4 | Albert Wynn     | Democratic |             1992 | Re-elected                                   | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%           |
+| Maryland 5 | Steny Hoyer     | Democratic |             1981 | Re-elected                                   | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%       |
+| Maryland 6 | Roscoe Bartlett | Republican |             1992 | Re-elected                                   | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%    |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. District
+   - Data type: Categorical
+   - Representative values: Maryland 1, Maryland 2, Maryland 3, Maryland 4
+   - Role: Identifier for the district where the election took place
+
+2. Incumbent
+   - Data type: Categorical
+   - Representative values: Wayne Gilchrest, Robert Ehrlich, Ben Cardin, Albert Wynn
+   - Role: Descriptor for the incumbent candidate in the election
+
+3. Party
+   - Data type: Categorical
+   - Representative values: Republican, Democratic
+   - Role: Descriptor for the political party of the candidate
+
+4. First elected
+   - Data type: Numeric
+   - Representative values: 1990, 1994, 1986, 1981
+   - Role: Descriptor for the year the candidate was first elected
+
+5. Result
+   - Data type: Categorical
+   - Representative values: Re-elected, Retired to run for Governor
+   - Role: Descriptor for the outcome of the election
+
+6. Candidates
+   - Data type: Categorical
+   - Representative values: Wayne Gilchrest (R) 76.67%, Dutch Ruppersberger (D) 54.16%, Ben Cardin (D) 65.72%, Steny Hoyer (D) 69.27%
+   - Role: Descriptor for the candidates running in the election and their respective percentage of votes
+
+**Outlier Row Analysis:**
+
+1. Maryland 2 - Robert Ehrlich (Republican)
+   - The row is an outlier because the incumbent, Robert Ehrlich, retired to run for Governor, resulting in a Democratic gain. This outcome is different from the majority of the table where incumbents were re-elected.
+
+2. Maryland 4 - Albert Wynn (Democratic)
+   - The row is an outlier because Albert Wynn received a significantly higher percentage of votes (78.57%) compared to the other candidates in the table. This makes it distinctive as an outlier.
+
+3. Maryland 1 - Wayne Gilchrest (Republican)
+   - The row is an outlier because Wayne Gilchrest received a very high percentage of votes (76.67%), which is notably higher than the other candidates in the table. This makes it stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number | District   | Incumbent       | Party      |   First\nelected | Result                                       | Candidates                                                                         |
+|-------------:|:-----------|:----------------|:-----------|-----------------:|:---------------------------------------------|:-----------------------------------------------------------------------------------|
+|            0 | Maryland 1 | Wayne Gilchrest | Republican |             1990 | Re-elected                                   | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%                                  |
+|            1 | Maryland 2 | Robert Ehrlich  | Republican |             1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%                           |
+|            2 | Maryland 3 | Ben Cardin      | Democratic |             1986 | Re-elected                                   | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%                                    |
+|            3 | Maryland 4 | Albert Wynn     | Democratic |             1992 | Re-elected                                   | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%                                     |
+|            4 | Maryland 5 | Steny Hoyer     | Democratic |             1981 | Re-elected                                   | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%                                 |
+|            5 | Maryland 6 | Roscoe Bartlett | Republican |             1992 | Re-elected                                   | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%                              |
+|            6 | Maryland 7 | Elijah Cummings | Democratic |             1996 | Re-elected                                   | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%                                 |
+|            7 | Maryland 8 | Connie Morella  | Republican |             1986 | Lost re-election\nDemocratic gain            | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73% |
+
+Generated Reasoning SQL: Explanation: To find congressmen who were re-elected with at least 60% of the vote, we need to consider the "Result" column to filter for candidates who were "Re-elected" and then analyze the "Candidates" column to check if their vote percentage was 60% or higher. Outliers in the summary indicate that some candidates received significantly higher percentages, so we need to focus on the ordinary cases where the threshold is met.
+
+SQL: 
+SELECT "Incumbent"
+FROM T
+WHERE "Result" = 'Re-elected'
+AND CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) >= 60;
+Generated Final SQL: SELECT "Incumbent" FROM T WHERE "Result" = 'Re-elected' AND CAST(SUBSTR("Candidates", INSTR("Candidates", '(') + 1, INSTR("Candidates", '%') - INSTR("Candidates", '(') - 1) AS FLOAT) >= 60;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: United States House of Representatives elections, 2002 (row_number, District, Incumbent, Party, First\nelected, Result, Candidates)
+
+row_number | District | Incumbent | Party | First\nelected | Result | Candidates
+0 | Maryland 1 | Wayne Gilchrest | Republican | 1990 | Re-elected | Wayne Gilchrest (R) 76.67%\nAnn Tamlyn (D) 23.16%
+1 | Maryland 2 | Robert Ehrlich | Republican | 1994 | Retired to run for Governor\nDemocratic gain | Dutch Ruppersberger (D) 54.16%\nHelen Bentley (R) 45.57%
+2 | Maryland 3 | Ben Cardin | Democratic | 1986 | Re-elected | Ben Cardin (D) 65.72%\nScott Conwell (R) 34.18%
+3 | Maryland 4 | Albert Wynn | Democratic | 1992 | Re-elected | Albert Wynn (D) 78.57%\nJohn Kimble (R) 20.82%
+4 | Maryland 5 | Steny Hoyer | Democratic | 1981 | Re-elected | Steny Hoyer (D) 69.27%\nJoseph Crawford (R) 30.52%
+5 | Maryland 6 | Roscoe Bartlett | Republican | 1992 | Re-elected | Roscoe Bartlett (R) 66.11%\nDonald DeArmon (D) 33.80%
+6 | Maryland 7 | Elijah Cummings | Democratic | 1996 | Re-elected | Elijah Cummings (D) 73.53%\nJoseph Ward (R) 26.38%
+7 | Maryland 8 | Connie Morella | Republican | 1986 | Lost re-election\nDemocratic gain | Chris Van Hollen (D) 51.71%\nConnie Morella (R) 47.49%\nStephen Bassett (UN) 0.73%
+Question: congressmen re-elected with at least 60% of the vote
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the congressmen re-elected with at least 60% of the vote, we need to analyze both the summary and the full table.
+
+From the summary:
+- The **Incumbent** column lists the name of the congressmen who were re-elected.
+- The **Result** column provides the percentage of votes they received in the election.
+
+From the full table:
+- The congressmen re-elected with at least 60% of the vote are:
+  1. Ben Cardin in Maryland 3 with 65.72% of the vote.
+  2. Albert Wynn in Maryland 4 with 78.57% of the vote.
+  3. Steny Hoyer in Maryland 5 with 69.27% of the vote.
+  4. Roscoe Bartlett in Maryland 6 with 66.11% of the vote.
+  5. Elijah Cummings in Maryland 7 with 73.53% of the vote.
+
+By combining the information from both the summary (Incumbent and Result columns) and the full table, we can conclude that there are 5 congressmen who were re-elected with at least 60% of the vote.
+
+Final Answer: Ben Cardin, Albert Wynn, Steny Hoyer, Roscoe Bartlett, Elijah Cummings
+[Fallback] Prediction: ben cardin, albert wynn, steny hoyer, roscoe bartlett, elijah cummings
+[Gold Answer] wayne gilchrest,ben cardin,albert wynn,steny hoyer,roscoe bartlett,elijah cummings
+

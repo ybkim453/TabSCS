@@ -1,0 +1,60 @@
+**Column Analysis:**
+
+1. Title:
+   - Data type: Categorical
+   - 4 representative example values: 
+     1. Rural Telecoms Handbook: Equipment and Manufacturers
+     2. Global Turf Wars: Re-Inventing the Telecoms Operator for the Age of Global Competition
+     3. ATM Vendor & Operator Strategies
+     4. Regulating the Telecoms Market: Competition and Innovation in the Broadband Economy
+   - Role: Descriptor
+
+2. Year:
+   - Data type: Numeric
+   - 4 representative example values: 
+     1. 1992
+     2. 1999
+     3. 1993
+     4. 2003
+   - Role: Identifier
+
+3. Authors:
+   - Data type: Categorical
+   - 4 representative example values: 
+     1. Tim Hills, David Cleevely
+     2. David Cleevely, Peter Aknai, Ian Leslie
+     3. David Cleevely
+     4. Tim Hills, David Cleevely, Ross Pow
+   - Role: Descriptor
+
+4. Publisher:
+   - Data type: Categorical
+   - 4 representative example values: 
+     1. Analysys Publications
+     2. Analysis Publications
+     3. Institution of Engineering & Technology
+     4. University of Cambridge
+   - Role: Descriptor
+
+5. Pages:
+   - Data type: Numeric
+   - 4 representative example values: 
+     1. -
+     2. 218
+     3. 180
+     4. 35
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The value in the "Pages" column is 415, which is significantly higher than the other values in the table.
+   - This makes the row an outlier as it deviates from the typical range of page numbers in the table.
+
+2. Row 6:
+   - The value in the "Pages" column is 35, which is much lower than the other values in the table.
+   - This makes the row an outlier as it deviates from the typical range of page numbers in the table.
+
+3. Row 1:
+   - The value in the "Authors" column includes two authors, while the other rows have either one or three authors.
+   - This makes the row slightly different from the majority of entries but not significantly enough to be considered a true outlier.

@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Week:
+   - Data type: Numeric
+   - 4 representative example values: 8, 12, 15, 16
+   - Role: Identifier for the week number of the game
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: Bye, November 22, 1998, December 13, 1998, December 20, 1998
+   - Role: Descriptor for the date of the game
+
+3. TV Time:
+   - Data type: Categorical
+   - 4 representative example values: Bye, FOX 11:00 am MT, FOX 2:05 pm MT
+   - Role: Descriptor for the television broadcast time of the game
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Bye, Washington Redskins, Philadelphia Eagles, New Orleans Saints
+   - Role: Descriptor for the opposing team in the game
+
+5. Result:
+   - Data type: Categorical
+   - 4 representative example values: Bye, W 45–42, W 20–17, W 19–17
+   - Role: Descriptor for the outcome of the game
+
+6. Attendance:
+   - Data type: Numeric
+   - 4 representative example values: nan, 63,435, 62,176, 51,617
+   - Role: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 7:
+   - The values for Week, Date, TV Time, Opponent, Result, and Attendance are all "Bye" or "nan", which are not typical game data entries.
+   - This row is an outlier as it does not contain any actual game information and is different from the majority of the table.
+
+2. Row 15:
+   - The values for Week, Date, TV Time, Opponent, Result, and Attendance are all typical game data entries.
+   - This row is an ordinary row and does not contain any distinctive values that would make it an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Week | Date              | TV Time         | Opponent               | Result   |   Attendance |
+|-------------:|-------:|:------------------|:----------------|:-----------------------|:---------|-------------:|
+|            0 |      1 | September 6 1998  | FOX 1:05 pm MT  | at Dallas Cowboys      | L 38–10  |        63602 |
+|            1 |      2 | September 13 1998 | FOX 1:15 pm MT  | at Seattle Seahawks    | L 33–14  |        57678 |
+|            2 |      3 | September 20 1998 | ESPN 5:15 pm MT | Philadelphia Eagles    | W 17–3   |        39782 |
+|            3 |      4 | September 27 1998 | FOX 10:00 am MT | at St. Louis Rams      | W 20–17  |        55832 |
+|            4 |      5 | October 4 1998    | CBS 1:05 pm MT  | Oakland Raiders        | L 23–20  |        53240 |
+|            5 |      6 | October 11 1998   | FOX 1:05 pm MT  | Chicago Bears          | W 20–7   |        50495 |
+|            6 |      7 | October 18 1998   | FOX 10:00 am MT | at New York Giants     | L 34–7   |        70456 |
+|            7 |      8 | Bye               | Bye             | Bye                    | Bye      |          nan |
+|            8 |      9 | November 1 1998   | FOX 11:00 am MT | at Detroit Lions       | W 17–15  |        66087 |
+|            9 |     10 | November 8 1998   | FOX 2:15 pm MT  | Washington Redskins    | W 29–27  |        45950 |
+|           10 |     11 | November 15 1998  | FOX 2:15 pm MT  | Dallas Cowboys         | L 35–28  |        71670 |
+|           11 |     12 | November 22 1998  | FOX 11:00 am MT | at Washington Redskins | W 45–42  |        63435 |
+|           12 |     13 | November 29 1998  | FOX 11:00 am MT | at Kansas City Chiefs  | L 34–24  |        69613 |
+|           13 |     14 | December 6 1998   | FOX 2:15 pm MT  | New York Giants        | L 23–19  |        46128 |
+|           14 |     15 | December 13 1998  | FOX 11:00 am MT | at Philadelphia Eagles | W 20–17  |        62176 |
+|           15 |     16 | December 20 1998  | FOX 2:05 pm MT  | New Orleans Saints     | W 19–17  |        51617 |
+|           16 |     17 | December 27 1998  | CBS 2:05 pm MT  | San Diego Chargers     | W 16–13  |        71670 |
+
+Generated Reasoning SQL: To determine the number of games lost during the Arizona Cardinals' 1998 season, we need to filter rows where the "Result" column indicates a loss. The "Result" column contains categorical values representing game outcomes. We will count the rows where the result includes "L" to identify losses.
+
+SQL: select count("Result") from T where "Result" like '%L%';
+Generated Final SQL: select count("Result") from T where "Result" like '%L%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   count("Result") |
+|------------------:|
+|                 7 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1998 Arizona Cardinals season
+SQL: select count("Result") from T where "Result" like '%L%';
+
+count("Result")
+7
+Question: how many games were lost during the arizona cardinals 1998 season?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 7
+[Gold Answer] 7
+

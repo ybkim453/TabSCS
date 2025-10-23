@@ -1,0 +1,40 @@
+**Column Analysis:**
+
+1. Name:
+   - Data type: Categorical
+   - 4 representative example values: Ask A Biologist, Awesome Library, HackMath.net, HyperPhysics
+   - Role: Identifier
+
+2. Topic:
+   - Data type: Categorical
+   - 4 representative example values: Biology, All, Mathematics, Physics
+   - Role: Descriptor
+
+3. Cost:
+   - Data type: Numeric
+   - 4 representative example values: Free, Free, Free, $80/year
+   - Role: Measure
+
+4. Target age:
+   - Data type: Categorical
+   - 4 representative example values: 5+, All, 9-18, 15+
+   - Role: Descriptor
+
+5. Advertising:
+   - Data type: Categorical
+   - 4 representative example values: None, Yes - large, None, ?
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 10 (IXL):
+   - The cost value of $80/year is significantly different from the majority of the table which has free costs.
+   - This makes the row an outlier as it stands out in terms of cost compared to the other entries.
+
+2. Row 2 (Awesome Library):
+   - The target age value of "All" is different from the specific age ranges mentioned in other rows.
+   - This makes the row an outlier as it targets all age groups rather than a specific range.
+
+3. Row 13 (Nafham):
+   - The advertising value of "Yes" is different from the majority of the table which has either "None" or "?".
+   - This makes the row an outlier as it indicates a different advertising approach compared to the other entries.

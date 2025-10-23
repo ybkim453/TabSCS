@@ -1,0 +1,65 @@
+**Column Analysis:**
+
+1. Name
+   - Data type: Categorical
+   - 4 representative example values: Solano - 3 (with Cebolla,Cuchillo), Flax-Source, Alumroot, Miera
+   - Role: Identifier for the nuclear test sites
+
+2. Date time (UT)
+   - Data type: Date and time
+   - 4 representative example values: 9 August 1972 13:03:11.04, 21 December 1972 20:00:15.24, 14 February 1973 15:00:30.16, 8 March 1973 16:00:10.19
+   - Role: Descriptor indicating the date and time of the nuclear tests in Coordinated Universal Time (UTC)
+
+3. Local time zone
+   - Data type: Categorical
+   - 4 representative example values: PST (-8 hrs), MST (-7 hrs)
+   - Role: Descriptor indicating the local time zone of the nuclear test site
+
+4. Location
+   - Data type: Categorical
+   - 4 representative example values: NTS Area U3jx, NTS Area U2dj, NTS Area U9cj, NTS Area U7ad
+   - Role: Descriptor specifying the location of the nuclear test site
+
+5. Elevation + height
+   - Data type: Numeric
+   - 4 representative example values: 1,179 m (3,868 ft), 1,296 m (4,252 ft) - 440 m (1,440 ft), 1,264 m (4,147 ft) - 182.88 m (600.0 ft), 1,279 m (4,196 ft) - 568.39 m (1,864.8 ft)
+   - Role: Measure indicating the elevation and height of the nuclear test site
+
+6. Delivery
+   - Data type: Categorical
+   - 4 representative example values: underground shaft
+   - Role: Descriptor specifying the method of delivery for the nuclear test
+
+7. Purpose
+   - Data type: Categorical
+   - 4 representative example values: safety experiment, weapons development, peaceful research
+   - Role: Descriptor indicating the purpose of the nuclear test
+
+8. Yield
+   - Data type: Numeric
+   - 4 representative example values: less than 5 kt, 20 kt, less than 20 kt, 67 kt
+   - Role: Measure indicating the yield (explosive power) of the nuclear test
+
+9. Venting
+   - Data type: Categorical
+   - 4 representative example values: nan, I-131 venting detected, 0
+   - Role: Descriptor indicating the presence or absence of venting during the nuclear test
+
+10. Notes
+   - Data type: Categorical
+   - 4 representative example values: Simultaneous, separate holes., nan, Operation Plowshare - AEC/Gas industry enhancement experiment. Simultaneous, same hole.
+   - Role: Descriptor providing additional notes or details about the nuclear test
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The distinctive value is "I-131 venting detected" in the Venting column.
+   - This row is an outlier because it indicates the detection of I-131 venting, which is not a common occurrence in the majority of the table entries.
+
+2. Row 25 (Index 25):
+   - The distinctive value is "Operation Plowshare - AEC/Gas industry enhancement experiment. Simultaneous, same hole." in the Notes column.
+   - This row is an outlier due to the specific operation mentioned in the Notes column, which differs from the typical nuclear test purposes listed in the table.
+
+3. Row 17 (Index 17):
+   - The distinctive value is "peaceful research" in the Purpose column.
+   - This row is an outlier because it deviates from the common purpose of weapons development for the nuclear tests in the table.

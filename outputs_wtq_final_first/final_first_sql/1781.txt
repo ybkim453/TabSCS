@@ -1,0 +1,119 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1984, 1987, 2003, 2013
+   - Role of the column: Identifier, indicating the year in which the film was released.
+
+2. Film:
+   - Data type: Categorical
+   - 4 representative example values: The Element of Crime, Epidemic, Dogville, Nymphomaniac: Volume I
+   - Role of the column: Descriptor, providing the title of the film.
+
+3. Rotten Tomatoes:
+   - Data type: Numeric (percentage)
+   - 4 representative example values: 77%, 33%, 70%, 79%
+   - Role of the column: Measure, indicating the Rotten Tomatoes rating of the film.
+
+4. Metacritic:
+   - Data type: Numeric (percentage)
+   - 4 representative example values: nan, 66%, 59%, 63%
+   - Role of the column: Measure, indicating the Metacritic rating of the film.
+
+5. IMDb:
+   - Data type: Categorical (rating)
+   - 4 representative example values: 6.9/10, 6.1/10, 8.0/10, 7.2/10
+   - Role of the column: Measure, indicating the IMDb rating of the film.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (The Element of Crime):
+   - The Metacritic value is "nan", which is not a valid percentage and stands out from the other rows.
+   - This row is an outlier due to the missing Metacritic rating, making it distinctive from the majority of the table.
+
+2. Row 2 (Dogville):
+   - The Rotten Tomatoes rating is 70% and the Metacritic rating is 59%, which are lower compared to the other rows.
+   - These values are significantly lower than the other ratings, making this row an outlier in terms of critical reception.
+
+3. Row 1 (Epidemic):
+   - The Rotten Tomatoes rating is 33%, which is the lowest in the table.
+   - While this rating is lower, it is not significantly different from other low ratings, so this row is an ordinary entry and not a special outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Film                    | Rotten Tomatoes   | Metacritic   | IMDb   |
+|-------------:|-------:|:------------------------|:------------------|:-------------|:-------|
+|            0 |   1982 | Images of Liberation    | N/A               | N/A          | 5.1/10 |
+|            1 |   1984 | The Element of Crime    | 77%               | N/A          | 6.9/10 |
+|            2 |   1987 | Epidemic                | 33%               | 66%          | 6.1/10 |
+|            3 |   1991 | Europa                  | 85%               | 66%          | 7.7/10 |
+|            4 |   1996 | Breaking the Waves      | 86%               | 76%          | 7.9/10 |
+|            5 |   1998 | The Idiots              | 70%               | 47%          | 6.9/10 |
+|            6 |   2000 | Dancer in the Dark      | 68%               | 61%          | 8.0/10 |
+|            7 |   2003 | The Five Obstructions   | 88%               | 79%          | 7.5/10 |
+|            8 |   2003 | Dogville                | 70%               | 59%          | 8.0/10 |
+|            9 |   2005 | Manderlay               | 51%               | 46%          | 7.4/10 |
+|           10 |   2006 | The Boss of It All      | 74%               | 71%          | 6.7/10 |
+|           11 |   2009 | Antichrist              | 48%               | 49%          | 6.6/10 |
+|           12 |   2011 | Melancholia             | 77%               | 80%          | 7.1/10 |
+|           13 |   2013 | Nymphomaniac: Volume I  | 77%               | 63%          | 7.5/10 |
+|           14 |   2013 | Nymphomaniac: Volume II | 79%               | 76%          | 7.2/10 |
+
+Generated Reasoning SQL: The summary shows that the "Rotten Tomatoes" column contains numeric values represented as percentages. To find the film that scored 88% on Rotten Tomatoes, we need to filter rows where "Rotten Tomatoes" = '88%'. Since there is only one film with this specific rating, we can directly select the "Film" column.
+SQL: select "Film" from T where "Rotten Tomatoes" = '88%';
+Generated Final SQL: select "Film" from T where "Rotten Tomatoes" = '88%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Film                  |
+|:----------------------|
+| The Five Obstructions |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Lars von Trier
+SQL: select "Film" from T where "Rotten Tomatoes" = '88%';
+
+Film
+The Five Obstructions
+Question: what was the only film to score 88% from rotten tomatoes?
+A: To find the answer to this question, let’s think step by step.
+Prediction: the five obstructions
+[Gold Answer] the five obstructions
+

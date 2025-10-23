@@ -1,0 +1,146 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Alpha-numeric Code:
+   - Data type: Categorical
+   - 4 representative example values: BP5, BP7, SW1, PE2
+   - Role: Identifier for each station
+
+2. Station name English:
+   - Data type: Categorical
+   - 4 representative example values: Phoenix, Petir, Cheng Lim, Meridian
+   - Role: Descriptor for the station name in English
+
+3. Station name Chinese:
+   - Data type: Categorical
+   - 4 representative example values: 凤凰, 柏提, 振林, 丽园
+   - Role: Descriptor for the station name in Chinese
+
+4. Station name Tamil:
+   - Data type: Categorical
+   - 4 representative example values: பீனிக்ஸ், பெட்டீர், செங் லிம், மெரிடியன்
+   - Role: Descriptor for the station name in Tamil
+
+5. Opening:
+   - Data type: Date
+   - 4 representative example values: 6 November 1999, 1 January 2013, 29 January 2005, 20 June 2011
+   - Role: Measure indicating the opening date of the station
+
+**Outlier Row Analysis:**
+
+1. Row 35:
+   - The values in this row are not provided in the partial preview, so it is not possible to determine if they are distinctive or ordinary. Further information is needed to analyze this row.
+
+2. Row 1:
+   - The values in this row (BP5, Phoenix, 凤凰, பீனிக்ஸ், 6 November 1999) are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+3. Row 20:
+   - The values in this row (SW1, Cheng Lim, 振林, செங் லிம், 1 January 2013) are consistent with the majority of the table and are not significantly different from other entries. This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Alpha-numeric Code   | Station name\nEnglish   | Station name\nChinese   | Station name\nTamil   | Opening          |
+|-------------:|:---------------------|:------------------------|:------------------------|:----------------------|:-----------------|
+|            0 | BP1 / NS4            | Choa Chu Kang           | 蔡厝港                  | சுவா சூ காங்               | 6 November 1999  |
+|            1 | BP2                  | South View              | 南山                    | சவுத் வியூ                | 6 November 1999  |
+|            2 | BP3                  | Keat Hong               | 吉丰                    | கியட் ஹோங்                | 6 November 1999  |
+|            3 | BP4                  | Teck Whye               | 德惠                    | டெக் வாய்                 | 6 November 1999  |
+|            4 | BP5                  | Phoenix                 | 凤凰                    | பீனிக்ஸ்                  | 6 November 1999  |
+|            5 | BP6 / DT1            | Bukit Panjang           | 武吉班让                | புக்கிட் பாஞ்சாங்             | 6 November 1999  |
+|            6 | BP7                  | Petir                   | 柏提                    | பெட்டீர்                  | 6 November 1999  |
+|            7 | BP8                  | Pending                 | 秉定                    | பெண்டிங்                  | 6 November 1999  |
+|            8 | BP9                  | Bangkit                 | 万吉                    | பங்கிட்                  | 6 November 1999  |
+|            9 | BP10                 | Fajar                   | 法嘉                    | பஜார்                   | 6 November 1999  |
+|           10 | BP11                 | Segar                   | 实加                    | செகார்                   | 6 November 1999  |
+|           11 | BP12                 | Jelapang                | 泽拉邦                  | ஜேலப்பாங்                 | 6 November 1999  |
+|           12 | BP13                 | Senja                   | 信佳                    | செஞ்சா                   | 6 November 1999  |
+|           13 | BP14                 | Ten Mile Junction       | 十里广场                | பத்தாம் கல் சந்திப்பு         | 6 November 1999  |
+|           14 | STC / NE16           | Sengkang                | 盛港                    | செங்காங்                  | 18 January 2003  |
+|           15 | SE1                  | Compassvale             | 康埔桦                  | கம்பஸ்வேல்                | 18 January 2003  |
+|           16 | SE2                  | Rumbia                  | 棕美                    | ரூம்பியா                  | 18 January 2003  |
+|           17 | SE3                  | Bakau                   | 码高                    | பக்காவ்                  | 18 January 2003  |
+|           18 | SE4                  | Kangkar                 | 港脚                    | கங்கார்                  | 18 January 2003  |
+|           19 | SE5                  | Ranggung                | 兰岗                    | ரங்கோங்                  | 18 January 2003  |
+|           20 | SW1                  | Cheng Lim               | 振林                    | செங் லிம்                 | 1 January 2013   |
+|           21 | SW2                  | Farmway                 | 农道                    | பாம்வே                   | 15 November 2007 |
+|           22 | SW3                  | Kupang                  | 古邦                    | கூப்பாங்                  | TBA              |
+|           23 | SW4                  | Thanggam                | 丹甘                    | தங்கம்                  | 29 January 2005  |
+|           24 | SW5                  | Fernvale                | 芬微                    | பெர்ன்வேல்                 | 29 January 2005  |
+|           25 | SW6                  | Layar                   | 拉雅                    | லாயார்                   | 29 January 2005  |
+|           26 | SW7                  | Tongkang                | 同港                    | தொங்காங்                  | 29 January 2005  |
+|           27 | SW8                  | Renjong                 | 仁宗                    | ரெஞ்சோங்                  | 29 January 2005  |
+|           28 | PTC / NE17           | Punggol                 | 榜鹅                    | பொங்கோல்                  | 29 January 2005  |
+|           29 | PE1                  | Cove                    | 海湾                    | கோவ்                    | 29 January 2005  |
+|           30 | PE2                  | Meridian                | 丽园                    | மெரிடியன்                 | 29 January 2005  |
+|           31 | PE3                  | Coral Edge              | 珊瑚                    | கோரல் எட்ஜ்               | 29 January 2005  |
+|           32 | PE4                  | Riviera                 | 里维拉                  | றிவியாரா                  | 29 January 2005  |
+|           33 | PE5                  | Kadaloor                | 卡达鲁                  | கடலூர்                  | 29 January 2005  |
+|           34 | PE6                  | Oasis                   | 绿洲                    | ஓய்சிஸ்                  | 15 June 2007     |
+|           35 | PE7                  | Damai                   | 达迈                    | தாமி                    | 20 June 2011     |
+|           36 | PW1                  | Sam Kee                 | 三记                    | ஸம் கீ                  | TBA              |
+|           37 | PW2                  | Teck Lee                | 德利                    | டெக் லீ                  | TBA              |
+|           38 | PW3                  | Punggol Point           | 榜鹅坊                  | பொங்கோல் பொஇன்              | TBA              |
+|           39 | PW4                  | Samudera                | 山姆                    | ஸமுதெரா                  | TBA              |
+|           40 | PW5                  | Nibong                  | 尼蒙                    | நிபொங்                   | TBA              |
+|           41 | PW6                  | Sumang                  | 苏芒                    | ஸுமாங்                   | TBA              |
+|           42 | PW7                  | Soo Teck                | 树德                    | ஸூ டெக்                  | TBA              |
+
+Generated Reasoning SQL: The relevant column for this question is the "Opening" column, which contains the date the station was opened. 
+To find the LRT station that was open on 1 January 2013, we need to filter rows where the "Opening" date matches '1 January 2013'.
+Since the "Opening" column is of type Date, we can directly compare it to the date '1 January 2013'.
+SQL: select "Station name\nEnglish" from T where "Opening" = '1 January 2013';
+Generated Final SQL: select "Station name\nEnglish" from T where "Opening" = '1 January 2013';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Station name\nEnglish   |
+|:------------------------|
+| Cheng Lim               |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of Singapore LRT stations
+SQL: select "Station name\nEnglish" from T where "Opening" = '1 January 2013';
+
+Station name\nEnglish
+Cheng Lim
+Question: which lrt station was open on 1 january 2013?
+A: To find the answer to this question, let’s think step by step.
+Prediction: cheng lim
+[Gold Answer] cheng lim
+

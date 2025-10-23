@@ -1,0 +1,129 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 2009-10, 2006-07, 1999-00, 1998-99
+   - Role: Identifier for the specific season of the footballer's performance
+
+2. Footballer
+   - Data type: Categorical
+   - 4 representative example values: Katlego Mphela, Godfrey Sapula, Siyabonga Nomvethe, Roger Feutmba
+   - Role: Descriptor for the name of the footballer
+
+3. Club
+   - Data type: Categorical
+   - 4 representative example values: Mamelodi Sundowns, Kaizer Chiefs, Bush Bucks
+   - Role: Descriptor for the club the footballer belongs to
+
+4. Position
+   - Data type: Categorical
+   - 4 representative example values: FW, MF
+   - Role: Descriptor for the playing position of the footballer
+
+5. Nationality
+   - Data type: Categorical
+   - 4 representative example values: South Africa, Cameroon, Zimbabwe
+   - Role: Descriptor for the nationality of the footballer
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values for Season, Footballer, Club, Position, and Nationality are all consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+2. Row 16:
+   - The values for Season, Footballer, Club, Position, and Nationality are all consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+3. Row 0:
+   - The values for Season, Footballer, Club, Position, and Nationality are all consistent with the majority of the table.
+   - This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number | Season   | Footballer         | Club              | Position   | Nationality   |
+|-------------:|:---------|:-------------------|:------------------|:-----------|:--------------|
+|            0 | 2012-13  | Itumeleng Khune    | Kaizer Chiefs     | GK         | South Africa  |
+|            1 | 2011-12  | Siyabonga Nomvethe | Moroka Swallows   | FW         | South Africa  |
+|            2 | 2010-11  | Thulani Serero     | Ajax Cape Town    | MF         | South Africa  |
+|            3 | 2009-10  | Katlego Mphela     | Mamelodi Sundowns | FW         | South Africa  |
+|            4 | 2008-09  | Teko Modise        | Orlando Pirates   | MF         | South Africa  |
+|            5 | 2007-08  | Itumeleng Khune    | Kaizer Chiefs     | GK         | South Africa  |
+|            6 | 2006-07  | Godfrey Sapula     | Mamelodi Sundowns | MF         | South Africa  |
+|            7 | 2005-06  | Surprise Moriri    | Mamelodi Sundowns | MF         | South Africa  |
+|            8 | 2004-05  | Sandile Ndlovu     | Dynamos           | FW         | South Africa  |
+|            9 | 2003-04  | Tinashe Nengomasha | Kaizer Chiefs     | MF         | Zimbabwe      |
+|           10 | 2002-03  | Moeneeb Josephs    | Ajax Cape Town    | GK         | South Africa  |
+|           11 | 2001-02  | Jabu Pule          | Kaizer Chiefs     | MF         | South Africa  |
+|           12 | 2000-01  | Benjani Mwaruwari  | Jomo Cosmos       | FW         | Zimbabwe      |
+|           13 | 1999-00  | Siyabonga Nomvethe | Kaizer Chiefs     | FW         | South Africa  |
+|           14 | 1998-99  | Roger Feutmba      | Mamelodi Sundowns | MF         | Cameroon      |
+|           15 | 1997-98  | Raphael Chukwu     | Mamelodi Sundowns | FW         | Nigeria       |
+|           16 | 1996-97  | Wilfred Mugeyi     | Bush Bucks        | FW         | Zimbabwe      |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Season" column is categorical and can be used to filter rows. To find the next footballer listed after the season 1996-97, we need to identify the footballer in the row immediately following the season 1996-97. Since the table is ordered by season, we can simply select the footballer in the row following the specified season.
+SQL: select "Footballer" from T where "Season" = '1996-97' limit 1 offset 1;
+Generated Final SQL: select "Footballer" from T where "Season" = '1996-97' limit 1 offset 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: PSL Players' Player of the Season (row_number, Season, Footballer, Club, Position, Nationality)
+
+row_number | Season | Footballer | Club | Position | Nationality
+0 | 2012-13 | Itumeleng Khune | Kaizer Chiefs | GK | South Africa
+1 | 2011-12 | Siyabonga Nomvethe | Moroka Swallows | FW | South Africa
+2 | 2010-11 | Thulani Serero | Ajax Cape Town | MF | South Africa
+3 | 2009-10 | Katlego Mphela | Mamelodi Sundowns | FW | South Africa
+4 | 2008-09 | Teko Modise | Orlando Pirates | MF | South Africa
+5 | 2007-08 | Itumeleng Khune | Kaizer Chiefs | GK | South Africa
+6 | 2006-07 | Godfrey Sapula | Mamelodi Sundowns | MF | South Africa
+7 | 2005-06 | Surprise Moriri | Mamelodi Sundowns | MF | South Africa
+8 | 2004-05 | Sandile Ndlovu | Dynamos | FW | South Africa
+9 | 2003-04 | Tinashe Nengomasha | Kaizer Chiefs | MF | Zimbabwe
+10 | 2002-03 | Moeneeb Josephs | Ajax Cape Town | GK | South Africa
+11 | 2001-02 | Jabu Pule | Kaizer Chiefs | MF | South Africa
+12 | 2000-01 | Benjani Mwaruwari | Jomo Cosmos | FW | Zimbabwe
+13 | 1999-00 | Siyabonga Nomvethe | Kaizer Chiefs | FW | South Africa
+14 | 1998-99 | Roger Feutmba | Mamelodi Sundowns | MF | Cameroon
+15 | 1997-98 | Raphael Chukwu | Mamelodi Sundowns | FW | Nigeria
+16 | 1996-97 | Wilfred Mugeyi | Bush Bucks | FW | Zimbabwe
+Question: after season 1996-97, who is the next footballer listed?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the footballer listed after the 1996-97 season, we need to carefully examine the data provided in the full table.
+
+From the table:
+- The footballers are listed chronologically based on the season, with the earliest season at the bottom and the latest season at the top.
+
+Given this structure, the footballer listed after the 1996-97 season would be the player associated with the next row in the table, which is for the 1997-98 season.
+
+Therefore, the footballer listed after the 1996-97 season is Raphael Chukwu.
+
+Final Answer: Raphael Chukwu
+[Fallback] Prediction: raphael chukwu
+[Gold Answer] raphael chukwu
+

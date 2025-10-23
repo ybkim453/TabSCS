@@ -1,0 +1,123 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Series Number:
+   - Data type: Numeric
+   - 4 representative example values: 6, 7, 8, 11
+   - Role: Identifier for the series within the table
+
+2. Season Number:
+   - Data type: Numeric
+   - 4 representative example values: 6, 7, 8, 11
+   - Role: Identifier for the season within the series
+
+3. Episode Title:
+   - Data type: Categorical
+   - 4 representative example values: Switcheroo, Front Page, Special FX-Ation, JB's Big Break
+   - Role: Descriptor for the title of each episode
+
+4. Premiere Date:
+   - Data type: Date
+   - 4 representative example values: November 29, 1998, January 17, 1999, January 24, 1999, February 21, 1999
+   - Role: Measure of when each episode premiered
+
+5. Production Code:
+   - Data type: Numeric
+   - 4 representative example values: 106, 107, 108, 111
+   - Role: Identifier for the production code of each episode
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values for Series Number (6), Season Number (6), and Production Code (106) are not distinctive and are ordinary within the table. This row is an ordinary row and requires no special handling.
+
+2. Row 10:
+   - The values for Series Number (13), Season Number (13), and Production Code (113) are not distinctive and are ordinary within the table. This row is an ordinary row and requires no special handling.
+
+3. Row 12:
+   - The values for Series Number (15), Season Number (15), and Production Code (115) are not distinctive and are ordinary within the table. This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Series Number |   Season Number | Episode Title         | Premiere Date       |   Production Code |
+|-------------:|----------------:|----------------:|:----------------------|:--------------------|------------------:|
+|            0 |               1 |               1 | Going Up!             | 1998-10-25 00:00:00 |               101 |
+|            1 |               2 |               2 | Who's The Man         | 1998-11-01 00:00:00 |               102 |
+|            2 |               3 |               3 | Vootle-Muck-A-Heev    | 1998-11-08 00:00:00 |               103 |
+|            3 |               4 |               4 | Close Encounters      | 1998-11-15 00:00:00 |               104 |
+|            4 |               5 |               5 | Hurricane Jules       | 1998-11-22 00:00:00 |               105 |
+|            5 |               6 |               6 | Switcheroo            | 1998-11-29 00:00:00 |               106 |
+|            6 |               7 |               7 | Front Page            | 1999-01-17 00:00:00 |               107 |
+|            7 |               8 |               8 | Special FX-Ation      | 1999-01-24 00:00:00 |               108 |
+|            8 |               9 |               9 | The Famous Stone Gold | 1999-01-31 00:00:00 |               109 |
+|            9 |              10 |              10 | Kiss And Tell         | 1999-02-07 00:00:00 |               110 |
+|           10 |              11 |              11 | JB's Big Break        | 1999-02-21 00:00:00 |               111 |
+|           11 |              12 |              12 | Bottom's Up           | 1999-03-07 00:00:00 |               112 |
+|           12 |              13 |              13 | Hot Dog               | 1999-03-14 00:00:00 |               113 |
+
+Generated Reasoning SQL: To determine the episode that came next after "Front Page", we need to find the episode with the next sequential season number and production code. 
+First, we identify the row corresponding to the "Front Page" episode to extract the season number and production code. 
+Then, we filter the rows to find the episode with the next season number and production code values.
+It is important to note that we are assuming the production codes are sequential for each season.
+SQL: 
+SELECT "Episode Title" 
+FROM T 
+WHERE "Season Number" = (SELECT "Season Number" FROM T WHERE "Episode Title" = 'Front Page') + 1 
+AND "Production Code" = (SELECT "Production Code" FROM T WHERE "Episode Title" = 'Front Page' );
+Generated Final SQL: SELECT "Episode Title" FROM T WHERE "Season Number" = (SELECT "Season Number" FROM T WHERE "Episode Title" = 'Front Page') + 1 AND "Production Code" = (SELECT "Production Code" FROM T WHERE "Episode Title" = 'Front Page' );
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: List of The Famous Jett Jackson episodes (row_number, Series Number, Season Number, Episode Title, Premiere Date, Production Code)
+
+row_number | Series Number | Season Number | Episode Title | Premiere Date | Production Code
+0 | 1 | 1 | Going Up! | 1998-10-25 00:00:00 | 101
+1 | 2 | 2 | Who's The Man | 1998-11-01 00:00:00 | 102
+2 | 3 | 3 | Vootle-Muck-A-Heev | 1998-11-08 00:00:00 | 103
+3 | 4 | 4 | Close Encounters | 1998-11-15 00:00:00 | 104
+4 | 5 | 5 | Hurricane Jules | 1998-11-22 00:00:00 | 105
+5 | 6 | 6 | Switcheroo | 1998-11-29 00:00:00 | 106
+6 | 7 | 7 | Front Page | 1999-01-17 00:00:00 | 107
+7 | 8 | 8 | Special FX-Ation | 1999-01-24 00:00:00 | 108
+8 | 9 | 9 | The Famous Stone Gold | 1999-01-31 00:00:00 | 109
+9 | 10 | 10 | Kiss And Tell | 1999-02-07 00:00:00 | 110
+10 | 11 | 11 | JB's Big Break | 1999-02-21 00:00:00 | 111
+11 | 12 | 12 | Bottom's Up | 1999-03-07 00:00:00 | 112
+12 | 13 | 13 | Hot Dog | 1999-03-14 00:00:00 | 113
+Question: what episode came next after "front page"?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate the row for the episode "Front Page" in the full table.  
+From the table, we can see that "Front Page" is episode 7 in season 7, with a premiere date of 1999-01-17.  
+Next, we need to look for the episode that came after "Front Page" in season 7.  
+By examining the table, we can see that the episode that came after "Front Page" is "Special FX-Ation", which is episode 8 in season 7.  
+
+Therefore, the episode that came next after "Front Page" is "Special FX-Ation".
+
+Final Answer: Special FX-Ation
+[Fallback] Prediction: special fx-ation
+[Gold Answer] special fx-ation
+

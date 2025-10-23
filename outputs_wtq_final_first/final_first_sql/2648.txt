@@ -1,0 +1,108 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Competition
+   - Data type: Categorical
+   - 4 representative example values: National Rugby League, Super Rugby, State of Origin series, Women's National Basketball League
+   - Role: Identifier for the type of competition
+
+2. Total spectatorship
+   - Data type: Numeric
+   - 4 representative example values: 3,345,248, 773,940, 186,607, 77,944
+   - Role: Measure of the total number of spectators for each competition
+
+3. Average match attendance
+   - Data type: Numeric
+   - 4 representative example values: 16,643, 19,348, 62,202, nan
+   - Role: Measure of the average attendance per match for each competition
+
+4. Year
+   - Data type: Numeric
+   - 4 representative example values: 2013, 2012, 2011, 2010/2011
+   - Role: Identifier for the year of the competition
+
+**Outlier Row Analysis:**
+
+1. Row 8 (Women's National Basketball League)
+   - The value "nan" in the Average match attendance column makes this row an outlier.
+   - This row is an outlier due to the missing data in the Average match attendance column, which is not a typical value for the dataset.
+
+2. Row 7 (State of Origin series)
+   - The Average match attendance value of 62,202 is significantly higher compared to the other competitions.
+   - This row is an outlier due to the unusually high average match attendance for the State of Origin series, making it stand out from the rest of the data.
+
+=== Full Table Preview ===
+|   row_number | Competition                        |   Total spectatorship |   Average match attendance |   Year |
+|-------------:|:-----------------------------------|----------------------:|---------------------------:|-------:|
+|            0 | A-League                           |               1772133 |                      12707 |   2012 |
+|            1 | Australian Football League         |               6931085 |                      33484 |   2013 |
+|            2 | Big Bash League                    |                550262 |                      17750 |   2011 |
+|            3 | National Basketball League         |                547021 |                       4031 |   2010 |
+|            4 | National Rugby League              |               3345248 |                      16643 |   2013 |
+|            5 | Super Rugby                        |                773940 |                      19348 |   2012 |
+|            6 | Rugby Championship                 |                133532 |                      44511 |   2012 |
+|            7 | State of Origin series             |                186607 |                      62202 |   2011 |
+|            8 | Women's National Basketball League |                 77944 |                        nan |   2010 |
+
+Generated Reasoning SQL: The summary provides information about the "Competition" column, which is categorical, and the "Average match attendance" column, which is numeric. To find the sport with an average match attendance of less than 10,000, we need to filter the rows based on this condition.
+
+SQL: 
+select "Competition" 
+from T 
+where "Average match attendance" < 10000;
+Generated Final SQL: select "Competition" from T where "Average match attendance" < 10000;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Competition                |
+|:---------------------------|
+| National Basketball League |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Sport in Australia
+SQL: select "Competition" from T where "Average match attendance" < 10000;
+
+Competition
+National Basketball League
+Question: what is the only sport that has a listed average match attendance of less than 10,000?
+A: To find the answer to this question, let’s think step by step.
+Prediction: national basketball league
+[Gold Answer] national basketball league
+

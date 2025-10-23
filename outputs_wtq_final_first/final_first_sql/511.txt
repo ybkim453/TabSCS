@@ -1,0 +1,145 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1998, 2003, 2005, 2007
+   - Role: Identifier for the year the data was recorded
+
+2. Manufacturer:
+   - Data type: Categorical
+   - 4 representative example values: NABI, Van Hool
+   - Role: Descriptor for the manufacturer of the vehicle
+
+3. Model:
+   - Data type: Categorical
+   - 4 representative example values: 416, A330, A300FC, AG300
+   - Role: Descriptor for the model of the vehicle
+
+4. Length (feet):
+   - Data type: Numeric
+   - 4 representative example values: 40, 60
+   - Role: Measure of the length of the vehicle in feet
+
+5. Quantity:
+   - Data type: Numeric
+   - 4 representative example values: 133, 110, 3, 15
+   - Role: Measure of the quantity of vehicles
+
+6. Fleet Series:
+   - Data type: Categorical
+   - 4 representative example values: 3001-3067, 3101-3166*, 1001-1110, FC1-FC3
+   - Role: Descriptor for the series of the fleet
+
+7. Fuel Propulsion:
+   - Data type: Categorical
+   - 4 representative example values: Diesel, Hydrogen
+   - Role: Descriptor for the fuel propulsion type of the vehicle
+
+8. Powertrain:
+   - Data type: Categorical
+   - 4 representative example values: Cummins M11E\nAllison B400R, Cummins ISM\nVoith D864.3E, nan, Cummins ISL\nVoith D864.5
+   - Role: Descriptor for the powertrain of the vehicle
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 0:
+   - The values in this row are consistent with the majority of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 1:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary values and do not make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Manufacturer   | Model               | Length (feet)    |   Quantity | Fleet Series         | Fuel Propulsion        | Powertrain                                |
+|-------------:|-------:|:---------------|:--------------------|:-----------------|-----------:|:---------------------|:-----------------------|:------------------------------------------|
+|            0 |   1996 | New Flyer      | D60                 | 60 (articulated) |         30 | 1901-1930*           | Diesel                 | Detroit Diesel Series 50\nAllison B400R   |
+|            1 |   1998 | NABI           | 416                 | 40               |        133 | 3001-3067 3101-3166* | Diesel                 | Cummins M11E\nAllison B400R               |
+|            2 |   1999 | NABI           | 40-LFW              | 40               |         44 | 4001-4044            | Diesel                 |                                           |
+|            3 |   2000 | NABI           | 40-LFW              | 40               |         23 | 7201-7223            | Diesel                 | Cummins ISM\nAllison B400R                |
+|            4 |   2000 | MCI            | D4500               | 45               |         30 | 6001-6030            | Diesel                 |                                           |
+|            5 |   2001 | MCI            | D4500               | 45               |         10 | 6031-6040            | Diesel                 |                                           |
+|            6 |   2003 | MCI            | D4500               | 45               |         39 | 6041-6079            | Diesel                 |                                           |
+|            7 |   2003 | NABI           | 40-LFW              | 40               |         46 | 4051-4090            | Diesel                 | Cummins ISL\nAllison B400R                |
+|            8 |   2003 | Van Hool       | A330                | 40               |        110 | 1001-1110            | Diesel                 | Cummins ISM\nVoith D864.3E                |
+|            9 |   2003 | Van Hool       | AG300               | 60               |         57 | 2001-2057            | Diesel                 | Cummins ISM\nVoith D864.3E                |
+|           10 |   2005 | Van Hool       | A300FC              | 40               |          3 | FC1-FC3              | Hydrogen               |                                           |
+|           11 |   2006 | Van Hool       | A300K               | 30               |         50 | 5001-5050            | Diesel                 | Cummins ISB\nVoith D864.3E                |
+|           12 |   2007 | Van Hool       | AG300               | 60               |         10 | 2101-2110            | Diesel                 | Cummins ISL\nVoith D864.3E                |
+|           13 |   2007 | Van Hool       | AG300               | 60               |         15 | 2151-2165            | Diesel                 | Cummins ISM\nVoith D864.3E                |
+|           14 |   2008 | Van Hool       | A300L               | 40               |         27 | 1201-1227            | Diesel                 | Cummins ISL\nVoith D864.5                 |
+|           15 |   2008 | Van Hool       | A300K               | 30               |          1 | 5099                 | Diesel-electric hybrid |                                           |
+|           16 |   2008 | Van Hool       | A300K               | 30               |         39 | 5101-5139            | Diesel                 | Cummins ISB\nVoith D854.5                 |
+|           17 |   2010 | Van Hool       | AG300               | 60               |          9 | 2191-2199            | Diesel                 | Cummins ISL\nVoith D864.5                 |
+|           18 |   2010 | Van Hool       | A300L FC            | 40               |         12 | FC4-FC16             | Hydrogen               |                                           |
+|           19 |   2013 | Gillig         | Low-floor Advantage | 40               |         65 | 1301-1365            | Diesel                 | Cummins ISL 280 HP \nAllison B400 6-speed |
+|           20 |   2013 | New Flyer      | Xcelsior D60        | 60               |         23 | 2201-2223            | Diesel                 | Cummins ISL 330 HP\nAllison B400 6-speed  |
+|           21 |   2013 | Gillig         | Low-floor Advantage | 40               |         55 | 6101-6155            | Diesel                 | Cummins ISL 280 HP\nAllison B400 6-speed  |
+
+Generated Reasoning SQL: Explanation: To find the model that has the same quantity as the New Flyer D60, we need to first determine the quantity of the New Flyer D60 and then find the model with the same quantity. We will filter the rows where the model is not D60 and the quantity matches that of the New Flyer D60.
+
+SQL: 
+SELECT "Model"
+FROM T
+WHERE "Quantity" = (SELECT "Quantity" FROM T WHERE "Model" = 'D60' AND "Manufacturer" = 'New Flyer')
+AND "Model" != 'D60';
+Generated Final SQL: SELECT "Model" FROM T WHERE "Quantity" = (SELECT "Quantity" FROM T WHERE "Model" = 'D60' AND "Manufacturer" = 'New Flyer') AND "Model" != 'D60';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Model   |
+|:--------|
+| D4500   |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: AC Transit
+SQL: SELECT "Model" FROM T WHERE "Quantity" = (SELECT "Quantity" FROM T WHERE "Model" = 'D60' AND "Manufacturer" = 'New Flyer') AND "Model" != 'D60';
+
+SQL Execution Result:
+Model
+D4500
+
+Question: what model has the same quantity as the new flyer d60?
+A: To find the answer to this question, let’s think step by step.
+Prediction: d4500
+[Gold Answer] mci d4500
+

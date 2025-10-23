@@ -1,0 +1,124 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Opus
+   - Data type: Numeric
+   - 4 representative example values: 4, 6, 7, 12a
+   - Role: Identifier for the musical compositions
+
+2. Title
+   - Data type: Categorical
+   - 4 representative example values: Bruder Lustig, Banadietrich, Schwarzschwanenreich, Das Liebesopfer
+   - Role: Descriptor for the titles of the musical compositions
+
+3. Sub­divisions
+   - Data type: Categorical
+   - 4 representative example values: 3 acts, 4 acts
+   - Role: Descriptor for the number of acts in the musical compositions
+
+4. Compo-sition
+   - Data type: Numeric
+   - 4 representative example values: 1904, 1909, 1910, 1929
+   - Role: Measure for the year of composition
+
+5. Première date
+   - Data type: Categorical
+   - 4 representative example values: 13 October 1905, 23 January 1910, 5 November 1918, 29 April 1984
+   - Role: Descriptor for the premiere dates of the musical compositions
+
+6. Place, theatre
+   - Data type: Categorical
+   - 4 representative example values: Hamburg, Stadttheater, Karlsruhe, Hoftheater, Kiel
+   - Role: Descriptor for the places and theatres where the musical compositions premiered
+
+**Outlier Row Analysis:**
+
+1. Row 11
+   - The row with Opus 18 has a premiere date of 29 April 1984, which is significantly later than the other premiere dates in the table. This makes it an outlier in terms of premiere date.
+
+2. Row 17
+   - The row with Opus 18 was completed by Hans Peter Mohr, which is different from the composer of the other compositions in the table. This makes it an outlier in terms of composer.
+
+3. Row 3
+   - The row with Opus 7 has a premiere date of 5 November 1918, which is significantly later than the other premiere dates in the table. This makes it an outlier in terms of premiere date.
+
+=== Full Table Preview ===
+|   row_number |   Opus | Title                                              | Sub­divisions        |   Compo-sition | Première date       | Place, theatre                                           |
+|-------------:|-------:|:---------------------------------------------------|:--------------------|---------------:|:--------------------|:---------------------------------------------------------|
+|            0 |      1 | Der Bärenhäuter                                    | 3 acts              |           1898 | 1899-01-22 00:00:00 | Munich Hofopera                                          |
+|            1 |      2 | Herzog Wildfang                                    | 3 acts              |           1900 | 1901-03-23 00:00:00 | Munich Hofopera                                          |
+|            2 |      3 | Der Kobold                                         | 3 acts              |           1903 | 1904-01-29 00:00:00 | Hamburg Stadttheater                                     |
+|            3 |      4 | Bruder Lustig                                      | 3 acts              |           1904 | 1905-10-13 00:00:00 | Hamburg Stadttheater                                     |
+|            4 |      5 | Sternengebot                                       | prologue and 3 acts |           1906 | 1908-01-21 00:00:00 | Hamburg Stadttheater                                     |
+|            5 |      6 | Banadietrich                                       | 3 acts              |           1909 | 1910-01-23 00:00:00 | Karlsruhe Hoftheater                                     |
+|            6 |      7 | Schwarzschwanenreich                               | 3 acts              |           1910 | 1918-11-05 00:00:00 | Karlsruhe Hoftheater                                     |
+|            7 |      8 | Sonnenflammen                                      | 3 acts              |           1912 | 1918-10-30 00:00:00 | Darmstadt Hoftheater                                     |
+|            8 |      9 | Der Heidenkönig                                    | prologue and 3 acts |           1913 | 1933-12-16 00:00:00 | Cologne Städtische Bühnen                                |
+|            9 |     10 | Der Friedensengel                                  | 3 acts              |           1914 | 1926-03-04 00:00:00 | Karlsruhe Badisches Landestheater                        |
+|           10 |     11 | An allem ist Hütchen Schuld!                       | 3 acts              |           1915 | 1917-12-06 00:00:00 | Stuttgart Hofopera                                       |
+|           11 |     12 | Das Liebesopfer (libretto only no music completed) | 4 acts              |           1917 | NaT                 |                                                          |
+|           12 |     13 | Der Schmied von Marienburg                         | 3 acts              |           1920 | 1920-12-16 00:00:00 | Rostock Städtische Bühnen                                |
+|           13 |     14 | Rainulf und Adelasia                               | 3 acts              |           1922 | 1923-01-01 00:00:00 | Rostock (prelude only)                                   |
+|           14 |     15 | Die heilige Linde                                  | 3 acts              |           1927 | 2001-01-01 00:00:00 | Keulen (prelude only)                                    |
+|           15 |     16 | Wahnopfer                                          | 3 acts              |           1928 | 1994-01-01 00:00:00 | Rudolstadt Heidecksburg only libretto and Act 1 finished |
+|           16 |     17 | Walamund (libretto only no music completed)        | 3 acts              |           1928 | NaT                 |                                                          |
+|           17 |     18 | Das Flüchlein das Jeder mitbekam                   | 3 acts              |           1929 | 1984-04-29 00:00:00 | Kiel (completed by Hans Peter Mohr)                      |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Compo-sition" column contains numeric values representing the year of composition for each opera. To find Wagner's first opera, we need to identify the minimum value in the "Compo-sition" column. Since the column is already numeric, we can directly compare the values without casting.
+SQL: SELECT MIN("Compo-sition") FROM T;
+Generated Final SQL: SELECT MIN("Compo-sition") FROM T;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   MIN("Compo-sition") |
+|----------------------:|
+|                  1898 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of operas by Siegfried Wagner
+SQL: SELECT MIN("Compo-sition") FROM T;
+
+MIN("Compo-sition")
+1898
+Question: what year was wagner's first opera composed?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1898
+[Gold Answer] 1898
+

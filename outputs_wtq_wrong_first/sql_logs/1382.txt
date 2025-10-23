@@ -1,0 +1,140 @@
+=== Table ID ===
+csv/204-csv/372.tsv
+
+=== Question ===
+how many websites are free of advertising?
+
+=== Sub-table Preview ===
+| Name            | Topic                                                                   | Cost     | Target age   | Advertising   |
+|:----------------|:------------------------------------------------------------------------|:---------|:-------------|:--------------|
+| Ask A Biologist | Biology                                                                 | Free     | 5+           | None          |
+| Awesome Library | All                                                                     | Free     | All          | Yes - large   |
+| HackMath.net    | Mathematics                                                             | Free     | 9-18         | None          |
+| HyperPhysics    | Physics                                                                 | Free     | 15+          | None          |
+| IXL             | Math                                                                    | $80/year | 4-12         | ?             |
+| Nafham          | Multidisciplinary 5-20min K-12 school video lessons for Arabic students | Free     | 6-18         | Yes           |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Name:
+   - Data type: Categorical
+   - 4 representative example values: Ask A Biologist, Awesome Library, HackMath.net, HyperPhysics
+   - Role: Identifier
+
+2. Topic:
+   - Data type: Categorical
+   - 4 representative example values: Biology, All, Mathematics, Physics
+   - Role: Descriptor
+
+3. Cost:
+   - Data type: Numeric
+   - 4 representative example values: Free, Free, Free, $80/year
+   - Role: Measure
+
+4. Target age:
+   - Data type: Categorical
+   - 4 representative example values: 5+, All, 9-18, 15+
+   - Role: Descriptor
+
+5. Advertising:
+   - Data type: Categorical
+   - 4 representative example values: None, Yes - large, None, ?
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 10 (IXL):
+   - The cost value of $80/year is significantly different from the majority of the table which has free costs.
+   - This makes the row an outlier as it stands out in terms of cost compared to the other entries.
+
+2. Row 2 (Awesome Library):
+   - The target age value of "All" is different from the specific age ranges mentioned in other rows.
+   - This makes the row an outlier as it targets all age groups rather than a specific range.
+
+3. Row 13 (Nafham):
+   - The advertising value of "Yes" is different from the majority of the table which has either "None" or "?".
+   - This makes the row an outlier as it indicates a different advertising approach compared to the other entries.
+
+=== Full Table Preview ===
+|   row_number | Name                                | Topic                                                                                                                                                                                              | Cost            | Target age   | Advertising     |
+|-------------:|:------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|:-------------|:----------------|
+|            0 | Ask A Biologist                     | Biology                                                                                                                                                                                            | Free            | 5+           | None            |
+|            1 | Archimedes-lab.org                  | Mathematics                                                                                                                                                                                        | Free            | 10+          | Yes - limited   |
+|            2 | Awesome Library                     | All                                                                                                                                                                                                | Free            | All          | Yes - large     |
+|            3 | Bitesize by the BBC                 | Art & Design Business Studies Design & Technology DiDA Drama English English Literature French Geography German History ICT Irish Maths Music Physical Education Religious Studies Science Spanish | Free            | 5-16         | None            |
+|            4 | BrainPop                            | Science Social studies English Maths Art & Music Health Technology                                                                                                                                 | from US$75/year | 4-17         | None            |
+|            5 | Cut-the-Knot                        | Maths                                                                                                                                                                                              | Free            | 8+           | Yes - extensive |
+|            6 | Fact Monster                        | World & News U.S. People English Science Math & Money Sports                                                                                                                                       | Free            | 4-14 (K-8)   | Yes             |
+|            7 | Geometry from the Land of the Incas | Geometry                                                                                                                                                                                           | Free            | 12+          | Yes - extensive |
+|            8 | HackMath.net                        | Mathematics                                                                                                                                                                                        | Free            | 9-18         | None            |
+|            9 | HyperPhysics                        | Physics                                                                                                                                                                                            | Free            | 15+          | None            |
+|           10 | IXL                                 | Math                                                                                                                                                                                               | $80/year        | 4-12         | ?               |
+|           11 | Le Patron                           | French                                                                                                                                                                                             | Free            | 12+          | Yes             |
+|           12 | LearnAlberta.ca                     | Everything (mainly aimed at teachers)                                                                                                                                                              | Free            | 5-18         | No              |
+|           13 | Nafham                              | Multidisciplinary 5-20min K-12 school video lessons for Arabic students                                                                                                                            | Free            | 6-18         | Yes             |
+|           14 | Starfall.com                        | Reading                                                                                                                                                                                            | Free            | 2-9          | None            |
+|           15 | Smartygames.com                     | Math Games Reading Art Word Scramble Spanish Puzzles Kids Sudoku and more                                                                                                                          | Free            | 2-9          | None            |
+|           16 | WatchKnowLearn                      | All                                                                                                                                                                                                | Free            | 2-17         | None            |
+
+Generated Reasoning SQL: Explanation: To determine the number of websites that are free of advertising, we need to filter rows where the "Advertising" column is equal to "None". The summary indicates that the "Advertising" column is categorical, and the relevant value for this question is "None" which represents websites without advertising.
+
+SQL: SELECT COUNT(*) FROM T WHERE "Advertising" = 'None';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Advertising" = 'None';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          8 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Comparison of educational websites for children
+SQL: SELECT COUNT(*) FROM T WHERE "Advertising" = 'None';
+
+SQL Execution Result:
+COUNT(*)
+8
+
+Question: how many websites are free of advertising?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 8
+[Gold Answer] 9
+

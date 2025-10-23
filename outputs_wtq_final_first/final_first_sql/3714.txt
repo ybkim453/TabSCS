@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, nan (missing data), ...
+   - Role: Identifier
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: October 1875, March 1947, Normal / Avg flow, ...
+   - Role: Descriptor
+
+3. Level at Trent Bridge (m)
+   - Data type: Numeric
+   - 4 representative example values: 24.38, 24.3, 20.7, ...
+   - Role: Measure
+
+4. Level at Trent Bridge (ft)
+   - Data type: Numeric
+   - 4 representative example values: 80, 79.7, 68, ...
+   - Role: Measure
+
+5. Peak Flow (m3/s)
+   - Data type: Numeric
+   - 4 representative example values: 1,274, 1,107, 84, ...
+   - Role: Measure
+
+6. Peak Flow (cfs)
+   - Data type: Numeric
+   - 4 representative example values: 45,000, 39,100, 3,000, ...
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+- Row 5:
+  - The values in this row are significantly higher than the normal/average flow values in the table.
+  - The Peak Flow values are much larger compared to the other rows, indicating an atypical event.
+  - Therefore, this row is an outlier and requires special attention.
+
+=== Full Table Preview ===
+|   row_number |   Rank\n | Date\n            |   Level at Trent Bridge\nm |   Level at Trent Bridge\nft |   Peak Flow\nm3/s |   Peak Flow\ncfs |
+|-------------:|---------:|:------------------|---------------------------:|----------------------------:|------------------:|-----------------:|
+|            0 |        1 | February 1795     |                      24.55 |                        80.5 |              1416 |            50000 |
+|            1 |        2 | October 1875      |                      24.38 |                        80   |              1274 |            45000 |
+|            2 |        3 | March 1947        |                      24.3  |                        79.7 |              1107 |            39100 |
+|            3 |        4 | November 1852     |                      24.26 |                        79.6 |              1082 |            38200 |
+|            4 |        5 | November 2000     |                      23.8  |                        78.1 |              1019 |            36000 |
+|            5 |      nan | Normal / Avg flow |                      20.7  |                        68   |                84 |             3000 |
+
+Generated Reasoning SQL: The summary provides information about the columns in the table, including the "Date" column, which is categorical and contains information about the flood occurrences. To find the five largest floods, we need to consider the "Peak Flow (m3/s)" column, which represents the flow rate during the floods. We also need to filter out any outlier rows that may skew the results.
+
+To answer the question, we need to:
+1. Filter out the outlier rows that do not represent typical flood occurrences.
+2. Identify the five largest floods based on the "Peak Flow (m3/s)" column.
+3. Determine which of these five floods occurred after the year 1900.
+
+SQL: 
+SELECT COUNT("Peak Flow\nm3/s") 
+FROM T 
+WHERE "Date\n" NOT LIKE '%nan%' 
+AND "Date\n" NOT LIKE '%Normal / Avg flow%' 
+AND "Date\n" NOT LIKE '%Normal%' 
+AND "Date\n" NOT LIKE '%Avg%' 
+AND
+Generated Final SQL: SELECT COUNT("Peak Flow\nm3/s") FROM T WHERE "Date\n" NOT LIKE '%nan%' AND "Date\n" NOT LIKE '%Normal / Avg flow%' AND "Date\n" NOT LIKE '%Normal%' AND "Date\n" NOT LIKE '%Avg%' AND
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT COUNT("Peak Flow\nm3/s") FROM T WHERE "Date\n" NOT LIKE '%nan%' AND "Date\n" NOT LIKE '%Normal / Avg flow%' AND "Date\n" NOT LIKE '%Normal%' AND "Date\n" NOT LIKE '%Avg%' AND': incomplete input
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: River Trent (row_number, Rank\n, Date\n, Level at Trent Bridge\nm, Level at Trent Bridge\nft, Peak Flow\nm3/s, Peak Flow\ncfs)
+
+row_number | Rank\n | Date\n | Level at Trent Bridge\nm | Level at Trent Bridge\nft | Peak Flow\nm3/s | Peak Flow\ncfs
+0 | 1.0 | February 1795 | 24.55 | 80.5 | 1416 | 50000
+1 | 2.0 | October 1875 | 24.38 | 80.0 | 1274 | 45000
+2 | 3.0 | March 1947 | 24.3 | 79.7 | 1107 | 39100
+3 | 4.0 | November 1852 | 24.26 | 79.6 | 1082 | 38200
+4 | 5.0 | November 2000 | 23.8 | 78.1 | 1019 | 36000
+5 | nan | Normal / Avg flow | 20.7 | 68.0 | 84 | 3000
+Question: how many of the five largest flood on the river trent occurred after 1900?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Rank** column represents the ranking of the floods.
+- The **Date** column provides the dates when the floods occurred.
+
+From the full table:
+- The floods that occurred after 1900 are:
+  1. November 2000 (Rank 5)
+  2. March 1947 (Rank 3)
+
+Therefore, out of the five largest floods on the River Trent, 2 occurred after 1900.
+
+Final Answer: 2
+[Fallback] Prediction: 2
+[Gold Answer] 2
+

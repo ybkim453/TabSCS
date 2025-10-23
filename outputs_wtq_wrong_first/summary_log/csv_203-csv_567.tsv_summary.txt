@@ -1,0 +1,67 @@
+**Column Analysis:**
+
+1. Region:
+   - Data type: Categorical
+   - 4 representative example values: Afar, Amhara, Oromia, Ben-Gumuz
+   - Role: Identifier for the geographical region
+
+2. Physician (GP & specialist):
+   - Data type: Numeric
+   - 4 representative example values: 15, 304, 378, 12
+   - Role: Measure of the number of physicians in each region
+
+3. Physician : Population Ratio:
+   - Data type: Numeric
+   - 4 representative example values: 1:98,258, 1:58,567, 1:76,075, 1:59,309
+   - Role: Measure of the ratio of physicians to population in each region
+
+4. Health Officer:
+   - Data type: Numeric
+   - 4 representative example values: 29, 434, 448, 42
+   - Role: Measure of the number of health officers in each region
+
+5. HO : Population Ratio:
+   - Data type: Numeric
+   - 4 representative example values: 1:50,823, 1:41,024, 1:64,189, 1:16,945
+   - Role: Measure of the ratio of health officers to population in each region
+
+6. All Nurses:
+   - Data type: Numeric
+   - 4 representative example values: 185, 3,790, 5,040, 452
+   - Role: Measure of the number of all nurses in each region
+
+7. Nurse : Population Ratio:
+   - Data type: Numeric
+   - 4 representative example values: 1:7,967, 1:4,698, 1:5,706, 1:1,575
+   - Role: Measure of the ratio of nurses to population in each region
+
+8. Mid-wives:
+   - Data type: Numeric
+   - 4 representative example values: -, 212, 287, 37
+   - Role: Measure of the number of midwives in each region
+
+9. Mid Wife: Population Ratio:
+   - Data type: Numeric
+   - 4 representative example values: -, 1:83,983, 1:100,197, 1:19,235
+   - Role: Measure of the ratio of midwives to population in each region
+
+10. HEW*:
+   - Data type: Numeric
+   - 4 representative example values: 572, 7,471, 13,856, 499
+   - Role: Measure of the number of Health Extension Workers in each region
+
+11. HEW : Population Ratio:
+   - Data type: Numeric
+   - 4 representative example values: 1:2,577, 1:2,383, 1:2,075, 1:1,426
+   - Role: Measure of the ratio of Health Extension Workers to population in each region
+
+**Outlier Row Analysis:**
+
+1. Afar:
+   - The values for Physician : Population Ratio (1:98,258) and Nurse : Population Ratio (1:7,967) are significantly different from the majority of the table, indicating a lower density of healthcare professionals in this region compared to others.
+
+2. Amhara:
+   - The values for Mid Wife: Population Ratio (1:83,983) and HEW* (7,471) are notably higher compared to other regions, making this row an outlier in terms of the ratio of midwives and Health Extension Workers to the population.
+
+3. Addis Ababa:
+   - The presence of "nan" in the HEW* column indicates missing data, which may affect the overall analysis. This row is an outlier due to the missing value in a key column.

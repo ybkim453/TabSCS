@@ -1,0 +1,117 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Tournament
+   - Data type: Categorical
+   - 4 representative example values: Wimbledon, US Open, French Open, Australian Open
+   - Role: Identifier for the tennis tournament
+
+2. 2007-2014
+   - Data type: Categorical
+   - 4 representative example values: Q1, A, 1R, 2R
+   - Role: Describes the player's performance in each tournament year
+
+3. W-L
+   - Data type: Categorical
+   - 4 representative example values: 3-5, 0-4, 8-19, 0-1
+   - Role: Measure of the player's win-loss record in each tournament year
+
+4. Titles-Finals
+   - Data type: Categorical
+   - 4 representative example values: 0-0, 0-1, 1-0, nan
+   - Role: Measure of the player's titles and finals reached in each tournament year
+
+5. Year-End Ranking
+   - Data type: Numeric
+   - 4 representative example values: 139, 325, 82, 51
+   - Role: Measure of the player's ranking at the end of each year
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Titles-Finals)
+   - The value "0-1" is different from the majority of the row values which are "0-0".
+   - This makes the row an outlier as it indicates the player reached a final in one of the tournament years, while the other years had no titles or finals reached.
+
+2. Row 6 (W-L)
+   - The value "4-4" is different from the majority of the row values which are either "0-1" or "0-3".
+   - This makes the row an outlier as it indicates a significantly better win-loss record compared to the other years.
+
+3. Row 5 (W-L)
+   - The value "0-3" is different from the majority of the row values which are either "0-1" or "0-4".
+   - This makes the row an outlier as it indicates a worse win-loss record compared to the other years.
+
+Overall, the outlier rows have distinctive values that deviate from the majority of the data, making them stand out as atypical entries in the table.
+
+=== Full Table Preview ===
+|   row_number | Tournament       | 2007   | 2008   | 2009   | 2010   | 2011   | 2012   | 2013   | 2014   | W–L   |
+|-------------:|:-----------------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:-------|:------|
+|            0 | Australian Open  | 1R     | 1R     | A      | 2R     | 1R     | 3R     | 2R     | 1R     | 4–7   |
+|            1 | French Open      | Q1     | Q1     | A      | 2R     | Q1     | 1R     | 1R     |        | 1–3   |
+|            2 | Wimbledon        | Q1     | A      | 1R     | 2R     | 1R     | 3R     | 1R     |        | 3–5   |
+|            3 | US Open          | Q3     | Q2     | Q3     | 1R     | 1R     | 1R     | 1R     |        | 0–4   |
+|            4 | Win–Loss         | 0–1    | 0–1    | 0–1    | 3–4    | 0–3    | 4–4    | 1–4    | 0–1    | 8–19  |
+|            5 | Titles–Finals    | 0–0    | 0–0    | 0–0    | 0–0    | 0–0    | 0–1    | 0–0    |        | 0–1   |
+|            6 | Year-End Ranking | 139    | 325    | 82     | 89     | 112    | 51     | 81     |        |       |
+
+Generated Reasoning SQL: To determine the result of the first tournament, we need to extract the performance of Lukáš Lacko in the first tournament year, which is represented by the "2007" column. The "Tournament" column provides the name of the tournament. Since we are interested in the result of the first tournament, we will select the value from the "2007" column where the row_number is 0.
+
+SQL: 
+SELECT "2007" 
+FROM T 
+WHERE row_number = 0;
+Generated Final SQL: SELECT "2007" FROM T WHERE row_number = 0;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| 2007   |
+|:-------|
+| 1R     |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Lukáš Lacko
+SQL: SELECT "2007" FROM T WHERE row_number = 0;
+
+2007
+1R
+Question: what is the result of the first tournament?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1r
+[Gold Answer] 1r
+

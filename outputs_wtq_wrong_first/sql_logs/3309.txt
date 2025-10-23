@@ -1,0 +1,119 @@
+=== Table ID ===
+csv/204-csv/989.tsv
+
+=== Question ===
+what school is the first to reach 800 api and what year?
+
+=== Sub-table Preview ===
+| School                                     |   2007 |   2008 |   2009 |   2010 |   2011 |
+|:-------------------------------------------|-------:|-------:|-------:|-------:|-------:|
+| Oscar De La Hoya Animo Charter High School |    662 |    726 |    709 |    710 |    744 |
+| James A. Garfield High School              |    553 |    597 |    593 |    632 |    705 |
+| Abraham Lincoln High School                |    594 |    609 |    588 |    616 |    643 |
+| Woodrow Wilson High School                 |    582 |    585 |    600 |    615 |    636 |
+| Theodore Roosevelt High School             |    557 |    551 |    576 |    608 |    nan |
+| Santee Education Complex                   |    nan |    502 |    521 |    552 |    565 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. **School:**
+   - Data type: Categorical
+   - 4 representative example values: Oscar De La Hoya Animo Charter High School, James A. Garfield High School, Abraham Lincoln High School, Woodrow Wilson High School
+   - Role: Identifier for each school in the table
+
+2. **2007, 2008, 2009, 2010, 2011:**
+   - Data type: Numeric
+   - 4 representative example values: 662, 726, 709, 710
+   - Role: Measure of some metric related to each school for the respective year
+
+**Outlier Row Analysis:**
+
+1. **Row 8 (Theodore Roosevelt High School):**
+   - The value "nan" in the 2011 column makes this row an outlier as it is not a valid numeric value like the rest of the entries in that column.
+
+2. **Row 2 (James A. Garfield High School):**
+   - The values in this row do not seem significantly different from the majority of the table, so it is an ordinary row and does not require special handling.
+
+3. **Row 6 (Santee Education Complex):**
+   - The value "nan" in the 2007 column makes this row an outlier as it is not a valid numeric value like the rest of the entries in that column.
+
+=== Full Table Preview ===
+|   row_number | School                                     |   2007 |   2008 |   2009 |   2010 |   2011 |
+|-------------:|:-------------------------------------------|-------:|-------:|-------:|-------:|-------:|
+|            0 | Francisco Bravo Medical Magnet High School |    807 |    818 |    815 |    820 |    832 |
+|            1 | Marc and Eva Stern Math and Science School |    718 |    792 |    788 |    788 |    809 |
+|            2 | Oscar De La Hoya Animo Charter High School |    662 |    726 |    709 |    710 |    744 |
+|            3 | James A. Garfield High School              |    553 |    597 |    593 |    632 |    705 |
+|            4 | Abraham Lincoln High School                |    594 |    609 |    588 |    616 |    643 |
+|            5 | Woodrow Wilson High School                 |    582 |    585 |    600 |    615 |    636 |
+|            6 | Theodore Roosevelt High School             |    557 |    551 |    576 |    608 |    nan |
+|            7 | Thomas Jefferson High School               |    457 |    516 |    514 |    546 |    546 |
+|            8 | Santee Education Complex                   |    nan |    502 |    521 |    552 |    565 |
+
+Generated Reasoning SQL: Explanation: To find the school that first reached an API (Academic Performance Index) of 800 and the corresponding year, we need to identify the minimum year where the API value is equal to or greater than 800. We will focus on the numeric columns representing the API scores for each school in each year.
+
+Outlier rows with "nan" values in the API columns (2007, 2011) will be excluded from the analysis as they are not valid numeric values.
+
+SQL:
+SELECT "School", MIN("Year") AS first_year_reached_800_api
+FROM T
+WHERE "2007" >= 800 OR "2008" >= 800 OR "2009" >= 800 OR "2010" >= 800 OR "2011" >= 800;
+Generated Final SQL: SELECT "School", MIN("Year") AS first_year_reached_800_api FROM T WHERE "2007" >= 800 OR "2008" >= 800 OR "2009" >= 800 OR "2010" >= 800 OR "2011" >= 800;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| School                                     | first_year_reached_800_api   |
+|:-------------------------------------------|:-----------------------------|
+| Francisco Bravo Medical Magnet High School | Year                         |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Abraham Lincoln High School (Los Angeles)
+SQL: SELECT "School", MIN("Year") AS first_year_reached_800_api FROM T WHERE "2007" >= 800 OR "2008" >= 800 OR "2009" >= 800 OR "2010" >= 800 OR "2011" >= 800;
+
+SQL Execution Result:
+School | first_year_reached_800_api
+Francisco Bravo Medical Magnet High School | Year
+
+Question: what school is the first to reach 800 api and what year?
+A: To find the answer to this question, let’s think step by step.
+Prediction: francisco bravo medical magnet high school, year
+[Gold Answer] francisco bravo medical magnet high school,2007
+

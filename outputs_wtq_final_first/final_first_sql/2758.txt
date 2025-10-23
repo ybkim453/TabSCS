@@ -1,0 +1,120 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Represents
+   - Data type: Categorical
+   - 4 representative example values: Chiriquí, Coclé, Panamá Este, Panamá Oeste
+   - Role: Descriptor, representing the different regions in Panama.
+
+2. Contestant
+   - Data type: Categorical
+   - 4 representative example values: TBD, TBD, TBD, TBD
+   - Role: Identifier, representing the contestants in a contest.
+
+3. Age
+   - Data type: Numeric
+   - 4 representative example values: TBD, TBD, TBD, TBD
+   - Role: Measure, representing the age of the contestants.
+
+4. Height
+   - Data type: Numeric
+   - 4 representative example values: 0.0 m (0 in), 0.0 m (0 in), 0.0 m (0 in), 0.0 m (0 in)
+   - Role: Measure, representing the height of the contestants.
+
+5. Hometown
+   - Data type: Categorical
+   - 4 representative example values: TBD, TBD, TBD, TBD
+   - Role: Descriptor, representing the hometown of the contestants.
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Panamá Este)
+   - The values for the contestant, age, height, and hometown are all marked as TBD, which is different from the majority of the table where actual values are present. This makes the row an outlier as it does not provide any information about the contestant from Panamá Este.
+  
+2. Row 0 (Chiriquí)
+   - Similar to Row 3, all values are marked as TBD, making it an outlier due to the lack of actual data provided for the contestant from Chiriquí.
+
+=== Full Table Preview ===
+|   row_number | Represents         | Contestant   | Age   |   Height | Hometown   |
+|-------------:|:-------------------|:-------------|:------|---------:|:-----------|
+|            0 | Bocas del Toro     | TBD          | TBD   |        0 | TBD        |
+|            1 | Chiriquí           | TBD          | TBD   |        0 | TBD        |
+|            2 | Chiriquí Occidente | TBD          | TBD   |        0 | TBD        |
+|            3 | Coclé              | TBD          | TBD   |        0 | TBD        |
+|            4 | Colón              | TBD          | TBD   |        0 | TBD        |
+|            5 | Darién             | TBD          | TBD   |        0 | TBD        |
+|            6 | Comarcas           | TBD          | TBD   |        0 | TBD        |
+|            7 | Herrera            | TBD          | TBD   |        0 | TBD        |
+|            8 | Los Santos         | TBD          | TBD   |        0 | TBD        |
+|            9 | Panamá Centro      | TBD          | TBD   |        0 | TBD        |
+|           10 | Panamá Este        | TBD          | TBD   |        0 | TBD        |
+|           11 | Panamá Oeste       | TBD          | TBD   |        0 | TBD        |
+|           12 | Veraguas           | TBD          | TBD   |        0 | TBD        |
+
+Generated Reasoning SQL: Explanation: To find the location listed before Darién, we need to consider the categorical values in the "Represents" column. We should exclude outlier rows where all values are marked as TBD, as they do not provide relevant information. By ordering the locations and selecting the one before Darién, we can determine the desired location.
+
+SQL: 
+SELECT "Represents" 
+FROM T 
+WHERE "Represents" < 'Darién' 
+AND "Contestant" != 'TBD' 
+ORDER BY "Represents" DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Represents" FROM T WHERE "Represents" < 'Darién' AND "Contestant" != 'TBD' ORDER BY "Represents" DESC LIMIT 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Miss Panamá 2014 (row_number, Represents, Contestant, Age, Height, Hometown)
+
+row_number | Represents | Contestant | Age | Height | Hometown
+0 | Bocas del Toro | TBD | TBD | 0 | TBD
+1 | Chiriquí | TBD | TBD | 0 | TBD
+2 | Chiriquí Occidente | TBD | TBD | 0 | TBD
+3 | Coclé | TBD | TBD | 0 | TBD
+4 | Colón | TBD | TBD | 0 | TBD
+5 | Darién | TBD | TBD | 0 | TBD
+6 | Comarcas | TBD | TBD | 0 | TBD
+7 | Herrera | TBD | TBD | 0 | TBD
+8 | Los Santos | TBD | TBD | 0 | TBD
+9 | Panamá Centro | TBD | TBD | 0 | TBD
+10 | Panamá Este | TBD | TBD | 0 | TBD
+11 | Panamá Oeste | TBD | TBD | 0 | TBD
+12 | Veraguas | TBD | TBD | 0 | TBD
+Question: what location is listed before darien?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, let's look at the order of locations in the table. The locations are listed in alphabetical order based on the name of the region.
+
+From the table:
+- Before "Darién," the location listed is "Colón."
+
+Therefore, the location listed before Darién is Colón.
+
+Final Answer: Colón
+[Fallback] Prediction: colón
+[Gold Answer] colón
+

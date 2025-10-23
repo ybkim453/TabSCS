@@ -1,0 +1,136 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Celebrity
+   - Data type: Categorical
+   - 4 representative example values: Pedro Reche, Dionisio Rodríguez, Antonio David Flores, Raúl Hidalgo
+   - Role: Identifier
+
+2. Residence
+   - Data type: Categorical
+   - 4 representative example values: Langreo, Asturias, Madrid, Valladolid, Valencia
+   - Role: Descriptor
+
+3. Famous for.../Occupation
+   - Data type: Categorical
+   - 4 representative example values: Reality show star, Ex Security Guard, Ex-son-in-law of Rocío Jurado
+   - Role: Descriptor
+
+4. Age
+   - Data type: Numeric
+   - 4 representative example values: 27, 62, 36, 29
+   - Role: Measure
+
+5. Status
+   - Data type: Categorical
+   - 4 representative example values: 9th Evicted, Ejected, 7th Evicted, 6th Evicted
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Dionisio Rodríguez, "Dioni"
+   - The values "Ex Security Guard" and "Ejected" are distinctive in the context of the table.
+   - These values make the row an outlier as they are different from the majority of the table where most celebrities are reality show stars and have eviction statuses.
+
+2. Antonio David Flores
+   - The values "Ex-son-in-law of Rocío Jurado" and "7th Evicted" are distinctive in the context of the table.
+   - These values make the row an outlier as they are different from the majority of the table where most celebrities are reality show stars and have eviction statuses.
+
+3. Raúl Hidalgo
+   - The values "Valladolid" and "6th Evicted" are distinctive in the context of the table.
+   - These values make the row an outlier as they are different from the majority of the table where most celebrities are reality show stars and have eviction statuses.
+
+Overall, the outlier rows have distinctive values that set them apart from the majority of the table, making them atypical and requiring special handling in the analysis.
+
+=== Full Table Preview ===
+|   row_number | Celebrity                  | Residence        | Famous for.../Occupation                    |   Age | Status             |
+|-------------:|:---------------------------|:-----------------|:--------------------------------------------|------:|:-------------------|
+|            0 | Nagore Robles              | Bilbao           | Gran Hermano 11 Housemate                   |    28 | Winner             |
+|            1 | Raquel Bollo               | Seville          | TV Host & ex-wife of Chiquetete             |    43 | Runner-Up          |
+|            2 | Blanca de Borbón           | Oviedo Asturias  | Alfonso XIII's illegitimate granddaughter   |    55 | 3rd Finalist       |
+|            3 | Regina Do Santos           | Brazil           | Singer & Dancer                             |    58 | 1st / 14th Evicted |
+|            4 | Liberto López de la Franca | Madrid           | Good manner teacher                         |    40 | 13th Evicted       |
+|            5 | Mª Ángeles Delgado         | Valladolid       | Mother of Reality-show star Aída Nízar      |    57 | 8th / 12th Evicted |
+|            6 | Úrsula Aguilar             | Málaga           | Miss Málaga 2011                            |    24 | 11th Evicted       |
+|            7 | Álvaro Muñoz-Escassi       | Seville          | Horse rider & ex-boyfriend of Lara Dibildos |    42 | 10th Evicted       |
+|            8 | Pedro Reche "Reche"        | Langreo Asturias | Reality show star                           |    27 | 9th Evicted        |
+|            9 | Dionisio Rodríguez "Dioni" | Madrid           | Ex Security Guard robbed a security van     |    62 | Ejected            |
+|           10 | Antonio David Flores       | Madrid           | Ex-son-in-law of Rocío Jurado               |    36 | 7th Evicted        |
+|           11 | Raúl Hidalgo               | Valladolid       | Reality show star                           |    29 | 6th Evicted        |
+|           12 | Leticia Sabater            | Barcelona        | TV Host                                     |    45 | 5th Evicted        |
+|           13 | Brenda Cerdá               | Valencia         | Reality show star                           |    19 | 4th Evicted        |
+|           14 | Sonia Baby                 | Elche Valencia   | Porn Actress                                |    30 | 3rd Evicted        |
+|           15 | Bárbara Rey                | Totana Murcia    | Actress Vedette TV Host                     |    61 | 2nd Evicted        |
+
+Generated Reasoning SQL: Explanation: The relevant columns for this question are "Celebrity" and "Residence" as they contain the names of the contestants and their respective residences. To find the previous winner of Miss Málaga in 2011, we need to filter rows where the "Famous for.../Occupation" column contains "Miss Málaga" and the "season" column is 2011. The winner would be the contestant with the status "Winner".
+
+SQL: 
+SELECT "Celebrity" 
+FROM T 
+WHERE "Famous for.../Occupation" LIKE '%Miss Málaga%' 
+AND "season" = 2011 
+AND "Status" = 'Winner';
+Generated Final SQL: SELECT "Celebrity" FROM T WHERE "Famous for.../Occupation" LIKE '%Miss Málaga%' AND "season" = 2011 AND "Status" = 'Winner';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: The Farm Spain (season 1) (row_number, Celebrity, Residence, Famous for.../Occupation, Age, Status)
+
+row_number | Celebrity | Residence | Famous for.../Occupation | Age | Status
+0 | Nagore Robles | Bilbao | Gran Hermano 11 Housemate | 28 | Winner
+1 | Raquel Bollo | Seville | TV Host & ex-wife of Chiquetete | 43 | Runner-Up
+2 | Blanca de Borbón | Oviedo Asturias | Alfonso XIII's illegitimate granddaughter | 55 | 3rd Finalist
+3 | Regina Do Santos | Brazil | Singer & Dancer | 58 | 1st / 14th Evicted
+4 | Liberto López de la Franca | Madrid | Good manner teacher | 40 | 13th Evicted
+5 | Mª Ángeles Delgado | Valladolid | Mother of Reality-show star Aída Nízar | 57 | 8th / 12th Evicted
+6 | Úrsula Aguilar | Málaga | Miss Málaga 2011 | 24 | 11th Evicted
+7 | Álvaro Muñoz-Escassi | Seville | Horse rider & ex-boyfriend of Lara Dibildos | 42 | 10th Evicted
+8 | Pedro Reche "Reche" | Langreo Asturias | Reality show star | 27 | 9th Evicted
+9 | Dionisio Rodríguez "Dioni" | Madrid | Ex Security Guard robbed a security van | 62 | Ejected
+10 | Antonio David Flores | Madrid | Ex-son-in-law of Rocío Jurado | 36 | 7th Evicted
+11 | Raúl Hidalgo | Valladolid | Reality show star | 29 | 6th Evicted
+12 | Leticia Sabater | Barcelona | TV Host | 45 | 5th Evicted
+13 | Brenda Cerdá | Valencia | Reality show star | 19 | 4th Evicted
+14 | Sonia Baby | Elche Valencia | Porn Actress | 30 | 3rd Evicted
+15 | Bárbara Rey | Totana Murcia | Actress Vedette TV Host | 61 | 2nd Evicted
+Question: who was the previous winner of miss málaga in 2011?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Celebrity** column contains the names of the participants.
+- The **Famous for.../Occupation** column includes information about what the celebrities are known for or their occupations.
+- We need to find the participant who won Miss Málaga in 2011.
+
+From the full table:
+- Looking at the **Celebrity** column, we find that **Úrsula Aguilar** was the Miss Málaga 2011 winner based on the information in the **Famous for.../Occupation** column.
+
+Therefore, the previous winner of Miss Málaga in 2011 was **Úrsula Aguilar**. 
+
+Final Answer: Úrsula Aguilar
+[Fallback] Prediction: úrsula aguilar
+[Gold Answer] úrsula aguilar
+

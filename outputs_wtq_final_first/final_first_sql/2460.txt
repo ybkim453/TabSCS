@@ -1,0 +1,115 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Series Number:
+   - Data type: Numeric
+   - 4 representative example values: 6, 7, 8, 11
+   - Role: Identifier for the series within the table
+
+2. Season Number:
+   - Data type: Numeric
+   - 4 representative example values: 6, 7, 8, 11
+   - Role: Identifier for the season within the series
+
+3. Episode Title:
+   - Data type: Categorical
+   - 4 representative example values: Switcheroo, Front Page, Special FX-Ation, JB's Big Break
+   - Role: Descriptor for the title of each episode
+
+4. Premiere Date:
+   - Data type: Date
+   - 4 representative example values: November 29, 1998, January 17, 1999, January 24, 1999, February 21, 1999
+   - Role: Measure of when each episode premiered
+
+5. Production Code:
+   - Data type: Numeric
+   - 4 representative example values: 106, 107, 108, 111
+   - Role: Identifier for the production code of each episode
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values for Series Number (6), Season Number (6), and Production Code (106) are not distinctive and are ordinary within the table. This row is an ordinary row and requires no special handling.
+
+2. Row 10:
+   - The values for Series Number (13), Season Number (13), and Production Code (113) are not distinctive and are ordinary within the table. This row is an ordinary row and requires no special handling.
+
+3. Row 12:
+   - The values for Series Number (15), Season Number (15), and Production Code (115) are not distinctive and are ordinary within the table. This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Series Number |   Season Number | Episode Title         | Premiere Date       |   Production Code |
+|-------------:|----------------:|----------------:|:----------------------|:--------------------|------------------:|
+|            0 |               1 |               1 | Going Up!             | 1998-10-25 00:00:00 |               101 |
+|            1 |               2 |               2 | Who's The Man         | 1998-11-01 00:00:00 |               102 |
+|            2 |               3 |               3 | Vootle-Muck-A-Heev    | 1998-11-08 00:00:00 |               103 |
+|            3 |               4 |               4 | Close Encounters      | 1998-11-15 00:00:00 |               104 |
+|            4 |               5 |               5 | Hurricane Jules       | 1998-11-22 00:00:00 |               105 |
+|            5 |               6 |               6 | Switcheroo            | 1998-11-29 00:00:00 |               106 |
+|            6 |               7 |               7 | Front Page            | 1999-01-17 00:00:00 |               107 |
+|            7 |               8 |               8 | Special FX-Ation      | 1999-01-24 00:00:00 |               108 |
+|            8 |               9 |               9 | The Famous Stone Gold | 1999-01-31 00:00:00 |               109 |
+|            9 |              10 |              10 | Kiss And Tell         | 1999-02-07 00:00:00 |               110 |
+|           10 |              11 |              11 | JB's Big Break        | 1999-02-21 00:00:00 |               111 |
+|           11 |              12 |              12 | Bottom's Up           | 1999-03-07 00:00:00 |               112 |
+|           12 |              13 |              13 | Hot Dog               | 1999-03-14 00:00:00 |               113 |
+
+Generated Reasoning SQL: To determine the first episode, we need to find the episode with the earliest "Premiere Date". 
+Since the "Premiere Date" column is of type Date, we can use the MIN function to find the earliest date.
+SQL: SELECT "Episode Title" FROM T WHERE "Premiere Date" = (SELECT MIN("Premiere Date") FROM T);
+Generated Final SQL: SELECT "Episode Title" FROM T WHERE "Premiere Date" = (SELECT MIN("Premiere Date") FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Episode Title   |
+|:----------------|
+| Going Up!       |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: List of The Famous Jett Jackson episodes
+SQL: SELECT "Episode Title" FROM T WHERE "Premiere Date" = (SELECT MIN("Premiere Date") FROM T);
+
+Episode Title
+Going Up!
+Question: what was the first episode?
+A: To find the answer to this question, let’s think step by step.
+Prediction: going up!
+[Gold Answer] going up!
+

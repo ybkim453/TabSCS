@@ -1,0 +1,113 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Frequency:
+   - Data type: Categorical
+   - 4 representative example values: 93.1 FM, 94.3 FM, 104.1 FM, 106.3 FM
+   - Role: Identifier for the radio station frequency
+
+2. Call sign:
+   - Data type: Categorical
+   - 4 representative example values: KKYA, KDAM, WNAX-FM, KVHT
+   - Role: Identifier for the radio station call sign
+
+3. Name:
+   - Data type: Categorical
+   - 4 representative example values: KK93, The Dam, The Wolf 104.1, Classic Hits 106.3
+   - Role: Descriptor for the radio station name
+
+4. Format:
+   - Data type: Categorical
+   - 4 representative example values: Country, Mainstream Rock, Classic Hits, Country
+   - Role: Descriptor for the radio station format
+
+5. Owner:
+   - Data type: Categorical
+   - 4 representative example values: Riverfront Broadcasting LLC, Riverfront Broadcasting LLC, Saga Communications, Cullhane Communications, Inc.
+   - Role: Descriptor for the radio station owner
+
+6. Target city/market:
+   - Data type: Categorical
+   - 4 representative example values: Yankton/Vermillion, Yankton/Vermillion, Yankton/Vermillion, Yankton/Vermillion
+   - Role: Descriptor for the target city or market of the radio station
+
+7. City of license:
+   - Data type: Categorical
+   - 4 representative example values: Yankton, Hartington, Yankton, Vermillion
+   - Role: Descriptor for the city of license of the radio station
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Frequency: 93.1 FM, Call sign: KKYA, Name: KK93, Format: Country, Owner: Riverfront Broadcasting LLC, Target city/market: Yankton/Vermillion, City of license: Yankton):
+   - This row does not contain any distinctive values that make it an outlier. All the values are common and consistent with the majority of the table. Therefore, this is an ordinary row and does not require special handling.
+
+2. Row 2 (Frequency: 104.1 FM, Call sign: WNAX-FM, Name: The Wolf 104.1, Format: Country, Owner: Saga Communications, Target city/market: Yankton/Vermillion, City of license: Yankton):
+   - This row also does not contain any distinctive values that make it an outlier. All the values are typical for a radio station entry. Therefore, this is an ordinary row and does not require special handling.
+
+3. Row 3 (Frequency: 106.3 FM, Call sign: KVHT, Name: Classic Hits 106.3, Format: Classic Hits, Owner: Cullhane Communications, Inc., Target city/market: Yankton/Vermillion, City of license: Vermillion):
+   - Similar to the previous rows, this row does not have any values that stand out as outliers. All the values are common for a radio station entry. Therefore, this is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Frequency   | Call sign   | Name                             | Format          | Owner                                                    | Target city/market   | City of license   |
+|-------------:|:------------|:------------|:---------------------------------|:----------------|:---------------------------------------------------------|:---------------------|:------------------|
+|            0 | 89.7 FM     | KUSD        | South Dakota Public Broadcasting | NPR             | SD Board of Directors for Educational Telecommunications | Yankton/Vermillion   | Vermillion        |
+|            1 | 93.1 FM     | KKYA        | KK93                             | Country         | Riverfront Broadcasting LLC                              | Yankton/Vermillion   | Yankton           |
+|            2 | 94.3 FM     | KDAM        | The Dam                          | Mainstream Rock | Riverfront Broadcasting LLC                              | Yankton/Vermillion   | Hartington        |
+|            3 | 104.1 FM    | WNAX-FM     | The Wolf 104.1                   | Country         | Saga Communications                                      | Yankton/Vermillion   | Yankton           |
+|            4 | 106.3 FM    | KVHT        | Classic Hits 106.3               | Classic Hits    | Cullhane Communications Inc.                             | Yankton/Vermillion   | Vermillion        |
+
+Generated Reasoning SQL: Explanation: To find the city that has a radio station called "The Wolf", we need to filter the rows where the "Name" column is equal to "The Wolf". Once we have identified the row with this specific radio station name, we can retrieve the corresponding "City of license" value to determine the city where the radio station is located.
+
+SQL: 
+SELECT "City of license" 
+FROM T 
+WHERE "Name" = 'The Wolf';
+Generated Final SQL: SELECT "City of license" FROM T WHERE "Name" = 'The Wolf';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Yankton, South Dakota (row_number, Frequency, Call sign, Name, Format, Owner, Target city/market, City of license)
+
+row_number | Frequency | Call sign | Name | Format | Owner | Target city/market | City of license
+0 | 89.7 FM | KUSD | South Dakota Public Broadcasting | NPR | SD Board of Directors for Educational Telecommunications | Yankton/Vermillion | Vermillion
+1 | 93.1 FM | KKYA | KK93 | Country | Riverfront Broadcasting LLC | Yankton/Vermillion | Yankton
+2 | 94.3 FM | KDAM | The Dam | Mainstream Rock | Riverfront Broadcasting LLC | Yankton/Vermillion | Hartington
+3 | 104.1 FM | WNAX-FM | The Wolf 104.1 | Country | Saga Communications | Yankton/Vermillion | Yankton
+4 | 106.3 FM | KVHT | Classic Hits 106.3 | Classic Hits | Cullhane Communications Inc. | Yankton/Vermillion | Vermillion
+Question: what city has a radio station called the wolf?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to understand the structure of the table provided. The relevant columns for this question are "Name" and "City of license." 
+
+Next, we look for the radio station called "The Wolf" in the "Name" column. We find that "The Wolf 104.1" is located in Yankton/Vermillion according to the "City of license" column.
+
+Therefore, the city that has a radio station called "The Wolf" is Yankton/Vermillion.
+
+Final Answer: Yankton/Vermillion
+[Fallback] Prediction: yankton/vermillion
+[Gold Answer] yankton
+

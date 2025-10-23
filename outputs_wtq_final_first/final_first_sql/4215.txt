@@ -1,0 +1,153 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Time:
+   - Data type: Numeric
+   - 4 representative example values: 20.6, 20.5, 19.8A, 19.8+
+   - Role: Measure of the time taken by the athlete to complete the race.
+
+2. Wind:
+   - Data type: Numeric
+   - 4 representative example values: nan, 0, 0.9, 1.3
+   - Role: Measure of the wind speed during the race.
+
+3. Auto:
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, 19.86A, nan
+   - Role: Measure of an automatic timing system used in the race.
+
+4. Athlete:
+   - Data type: Categorical
+   - 4 representative example values: Manfred Germar, Ray Norton, Donald Quarrie
+   - Role: Identifier of the athlete participating in the race.
+
+5. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: West Germany, United States, Jamaica
+   - Role: Descriptor of the nationality of the athlete.
+
+6. Location of race:
+   - Data type: Categorical
+   - 4 representative example values: Wuppertal, Germany, Philadelphia, United States, Cali, Colombia
+   - Role: Descriptor of the location where the race took place.
+
+7. Date:
+   - Data type: Categorical
+   - 4 representative example values: October 1, 1958, April 30, 1960, August 3, 1971, June 7, 1975
+   - Role: Descriptor of the date when the race occurred.
+
+**Outlier Row Analysis:**
+
+1. Row 4:
+   - The values "19.8A" and "19.86A" in the Time and Auto columns are different from the majority of the table, indicating a special case where the time might have been manually adjusted or recorded differently. This row is an outlier.
+
+2. Row 17:
+   - The value "1.3" in the Wind column is significantly higher than the other values in the column, making this row an outlier based on the wind speed recorded during the race.
+
+3. Row 18:
+   - The value "19.8+" in the Time column is different from the other time values in the table, suggesting a unique case where the time might have been recorded with additional information. This row is an outlier.
+
+=== Full Table Preview ===
+|   row_number | Time   | Wind   | Auto   | Athlete        | Nationality    | Location of race             | Date                |
+|-------------:|:-------|:-------|:-------|:---------------|:---------------|:-----------------------------|:--------------------|
+|            0 | 20.6y  |        |        | Andy Stanfield | United States  | Philadelphia United States   | 1951-05-26 00:00:00 |
+|            1 | 20.6   |        |        | Andy Stanfield | United States  | Los Angeles United States    | 1952-06-28 00:00:00 |
+|            2 | 20.6   | 0.0    |        | Thane Baker    | United States  | Bakersfield United States    | 1956-06-23 00:00:00 |
+|            3 | 20.6   |        | 20.75  | Bobby Morrow   | United States  | Melbourne Australia          | 1956-11-27 00:00:00 |
+|            4 | 20.6   |        |        | Manfred Germar | West Germany   | Wuppertal Germany            | 1958-10-01 00:00:00 |
+|            5 | 20.6y  | −1.6   |        | Ray Norton     | United States  | Berkeley United States       | 1960-03-19 00:00:00 |
+|            6 | 20.6   |        |        | Ray Norton     | United States  | Philadelphia United States   | 1960-04-30 00:00:00 |
+|            7 | 20.5y  |        |        | Peter Radford  | United Kingdom | Wolverhampton United Kingdom | 1960-05-28 00:00:00 |
+|            8 | 20.5   | 0.0    | 20.75  | Stone Johnson  | United States  | Stanford United States       | 1960-07-02 00:00:00 |
+|            9 | 20.5   | 0.0    |        | Ray Norton     | United States  | Stanford United States       | 1960-07-02 00:00:00 |
+|           10 | 20.5   |        | 20.65  | Livio Berruti  | Italy          | Rome Italy                   | 1960-09-03 00:00:00 |
+|           11 | 20.5   |        | 20.62  | Livio Berruti  | Italy          | Rome Italy                   | 1960-09-03 00:00:00 |
+|           12 | 20.5y  | −1.1   | 20.67  | Paul Drayton   | United States  | Walnut United States         | 1962-06-23 00:00:00 |
+|           13 | 20.3y  | −0.1   |        | Henry Carr     | United States  | Tempe United States          | 1963-03-23 00:00:00 |
+|           14 | 20.2y  | 0.5    |        | Henry Carr     | United States  | Tempe United States          | 1964-04-04 00:00:00 |
+|           15 | 20.0y  | 0.0    |        | Tommie Smith   | United States  | Sacramento United States     | 1968-06-11 00:00:00 |
+|           16 | 19.8A  | 0.9    | 19.83A | Tommie Smith   | United States  | Mexico City Mexico           | 1968-10-16 00:00:00 |
+|           17 | 19.8A  | 0.9    | 19.86A | Donald Quarrie | Jamaica        | Cali Colombia                | 1971-08-03 00:00:00 |
+|           18 | 19.8+  | 1.3    |        | Donald Quarrie | Jamaica        | Eugene Oregon United States  | 1975-06-07 00:00:00 |
+
+Generated Reasoning SQL: Explanation: To find athletes who set records only in Philadelphia and Los Angeles but not in Sacramento, we need to filter for athletes who have records in Philadelphia and Los Angeles but do not have a record in Sacramento. We will use the "Location of race" column to identify the race locations and the "Athlete" column to group the records by athlete.
+
+SQL: 
+SELECT "Athlete"
+FROM T
+WHERE "Location of race" IN ('Philadelphia', 'Los Angeles')
+GROUP BY "Athlete"
+HAVING COUNT(DISTINCT "Location of race") = 2
+AND "Athlete" NOT IN (
+    SELECT "Athlete"
+    FROM T
+    WHERE "Location of race" = 'Sacramento'
+);
+Generated Final SQL: SELECT "Athlete" FROM T WHERE "Location of race" IN ('Philadelphia', 'Los Angeles') GROUP BY "Athlete" HAVING COUNT(DISTINCT "Location of race") = 2 AND "Athlete" NOT IN ( SELECT "Athlete" FROM T WHERE "Location of race" = 'Sacramento' );
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Men's 200 metres world record progression (row_number, Time, Wind, Auto, Athlete, Nationality, Location of race, Date)
+
+row_number | Time | Wind | Auto | Athlete | Nationality | Location of race | Date
+0 | 20.6y | None | None | Andy Stanfield | United States | Philadelphia United States | 1951-05-26 00:00:00
+1 | 20.6 | None | None | Andy Stanfield | United States | Los Angeles United States | 1952-06-28 00:00:00
+2 | 20.6 | 0.0 | None | Thane Baker | United States | Bakersfield United States | 1956-06-23 00:00:00
+3 | 20.6 | None | 20.75 | Bobby Morrow | United States | Melbourne Australia | 1956-11-27 00:00:00
+4 | 20.6 | None | None | Manfred Germar | West Germany | Wuppertal Germany | 1958-10-01 00:00:00
+5 | 20.6y | −1.6 | None | Ray Norton | United States | Berkeley United States | 1960-03-19 00:00:00
+6 | 20.6 | None | None | Ray Norton | United States | Philadelphia United States | 1960-04-30 00:00:00
+7 | 20.5y | None | None | Peter Radford | United Kingdom | Wolverhampton United Kingdom | 1960-05-28 00:00:00
+8 | 20.5 | 0.0 | 20.75 | Stone Johnson | United States | Stanford United States | 1960-07-02 00:00:00
+9 | 20.5 | 0.0 | None | Ray Norton | United States | Stanford United States | 1960-07-02 00:00:00
+10 | 20.5 | None | 20.65 | Livio Berruti | Italy | Rome Italy | 1960-09-03 00:00:00
+11 | 20.5 | None | 20.62 | Livio Berruti | Italy | Rome Italy | 1960-09-03 00:00:00
+12 | 20.5y | −1.1 | 20.67 | Paul Drayton | United States | Walnut United States | 1962-06-23 00:00:00
+13 | 20.3y | −0.1 | None | Henry Carr | United States | Tempe United States | 1963-03-23 00:00:00
+14 | 20.2y | 0.5 | None | Henry Carr | United States | Tempe United States | 1964-04-04 00:00:00
+15 | 20.0y | 0.0 | None | Tommie Smith | United States | Sacramento United States | 1968-06-11 00:00:00
+16 | 19.8A | 0.9 | 19.83A | Tommie Smith | United States | Mexico City Mexico | 1968-10-16 00:00:00
+17 | 19.8A | 0.9 | 19.86A | Donald Quarrie | Jamaica | Cali Colombia | 1971-08-03 00:00:00
+18 | 19.8+ | 1.3 | None | Donald Quarrie | Jamaica | Eugene Oregon United States | 1975-06-07 00:00:00
+Question: who set records only in philadelphia and los angeles, but no records in sacramento?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: 1. Identify athletes who set records in Philadelphia and Los Angeles:
+   - Andy Stanfield set a record in Philadelphia and Los Angeles.
+
+2. Identify athletes who did not set records in Sacramento:
+   - From the full table, we can see that Tommie Smith set a record in Sacramento.
+
+3. Combining the information:
+   - Andy Stanfield set records in Philadelphia and Los Angeles but not in Sacramento.
+
+Therefore, the athlete who set records only in Philadelphia and Los Angeles, but not in Sacramento, is Andy Stanfield.
+
+Final Answer: Andy Stanfield
+[Fallback] Prediction: andy stanfield
+[Gold Answer] andy stanfield
+

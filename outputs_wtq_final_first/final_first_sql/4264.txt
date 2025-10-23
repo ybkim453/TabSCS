@@ -1,0 +1,166 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Unnamed: 0
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 5, 7
+   - Role: Identifier for the rows in the table
+
+2. Club
+   - Data type: Categorical
+   - 4 representative example values: Northampton Saints (CH), Harlequins (SF), Bath, London Wasps
+   - Role: Descriptor for the rugby clubs
+
+3. Played
+   - Data type: Numeric
+   - 4 representative example values: 22, 22, 22, 22
+   - Role: Measure of the number of games played by each club
+
+4. Won
+   - Data type: Numeric
+   - 4 representative example values: 16, 15, 14, 9
+   - Role: Measure of the number of games won by each club
+
+5. Drawn
+   - Data type: Numeric
+   - 4 representative example values: 2, 0, 2, 0
+   - Role: Measure of the number of games drawn by each club
+
+6. Lost
+   - Data type: Numeric
+   - 4 representative example values: 4, 7, 6, 13
+   - Role: Measure of the number of games lost by each club
+
+7. Points For
+   - Data type: Numeric
+   - 4 representative example values: 604, 437, 495, 451
+   - Role: Measure of the total points scored by each club
+
+8. Points Against
+   - Data type: Numeric
+   - 4 representative example values: 350, 365, 388, 533
+   - Role: Measure of the total points conceded by each club
+
+9. Points Difference
+   - Data type: Numeric
+   - 4 representative example values: 254, 72, 107, -82
+   - Role: Measure of the difference between points scored and points conceded by each club
+
+10. Tries For
+    - Data type: Numeric
+    - 4 representative example values: 72, 43, 48, 48
+    - Role: Measure of the total number of tries scored by each club
+
+11. Tries Against
+    - Data type: Numeric
+    - 4 representative example values: 31, 33, 38, 56
+    - Role: Measure of the total number of tries conceded by each club
+
+12. Try Bonus
+    - Data type: Numeric
+    - 4 representative example values: 7, 4, 4, 4
+    - Role: Measure of the bonus points awarded for scoring a certain number of tries
+
+13. Losing Bonus
+    - Data type: Numeric
+    - 4 representative example values: 3, 3, 3, 9
+    - Role: Measure of the bonus points awarded for losing by a small margin
+
+14. Points
+    - Data type: Numeric
+    - 4 representative example values: 78, 67, 67, 49
+    - Role: Measure of the total points earned by each club
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Northampton Saints)
+   - The Points Difference of 254 is significantly higher compared to the other clubs.
+   - This row stands out due to the high Points Difference, making it an outlier.
+
+2. Row 0 (Harlequins)
+   - The Club name includes "(SF)", which could indicate a special status or achievement.
+   - This row is an outlier due to the unique identifier "(SF)" in the Club name.
+
+3. Row 4 (Exeter Chiefs)
+   - The Losing Bonus of 9 is notably higher than the other clubs.
+   - This row is an outlier based on the unusually high Losing Bonus value.
+
+=== Full Table Preview ===
+|   row_number |   Unnamed: 0 | Club                    |   Played |   Won |   Drawn |   Lost |   Points For |   Points Against |   Points Difference |   Tries For |   Tries Against |   Try Bonus |   Losing Bonus |   Points |
+|-------------:|-------------:|:------------------------|---------:|------:|--------:|-------:|-------------:|-----------------:|--------------------:|------------:|----------------:|------------:|---------------:|---------:|
+|            0 |            1 | Saracens (RU)           |       22 |    19 |       0 |      3 |          629 |              353 |                 276 |          68 |              39 |          10 |              1 |       87 |
+|            1 |            2 | Northampton Saints (CH) |       22 |    16 |       2 |      4 |          604 |              350 |                 254 |          72 |              31 |           7 |              3 |       78 |
+|            2 |            3 | Leicester Tigers (SF)   |       22 |    15 |       2 |      5 |          542 |              430 |                 112 |          59 |              41 |           7 |              3 |       74 |
+|            3 |            4 | Harlequins (SF)         |       22 |    15 |       0 |      7 |          437 |              365 |                  72 |          43 |              33 |           4 |              3 |       67 |
+|            4 |            5 | Bath                    |       22 |    14 |       2 |      6 |          495 |              388 |                 107 |          48 |              38 |           4 |              3 |       67 |
+|            5 |            6 | Sale Sharks             |       22 |    12 |       0 |     10 |          432 |              399 |                  33 |          46 |              40 |           3 |              6 |       57 |
+|            6 |            7 | London Wasps            |       22 |     9 |       0 |     13 |          451 |              533 |                 -82 |          48 |              56 |           4 |              9 |       49 |
+|            7 |            8 | Exeter Chiefs           |       22 |     9 |       0 |     13 |          426 |              480 |                 -54 |          40 |              51 |           2 |              7 |       45 |
+|            8 |            9 | Gloucester              |       22 |     8 |       0 |     14 |          440 |              539 |                 -99 |          46 |              60 |           4 |              8 |       44 |
+|            9 |           10 | London Irish            |       22 |     7 |       0 |     15 |          396 |              496 |                -100 |          40 |              49 |           2 |              6 |       36 |
+|           10 |           11 | Newcastle Falcons       |       22 |     3 |       0 |     19 |          281 |              544 |                -263 |          23 |              62 |           2 |              8 |       22 |
+|           11 |           12 | Worcester Warriors (R)  |       22 |     2 |       0 |     20 |          325 |              581 |                -256 |          31 |              64 |           1 |              7 |       16 |
+
+Generated Reasoning SQL: To find the team with the most draws and wins combined, we need to consider the "Drawn" and "Won" columns, which represent the number of games drawn and won by each club, respectively. 
+We will sum these two columns for each club and then identify the club with the highest total.
+SQL: 
+SELECT "Club", ("Drawn" + "Won") AS total_draws_wins
+FROM T
+ORDER BY total_draws_wins DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Club", ("Drawn" + "Won") AS total_draws_wins FROM T ORDER BY total_draws_wins DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Club          |   total_draws_wins |
+|:--------------|-------------------:|
+| Saracens (RU) |                 19 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: London Wasps
+SQL: SELECT "Club", ("Drawn" + "Won") AS total_draws_wins FROM T ORDER BY total_draws_wins DESC LIMIT 1;
+
+Club | total_draws_wins
+Saracens (RU) | 19
+Question: which team has the most draws/wins combined together?
+A: To find the answer to this question, let’s think step by step.
+Prediction: saracens (ru)
+[Gold Answer] saracens (ru)
+

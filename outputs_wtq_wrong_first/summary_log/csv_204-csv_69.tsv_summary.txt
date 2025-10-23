@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. Town name:
+   - Data type: Categorical
+   - 4 representative example values: Eminence, Paris, Strawn, Salem
+   - Role: Identifier
+
+2. County:
+   - Data type: Categorical
+   - 4 representative example values: Finney County, Linn County, Coffey County, Jewell County
+   - Role: Descriptor
+
+3. Established:
+   - Data type: Numeric (Year)
+   - 4 representative example values: 1886, 1854, 1870s, 1871
+   - Role: Descriptor
+
+4. Disestablished:
+   - Data type: Categorical (Year or event)
+   - 4 representative example values: Post office closed in 1943, nan, 1961, Post office moved to Manchester, Oklahoma in 1903
+   - Role: Descriptor
+
+5. Current Status:
+   - Data type: Categorical
+   - 4 representative example values: Nothing remains of the townsite, Old Strawn is now located underneath the John Redmond Reservoir while New Strawn is located along U.S. 75, nan
+   - Role: Descriptor
+
+6. Remarks:
+   - Data type: Categorical
+   - 4 representative example values: Battled with Ravanna for county seat of Garfield County, which ended in 1893 when Garfield County was annexed to Finney County, nan, Originally named Cameron until 1900
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 79:
+   - The Disestablished column has a value of "nan", which is not a specific year or event like the other rows.
+   - This makes the row an outlier as it does not provide clear information on when the town was disestablished.
+
+2. Row 155:
+   - The Established column has a value of "1857", which is different from the other rows that have years in the 1800s or 1870s.
+   - This makes the row an outlier as it is established much later compared to the majority of the table.
+
+3. Row 115:
+   - The Current Status column has a value of "nan", which is not a specific status like the other rows.
+   - This makes the row an outlier as it does not provide clear information on the current status of the town.
+
+Overall, the outlier rows have values that deviate from the typical patterns seen in the table, making them stand out as atypical entries.

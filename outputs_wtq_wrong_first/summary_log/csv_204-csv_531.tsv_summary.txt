@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Team
+   - Data type: Categorical
+   - 4 representative example values: Marlboro Team Penske, Newman-Haas Racing, Team Rahal, Payton/Coyne Racing
+   - Role: Identifier for the racing team
+
+2. Chassis
+   - Data type: Categorical
+   - 4 representative example values: Penske PC27-98, Swift 009.c, Reynard 98i
+   - Role: Descriptor for the type of chassis used by the team
+
+3. Engine
+   - Data type: Categorical
+   - 4 representative example values: Mercedes, Ford XB, Toyota
+   - Role: Descriptor for the type of engine used by the team
+
+4. Tires
+   - Data type: Categorical
+   - 4 representative example values: Goodyear, Firestone
+   - Role: Descriptor for the type of tires used by the team
+
+5. No
+   - Data type: Numeric
+   - 4 representative example values: 2, 6, 7, 34
+   - Role: Identifier for the car number
+
+6. Drivers
+   - Data type: Categorical
+   - 4 representative example values: Al Unser, Jr., Michael Andretti, Bobby Rahal
+   - Role: Descriptor for the driver(s) associated with the team
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Payton/Coyne Racing)
+   - The presence of two drivers (Dennis Vitolo and Gualter Salles) separated by a line break in the Drivers column makes this row distinctive.
+   - This row is an outlier because it deviates from the standard format of having a single driver listed in the Drivers column.
+
+2. Row 2 (Newman-Haas Racing)
+   - There are no clear distinctive values in this row that would make it an outlier.
+   - The values present in this row are ordinary and consistent with the majority of the table.
+
+3. Row 21 (Arciero-Wells Racing)
+   - The presence of two drivers (Hiro Matsushita and Robby Gordon) separated by a line break in the Drivers column makes this row distinctive.
+   - This row is an outlier because it deviates from the standard format of having a single driver listed in the Drivers column.

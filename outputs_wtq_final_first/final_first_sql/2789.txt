@@ -1,0 +1,116 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2002, 2008, 2009, 2012
+   - Role: Identifier for the year in which the competition took place.
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: World Junior Championships, Olympic Games, World Student Games, World Championships
+   - Role: Descriptor of the type of competition.
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Kingston, Jamaica, Beijing, PR China, Belgrade, Serbia, Berlin, Germany
+   - Role: Descriptor of the location where the competition was held.
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 2nd, 8th, 3rd
+   - Role: Descriptor of the athlete's finishing position in the competition.
+
+5. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 63.91 m, 71.00 m, 72.85 m, 74.79 m
+   - Role: Measure of the athlete's performance in the competition.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are not significantly different from the rest of the table. They are ordinary values and do not make this row an outlier.
+
+2. Row 9:
+   - The values in this row are consistent with the rest of the table and do not stand out as distinctive. This row is an ordinary entry and does not require special handling.
+
+3. Row 4:
+   - The values in this row are typical of the data in the table and do not deviate significantly from the majority. This row is an ordinary entry and does not qualify as an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition                   | Venue               | Position   | Notes   |
+|-------------:|-------:|:------------------------------|:--------------------|:-----------|:--------|
+|            0 |   1999 | World Youth Championships     | Bydgoszcz Poland    | 12th       |         |
+|            1 |   2000 | World Junior Championships    | Santiago Chile      | 5th        |         |
+|            2 |   2001 | European Junior Championships | Grosseto Italy      | 2nd        | 61.97 m |
+|            3 |   2001 | World Championships           | Edmonton Canada     | 23rd       | 61.26 m |
+|            4 |   2002 | World Junior Championships    | Kingston Jamaica    | 2nd        | 63.91 m |
+|            5 |   2002 | European Championships        | Munich Germany      | 26th       | 60.28 m |
+|            6 |   2006 | European Championships        | Gothenburg Sweden   | 26th       | 62.39 m |
+|            7 |   2007 | World Student Games           | Bangkok Thailand    | 5th        | 64.95 m |
+|            8 |   2007 | World Championships           | Osaka Japan         | 13th       | 68.15 m |
+|            9 |   2008 | Olympic Games                 | Beijing PR China    | 8th        | 71.00 m |
+|           10 |   2008 | World Athletics Final         | Stuttgart Germany   | 2nd        | 71.40 m |
+|           11 |   2009 | World Student Games           | Belgrade Serbia     | 2nd        | 72.85 m |
+|           12 |   2009 | World Championships           | Berlin Germany      | 3rd        | 74.79 m |
+|           13 |   2009 | World Athletics Final         | Thessaloniki Greece | 3rd        | 70.45 m |
+|           14 |   2012 | European Championships        | Helsinki Finland    | 2nd        | 73.34 m |
+
+Generated Reasoning SQL: Explanation: To find the only year where Martina Hrašnová ranked 13th, we need to filter rows where "Position" = '13th' and then retrieve the unique year associated with that row. Since the "Year" column is numeric and represents the year of the competition, we can directly select the "Year" value where the position is 13th.
+SQL: select "Year" from T where "Position" = '13th';
+Generated Final SQL: select "Year" from T where "Position" = '13th';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Year |
+|-------:|
+|   2007 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Martina Hrašnová
+SQL: select "Year" from T where "Position" = '13th';
+
+Year
+2007
+Question: what is the only year she ranked 13th?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 2007
+[Gold Answer] 2007
+

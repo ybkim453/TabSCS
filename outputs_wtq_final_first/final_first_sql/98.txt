@@ -1,0 +1,154 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Game
+   - Data type: Numeric
+   - Representative values: 6, 10, 11, 12
+   - Role: Identifier for each game in the table
+
+2. Day
+   - Data type: Categorical
+   - Representative values: Sunday, Friday
+   - Role: Descriptor for the day of the week the game took place
+
+3. Date
+   - Data type: Categorical
+   - Representative values: December 15, January 12, January 19, January 26
+   - Role: Descriptor for the date of the game
+
+4. Kickoff
+   - Data type: Categorical
+   - Representative values: 6:00pm, 1:05pm, 7:05pm
+   - Role: Descriptor for the time the game started
+
+5. Opponent
+   - Data type: Categorical
+   - Representative values: Bay Area Rosal, Las Vegas Legends, Sacramento Surge, Turlock Express
+   - Role: Descriptor for the opposing team
+
+6. Results\nScore
+   - Data type: Categorical
+   - Representative values: L 8-9 (OT), W 10-7, W 17-7, W 20-6
+   - Role: Descriptor for the game result and score
+
+7. Results\nRecord
+   - Data type: Categorical
+   - Representative values: 3-3, 5-5, 6-5, 7-5
+   - Role: Descriptor for the team's overall record after the game
+
+8. Location
+   - Data type: Categorical
+   - Representative values: Cabernet Indoor Sports, UniSantos Park, Turlock Soccer Complex
+   - Role: Descriptor for the venue of the game
+
+9. Attendance
+   - Data type: Numeric
+   - Representative values: 480, 343, 219, 224
+   - Role: Measure of the number of people present at the game
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The game resulted in an overtime loss (L 8-9), which is a close and atypical score compared to the other games.
+   - The attendance of 480 is significantly higher than the other values in the table.
+   - These distinctive values make this row an outlier.
+
+2. Row 13:
+   - The game resulted in a loss (L 6-9), which is a close and atypical score compared to the other games.
+   - The attendance of 673 is significantly higher than the other values in the table.
+   - These distinctive values make this row an outlier.
+
+3. Row 5:
+   - The game took place on a Friday, which is different from the majority of Sunday games in the table.
+   - The attendance of 673 is significantly higher than the other values in the table.
+   - These distinctive values make this row an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Game | Day      | Date         | Kickoff   | Opponent             | Results\nScore   | Results\nRecord   | Location                     |   Attendance |
+|-------------:|-------:|:---------|:-------------|:----------|:---------------------|:-----------------|:------------------|:-----------------------------|-------------:|
+|            0 |      1 | Sunday   | November 10  | 3:05pm    | at Las Vegas Legends | L 3–7            | 0–1               | Orleans Arena                |         1836 |
+|            1 |      2 | Sunday   | November 17  | 1:05pm    | Monterrey Flash      | L 6–10           | 0–2               | UniSantos Park               |          363 |
+|            2 |      3 | Saturday | November 23  | 7:05pm    | at Bay Area Rosal    | W 10–7           | 1–2               | Cabernet Indoor Sports       |          652 |
+|            3 |      4 | Sunday   | December 1   | 1:05pm    | Ontario Fury         | W 18–4           | 2–2               | UniSantos Park               |          207 |
+|            4 |      5 | Saturday | December 14  | 7:05pm    | at Sacramento Surge  | W 7–6 (OT)       | 3–2               | Estadio Azteca Soccer Arena  |          215 |
+|            5 |      6 | Sunday   | December 15  | 6:00pm    | at Bay Area Rosal    | L 8–9 (OT)       | 3–3               | Cabernet Indoor Sports       |          480 |
+|            6 |      7 | Sunday   | December 22  | 1:05pm    | Turlock Express      | W 16–8           | 4–3               | UniSantos Park               |          218 |
+|            7 |      8 | Saturday | January 4    | 7:05pm    | at Ontario Fury      | L 5–12           | 4–4               | Citizens Business Bank Arena |         2653 |
+|            8 |      9 | Sunday   | January 5    | 1:05pm    | San Diego Sockers    | L 7–12           | 4–5               | UniSantos Park               |          388 |
+|            9 |     10 | Sunday   | January 12   | 1:05pm    | Las Vegas Legends    | W 10–7           | 5–5               | UniSantos Park               |          343 |
+|           10 |     11 | Sunday   | January 19   | 1:05pm    | Bay Area Rosal       | W 17–7           | 6–5               | UniSantos Park               |          219 |
+|           11 |     12 | Sunday   | January 26   | 1:05pm    | Sacramento Surge     | W 20–6           | 7–5               | UniSantos Park               |          224 |
+|           12 |     13 | Saturday | February 1   | 7:05pm    | at San Diego Sockers | L 5–6            | 7–6               | Valley View Casino Center    |         4954 |
+|           13 |     14 | Friday   | February 7   | 7:05pm    | at Turlock Express   | L 6–9            | 7–7               | Turlock Soccer Complex       |          673 |
+|           14 |     15 | Saturday | February 8   | 7:05pm    | at Sacramento Surge  | W 10–6           | 8–7               | Estadio Azteca Soccer Arena  |          323 |
+|           15 |     16 | Saturday | February 15♥ | 5:05pm    | Bay Area Rosal       | W 27–2           | 9–7               | UniSantos Park               |          118 |
+
+Generated Reasoning SQL: To determine the opponent the team played against after facing the Ontario Fury on December 1 of this season, we need to identify the row corresponding to the game against the Ontario Fury and then find the opponent in the subsequent game. 
+The "Date" column contains categorical values representing the date of each game, and the "Opponent" column contains the names of the opposing teams. 
+We can filter rows where "Date" = December 1 and retrieve the opponent for the next game.
+SQL: 
+select "Opponent" from T where "Date" = 'December 1' limit 1, 1;
+Generated Final SQL: select "Opponent" from T where "Date" = 'December 1' limit 1, 1;
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2013–14 Toros Mexico season (row_number, Game, Day, Date, Kickoff, Opponent, Results\nScore, Results\nRecord, Location, Attendance)
+
+row_number | Game | Day | Date | Kickoff | Opponent | Results\nScore | Results\nRecord | Location | Attendance
+0 | 1 | Sunday | November 10 | 3:05pm | at Las Vegas Legends | L 3–7 | 0–1 | Orleans Arena | 1836
+1 | 2 | Sunday | November 17 | 1:05pm | Monterrey Flash | L 6–10 | 0–2 | UniSantos Park | 363
+2 | 3 | Saturday | November 23 | 7:05pm | at Bay Area Rosal | W 10–7 | 1–2 | Cabernet Indoor Sports | 652
+3 | 4 | Sunday | December 1 | 1:05pm | Ontario Fury | W 18–4 | 2–2 | UniSantos Park | 207
+4 | 5 | Saturday | December 14 | 7:05pm | at Sacramento Surge | W 7–6 (OT) | 3–2 | Estadio Azteca Soccer Arena | 215
+5 | 6 | Sunday | December 15 | 6:00pm | at Bay Area Rosal | L 8–9 (OT) | 3–3 | Cabernet Indoor Sports | 480
+6 | 7 | Sunday | December 22 | 1:05pm | Turlock Express | W 16–8 | 4–3 | UniSantos Park | 218
+7 | 8 | Saturday | January 4 | 7:05pm | at Ontario Fury | L 5–12 | 4–4 | Citizens Business Bank Arena | 2653
+8 | 9 | Sunday | January 5 | 1:05pm | San Diego Sockers | L 7–12 | 4–5 | UniSantos Park | 388
+9 | 10 | Sunday | January 12 | 1:05pm | Las Vegas Legends | W 10–7 | 5–5 | UniSantos Park | 343
+10 | 11 | Sunday | January 19 | 1:05pm | Bay Area Rosal | W 17–7 | 6–5 | UniSantos Park | 219
+11 | 12 | Sunday | January 26 | 1:05pm | Sacramento Surge | W 20–6 | 7–5 | UniSantos Park | 224
+12 | 13 | Saturday | February 1 | 7:05pm | at San Diego Sockers | L 5–6 | 7–6 | Valley View Casino Center | 4954
+13 | 14 | Friday | February 7 | 7:05pm | at Turlock Express | L 6–9 | 7–7 | Turlock Soccer Complex | 673
+14 | 15 | Saturday | February 8 | 7:05pm | at Sacramento Surge | W 10–6 | 8–7 | Estadio Azteca Soccer Arena | 323
+15 | 16 | Saturday | February 15♥ | 5:05pm | Bay Area Rosal | W 27–2 | 9–7 | UniSantos Park | 118
+Question: which opponent did this team play against after playing the ontario fury on december 1 of this season?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: Step 1: Find the game where the team played against the Ontario Fury on December 1.
+From the full table:
+- Game 4 on December 1 was against Ontario Fury.
+
+Step 2: Identify the game after playing against the Ontario Fury.
+From the full table:
+- The game after Game 4 is Game 5 on December 14 at Sacramento Surge.
+
+Therefore, the opponent that the team played against after playing the Ontario Fury on December 1 of this season was the Sacramento Surge.
+
+Final Answer: Sacramento Surge
+[Fallback] Prediction: sacramento surge
+[Gold Answer] sacramento surge
+

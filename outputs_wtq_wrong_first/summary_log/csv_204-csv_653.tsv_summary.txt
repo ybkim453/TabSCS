@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. Result:
+   - Data type: Categorical
+   - 4 representative example values: Loss, Win, Exch, Draw
+   - Role: Describes the outcome of the match for the boxer
+
+2. Record:
+   - Data type: Categorical
+   - 4 representative example values: 31-3-0, 28-1-0, 24-0-0, 23-0-0
+   - Role: Identifier for the boxer's record
+
+3. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: J.H. Isbell, Frankie Hagan, Herman Zeinman, William Beltran
+   - Role: Describes the opponent the boxer faced
+
+4. Method:
+   - Data type: Categorical
+   - 4 representative example values: KO, PTS, TKO, DQ
+   - Role: Describes the method by which the match was won or lost
+
+5. Date:
+   - Data type: Date
+   - 4 representative example values: 1934 Mar 31, 1934 Jan 30, 1933, 1933 May 21
+   - Role: Indicates the date of the match
+
+6. Round:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 1, 1
+   - Role: Indicates the round in which the match ended
+
+7. Location:
+   - Data type: Categorical
+   - 4 representative example values: Cambridge, Massachusetts
+   - Role: Describes the location where the match took place
+
+**Outlier Row Analysis:**
+
+1. Row 18:
+   - The record value of 16-0-0 for Irish Tommy Mitchell is significantly lower than the other records in the table, making it an outlier.
+
+2. Row 5:
+   - The method value of KO for Lawrence "Larry" O'Neil is consistent with other rows in the table, so this row is an ordinary entry and not an outlier.
+
+3. Row 0:
+   - The result value of Loss for J.H. Isbell is consistent with other rows in the table, so this row is an ordinary entry and not an outlier.

@@ -1,0 +1,156 @@
+=== Table ID ===
+csv/204-csv/875.tsv
+
+=== Question ===
+how many people attended the toros mexico vs. turlock express game?
+
+=== Sub-table Preview ===
+|   Season | Age         | Overall           | Slalom       |   Giant\nSlalom |   Super G |   Downhill |   Combined |
+|---------:|:------------|:------------------|:-------------|----------------:|----------:|-----------:|-----------:|
+|     2008 | 21          | 64                | –            |              28 |        46 |         46 |         31 |
+|     2009 | 22          | 7                 | –            |               6 |        16 |         16 |          1 |
+|     2012 | 25          | 24                | –            |              16 |        28 |         17 |         19 |
+|     2010 | 5 Dec 2009  | Beaver Creek, USA | Downhill     |             nan |       nan |        nan |        nan |
+|     2010 | 6 Dec 2009  | Beaver Creek, USA | Giant Slalom |             nan |       nan |        nan |        nan |
+|     2010 | 12 Mar 2010 | Garmisch, Germany | Giant Slalom |             nan |       nan |        nan |        nan |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 2008, 2009, 2010, 2012
+   - Role: Identifier for the year in which the data was recorded
+
+2. Age
+   - Data type: Numeric
+   - 4 representative example values: 21, 22, 25, 5 Dec 2009
+   - Role: Descriptor indicating the age of the athlete during the season
+
+3. Overall
+   - Data type: Numeric
+   - 4 representative example values: 64, 7, 24, Beaver Creek, USA
+   - Role: Measure representing the overall performance ranking
+
+4. Slalom
+   - Data type: Categorical
+   - 4 representative example values: –, Giant Slalom, Downhill
+   - Role: Descriptor indicating the type of event and performance in Slalom
+
+5. Giant Slalom
+   - Data type: Numeric
+   - 4 representative example values: 28, 6, 16, nan
+   - Role: Measure representing the performance ranking in Giant Slalom
+
+6. Super G
+   - Data type: Numeric
+   - 4 representative example values: 46, 16, 28, nan
+   - Role: Measure representing the performance ranking in Super G
+
+7. Downhill
+   - Data type: Numeric
+   - 4 representative example values: 46, 16, 17, nan
+   - Role: Measure representing the performance ranking in Downhill
+
+8. Combined
+   - Data type: Numeric
+   - 4 representative example values: 31, 1, 19, nan
+   - Role: Measure representing the combined performance ranking
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for Season, Age, Overall, and the event location (Beaver Creek, USA) are different from the typical numeric values in the table.
+   - These values are not consistent with the majority of the data and stand out as atypical, making this row an outlier.
+
+2. Row 1:
+   - The values for Season, Age, and Overall are within the typical range seen in the table.
+   - The absence of specific event performance data (marked as "-") in Slalom, Giant Slalom, Super G, Downhill, and Combined does not make this row an outlier as missing data is common in sports statistics.
+
+3. Row 2:
+   - Similar to Row 1, the values for Season, Age, and Overall are ordinary.
+   - The absence of specific event performance data in Slalom, Giant Slalom, Super G, Downhill, and Combined does not make this row an outlier as missing data is common in sports statistics.
+
+=== Full Table Preview ===
+|   row_number |   Game | Day      | Date         | Kickoff   | Opponent             | Results\nScore   | Results\nRecord   | Location                     |   Attendance |
+|-------------:|-------:|:---------|:-------------|:----------|:---------------------|:-----------------|:------------------|:-----------------------------|-------------:|
+|            0 |      1 | Sunday   | November 10  | 3:05pm    | at Las Vegas Legends | L 3–7            | 0–1               | Orleans Arena                |         1836 |
+|            1 |      2 | Sunday   | November 17  | 1:05pm    | Monterrey Flash      | L 6–10           | 0–2               | UniSantos Park               |          363 |
+|            2 |      3 | Saturday | November 23  | 7:05pm    | at Bay Area Rosal    | W 10–7           | 1–2               | Cabernet Indoor Sports       |          652 |
+|            3 |      4 | Sunday   | December 1   | 1:05pm    | Ontario Fury         | W 18–4           | 2–2               | UniSantos Park               |          207 |
+|            4 |      5 | Saturday | December 14  | 7:05pm    | at Sacramento Surge  | W 7–6 (OT)       | 3–2               | Estadio Azteca Soccer Arena  |          215 |
+|            5 |      6 | Sunday   | December 15  | 6:00pm    | at Bay Area Rosal    | L 8–9 (OT)       | 3–3               | Cabernet Indoor Sports       |          480 |
+|            6 |      7 | Sunday   | December 22  | 1:05pm    | Turlock Express      | W 16–8           | 4–3               | UniSantos Park               |          218 |
+|            7 |      8 | Saturday | January 4    | 7:05pm    | at Ontario Fury      | L 5–12           | 4–4               | Citizens Business Bank Arena |         2653 |
+|            8 |      9 | Sunday   | January 5    | 1:05pm    | San Diego Sockers    | L 7–12           | 4–5               | UniSantos Park               |          388 |
+|            9 |     10 | Sunday   | January 12   | 1:05pm    | Las Vegas Legends    | W 10–7           | 5–5               | UniSantos Park               |          343 |
+|           10 |     11 | Sunday   | January 19   | 1:05pm    | Bay Area Rosal       | W 17–7           | 6–5               | UniSantos Park               |          219 |
+|           11 |     12 | Sunday   | January 26   | 1:05pm    | Sacramento Surge     | W 20–6           | 7–5               | UniSantos Park               |          224 |
+|           12 |     13 | Saturday | February 1   | 7:05pm    | at San Diego Sockers | L 5–6            | 7–6               | Valley View Casino Center    |         4954 |
+|           13 |     14 | Friday   | February 7   | 7:05pm    | at Turlock Express   | L 6–9            | 7–7               | Turlock Soccer Complex       |          673 |
+|           14 |     15 | Saturday | February 8   | 7:05pm    | at Sacramento Surge  | W 10–6           | 8–7               | Estadio Azteca Soccer Arena  |          323 |
+|           15 |     16 | Saturday | February 15♥ | 5:05pm    | Bay Area Rosal       | W 27–2           | 9–7               | UniSantos Park               |          118 |
+
+Generated Reasoning SQL: Explanation: To determine the attendance for the Toros Mexico vs. Turlock Express game, we need to filter the row corresponding to that specific game and retrieve the attendance value from the "Attendance" column.
+
+SQL: SELECT "Attendance" 
+FROM T 
+WHERE "Game" = 7 AND "Opponent" = 'Turlock Express';
+Generated Final SQL: SELECT "Attendance" FROM T WHERE "Game" = 7 AND "Opponent" = 'Turlock Express';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   Attendance |
+|-------------:|
+|          218 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2013–14 Toros Mexico season
+SQL: SELECT "Attendance" FROM T WHERE "Game" = 7 AND "Opponent" = 'Turlock Express';
+
+SQL Execution Result:
+Attendance
+218
+
+Question: how many people attended the toros mexico vs. turlock express game?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 218
+[Gold Answer] 218
+

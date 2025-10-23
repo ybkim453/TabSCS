@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. **#**
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 5, 9
+   - Role: Identifier
+
+2. **Massif**
+   - Data type: Categorical
+   - 4 representative example values: Uholka / Wide Meadow, Maramoros, Kuziy / Trybushany, Vihorlat
+   - Role: Descriptor
+
+3. **Region**
+   - Data type: Categorical
+   - 4 representative example values: Zakarpattia, Presov, Mecklenburg-Vorpommern, Hesse
+   - Role: Descriptor
+
+4. **Type of nature reserve**
+   - Data type: Categorical
+   - 4 representative example values: Carpathian Biosphere Reserve, Presov Preserved areas, Jasmund National Park, Kellerwald-Edersee National Park
+   - Role: Descriptor
+
+5. **Preserved area**
+   - Data type: Numeric
+   - 4 representative example values: 11860 ha, 2243.6 ha, 1369.6 ha, 2578 ha
+   - Role: Measure
+
+6. **Buffer zone**
+   - Data type: Numeric
+   - 4 representative example values: 3301 ha, 6230.4 ha, 3163.4 ha, 2413 ha
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values for "Massif" and "Region" are "Unknown" which is not a typical entry in the table.
+   - This row is an outlier due to the presence of "Unknown" values which are not consistent with the rest of the data.
+
+2. Row 10:
+   - The values for "Type of nature reserve" and "Preserved area" are missing.
+   - This row is an outlier due to the missing values which deviate from the complete data entries in the table.
+
+3. Row 8:
+   - The values for "Preserved area" and "Buffer zone" are significantly smaller compared to the other entries in the table.
+   - This row is an outlier due to the unusually small values for "Preserved area" and "Buffer zone" which do not align with the majority of the data.

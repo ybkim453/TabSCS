@@ -1,0 +1,174 @@
+=== Table ID ===
+csv/203-csv/162.tsv
+
+=== Question ===
+how many total derivatives are cold water soluble?
+
+=== Sub-table Preview ===
+|   Title | Year                          | Peak chart positions\nUS   | Peak chart positions\nUS Dance   | Peak chart positions\nUS Pop   | Peak chart positions\nUS R&B   | Peak chart positions\nGER   | Peak chart positions\nNL   | Peak chart positions\nNOR   | Peak chart positions\nNZ   | Peak chart positions\nSWI   | Peak chart positions\nUK   |   Album |
+|--------:|:------------------------------|:---------------------------|:---------------------------------|:-------------------------------|:-------------------------------|:----------------------------|:---------------------------|:----------------------------|:---------------------------|:----------------------------|:---------------------------|--------:|
+|    1980 | Earth Can Be Just Like Heaven | —                          | 2                                | —                              | —                              | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|    1980 | I Got the Feeling             | —                          | 2                                | —                              | —                              | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|    1980 | Just Us                       | —                          | 2                                | —                              | 29                             | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|    1982 | It's Raining Men              | 46                         | 1                                | 46                             | 34                             | 43                          | 46                         | 8                           | 13                         | 95                          | 2                          |     nan |
+|    1985 | Well-A-Wiggy                  | —                          | —                                | 107                            | 76                             | —                           | —                          | —                           | —                          | —                           | —                          |     nan |
+|    1993 | Can You Feel It               | —                          | 2                                | —                              | —                              | 75                          | —                          | —                           | —                          | —                           | —                          |     nan |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Title:
+   - Data type: Categorical
+   - 4 representative example values: "Earth Can Be Just Like Heaven", "I Got the Feeling", "Just Us", "It's Raining Men"
+   - Role: Descriptor
+
+2. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1980, 1982, 1985, 1993
+   - Role: Identifier
+
+3. Peak chart positions (US):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, 107, 75
+   - Role: Measure
+
+4. Peak chart positions (US Dance):
+   - Data type: Numeric
+   - 4 representative example values: 2, 1, —, —
+   - Role: Measure
+
+5. Peak chart positions (US Pop):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, 107, —
+   - Role: Measure
+
+6. Peak chart positions (US R&B):
+   - Data type: Numeric
+   - 4 representative example values: —, 34, 76, —
+   - Role: Measure
+
+7. Peak chart positions (GER):
+   - Data type: Numeric
+   - 4 representative example values: —, 43, —, 75
+   - Role: Measure
+
+8. Peak chart positions (NL):
+   - Data type: Numeric
+   - 4 representative example values: —, 46, —, —
+   - Role: Measure
+
+9. Peak chart positions (NOR):
+   - Data type: Numeric
+   - 4 representative example values: —, 8, —, —
+   - Role: Measure
+
+10. Peak chart positions (NZ):
+   - Data type: Numeric
+   - 4 representative example values: —, 13, —, —
+   - Role: Measure
+
+11. Peak chart positions (SWI):
+   - Data type: Numeric
+   - 4 representative example values: —, 95, —, —
+   - Role: Measure
+
+12. Peak chart positions (UK):
+   - Data type: Numeric
+   - 4 representative example values: —, 2, —, —
+   - Role: Measure
+
+13. Album:
+   - Data type: Categorical
+   - 4 representative example values: nan
+   - Role: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The peak chart position for US R&B is 29, which is significantly higher than the other values in the column.
+   - This row is an outlier due to the unusually high peak chart position in the US R&B category.
+
+2. Row 6:
+   - The peak chart positions for US Pop and US R&B are 107 and 76, respectively, which are notably higher than the other values in those columns.
+   - This row is an outlier due to the unusually high peak chart positions in the US Pop and US R&B categories.
+
+3. Row 5:
+   - The peak chart position for US Pop is 107, which is much higher than the other values in the column.
+   - This row is an outlier due to the unusually high peak chart position in the US Pop category.
+
+=== Full Table Preview ===
+|   row_number | Cellulose ethers   | Reagent                      | Example                               | Reagent_1                         | Group R = H or        | Water solubility       | Application                                                                                  | E number   |
+|-------------:|:-------------------|:-----------------------------|:--------------------------------------|:----------------------------------|:----------------------|:-----------------------|:---------------------------------------------------------------------------------------------|:-----------|
+|            0 | Alkyl              | Halogenoalkanes              | Methylcellulose                       | Chloromethane                     | -CH3                  | Cold water soluble     |                                                                                              | E461       |
+|            1 |                    |                              | Ethylcellulose                        | Chloroethane                      | -CH2CH3               | Water insoluble        | A commercial thermoplastic used in coatings inks binders and controlled-release drug tablets | E462       |
+|            2 |                    |                              | Ethyl methyl cellulose                | Chloromethane and chloroethane    | -CH3 or -CH2CH3       |                        |                                                                                              | E465       |
+|            3 | Hydroxyalkyl       | Epoxides                     | Hydroxyethyl cellulose                | Ethylene oxide                    | -CH2CH2OH             | Cold/hot water soluble | Gelling and thickening agent                                                                 |            |
+|            4 |                    |                              | Hydroxypropyl cellulose (HPC)         | Propylene oxide                   | -CH2CH(OH)CH3         | Cold water soluble     |                                                                                              | E463       |
+|            5 |                    |                              | Hydroxyethyl methyl cellulose         | Chloromethane and ethylene oxide  | -CH3 or -CH2CH2OH     | Cold water soluble     | Production of cellulose films                                                                |            |
+|            6 |                    |                              | Hydroxypropyl methyl cellulose (HPMC) | Chloromethane and propylene oxide | -CH3 or -CH2CH(OH)CH3 | Cold water soluble     | Viscosity modifier gelling foaming and binding agent                                         | E464       |
+|            7 |                    |                              | Ethyl hydroxyethyl cellulose          | Chloroethane and ethylene oxide   | -CH2CH3 or—CH2CH2OH   |                        |                                                                                              | E467       |
+|            8 | Carboxyalkyl       | Halogenated carboxylic acids | Carboxymethyl cellulose (CMC)         | Chloroacetic acid                 | -CH2COOH              | Cold/Hot water soluble | Often used as its sodium salt sodium carboxymethyl cellulose (NaCMC)                         | E466       |
+
+Generated Reasoning SQL: Explanation: To determine the total number of derivatives that are cold water soluble, we need to filter the rows where the "Water solubility" column contains the value "Cold water soluble". The "Water solubility" column is categorical, and we are interested in counting the occurrences of this specific value.
+
+SQL: SELECT COUNT("Water solubility") 
+FROM T 
+WHERE "Water solubility" LIKE '%Cold water soluble%';
+Generated Final SQL: SELECT COUNT("Water solubility") FROM T WHERE "Water solubility" LIKE '%Cold water soluble%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Water solubility") |
+|----------------------------:|
+|                           4 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Cellulose
+SQL: SELECT COUNT("Water solubility") FROM T WHERE "Water solubility" LIKE '%Cold water soluble%';
+
+SQL Execution Result:
+COUNT("Water solubility")
+4
+
+Question: how many total derivatives are cold water soluble?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 4
+[Gold Answer] 6
+

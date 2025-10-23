@@ -1,0 +1,57 @@
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative values: 7, 9, 20, 32
+   - Role: Identifier for each row
+
+2. Score
+   - Data type: Numeric
+   - 4 representative values: 164*, 230*, 189*, 109
+   - Role: Measure of the player's score in a match
+
+3. Player
+   - Data type: Categorical
+   - 4 representative values: Vijay Hazare, Bert Sutcliffe, Vijay Manjrekar (2/2), Dilip Vengsarkar (1/4)
+   - Role: Descriptor for the player's name
+
+4. Team
+   - Data type: Categorical
+   - 4 representative values: India, New Zealand, West Indies
+   - Role: Descriptor for the player's team
+
+5. Balls
+   - Data type: Numeric
+   - 4 representative values: NR, NR, NR, NR
+   - Role: Measure of the number of balls faced by the player
+
+6. Inns.
+   - Data type: Numeric
+   - 4 representative values: 2, 1, 1, 1
+   - Role: Measure of the innings played by the player
+
+7. Opposing team
+   - Data type: Categorical
+   - 4 representative values: England, India, West Indies
+   - Role: Descriptor for the opposing team
+
+8. Date
+   - Data type: Date
+   - 4 representative values: 2 November 1951, 16 December 1955, 13 December 1961, 24 January 1979
+   - Role: Descriptor for the date of the match
+
+9. Result
+   - Data type: Categorical
+   - 4 representative values: Drawn, Drawn, Drawn, Drawn
+   - Role: Descriptor for the result of the match
+
+**Outlier Row Analysis:**
+
+1. Row 42:
+   - The values for Balls and Inns. are missing (NR), which is different from the majority of the table where these values are numeric. This makes the row an outlier.
+
+2. Row 44:
+   - The Score is 102, which is not a high score compared to the other entries in the table. This makes the row an outlier as it is significantly lower than the other scores.
+
+3. Row 8:
+   - The Player is missing (NR), which is different from the majority of the table where player names are provided. This makes the row an outlier.

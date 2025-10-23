@@ -1,0 +1,55 @@
+### Column Analysis:
+
+1. **Route:**
+   - Data type: Categorical
+   - 4 representative example values: 31, 32, 37, 70
+   - Role: Identifier for the specific bus route.
+
+2. **Name:**
+   - Data type: Categorical
+   - 4 representative example values: Wisconsin Avenue Line, Pennsylvania Avenue Line, Georgia Avenue-7th Street Line, Takoma-Fort Totten Line
+   - Role: Descriptor for the name of the bus route.
+
+3. **Fare Type:**
+   - Data type: Categorical
+   - 4 representative example values: Local, Limited Stop
+   - Role: Descriptor for the type of fare for the bus route.
+
+4. **Terminals:**
+   - Data type: Categorical
+   - 4 representative example values: Friendship Heights station, Silver Spring station, Takoma station
+   - Role: Descriptor for the starting or ending terminal of the bus route.
+
+5. **Terminals.1:**
+   - Data type: Categorical
+   - 4 representative example values: Potomac Park (Virginia Av & 21st St NW), 32 Southern Avenue station, Archives station
+   - Role: Descriptor for the ending terminal of the bus route.
+
+6. **Major streets:**
+   - Data type: Categorical
+   - 4 representative example values: Wisconsin Avenue NW, Georgia Avenue NW, North Capitol Street
+   - Role: Descriptor for the major streets covered by the bus route.
+
+7. **Notes:**
+   - Data type: Categorical
+   - 4 representative example values: nan, Some weekday 32 and 36 trips terminate at:, Weekday peak hour service only
+   - Role: Additional notes or information about the bus route.
+
+8. **History:**
+   - Data type: Categorical
+   - 4 representative example values: 31 replaces the Wisconsin Avenue portion of the old 30, 36 replaces a portion of the old 35, K2 operated to Walter Reed Army Medical Center until 2005
+   - Role: Historical information or changes related to the bus route.
+
+### Outlier Row Analysis:
+
+1. **Row 3:**
+   - Distinctive values: Route 37, Wisconsin Avenue Metro Extra Line, Limited Stop, Friendship Heights station, Archives station (AM End), Federal Triangle (10th St & Pennsylvania Av NW) (PM Start), Wisconsin Avenue NW, Massachusetts Avenue NW, Pennsylvania Avenue NW, Weekday peak hour service only (AM to Archives, PM to Friendship Heights), Limited Stops Only, A prior "incarnation" of the 37 was once known as the Wisconsin Avenue Express Line, running from Tenleytown-AU station to Archives until the early 1990s
+   - Explanation: The detailed information about the route, terminals, and service type make this row distinctive compared to the majority of the table.
+
+2. **Row 36:**
+   - Distinctive values: Route K2, Takoma-Fort Totten Line, Local, Takoma station, Fort Totten station, North Capitol Street, Kansas Avenue NE, Eastern Avenue, Weekday peak hour service only, K2 operated to Walter Reed Army Medical Center until 2005, when it was replaced by K1 north of Takoma station
+   - Explanation: The specific route details and historical information make this row stand out from the rest of the table.
+
+3. **Row 9:**
+   - Distinctive values: Route S1, 16th Street-Potomac Park Line, Local, 16th Street & Colorado Avenue NW, Potomac Park (Virginia Av & E St NW), 16th Street NW, 18th Street NW (to 16th & Colorado), 19th Street NW (to Potomac Park), Weekday peak hour service only (AM to Potomac Park, PM to 16th & Colorado)
+   - Explanation: The unique route, terminals, and service details differentiate this row from the typical entries in the table.

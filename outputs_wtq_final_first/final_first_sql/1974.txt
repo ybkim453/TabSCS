@@ -1,0 +1,161 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: 12 November 1960, 10 December 1960, 26 December 1960, 31 December 1960
+   - Role: Identifier for the specific match date
+
+2. Opponent
+   - Data type: Categorical
+   - 4 representative example values: Arsenal, Cardiff City, Manchester United, Wolverhampton Wanderers
+   - Role: Descriptor for the opposing team
+
+3. Venue
+   - Data type: Categorical
+   - 4 representative example values: A, A, A, A
+   - Role: Descriptor for the location of the match (A for Away)
+
+4. Result
+   - Data type: Categorical
+   - 4 representative example values: 4-1, 1-2, 0-6, 1-6
+   - Role: Measure of the match outcome
+
+5. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 38,666, 21,840, 50,213, 28,503
+   - Role: Measure of the number of spectators present at the match
+
+6. Scorers
+   - Data type: Categorical
+   - 4 representative example values: Mortimore, Greaves, Tindall, Tambling
+   - Role: Descriptor for the players who scored goals in the match
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - The values for Date, Opponent, Venue, Result, and Attendance are missing (nan).
+   - This row is an outlier due to missing data in multiple columns, making it distinct from the majority of complete data rows.
+
+2. Row 22:
+   - The Result is 1-1, which is different from the majority of results in the table that have more goals scored.
+   - This row is an outlier based on the atypical match outcome compared to the other results.
+
+3. Row 15:
+   - The Scorers column has the value "Anderton", which is different from the majority of scorers listed in the table.
+   - This row is an outlier due to the unique scorer compared to the other matches.
+
+In summary, Rows 23, 22, and 15 are considered outliers based on missing data and atypical values in the Result and Scorers columns, respectively.
+
+=== Full Table Preview ===
+|   row_number | Date                | Opponent                | Venue   | Result   |   Attendance | Scorers                                                 |
+|-------------:|:--------------------|:------------------------|:--------|:---------|-------------:|:--------------------------------------------------------|
+|            0 | 1960-08-20 00:00:00 | Aston Villa             | A       | 2-3      |        43776 | Brabrook Gibbs                                          |
+|            1 | 1960-08-24 00:00:00 | Leicester City          | H       | 1-3      |        24691 | Bradbury                                                |
+|            2 | 1960-08-27 00:00:00 | Wolverhampton Wanderers | H       | 3-3      |        41681 | Greaves (3)                                             |
+|            3 | 1960-08-31 00:00:00 | Leicester City          | A       | 3-1      |        21087 | Sillett Greaves Brooks                                  |
+|            4 | 1960-09-03 00:00:00 | Bolton Wanderers        | A       | 1-4      |        21609 | Greaves                                                 |
+|            5 | 1960-09-07 00:00:00 | Blackburn Rovers        | H       | 5-2      |        23224 | Greaves (3) Livesey (2)                                 |
+|            6 | 1960-09-10 00:00:00 | West Ham United         | H       | 3-2      |        37873 | Greaves Livesey Blunstone                               |
+|            7 | 1960-09-17 00:00:00 | Fulham                  | A       | 2-3      |        37423 | Livesey Blunstone                                       |
+|            8 | 1960-09-19 00:00:00 | Blackburn Rovers        | A       | 1-3      |        21508 | Brabrook                                                |
+|            9 | 1960-09-24 00:00:00 | Blackpool               | A       | 4-1      |        26546 | Greaves (2) Livesey (2)                                 |
+|           10 | 1960-10-01 00:00:00 | Everton                 | H       | 3-3      |        31457 | Greaves                                                 |
+|           11 | 1960-10-15 00:00:00 | Birmingham City         | A       | 0-1      |        22337 |                                                         |
+|           12 | 1960-10-22 00:00:00 | Burnley                 | H       | 2-6      |        29080 | Brabrook Greaves                                        |
+|           13 | 1960-10-29 00:00:00 | Preston North End       | A       | 2-0      |        14174 | Tindall Tambling                                        |
+|           14 | 1960-11-05 00:00:00 | Newcastle United        | H       | 4-2      |        30489 | Brabrook Tindall (3)                                    |
+|           15 | 1960-11-12 00:00:00 | Arsenal                 | A       | 4-1      |        38666 | Mortimore Greaves Tindall Tambling                      |
+|           16 | 1960-11-19 00:00:00 | Manchester City         | H       | 6-3      |        37346 | Greaves (3) Tindall (2) Tambling                        |
+|           17 | 1960-11-26 00:00:00 | Nottingham Forest       | A       | 1-2      |        22121 | Brabrook                                                |
+|           18 | 1960-12-03 00:00:00 | West Bromwich Albion    | H       | 7-1      |        19568 | Brabrook Greaves (5) Tindall                            |
+|           19 | 1960-12-10 00:00:00 | Cardiff City            | A       | 1-2      |        21840 | Greaves                                                 |
+|           20 | 1960-12-17 00:00:00 | Aston Villa             | H       | 2-4      |        23805 | Greaves (2)                                             |
+|           21 | 1960-12-24 00:00:00 | Manchester United       | H       | 1-2      |        37601 | Brabrook                                                |
+|           22 | 1960-12-26 00:00:00 | Manchester United       | A       | 0-6      |        50213 |                                                         |
+|           23 | 1960-12-31 00:00:00 | Wolverhampton Wanderers | A       | 1-6      |        28503 | Anderton                                                |
+|           24 | 1961-01-14 00:00:00 | Bolton Wanderers        | H       | 1-1      |        20461 | Livesey                                                 |
+|           25 | 1961-01-21 00:00:00 | West Ham United         | A       | 1-3      |        21829 | Blunstone                                               |
+|           26 | 1961-02-04 00:00:00 | Fulham                  | H       | 2-1      |        39185 | Greaves Bridges                                         |
+|           27 | 1961-02-11 00:00:00 | Blackpool               | H       | 2-2      |        21993 | Sillett Greaves                                         |
+|           28 | 1961-02-18 00:00:00 | Everton                 | A       | 1-1      |        34449 | Greaves                                                 |
+|           29 | 1961-02-25 00:00:00 | Sheffield Wednesday     | A       | 0-1      |        21936 |                                                         |
+|           30 | 1961-03-04 00:00:00 | Birmingham City         | H       | 3-2      |        27727 | Greaves Tindall Tambling                                |
+|           31 | 1961-03-11 00:00:00 | Burnley                 | A       | 4-4      |        19435 | Greaves (2) Tambling (2)                                |
+|           32 | 1961-03-18 00:00:00 | Preston North End       | H       | 1-1      |        22031 | Tindall                                                 |
+|           33 | 1961-03-25 00:00:00 | Newcastle United        | A       | 6-1      |        28975 | Greaves (4) Tindall (2)                                 |
+|           34 | 1961-03-31 00:00:00 | Tottenham Hotspur       | A       | 2-4      |        65032 | Brabrook Tindall                                        |
+|           35 | 1961-04-01 00:00:00 | Cardiff City            | H       | 6-1      |        22697 | Greaves Tindall (2) Tambling Harrison Harrington (o.g.) |
+|           36 | 1961-04-03 00:00:00 | Tottenham Hotspur       | H       | 2-3      |        57103 | Blunstone Greaves                                       |
+|           37 | 1961-04-08 00:00:00 | Manchester City         | A       | 1-2      |        27720 | Tambling                                                |
+|           38 | 1961-04-15 00:00:00 | Arsenal                 | H       | 3-1      |        38233 | Tindall Tambling Neill (o.g.)                           |
+|           39 | 1961-04-22 00:00:00 | West Bromwich Albion    | A       | 0-3      |        17691 |                                                         |
+|           40 | 1961-04-26 00:00:00 | Sheffield Wednesday     | H       | 0-2      |        24258 |                                                         |
+|           41 | 1961-04-29 00:00:00 | Nottingham Forest       | H       | 4-3      |        22775 | Greaves (4)                                             |
+
+Generated Reasoning SQL: Explanation: To determine the date of the last away game, we need to focus on the "Venue" column to identify matches played away (Venue = 'A'). We also need to consider the "Date" column to find the latest date among these away games. Since the question specifically asks for the last away game, we should order the results by date in descending order and select the top row to get the most recent away match date.
+
+SQL: 
+SELECT "Date" 
+FROM T 
+WHERE "Venue" = 'A' 
+ORDER BY "Date" DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Date" FROM T WHERE "Venue" = 'A' ORDER BY "Date" DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Date                |
+|:--------------------|
+| 1961-04-22 00:00:00 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1960–61 Chelsea F.C. season
+SQL: SELECT "Date" FROM T WHERE "Venue" = 'A' ORDER BY "Date" DESC LIMIT 1;
+
+SQL Execution Result:
+Date
+1961-04-22 00:00:00
+
+Question: what was the date of the last away game?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1961-04-22
+[Gold Answer] 22 april 1961
+

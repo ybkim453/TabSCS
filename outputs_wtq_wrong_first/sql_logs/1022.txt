@@ -1,0 +1,144 @@
+=== Table ID ===
+csv/204-csv/369.tsv
+
+=== Question ===
+name a golfer from the same country as phil mickelson.
+
+=== Sub-table Preview ===
+|   No. | Date/time                    | Aircraft                    | Foe                        | Result                         | Location                     | Notes                             |
+|------:|:-----------------------------|:----------------------------|:---------------------------|:-------------------------------|:-----------------------------|:----------------------------------|
+|     1 | 4 December 1916 @ 1100 hours | Nieuport serial number 3958 | Albatros D.I               | Driven down out of control     | Northeast of Bapaume, France | Victory shared with another pilot |
+|     3 | 2 May 1917 @ 0945 hours      | Sopwith Triplane s/n N5460  | German two-seater aircraft | Driven down out of control     | Douai, France                | nan                               |
+|     4 | 11 May 1917 @ 1950 hours     | Sopwith Triplane s/n N5460  | Albatros D.III             | Driven down out of control     | Douai, France                | nan                               |
+|     5 | 11 May 1917 @ 1950 hours     | Sopwith Triplane s/n N5460  | Albatros D.III             | Set afire in midair; destroyed | Douai, France                | nan                               |
+|     6 | 23 May 1917 @ 1800 hours     | Sopwith Triplane s/n N5460  | Albatros D.III             | Driven down out of control     | Douai, France                | nan                               |
+|     7 | 24 July 1917 @ 0635 hours    | Sopwith Triplane s/n N5462  | German two-seater aircraft | Driven down out of control     | Leffinghe                    | nan                               |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative example values: 1, 3, 4, 5
+   - Role: Identifier for each row
+
+2. Date/time
+   - Data type: Categorical
+   - 4 representative example values: 4 December 1916 @ 1100 hours, 2 May 1917 @ 0945 hours, 11 May 1917 @ 1950 hours, 23 May 1917 @ 1800 hours
+   - Role: Descriptor for the date and time of the event
+
+3. Aircraft
+   - Data type: Categorical
+   - 4 representative example values: Nieuport serial number 3958, Sopwith Triplane s/n N5460, Sopwith Triplane s/n N5462
+   - Role: Descriptor for the type and serial number of the aircraft
+
+4. Foe
+   - Data type: Categorical
+   - 4 representative example values: Albatros D.I, German two-seater aircraft
+   - Role: Descriptor for the type of enemy aircraft encountered
+
+5. Result
+   - Data type: Categorical
+   - 4 representative example values: Driven down out of control, Set afire in midair; destroyed
+   - Role: Descriptor for the outcome of the encounter
+
+6. Location
+   - Data type: Categorical
+   - 4 representative example values: Northeast of Bapaume, France, Douai, France, Leffinghe
+   - Role: Descriptor for the location of the event
+
+7. Notes
+   - Data type: Categorical
+   - 4 representative example values: Victory shared with another pilot, nan
+   - Role: Additional notes or comments related to the event
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The values in this row are not significantly different from the majority of the table. They contain typical information such as the date, aircraft, foe, result, location, and notes. Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 4:
+   - The value "Set afire in midair; destroyed" in the Result column sets this row apart from the others. This outcome is more extreme compared to the majority of the results in the table, making this row an outlier.
+
+3. Row 6:
+   - Similar to Row 0, the values in this row are not markedly different from the rest of the table. They include standard information such as the date, aircraft, foe, result, location, and notes. Hence, this row is an ordinary entry and does not need special treatment.
+
+=== Full Table Preview ===
+|   row_number | Golfer         | Country          |   Wins | Match Play        | Championship                           | Invitational                                | Champions   |
+|-------------:|:---------------|:-----------------|-------:|:------------------|:---------------------------------------|:--------------------------------------------|:------------|
+|            0 | Tiger Woods    | United States    |     18 | 3: 2003 2004 2008 | 7: 1999 2002 2003\n2005 2006 2007 2013 | 8: 1999 2000 2001 2005\n2006 2007 2009 2013 | —           |
+|            1 | Geoff Ogilvy   | Australia        |      3 | 2: 2006 2009      | 1: 2008                                | —                                           | —           |
+|            2 | Darren Clarke  | Northern Ireland |      2 | 1: 2000           | —                                      | 1: 2003                                     | —           |
+|            3 | Ernie Els      | South Africa     |      2 | —                 | 2: 2004 2010                           | —                                           | —           |
+|            4 | Hunter Mahan   | United States    |      2 | 1: 2012           | —                                      | 1: 2010                                     | —           |
+|            5 | Phil Mickelson | United States    |      2 | —                 | 1: 2009                                | —                                           | 1: 2009     |
+|            6 | Ian Poulter    | England          |      2 | 1: 2010           | —                                      | —                                           | 1: 2012     |
+
+Generated Reasoning SQL: Explanation: To find a golfer from the same country as Phil Mickelson, we need to identify the country of Phil Mickelson first and then search for another golfer from that country. The summary indicates that the "Country" column contains categorical values representing the country of each golfer. We will filter rows where the "Country" is the same as Phil Mickelson's country.
+
+SQL: 
+SELECT "Golfer" 
+FROM T 
+WHERE "Country" = (SELECT "Country" FROM T WHERE "Golfer" = 'Phil Mickelson');
+Generated Final SQL: SELECT "Golfer" FROM T WHERE "Country" = (SELECT "Country" FROM T WHERE "Golfer" = 'Phil Mickelson');
+SQL 실행 결과 셀 수: 3
+=== SQL 실행 결과 미리보기 ===
+| Golfer         |
+|:---------------|
+| Tiger Woods    |
+| Hunter Mahan   |
+| Phil Mickelson |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: World Golf Championships
+SQL: SELECT "Golfer" FROM T WHERE "Country" = (SELECT "Country" FROM T WHERE "Golfer" = 'Phil Mickelson');
+
+SQL Execution Result:
+Golfer
+Tiger Woods
+Hunter Mahan
+Phil Mickelson
+
+Question: name a golfer from the same country as phil mickelson.
+A: To find the answer to this question, let’s think step by step.
+Prediction: tiger woods, hunter mahan
+[Gold Answer] hunter mahan
+

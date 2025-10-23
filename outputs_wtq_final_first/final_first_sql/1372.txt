@@ -1,0 +1,158 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 8, 17, 19, 21
+   - Role: Identifier for the ranking of the divers.
+
+2. Diver:
+   - Data type: Categorical
+   - 4 representative example values: Debbie Fuller (CAN), Claire Izacard (FRA), Alison Childs (GBR), Nicole Kreil (AUT)
+   - Role: Descriptor for the divers participating in the competition.
+
+3. Preliminary Points:
+   - Data type: Numeric
+   - 4 representative example values: 437.04, 403.17, 400.68, 382.68
+   - Role: Measure of the points scored by divers in the preliminary round.
+
+4. Preliminary Rank:
+   - Data type: Numeric
+   - 4 representative example values: 11, 17, 19, 21
+   - Role: Identifier for the ranking of divers in the preliminary round.
+
+5. Final Points:
+   - Data type: Numeric
+   - 4 representative example values: 450.99, nan, nan, nan
+   - Role: Measure of the points scored by divers in the final round.
+
+**Outlier Row Analysis:**
+
+1. Row 8 (Debbie Fuller (CAN)):
+   - The final points value of 450.99 is significantly higher compared to the other divers in the table, making this row an outlier.
+
+2. Row 17 (Claire Izacard (FRA)):
+   - The final points value is missing (nan), which is not a distinctive value in this context. This row is an ordinary entry and does not require special handling.
+
+3. Row 4 (Nicole Kreil (AUT)):
+   - The final points value is missing (nan), which is not a distinctive value in this context. This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Diver                          |   Preliminary\nPoints |   Preliminary\nRank |   Final\nPoints |
+|-------------:|-------:|:-------------------------------|----------------------:|--------------------:|----------------:|
+|            0 |    nan | Sylvie Bernier (CAN)           |                489.51 |                   3 |          530.7  |
+|            1 |    nan | Kelly McCormick (USA)          |                516.75 |                   2 |          527.46 |
+|            2 |    nan | Christina Seufert (USA)        |                481.41 |                   5 |          517.62 |
+|            3 |      4 | Li Yihua (CHN)                 |                517.92 |                   1 |          506.52 |
+|            4 |      5 | Li Qiaoxian (CHN)              |                466.83 |                   6 |          487.68 |
+|            5 |      6 | Elsa Tenorio (MEX)             |                460.56 |                   8 |          463.56 |
+|            6 |      7 | Lesley Smith (ZIM)             |                438.72 |                  10 |          451.89 |
+|            7 |      8 | Debbie Fuller (CAN)            |                437.04 |                  11 |          450.99 |
+|            8 |      9 | Jennifer Donnet (AUS)          |                432.78 |                  12 |          443.13 |
+|            9 |     10 | Daphne Jongejans (NED)         |                487.95 |                   4 |          437.4  |
+|           10 |     11 | Anita Rossing (SWE)            |                464.58 |                   7 |          424.98 |
+|           11 |     12 | Verónica Ribot (ARG)           |                443.25 |                   9 |          422.52 |
+|           12 |     13 | Ann Fargher (NZL)              |                421.65 |                  13 |          nan    |
+|           13 |     14 | Tine Tollan (NOR)              |                419.55 |                  14 |          nan    |
+|           14 |     15 | Antonette Wilken (ZIM)         |                414.66 |                  15 |          nan    |
+|           15 |     16 | Guadalupe Canseco (MEX)        |                411.96 |                  16 |          nan    |
+|           16 |     17 | Claire Izacard (FRA)           |                403.17 |                  17 |          nan    |
+|           17 |     18 | Valerie McFarland-Beddoe (AUS) |                401.13 |                  18 |          nan    |
+|           18 |     19 | Alison Childs (GBR)            |                400.68 |                  19 |          nan    |
+|           19 |     20 | Kerstin Finke (FRG)            |                393.93 |                  20 |          nan    |
+|           20 |     21 | Nicole Kreil (AUT)             |                382.68 |                  21 |          nan    |
+|           21 |     22 | Joana Figueiredo (POR)         |                374.07 |                  22 |          nan    |
+|           22 |     23 | Angela Ribeiro (BRA)           |                370.68 |                  23 |          nan    |
+|           23 |     24 | Rim Hassan (EGY)               |                258.63 |                  24 |          nan    |
+
+Generated Reasoning SQL: Explanation: To calculate the average score of the medalists, we need to consider the "Rank" column to identify the medalists (gold, silver, and bronze) and then calculate the average of their scores. We will exclude any outlier rows with missing final points values (nan) as they do not contribute to the calculation of the average score.
+
+SQL: 
+SELECT AVG("Final\nPoints") AS average_score
+FROM T
+WHERE "Rank" IN (1.0, 2.0, 3.0) AND "Final\nPoints" IS NOT NULL;
+Generated Final SQL: SELECT AVG("Final\nPoints") AS average_score FROM T WHERE "Rank" IN (1.0, 2.0, 3.0) AND "Final\nPoints" IS NOT NULL;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| average_score   |
+|:----------------|
+|                 |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Diving at the 1984 Summer Olympics – Women's 3 metre springboard (row_number, Rank, Diver, Preliminary\nPoints, Preliminary\nRank, Final\nPoints)
+
+row_number | Rank | Diver | Preliminary\nPoints | Preliminary\nRank | Final\nPoints
+0 | nan | Sylvie Bernier (CAN) | 489.51 | 3 | 530.7
+1 | nan | Kelly McCormick (USA) | 516.75 | 2 | 527.46
+2 | nan | Christina Seufert (USA) | 481.41 | 5 | 517.62
+3 | 4.0 | Li Yihua (CHN) | 517.92 | 1 | 506.52
+4 | 5.0 | Li Qiaoxian (CHN) | 466.83 | 6 | 487.68
+5 | 6.0 | Elsa Tenorio (MEX) | 460.56 | 8 | 463.56
+6 | 7.0 | Lesley Smith (ZIM) | 438.72 | 10 | 451.89
+7 | 8.0 | Debbie Fuller (CAN) | 437.04 | 11 | 450.99
+8 | 9.0 | Jennifer Donnet (AUS) | 432.78 | 12 | 443.13
+9 | 10.0 | Daphne Jongejans (NED) | 487.95 | 4 | 437.4
+10 | 11.0 | Anita Rossing (SWE) | 464.58 | 7 | 424.98
+11 | 12.0 | Verónica Ribot (ARG) | 443.25 | 9 | 422.52
+12 | 13.0 | Ann Fargher (NZL) | 421.65 | 13 | nan
+13 | 14.0 | Tine Tollan (NOR) | 419.55 | 14 | nan
+14 | 15.0 | Antonette Wilken (ZIM) | 414.66 | 15 | nan
+15 | 16.0 | Guadalupe Canseco (MEX) | 411.96 | 16 | nan
+16 | 17.0 | Claire Izacard (FRA) | 403.17 | 17 | nan
+17 | 18.0 | Valerie McFarland-Beddoe (AUS) | 401.13 | 18 | nan
+18 | 19.0 | Alison Childs (GBR) | 400.68 | 19 | nan
+19 | 20.0 | Kerstin Finke (FRG) | 393.93 | 20 | nan
+20 | 21.0 | Nicole Kreil (AUT) | 382.68 | 21 | nan
+21 | 22.0 | Joana Figueiredo (POR) | 374.07 | 22 | nan
+22 | 23.0 | Angela Ribeiro (BRA) | 370.68 | 23 | nan
+23 | 24.0 | Rim Hassan (EGY) | 258.63 | 24 | nan
+Question: what was the average score of the gold, silver, and bronze medalists?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the gold, silver, and bronze medalists based on the rankings provided in the "Rank" column:
+- Gold Medalist: Li Yihua (CHN) - Rank 4
+- Silver Medalist: Li Qiaoxian (CHN) - Rank 5
+- Bronze Medalist: Elsa Tenorio (MEX) - Rank 6
+
+Next, we need to find their final points from the "Final Points" column:
+- Li Yihua (CHN) - Final Points: 506.52
+- Li Qiaoxian (CHN) - Final Points: 487.68
+- Elsa Tenorio (MEX) - Final Points: 463.56
+
+Now, we calculate the average score of the gold, silver, and bronze medalists:
+Average = (506.52 + 487.68 + 463.56) / 3
+
+Calculating the average:
+Average = 485.92
+
+Therefore, the average score of the gold, silver, and bronze medalists was 485.92.
+
+Final Answer: 485.92
+[Fallback] Prediction: 485.92
+[Gold Answer] 525.26
+

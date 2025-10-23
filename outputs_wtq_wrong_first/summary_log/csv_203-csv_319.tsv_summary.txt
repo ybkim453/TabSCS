@@ -1,0 +1,38 @@
+**Column Analysis:**
+
+1. Ship
+   - Data type: Categorical
+   - 4 representative example values: Andrew J. Higgins, Benjamin Isherwood, Walter S. Diehl, John Ericsson
+   - Role: Identifier for the specific ship
+
+2. Hull No.
+   - Data type: Categorical
+   - 4 representative example values: T-AO-190, T-AO-191, T-AO-193, T-AO-194
+   - Role: Identifier for the hull number of the ship
+
+3. Status
+   - Data type: Categorical
+   - 4 representative example values: Inactivated May 1996, Cancelled when 95.3% complete, Active
+   - Role: Descriptor indicating the current status of the ship
+
+4. Years Active
+   - Data type: Categorical
+   - 4 representative example values: 1987-1996 (USA), Launched 1988, 1991–present
+   - Role: Measure indicating the years the ship has been active
+
+5. NVR Page
+   - Data type: Categorical
+   - 4 representative example values: AO190, AO191, AO193, AO194
+   - Role: Identifier for the NVR page of the ship
+
+**Outlier Row Analysis:**
+
+1. Benjamin Isherwood (T-AO-191)
+   - The status mentions that it was cancelled when 95.3% complete and eventually scrapped in 2011, which is different from the other ships that are either active or inactivated/sold.
+   - This row is an outlier due to the unique circumstances of being cancelled and scrapped, unlike the other ships.
+
+2. John Ericsson (T-AO-194)
+   - This row is an ordinary row as the ship is listed as active, which is consistent with the majority of the table.
+
+3. Big Horn (T-AO-198)
+   - This row is an ordinary row as the ship is listed as active, which is consistent with the majority of the table.

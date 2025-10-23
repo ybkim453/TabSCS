@@ -1,0 +1,140 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Speed:
+   - Data type: Numeric
+   - 4 representative example values: 200.4 km/h, 182.4 km/h, 168.5 km/h, 164 km/h
+   - Role: Measure of the speed of the train
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: 1936-05-11, 1972-10-11, 1935-03-05, 1904-05-09
+   - Role: Identifier for the date of the record
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: Germany, UK
+   - Role: Descriptor for the country where the train record took place
+
+4. Train:
+   - Data type: Categorical
+   - 4 representative example values: Borsig DRG series 05 002, BR 18 201, LNER Class A3 No. 2750 Papyrus, GWR 3700 Class 3440 City of Truro
+   - Role: Descriptor for the specific train involved in the record
+
+5. Arr.:
+   - Data type: Categorical
+   - 4 representative example values: Loc
+   - Role: Descriptor for the type of train arrival
+
+6. Power:
+   - Data type: Categorical
+   - 4 representative example values: Steam
+   - Role: Descriptor for the power source of the train
+
+7. State:
+   - Data type: Categorical
+   - 4 representative example values: Unkn., Unmod.
+   - Role: Descriptor for the state of the train (unknown, unmodified, etc.)
+
+8. Comments:
+   - Data type: Categorical
+   - 4 representative example values: Level grade.[citation needed], The fastest operational steam locomotive as of 2011.[citation needed], First run at 100+ mph with complete, surviving documentation.[citation needed], Claimed to be the first steam locomotive to reach 100 mph.[citation needed]
+   - Role: Descriptor for additional comments or information related to the train record
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The speed of 200.4 km/h is significantly higher than the other speeds in the table, making this row an outlier in terms of speed.
+
+2. Row 1:
+   - The speed of 182.4 km/h is also notably higher than the majority of speeds in the table, making this row an outlier in terms of speed.
+
+3. Row 3:
+   - The claim of being the first steam locomotive to reach 100 mph is a distinctive feature that sets this row apart from the others, making it an outlier in terms of historical significance.
+
+=== Full Table Preview ===
+|   row_number | Speed                 | Date       | Country   | Train                                                       | Arr.   | Power   | State   | Comments                                                                                                                                                                                                                                                                      |
+|-------------:|:----------------------|:-----------|:----------|:------------------------------------------------------------|:-------|:--------|:--------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|            0 | 202.6 km/h (126 mph)  | 1938-07-03 | UK        | LNER Class A4 No. 4468 Mallard                              | Loc    | Steam   | Unkn.   | Downhill grade. Data indicates peak speed 202.6 km/h (126 mph) mean speed (half-mile) 201.2 km/h (125 mph). Mallard suffered an overheated crankpin during the run but was repaired and returned to traffic within 9 days.                                                    |
+|            1 | 200.4 km/h (125 mph)  | 1936-05-11 | Germany   | Borsig DRG series 05 002                                    | Loc    | Steam   | Unkn.   | Level grade.[citation needed]                                                                                                                                                                                                                                                 |
+|            2 | 185.07 km/h (115 mph) | 1905-06-11 | USA       | Pennsylvania Railroad E2 #7002                              | Loc    | Steam   | Unmod.  | Claimed.[by whom?] Clocked at Crestline Ohio at 127.1 mph (205 km/h) in 1905. However PRR Steam Locomotives did not carry speedometers at that time speed was calculated by measuring time between mile markers so this is not recognized as a speed record.[citation needed] |
+|            3 | 182.4 km/h (113 mph)  | 1972-10-11 | Germany   | BR 18 201                                                   | Loc    | Steam   | Unkn.   | The fastest operational steam locomotive as of 2011.[citation needed]                                                                                                                                                                                                         |
+|            4 | 181.1 km/h (113 mph)  | 1935-04-05 | USA       | Milwaukee Road class A #2                                   | Loc    | Steam   | Unkn.   | Claimed[by whom?] to have sustained 112.5 mph (181 km/h) for 14 miles (23 km). Average speed for 136 miles (219 km) between Milwaukee and New Lisbon Wisconsin was 74.9 mph (121 km/h).                                                                                       |
+|            5 | 180.3 km/h (112 mph)  | 1935-09-29 | UK        | LNER Class A4 2509 Silver Link                              | Loc    | Steam   | Unkn.   | Authenticated. Some sources say 112.5 mph.[citation needed]                                                                                                                                                                                                                   |
+|            6 | 168.5 km/h (105 mph)  | 1935-03-05 | UK        | LNER Class A3 No. 2750 Papyrus                              | Loc    | Steam   | Unmod.  | First run at 100+ mph with complete surviving documentation.[citation needed]                                                                                                                                                                                                 |
+|            7 | 166.6 km/h (104 mph)  | 1934-07-20 | USA       | Milwaukee Road class F6 #6402                               | Loc    | Steam   | Unmod   | A point between Oakwood Illinois and Lake Wisconsin. Also averaged 75.5 mph (122 km/h) on 85 miles (137 km) from Chicago Illinois to Milwaukee and 89.92 mph (145 km/h) for a 68.9 miles (110.9 km) stretch                                                                   |
+|            8 | 164 km/h (102 mph)    | 1904-05-09 | UK        | GWR 3700 Class 3440 City of Truro                           | Loc    | Steam   | Unmod.  | Claimed[by whom?] to be the first steam locomotive to reach100 mph (161 km/h).[citation needed]                                                                                                                                                                               |
+|            9 | 161 km/h (100 mph)    | 1934-11-30 | UK        | LNER Class A3 4472 Flying Scotsman                          | Loc    | Steam   | Unmod.  | In 1934 Flying Scotsman achieved the first authenticated 100 mph (161 km/h) by a steam locomotive.                                                                                                                                                                            |
+|           10 | 145 km/h (90 mph)     | 1895-08-22 | UK        | LNWR No. 790 Hardwicke                                      | Loc    | Steam   | Unmod.  | Maximum speed claimed[by whom?] although average speed record was authenticated.[citation needed]                                                                                                                                                                             |
+|           11 | 131.6 km/h (82 mph)   | 1854-06    | UK        | Bristol & Exeter Railway #41                                | Loc    | Steam   | Unmod.  | Broad gauge[citation needed]                                                                                                                                                                                                                                                  |
+|           12 | 131 km/h (81 mph)     | 1893-05-10 | USA       | Empire State Express No. 999                                | Loc    | Steam   | Unmod.  | 112 mph (180 km/h) claimed[by whom?] which would make it the first wheeled vehicle to exceed 100 mph (161 km/h).                                                                                                                                                              |
+|           13 | 125.6 km/h (78 mph)   | 1850       | UK        | Great Britain                                               | Loc    | Steam   | Unmod.  | 80 mph (129 km/h) claimed[by whom?][citation needed]                                                                                                                                                                                                                          |
+|           14 | 96.6 km/h (60 mph)    | 1848       | USA       | Boston and Maine Railroad Antelope                          | Loc    | Steam   | Unmod.  | First authenticated 60 mph (97 km/h)26 miles (42 km) in 26 minutes.[citation needed]                                                                                                                                                                                          |
+|           15 | 48 km/h (30 mph)      | 1830       | UK        | Stephenson's Rocket                                         | Loc    | Steam   | Unmod.  | [citation needed]                                                                                                                                                                                                                                                             |
+|           16 | 24 km/h (15 mph)      | 1825       | UK        | Locomotion No. 1                                            | Loc    | Steam   | Unmod.  | [citation needed]                                                                                                                                                                                                                                                             |
+|           17 | 8 km/h (5 mph)        | 1804-02-21 | UK        | Richard Trevithick's world's first railway steam locomotive | Loc    | Steam   | Unmod.  | [citation needed]                                                                                                                                                                                                                                                             |
+
+Generated Reasoning SQL: Explanation: To find the fastest speed recorded by a steam rail vehicle before 1920, we need to consider the "Speed" column, which contains the speed values in km/h. We also need to filter the records based on the "Date" column to include only those before 1920. Since the "Speed" column contains both the speed value and the unit (km/h), we need to extract the numeric speed values and cast them as FLOAT for comparison.
+
+SQL: 
+SELECT MAX(CAST(SUBSTR("Speed", 1, INSTR("Speed", ' km/h') - 1) AS FLOAT)) AS fastest_speed_before_1920
+FROM T
+WHERE CAST(SUBSTR("Date", 1, 4) AS INTEGER) < 1920;
+Generated Final SQL: SELECT MAX(CAST(SUBSTR("Speed", 1, INSTR("Speed", ' km/h') - 1) AS FLOAT)) AS fastest_speed_before_1920 FROM T WHERE CAST(SUBSTR("Date", 1, 4) AS INTEGER) < 1920;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   fastest_speed_before_1920 |
+|----------------------------:|
+|                           0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Land speed record for rail vehicles
+SQL: SELECT MAX(CAST(SUBSTR("Speed", 1, INSTR("Speed", ' km/h') - 1) AS FLOAT)) AS fastest_speed_before_1920 FROM T WHERE CAST(SUBSTR("Date", 1, 4) AS INTEGER) < 1920;
+
+SQL Execution Result:
+fastest_speed_before_1920
+0.0
+
+Question: what was the fastest speed recorded by a steam rail vehicle before 1920?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0.0
+[Gold Answer] 185.07 km/h (115 mph)
+

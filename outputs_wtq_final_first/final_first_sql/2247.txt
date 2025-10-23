@@ -1,0 +1,135 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: 2, T4, T10
+   - Role of the column: Identifier for the player's finishing position in the tournament.
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Greg Norman, Jay Haas, Jeff Maggert, Phil Mickelson
+   - Role of the column: Descriptor for the player's name.
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: Australia, United States, Fiji
+   - Role of the column: Descriptor for the player's country of origin.
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 68-67-74-73=282, 70-73-72-69=284, 69-72-77-66=284, 68-70-72-74=284
+   - Role of the column: Measure of the player's total score in the tournament.
+
+5. To par:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 5
+   - Role of the column: Measure of how many strokes the player is under or over par.
+
+6. Money ($):
+   - Data type: Numeric
+   - 4 representative example values: 207,000, 66,633, 44,184
+   - Role of the column: Measure of the prize money earned by the player.
+
+**Outlier Row Analysis:**
+
+1. Row 10:
+   - The values for Place (T10) and To par (5) are consistent with other rows in the table.
+   - The values for Player (Vijay Singh), Country (Fiji), Score (70-71-72-72=285), and Money ($44,184) are ordinary within the context of the table.
+   - Conclusion: This is an ordinary row and does not require special handling.
+
+2. Row 0:
+   - The value for Place (2) is consistent with other rows in the table.
+   - The values for Player (Greg Norman), Country (Australia), Score (68-67-74-73=282), To par (2), and Money ($207,000) are ordinary within the context of the table.
+   - Conclusion: This is an ordinary row and does not require special handling.
+
+3. Row 1:
+   - The value for Place (T4) is consistent with other rows in the table.
+   - The values for Player (Jay Haas), Country (United States), Score (70-73-72-69=284), To par (4), and Money ($66,633) are ordinary within the context of the table.
+   - Conclusion: This is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Place   | Player         | Country       | Score           | To par   |   Money ($) |
+|-------------:|:--------|:---------------|:--------------|:----------------|:---------|------------:|
+|            0 | 1       | Corey Pavin    | United States | 72-69-71-68=280 | E        |      350000 |
+|            1 | 2       | Greg Norman    | Australia     | 68-67-74-73=282 | +2       |      207000 |
+|            2 | 3       | Tom Lehman     | United States | 70-72-67-74=283 | +3       |      131974 |
+|            3 | T4      | Bill Glasson   | United States | 69-70-76-69=284 | +4       |       66633 |
+|            4 | T4      | Jay Haas       | United States | 70-73-72-69=284 | +4       |       66633 |
+|            5 | T4      | Neal Lancaster | United States | 70-72-77-65=284 | +4       |       66633 |
+|            6 | T4      | Davis Love III | United States | 72-68-73-71=284 | +4       |       66633 |
+|            7 | T4      | Jeff Maggert   | United States | 69-72-77-66=284 | +4       |       66633 |
+|            8 | T4      | Phil Mickelson | United States | 68-70-72-74=284 | +4       |       66633 |
+|            9 | T10     | Frank Nobilo   | New Zealand   | 72-72-70-71=285 | +5       |       44184 |
+|           10 | T10     | Vijay Singh    | Fiji          | 70-71-72-72=285 | +5       |       44184 |
+|           11 | T10     | Bob Tway       | United States | 69-69-72-75=285 | +5       |       44184 |
+
+Generated Reasoning SQL: Explanation: To compare the earnings of Bill Glasson and Vijay Singh on Sunday, June 18th, 1995, we need to filter the rows based on the player's name and then compare their earnings. The "Money ($)" column contains the prize money earned by each player, which we will use for the comparison.
+
+SQL: 
+SELECT "Player", "Money ($)"
+FROM T
+WHERE "Player" = 'Bill Glasson' OR "Player" = 'Vijay Singh';
+
+This query will retrieve the player names and their respective earnings for Bill Glasson and Vijay Singh. To determine who earned more on that specific date, you can compare the values returned for their earnings.
+Generated Final SQL: SELECT "Player", "Money ($)" FROM T WHERE "Player" = 'Bill Glasson' OR "Player" = 'Vijay Singh';  This query will retrieve the player names and their respective earnings for Bill Glasson and Vijay Singh. To determine who earned more on that specific date, you can compare the values returned for their earnings.
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT "Player", "Money ($)" FROM T WHERE "Player" = 'Bill Glasson' OR "Player" = 'Vijay Singh';  This query will retrieve the player names and their respective earnings for Bill Glasson and Vijay Singh. To determine who earned more on that specific date, you can compare the values returned for their earnings.': You can only execute one statement at a time.
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1995 U.S. Open (golf) (row_number, Place, Player, Country, Score, To par, Money ($))
+
+row_number | Place | Player | Country | Score | To par | Money ($)
+0 | 1 | Corey Pavin | United States | 72-69-71-68=280 | E | 350000
+1 | 2 | Greg Norman | Australia | 68-67-74-73=282 | +2 | 207000
+2 | 3 | Tom Lehman | United States | 70-72-67-74=283 | +3 | 131974
+3 | T4 | Bill Glasson | United States | 69-70-76-69=284 | +4 | 66633
+4 | T4 | Jay Haas | United States | 70-73-72-69=284 | +4 | 66633
+5 | T4 | Neal Lancaster | United States | 70-72-77-65=284 | +4 | 66633
+6 | T4 | Davis Love III | United States | 72-68-73-71=284 | +4 | 66633
+7 | T4 | Jeff Maggert | United States | 69-72-77-66=284 | +4 | 66633
+8 | T4 | Phil Mickelson | United States | 68-70-72-74=284 | +4 | 66633
+9 | T10 | Frank Nobilo | New Zealand | 72-72-70-71=285 | +5 | 44184
+10 | T10 | Vijay Singh | Fiji | 70-71-72-72=285 | +5 | 44184
+11 | T10 | Bob Tway | United States | 69-69-72-75=285 | +5 | 44184
+Question: on sunday june 18th, 1995, did bill glasson earn more or less than vijay singh?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate Bill Glasson and Vijay Singh in the table and check their earnings. 
+
+From the table:
+- Bill Glasson finished T4 with a score of 284 and earned $66,633.
+- Vijay Singh finished T10 with a score of 285 and also earned $44,184.
+
+Comparing the earnings:
+- Bill Glasson earned more ($66,633) than Vijay Singh ($44,184).
+
+Therefore, on Sunday, June 18th, 1995, Bill Glasson earned more money than Vijay Singh.
+
+Final Answer: Bill Glasson
+[Fallback] Prediction: bill glasson
+[Gold Answer] more
+

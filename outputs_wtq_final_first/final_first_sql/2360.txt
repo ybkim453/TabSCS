@@ -1,0 +1,137 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Numeric
+   - 4 representative example values: 2, 4, 6, 7
+   - Role: Identifier for each row
+
+2. Date:
+   - Data type: Categorical
+   - 4 representative example values: August 13, 1988, July 3, 1991, April 4, 1992, March 14, 1993
+   - Role: Descriptor for the date of the match
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: St. Louis, Missouri, Los Angeles, California, Palo Alto, California, Tokyo, Japan
+   - Role: Descriptor for the location of the match
+
+4. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Jamaica, Costa Rica, China PR, Japan
+   - Role: Descriptor for the opposing team
+
+5. Score:
+   - Data type: Categorical
+   - 4 representative example values: 2–1, 2–2, 1–0, 5–0
+   - Role: Measure of the score of the match
+
+6. Result:
+   - Data type: Categorical
+   - 4 representative example values: 5-1, 3-2, 1-0, 1-3
+   - Role: Descriptor for the result of the match
+
+7. Competition:
+   - Data type: Categorical
+   - 4 representative example values: 1990 World Cup qualifying, 1991 CONCACAF Gold Cup, Friendly
+   - Role: Descriptor for the competition of the match
+
+**Outlier Row Analysis:**
+
+1. Row 3:
+   - The values "Costa Rica" in the Opponent column and "3-2" in the Result column make this row distinctive.
+   - This row is an outlier because the result of the match (3-2) is different from the majority of the results in the table, which are either wins or losses by one goal.
+
+2. Row 0:
+   - The values "Jamaica" in the Opponent column and "5-1" in the Result column make this row distinctive.
+   - This row is an outlier because the result of the match (5-1) is a high-scoring win, which is not common in the table.
+
+3. Row 1:
+   - The values "Los Angeles, California" in the Venue column and "2-2" in the Score column make this row distinctive.
+   - This row is an outlier because the match ended in a draw (2-2), which is not the typical result in the table.
+
+Overall, the identified outlier rows have distinctive values that deviate from the majority of the data in the table, making them stand out as atypical entries.
+
+=== Full Table Preview ===
+|   row_number |   # | Date                | Venue                     | Opponent    | Score   | Result   | Competition               |
+|-------------:|----:|:--------------------|:--------------------------|:------------|:--------|:---------|:--------------------------|
+|            0 |   1 | 1985-04-04 00:00:00 | Portland Oregon           | Canada      | N/A     | 1–1      | Friendly                  |
+|            1 |   2 | 1988-08-13 00:00:00 | St. Louis Missouri        | Jamaica     | 2–1     | 5-1      | 1990 World Cup qualifying |
+|            2 |   3 | 1989-09-17 00:00:00 | Tegucigalpa Honduras      | El Salvador | 1–0     | 1–0      | 1990 World Cup qualifying |
+|            3 |   4 | 1991-07-03 00:00:00 | Los Angeles California    | Costa Rica  | 2–2     | 3–2      | 1991 CONCACAF Gold Cup    |
+|            4 |   5 | 1992-03-18 00:00:00 | Casablanca Morocco        | Morocco     | 1–2     | 1–3      | Friendly                  |
+|            5 |   6 | 1992-04-04 00:00:00 | Palo Alto California      | China PR    | 1–0     | 1-0      | Friendly                  |
+|            6 |   7 | 1992-04-04 00:00:00 | Palo Alto California      | China PR    | 5–0     | 1-0      | Friendly                  |
+|            7 |   8 | 1993-03-14 00:00:00 | Tokyo Japan               | Japan       | 1–0     | 1–3      | Friendly                  |
+|            8 |   9 | 1993-10-16 00:00:00 | High Point North Carolina | Ukraine     | 1–0     | 1–2      | Friendly                  |
+|            9 |  10 | 1993-12-05 00:00:00 | Los Angeles California    | El Salvador | 5–0     | 7–0      | Friendly                  |
+|           10 |  11 | 1994-02-20 00:00:00 | Miami Florida             | Sweden      | 1–3     | 1–0      | Friendly                  |
+|           11 |  12 | 1994-03-26 00:00:00 | Dallas Texas              | Bolivia     | 1–1     | 2–2      | Friendly                  |
+
+Generated Reasoning SQL: Explanation: To determine the year in which Hugo Perez scored the most international goals, we need to focus on the "Score" column, which represents the goals scored by Hugo Perez in each match. Since the "Score" column contains the goals scored in each match, we should extract the goals scored by Hugo Perez from this column. We will filter rows where the "Result" column indicates a goal scored by Hugo Perez. To find the year with the most goals, we will count the occurrences of goals scored in each year and select the year with the highest count.
+
+SQL: 
+SELECT strftime('%Y', "Date") AS year, COUNT(*) AS goals_scored
+FROM T
+WHERE "Result" LIKE '%1%'
+GROUP BY year
+ORDER BY goals_scored DESC
+LIMIT 1;
+Generated Final SQL: SELECT strftime('%Y', "Date") AS year, COUNT(*) AS goals_scored FROM T WHERE "Result" LIKE '%1%' GROUP BY year ORDER BY goals_scored DESC LIMIT 1;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+|   year |   goals_scored |
+|-------:|---------------:|
+|   1992 |              3 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Hugo Pérez (soccer)
+SQL: SELECT strftime('%Y', "Date") AS year, COUNT(*) AS goals_scored FROM T WHERE "Result" LIKE '%1%' GROUP BY year ORDER BY goals_scored DESC LIMIT 1;
+
+SQL Execution Result:
+year | goals_scored
+1992 | 3
+
+Question: in what year did hugo perez score the most international goals?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1992
+[Gold Answer] 1993
+

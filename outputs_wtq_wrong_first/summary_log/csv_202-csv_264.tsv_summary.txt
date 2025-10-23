@@ -1,0 +1,43 @@
+### Column Analysis:
+
+1. **Name:**
+   - Data type: Categorical
+   - 4 representative values: Assateague Island, Canaveral, Cape Hatteras, Cumberland Island
+   - Role: Identifier for the national seashores
+
+2. **Location:**
+   - Data type: Categorical
+   - 4 representative values: Maryland, Virginia; Florida; North Carolina; Georgia
+   - Role: Descriptor indicating the geographical location of the national seashores
+
+3. **Date Formed:**
+   - Data type: Categorical
+   - 4 representative values: September 21, 1965; January 3, 1975; January 12, 1953; October 23, 1972
+   - Role: Descriptor indicating the date when the national seashores were established
+
+4. **Area:**
+   - Data type: Numeric
+   - 4 representative values: 39,726.75 acres, 57,661.69 acres, 30,350.65 acres, 36,415.13 acres
+   - Role: Measure representing the total area of the national seashores
+
+5. **Description:**
+   - Data type: Text
+   - 4 representative values: Description of the natural features, wildlife, and recreational activities of the national seashores
+   - Role: Descriptor providing detailed information about each national seashore
+
+### Outlier Row Analysis:
+
+1. **Cumberland Island:**
+   - The values "Georgia" in the Location column and "October 23, 1972" in the Date Formed column make this row distinctive.
+   - These values are different from the majority of the table as they represent a unique location and establishment date.
+   - Therefore, this row is an outlier.
+
+2. **Assateague Island:**
+   - The values "Maryland, Virginia" in the Location column and "September 21, 1965" in the Date Formed column make this row distinctive.
+   - These values are different from the majority of the table as they represent a unique location and establishment date.
+   - Therefore, this row is an outlier.
+
+3. **Canaveral:**
+   - The values "Florida" in the Location column and "January 3, 1975" in the Date Formed column make this row distinctive.
+   - These values are different from the majority of the table as they represent a unique location and establishment date.
+   - Therefore, this row is an outlier.

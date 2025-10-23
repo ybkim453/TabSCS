@@ -1,0 +1,110 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: nan, 4, 5, 7
+   - Role: Identifier
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Alison Fealey, Jenny Kurth, Sonia Fonseca, Fabíola Molina
+   - Role: Descriptor
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: United States, Puerto Rico, Brazil, Suriname
+   - Role: Descriptor
+
+4. Time:
+   - Data type: Numeric (Time)
+   - 4 representative example values: 4:48.31, 4:57.24, 5:03.15, 5:03.43
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The Nationality is "Puerto Rico", which is different from the majority of "United States" entries in the table.
+   - This makes the row an outlier as it has a distinctive value in the Nationality column.
+
+2. Row 3 (Index 3):
+   - The Nationality is "Brazil", which is different from the majority of "United States" entries in the table.
+   - This makes the row an outlier as it has a distinctive value in the Nationality column.
+
+3. Row 6 (Index 6):
+   - The Rank is missing (nan), which is not a distinctive value as there are other rows with missing Rank values.
+   - The Time value is 5:13.24, which is within the range of other Time values in the table.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Name            | Nationality   | Time    |
+|-------------:|-------:|:----------------|:--------------|:--------|
+|            0 |    nan | Joanne Malar    | Canada        | 4:43.64 |
+|            1 |    nan | Alison Fealey   | United States | 4:48.31 |
+|            2 |    nan | Jenny Kurth     | United States | 4:57.24 |
+|            3 |      4 | Sonia Fonseca   | Puerto Rico   | 5:03.15 |
+|            4 |      5 | Fabíola Molina  | Brazil        | 5:03.43 |
+|            5 |      6 | Isabel Rojas    | Colombia      | 5:11.58 |
+|            6 |      7 | Carolyn Adel    | Suriname      | 5:13.24 |
+|            7 |      8 | Edith Arraspide | Argentina     | 5:13.95 |
+
+Generated Reasoning SQL: Explanation: The summary does not contain a column indicating the number of medals won by each athlete or country in the finals. To determine the number of medals the USA won in the finals, we would need additional information such as a column specifying the medal type (gold, silver, bronze) and a column indicating whether the event was a final. Without this information, we cannot directly answer the question using the provided table summary.
+
+SQL: N/A
+Generated Final SQL: N/A
+[Error] Final SQL 실행 실패: Execution failed on sql 'N/A': near "N": syntax error
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Swimming at the 1995 Pan American Games – Women's 400 metre individual medley (row_number, Rank, Name, Nationality, Time)
+
+row_number | Rank | Name | Nationality | Time
+0 | nan | Joanne Malar | Canada | 4:43.64
+1 | nan | Alison Fealey | United States | 4:48.31
+2 | nan | Jenny Kurth | United States | 4:57.24
+3 | 4.0 | Sonia Fonseca | Puerto Rico | 5:03.15
+4 | 5.0 | Fabíola Molina | Brazil | 5:03.43
+5 | 6.0 | Isabel Rojas | Colombia | 5:11.58
+6 | 7.0 | Carolyn Adel | Suriname | 5:13.24
+7 | 8.0 | Edith Arraspide | Argentina | 5:13.95
+Question: how many medals did the usa win in the finals?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: From the summary:
+- The **Nationality** column includes the countries of the swimmers.
+- No special or atypical rows were mentioned.
+
+From the full table:
+- The swimmers representing the USA in the final were:
+  1. Alison Fealey (Rank 2)
+  2. Jenny Kurth (Rank 3)
+
+Based on the data provided, the USA won 2 medals in the finals.
+
+Final Answer: 2
+[Fallback] Prediction: 2
+[Gold Answer] 2
+

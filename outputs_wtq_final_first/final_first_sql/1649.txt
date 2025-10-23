@@ -1,0 +1,153 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1974, 1977, 1990, 1993
+   - Role: Identifier for the year in which the race took place
+
+2. Class:
+   - Data type: Categorical
+   - 4 representative example values: S 3.0, S +2.0, C1, GT
+   - Role: Describes the class of the car in the race
+
+3. No:
+   - Data type: Numeric
+   - 4 representative example values: 15, 8, 6, 71
+   - Role: Identifier for the car number in the race
+
+4. Tyres:
+   - Data type: Categorical
+   - 4 representative example values: nan, G, D, P
+   - Role: Describes the type of tires used by the car
+
+5. Car:
+   - Data type: Categorical
+   - 4 representative example values: Ligier JS2 Maserati 3.0L V6, Renault Alpine A442 Renault 2.0L Turbo V6, Porsche 962C Porsche Type-935 3.0L Turbo Flat-6, Venturi 500LM Renault PRV 3.0 L Turbo V6
+   - Role: Descriptor for the car model and engine specifications
+
+6. Team:
+   - Data type: Categorical
+   - 4 representative example values: Automobiles Ligier, Renault Sport, Joest Porsche Racing, Jacadi Racing
+   - Role: Descriptor for the racing team
+
+7. Co-Drivers:
+   - Data type: Categorical
+   - 4 representative example values: Alain Serpaggi, Patrick Depailler, Henri Pescarolo Jean-Louis Ricci, Michel Maisonneuve Christophe Dechavanne
+   - Role: Descriptor for the co-drivers of the car
+
+8. Laps:
+   - Data type: Numeric
+   - 4 representative example values: 310, 289, 328, 210
+   - Role: Measure of the number of laps completed in the race
+
+9. Pos.:
+   - Data type: Categorical
+   - 4 representative example values: 8th, DNF, 14th
+   - Role: Descriptor for the finishing position in the race
+
+10. Class Pos.:
+    - Data type: Categorical
+    - 4 representative example values: 5th, DNF, 14th
+    - Role: Descriptor for the class position in the race
+
+**Outlier Row Analysis:**
+
+1. Row 5 (Index 5):
+   - The values "1994", "GT2", "49", "Porsche 911 Carrera RSR Porsche 3.8 L Flat-6", "Larbre Compétition", "Jacques Alméras Jean-Marie Alméras", "94", "DNF", "DNF" are all consistent with the majority of the table and are not distinctive. This row is an ordinary row and requires no special handling.
+
+2. Row 7 (Index 7):
+   - The values "1994", "GT2", "49", "P", "Porsche 911 Carrera RSR Porsche 3.8 L Flat-6", "Larbre Compétition", "Jacques Alméras Jean-Marie Alméras", "94", "DNF", "DNF" are all consistent with the majority of the table and are not distinctive. This row is an ordinary row and requires no special handling.
+
+3. Row 6 (Index 6):
+   - The values "1993", "GT", "71", "D", "Venturi 500LM Renault PRV 3.0 L Turbo V6", "Jacadi Racing", "Michel Maisonneuve Christophe Dechavanne", "210", "DNF", "DNF" are all consistent with the majority of the table and are not distinctive. This row is an ordinary row and requires no special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Class   |   No | Tyres   | Car                                              | Team                    | Co-Drivers                                 |   Laps | Pos.   | Class\nPos.   |
+|-------------:|-------:|:--------|-----:|:--------|:-------------------------------------------------|:------------------------|:-------------------------------------------|-------:|:-------|:--------------|
+|            0 |   1972 | S\n3.0  |   22 |         | Ligier JS2\nMaserati 3.0L V6                     | Automobiles Ligier      | Pierre Maublanc                            |    195 | DNF    | DNF           |
+|            1 |   1973 | S\n3.0  |   62 |         | Ligier JS2\nMaserati 3.0L V6                     | Automobiles Ligier      | Guy Ligier                                 |     24 | DSQ    | DSQ           |
+|            2 |   1974 | S\n3.0  |   15 |         | Ligier JS2\nMaserati 3.0L V6                     | Automobiles Ligier      | Alain Serpaggi                             |    310 | 8th    | 5th           |
+|            3 |   1977 | S\n+2.0 |    8 |         | Renault Alpine A442\nRenault 2.0L Turbo V6       | Renault Sport           | Patrick Depailler                          |    289 | DNF    | DNF           |
+|            4 |   1978 | S\n+2.0 |   10 |         | Mirage M9\nRenault 2.0L Turbo V6                 | Grand Touring Cars Inc. | Vern Schuppan\n Sam Posey                  |    293 | 10th   | 5th           |
+|            5 |   1990 | C1      |    6 | G       | Porsche 962C\nPorsche Type-935 3.0L Turbo Flat-6 | Joest Porsche Racing    | Henri Pescarolo\n Jean-Louis Ricci         |    328 | 14th   | 14th          |
+|            6 |   1993 | GT      |   71 | D       | Venturi 500LM\nRenault PRV 3.0 L Turbo V6        | Jacadi Racing           | Michel Maisonneuve\n Christophe Dechavanne |    210 | DNF    | DNF           |
+|            7 |   1994 | GT2     |   49 | P       | Porsche 911 Carrera RSR\nPorsche 3.8 L Flat-6    | Larbre Compétition      | Jacques Alméras\n Jean-Marie Alméras       |     94 | DNF    | DNF           |
+|            8 |   1996 | GT1     |   38 | M       | McLaren F1 GTR\nBMW S70 6.1L V12                 | Team Bigazzi SRL        | Steve Soper\n Marc Duez                    |    318 | 11th   | 9th           |
+
+Generated Reasoning SQL: Explanation: To determine the count of each type of car, we need to group the rows by the "Car" column and then count the occurrences of each unique car type. This will give us the number of each type of car present in the dataset.
+
+SQL: 
+SELECT "Car", COUNT(*) AS car_count
+FROM T
+GROUP BY "Car";
+Generated Final SQL: SELECT "Car", COUNT(*) AS car_count FROM T GROUP BY "Car";
+SQL 실행 결과 셀 수: 14
+=== SQL 실행 결과 미리보기 ===
+| Car                                              |   car_count |
+|:-------------------------------------------------|------------:|
+| Ligier JS2\nMaserati 3.0L V6                     |           3 |
+| McLaren F1 GTR\nBMW S70 6.1L V12                 |           1 |
+| Mirage M9\nRenault 2.0L Turbo V6                 |           1 |
+| Porsche 911 Carrera RSR\nPorsche 3.8 L Flat-6    |           1 |
+| Porsche 962C\nPorsche Type-935 3.0L Turbo Flat-6 |           1 |
+| Renault Alpine A442\nRenault 2.0L Turbo V6       |           1 |
+| Venturi 500LM\nRenault PRV 3.0 L Turbo V6        |           1 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Jacques Laffite
+SQL: SELECT "Car", COUNT(*) AS car_count FROM T GROUP BY "Car";
+
+SQL Execution Result:
+Car | car_count
+Ligier JS2\nMaserati 3.0L V6 | 3
+McLaren F1 GTR\nBMW S70 6.1L V12 | 1
+Mirage M9\nRenault 2.0L Turbo V6 | 1
+Porsche 911 Carrera RSR\nPorsche 3.8 L Flat-6 | 1
+Porsche 962C\nPorsche Type-935 3.0L Turbo Flat-6 | 1
+Renault Alpine A442\nRenault 2.0L Turbo V6 | 1
+Venturi 500LM\nRenault PRV 3.0 L Turbo V6 | 1
+
+Question: how many of each type of car are there?
+A: To find the answer to this question, let’s think step by step.
+Prediction: ligier js2/maserati 3.0l v6 - 3, mclaren f1 gtr/bmw s70 6.1l v12 - 1, mirage m9/renault 2.0l turbo v6 - 1, porsche 911 carrera rsr/porsche 3.8 l flat-6 - 1, porsche 962c/porsche type-935 3.0l turbo flat-6 - 1, renault alpine a442/renault 2.0l turbo v6 - 1, venturi 500lm/renault prv 3.0 l turbo v6 - 1
+[Gold Answer] 13
+

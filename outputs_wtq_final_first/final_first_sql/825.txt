@@ -1,0 +1,114 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Iteration
+   - Data type: Categorical
+   - 4 representative example values: GameStorm 11, GameStorm 12, GameStorm 14, GameStorm 15
+   - Role: Identifier for each iteration of the event
+
+2. Dates
+   - Data type: Categorical
+   - 4 representative example values: March 26–29, 2009, March 25–28, 2010, March 22–25, 2012, March 21–24, 2013
+   - Role: Descriptor indicating the dates of each event
+
+3. Location
+   - Data type: Categorical
+   - 4 representative example values: Hilton - Vancouver, WA
+   - Role: Descriptor indicating the location of each event
+
+4. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 736, 802, 1072, 1188
+   - Role: Measure indicating the number of attendees for each event
+
+5. Notes
+   - Data type: Categorical
+   - 4 representative example values: debut of Video games, first-ever Artist Guest of Honor, Board games Guest of Honor: Tom Lehmann, Guests: Mike Selinker, Shane Lacy Hensley, Lisa Steenson, Zev Shlasinger of Z-Man Games
+   - Role: Descriptor providing additional information or highlights for each event
+
+**Outlier Row Analysis:**
+
+1. Row 0 (GameStorm 11 | March 26–29, 2009 | Hilton - Vancouver, WA | 736 | debut of Video games, first-ever Artist Guest of Honor, Rob Alexander)
+   - The values "debut of Video games" and "first-ever Artist Guest of Honor" are unique compared to the other rows, making this row an outlier.
+
+2. Row 5 (GameStorm 16 | March 20–23, 2014 | Hilton - Vancouver, WA | tba | Guests: Mike Selinker, Shane Lacy Hensley, Lisa Steenson, Zev Shlasinger of Z-Man Games)
+   - The value "tba" for attendance is different from the numeric values in other rows, making this row an outlier.
+
+3. Row 1 (GameStorm 12 | March 25–28, 2010 | Hilton - Vancouver, WA | 802 | Board games Guest of Honor: Tom Lehmann)
+   - The presence of "Board games Guest of Honor: Tom Lehmann" is not significantly different from the other rows, so this row is an ordinary entry.
+
+=== Full Table Preview ===
+|   row_number | Iteration    | Dates            | Location                | Attendance   | Notes                                                                                 |
+|-------------:|:-------------|:-----------------|:------------------------|:-------------|:--------------------------------------------------------------------------------------|
+|            0 | GameStorm 10 | March 2008       | Red Lion - Vancouver WA | 750          | -                                                                                     |
+|            1 | GameStorm 11 | March 26–29 2009 | Hilton - Vancouver WA   | 736          | debut of Video games first-ever Artist Guest of Honor Rob Alexander                   |
+|            2 | GameStorm 12 | March 25–28 2010 | Hilton - Vancouver WA   | 802          | Board games Guest of Honor: Tom Lehmann                                               |
+|            3 | GameStorm 13 | March 24–27 2011 | Hilton - Vancouver WA   | 984          | Guests: Lisa Steenson Michael A. Stackpole                                            |
+|            4 | GameStorm 14 | March 22–25 2012 | Hilton - Vancouver WA   | 1072         | Boardgame:Andrew Hackard and Sam Mitschke of Steve Jackson Games - RPG: Jason Bulmahn |
+|            5 | GameStorm 15 | March 21–24 2013 | Hilton - Vancouver WA   | 1188         |                                                                                       |
+|            6 | GameStorm 16 | March 20–23 2014 | Hilton - Vancouver WA   | tba          | Guests: Mike Selinker Shane Lacy Hensley Lisa Steenson Zev Shlasinger of Z-Man Games  |
+
+Generated Reasoning SQL: Explanation: To find the date of the largest attendance at GameStorm, we need to identify the row with the maximum value in the "Attendance" column. Since the "Attendance" column is numeric, we can directly compare the values to find the maximum attendance.
+
+SQL: 
+SELECT "Dates" 
+FROM T 
+WHERE "Attendance" = (SELECT MAX(CAST("Attendance" AS INTEGER)) FROM T);
+Generated Final SQL: SELECT "Dates" FROM T WHERE "Attendance" = (SELECT MAX(CAST("Attendance" AS INTEGER)) FROM T);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Dates            |
+|:-----------------|
+| March 21–24 2013 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: GameStorm.org
+SQL: SELECT "Dates" FROM T WHERE "Attendance" = (SELECT MAX(CAST("Attendance" AS INTEGER)) FROM T);
+
+SQL Execution Result:
+Dates
+March 21–24 2013
+
+Question: when was the largest attendance at gamestorm?
+A: To find the answer to this question, let’s think step by step.
+Prediction: march 21–24 2013
+[Gold Answer] 1188
+

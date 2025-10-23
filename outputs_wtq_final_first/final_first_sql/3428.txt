@@ -1,0 +1,109 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: October 23, November 6, November 25, January 1, 1927
+   - Role: Identifier for the specific date of the game
+
+2. Opponent:
+   - Data type: Categorical
+   - 4 representative example values: Sewanee, Kentucky, Georgia, vs. Stanford*
+   - Role: Descriptor for the opposing team
+
+3. Site:
+   - Data type: Categorical
+   - 4 representative example values: Rickwood Field • Birmingham, AL, Rose Bowl • Pasadena, CA (Rose Bowl)
+   - Role: Descriptor for the location of the game
+
+4. Result:
+   - Data type: Categorical
+   - 4 representative example values: W 2-0, W 14-0, W 33-6, T 7-7
+   - Role: Measure of the outcome of the game
+
+**Outlier Row Analysis:**
+
+1. Row 9:
+   - The values in this row are not significantly different from the majority of the table. They are ordinary game results (W 2-0) against an opponent (Sewanee) at a specific site (Rickwood Field • Birmingham, AL). Therefore, this row is an ordinary entry and does not require special handling.
+
+2. Row 0:
+   - The values in this row are also not distinctively different from the majority of the table. The game result (T 7-7) against the opponent (vs. Stanford*) at the site (Rose Bowl • Pasadena, CA) is a typical entry. Hence, this row is an ordinary entry and does not stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number | Date           | Opponent           | Site                                         | Result   |
+|-------------:|:---------------|:-------------------|:---------------------------------------------|:---------|
+|            0 | September 24   | Millsaps*          | Denny Field • Tuscaloosa AL                  | W 54–0   |
+|            1 | October 2      | at Vanderbilt      | Dudley Field • Nashville TN                  | W 19–7   |
+|            2 | October 9      | at Mississippi A&M | Meridian Fairgrounds • Meridian MS (Rivalry) | W 26–7   |
+|            3 | October 16     | at Georgia Tech    | Grant Field • Atlanta GA                     | W 21–0   |
+|            4 | October 23     | Sewanee            | Rickwood Field • Birmingham AL               | W 2–0    |
+|            5 | October 30     | LSU                | Denny Field • Tuscaloosa AL (Rivalry)        | W 24–0   |
+|            6 | November 6     | Kentucky           | Rickwood Field • Birmingham AL               | W 14–0   |
+|            7 | November 13    | Florida            | Cramton Bowl • Montgomery AL                 | W 49–0   |
+|            8 | November 25    | Georgia            | Rickwood Field • Birmingham AL               | W 33–6   |
+|            9 | January 1 1927 | vs. Stanford*      | Rose Bowl • Pasadena CA (Rose Bowl)          | T 7–7    |
+
+Generated Reasoning SQL: Explanation: To determine how many times the Alabama Crimson Tide football team scored at least 20 points, we need to analyze the "Result" column, which contains the outcome of each game. We are interested in counting the number of games where the team's score was 20 or higher. Since the scores are embedded within the "Result" column, we need to extract and compare them to the threshold of 20.
+
+SQL: 
+SELECT COUNT(*) 
+FROM T 
+WHERE CAST(SUBSTR("Result", 3, INSTR("Result", '-') - 3) AS INTEGER) >= 20;
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE CAST(SUBSTR("Result", 3, INSTR("Result", '-') - 3) AS INTEGER) >= 20;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 1926 Alabama Crimson Tide football team
+SQL: SELECT COUNT(*) FROM T WHERE CAST(SUBSTR("Result", 3, INSTR("Result", '-') - 3) AS INTEGER) >= 20;
+
+SQL Execution Result:
+COUNT(*)
+0
+
+Question: how many times did they get at least 20 points?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 6
+

@@ -1,0 +1,154 @@
+=== Table ID ===
+csv/203-csv/619.tsv
+
+=== Question ===
+what are the names of the tracks that were singles only?
+
+=== Sub-table Preview ===
+|   Year | Premiers                        | Score       | Runners Up                      | Score.1    |
+|-------:|:--------------------------------|:------------|:--------------------------------|:-----------|
+|   2003 | Centrals Trinity Beach Bulldogs | 14.11 (95)  | North Cairns                    | 6.7 (43)   |
+|   2004 | Port Douglas Crocs              | 17.13 (115) | North Cairns Tigers             | 8.9 (57)   |
+|   2005 | Port Douglas Crocs              | 19.14 (128) | Cairns Saints                   | 4.11 (35)  |
+|   2006 | Manunda Hawks                   | 11.11 (77)  | Centrals Trinity Beach Bulldogs | 10.9 (69)  |
+|   2009 | South Cairns Cutters            | 9.11 (65)   | Cairns Saints                   | 9.4 (58)   |
+|   2012 | Cairns Saints                   | 17.6 (108)  | North Cairns Tigers             | 11.12 (78) |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2004, 2005, 2006
+   - Role: Identifier for the year in which the premiership was won
+
+2. Premiers:
+   - Data type: Categorical
+   - 4 representative example values: Centrals Trinity Beach Bulldogs, Port Douglas Crocs, Manunda Hawks, South Cairns Cutters
+   - Role: Descriptor for the team that won the premiership
+
+3. Score:
+   - Data type: Categorical (combination of numeric and text)
+   - 4 representative example values: 14.11 (95), 17.13 (115), 19.14 (128), 11.11 (77)
+   - Role: Measure of the score achieved by the premiership-winning team
+
+4. Runners Up:
+   - Data type: Categorical
+   - 4 representative example values: North Cairns, Cairns Saints, Centrals Trinity Beach Bulldogs, North Cairns Tigers
+   - Role: Descriptor for the team that finished as runners-up
+
+5. Score.1:
+   - Data type: Categorical (combination of numeric and text)
+   - 4 representative example values: 6.7 (43), 8.9 (57), 4.11 (35), 10.9 (69)
+   - Role: Measure of the score achieved by the runners-up team
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 2):
+   - The score for Port Douglas Crocs in 2005 is significantly higher compared to the other scores in the table.
+   - This row is an outlier due to the unusually high score achieved by the premiership-winning team.
+
+2. Row 6 (Index 5):
+   - The score for Cairns Saints in 2012 is notably higher than the scores of other premiership-winning teams.
+   - This row is an outlier because of the exceptional score achieved by the winning team.
+
+3. Row 2 (Index 1):
+   - The score for Port Douglas Crocs in 2004 is considerably higher than the typical scores in the table.
+   - This row is an outlier due to the significantly higher score achieved by the premiership-winning team.
+
+=== Full Table Preview ===
+|   row_number |   Year | Single                                        | Chart Positions\nUS Country   | Chart Positions\nUS   | Album                                          |
+|-------------:|-------:|:----------------------------------------------|:------------------------------|:----------------------|:-----------------------------------------------|
+|            0 |   1957 | "Sittin' in the Balcony"                      | —                             | 38                    | single only                                    |
+|            1 |   1961 | "Language of Love"                            | —                             | 32                    | Language of Love                               |
+|            2 |   1962 | "Thou Shalt Not Steal"                        | —                             | 73                    | singles only                                   |
+|            3 |   1962 | "Callin' Dr. Casey"                           | —                             | 83                    | singles only                                   |
+|            4 |   1962 | "Road Hog"                                    | —                             | 65                    | Twelve Sides                                   |
+|            5 |   1963 | "Bad News" (b/w "Guitar Player(Her and Him)") | 23                            | —                     | singles only                                   |
+|            6 |   1964 | "Blue Train (Of the Heartbreak Line)"         | 44                            | 132                   | singles only                                   |
+|            7 |   1964 | "Th' Wife"                                    | 45                            | —                     | singles only                                   |
+|            8 |   1965 | "That Ain't All"                              | 20                            | —                     | singles only                                   |
+|            9 |   1966 | "Silver Cloud Talkin' Blues"                  | —                             | —                     | A Bizarre Collection of the Most Unusual Songs |
+|           10 |   1966 | "You're the Guilty One"                       | —                             | —                     | single only                                    |
+|           11 |   1967 | "It's My Time"                                | 51                            | —                     | Suburban Attitudes in Country Verse            |
+|           12 |   1968 | "Odd Folks of Okracoke"                       | —                             | —                     | single only                                    |
+|           13 |   1969 | "Brown Girl"                                  | —                             | —                     | The Open Mind of John D. Loudermilk            |
+|           14 |   1971 | "Lord Have Mercy"                             | —                             | —                     | Volume 1-Elloree                               |
+|           15 |   1979 | "Every Day I Learn a Little More About Love"  | —                             | —                     | Just Passing Through                           |
+
+Generated Reasoning SQL: Explanation: To identify the tracks that were labeled as "singles only", we need to look at the "Single" column in the table. The summary does not mention any specific outlier rows related to this question, so we can include all rows in the analysis. We will filter the rows where the value in the "Single" column contains the phrase "singles only".
+
+SQL: SELECT "Single" 
+FROM T 
+WHERE "Single" LIKE '%singles only%';
+Generated Final SQL: SELECT "Single" FROM T WHERE "Single" LIKE '%singles only%';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: John D. Loudermilk (row_number, Year, Single, Chart Positions\nUS Country, Chart Positions\nUS, Album)
+
+row_number | Year | Single | Chart Positions\nUS Country | Chart Positions\nUS | Album
+0 | 1957 | "Sittin' in the Balcony" | — | 38 | single only
+1 | 1961 | "Language of Love" | — | 32 | Language of Love
+2 | 1962 | "Thou Shalt Not Steal" | — | 73 | singles only
+3 | 1962 | "Callin' Dr. Casey" | — | 83 | singles only
+4 | 1962 | "Road Hog" | — | 65 | Twelve Sides
+5 | 1963 | "Bad News" (b/w "Guitar Player(Her and Him)") | 23 | — | singles only
+6 | 1964 | "Blue Train (Of the Heartbreak Line)" | 44 | 132 | singles only
+7 | 1964 | "Th' Wife" | 45 | — | singles only
+8 | 1965 | "That Ain't All" | 20 | — | singles only
+9 | 1966 | "Silver Cloud Talkin' Blues" | — | — | A Bizarre Collection of the Most Unusual Songs
+10 | 1966 | "You're the Guilty One" | — | — | single only
+11 | 1967 | "It's My Time" | 51 | — | Suburban Attitudes in Country Verse
+12 | 1968 | "Odd Folks of Okracoke" | — | — | single only
+13 | 1969 | "Brown Girl" | — | — | The Open Mind of John D. Loudermilk
+14 | 1971 | "Lord Have Mercy" | — | — | Volume 1-Elloree
+15 | 1979 | "Every Day I Learn a Little More About Love" | — | — | Just Passing Through
+Question: what are the names of the tracks that were singles only?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: To find the names of the tracks that were singles only, we need to look at the "Single" column in the full table and identify the entries where the value is "singles only".
+
+From the full table:
+- The tracks that were singles only are:
+  1. "Sittin' in the Balcony"
+  2. "Thou Shalt Not Steal"
+  3. "Callin' Dr. Casey"
+  4. "Road Hog"
+  5. "Bad News (b/w Guitar Player(Her and Him))"
+  6. "Blue Train (Of the Heartbreak Line)"
+  7. "Th' Wife"
+  8. "That Ain't All"
+  9. "You're the Guilty One"
+  10. "Odd Folks of Okracoke"
+
+Therefore, the names of the tracks that were singles only are: "Sittin' in the Balcony", "Thou Shalt Not Steal", "Callin' Dr. Casey", "Road Hog", "Bad News (b/w Guitar Player(Her and Him))", "Blue Train (Of the Heartbreak Line)", "Th' Wife", "That Ain't All", "You're the Guilty One", "Odd Folks of Okracoke".
+
+Final Answer: Sittin' in the Balcony, Thou Shalt Not Steal, Callin' Dr. Casey, Road Hog, Bad News (b/w Guitar Player(Her and Him)), Blue Train (Of the Heartbreak Line), Th' Wife, That Ain't All, You're the Guilty One, Odd Folks of Okracoke
+[Fallback] Prediction: sittin' in the balcony, thou shalt not steal, callin' dr. casey, road hog, bad news (b/w guitar player(her and him)), blue train (of the heartbreak line), th' wife, that ain't all, you're the guilty one, odd folks of okracoke
+[Gold Answer] "sittin' in the balcony","thou shalt not steal","callin' dr. casey","bad news" (b/w "guitar player(her and him)"),"blue train (of the heartbreak line)","th' wife","that ain't all","you're the guilty one","odd folks of okracoke"
+

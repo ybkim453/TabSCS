@@ -1,0 +1,129 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Season
+   - Data type: Numeric
+   - 4 representative example values: 2005, 2007, 2008, 2010
+   - Role: Identifier for the specific season of competition
+
+2. Age
+   - Data type: Numeric
+   - 4 representative example values: 18, 20, 21, 23
+   - Role: Descriptor indicating the age of the athlete during the season
+
+3. Overall
+   - Data type: Numeric
+   - 4 representative example values: 37, 33, 38, 28
+   - Role: Measure of the overall performance of the athlete in the season
+
+4. Slalom
+   - Data type: Categorical
+   - 4 representative example values: -, -, -, -
+   - Role: Measure of the performance in the Slalom event for the season
+
+5. Giant Slalom
+   - Data type: Numeric
+   - 4 representative example values: 27, 50, -, -
+   - Role: Measure of the performance in the Giant Slalom event for the season
+
+6. Super G
+   - Data type: Numeric
+   - 4 representative example values: 18, 15, 35, 13
+   - Role: Measure of the performance in the Super G event for the season
+
+7. Downhill
+   - Data type: Numeric
+   - 4 representative example values: 49, 23, 13, 23
+   - Role: Measure of the performance in the Downhill event for the season
+
+8. Combined
+   - Data type: Categorical
+   - 4 representative example values: —, —, —, —
+   - Role: Measure of the combined performance in multiple events for the season
+
+**Outlier Row Analysis:**
+
+1. Row 7 (Season: 2011)
+   - The row is an outlier because all values are marked as "Injured, did not compete", which is significantly different from the numerical performance values in the other rows.
+   - This row is an outlier due to the absence of performance data, making it distinctive from the other rows.
+
+2. Row 0 (Season: 2005)
+   - The row is an outlier because the Overall value of 37 is higher compared to the other rows.
+   - This row is an outlier based on the higher overall performance value compared to the majority of the table.
+
+3. Row 1 (Season: 2007)
+   - The row is an outlier because the Giant Slalom value of 50 is significantly higher than the other rows.
+   - This row is an outlier due to the unusually high performance value in the Giant Slalom event compared to the rest of the table.
+
+=== Full Table Preview ===
+|   row_number |   Season |   Age | Overall                 | Slalom                  | Giant\nSlalom           | Super G                 | Downhill                | Combined                |
+|-------------:|---------:|------:|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|:------------------------|
+|            0 |     2004 |    17 | 112                     | –                       | –                       | 51                      | –                       | —                       |
+|            1 |     2005 |    18 | 37                      | –                       | 27                      | 18                      | 49                      | —                       |
+|            2 |     2006 |    19 | 22                      | –                       | 18                      | 37                      | 15                      | —                       |
+|            3 |     2007 |    20 | 33                      | –                       | 50                      | 15                      | 23                      | —                       |
+|            4 |     2008 |    21 | 38                      | –                       | –                       | 35                      | 13                      | —                       |
+|            5 |     2009 |    22 | 9                       | –                       | 40                      | 2                       | 5                       | 50                      |
+|            6 |     2010 |    23 | 28                      | –                       | –                       | 13                      | 23                      | —                       |
+|            7 |     2011 |    24 | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete | Injured did not compete |
+|            8 |     2012 |    25 | 75                      | –                       | 28                      | –                       | –                       | —                       |
+|            9 |     2013 |    26 | 37                      | –                       | 17                      | 28                      | 30                      | —                       |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Overall" column contains numeric values representing the athlete's overall performance in a season. To find the highest overall standing achieved by Nadia Fanchini, we need to identify the maximum value in the "Overall" column. Outlier rows should be excluded from this calculation, as they may skew the results. 
+SQL: select max(cast("Overall" as integer)) as highest_overall_standing from T where "Overall" not like '%Injured, did not compete%';
+Generated Final SQL: select max(cast("Overall" as integer)) as highest_overall_standing from T where "Overall" not like '%Injured, did not compete%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   highest_overall_standing |
+|---------------------------:|
+|                        112 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Nadia Fanchini
+SQL: select max(cast("Overall" as integer)) as highest_overall_standing from T where "Overall" not like '%Injured, did not compete%';
+
+highest_overall_standing
+112
+Question: what was the highest overall standing that she achieved?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 112
+[Gold Answer] 112
+

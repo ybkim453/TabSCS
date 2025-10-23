@@ -1,0 +1,44 @@
+**Column Analysis:**
+
+1. **Release date:**
+   - Data type: Categorical
+   - 4 representative example values: October 8, 2006; July 25, 2007; November 2010; March 5, 2011
+   - Role: Identifier for when the album was released
+
+2. **Album Title:**
+   - Data type: Categorical
+   - 4 representative example values: Hotsilog: The ASAP Hotdog Compilation; Nagmamahal, Kapamilya: Songs for Global Pinoys; Ngayong Pasko Magniningning ang Pilipino: Christmas Songs Compilation; Kris Aquino: My Heart’s Journey
+   - Role: Descriptor for the title of the album
+
+3. **Record Company:**
+   - Data type: Categorical
+   - 4 representative example values: ASAP Music; Star Records; Universal Records
+   - Role: Descriptor for the record company associated with the album
+
+4. **Song Title:**
+   - Data type: Categorical
+   - 4 representative example values: Annie Batungbakal; Super Pinoy; God Bless the Broken Road; Mahal Kita Kasi
+   - Role: Descriptor for the title of the song
+
+5. **Certification:**
+   - Data type: Categorical
+   - 4 representative example values: PARI: Platinum; PARI: 6X Platinum; PARI: 
+   - Role: Descriptor for the certification received by the album
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The album title "Hotsilog: The ASAP Hotdog Compilation" is unique compared to the other album titles in the table.
+   - The certification "PARI: Platinum" is different from the other certifications.
+   - These distinctive values make row 0 an outlier.
+
+2. Row 1:
+   - The album title "Nagmamahal, Kapamilya: Songs for Global Pinoys" is different from the other album titles.
+   - The certification "PARI: 6X Platinum" is unique compared to the other certifications.
+   - These distinct values make row 1 an outlier.
+
+3. Row 9:
+   - The release date "November 18, 2011" is different from the other release dates.
+   - The album title "Da Best ang Pasko ng Pilipino" is unique compared to the other album titles.
+   - The certification field is empty, which is different from the other rows.
+   - These distinctive values make row 9 an outlier.

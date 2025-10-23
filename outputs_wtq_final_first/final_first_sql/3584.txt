@@ -1,0 +1,141 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Location:
+   - Data type: Categorical
+   - 4 representative example values: Chernobyl-4, Kursk-1, Kursk-2, Leningrad-2
+   - Role: Identifier for the nuclear power plant location
+
+2. Reactor type:
+   - Data type: Categorical
+   - 4 representative example values: RBMK-1000, MKER-1000
+   - Role: Descriptor for the type of reactor at each location
+
+3. Status:
+   - Data type: Categorical
+   - 4 representative example values: destroyed in the 1986 accident, operational until 2021, construction begin was 1985, since then shelved
+   - Role: Descriptor for the current status of the reactor at each location
+
+4. Net Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 925
+   - Role: Measure of the net capacity of the reactor at each location
+
+5. Gross Capacity (MWe):
+   - Data type: Numeric
+   - 4 representative example values: 1,000
+   - Role: Measure of the gross capacity of the reactor at each location
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Chernobyl-4):
+   - The distinctive value is "destroyed in the 1986 accident" in the Status column.
+   - This row is an outlier because the reactor at Chernobyl-4 was destroyed in a catastrophic accident, making it significantly different from the operational or under-construction reactors in the other rows.
+
+2. Row 16 (Kursk-5):
+   - The distinctive value is "construction begin was 1985, since then shelved" in the Status column.
+   - This row is an outlier because the reactor at Kursk-5 was started in 1985 but has been shelved since then, unlike the operational reactors in the other rows.
+
+3. Row 3 (Kursk-2):
+   - The distinctive value is "operational until 2024" in the Status column.
+   - This row is an outlier because it indicates that the reactor at Kursk-2 will be operational until 2024, which is different from the status of the other reactors in the table.
+
+Overall, the outlier rows have distinctive values in the Status column that set them apart from the majority of the table, making them outliers in terms of the reactor status.
+
+=== Full Table Preview ===
+|   row_number | Location    | Reactor type   | Status                                         |   Net\nCapacity\n(MWe) |   Gross\nCapacity\n(MWe) |
+|-------------:|:------------|:---------------|:-----------------------------------------------|-----------------------:|-------------------------:|
+|            0 | Chernobyl-1 | RBMK-1000      | shut down in 1996                              |                    740 |                      800 |
+|            1 | Chernobyl-2 | RBMK-1000      | shut down in 1991                              |                    925 |                     1000 |
+|            2 | Chernobyl-3 | RBMK-1000      | shut down in 2000                              |                    925 |                     1000 |
+|            3 | Chernobyl-4 | RBMK-1000      | destroyed in the 1986 accident                 |                    925 |                     1000 |
+|            4 | Chernobyl-5 | RBMK-1000      | construction cancelled in 1988                 |                    950 |                     1000 |
+|            5 | Chernobyl-6 | RBMK-1000      | construction cancelled in 1988                 |                    950 |                     1000 |
+|            6 | Ignalina-1  | RBMK-1500      | shut down in 2004                              |                   1185 |                     1300 |
+|            7 | Ignalina-2  | RBMK-1500      | shut down in 2009                              |                   1185 |                     1300 |
+|            8 | Ignalina-3  | RBMK-1500      | construction cancelled in 1988                 |                   1380 |                     1500 |
+|            9 | Ignalina-4  | RBMK-1500      | plan cancelled in 1988                         |                   1380 |                     1500 |
+|           10 | Kostroma-1  | RBMK-1500      | construction cancelled in 1980s                |                   1380 |                     1500 |
+|           11 | Kostroma-2  | RBMK-1500      | construction cancelled in 1980s                |                   1380 |                     1500 |
+|           12 | Kursk-1     | RBMK-1000      | operational until 2021                         |                    925 |                     1000 |
+|           13 | Kursk-2     | RBMK-1000      | operational until 2024                         |                    925 |                     1000 |
+|           14 | Kursk-3     | RBMK-1000      | operational until March 2014                   |                    925 |                     1000 |
+|           15 | Kursk-4     | RBMK-1000      | operational until February 2016                |                    925 |                     1000 |
+|           16 | Kursk-5     | MKER-1000      | construction begin was 1985 since then shelved |                    925 |                     1000 |
+|           17 | Kursk-6     | RBMK-1000      | construction cancelled in 1993                 |                    925 |                     1000 |
+|           18 | Leningrad-1 | RBMK-1000      | operational                                    |                    925 |                     1000 |
+|           19 | Leningrad-2 | RBMK-1000      | operational until 2021                         |                    925 |                     1000 |
+|           20 | Leningrad-3 | RBMK-1000      | operational until June 2025                    |                    925 |                     1000 |
+|           21 | Leningrad-4 | RBMK-1000      | operational until August 2026                  |                    925 |                     1000 |
+|           22 | Smolensk-1  | RBMK-1000      | operational until December 2022                |                    925 |                     1000 |
+|           23 | Smolensk-2  | RBMK-1000      | operational until July 2015                    |                    925 |                     1000 |
+|           24 | Smolensk-3  | RBMK-1000      | operational until July 2023                    |                    925 |                     1000 |
+|           25 | Smolensk-4  | RBMK-1000      | construction cancelled in 1993                 |                    925 |                     1000 |
+
+Generated Reasoning SQL: Explanation: To answer this question, we need to filter the rows where the "Gross Capacity (MWe)" is 1000 or below. We will exclude outlier rows that are not operational or under construction, as they do not provide relevant information for this specific query.
+
+SQL: 
+SELECT COUNT(*) 
+FROM T 
+WHERE "Gross\nCapacity\n(MWe)" <= 1000 
+AND "Status" NOT LIKE '%destroyed%' 
+AND "Status" NOT LIKE '%shelved%' 
+AND "Status" NOT LIKE '%cancelled%';
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Gross\nCapacity\n(MWe)" <= 1000 AND "Status" NOT LIKE '%destroyed%' AND "Status" NOT LIKE '%shelved%' AND "Status" NOT LIKE '%cancelled%';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|         14 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: RBMK
+SQL: SELECT COUNT(*) FROM T WHERE "Gross\nCapacity\n(MWe)" <= 1000 AND "Status" NOT LIKE '%destroyed%' AND "Status" NOT LIKE '%shelved%' AND "Status" NOT LIKE '%cancelled%';
+
+SQL Execution Result:
+COUNT(*)
+14
+
+Question: how many reactors only have a gross capacity of 1000 or below?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 14
+[Gold Answer] 1
+

@@ -1,0 +1,146 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Route Number:
+   - Data type: Categorical
+   - 4 representative example values: 66, 145, 147, 366
+   - Role: Identifier for each specific bus route.
+
+2. Route:
+   - Data type: Categorical
+   - 4 representative example values: Leytonstone Station to Romford Station, Leytonstone to Dagenham Asda, Ilford Hainault Street to Canning Town station, Redbridge Falmouth Gardens to Beckton Station
+   - Role: Descriptor of the route taken by the bus.
+
+3. Via:
+   - Data type: Categorical
+   - 4 representative example values: Wanstead , Redbridge , Gants Hill , Newbury Park, Redbridge , Ilford, Becontree, East Ham , Newham General Hospital, Custom House, Walthamstow Central , Whipps Cross Hospital, South Woodford
+   - Role: Descriptor of the stops or areas the bus passes through.
+
+4. Operator:
+   - Data type: Categorical
+   - 4 representative example values: Arriva London, Stagecoach London, HCT Group
+   - Role: Identifier of the bus operator for the route.
+
+5. Operation:
+   - Data type: Categorical
+   - 4 representative example values: Daily. London Buses service. Times
+   - Role: Descriptor of the frequency and type of operation for the bus route.
+
+**Outlier Row Analysis:**
+
+1. Row 0:
+   - The Route Number is 66, which is a common value in the dataset.
+   - The Route is Leytonstone Station to Romford Station, which is a typical route.
+   - The Via includes Wanstead, Redbridge, Gants Hill, Newbury Park, which are common stops.
+   - The Operator is Arriva London, which is a regular operator.
+   - The Operation is Daily. London Buses service. Times, a standard operation description.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+2. Row 23:
+   - The Route Number is W12, which is a common value in the dataset.
+   - The Route is Walthamstow Coppermill Lane to Wanstead Station, a typical route.
+   - The Via includes Walthamstow Central, Whipps Cross Hospital, South Woodford, which are standard stops.
+   - The Operator is HCT Group, a regular operator.
+   - The Operation is Daily. London Buses service. Times, a standard operation description.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+3. Row 7:
+   - The Route Number is 366, a common value in the dataset.
+   - The Route is Redbridge Falmouth Gardens to Beckton Station, a typical route.
+   - The Via includes Redbridge, Ilford, Barking, which are standard stops.
+   - The Operator is Stagecoach London, a regular operator.
+   - The Operation is Daily. London Buses service. Times, a standard operation description.
+   - Conclusion: This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Route Number   | Route                                                    | Via                                                       | Operator          | Operation                             |
+|-------------:|:---------------|:---------------------------------------------------------|:----------------------------------------------------------|:------------------|:--------------------------------------|
+|            0 | 25             | Ilford Hainault Street to Oxford Circus                  | Holborn  Aldgate  Stratford                               | First London      | 24 Hours. London Buses service. Times |
+|            1 | 66             | Leytonstone Station to Romford Station                   | Wanstead  Redbridge  Gants Hill  Newbury Park             | Arriva London     | Daily. London Buses service. Times    |
+|            2 | 86             | Stratford Bus Station to Romford Station                 | Manor Park Ilford  Seven Kings                            | Stagecoach London | Daily. London Buses service. Times    |
+|            3 | 101            | Wanstead Station to Gallions Reach Shopping Centre       | Manor Park  East Ham  Beckton                             | Stagecoach London | Daily. London Buses service. Times    |
+|            4 | 123            | Ilford Hainault Street to Wood Green Bus Station         | Gants Hill  Walthamstow Tottenham Turnpike Lane           | Arriva London     | Daily. London Buses service. Times    |
+|            5 | 128            | Claybury Broadway to Romford Station                     | Barkingside Gants Hill  Ilford                            | Arriva London     | 24 Hours. London Buses service. Times |
+|            6 | 145            | Leytonstone to Dagenham Asda                             | Redbridge  Ilford Becontree                               | Stagecoach London | Daily. London Buses service. Times    |
+|            7 | 147            | Ilford Hainault Street to Canning Town station           | East Ham  Newham General Hospital Custom House            | Stagecoach London | Daily. London Buses service. Times    |
+|            8 | 150            | Chigwell Row to Becontree Heath Bus Station              | Hainault Barkingside Gants Hill  Ilford                   | Arriva London     | Daily. London Buses service. Times    |
+|            9 | 167            | Debden to Ilford Hainault Street                         | Loughton  Barkingside Gants Hill                          | Blue Triangle     | Daily. London Buses service. Times    |
+|           10 | 169            | Barking Town Centre to Clayhall The Glade                | Ilford  Newbury Park Barkingside                          | Stagecoach London | Daily. London Buses service. Times    |
+|           11 | 179            | Chingford to Ilford Hainault Street                      | Woodford Green South Woodford  Gants Hill                 | First London      | Daily. London Buses service. Times    |
+|           12 | 247            | Barkingside Station to Romford Station                   | Hainault  Collier Row                                     | Stagecoach London | Daily. London Buses service. Times    |
+|           13 | 275            | Walthamstow St James Street Station to Barkingside Tesco | Highams Park Woodford Green Woodford Bridge               | Arriva London     | Daily. London Buses service. Times    |
+|           14 | 296            | Ilford Sainbury's to Romford Station                     | Gants Hill  Newbury Park Rose Lane                        | Stagecoach London | Daily. London Buses service. Times    |
+|           15 | 308            | Wanstead Station to Clapton Park Millfields Road         | Forest Gate  Stratford  Leyton                            | First London      | Daily. London Buses service. Times    |
+|           16 | 362            | Grange Hill to King George Hospital                      | Hainault Marks Gate Chadwell Heath                        | Blue Triangle     | Daily. London Buses service. Times    |
+|           17 | 364            | Ilford Hainault Street to Dagenham East Station          | Goodmayes  Becontree Dagenham Heathway                    | Blue Triangle     | Daily. London Buses service. Times    |
+|           18 | 366            | Redbridge Falmouth Gardens to Beckton Station            | Redbridge  Ilford Barking                                 | Stagecoach London | Daily. London Buses service. Times    |
+|           19 | 396            | Ilford Sainbury's to King George Hospital                | Gants Hill  Newbury Park Little Heath                     | Stagecoach London | Daily. London Buses service. Times    |
+|           20 | 462            | Hainault The Lowe to Ilford Hainault Street              | Grange Hill  Barkingside Gants Hill                       | Arriva London     | Daily. London Buses service. Times    |
+|           21 | EL1            | Ilford Station to Barking Reach                          | Ilford Lane Barking  River Road                           | Blue Triangle     | 24 Hours. London Buses service. Times |
+|           22 | EL2            | Ilford Station to Dagenham Dock Station                  | Barking  Thames View Estate Dagenham                      | Blue Triangle     | Daily. London Buses service. Times    |
+|           23 | W12            | Walthamstow Coppermill Lane to Wanstead Station          | Walthamstow Central  Whipps Cross Hospital South Woodford | HCT Group         | Daily. London Buses service. Times    |
+|           24 | W13            | Woodford Wells to Leytonstone Station                    | Woodford Green Snaresbrook  Wanstead                      | HCT Group         | Daily. London Buses service. Times    |
+|           25 | W14            | Leyton Asda to Woodford Bridge                           | South Woodford  Wanstead  Leytonstone                     | Arriva London     | Daily. London Buses service. Times    |
+|           26 | W19            | Walthamstow Angel Avenue to Ilford Station               | Walthamstow Central  Leytonstone  Manor Park              | Blue Triangle     | Daily. London Buses service. Times    |
+
+Generated Reasoning SQL: Explanation: The summary provides information about the "Route Number" and "Operation" columns. To compare the operation duration of routes 167 and 128, we need to look at the "Operation" column, which describes the frequency and type of operation for each route. We will filter rows where "Route Number" is either 167 or 128 and compare the operation descriptions to determine which route operates longer.
+SQL: 
+select "Route Number", "Operation" from T where "Route Number" in ('167', '128');
+Generated Final SQL: select "Route Number", "Operation" from T where "Route Number" in ('167', '128');
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+|   Route Number | Operation                             |
+|---------------:|:--------------------------------------|
+|            128 | 24 Hours. London Buses service. Times |
+|            167 | Daily. London Buses service. Times    |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: London Borough of Redbridge
+SQL: select "Route Number", "Operation" from T where "Route Number" in ('167', '128');
+
+Route Number | Operation
+128 | 24 Hours. London Buses service. Times
+167 | Daily. London Buses service. Times
+Question: does route 167 operate longer than route 128?
+A: To find the answer to this question, let’s think step by step.
+Prediction: no
+[Gold Answer] no
+

@@ -1,0 +1,35 @@
+**Column Analysis:**
+
+1. Award
+   - Data type: Categorical
+   - 4 representative example values: Academy Awards, BAFTA, David di Donatello Award, Golden Globe Awards
+   - Role: Descriptor
+
+2. Category
+   - Data type: Categorical
+   - 4 representative example values: Best Actor, Best Supporting Actor, Best Direction, Best Foreign Film
+   - Role: Descriptor
+
+3. Nominee
+   - Data type: Categorical
+   - 4 representative example values: Gene Hackman, Roy Scheider, William Friedkin, Philip D'Antoni
+   - Role: Identifier
+
+4. Result
+   - Data type: Categorical
+   - 4 representative example values: Won, Nominated
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values "Golden Globe Awards, 1972", "Best Actor", "Gene Hackman", "Won" are not unique or atypical in the context of the table.
+   - Conclusion: Ordinary row, no special handling required.
+
+2. Row 11:
+   - The values "Golden Globe Awards, 1972", "Best Actor", "Gene Hackman", "Won" are not unique or atypical in the context of the table.
+   - Conclusion: Ordinary row, no special handling required.
+
+3. Row 5:
+   - The values "David di Donatello Award, 1972", "Best Foreign Film", "Philip D'Antoni", "Won" are not unique or atypical in the context of the table.
+   - Conclusion: Ordinary row, no special handling required.

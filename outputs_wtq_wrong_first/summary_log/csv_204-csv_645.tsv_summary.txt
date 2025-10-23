@@ -1,0 +1,43 @@
+**Column Analysis:**
+
+1. District
+   - Data type: Numeric
+   - Representative values: 2, 3, 4, 5
+   - Role: Identifier for the district number
+
+2. Incumbent
+   - Data type: Categorical
+   - Representative values: Mark Udall, John Salazar, Marilyn Musgrave, Doug Lamborn
+   - Role: Descriptor for the incumbent candidate
+
+3. 2008 Status
+   - Data type: Categorical
+   - Representative values: Open, Re-election
+   - Role: Descriptor indicating whether the seat is open or the incumbent is running for re-election
+
+4. Democratic
+   - Data type: Categorical
+   - Representative values: Jared Polis, John Salazar, Betsy Markey, Hal Bidlack
+   - Role: Descriptor for the Democratic candidate running in the district
+
+5. Republican
+   - Data type: Categorical
+   - Representative values: Scott Starin, Wayne Wolf, Marilyn Musgrave, Doug Lamborn
+   - Role: Descriptor for the Republican candidate running in the district
+
+**Outlier Row Analysis:**
+
+1. Row 2 (District 3, John Salazar)
+   - The incumbent is running for re-election, which is consistent with other rows.
+   - The Democratic candidate is the same as the incumbent, which is not common but not unusual.
+   - The Republican candidate is Wayne Wolf, which is different from the incumbent, making this row an outlier.
+
+2. Row 6 (District 6, Tom Tancredo)
+   - The seat is open, which is consistent with other rows.
+   - The Democratic candidate is Hank Eng, which is different from the incumbent, making this row an outlier.
+   - The Republican candidate is Mike Coffman, which is consistent with other rows.
+
+3. Row 4 (District 4, Marilyn Musgrave)
+   - The incumbent is running for re-election, which is consistent with other rows.
+   - The Democratic candidate is Betsy Markey, which is different from the incumbent, making this row an outlier.
+   - The Republican candidate is the same as the incumbent, which is not common but not unusual.

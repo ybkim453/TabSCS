@@ -1,0 +1,42 @@
+**Column Analysis:**
+
+1. Rnd:
+   - Data type: Numeric
+   - 4 representative example values: 2, 7, 8, 10
+   - Role: Identifier for the round of the race
+
+2. Circuit:
+   - Data type: Categorical
+   - 4 representative example values: Miami, Charlotte, Lime Rock, Watkins Glen
+   - Role: Descriptor for the circuit where the race took place
+
+3. GTP Winning Team\nGTP Winning Drivers:
+   - Data type: Categorical
+   - 4 representative example values: Doc Bundy\n Brian Redman, #56 Blue Thunder Racing, Sarel van der Merwe, #14 Holbert Racing
+   - Role: Descriptor for the winning team and drivers in the GTP category
+
+4. GTO Winning Team\nGTO Winning Drivers:
+   - Data type: Categorical
+   - 4 representative example values: Walt Bohren, #4 Stratagraph Inc., Roger Mandeville, #91 Electrodyne
+   - Role: Descriptor for the winning team and drivers in the GTO category
+
+5. GTU Winning Team\nGTU Winning Drivers:
+   - Data type: Categorical
+   - 4 representative example values: Chris Cord, #99 All American Racers, Jack Baldwin, #87 Performance Motorsports
+   - Role: Descriptor for the winning team and drivers in the GTU category
+
+6. Results:
+   - Data type: Categorical
+   - 4 representative example values: Results, Results, Results, Results
+   - Role: Descriptor for the overall results of the race
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The values in this row are consistent with the rest of the table and do not contain any distinctive or atypical values. This row is an ordinary entry and does not require special handling.
+
+2. Row 23:
+   - The values in this row are also ordinary and do not stand out as atypical compared to the majority of the table. This row is an ordinary entry and does not require special handling.
+
+3. Row 3:
+   - The values in this row, including the winning teams and drivers, are consistent with the format and content of the other rows in the table. There are no distinctive or atypical values that would make this row an outlier. This row is an ordinary entry and does not require special handling.

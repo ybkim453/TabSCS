@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Wrestler:
+   - Data type: Categorical
+   - 4 representative example values: Jason The Terrible, King Kong, Fidel Sierra, Glamour Boy Shane
+   - Role: Identifier for the wrestler holding the title
+
+2. Reigns:
+   - Data type: Numeric
+   - 4 representative example values: 1, 1, 1, 2
+   - Role: Measure indicating the number of times the wrestler has held the title
+
+3. Date:
+   - Data type: Date
+   - 4 representative example values: January 17, 1987, April 20, 1991, October 19, 1991, April 2, 1999
+   - Role: Descriptor indicating the date when the wrestler won the title
+
+4. Place:
+   - Data type: Categorical
+   - 4 representative example values: Caguas, Puerto Rico, Bayamon, Puerto Rico, Guaynabo, Puerto Rico, Lares, Puerto Rico
+   - Role: Descriptor indicating the location where the title was won
+
+5. Notes:
+   - Data type: Categorical
+   - 4 representative example values: nan, Defeated "Jungle" Jim Steele for vacant title, Chris Joel Jumps to IWA, nan
+   - Role: Descriptor providing additional information about the title reign
+
+**Outlier Row Analysis:**
+
+1. Row 37:
+   - The row contains missing values for all columns, which is not distinctive and is an ordinary occurrence in the table. This row is an ordinary row and requires no special handling.
+
+2. Row 65:
+   - The row contains the value "nan" for the Reigns column, which is not a numeric value like the rest of the entries. This makes the row an outlier as it does not conform to the expected data type for that column.
+
+3. Row 63:
+   - The row contains the note "Chris Joel Jumps to IWA", which is different from the typical notes that describe title wins or matches. This unique note makes the row an outlier as it deviates from the usual information provided in the Notes column.

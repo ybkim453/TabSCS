@@ -1,0 +1,143 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Team:
+   - Data type: Categorical
+   - 4 representative example values: Est. Ahvaz, Foolad, Malavan, Mes Kerman
+   - Role: Identifier for each team in the table
+
+2. City:
+   - Data type: Categorical
+   - 4 representative example values: Ahvaz, Anzali, Kerman, Karaj
+   - Role: Descriptor indicating the city where the team is located
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Takhti Ahvaz, Takhti Anzali, Shahid Bahonar, Enghelab Karaj
+   - Role: Descriptor specifying the stadium where the team plays
+
+4. Capacity:
+   - Data type: Numeric
+   - 4 representative example values: 30,000, 15,000, 8,000
+   - Role: Measure indicating the seating capacity of the venue
+
+5. Head Coach:
+   - Data type: Categorical
+   - 4 representative example values: Khodadad Azizi, Majid Jalali, Mohammad Ahmadzadeh, Parviz Mazloomi
+   - Role: Descriptor identifying the head coach of the team
+
+6. Team Captain:
+   - Data type: Categorical
+   - 4 representative example values: Afshin Komaei, Ali Badavi, Masoud Gholamalizad, Farzad Hosseinkhani
+   - Role: Descriptor specifying the team captain
+
+7. Past Season:
+   - Data type: Categorical
+   - 4 representative example values: 8th, Qualifier, 16th, 10th
+   - Role: Descriptor indicating the team's performance in the past season
+
+**Outlier Row Analysis:**
+
+1. Row 6 (index 6):
+   - The team "Sepahan" is missing from the table, which is unusual as it is a well-known team in the league.
+   - This row is an outlier as it does not follow the pattern of the other rows in terms of team representation.
+
+2. Row 15 (index 15):
+   - The team "Tractor" is missing from the table, which is another prominent team in the league.
+   - This row is an outlier due to the absence of a significant team that is expected to be included.
+
+3. Row 2 (index 2):
+   - The team "Foolad" has a "Qualifier" status in the past season, which is different from the typical rankings mentioned in the table.
+   - This row is an outlier as it deviates from the usual performance descriptions provided in the table.
+
+=== Full Table Preview ===
+|   row_number | Team         | City     | Venue          |   Capacity | Head Coach               | Team Captain            | Past Season   |
+|-------------:|:-------------|:---------|:---------------|-----------:|:-------------------------|:------------------------|:--------------|
+|            0 | Aboomoslem   | Mashhad  | Samen          |      35000 | Ali Hanteh               | Saeed Khani             | 4th           |
+|            1 | Bargh Shiraz | Shiraz   | Hafezieh       |      20000 | Rasoul Korbekandi        | Sattar Zare             | 7th           |
+|            2 | Damash Gilan | Rasht    | Sardar Jangal  |      15000 | Stanko Poklepović        | Mohammad Reza Mahdavi   | 15th          |
+|            3 | Est. Ahvaz   | Ahvaz    | Takhti Ahvaz   |      30000 | Khodadad Azizi           | Afshin Komaei           | 8th           |
+|            4 | Esteghlal    | Tehran   | Azadi          |      90000 | Amir Ghalenoei           | Farhad Majidi           | 13th          |
+|            5 | Foolad       | Ahvaz    | Takhti Ahvaz   |      15000 | Majid Jalali             | Ali Badavi              | Qualifier     |
+|            6 | Malavan      | Anzali   | Takhti Anzali  |       8000 | Mohammad Ahmadzadeh      | Masoud Gholamalizad     | 16th          |
+|            7 | Mes Kerman   | Kerman   | Shahid Bahonar |      15000 | Parviz Mazloomi          | Farzad Hosseinkhani     | 10th          |
+|            8 | Moghavemat   | Shiraz   | Hafezieh       |      20000 | Gholam Hossein Peyrovani | Mostafa Sabri           | 14th          |
+|            9 | Pas Hamedan  | Hamedan  | Ghods          |       5000 | Vinko Begovic            | Omid Khouraj            | 5th           |
+|           10 | Paykan       | Qazvin   | Shahid Rajaei  |       5000 | Ali Asghar Modir Roosta  | Mohammad Reza Tahmasebi | 9th           |
+|           11 | Payam        | Mashhad  | Samen          |      35000 | Kazem Ghiyasiyan         | Mehdi Hasheminasab      | Qualifier     |
+|           12 | Persepolis   | Tehran   | Azadi          |      90000 | Nelo Vingada             | Karim Bagheri           | Champion      |
+|           13 | Rah Ahan     | Rey Iran | Rah Ahan       |      15000 | Mehdi Tartar             | Ahmad Taghavi           | 12th          |
+|           14 | Saba Qom     | Qom      | Yadegar Emam   |      15000 | Firouz Karimi            | Yahya Golmohammadi      | 3rd           |
+|           15 | Saipa        | Karaj    | Enghelab Karaj |      15000 | Mohammad Mayeli Kohan    | Ebrahim Sadeghi         | 11th          |
+|           16 | Sepahan      | Esfahan  | Foolad Shahr   |      25000 | Farhad Kazemi            | Moharram Navidkia       | 2nd           |
+|           17 | Zob Ahan     | Esfahan  | Foolad Shahr   |      25000 | Mansour Ebrahimzadeh     | Mohammad Salsali        | 6th           |
+
+Generated Reasoning SQL: To determine which team finished first, we need to look at the "Past Season" column to identify the team that achieved the highest ranking. The summary indicates that the "Past Season" column contains categorical values representing the team's performance in the previous season.
+
+SQL: 
+select "Team" 
+from T 
+where "Past Season" = '1st';
+Generated Final SQL: select "Team" from T where "Past Season" = '1st';
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2008–09 Iran Pro League (row_number, Team, City, Venue, Capacity, Head Coach, Team Captain, Past Season)
+
+row_number | Team | City | Venue | Capacity | Head Coach | Team Captain | Past Season
+0 | Aboomoslem | Mashhad | Samen | 35000 | Ali Hanteh | Saeed Khani | 4th
+1 | Bargh Shiraz | Shiraz | Hafezieh | 20000 | Rasoul Korbekandi | Sattar Zare | 7th
+2 | Damash Gilan | Rasht | Sardar Jangal | 15000 | Stanko Poklepović | Mohammad Reza Mahdavi | 15th
+3 | Est. Ahvaz | Ahvaz | Takhti Ahvaz | 30000 | Khodadad Azizi | Afshin Komaei | 8th
+4 | Esteghlal | Tehran | Azadi | 90000 | Amir Ghalenoei | Farhad Majidi | 13th
+5 | Foolad | Ahvaz | Takhti Ahvaz | 15000 | Majid Jalali | Ali Badavi | Qualifier
+6 | Malavan | Anzali | Takhti Anzali | 8000 | Mohammad Ahmadzadeh | Masoud Gholamalizad | 16th
+7 | Mes Kerman | Kerman | Shahid Bahonar | 15000 | Parviz Mazloomi | Farzad Hosseinkhani | 10th
+8 | Moghavemat | Shiraz | Hafezieh | 20000 | Gholam Hossein Peyrovani | Mostafa Sabri | 14th
+9 | Pas Hamedan | Hamedan | Ghods | 5000 | Vinko Begovic | Omid Khouraj | 5th
+10 | Paykan | Qazvin | Shahid Rajaei | 5000 | Ali Asghar Modir Roosta | Mohammad Reza Tahmasebi | 9th
+11 | Payam | Mashhad | Samen | 35000 | Kazem Ghiyasiyan | Mehdi Hasheminasab | Qualifier
+12 | Persepolis | Tehran | Azadi | 90000 | Nelo Vingada | Karim Bagheri | Champion
+13 | Rah Ahan | Rey Iran | Rah Ahan | 15000 | Mehdi Tartar | Ahmad Taghavi | 12th
+14 | Saba Qom | Qom | Yadegar Emam | 15000 | Firouz Karimi | Yahya Golmohammadi | 3rd
+15 | Saipa | Karaj | Enghelab Karaj | 15000 | Mohammad Mayeli Kohan | Ebrahim Sadeghi | 11th
+16 | Sepahan | Esfahan | Foolad Shahr | 25000 | Farhad Kazemi | Moharram Navidkia | 2nd
+17 | Zob Ahan | Esfahan | Foolad Shahr | 25000 | Mansour Ebrahimzadeh | Mohammad Salsali | 6th
+Question: which team finished first?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to look at the "Past Season" column in the full table to identify the team that finished first in the past season. 
+
+From the full table:
+- Persepolis finished as the champion in the past season.
+
+Therefore, the team that finished first in the past season is Persepolis.
+
+Final Answer: Persepolis
+[Fallback] Prediction: persepolis
+[Gold Answer] persepolis
+

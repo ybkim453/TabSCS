@@ -1,0 +1,173 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2003, 2005, 2006, 2008
+   - Role: Identifier for the year of the competition
+
+2. Competition:
+   - Data type: Categorical
+   - 4 representative example values: European U23 Championships, European Championships, Olympic Games
+   - Role: Descriptor for the type of competition
+
+3. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Bydgoszcz, Poland, Gothenburg, Sweden, Beijing, China
+   - Role: Descriptor for the location of the competition
+
+4. Position:
+   - Data type: Categorical
+   - 4 representative example values: 13th (q), 7th, 5th, 11th
+   - Role: Measure of the athlete's performance in the competition
+
+5. Notes:
+   - Data type: Numeric
+   - 4 representative example values: 5.20 m, 5.50 m, 5.65 m, NM (No Mark)
+   - Role: Measure of the athlete's performance in terms of height cleared
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The position value is "–" which indicates no result was recorded for the competition.
+   - This row is an outlier as it does not have a measurable performance compared to the other rows.
+
+2. Row 9:
+   - The position value is "NM" which stands for No Mark, indicating the athlete did not clear a height.
+   - This row is an outlier as it represents a lack of performance compared to the other rows.
+
+3. Row 0:
+   - The position value is "13th (q)" which suggests the athlete qualified for the next round despite finishing 13th.
+   - This row is an outlier as it has a unique position value compared to the other rows.
+
+In conclusion, the outlier rows have distinctive values that set them apart from the majority of the table, making them outliers that require special attention in the analysis.
+
+=== Full Table Preview ===
+|   row_number |   Year | Competition                   | Venue                     | Position   | Notes   |
+|-------------:|-------:|:------------------------------|:--------------------------|:-----------|:--------|
+|            0 |   1999 | World Youth Championships     | Bydgoszcz Poland          | 13th (q)   | 4.60 m  |
+|            1 |   2001 | European Junior Championships | Grosseto Italy            | 7th        | 5.15 m  |
+|            2 |   2002 | World Junior Championships    | Kingston Jamaica          | 8th        | 5.30 m  |
+|            3 |   2003 | European U23 Championships    | Bydgoszcz Poland          | 13th (q)   | 5.20 m  |
+|            4 |   2005 | European U23 Championships    | Erfurt Germany            | 7th        | 5.50 m  |
+|            5 |   2005 | Universiade                   | Izmir Turkey              | 5th        | 5.50 m  |
+|            6 |   2006 | World Indoor Championships    | Moscow Russia             | 10th (q)   | 5.65 m  |
+|            7 |   2006 | European Championships        | Gothenburg Sweden         | 5th        | 5.65 m  |
+|            8 |   2007 | European Indoor Championships | Birmingham United Kingdom | 16th (q)   | 5.40 m  |
+|            9 |   2008 | Olympic Games                 | Beijing China             | 11th       | 5.45 m  |
+|           10 |   2010 | European Championships        | Barcelona Spain           | 3rd        | 5.75 m  |
+|           11 |   2012 | European Championships        | Helsinki Finland          | –          | NM      |
+
+Generated Reasoning SQL: Explanation: To determine the year when Poland achieved its highest position, we need to focus on the "Position" column to identify the highest position attained by Poland. We should exclude outlier rows where the position is not a measurable performance indicator (e.g., "NM" or "-"). By filtering for rows where the country is Poland and the position is a numeric value, we can find the year associated with the highest position.
+
+SQL: 
+SELECT "Year"
+FROM T
+WHERE "Position" NOT LIKE '%NM%' 
+AND "Position" NOT LIKE '%-%'
+AND "Position" NOT LIKE '%(q)%'
+AND "Position" NOT LIKE '%(Q)%'
+AND "Position" NOT LIKE '%(qf)%'
+AND "Position" NOT LIKE '%(sf)%'
+AND "Position" NOT LIKE '%(h)%'
+AND "Position" NOT LIKE '%(r)%'
+AND "Position" NOT LIKE '%(sfh)%'
+AND "Position" NOT LIKE '%(sfq)%'
+AND "Position" NOT LIKE '%(sfqf)%'
+AND "Position" NOT LIKE '%(sfqr)%'
+AND "Position" NOT LIKE '%(sfqrh)%'
+AND "Position" NOT LIKE '%(sfqrf)%'
+AND "Position" NOT LIKE '%(sfqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrf)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%'
+AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrf
+Generated Final SQL: SELECT "Year" FROM T WHERE "Position" NOT LIKE '%NM%' AND "Position" NOT LIKE '%-%' AND "Position" NOT LIKE '%(q)%' AND "Position" NOT LIKE '%(Q)%' AND "Position" NOT LIKE '%(qf)%' AND "Position" NOT LIKE '%(sf)%' AND "Position" NOT LIKE '%(h)%' AND "Position" NOT LIKE '%(r)%' AND "Position" NOT LIKE '%(sfh)%' AND "Position" NOT LIKE '%(sfq)%' AND "Position" NOT LIKE '%(sfqf)%' AND "Position" NOT LIKE '%(sfqr)%' AND "Position" NOT LIKE '%(sfqrh)%' AND "Position" NOT LIKE '%(sfqrf)%' AND "Position" NOT LIKE '%(sfqrfh)%' AND "Position" NOT LIKE '%(sfqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrf
+[Error] Final SQL 실행 실패: Execution failed on sql 'SELECT "Year" FROM T WHERE "Position" NOT LIKE '%NM%' AND "Position" NOT LIKE '%-%' AND "Position" NOT LIKE '%(q)%' AND "Position" NOT LIKE '%(Q)%' AND "Position" NOT LIKE '%(qf)%' AND "Position" NOT LIKE '%(sf)%' AND "Position" NOT LIKE '%(h)%' AND "Position" NOT LIKE '%(r)%' AND "Position" NOT LIKE '%(sfh)%' AND "Position" NOT LIKE '%(sfq)%' AND "Position" NOT LIKE '%(sfqf)%' AND "Position" NOT LIKE '%(sfqr)%' AND "Position" NOT LIKE '%(sfqrh)%' AND "Position" NOT LIKE '%(sfqrf)%' AND "Position" NOT LIKE '%(sfqrfh)%' AND "Position" NOT LIKE '%(sfqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrf)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfh)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhqrfhq)%' AND "Position" NOT LIKE '%(sfqrfhqrfhqrfhqrfhqrfhqrf': unrecognized token: "'%(sfqrfhqrfhqrfhqrfhqrfhqrf"
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: Przemysław Czerwiński (row_number, Year, Competition, Venue, Position, Notes)
+
+row_number | Year | Competition | Venue | Position | Notes
+0 | 1999 | World Youth Championships | Bydgoszcz Poland | 13th (q) | 4.60 m
+1 | 2001 | European Junior Championships | Grosseto Italy | 7th | 5.15 m
+2 | 2002 | World Junior Championships | Kingston Jamaica | 8th | 5.30 m
+3 | 2003 | European U23 Championships | Bydgoszcz Poland | 13th (q) | 5.20 m
+4 | 2005 | European U23 Championships | Erfurt Germany | 7th | 5.50 m
+5 | 2005 | Universiade | Izmir Turkey | 5th | 5.50 m
+6 | 2006 | World Indoor Championships | Moscow Russia | 10th (q) | 5.65 m
+7 | 2006 | European Championships | Gothenburg Sweden | 5th | 5.65 m
+8 | 2007 | European Indoor Championships | Birmingham United Kingdom | 16th (q) | 5.40 m
+9 | 2008 | Olympic Games | Beijing China | 11th | 5.45 m
+10 | 2010 | European Championships | Barcelona Spain | 3rd | 5.75 m
+11 | 2012 | European Championships | Helsinki Finland | – | NM
+Question: what year did poland achieve its highest position?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify the rows where Poland achieved a position in the "Position" column.  
+Next, we need to determine which of these positions is the highest.  
+Using the full table:  
+- Poland achieved the following positions:  
+  1. 1999 World Youth Championships - 13th (q)  
+  2. 2003 European U23 Championships - 13th (q)  
+  3. 2008 Olympic Games - 11th  
+- From the positions listed, the highest achieved by Poland was 11th at the 2008 Olympic Games.
+
+Final Answer: 2008
+[Fallback] Prediction: 2008
+[Gold Answer] 2010
+

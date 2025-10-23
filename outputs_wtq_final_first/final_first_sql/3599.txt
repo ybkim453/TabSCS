@@ -1,0 +1,122 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 3, 5, 7, 8
+   - Role: Identifier, indicating the ranking of the city in terms of passengers.
+
+2. City:
+   - Data type: Categorical
+   - 4 representative example values: Guerrero, Acapulco; Jalisco, Puerto Vallarta; Guerrero, Ixtapa/Zihuatanejo; Baja California, Tijuana
+   - Role: Descriptor, identifying the city where the airport is located.
+
+3. Passengers:
+   - Data type: Numeric
+   - 4 representative example values: 56,069; 43,419; 35,507; 14,906
+   - Role: Measure, indicating the number of passengers at the airport.
+
+4. Ranking:
+   - Data type: Numeric
+   - 4 representative example values: nan, 1
+   - Role: Measure, indicating the ranking of the city in terms of passengers.
+
+5. Airline:
+   - Data type: Categorical
+   - 4 representative example values: Aeroméxico Connect, Interjet; Interjet; Interjet; VivaAerobus
+   - Role: Descriptor, identifying the airline(s) operating at the airport.
+
+**Outlier Row Analysis:**
+
+1. Row 8 (Index 8):
+   - The values in the "Ranking" column are all "nan", which is different from the majority of the table where rankings are provided.
+   - This row is an outlier due to the absence of a ranking value, making it distinctive from the other rows.
+
+2. Row 4 (Index 4):
+   - The value in the "Ranking" column is "1", which is different from the majority of the table where rankings are not provided or are "nan".
+   - This row is an outlier due to the presence of a ranking value, making it distinctive from the other rows.
+
+3. Row 2 (Index 2):
+   - The values in the "Ranking" column are all "nan", which is consistent with other rows in the table.
+   - This row is an ordinary row and does not require special handling as the values are not distinctive from the majority of the table.
+
+=== Full Table Preview ===
+|   row_number |   Rank | City                          |   Passengers |   Ranking | Airline                             |
+|-------------:|-------:|:------------------------------|-------------:|----------:|:------------------------------------|
+|            0 |      1 | Quintana Roo Cancún           |       132046 |       nan | Aeroméxico Connect Interjet Volaris |
+|            1 |      2 | Nuevo León Monterrey          |       106513 |       nan | Aeroméxico Connect Interjet         |
+|            2 |      3 | Guerrero Acapulco             |        56069 |       nan | Aeroméxico Connect Interjet         |
+|            3 |      4 | Jalisco Guadalajara           |        52584 |       nan | Aeroméxico Connect Volaris          |
+|            4 |      5 | Jalisco Puerto Vallarta       |        43419 |         1 | Interjet                            |
+|            5 |      6 | Baja California Sur Los Cabos |        37526 |         1 | Interjet                            |
+|            6 |      7 | Guerrero Ixtapa/Zihuatanejo   |        35507 |       nan | Interjet                            |
+|            7 |      8 | Baja California Tijuana       |        14906 |       nan | Interjet                            |
+|            8 |      9 | Tabasco Villahermosa          |         6928 |         1 | VivaAerobus                         |
+|            9 |     10 | Tamaulipas Tampico            |         3619 |         1 | VivaAerobus                         |
+
+Generated Reasoning SQL: Explanation: To find the Interjet airline with the highest number of passengers, we need to consider the "Airline" and "Passengers" columns. We are interested in rows where the "Airline" contains "Interjet" and then identify the row with the maximum value in the "Passengers" column.
+
+SQL: 
+SELECT "Airline"
+FROM T
+WHERE "Airline" LIKE '%Interjet%'
+ORDER BY CAST("Passengers" AS INTEGER) DESC
+LIMIT 1;
+Generated Final SQL: SELECT "Airline" FROM T WHERE "Airline" LIKE '%Interjet%' ORDER BY CAST("Passengers" AS INTEGER) DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Airline                             |
+|:------------------------------------|
+| Aeroméxico Connect Interjet Volaris |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Lic. Adolfo López Mateos International Airport
+SQL: SELECT "Airline" FROM T WHERE "Airline" LIKE '%Interjet%' ORDER BY CAST("Passengers" AS INTEGER) DESC LIMIT 1;
+
+SQL Execution Result:
+Airline
+Aeroméxico Connect Interjet Volaris
+
+Question: which interjet airline has the highest number of passenders?
+A: To find the answer to this question, let’s think step by step.
+Prediction: aeroméxico connect interjet volaris
+[Gold Answer] aeroméxico connect, interjet, volaris
+

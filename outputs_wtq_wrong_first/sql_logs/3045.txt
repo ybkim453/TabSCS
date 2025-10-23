@@ -1,0 +1,148 @@
+=== Table ID ===
+csv/203-csv/64.tsv
+
+=== Question ===
+name one other nation that earned over 20 gold medals.
+
+=== Sub-table Preview ===
+|   Rank | Nation        |   Gold |   Silver |   Bronze |   Total |
+|-------:|:--------------|-------:|---------:|---------:|--------:|
+|      1 | China         |     63 |       46 |       32 |     141 |
+|      4 | United States |     27 |       22 |       39 |      88 |
+|      5 | Australia     |     26 |       38 |       36 |     100 |
+|      7 | Spain         |     20 |       27 |       24 |      71 |
+|      8 | Germany       |     19 |       28 |       31 |      78 |
+|      9 | France        |     18 |       26 |       30 |      74 |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 1, 4, 5, 7
+   - Role: Identifier
+
+2. Nation:
+   - Data type: Categorical
+   - 4 representative example values: China, United States, Australia, Spain
+   - Role: Descriptor
+
+3. Gold:
+   - Data type: Numeric
+   - 4 representative example values: 63, 27, 26, 20
+   - Role: Measure
+
+4. Silver:
+   - Data type: Numeric
+   - 4 representative example values: 46, 22, 38, 27
+   - Role: Measure
+
+5. Bronze:
+   - Data type: Numeric
+   - 4 representative example values: 32, 39, 36, 24
+   - Role: Measure
+
+6. Total:
+   - Data type: Numeric
+   - 4 representative example values: 141, 88, 100, 71
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Australia):
+   - The values for Gold, Silver, and Bronze (26, 38, 36) are higher compared to the other rows in the table.
+   - These values are significantly different from the majority of the table, making this row an outlier.
+
+2. Row 0 (China):
+   - The values for Gold, Silver, and Bronze (63, 46, 32) are much higher compared to the other rows in the table.
+   - These values are significantly different from the majority of the table, making this row an outlier.
+
+3. Row 4 (Germany):
+   - The values for Gold, Silver, and Bronze (19, 28, 31) are higher compared to the other rows in the table.
+   - These values are slightly different from the majority of the table, but not significantly enough to be considered outliers. This row is an ordinary row.
+
+4. Row 9 (France):
+   - The values for Gold, Silver, and Bronze (18, 26, 30) are consistent with the other rows in the table.
+   - These values are ordinary within the context of the table, making this row an ordinary row.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Nation        |   Gold |   Silver |   Bronze |   Total |
+|-------------:|-------:|:--------------|-------:|---------:|---------:|--------:|
+|            0 |      1 | China         |     63 |       46 |       32 |     141 |
+|            1 |      2 | Great Britain |     35 |       30 |       29 |      94 |
+|            2 |      3 | Canada        |     28 |       19 |       25 |      72 |
+|            3 |      4 | United States |     27 |       22 |       39 |      88 |
+|            4 |      5 | Australia     |     26 |       38 |       36 |     100 |
+|            5 |      6 | Ukraine       |     24 |       12 |       19 |      55 |
+|            6 |      7 | Spain         |     20 |       27 |       24 |      71 |
+|            7 |      8 | Germany       |     19 |       28 |       31 |      78 |
+|            8 |      9 | France        |     18 |       26 |       30 |      74 |
+|            9 |     10 | Japan         |     17 |       16 |       20 |      53 |
+
+Generated Reasoning SQL: Explanation: To find another nation that earned over 20 gold medals, we need to filter rows based on the "Gold" column and select a nation. We should exclude outlier rows that have significantly higher gold medal counts compared to the majority of the table.
+Since the question does not specify a particular rank or condition, we can simply filter rows where "Gold" > 20 and select any nation that meets this criterion.
+
+SQL: 
+SELECT "Nation" 
+FROM T 
+WHERE "Gold" > 20 
+AND "Nation" <> 'China' 
+LIMIT 1;
+Generated Final SQL: SELECT "Nation" FROM T WHERE "Gold" > 20 AND "Nation" <> 'China' LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Nation        |
+|:--------------|
+| Great Britain |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2004 Summer Paralympics
+SQL: SELECT "Nation" FROM T WHERE "Gold" > 20 AND "Nation" <> 'China' LIMIT 1;
+
+SQL Execution Result:
+Nation
+Great Britain
+
+Question: name one other nation that earned over 20 gold medals.
+A: To find the answer to this question, let’s think step by step.
+Prediction: great britain
+[Gold Answer] great britain
+

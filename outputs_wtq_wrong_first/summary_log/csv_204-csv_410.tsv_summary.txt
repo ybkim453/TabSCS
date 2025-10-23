@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. **Date introduced:**
+   - Data type: Categorical
+   - 4 representative example values: 9 December 2003, 23 July 2004, 16 August 2004, 14 June 2005
+   - Role: Identifier for when the pricing for each class was introduced
+
+2. **Class 1 (e.g. Motorbike):**
+   - Data type: Numeric
+   - 4 representative example values: £1.00, £1.00, £2.00, £2.50
+   - Role: Measure of pricing for Class 1 vehicles
+
+3. **Class 2 (e.g. Car):**
+   - Data type: Numeric
+   - 4 representative example values: £2.00, £2.00, £3.00, £3.50
+   - Role: Measure of pricing for Class 2 vehicles
+
+4. **Class 3 (e.g. Car with trailer):**
+   - Data type: Numeric
+   - 4 representative example values: £5.00, £5.00, £6.00, £7.00
+   - Role: Measure of pricing for Class 3 vehicles
+
+5. **Class 4 (e.g. Van):**
+   - Data type: Numeric
+   - 4 representative example values: £5.00, £5.00, £6.00, £7.00
+   - Role: Measure of pricing for Class 4 vehicles
+
+6. **Class 5 (e.g. HGV):**
+   - Data type: Numeric
+   - 4 representative example values: £10.00, £6.00, £6.00, £7.00
+   - Role: Measure of pricing for Class 5 vehicles
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for Class 1, Class 2, Class 3, Class 4, and Class 5 are significantly higher compared to the surrounding rows.
+   - These values are not ambiguous or missing, making this row an outlier.
+
+2. Row 8:
+   - The values for Class 1, Class 2, Class 3, Class 4, and Class 5 are also higher compared to the neighboring rows.
+   - These values are not ambiguous or missing, making this row an outlier.
+
+3. Row 3:
+   - The values for Class 1, Class 2, Class 3, Class 4, and Class 5 are higher compared to the adjacent rows.
+   - These values are not ambiguous or missing, making this row an outlier.

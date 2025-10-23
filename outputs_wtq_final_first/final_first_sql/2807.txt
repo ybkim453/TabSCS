@@ -1,0 +1,133 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date
+   - Data type: Categorical
+   - 4 representative example values: October 6, October 27, November 17, December 1
+   - Role: Identifier for the date of the game
+
+2. Time
+   - Data type: Categorical
+   - 4 representative example values: 2:30 PM, 7:00 PM, 4:10 PM
+   - Role: Descriptor for the time of the game
+
+3. Opponent#
+   - Data type: Categorical
+   - 4 representative example values: Illinois, Michigan State, Ohio State, vs. #14 Nebraska
+   - Role: Descriptor for the opponent team
+
+4. Rank#
+   - Data type: Categorical
+   - 4 representative example values: nan, #25, #23, #8
+   - Role: Descriptor for the rank of the opponent team
+
+5. Site
+   - Data type: Categorical
+   - 4 representative example values: Camp Randall Stadium • Madison, WI, Lucas Oil Stadium • Indianapolis, IN, Rose Bowl • Pasadena, CA
+   - Role: Descriptor for the location of the game
+
+6. TV
+   - Data type: Categorical
+   - 4 representative example values: ABC/ESPN2, FOX, ESPN
+   - Role: Descriptor for the TV channel broadcasting the game
+
+7. Result
+   - Data type: Categorical
+   - 4 representative example values: W 31–14, L 13–16 OT, L 14–21 OT, W 70–31
+   - Role: Descriptor for the outcome of the game
+
+8. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 80,096, 80,538, 80,112, 41,260
+   - Role: Measure for the number of attendees at the game
+
+**Outlier Row Analysis:**
+
+1. Row 1 (Index 1):
+   - The opponent is "Illinois" and the rank is listed as "nan".
+   - This row is an outlier as the rank is missing (nan) while most other rows have a rank specified for the opponent team.
+
+2. Row 13 (Index 12):
+   - The opponent is "vs. #14 Nebraska" and the rank is listed as "nan".
+   - This row is an outlier as the rank is missing (nan) while most other rows have a rank specified for the opponent team.
+
+3. Row 12 (Index 11):
+   - The opponent is "vs. #8 Stanford" and the rank is #23.
+   - This row is an outlier as the rank (#23) is significantly different from the rank of the opponent team in other rows, making it stand out as an outlier.
+
+=== Full Table Preview ===
+|   row_number | Date           | Time                | Opponent#               | Rank#   | Site                                                            | TV        | Result     |   Attendance |
+|-------------:|:---------------|:--------------------|:------------------------|:--------|:----------------------------------------------------------------|:----------|:-----------|-------------:|
+|            0 | September 1    | 2025-09-24 14:30:00 | #9 (FCS) Northern Iowa* | #12     | Camp Randall Stadium • Madison WI                               | BTN       | W 26–21    |        79568 |
+|            1 | September 8    | 2025-09-24 15:00:00 | at Oregon State*        | #13     | Reser Stadium • Corvallis OR                                    | FX        | L 7–10     |        42189 |
+|            2 | September 15   | 2025-09-24 19:00:00 | Utah State*             | #22     | Camp Randall Stadium • Madison WI                               | BTN       | W 16–14    |        79332 |
+|            3 | September 22   | 2025-09-24 11:00:00 | UTEP*                   | #24     | Camp Randall Stadium • Madison WI                               | ESPN2     | W 37–26    |        79806 |
+|            4 | September 29   | 2025-09-24 19:00:00 | at #20 Nebraska         | #23     | Memorial Stadium • Lincoln NE                                   | ABC       | L 27–30    |        85962 |
+|            5 | October 6      | 2025-09-24 14:30:00 | Illinois                |         | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | W 31–14    |        80096 |
+|            6 | October 13     | 2025-09-24 11:00:00 | at Purdue               |         | Ross-Ade Stadium • West Lafayette IN                            | BTN       | W 38–14    |        46007 |
+|            7 | October 20     | 2025-09-24 11:00:00 | Minnesota               |         | Camp Randall Stadium • Madison WI (Paul Bunyan's Axe)           | ESPNU     | W 38–13    |        80587 |
+|            8 | October 27     | 2025-09-24 14:30:00 | Michigan State          | #25     | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | L 13–16 OT |        80538 |
+|            9 | November 10    | 2025-09-24 11:00:00 | at Indiana              |         | Memorial Stadium • Bloomington IN                               | ESPN2     | W 62–14    |        43240 |
+|           10 | November 17    | 2025-09-24 14:30:00 | Ohio State              |         | Camp Randall Stadium • Madison WI                               | ABC/ESPN2 | L 14–21 OT |        80112 |
+|           11 | November 24    | 2025-09-24 14:30:00 | at Penn State           |         | Beaver Stadium • University Park PA                             | ESPN2     | L 21–24 OT |        93505 |
+|           12 | December 1     | 2025-09-24 19:00:00 | vs. #14 Nebraska        |         | Lucas Oil Stadium • Indianapolis IN (Big Ten Championship Game) | FOX       | W 70–31    |        41260 |
+|           13 | January 1 2013 | 2025-09-24 16:10:00 | vs. #8 Stanford         | #23     | Rose Bowl • Pasadena CA (Rose Bowl)                             | ESPN      | L 14–20    |        93259 |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Date" column is categorical and the "TV" column contains categorical values such as ABC. To find a game aired on ABC other than October 6, we need to select a row where the "TV" column is ABC and the "Date" is not October 6.
+SQL: select "Date" from T where "TV" like '%ABC%' and "Date" != 'October 6' limit 1;
+Generated Final SQL: select "Date" from T where "TV" like '%ABC%' and "Date" != 'October 6' limit 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Date         |
+|:-------------|
+| September 29 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2012 Wisconsin Badgers football team
+SQL: select "Date" from T where "TV" like '%ABC%' and "Date" != 'October 6' limit 1;
+
+Date
+September 29
+Question: other than october 6, name a game that was aired on abc.
+A: To find the answer to this question, let’s think step by step.
+Prediction: september 29
+[Gold Answer] september 29
+

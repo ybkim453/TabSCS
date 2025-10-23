@@ -1,0 +1,158 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Unnamed: 0
+   - Data type: Numeric
+   - 4 representative example values: 14, 25, 26, 33
+   - Role of the column: Identifier
+
+2. Chronological No.
+   - Data type: Numeric
+   - 4 representative example values: 25, 175, 261, 145
+   - Role of the column: Descriptor
+
+3. Date (New style)
+   - Data type: Categorical
+   - 4 representative example values: 10 September 1736, 4 November 1897, 17 November 1974, 26 November 1874
+   - Role of the column: Descriptor
+
+4. Water level cm
+   - Data type: Numeric
+   - 4 representative example values: 261, 242, 237, 231
+   - Role of the column: Measure
+
+5. Peak hour
+   - Data type: Categorical
+   - 4 representative example values: nan, 12:00, 1:00, 4:00
+   - Role of the column: Descriptor
+
+**Outlier Row Analysis:**
+
+1. Row 13:
+   - The peak hour value is "nan", which is not a typical time value like the other rows.
+   - This makes the row an outlier as it does not conform to the standard format of the peak hour column.
+
+2. Row 2:
+   - The peak hour value is "12:00", which is a common time value seen in other rows.
+   - This row contains no distinctive values that would make it an outlier.
+
+3. Row 39:
+   - The peak hour value is "21:20", which is slightly different from the other peak hour values.
+   - However, this time value is still within the range of typical peak hours, so this row is not an outlier.
+
+=== Full Table Preview ===
+|   row_number |   Unnamed: 0 |   Chronological\nNo. | Date\n(New style)   |   Water level\ncm | Peak hour   |
+|-------------:|-------------:|---------------------:|:--------------------|------------------:|:------------|
+|            0 |            1 |                   84 | 1824-11-19 00:00:00 |               421 | 14:00       |
+|            1 |            2 |                  210 | 1924-09-23 00:00:00 |               380 | 19:15       |
+|            2 |            3 |                   71 | 1777-09-09 00:00:00 |               321 | morning     |
+|            3 |            4 |                  244 | 1955-10-15 00:00:00 |               293 | 20:45       |
+|            4 |            5 |                  264 | 1975-09-29 00:00:00 |               281 | 4:00        |
+|            5 |            6 |                   39 | 1752-10-22 00:00:00 |               280 | 10:00       |
+|            6 |            7 |                    9 | 1723-10-02 00:00:00 |               272 | –           |
+|            7 |            8 |                   14 | 1726-11-01 00:00:00 |               270 | –           |
+|            8 |            9 |                  183 | 1903-11-13 00:00:00 |               269 | 9:00        |
+|            9 |           10 |                    7 | 1721-11-05 00:00:00 |               265 | daytime     |
+|           10 |           11 |                   86 | 1831-08-20 00:00:00 |               264 | night       |
+|           11 |           12 |                    3 | 1706-09-09 00:00:00 |               262 | daytime     |
+|           12 |           13 |                  319 | 1999-11-30 00:00:00 |               262 | 4:35        |
+|           13 |           14 |                   25 | 1736-09-10 00:00:00 |               261 |             |
+|           14 |           15 |                  298 | 1986-12-06 00:00:00 |               260 | 13:30       |
+|           15 |           16 |                  215 | 1929-10-15 00:00:00 |               258 | 17:15       |
+|           16 |           18 |                   83 | 1822-01-24 00:00:00 |               254 | night       |
+|           17 |           19 |                  144 | 1874-10-29 00:00:00 |               252 | 4:00        |
+|           18 |           20 |                   55 | 1764-11-20 00:00:00 |               244 | –           |
+|           19 |           21 |                  201 | 1917-11-17 00:00:00 |               244 | 6:50        |
+|           20 |           22 |                  254 | 1967-10-18 00:00:00 |               244 | 13:30       |
+|           21 |           23 |                   45 | 1756-09-29 00:00:00 |               242 |             |
+|           22 |           24 |                  136 | 1873-10-20 00:00:00 |               242 | –           |
+|           23 |           25 |                  175 | 1897-11-04 00:00:00 |               242 | 12:00       |
+|           24 |           26 |                  261 | 1974-11-17 00:00:00 |               242 | 1:00        |
+|           25 |           27 |                  177 | 1898-11-26 00:00:00 |               240 | 23:30       |
+|           26 |           28 |                  260 | 1973-12-20 00:00:00 |               240 | 7:15        |
+|           27 |           29 |                  219 | 1932-01-08 00:00:00 |               239 | 3:00        |
+|           28 |           30 |                  225 | 1935-10-08 00:00:00 |               239 | 5:50        |
+|           29 |           31 |                   18 | 1729-10-12 00:00:00 |               237 | 10:00       |
+|           30 |           32 |                   76 | 1788-09-29 00:00:00 |               237 | –           |
+|           31 |           33 |                  145 | 1874-11-26 00:00:00 |               237 | 4:00        |
+|           32 |           34 |                  171 | 1895-11-02 00:00:00 |               237 | 3:00        |
+|           33 |           35 |                  227 | 1937-09-09 00:00:00 |               236 | 5:30        |
+|           34 |           36 |                   37 | 1744-10-17 00:00:00 |               234 | –           |
+|           35 |           37 |                   41 | 1752-10-26 00:00:00 |               234 | 12:00       |
+|           36 |           38 |                   43 | 1752-12-11 00:00:00 |               234 | night       |
+|           37 |           39 |                  228 | 1938-09-14 00:00:00 |               233 | 2:25        |
+|           38 |           40 |                  269 | 1977-09-07 00:00:00 |               231 | 16:50       |
+|           39 |           41 |                  292 | 1984-01-01 00:00:00 |               231 | 21:20       |
+|           40 |           42 |                  125 | 1866-01-19 00:00:00 |               229 | 10:00       |
+|           41 |           43 |                  208 | 1922-11-24 00:00:00 |               228 | 19:15       |
+|           42 |           44 |                  315 | 1994-10-12 00:00:00 |               228 | 13:50       |
+|           43 |           45 |                  116 | 1863-10-08 00:00:00 |               227 | 2:00        |
+|           44 |           46 |                  211 | 1925-01-03 00:00:00 |               225 | 21:30       |
+|           45 |           47 |                   81 | 1802-09-06 00:00:00 |               224 | daytime     |
+|           46 |           48 |                  122 | 1865-05-19 00:00:00 |               224 | 9:10        |
+|           47 |           49 |                  202 | 1918-08-24 00:00:00 |               224 | 9:10        |
+|           48 |           50 |                  242 | 1954-10-14 00:00:00 |               222 | 21:00       |
+
+Generated Reasoning SQL: Explanation: To find the number of rows where the water level is under 240cm, we need to filter the rows based on the "Water level cm" column. We will exclude any outlier rows mentioned in the summary. Since the "Water level cm" column is numeric, we can directly compare it to the value 240.
+
+SQL: SELECT COUNT(*) 
+FROM T 
+WHERE "Water level cm" < 240;
+Generated Final SQL: SELECT COUNT(*) FROM T WHERE "Water level cm" < 240;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT(*) |
+|-----------:|
+|          0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Floods in Saint Petersburg
+SQL: SELECT COUNT(*) FROM T WHERE "Water level cm" < 240;
+
+SQL Execution Result:
+COUNT(*)
+0
+
+Question: how many have a water level under 240cm?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 22
+

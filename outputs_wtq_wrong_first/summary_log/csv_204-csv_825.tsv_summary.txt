@@ -1,0 +1,55 @@
+### Column Analysis:
+
+1. **Year:**
+   - Data type: Numeric
+   - 4 representative values: 2011, 2008, 2002, 2001
+   - Role: Identifier for the year the race took place
+
+2. **Winner:**
+   - Data type: Categorical
+   - 4 representative values: Winter Memories, Backseat Rhythm, Wonder Again, Voodoo Dancer
+   - Role: Descriptor for the winning horse
+
+3. **Jockey:**
+   - Data type: Categorical
+   - 4 representative values: Javier Castellano, Edgar Prado, Corey Nakatani, Gary L. Stevens
+   - Role: Descriptor for the jockey who rode the winning horse
+
+4. **Trainer:**
+   - Data type: Categorical
+   - 4 representative values: James J. Toner, Patrick L. Reynolds, Christophe Clement, Robert J. Frankel
+   - Role: Descriptor for the trainer of the winning horse
+
+5. **Owner:**
+   - Data type: Categorical
+   - 4 representative values: Phillips Racing Partnership, Paul P. Pompa Jr., Joan G. & John W. Phillips, Green Hills Farms
+   - Role: Descriptor for the owner of the winning horse
+
+6. **Distance (Miles):**
+   - Data type: Numeric
+   - 4 representative values: 1-1/8, 1-1/16
+   - Role: Measure of the distance of the race in miles
+
+7. **Time:**
+   - Data type: Categorical
+   - 4 representative values: 1:51.06, 1:47.33, 1:42.58, 1:41.60
+   - Role: Measure of the time taken to complete the race
+
+8. **Win $:**
+   - Data type: Numeric
+   - 4 representative values: $150,000, $128,460
+   - Role: Measure of the prize money won by the winner
+
+### Outlier Row Analysis:
+
+1. **Row 17:**
+   - The row with Year 1978, Winner Late Bloomer, Jockey Jorge Velasquez, Trainer John M. Gaver, Jr., Owner Greentree Stable, Distance 1-1/16, Time 1:41.60, Win $ nan is an outlier.
+   - The values in this row are significantly different from the majority of the table, especially the missing value for Win $.
+  
+2. **Row 35:**
+   - The row with Year 1996, Winner True Flare, Jockey Gary L. Stevens, Trainer Robert J. Frankel, Owner Juddmonte Farms, Distance 1-1/16, Time 1:42.58, Win $ 128,460 is an outlier.
+   - The prize money won in this row is significantly lower compared to the other entries in the table.
+
+3. **Row 11:**
+   - The row with Year 1978, Winner Late Bloomer, Jockey Jorge Velasquez, Trainer John M. Gaver, Jr., Owner Greentree Stable, Distance 1-1/16, Time 1:41.60, Win $ nan is an outlier.
+   - The missing value for Win $ in this row makes it stand out from the rest of the data.

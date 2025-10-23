@@ -1,0 +1,47 @@
+**Column Analysis:**
+
+1. **Rank:**
+   - Data type: Numeric
+   - 4 representative example values: 6, 8, 9, 11
+   - Role: Identifier, indicating the ranking of the mountain peaks.
+
+2. **Mountain Peak:**
+   - Data type: Categorical
+   - 4 representative example values: Alto Cuchumatanes PB, Montañas Peña Blanca High Point PB, Volcán Acatenango PB, Cerro Tacarcuna PB
+   - Role: Descriptor, providing the name of the mountain peak.
+
+3. **Nation:**
+   - Data type: Categorical
+   - 4 representative example values: Guatemala, Panama, Honduras
+   - Role: Descriptor, indicating the nation where the mountain peak is located.
+
+4. **Province:**
+   - Data type: Categorical
+   - 4 representative example values: Huehuetenango, Chimaltenango\nSacatepéquez, Darién, Sololá
+   - Role: Descriptor, specifying the province within the nation where the mountain peak is located.
+
+5. **Elevation:**
+   - Data type: Numeric
+   - 4 representative example values: 3837 m\n12,589 ft, 3518 m\n11,542 ft, 3975 m\n13,041 ft, 1875 m\n6,152 ft
+   - Role: Measure, providing the elevation of the mountain peak.
+
+6. **Prominence:**
+   - Data type: Numeric
+   - 4 representative example values: 1877 m\n6,158 ft, 1858 m\n6,096 ft, 1835 m\n6,020 ft, 1770 m\n5,807 ft
+   - Role: Measure, indicating the prominence of the mountain peak.
+
+7. **Isolation:**
+   - Data type: Numeric
+   - 4 representative example values: 65 km\n40 mi, 42 km\n26 mi, 126 km\n78 mi, 99 km\n61 mi
+   - Role: Measure, specifying the isolation of the mountain peak.
+
+**Outlier Row Analysis:**
+
+1. **Row 10 (Volcán Tajumulco PB, Guatemala, San Marcos, 4220 m\n13,845 ft, 3980 m\n13,058 ft, 772 km\n480 mi):**
+   - The values for elevation (4220 m\n13,845 ft) and isolation (772 km\n480 mi) are significantly higher compared to the majority of the table, making this row an outlier.
+
+2. **Row 12 (Volcán Atitlán PB, Guatemala, Sololá, 3537 m\n11,604 ft, 1754 m\n5,755 ft, 35 km\n21 mi):**
+   - The values for elevation (3537 m\n11,604 ft) and prominence (1754 m\n5,755 ft) are within the range of the majority of the table, indicating that this row is an ordinary entry and not a special outlier.
+
+3. **Row 11 (Cerro Tacarcuna PB, Panama, Darién, 1875 m\n6,152 ft, 1770 m\n5,807 ft, 99 km\n61 mi):**
+   - The values for elevation (1875 m\n6,152 ft) and prominence (1770 m\n5,807 ft) are consistent with the typical values in the table, suggesting that this row is an ordinary entry and does not require special handling.

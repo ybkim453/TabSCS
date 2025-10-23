@@ -1,0 +1,145 @@
+=== Table ID ===
+csv/203-csv/511.tsv
+
+=== Question ===
+is retief goosen above or below k.j. choi in ranking?
+
+=== Sub-table Preview ===
+| Place   | Player           | Country       | Score        | To par   |
+|:--------|:-----------------|:--------------|:-------------|:---------|
+| 1       | Retief Goosen    | South Africa  | 68-70-69=207 | –3       |
+| T4      | Michael Campbell | New Zealand   | 71-69-71=211 | +1       |
+| T7      | K. J. Choi       | South Korea   | 69-70-74=213 | +3       |
+| T7      | Peter Hedblom    | Sweden        | 77-66-70=213 | +3       |
+| T7      | Lee Westwood     | England       | 68-72-73=213 | +3       |
+| T7      | Tiger Woods      | United States | 70-71-72=213 | +3       |
+
+=== Table Summary ===
+**Column Analysis:**
+
+1. Place:
+   - Data type: Categorical
+   - 4 representative example values: 1, T4, T7
+   - Role: Identifier for the player's ranking in the tournament.
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Retief Goosen, Michael Campbell, K. J. Choi, Tiger Woods
+   - Role: Descriptor for the player's name.
+
+3. Country:
+   - Data type: Categorical
+   - 4 representative example values: South Africa, New Zealand, South Korea, United States
+   - Role: Descriptor for the player's country of origin.
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 207, 211, 213
+   - Role: Measure of the player's total score in the tournament.
+
+5. To par:
+   - Data type: Categorical
+   - 4 representative example values: -3, +1, +3
+   - Role: Descriptor for how the player's score compares to par.
+
+**Outlier Row Analysis:**
+
+1. Row 0 (Retief Goosen):
+   - The score of 207 is significantly lower than the other scores in the table, indicating a better performance.
+   - This row is an outlier due to the exceptional performance of Retief Goosen compared to the other players.
+
+2. Row 7 (Peter Hedblom):
+   - The score of 77 in the first round is much higher than the other scores, making it stand out.
+   - This row is an outlier due to the unusually high score in the first round compared to the rest of the players.
+
+3. Row 3 (Michael Campbell):
+   - The score of 211 is slightly higher than the majority of the scores, but not significantly different.
+   - This row contains ordinary values and does not stand out as a distinctive outlier.
+
+=== Full Table Preview ===
+|   row_number | Place   | Player           | Country       | Score        | To par   |
+|-------------:|:--------|:-----------------|:--------------|:-------------|:---------|
+|            0 | 1       | Retief Goosen    | South Africa  | 68-70-69=207 | –3       |
+|            1 | T2      | Olin Browne      | United States | 67-71-72=210 | E        |
+|            2 | T2      | Jason Gore       | United States | 71-67-72=210 | E        |
+|            3 | T4      | Michael Campbell | New Zealand   | 71-69-71=211 | +1       |
+|            4 | T4      | Mark Hensby      | Australia     | 71-68-72=211 | +1       |
+|            5 | 6       | David Toms       | United States | 70-72-70=212 | +2       |
+|            6 | T7      | K. J. Choi       | South Korea   | 69-70-74=213 | +3       |
+|            7 | T7      | Peter Hedblom    | Sweden        | 77-66-70=213 | +3       |
+|            8 | T7      | Lee Westwood     | England       | 68-72-73=213 | +3       |
+|            9 | T7      | Tiger Woods      | United States | 70-71-72=213 | +3       |
+
+Generated Reasoning SQL: Explanation: To determine if Retief Goosen is above or below K.J. Choi in ranking, we need to compare their "Place" values. Lower numerical values in the "Place" column indicate a higher ranking in the tournament. We will filter the rows for Retief Goosen and K.J. Choi, then compare their "Place" values to determine the ranking relationship between them.
+
+SQL: 
+SELECT 
+    (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') AS retief_place,
+    (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') AS choi_place,
+    CASE
+        WHEN (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') < (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') THEN 'Above'
+        WHEN (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') > (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') THEN 'Below'
+        ELSE 'Same'
+    END AS ranking_relationship
+FROM T
+WHERE "Player" IN ('Retief Goosen', 'K. J. Choi');
+Generated Final SQL: SELECT (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') AS retief_place, (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') AS choi_place, CASE WHEN (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') < (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') THEN 'Above' WHEN (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') > (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') THEN 'Below' ELSE 'Same' END AS ranking_relationship FROM T WHERE "Player" IN ('Retief Goosen', 'K. J. Choi');
+SQL 실행 결과 셀 수: 6
+=== SQL 실행 결과 미리보기 ===
+|   retief_place | choi_place   | ranking_relationship   |
+|---------------:|:-------------|:-----------------------|
+|              1 | T7           | Above                  |
+|              1 | T7           | Above                  |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: 2005 U.S. Open (golf)
+SQL: SELECT (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') AS retief_place, (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') AS choi_place, CASE WHEN (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') < (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') THEN 'Above' WHEN (SELECT "Place" FROM T WHERE "Player" = 'Retief Goosen') > (SELECT "Place" FROM T WHERE "Player" = 'K. J. Choi') THEN 'Below' ELSE 'Same' END AS ranking_relationship FROM T WHERE "Player" IN ('Retief Goosen', 'K. J. Choi');
+
+SQL Execution Result:
+retief_place | choi_place | ranking_relationship
+1 | T7 | Above
+1 | T7 | Above
+
+Question: is retief goosen above or below k.j. choi in ranking?
+A: To find the answer to this question, let’s think step by step.
+Prediction: above
+[Gold Answer] above
+

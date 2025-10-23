@@ -1,0 +1,131 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. No.
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 6, 10
+   - Role: Identifier for each row in the table
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: 26 Jun 2004, 23 Apr 2006, 22 Apr 2007, 1 May 2011
+   - Role: Descriptor indicating the date of the tournament
+
+3. Tournament
+   - Data type: Categorical
+   - 4 representative example values: Gateway to the Open Mizuno Open, Tsuruya Open, The Crowns, Sun Chlorella Classic
+   - Role: Descriptor specifying the name of the tournament
+
+4. Winning score
+   - Data type: Numeric
+   - 4 representative example values: -14, -11, -16, -9
+   - Role: Measure indicating the winning score of the tournament
+
+5. Margin of victory
+   - Data type: Categorical
+   - 4 representative example values: Playoff, 2 strokes
+   - Role: Descriptor showing how the winner achieved victory (e.g., playoff, strokes)
+
+6. Runner(s)-up
+   - Data type: Categorical
+   - 4 representative example values: Hiroaki Iijima, Mamo Osanai, Masahiro Kuramoto, Jang Ik-jae
+   - Role: Descriptor listing the runner(s)-up in the tournament
+
+**Outlier Row Analysis:**
+
+1. Row 4:
+   - The winning score of -14 is significantly lower than the other winning scores in the table.
+   - The margin of victory being a playoff is also less common compared to the majority of 2-stroke victories.
+   - This row is an outlier due to the combination of a very low winning score and a playoff victory.
+
+2. Row 9:
+   - The winning score of -9 is not extremely low but still stands out compared to the other winning scores.
+   - The playoff margin of victory is less common than a 2-stroke victory.
+   - This row is an outlier due to the slightly lower winning score and the playoff victory.
+
+3. Row 4:
+   - The winning score of -15 is notably lower than the other winning scores in the table.
+   - The margin of victory being 2 strokes is common, but the lower winning score still makes this row stand out.
+   - This row is an outlier due to the significantly lower winning score compared to the majority.
+
+=== Full Table Preview ===
+|   row_number |   No. | Date                | Tournament                                                     |   Winning score | Margin of\nvictory   | Runner(s)-up                                                                           |
+|-------------:|------:|:--------------------|:---------------------------------------------------------------|----------------:|:---------------------|:---------------------------------------------------------------------------------------|
+|            0 |     1 | 2002-11-03 00:00:00 | Philip Morris K.K. Championship                                |              19 | 2 strokes            | Toshimitsu Izawa                                                                       |
+|            1 |     2 | 2003-08-10 00:00:00 | Sun Chlorella Classic                                          |               8 | 1 stroke             | Daisuke Maruyama Taichi Teshima                                                        |
+|            2 |     3 | 2004-04-25 00:00:00 | Tsuruya Open                                                   |               9 | 2 strokes            | Keiichiro Fukabori Scott Laycock\n Tatsuya Mitsuhashi Taichi Teshima\n Shinichi Yokota |
+|            3 |     4 | 2004-06-26 00:00:00 | Gateway to the Open Mizuno Open                                |              14 | Playoff              | Hiroaki Iijima                                                                         |
+|            4 |     5 | 2006-04-23 00:00:00 | Tsuruya Open                                                   |              11 | 2 strokes            | Mamo Osanai                                                                            |
+|            5 |     6 | 2007-04-22 00:00:00 | Tsuruya Open                                                   |              16 | 2 strokes            | Masahiro Kuramoto Hirofumi Miyase\n Takuya Taniguchi                                   |
+|            6 |     7 | 2007-11-11 00:00:00 | Mitsui Sumitomo VISA Taiheiyo Masters                          |              13 | 5 strokes            | Toru Taniguchi                                                                         |
+|            7 |     8 | 2007-12-02 00:00:00 | Golf Nippon Series JT Cup                                      |              11 | 1 stroke             | Toru Taniguchi                                                                         |
+|            8 |     9 | 2010-09-26 00:00:00 | Asia-Pacific Panasonic Open\n(co-sanctioned by the Asian Tour) |               6 | 1 stroke             | Ryuichi Oda                                                                            |
+|            9 |    10 | 2011-05-01 00:00:00 | The Crowns                                                     |               9 | Playoff              | Jang Ik-jae                                                                            |
+|           10 |    11 | 2012-04-15 00:00:00 | Token Homemate Cup                                             |              15 | 2 strokes            | Ryuichi Oda                                                                            |
+|           11 |    12 | 2012-07-29 00:00:00 | Sun Chlorella Classic                                          |              15 | 2 strokes            | Lee Seong-ho Hideki Matsuyama (am)\n Yoshinobu Tsukada                                 |
+|           12 |    13 | 2013-06-30 00:00:00 | Gateway to the Open Mizuno Open                                |              19 | 3 strokes            | Kim Kyung-tae                                                                          |
+
+Generated Reasoning SQL: To find the tournament before the 2003 Sun Chlorella Classic, we need to look for the row where the "Date" is before the date of the Sun Chlorella Classic in 2003. The "Date" column is categorical and represents the date of the tournament. We can then retrieve the name of the tournament from that row.
+
+SQL: 
+SELECT "Tournament" 
+FROM T 
+WHERE "Date" < '2003-08-10 00:00:00' 
+ORDER BY "Date" DESC 
+LIMIT 1;
+Generated Final SQL: SELECT "Tournament" FROM T WHERE "Date" < '2003-08-10 00:00:00' ORDER BY "Date" DESC LIMIT 1;
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| Tournament                      |
+|:--------------------------------|
+| Philip Morris K.K. Championship |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- If one cell is returned, use it directly.
+- If multiple rows/columns, reason step by step over the SQL result to select, count, or summarize per the question.
+- Never apologize; the SQL result always has the answer.
+- Return values exactly as in the result, unless a transformation (count, difference, etc.) is explicitly asked.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Brendan Jones (golfer)
+SQL: SELECT "Tournament" FROM T WHERE "Date" < '2003-08-10 00:00:00' ORDER BY "Date" DESC LIMIT 1;
+
+Tournament
+Philip Morris K.K. Championship
+Question: what tournament was before the 2003 sun chlorella classic?
+A: To find the answer to this question, let’s think step by step.
+Prediction: philip morris k.k. championship
+[Gold Answer] philip morris k.k. championship
+

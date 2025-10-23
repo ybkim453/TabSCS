@@ -1,0 +1,154 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Pos:
+   - Data type: Numeric
+   - 4 representative example values: 16, 18, 19, 23
+   - Role: Identifier for the position of the rider in the race.
+
+2. Rider:
+   - Data type: Categorical
+   - 4 representative example values: Luca Boscoscuro, Julien Allemand, Fonsi Nieto, Arno Visscher
+   - Role: Descriptor for the name of the rider.
+
+3. Manufacturer:
+   - Data type: Categorical
+   - 4 representative example values: TSR-Honda, Yamaha, Aprilia, Honda
+   - Role: Descriptor for the manufacturer of the bike.
+
+4. Time/Retired:
+   - Data type: Categorical
+   - 4 representative example values: +56.432, +1:16.347, +1:25.622, +1:40.635
+   - Role: Descriptor for the time taken by the rider or indication of retirement.
+
+5. Points:
+   - Data type: Numeric
+   - 4 representative example values: nan, nan, nan, nan
+   - Role: Measure for the points earned by the rider.
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Index 15):
+   - Julien Allemand is the rider with a time of +1:16.347.
+   - This row is an outlier as the time taken by Julien Allemand is significantly different from the other time values in the table, making it distinctive.
+
+2. Row 23 (Index 24):
+   - Henk Van De Lagemaat is the rider with a time of +1 Lap.
+   - This row is an outlier as the indication of "+1 Lap" for time is different from the other time values in the table, making it distinctive.
+
+3. Row 15 (Index 16):
+   - Luca Boscoscuro is the rider with a time of +56.432.
+   - This row is an outlier as the time taken by Luca Boscoscuro is significantly different from the other time values in the table, making it distinctive.
+
+=== Full Table Preview ===
+|   row_number | Pos   | Rider                | Manufacturer   | Time/Retired   |   Points |
+|-------------:|:------|:---------------------|:---------------|:---------------|---------:|
+|            0 | 1     | Loris Capirossi      | Honda          | 38:04.730      |       25 |
+|            1 | 2     | Valentino Rossi      | Aprilia        | +0.180         |       20 |
+|            2 | 3     | Jeremy McWilliams    | Aprilia        | +0.534         |       16 |
+|            3 | 4     | Tohru Ukawa          | Honda          | +0.537         |       13 |
+|            4 | 5     | Shinya Nakano        | Yamaha         | +0.742         |       11 |
+|            5 | 6     | Ralf Waldmann        | Aprilia        | +7.019         |       10 |
+|            6 | 7     | Franco Battaini      | Aprilia        | +20.889        |        9 |
+|            7 | 8     | Stefano Perugini     | Honda          | +20.891        |        8 |
+|            8 | 9     | Jason Vincent        | Honda          | +21.310        |        7 |
+|            9 | 10    | Anthony West         | TSR-Honda      | +26.816        |        6 |
+|           10 | 11    | Alex Hofmann         | TSR-Honda      | +26.933        |        5 |
+|           11 | 12    | Sebastian Porto      | Yamaha         | +27.054        |        4 |
+|           12 | 13    | Tomomi Manako        | Yamaha         | +27.903        |        3 |
+|           13 | 14    | Masaki Tokudome      | TSR-Honda      | +33.161        |        2 |
+|           14 | 15    | Jarno Janssen        | TSR-Honda      | +56.248        |        1 |
+|           15 | 16    | Luca Boscoscuro      | TSR-Honda      | +56.432        |      nan |
+|           16 | 17    | Johann Stigefelt     | Yamaha         | +1:07.433      |      nan |
+|           17 | 18    | Julien Allemand      | TSR-Honda      | +1:16.347      |      nan |
+|           18 | 19    | Fonsi Nieto          | Yamaha         | +1:25.622      |      nan |
+|           19 | 20    | Lucas Oliver Bulto   | Yamaha         | +1:25.758      |      nan |
+|           20 | 21    | David Garcia         | Yamaha         | +1:33.867      |      nan |
+|           21 | 22    | Rudie Markink        | Aprilia        | +1:40.280      |      nan |
+|           22 | 23    | Arno Visscher        | Aprilia        | +1:40.635      |      nan |
+|           23 | 24    | Henk Van De Lagemaat | Honda          | +1 Lap         |      nan |
+|           24 | Ret   | Maurice Bolwerk      | TSR-Honda      | Retirement     |      nan |
+|           25 | Ret   | Andre Romein         | Honda          | Retirement     |      nan |
+|           26 | Ret   | Roberto Rolfo        | Aprilia        | Retirement     |      nan |
+|           27 | Ret   | Marcellino Lucchi    | Aprilia        | Retirement     |      nan |
+
+Generated Reasoning SQL: Explanation: The question requires comparing the finishing times of two riders, Hofmann and Porto. The relevant columns for this comparison are "Rider" and "Time/Retired". We need to find the rows corresponding to these two riders and compare their times to determine who finished sooner. It is important to note that the time values are in a mixed format of lap times and elapsed times, so a direct comparison may not be straightforward.
+
+SQL: 
+SELECT "Rider", "Time/Retired" 
+FROM T 
+WHERE "Rider" IN ('Hofmann', 'Porto');
+Generated Final SQL: SELECT "Rider", "Time/Retired" FROM T WHERE "Rider" IN ('Hofmann', 'Porto');
+SQL 실행 결과 셀 수: 0
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 1999 Dutch TT (row_number, Pos, Rider, Manufacturer, Time/Retired, Points)
+
+row_number | Pos | Rider | Manufacturer | Time/Retired | Points
+0 | 1 | Loris Capirossi | Honda | 38:04.730 | 25.0
+1 | 2 | Valentino Rossi | Aprilia | +0.180 | 20.0
+2 | 3 | Jeremy McWilliams | Aprilia | +0.534 | 16.0
+3 | 4 | Tohru Ukawa | Honda | +0.537 | 13.0
+4 | 5 | Shinya Nakano | Yamaha | +0.742 | 11.0
+5 | 6 | Ralf Waldmann | Aprilia | +7.019 | 10.0
+6 | 7 | Franco Battaini | Aprilia | +20.889 | 9.0
+7 | 8 | Stefano Perugini | Honda | +20.891 | 8.0
+8 | 9 | Jason Vincent | Honda | +21.310 | 7.0
+9 | 10 | Anthony West | TSR-Honda | +26.816 | 6.0
+10 | 11 | Alex Hofmann | TSR-Honda | +26.933 | 5.0
+11 | 12 | Sebastian Porto | Yamaha | +27.054 | 4.0
+12 | 13 | Tomomi Manako | Yamaha | +27.903 | 3.0
+13 | 14 | Masaki Tokudome | TSR-Honda | +33.161 | 2.0
+14 | 15 | Jarno Janssen | TSR-Honda | +56.248 | 1.0
+15 | 16 | Luca Boscoscuro | TSR-Honda | +56.432 | nan
+16 | 17 | Johann Stigefelt | Yamaha | +1:07.433 | nan
+17 | 18 | Julien Allemand | TSR-Honda | +1:16.347 | nan
+18 | 19 | Fonsi Nieto | Yamaha | +1:25.622 | nan
+19 | 20 | Lucas Oliver Bulto | Yamaha | +1:25.758 | nan
+20 | 21 | David Garcia | Yamaha | +1:33.867 | nan
+21 | 22 | Rudie Markink | Aprilia | +1:40.280 | nan
+22 | 23 | Arno Visscher | Aprilia | +1:40.635 | nan
+23 | 24 | Henk Van De Lagemaat | Honda | +1 Lap | nan
+24 | Ret | Maurice Bolwerk | TSR-Honda | Retirement | nan
+25 | Ret | Andre Romein | Honda | Retirement | nan
+26 | Ret | Roberto Rolfo | Aprilia | Retirement | nan
+27 | Ret | Marcellino Lucchi | Aprilia | Retirement | nan
+Question: who finished sooner, hofmann or porto?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to locate both cyclists, Hofmann and Porto, in the table. 
+
+Looking at the full table:
+- Alex Hofmann finished in 11th place with a time of +26.933.
+- Sebastian Porto finished in 12th place with a time of +27.054.
+
+Comparing their times, we can see that Hofmann finished sooner than Porto by 0.121 seconds.
+
+Final Answer: Alex Hofmann
+[Fallback] Prediction: alex hofmann
+[Gold Answer] alex hofmann
+

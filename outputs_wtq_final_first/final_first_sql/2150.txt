@@ -1,0 +1,122 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - Representative values: 1995, 1998, 1999, 2000
+   - Role: Identifier for the year in which the data was recorded.
+
+2. Rider:
+   - Data type: Categorical
+   - Representative values: Carl Fogarty, Troy Bayliss, (Colin Edwards)
+   - Role: Descriptor for the name of the motorcycle rider.
+
+3. Victories:
+   - Data type: Numeric
+   - Representative values: 13, 3, 11, 7
+   - Role: Measure of the number of victories achieved by the rider in a particular year.
+
+4. Bike:
+   - Data type: Categorical
+   - Representative values: Ducati 916, Ducati 996, Honda RC51
+   - Role: Descriptor for the type of motorcycle used by the rider.
+
+5. Manufacturer's Championship:
+   - Data type: Categorical
+   - Representative values: Ducati
+   - Role: Descriptor for the manufacturer that won the championship.
+
+**Outlier Row Analysis:**
+
+1. Row 5:
+   - The values for the Rider (Troy Bayliss) and Victories (6) are consistent with other rows.
+   - The Manufacturer's Championship (Ducati) is also in line with the majority of the table.
+   - This row is an ordinary row and does not require special handling.
+
+2. Row 1:
+   - The values for the Rider (Carl Fogarty) and Victories (13) are consistent with other rows.
+   - The Manufacturer's Championship (Ducati) is also in line with the majority of the table.
+   - This row is an ordinary row and does not require special handling.
+
+3. Row 6:
+   - The values for the Rider (Colin Edwards) and Victories (7) are consistent with other rows.
+   - The Manufacturer's Championship (Ducati) is also in line with the majority of the table.
+   - This row is an ordinary row and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number |   Year | Rider           | Victories   | Bike         | Manufacturer's Championship   |
+|-------------:|-------:|:----------------|:------------|:-------------|:------------------------------|
+|            0 |   1994 | Carl Fogarty    | 11          | Ducati 916   | Ducati                        |
+|            1 |   1995 | Carl Fogarty    | 13          | Ducati 916   | Ducati                        |
+|            2 |   1996 | Troy Corser     | 7           | Ducati 916   | Ducati                        |
+|            3 |   1998 | Carl Fogarty    | 3           | Ducati 916   | Ducati                        |
+|            4 |   1999 | Carl Fogarty    | 11          | Ducati 996   | Ducati                        |
+|            5 |   2000 | (Colin Edwards) | (7)         | (Honda RC51) | Ducati                        |
+|            6 |   2001 | Troy Bayliss    | 6           | Ducati 996   | Ducati                        |
+
+Generated Reasoning SQL: Explanation: To find the last year Carl Fogarty was riding for Ducati, we need to filter the rows where the Rider is Carl Fogarty and the Manufacturer's Championship is Ducati, then select the maximum value of the Year column to determine the latest year.
+We should exclude outlier rows and focus on ordinary rows where the Rider is Carl Fogarty and the Manufacturer's Championship is Ducati.
+
+SQL: 
+SELECT MAX("Year") AS last_year_riding_ducati
+FROM T
+WHERE "Rider" = 'Carl Fogarty' 
+AND "Manufacturer's Championship" = 'Ducati';
+Generated Final SQL: SELECT MAX("Year") AS last_year_riding_ducati FROM T WHERE "Rider" = 'Carl Fogarty' AND "Manufacturer's Championship" = 'Ducati';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   last_year_riding_ducati |
+|--------------------------:|
+|                      1999 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Ducati 916
+SQL: SELECT MAX("Year") AS last_year_riding_ducati FROM T WHERE "Rider" = 'Carl Fogarty' AND "Manufacturer's Championship" = 'Ducati';
+
+SQL Execution Result:
+last_year_riding_ducati
+1999
+
+Question: when was carl fogarty last year riding for ducati?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 1999
+[Gold Answer] 1999
+

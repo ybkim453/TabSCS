@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2010, 2009, 2006, 2005
+   - Role: Identifier for the year in which the title was released.
+
+2. Title:
+   - Data type: Categorical
+   - 4 representative example values: Niñas mal (telenovela), Infinito, La Vida Inmune, Cuentos De Pelos
+   - Role: Descriptor for the title of the production.
+
+3. Rol:
+   - Data type: Categorical
+   - 4 representative example values: Piti, Malhora, nan, Differentes personajes en "No es Justo" y "Ponte Bizbo"
+   - Role: Descriptor for the role played by the individual associated with the production.
+
+4. Format:
+   - Data type: Categorical
+   - 4 representative example values: Telenovela, Short Film, Feature Film, Serie
+   - Role: Descriptor for the format of the production.
+
+5. Related Links:
+   - Data type: Categorical (URL)
+   - 4 representative example values: http://www.novelamtv.com/, nan, https://www.youtube.com/watch?v=PQt4RU3usnw, https://www.youtube.com/watch?v=M7YCuvFbFJ0
+   - Role: Descriptor for the related links associated with the production.
+
+**Outlier Row Analysis:**
+
+1. Row 14:
+   - The values in this row are ordinary and consistent with the majority of the table. Therefore, this is an ordinary row and does not require special handling.
+
+2. Row 0:
+   - The values in this row are ordinary and consistent with the majority of the table. Therefore, this is an ordinary row and does not require special handling.
+
+3. Row 9:
+   - The values in this row contain "nan" which indicates missing data. This is not a distinctive value and is common in the table. Therefore, this is an ordinary row and does not require special handling.

@@ -1,0 +1,63 @@
+**Column Analysis:**
+
+1. Week
+   - Data type: Numeric
+   - 4 representative example values: 1, 6, 7, 8
+   - Role of the column: Identifier for the week number of the game
+
+2. Date
+   - Data type: Categorical
+   - 4 representative example values: September 18, October 23, October 30, November 6
+   - Role of the column: Descriptor for the date of the game
+
+3. Result
+   - Data type: Categorical
+   - 4 representative example values: Win, Win, Win, Loss
+   - Role of the column: Descriptor for the outcome of the game
+
+4. Record
+   - Data type: Categorical
+   - 4 representative example values: 1-0, 6-0, 7-0, 8-0
+   - Role of the column: Descriptor for the team's win-loss record
+
+5. Opponent
+   - Data type: Categorical
+   - 4 representative example values: Minnesota Vikings, Philadelphia Eagles, Detroit Lions, New York Giants
+   - Role of the column: Descriptor for the opposing team
+
+6. Points For
+   - Data type: Numeric
+   - 4 representative example values: 16, 16, 37, 24
+   - Role of the column: Measure for the points scored by the team
+
+7. Points Against
+   - Data type: Numeric
+   - 4 representative example values: 10, 10, 0, 10
+   - Role of the column: Measure for the points scored against the team
+
+8. First Downs
+   - Data type: Numeric
+   - 4 representative example values: 16, 17, 20, 13
+   - Role of the column: Measure for the number of first downs achieved by the team
+
+9. Attendance
+   - Data type: Numeric
+   - 4 representative example values: 47,678, 65,507, 63,160, 74,532
+   - Role of the column: Measure for the attendance at the game
+
+**Outlier Row Analysis:**
+
+1. Row 8:
+   - The values for Week (11) and Result (Win) are consistent with other rows.
+   - The Points For (14) and Points Against (7) are lower compared to other games.
+   - This row is an outlier due to the significantly lower points scored and points against.
+
+2. Row 6:
+   - The values for Week (7) and Result (Win) are consistent with other rows.
+   - The Points Against (0) is notably lower compared to other games.
+   - This row is an outlier due to the rare occurrence of the opposing team scoring zero points.
+
+3. Row 10:
+   - The values for Week (9) and Result (Loss) are consistent with other rows.
+   - The Points For (17) and Points Against (24) are within the range of typical values.
+   - This row is an ordinary row and does not require special handling.

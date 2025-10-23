@@ -1,0 +1,65 @@
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 2002, 2000, 1989, 1985
+   - Role: Identifier for the year in which the race took place
+
+2. Winner:
+   - Data type: Categorical
+   - 4 representative example values: Harlan's Holiday, Hal's Hope, Mercedes Won, Proud Truth
+   - Role: Descriptor for the name of the winning horse
+
+3. Age:
+   - Data type: Numeric
+   - 4 representative example values: 3
+   - Role: Descriptor for the age of the winning horse
+
+4. Jockey:
+   - Data type: Categorical
+   - 4 representative example values: Edgar Prado, Roger Velez, Earlie Fires, Jorge Velasquez
+   - Role: Descriptor for the name of the winning jockey
+
+5. Trainer:
+   - Data type: Categorical
+   - 4 representative example values: Kenneth McPeek, Harold Rose, Arnold Fink, John M. Veitch
+   - Role: Descriptor for the name of the winning trainer
+
+6. Owner:
+   - Data type: Categorical
+   - 4 representative example values: Starlight Stable, Rose Family Stable, Christopher Spencer, Darby Dan Farm
+   - Role: Descriptor for the name of the winning owner
+
+7. Distance (Miles):
+   - Data type: Categorical
+   - 4 representative example values: 1-1/8
+   - Role: Descriptor for the distance of the race in miles
+
+8. Time:
+   - Data type: Categorical
+   - 4 representative example values: 1:48.80, 1:51.49, 1:49.60, 1:50.00
+   - Role: Descriptor for the time taken to complete the race
+
+9. Purse:
+   - Data type: Categorical
+   - 4 representative example values: $1,000,000, $500,000, $300,000, $130,000
+   - Role: Descriptor for the amount of prize money awarded
+
+10. Gr:
+    - Data type: Categorical
+    - 4 representative example values: I
+    - Role: Descriptor for the grade of the race
+
+**Outlier Row Analysis:**
+
+1. Row 43:
+   - The row contains missing data in the "Gr" column (nan).
+   - This row is an outlier due to the missing value in the "Gr" column, which deviates from the pattern of categorical values present in other rows.
+
+2. Row 30:
+   - The row contains the value "nan" in the "Gr" column.
+   - This row is an outlier due to the presence of "nan" in the "Gr" column, which is not a typical categorical value seen in other rows.
+
+3. Row 25:
+   - The row contains the value "nan" in the "Gr" column.
+   - This row is an outlier due to the presence of "nan" in the "Gr" column, which is not a typical categorical value seen in other rows.

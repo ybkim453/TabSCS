@@ -1,0 +1,39 @@
+**Column Analysis:**
+
+1. Locomotive
+   - Data type: Numeric
+   - 4 representative example values: 9001, 9027, 9029, 9031
+   - Role: Identifier for the locomotive
+
+2. Name
+   - Data type: Categorical
+   - 4 representative example values: Ernest Henry, -, -, -
+   - Role: Descriptor for the locomotive
+
+3. Serial No
+   - Data type: Categorical
+   - 4 representative example values: 1373/918266-3, 1399/918266-27, 1401/918266/29, 05-1692
+   - Role: Descriptor for the locomotive
+
+4. Entered Service
+   - Data type: Categorical
+   - 4 representative example values: May 94, Aug 94, Nov 05
+   - Role: Descriptor for when the locomotive entered service
+
+5. Livery
+   - Data type: Categorical
+   - 4 representative example values: FreightCorp, Pacific National
+   - Role: Descriptor for the livery of the locomotive
+
+**Outlier Row Analysis:**
+
+1. Row 31
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+2. Row 0
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+3. Row 32
+   - The values in this row are not provided in the partial preview, so it is not possible to determine why it is considered an outlier.
+
+Since the values for the outlier rows are not provided in the partial preview, it is not possible to determine the exact reasons why they are considered outliers.

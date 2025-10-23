@@ -1,0 +1,45 @@
+**Column Analysis:**
+
+1. Sl no:
+   - Data type: Numeric
+   - 4 representative example values: 3, 10, 13, 21
+   - Role of the column: Identifier for each row
+
+2. Name of the prabandham:
+   - Data type: Categorical
+   - 4 representative example values: Nachiar Tirumozhi, Peria Thirumozhi, Mudhal Thiruvandhadhi, Siriya Thirumadal
+   - Role of the column: Descriptor for the type of prabandham
+
+3. Starting from:
+   - Data type: Numeric
+   - 4 representative example values: 504, 948, 2082, 2673
+   - Role of the column: Measure indicating the starting point of the prabandham
+
+4. Ending with:
+   - Data type: Numeric
+   - 4 representative example values: 646, 2031, 2181, 2673
+   - Role of the column: Measure indicating the ending point of the prabandham
+
+5. Number of pasurams:
+   - Data type: Numeric
+   - 4 representative example values: 143, 1084, 100, 1
+   - Role of the column: Measure indicating the total number of pasurams in the prabandham
+
+6. Sung by:
+   - Data type: Categorical
+   - 4 representative example values: Aandaal, Thirumangai alvar, Poigai Alvar
+   - Role of the column: Descriptor for the author who sung the prabandham
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - The row contains "nan" values for Starting from and Ending with columns.
+   - These missing values make this row an outlier as it deviates from the typical data pattern in the table.
+
+2. Row 9:
+   - The row contains "nan" values for Starting from and Ending with columns.
+   - These missing values make this row an outlier as it deviates from the typical data pattern in the table.
+
+3. Row 2:
+   - The row contains "nan" values for Starting from and Ending with columns.
+   - These missing values make this row an outlier as it deviates from the typical data pattern in the table.

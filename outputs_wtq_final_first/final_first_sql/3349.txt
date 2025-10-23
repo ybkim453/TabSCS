@@ -1,0 +1,137 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Date:
+   - Data type: Categorical
+   - 4 representative example values: 20 March, 9 August, 4 October, 6 October
+   - Role: Identifier for the specific date of the match
+
+2. Venue:
+   - Data type: Categorical
+   - 4 representative example values: Fukuoka (A), Toyota (A), Tashkent (N)
+   - Role: Descriptor for the location of the match
+
+3. Opponents:
+   - Data type: Categorical
+   - 4 representative example values: China PR, Japan, India, Indonesia
+   - Role: Descriptor for the opposing team
+
+4. Score:
+   - Data type: Numeric
+   - 4 representative example values: 1-0, 2-2, 5-2, 9-0
+   - Role: Measure of the score of the match
+
+5. Competition:
+   - Data type: Categorical
+   - 4 representative example values: Sanix Cup, Toyota Cup, AFC U-16 Championship (Group B), AFC U-16 Championship (Semifinal)
+   - Role: Descriptor for the competition of the match
+
+**Outlier Row Analysis:**
+
+1. Row 3 (Index 3):
+   - The score of 5-2 against India in the AFC U-16 Championship (Group B) is significantly different from the other scores in the table.
+   - This row stands out as an outlier due to the high number of goals scored compared to the other matches.
+
+2. Row 1 (Index 1):
+   - The score of 1-0 against China PR in the Sanix Cup is not significantly different from the other scores in the table.
+   - This row is an ordinary entry and does not require special handling.
+
+3. Row 0 (Index 0):
+   - The date of 20 March and venue of Fukuoka (A) are not significantly different from the other matches in the table.
+   - This row is an ordinary entry and does not require special handling.
+
+=== Full Table Preview ===
+|   row_number | Date       | Venue        | Opponents            | Score   | Competition                          |
+|-------------:|:-----------|:-------------|:---------------------|:--------|:-------------------------------------|
+|            0 | 20 March   | Fukuoka (A)  | Japan                | 2–0     | Sanix Cup                            |
+|            1 | 20 March   | Fukuoka (A)  | China PR             | 1–0     | Sanix Cup                            |
+|            2 | 8 August   | Toyota (N)   | Brazil               | 0–0     | Toyota Cup                           |
+|            3 | 9 August   | Toyota (A)   | Japan                | 2–2     | Toyota Cup                           |
+|            4 | 10 August  | Toyota (N)   | United Arab Emirates | 6–0     | Toyota Cup                           |
+|            5 | 4 October  | Tashkent (N) | India                | 5–2     | AFC U-16 Championship (Group B)      |
+|            6 | 6 October  | Tashkent (N) | Indonesia            | 9–0     | AFC U-16 Championship (Group B)      |
+|            7 | 8 October  | Tashkent (N) | Syria                | 1–1     | AFC U-16 Championship (Group B)      |
+|            8 | 12 October | Tashkent (A) | Uzbekistan           | 3–0     | AFC U-16 Championship (Quarterfinal) |
+|            9 | 15 October | Tashkent (N) | Japan                | 2–1     | AFC U-16 Championship (Semifinal)    |
+|           10 | 18 October | Tashkent (N) | Iran                 | 1–2     | AFC U-16 Championship (Final)        |
+
+Generated Reasoning SQL: Explanation: To find the largest margin for a win, we need to calculate the difference between the scores of the matches where South Korea won. The "Score" column contains the result of each match in the format of goals scored by South Korea and goals scored by the opponent. We will extract the goal difference for each match where South Korea won and then find the maximum difference.
+
+SQL: 
+SELECT MAX(CAST(SUBSTR("Score", 1, INSTR("Score", '-') - 1) AS INTEGER) - CAST(SUBSTR("Score", INSTR("Score", '-') + 1) AS INTEGER)) AS largest_margin_for_win
+FROM T
+WHERE CAST(SUBSTR("Score", 1, INSTR("Score", '-') - 1) AS INTEGER) > CAST(SUBSTR("Score", INSTR("Score", '-') + 1) AS INTEGER);
+Generated Final SQL: SELECT MAX(CAST(SUBSTR("Score", 1, INSTR("Score", '-') - 1) AS INTEGER) - CAST(SUBSTR("Score", INSTR("Score", '-') + 1) AS INTEGER)) AS largest_margin_for_win FROM T WHERE CAST(SUBSTR("Score", 1, INSTR("Score", '-') - 1) AS INTEGER) > CAST(SUBSTR("Score", INSTR("Score", '-') + 1) AS INTEGER);
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+| largest_margin_for_win   |
+|:-------------------------|
+|                          |
+[Warning] SQL 결과가 전부 None/NaN → Fallback으로 전환
+[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환
+[Fallback] Prompt SQL:
+
+The provided summary is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the summary to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the summary.  
+Your reasoning must explicitly combine evidence from both the summary and the full table before giving the final answer.  
+Final output must follow the format:
+Final Answer: AnswerName1, AnswerName2...
+
+How many cyclists in the top 10 were French?
+To answer this question, I will use both the summary and the full table.
+
+From the summary:
+- The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
+- Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
+- Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
+
+From the full table:
+- The cyclists with "(FRA)" are:
+  1. Stéphane Goubert (Rank 8, FRA)
+  2. David Moncoutié (Rank 10, FRA)
+
+Thus, by combining the summary’s description (Cyclist column contains nationality; no atypical rows interfere)  
+with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
+
+Final Answer: Stéphane Goubert, David Moncoutié
+Table: 2008 in South Korean football (row_number, Date, Venue, Opponents, Score, Competition)
+
+row_number | Date | Venue | Opponents | Score | Competition
+0 | 20 March | Fukuoka (A) | Japan | 2–0 | Sanix Cup
+1 | 20 March | Fukuoka (A) | China PR | 1–0 | Sanix Cup
+2 | 8 August | Toyota (N) | Brazil | 0–0 | Toyota Cup
+3 | 9 August | Toyota (A) | Japan | 2–2 | Toyota Cup
+4 | 10 August | Toyota (N) | United Arab Emirates | 6–0 | Toyota Cup
+5 | 4 October | Tashkent (N) | India | 5–2 | AFC U-16 Championship (Group B)
+6 | 6 October | Tashkent (N) | Indonesia | 9–0 | AFC U-16 Championship (Group B)
+7 | 8 October | Tashkent (N) | Syria | 1–1 | AFC U-16 Championship (Group B)
+8 | 12 October | Tashkent (A) | Uzbekistan | 3–0 | AFC U-16 Championship (Quarterfinal)
+9 | 15 October | Tashkent (N) | Japan | 2–1 | AFC U-16 Championship (Semifinal)
+10 | 18 October | Tashkent (N) | Iran | 1–2 | AFC U-16 Championship (Final)
+Question: what was their largest margin for a win?
+A: To find the answer to this question, let’s think step by step.
+[Fallback] Raw Response: First, we need to identify all the matches where South Korea won. Looking at the full table, we can see that South Korea won the following matches:
+1. South Korea vs Japan: 2-0
+2. South Korea vs China PR: 1-0
+3. South Korea vs United Arab Emirates: 6-0
+4. South Korea vs India: 5-2
+5. South Korea vs Indonesia: 9-0
+6. South Korea vs Uzbekistan: 3-0
+7. South Korea vs Japan: 2-1
+
+Next, we need to calculate the margin of victory for each of these matches:
+1. 2-0 = 2
+2. 1-0 = 1
+3. 6-0 = 6
+4. 5-2 = 3
+5. 9-0 = 9
+6. 3-0 = 3
+7. 2-1 = 1
+
+The largest margin for a win was 9 goals, which South Korea achieved in their match against Indonesia.
+
+Final Answer: 9
+[Fallback] Prediction: 9
+[Gold Answer] 9
+

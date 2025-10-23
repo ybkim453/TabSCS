@@ -1,0 +1,50 @@
+**Column Analysis:**
+
+1. Season
+   - Data type: Categorical
+   - 4 representative example values: 1984-85, 1990-91, 1999-00, 2004-05
+   - Role: Identifier for the specific season the data corresponds to.
+
+2. League Pos.
+   - Data type: Numeric
+   - 4 representative example values: 1, 2, 3, 9
+   - Role: Measure indicating the position of the team in the league for that season.
+
+3. League Competition
+   - Data type: Categorical
+   - 4 representative example values: 1985 1st Division, 1991 Superliga, 1999-00 Superliga, 2004-05 Superliga
+   - Role: Descriptor for the specific league competition the team participated in.
+
+4. League Top scorer
+   - Data type: Categorical
+   - 4 representative example values: Claus Nielsen (17), Bent Christensen (11), Thomas Kahlenberg (13), Michael Krohn-Dehli (11)
+   - Role: Descriptor for the top goal scorer of the team in that season.
+
+5. Danish Cup
+   - Data type: Categorical
+   - 4 representative example values: 3rd round, Semi-final, Winner, nan
+   - Role: Descriptor for the team's performance in the Danish Cup competition.
+
+6. Europe
+   - Data type: Categorical
+   - 4 representative example values: nan, EC3 semi-final, EC1 qual 3rd round, EC3 qual 2nd round
+   - Role: Descriptor for the team's performance in European competitions.
+
+7. Others
+   - Data type: Categorical
+   - 4 representative example values: nan, Royal League group stage
+   - Role: Descriptor for any other relevant information not covered in the previous columns.
+
+**Outlier Row Analysis:**
+
+1. Row 23:
+   - League Top scorer = Bent Christensen (11), Danish Cup = Semi-final, Europe = EC3 1st round
+   - These values are not significantly different from other rows in the table, making this an ordinary row.
+
+2. Row 30:
+   - League Top scorer = Michael Krohn-Dehli (11), Danish Cup = nan
+   - The missing value for Danish Cup is not unusual and does not make this row an outlier.
+
+3. Row 29:
+   - League Top scorer = Simon Makienok Christoffersen (10), Danish Cup = nan
+   - The missing value for Danish Cup is common in the table and does not make this row stand out as an outlier.

@@ -1,0 +1,151 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Year:
+   - Data type: Numeric
+   - 4 representative example values: 1975, 1977, 1979, 1984
+   - Role of the column: Identifier for the year the single was released.
+
+2. Single:
+   - Data type: Categorical
+   - 4 representative example values: It Takes a Whole Lot of Livin' in a House, The Lady and the Baby, You Are My Rainbow, I'm a Country Song
+   - Role of the column: Descriptor for the title of the single.
+
+3. Peak chart positions US Country:
+   - Data type: Numeric
+   - 4 representative example values: 60, 76, 36, 72
+   - Role of the column: Measure indicating the peak chart position on the US Country charts.
+
+4. Peak chart positions CAN Country:
+   - Data type: Numeric
+   - 4 representative example values: — (missing data), — (missing data), — (missing data), — (missing data)
+   - Role of the column: Measure indicating the peak chart position on the Canadian Country charts.
+
+5. Album:
+   - Data type: Categorical
+   - 4 representative example values: Whole Lotta Livin' in a House, singles only, singles only, singles only
+   - Role of the column: Descriptor for the album the single belongs to.
+
+**Outlier Row Analysis:**
+
+1. Row 15:
+   - The peak chart position for US Country is 1, which is significantly lower than the other values in the table.
+   - This makes the row an outlier as it has a distinctively low peak chart position compared to the majority of the data.
+
+2. Row 18:
+   - The peak chart position for US Country is 1, which is significantly lower than the other values in the table.
+   - This makes the row an outlier as it has a distinctively low peak chart position compared to the majority of the data.
+
+3. Row 37:
+   - The peak chart position for US Country is 1, which is significantly lower than the other values in the table.
+   - This makes the row an outlier as it has a distinctively low peak chart position compared to the majority of the data.
+
+=== Full Table Preview ===
+|   row_number |   Year | Single                                       | Peak chart\npositions\nUS Country   | Peak chart\npositions\nCAN Country   | Album                         |
+|-------------:|-------:|:---------------------------------------------|:------------------------------------|:-------------------------------------|:------------------------------|
+|            0 |   1967 | "Forbidden Fruit"                            | —                                   | —                                    | A World Called You            |
+|            1 |   1968 | "I'd Be Your Fool Again"                     | 69                                  | —                                    | A World Called You            |
+|            2 |   1968 | "I'm in Love with My Wife"                   | 38                                  | —                                    | A World Called You            |
+|            3 |   1968 | "You Touched My Heart"                       | 37                                  | —                                    | A World Called You            |
+|            4 |   1969 | "Dearly Beloved"                             | 59                                  | —                                    | single only                   |
+|            5 |   1969 | "A World Called You"                         | 23                                  | —                                    | A World Called You            |
+|            6 |   1970 | "So Much in Love with You"                   | 46                                  | —                                    | A World Called You            |
+|            7 |   1970 | "I Wake Up in Heaven"                        | 26                                  | —                                    | She Don't Make Me Cry         |
+|            8 |   1971 | "She Don't Make Me Cry"                      | 19                                  | 9                                    | She Don't Make Me Cry         |
+|            9 |   1971 | "Ruby You're Warm"                           | 21                                  | 16                                   | single only                   |
+|           10 |   1972 | "Need You"                                   | 9                                   | 9                                    | Need You                      |
+|           11 |   1972 | "Goodbye"                                    | 38                                  | —                                    | Need You                      |
+|           12 |   1972 | "All Heaven Breaks Loose"                    | 35                                  | —                                    | single only                   |
+|           13 |   1973 | "Just Thank Me"                              | 17                                  | 18                                   | Just Thank Me                 |
+|           14 |   1973 | "It'll Be Her"                               | 22                                  | 16                                   | Just Thank Me                 |
+|           15 |   1974 | "Loving You Has Changed My Life"             | 9                                   | 21                                   | Hey There Girl                |
+|           16 |   1974 | "Hey There Girl"                             | 21                                  | 42                                   | Hey There Girl                |
+|           17 |   1974 | "I Just Can't Help Believin'"                | 59                                  | —                                    | Hey There Girl                |
+|           18 |   1975 | "It Takes a Whole Lot of Livin' in a House"  | 60                                  | —                                    | Whole Lotta Livin' in a House |
+|           19 |   1976 | "Whispers and Grins"                         | 66                                  | —                                    | singles only                  |
+|           20 |   1976 | "Mahogany Bridge"                            | 84                                  | —                                    | singles only                  |
+|           21 |   1977 | "I'm Gonna Love You Right Out of This World" | 21                                  | 38                                   | singles only                  |
+|           22 |   1977 | "The Lady and the Baby"                      | 76                                  | —                                    | singles only                  |
+|           23 |   1977 | "I Love What My Woman Does to Me"            | 49                                  | 33                                   | singles only                  |
+|           24 |   1977 | "Do You Hear My Heart Beat"                  | 47                                  | —                                    | Lovingly                      |
+|           25 |   1977 | "You and Me Alone"                           | 24                                  | —                                    | Lovingly                      |
+|           26 |   1978 | "I'll Be There (When You Get Lonely)"        | 22                                  | —                                    | Lovingly                      |
+|           27 |   1978 | "Let's Try to Remember"                      | 32                                  | —                                    | Lovingly                      |
+|           28 |   1978 | "When a Woman Cries"                         | 31                                  | —                                    | singles only                  |
+|           29 |   1979 | "Darlin'"                                    | 18                                  | 36                                   | singles only                  |
+|           30 |   1979 | "You Are My Rainbow"                         | 36                                  | —                                    | singles only                  |
+|           31 |   1979 | "You're Amazing"                             | 39                                  | —                                    | singles only                  |
+|           32 |   1981 | "Houston Blue"                               | 88                                  | —                                    | singles only                  |
+|           33 |   1982 | "Crown Prince of the Barroom"                | 92                                  | —                                    | singles only                  |
+|           34 |   1983 | "Hold Me"                                    | 67                                  | —                                    | singles only                  |
+|           35 |   1983 | "You've Still Got Me"                        | 71                                  | —                                    | singles only                  |
+|           36 |   1983 | "The Devil Is a Woman"                       | 87                                  | —                                    | singles only                  |
+|           37 |   1984 | "I'm a Country Song"                         | 72                                  | —                                    | singles only                  |
+
+Generated Reasoning SQL: Explanation: To find the single that has the same position in US Country as in CAN Country, we need to compare the values in the "Peak chart positions US Country" and "Peak chart positions CAN Country" columns. We will filter the rows where these two columns have the same numeric value.
+
+SQL: 
+SELECT "Single" 
+FROM T 
+WHERE "Peak chart\npositions\nUS Country" = "Peak chart\npositions\nCAN Country" 
+AND "Peak chart\npositions\nUS Country" IS NOT NULL;
+Generated Final SQL: SELECT "Single" FROM T WHERE "Peak chart\npositions\nUS Country" = "Peak chart\npositions\nCAN Country" AND "Peak chart\npositions\nUS Country" IS NOT NULL;
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Single            |
+|:------------------|
+| "Forbidden Fruit" |
+| "Need You"        |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: David Rogers (singer)
+SQL: SELECT "Single" FROM T WHERE "Peak chart\npositions\nUS Country" = "Peak chart\npositions\nCAN Country" AND "Peak chart\npositions\nUS Country" IS NOT NULL;
+
+SQL Execution Result:
+Single
+"Forbidden Fruit"
+"Need You"
+
+Question: what single has the same position in us country as in can country?
+A: To find the answer to this question, let’s think step by step.
+Prediction: "forbidden fruit", "need you"
+[Gold Answer] "need you"
+

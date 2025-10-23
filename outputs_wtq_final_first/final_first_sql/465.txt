@@ -1,0 +1,122 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. #:
+   - Data type: Categorical
+   - 4 representative example values: 6T, 8, 9T
+   - Role: Identifier for each player's ranking in terms of goals scored
+
+2. Player:
+   - Data type: Categorical
+   - 4 representative example values: Jozy Altidore, Bruce Murray, Eddie Johnson, Earnie Stewart
+   - Role: Descriptor for the name of the player
+
+3. Goals:
+   - Data type: Numeric
+   - 4 representative example values: 21, 19, 17
+   - Role: Measure of the number of goals scored by the player
+
+4. Caps:
+   - Data type: Numeric
+   - 4 representative example values: 67, 86, 62, 101
+   - Role: Measure of the number of international caps (appearances) by the player
+
+5. Career:
+   - Data type: Categorical
+   - 4 representative example values: 2007–present, 1985–1993, 2004–present, 1990–2004
+   - Role: Descriptor for the span of the player's career
+
+**Outlier Row Analysis:**
+
+1. Row 2 (Bruce Murray):
+   - The value "86" in the Caps column is higher than the majority of values in that column.
+   - This makes the row an outlier as it represents a player with a significantly higher number of international caps compared to the other players.
+
+2. Row 7 (Earnie Stewart):
+   - The value "101" in the Caps column is higher than the majority of values in that column.
+   - This makes the row an outlier as it represents a player with a significantly higher number of international caps compared to the other players.
+
+3. Row 6 (DaMarcus Beasley):
+   - The value "114" in the Caps column is higher than the majority of values in that column.
+   - This makes the row an outlier as it represents a player with a significantly higher number of international caps compared to the other players.
+
+=== Full Table Preview ===
+|   row_number | #   | Player           |   Goals |   Caps | Career       |
+|-------------:|:----|:-----------------|--------:|-------:|:-------------|
+|            0 | 1   | Landon Donovan   |      57 |    155 | 2000–present |
+|            1 | 2   | Clint Dempsey    |      36 |    103 | 2004–present |
+|            2 | 3   | Eric Wynalda     |      34 |    106 | 1990–2000    |
+|            3 | 4   | Brian McBride    |      30 |     95 | 1993–2006    |
+|            4 | 5   | Joe-Max Moore    |      24 |    100 | 1992–2002    |
+|            5 | 6T  | Jozy Altidore    |      21 |     67 | 2007–present |
+|            6 | 6T  | Bruce Murray     |      21 |     86 | 1985–1993    |
+|            7 | 8   | Eddie Johnson    |      19 |     62 | 2004–present |
+|            8 | 9T  | Earnie Stewart   |      17 |    101 | 1990–2004    |
+|            9 | 9T  | DaMarcus Beasley |      17 |    114 | 2001–present |
+
+Generated Reasoning SQL: Explanation: To compare the number of caps between Eric Wynalda and DaMarcus Beasley, we need to filter the rows corresponding to these players and retrieve their respective values in the "Caps" column. We will then compare these values to determine if Eric Wynalda has more or less caps than DaMarcus Beasley.
+
+SQL:
+SELECT "Player", "Caps"
+FROM T
+WHERE "Player" = 'Eric Wynalda' OR "Player" = 'DaMarcus Beasley';
+Generated Final SQL: SELECT "Player", "Caps" FROM T WHERE "Player" = 'Eric Wynalda' OR "Player" = 'DaMarcus Beasley';
+SQL 실행 결과 셀 수: 4
+=== SQL 실행 결과 미리보기 ===
+| Player           |   Caps |
+|:-----------------|-------:|
+| Eric Wynalda     |    106 |
+| DaMarcus Beasley |    114 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States men's national soccer team
+SQL: SELECT "Player", "Caps" FROM T WHERE "Player" = 'Eric Wynalda' OR "Player" = 'DaMarcus Beasley';
+
+SQL Execution Result:
+Player | Caps
+Eric Wynalda | 106
+DaMarcus Beasley | 114
+
+Question: does eric wynalda have more or less caps than damarcus beasley?
+A: To find the answer to this question, let’s think step by step.
+Prediction: eric wynalda has less caps than damarcus beasley.
+[Gold Answer] less
+

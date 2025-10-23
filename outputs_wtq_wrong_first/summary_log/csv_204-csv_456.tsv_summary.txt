@@ -1,0 +1,37 @@
+**Column Analysis:**
+
+1. Episode no.:
+   - Data type: Numeric
+   - 4 representative example values: 2, 3, 5, 6
+   - Role of the column: Identifier for each episode
+
+2. Airdate:
+   - Data type: Categorical
+   - 4 representative example values: 2 May 2013, 9 May 2013, 23 May 2013, 30 May 2013
+   - Role of the column: Descriptor for the airdate of each episode
+
+3. Viewers:
+   - Data type: Numeric
+   - 4 representative example values: 978,000, 885,000, 1,092,000, 1,094,000
+   - Role of the column: Measure of the number of viewers for each episode
+
+4. BBC Three weekly ranking:
+   - Data type: Numeric
+   - 4 representative example values: 1
+   - Role of the column: Measure of the ranking of the episode on BBC Three for the week
+
+5. Multichannels rank:
+   - Data type: Numeric
+   - 4 representative example values: 11, 5, 3
+   - Role of the column: Measure of the ranking of the episode on multichannels
+
+**Outlier Row Analysis:**
+
+1. Row 11:
+   - The value for "Viewers" is "nan" (not a number), which indicates missing data. This row is an outlier due to the missing viewer data, making it different from the majority of the table.
+
+2. Row 10:
+   - The values for "BBC Three weekly ranking" and "Multichannels rank" are "nan" (not a number), indicating missing data. This row is an outlier due to the missing ranking data, making it different from the majority of the table.
+
+3. Row 2:
+   - The values for "Viewers" and "BBC Three weekly ranking" are within the normal range seen in the table. This row contains no distinctive values that would make it an outlier. It is an ordinary row and requires no special handling.

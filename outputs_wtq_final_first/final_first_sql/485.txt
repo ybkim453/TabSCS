@@ -1,0 +1,152 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. State (linked to summaries below)
+   - Data type: Categorical
+   - 4 representative example values: Massachusetts, Minnesota, Utah, Virginia
+   - Role: Identifier for the state where the incumbent senator is running for re-election.
+
+2. Incumbent Senator
+   - Data type: Categorical
+   - 4 representative example values: Elizabeth Warren, Amy Klobuchar, Orrin Hatch, Tim Kaine
+   - Role: Descriptor for the name of the incumbent senator.
+
+3. Incumbent Party
+   - Data type: Categorical
+   - 4 representative example values: Democratic, Republican
+   - Role: Descriptor for the political party of the incumbent senator.
+
+4. Incumbent Electoral history
+   - Data type: Categorical
+   - 4 representative example values: Elizabeth Warren (D) 53.7%, Amy Klobuchar (D) 65.2%, Orrin Hatch (R) 65.3%, Tim Kaine (D) 52.9%
+   - Role: Descriptor for the incumbent senator's electoral history, including party affiliation and percentage of votes received.
+
+5. Most recent election results
+   - Data type: Categorical
+   - 4 representative example values: 2012, 2006, 1976, 2012
+   - Role: Descriptor for the year of the most recent election results.
+
+6. 2018 intent
+   - Data type: Categorical
+   - 4 representative example values: Retiring
+   - Role: Descriptor for the incumbent senator's intention for the 2018 election.
+
+7. Candidates
+   - Data type: Categorical
+   - 4 representative example values: [Data unknown/missing. You can help!]
+   - Role: Descriptor for the list of candidates running for the senatorial seat.
+
+**Outlier Row Analysis:**
+
+1. Row 26 (Utah - Orrin Hatch)
+   - The incumbent senator is listed as "Retiring" in the 2018 intent column, which is different from the other rows where the intent is unknown or missing. This makes the row an outlier as it indicates a clear decision by the incumbent senator not to seek re-election.
+
+2. Row 33 (Virginia - Tim Kaine)
+   - The incumbent senator's electoral history shows a different percentage of votes received compared to the other rows. This makes the row an outlier as it has a distinctive value in this column.
+
+3. Row 7 (Minnesota - Amy Klobuchar)
+   - The incumbent senator's electoral history includes a third-party candidate with a significant percentage of votes, which is not present in the other rows. This makes the row an outlier due to the unique electoral outcome.
+
+=== Full Table Preview ===
+|   row_number | State\n(linked to\nsummaries below)   | Incumbent\nSenator   | Incumbent\nParty   | Incumbent\nElectoral\nhistory                                                                                   | Most recent election results             | 2018 intent                           | Candidates                            |
+|-------------:|:--------------------------------------|:---------------------|:-------------------|:----------------------------------------------------------------------------------------------------------------|:-----------------------------------------|:--------------------------------------|:--------------------------------------|
+|            0 | Arizona                               | Jeff Flake           | Republican         | Jeff Flake (R) 49.2%\nRichard Carmona (D) 46.1%\nMarc Victor (L) 4.6%                                           | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            1 | California                            | Dianne Feinstein     | Democratic         | Dianne Feinstein (D) 62.5%\nElizabeth Emken (R) 37.5%                                                           | 1992 (special)\n1994\n2000\n2006\n2012   | Running                               | [Data unknown/missing. You can help!] |
+|            2 | Connecticut                           | Chris Murphy         | Democratic         | Chris Murphy (D) 54.8%\nLinda McMahon (R) 43.1%\nPaul Passarelli (L) 1.7%                                       | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            3 | Delaware                              | Tom Carper           | Democratic         | Tom Carper (D) 66.4%\nKevin L. Wade (R) 29.0%\nAlex Pires (I) 3.8%                                              | 2000\n2006\n2012                         | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            4 | Florida                               | Bill Nelson          | Democratic         | Bill Nelson (D) 55.2%\nConnie Mack IV (R) 42.2%                                                                 | 2000\n2006\n2012                         | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            5 | Hawaii                                | Mazie Hirono         | Democratic         | Mazie Hirono (D) 62.6%\nLinda Lingle (R) 37.4%                                                                  | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            6 | Indiana                               | Joe Donnelly         | Democratic         | Joe Donnelly (D) 50.0%\nRichard Mourdock (R) 44.2%\nAndrew Horning (L) 5.7%                                     | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            7 | Maine                                 | Angus King           | Independent        | Angus King (I) 52.9%\nCharles E. Summers Jr. (R) 30.7%\nCynthia Dill (D) 13.3%                                  | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            8 | Maryland                              | Ben Cardin           | Democratic         | Ben Cardin (D) 56.0%\nDan Bongino (R) 26.3%\nS. Rob Sobhani (I) 16.4%                                           | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|            9 | Massachusetts                         | Elizabeth Warren     | Democratic         | Elizabeth Warren (D) 53.7%\nScott Brown (R) 46.3%                                                               | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           10 | Michigan                              | Debbie Stabenow      | Democratic         | Debbie Stabenow (D) 58.8%\nPete Hoekstra (R) 38.0%\nScotty Boman (L) 1.8%                                       | 2000\n2006\n2012                         | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           11 | Minnesota                             | Amy Klobuchar        | Democratic         | Amy Klobuchar (D) 65.2%\nKurt Bills (R) 30.5%\nStephen Williams (Independence) 2.6%                             | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           12 | Mississippi                           | Roger Wicker         | Republican         | Roger Wicker (R) 57.2%\nAlbert N. Gore Jr. (D) 40.6%\nThomas Cramer (C) 1.2%\nShawn O'Hara (Reform) 1%          | 2008 (special)\n2012                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           13 | Missouri                              | Claire McCaskill     | Democratic         | Claire McCaskill (D) 54.8%\nTodd Akin (R) 39.0%\nJonathan Dine (L) 6.1%                                         | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           14 | Montana                               | Jon Tester           | Democratic         | Jon Tester (D) 48.6%\nDenny Rehberg (R) 44.9%\nDan Cox (L) 6.6%                                                 | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           15 | Nebraska                              | Deb Fischer          | Republican         | Deb Fischer (R) 57.8%\nBob Kerrey (D) 42.2%                                                                     | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           16 | Nevada                                | Dean Heller          | Republican         | Dean Heller (R) 45.9%\nShelley Berkley (D) 44.7%\nDavid Lory VanderBeek (C) 4.9%\nNone of These Candidates 4.5% | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           17 | New Jersey                            | Bob Menendez         | Democratic         | Bob Menendez (D) 58.9%\nJoe Kyrillos (R) 39.4%                                                                  | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           18 | New Mexico                            | Martin Heinrich      | Democratic         | Martin Heinrich (D) 51.0%\nHeather Wilson (R) 45.3%\nJon Barrie (IAP) 3.6%                                      | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           19 | New York                              | Kirsten Gillibrand   | Democratic         | Kirsten Gillibrand (D) 71.6%\nWendy E. Long (R) 26.0%                                                           | 2010 (special)\n2012                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           20 | North Dakota                          | Heidi Heitkamp       | Democratic         | Heidi Heitkamp (D) 50.2%\nRick Berg (R) 49.3%                                                                   | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           21 | Ohio                                  | Sherrod Brown        | Democratic         | Sherrod Brown (D) 50.7%\nJosh Mandel (R) 44.7%\nScott A. Rupert (I) 4.6%                                        | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           22 | Pennsylvania                          | Bob Casey Jr.        | Democratic         | Bob Casey Jr. (D) 53.7%\nTom Smith (R) 44.6%\nRayburn Douglas Smith (L) 1.7%                                    | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           23 | Rhode Island                          | Sheldon Whitehouse   | Democratic         | Sheldon Whitehouse (D) 64.8%\nBarry Hinckley (R) 35.0%                                                          | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           24 | Tennessee                             | Bob Corker           | Republican         | Bob Corker (R) 64.9%\nMark E. Clayton (D) 30.4%\nMartin Pleasant (G) 1.7%                                       | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           25 | Texas                                 | Ted Cruz             | Republican         | Ted Cruz (R) 56.5%\nPaul Sadler (D) 40.7%\nJohn Jay Myers (L) 2.1%                                              | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           26 | Utah                                  | Orrin Hatch          | Republican         | Orrin Hatch (R) 65.3%\nScott Howell (D) 30.0%\nShaun McCausland (C) 3.2%                                        | 1976\n1982\n1988\n1994\n2000\n2006\n2012 | Retiring                              | [Data unknown/missing. You can help!] |
+|           27 | Vermont                               | Bernie Sanders       | Independent        | Bernie Sanders (I) 71%\nJohn MacGovern (R) 24.9%\nCris Ericson (Marijuana Party) 2%                             | 2006\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           28 | Virginia                              | Tim Kaine            | Democratic         | Tim Kaine (D) 52.9%\nGeorge Allen (R) 47%                                                                       | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           29 | Washington                            | Maria Cantwell       | Democratic         | Maria Cantwell (D) 60.5%\nMichael Baumgartner (R) 39.5%                                                         | 2000\n2006\n2012                         | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           30 | West Virginia                         | Joe Manchin          | Democratic         | Joe Manchin (D) 60.6%\nJohn Raese (R) 36.5%\nBob Henry Baber (G) 3.0%                                           | 2010\n2012                               | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           31 | Wisconsin                             | Tammy Baldwin        | Democratic         | Tammy Baldwin (D) 51.4%\nTommy Thompson (R) 45.5%\nJoseph Kexel (L) 2.1%                                        | 2012                                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           32 | Wyoming                               | John Barrasso        | Republican         | John Barrasso (R) 75.7%\nTim Chestnut (D) 21.7%\nJoel Otto (Wyoming Country) 2.6%                               | 2008 (special)\n2012                     | [Data unknown/missing. You can help!] | [Data unknown/missing. You can help!] |
+|           33 | State\n(linked to\nsummaries below)   | Incumbent            | Incumbent          | Incumbent                                                                                                       | Most recent election results             | 2018 intent                           | Candidates                            |
+|           34 | State\n(linked to\nsummaries below)   | Senator              | Party              | Electoral\nhistory                                                                                              | Most recent election results             | 2018 intent                           | Candidates                            |
+
+Generated Reasoning SQL: Explanation: To determine the number of independent incumbents on the list, we need to filter the rows where the "Incumbent Party" is equal to "Independent". The summary indicates that the "Incumbent Party" column is categorical, and we can use it to identify the party affiliation of the incumbents.
+
+SQL: 
+SELECT COUNT(*) AS independent_incumbents 
+FROM T 
+WHERE "Incumbent Party" = 'Independent';
+Generated Final SQL: SELECT COUNT(*) AS independent_incumbents FROM T WHERE "Incumbent Party" = 'Independent';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   independent_incumbents |
+|-------------------------:|
+|                        0 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: United States Senate elections, 2018
+SQL: SELECT COUNT(*) AS independent_incumbents FROM T WHERE "Incumbent Party" = 'Independent';
+
+SQL Execution Result:
+independent_incumbents
+0
+
+Question: how many independent incumbents are on the list?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 0
+[Gold Answer] 2
+

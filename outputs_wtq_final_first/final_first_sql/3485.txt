@@ -1,0 +1,112 @@
+=== Table Summary ===
+**Column Analysis:**
+
+1. Rank:
+   - Data type: Numeric
+   - 4 representative example values: 4, 5, 7, nan
+   - Role: Identifier
+
+2. Name:
+   - Data type: Categorical
+   - 4 representative example values: Alison Fealey, Jenny Kurth, Sonia Fonseca, Fabíola Molina
+   - Role: Descriptor
+
+3. Nationality:
+   - Data type: Categorical
+   - 4 representative example values: United States, Puerto Rico, Brazil, Suriname
+   - Role: Descriptor
+
+4. Time:
+   - Data type: Numeric (Time)
+   - 4 representative example values: 4:48.31, 4:57.24, 5:03.15, 5:03.43
+   - Role: Measure
+
+**Outlier Row Analysis:**
+
+1. Row 4 (Index 4):
+   - The time value of 5:03.15 is significantly higher than the times of the surrounding rows (4:57.24 and 5:03.43).
+   - This makes the row an outlier in terms of the time taken to complete the race.
+
+2. Row 3 (Index 3):
+   - The time value of 5:03.43 is similar to the outlier row 4 (5:03.15) and higher than the majority of the table.
+   - This makes the row an outlier in terms of the time taken to complete the race.
+
+3. Row 6 (Index 6):
+   - The rank value of nan is not a typical numerical rank and stands out from the other rows with numerical rank values.
+   - This makes the row an outlier in terms of the rank assigned to the athlete.
+
+=== Full Table Preview ===
+|   row_number |   Rank | Name            | Nationality   | Time    |
+|-------------:|-------:|:----------------|:--------------|:--------|
+|            0 |    nan | Joanne Malar    | Canada        | 4:43.64 |
+|            1 |    nan | Alison Fealey   | United States | 4:48.31 |
+|            2 |    nan | Jenny Kurth     | United States | 4:57.24 |
+|            3 |      4 | Sonia Fonseca   | Puerto Rico   | 5:03.15 |
+|            4 |      5 | Fabíola Molina  | Brazil        | 5:03.43 |
+|            5 |      6 | Isabel Rojas    | Colombia      | 5:11.58 |
+|            6 |      7 | Carolyn Adel    | Suriname      | 5:13.24 |
+|            7 |      8 | Edith Arraspide | Argentina     | 5:13.95 |
+
+Generated Reasoning SQL: Explanation: To determine how many athletes finished the race in at least 5 hours, we need to consider the "Time" column, which is of type Numeric (Time). We will filter the rows where the time is greater than or equal to 5:00.00 to include all athletes who finished in at least 5 hours. We will exclude any outlier rows that do not represent typical race times.
+
+SQL: SELECT COUNT("Name") 
+FROM T 
+WHERE "Time" >= '5:00.00';
+Generated Final SQL: SELECT COUNT("Name") FROM T WHERE "Time" >= '5:00.00';
+SQL 실행 결과 셀 수: 1
+=== SQL 실행 결과 미리보기 ===
+|   COUNT("Name") |
+|----------------:|
+|               5 |
+Reasoning Prompt:
+
+You are a strict SQL reasoning assistant. 
+Your task is to return the final answer **directly from the SQL result table**.
+
+Rules:
+- Do not generate new SQL or mention schema/summary.
+- Always write a short reasoning step before the Final Answer.
+- If one cell is returned: briefly confirm it is the only result.
+- If multiple rows/columns: reason step by step to filter or choose.
+- Ensure the final answer format is only "Final Answer: AnswerName1, AnswerName2..." form, no other form. And ensure the final answer is a number or entity names, as short as possible, without any explanation.
+
+Examples:
+
+Table_title: Olympic Events
+SQL: select "event" from T where cast("year" as integer) = 2008
+
+event
+100m Sprint
+Long Jump
+Marathon
+Swimming
+
+Question: how many events were held in 2008?
+Answer: Let's think step by step.  
+There are 4 rows returned for 2008, each representing one event.  
+Final Answer: 4
+
+
+Table_title: 2013-14 Toros Mexico season
+SQL: select "opponent", "date" from T where "date" > '2014-11-10' order by "date" asc
+
+opponent          | date
+Turlock Express   | 2014-11-14
+
+Question: who did the team play after the las vegas legends on november 10?
+Answer: Let's think step by step.  
+The next opponent listed after November 10 is Turlock Express.  
+Final Answer: Turlock Express
+
+Table_title: Swimming at the 1995 Pan American Games – Women's 400 metre individual medley
+SQL: SELECT COUNT("Name") FROM T WHERE "Time" >= '5:00.00';
+
+SQL Execution Result:
+COUNT("Name")
+5
+
+Question: how many finished in at least 5 hours?
+A: To find the answer to this question, let’s think step by step.
+Prediction: 5
+[Gold Answer] 3
+
