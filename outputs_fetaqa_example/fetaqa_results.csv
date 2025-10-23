@@ -1,0 +1,81 @@
+id,question,answer,prediction,sql,response,summary,r_num_cell,t_num_cell
+12322,What singles were Included in Across the Rio Grande in 1988?,"across the rio grande in 1988 included the singles ""that's what your love does to me"" and ""(it's always gonna be) someday"".","the table provides information about singles from holly dunn's album *across the rio grande* released in 1988. the singles listed are ""that's what your love does to me"" and ""(it's always gonna be) someday."" in 1988, the singles included in holly dunn's album *across the rio grande* were ""that's what your love does to me"" and ""(it's always gonna be) someday.""","SELECT ""Single"" FROM T WHERE CAST(""Year"" AS INTEGER) = 1988 AND ""Album"" LIKE '%Across the Rio Grande%';","The table provides information about singles from Holly Dunn's album *Across the Rio Grande* released in 1988. The singles listed are ""That's What Your Love Does to Me"" and ""(It's Always Gonna Be) Someday."" In 1988, the singles included in Holly Dunn's album *Across the Rio Grande* were ""That's What Your Love Does to Me"" and ""(It's Always Gonna Be) Someday.""","### Column Analysis:
+
+1. **Year:**
+   - Data type: Numeric
+   - 4 representative example values: 1985, 1986, 1987, 1988
+   - Role: Identifier for the year the single was released
+
+2. **Single:**
+   - Data type: Categorical
+   - 4 representative example values: Playing for Keeps, Daddy's Hands, Love Someone Like Me, Are You Ever Gonna Love Me
+   - Role: Descriptor for the title of the single
+
+3. **Peak chart positions (US Country):**
+   - Data type: Numeric
+   - 4 representative example values: 62, 7, 2, 1
+   - Role: Measure indicating the peak position on the US Country chart
+
+4. **Peak chart positions (CAN Country):**
+   - Data type: Numeric
+   - 4 representative example values: —, —, 2, 6
+   - Role: Measure indicating the peak position on the Canadian Country chart
+
+5. **Album:**
+   - Data type: Categorical
+   - 4 representative example values: nan, Holly Dunn, Cornerstone, The Blue Rose of Texas
+   - Role: Descriptor for the album the single belongs to
+
+### Outlier Row Analysis:
+
+No outlier rows were identified in the provided table.",2,150
+id,question,answer,prediction,sql,response,summary,r_num_cell,t_num_cell
+2206,What TV shows was Shagun Sharma seen in 2019?,"in 2019, shagun sharma played in the roles as pernia in laal ishq, vikram betaal ki rahasya gatha as rukmani/kashi and shaadi ke siyape as dua.","the table provides a list of tv show titles from 2019 in which shagun sharma appeared. in 2019, shagun sharma was seen in the tv shows *laal ishq*, *vikram betaal ki rahasya gatha*, and *shaadi ke siyape*.","SELECT ""Title"" FROM T WHERE CAST(""Year"" AS INTEGER) = 2019;","The table provides a list of TV show titles from 2019 in which Shagun Sharma appeared. In 2019, Shagun Sharma was seen in the TV shows *Laal Ishq*, *Vikram Betaal Ki Rahasya Gatha*, and *Shaadi Ke Siyape*.","**Column Analysis:**
+
+1. Column 0:
+   - Data type: Numeric (Year)
+   - 4 representative example values: 2015, 2016, 2017, 2019
+   - Role of the column: Identifier (represents the year in which the TV show aired)
+
+2. Column 1:
+   - Data type: Categorical (Title)
+   - 4 representative example values: Kuch Toh Hai Tere Mere Darmiyaan, Kuch Rang Pyar Ke Aise Bhi, Gangaa, Iss Pyaar Ko Kya Naam Doon 3
+   - Role of the column: Descriptor (provides the title of the TV show)
+
+3. Column 2:
+   - Data type: Categorical (Role)
+   - 4 representative example values: Sanjana Kapoor, Khushi, Aashi Jhaa, Meghna Narayan Vashishth
+   - Role of the column: Descriptor (describes the role played by the actor/actress)
+
+4. Column 3:
+   - Data type: Categorical (Channel)
+   - 4 representative example values: Star Plus, Sony TV, &TV, Colors TV
+   - Role of the column: Descriptor (indicates the channel on which the TV show aired)
+
+**Outlier Row Analysis:**
+- No outlier rows were identified in the provided table.",3,40
+id,question,answer,prediction,sql,response,summary,r_num_cell,t_num_cell
+2206,What TV shows was Shagun Sharma seen in 2019?,"in 2019, shagun sharma played in the roles as pernia in laal ishq, vikram betaal ki rahasya gatha as rukmani/kashi and shaadi ke siyape as dua.","the table provides a list of tv shows in which shagun sharma appeared in 2019. in 2019, shagun sharma was seen in the tv shows *laal ishq*, *vikram betaal ki rahasya gatha*, and *shaadi ke siyape*.","SELECT ""Title"" FROM T WHERE CAST(""Year"" AS INTEGER) = 2019;","The table provides a list of TV shows in which Shagun Sharma appeared in 2019. In 2019, Shagun Sharma was seen in the TV shows *Laal Ishq*, *Vikram Betaal Ki Rahasya Gatha*, and *Shaadi Ke Siyape*.","**Column Analysis:**
+
+1. Column 0:
+   - Data type: Numeric (Year)
+   - 4 representative example values: 2015, 2016, 2017, 2019
+   - Role of the column: Identifier (represents the year in which the TV show aired)
+
+2. Column 1:
+   - Data type: Categorical (Title)
+   - 4 representative example values: Kuch Toh Hai Tere Mere Darmiyaan, Kuch Rang Pyar Ke Aise Bhi, Gangaa, Iss Pyaar Ko Kya Naam Doon 3
+   - Role of the column: Descriptor (provides the title of the TV show)
+
+3. Column 2:
+   - Data type: Categorical (Role)
+   - 4 representative example values: Sanjana Kapoor, Khushi, Aashi Jhaa, Meghna Narayan Vashishth
+   - Role of the column: Descriptor (describes the role played by the actor/actress)
+
+4. Column 3:
+   - Data type: Categorical (Channel)
+   - 4 representative example values: Star Plus, Sony TV, &TV, Colors TV
+   - Role of the column: Descriptor (indicates the channel on which the TV show aired)
+
+**Outlier Row Analysis:**
+- No outlier rows were identified in the provided table.",3,40

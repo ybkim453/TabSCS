@@ -1,0 +1,180 @@
+=== Table ID: 12322 ===
+=== Question: What singles were Included in Across the Rio Grande in 1988? ===
+
+=== Sub-table Preview ===
+| 0                                     | 1                                     | 2                                     | 3                                     | 4                                     |
+|:--------------------------------------|:--------------------------------------|:--------------------------------------|:--------------------------------------|:--------------------------------------|
+| Year                                  | Single                                | Peak chart positions                  | Peak chart positions                  | Album                                 |
+| Year                                  | Single                                | US Country                            | CAN Country                           | Album                                 |
+| 1985                                  | Playing for Keeps                     | 62                                    | —                                     | nan                                   |
+| 1985                                  | My Heart Holds On                     | 64                                    | —                                     | Holly Dunn                            |
+| 1986                                  | Two Too Many                          | 39                                    | —                                     | Holly Dunn                            |
+| 1986                                  | Daddy's Hands                         | 7                                     | —                                     | Holly Dunn                            |
+| 1987                                  | Love Someone Like Me                  | 2                                     | 2                                     | Cornerstone                           |
+| 1987                                  | Only When I Love                      | 4                                     | 7                                     | Cornerstone                           |
+| 1988                                  | Strangers Again                       | 7                                     | 36                                    | Cornerstone                           |
+| 1988                                  | That's What Your Love Does to Me      | 5                                     | 6                                     | Across the Rio Grande                 |
+| 1988                                  | (It's Always Gonna Be) Someday        | 11                                    | nan                                   | Across the Rio Grande                 |
+| 1989                                  | Are You Ever Gonna Love Me            | 1                                     | 6                                     | The Blue Rose of Texas                |
+| 1989                                  | There Goes My Heart Again             | 4                                     | 8                                     | The Blue Rose of Texas                |
+| 1990                                  | My Anniversary for Being a Fool       | 63                                    | 75                                    | Heart Full of Love                    |
+| 1990                                  | You Really Had Me Going               | 1                                     | 1                                     | Heart Full of Love                    |
+| 1991                                  | Heart Full of Love                    | 19                                    | 12                                    | Heart Full of Love                    |
+| 1991                                  | Maybe I Mean Yes                      | 48                                    | 45                                    | Milestones: Greatest Hits             |
+| 1991                                  | No One Takes the Train Anymore        | —                                     | —                                     | Milestones: Greatest Hits             |
+| 1992                                  | No Love Have I                        | 67                                    | —                                     | Getting It Dunn                       |
+| 1992                                  | As Long as You Belong to Me           | 68                                    | —                                     | Getting It Dunn                       |
+| 1992                                  | Golden Years                          | 51                                    | 62                                    | Getting It Dunn                       |
+| 1995                                  | I Am Who I Am                         | 56                                    | 56                                    | Life and Love and All the Stages      |
+| 1995                                  | Cowboys Are My Weakness               | —                                     | —                                     | Life and Love and All the Stages      |
+| 1995                                  | It's Not About Blame                  | —                                     | —                                     | Life and Love and All the Stages      |
+| 1997                                  | Leave One Bridge Standing             | —                                     | —                                     | Leave One Bridge Standing             |
+| — denotes releases that did not chart | — denotes releases that did not chart | — denotes releases that did not chart | — denotes releases that did not chart | — denotes releases that did not chart |
+
+=== Table Summary ===
+### Column Analysis:
+
+1. **Year:**
+   - Data type: Numeric
+   - 4 representative example values: 1985, 1986, 1987, 1988
+   - Role: Identifier for the year the single was released
+
+2. **Single:**
+   - Data type: Categorical
+   - 4 representative example values: Playing for Keeps, Daddy's Hands, Love Someone Like Me, Are You Ever Gonna Love Me
+   - Role: Descriptor for the title of the single
+
+3. **Peak chart positions (US Country):**
+   - Data type: Numeric
+   - 4 representative example values: 62, 7, 2, 1
+   - Role: Measure indicating the peak position on the US Country chart
+
+4. **Peak chart positions (CAN Country):**
+   - Data type: Numeric
+   - 4 representative example values: —, —, 2, 6
+   - Role: Measure indicating the peak position on the Canadian Country chart
+
+5. **Album:**
+   - Data type: Categorical
+   - 4 representative example values: nan, Holly Dunn, Cornerstone, The Blue Rose of Texas
+   - Role: Descriptor for the album the single belongs to
+
+### Outlier Row Analysis:
+
+No outlier rows were identified in the provided table.
+
+=== Full Table Preview ===
+|   row_number | Year                                    | Single                                  | Peak chart positions                    | Peak chart positions_1                  | Album                                   |
+|-------------:|:----------------------------------------|:----------------------------------------|:----------------------------------------|:----------------------------------------|:----------------------------------------|
+|            0 | Year                                    | Single                                  | US Country                              | CAN Country                             | Album                                   |
+|            1 | 1985                                    | "Playing for Keeps"                     | 62                                      | —                                       | N/A                                     |
+|            2 | 1985                                    | "My Heart Holds On"                     | 64                                      | —                                       | Holly Dunn                              |
+|            3 | 1986                                    | "Two Too Many"                          | 39                                      | —                                       | Holly Dunn                              |
+|            4 | 1986                                    | "Daddy's Hands"                         | 7                                       | —                                       | Holly Dunn                              |
+|            5 | 1987                                    | "Love Someone Like Me"                  | 2                                       | 2                                       | Cornerstone                             |
+|            6 | 1987                                    | "Only When I Love"                      | 4                                       | 7                                       | Cornerstone                             |
+|            7 | 1988                                    | "Strangers Again"                       | 7                                       | 36                                      | Cornerstone                             |
+|            8 | 1988                                    | "That's What Your Love Does to Me"      | 5                                       | 6                                       | Across the Rio Grande                   |
+|            9 | 1988                                    | "(It's Always Gonna Be) Someday"        | 11                                      | N/A                                     | Across the Rio Grande                   |
+|           10 | 1989                                    | "Are You Ever Gonna Love Me"            | 1                                       | 6                                       | The Blue Rose of Texas                  |
+|           11 | 1989                                    | "There Goes My Heart Again"             | 4                                       | 8                                       | The Blue Rose of Texas                  |
+|           12 | 1990                                    | "My Anniversary for Being a Fool"       | 63                                      | 75                                      | Heart Full of Love                      |
+|           13 | 1990                                    | "You Really Had Me Going"               | 1                                       | 1                                       | Heart Full of Love                      |
+|           14 | 1991                                    | "Heart Full of Love"                    | 19                                      | 12                                      | Heart Full of Love                      |
+|           15 | 1991                                    | "Maybe I Mean Yes"                      | 48                                      | 45                                      | Milestones: Greatest Hits               |
+|           16 | 1991                                    | "No One Takes the Train Anymore"        | —                                       | —                                       | Milestones: Greatest Hits               |
+|           17 | 1992                                    | "No Love Have I"                        | 67                                      | —                                       | Getting It Dunn                         |
+|           18 | 1992                                    | "As Long as You Belong to Me"           | 68                                      | —                                       | Getting It Dunn                         |
+|           19 | 1992                                    | "Golden Years"                          | 51                                      | 62                                      | Getting It Dunn                         |
+|           20 | 1995                                    | "I Am Who I Am"                         | 56                                      | 56                                      | Life and Love and All the Stages        |
+|           21 | 1995                                    | "Cowboys Are My Weakness"               | —                                       | —                                       | Life and Love and All the Stages        |
+|           22 | 1995                                    | "It's Not About Blame"                  | —                                       | —                                       | Life and Love and All the Stages        |
+|           23 | 1997                                    | "Leave One Bridge Standing"             | —                                       | —                                       | Leave One Bridge Standing               |
+|           24 | "—" denotes releases that did not chart | "—" denotes releases that did not chart | "—" denotes releases that did not chart | "—" denotes releases that did not chart | "—" denotes releases that did not chart |
+
+Generated Reasoning SQL: Explanation: The summary indicates that the "Year" column is numeric and the "Album" column is categorical. The question asks for singles from the album "Across the Rio Grande" released in 1988. We need to filter rows where "Year" = 1988 and "Album" = "Across the Rio Grande". The "Single" column will provide the titles of the singles. There are no outlier rows to exclude, so we consider all rows in the table.
+
+SQL: 
+```sql
+SELECT "Single" 
+FROM T 
+WHERE CAST("Year" AS INTEGER) = 1988 
+AND "Album" LIKE '%Across the Rio Grande%';
+```
+Extracted Final SQL: SELECT "Single" FROM T WHERE CAST("Year" AS INTEGER) = 1988 AND "Album" LIKE '%Across the Rio Grande%';
+SQL 실행 결과 셀 수: 2
+=== SQL 실행 결과 미리보기 ===
+| Single                             |
+|:-----------------------------------|
+| "That's What Your Love Does to Me" |
+| "(It's Always Gonna Be) Someday"   |
+Reasoning Prompt:
+You are a factual reasoning assistant.
+Your task is to write a fluent, factually accurate natural-language answer based **on the SQL execution result table below**.
+Do not output SQL. Instead, summarize the retrieved information in complete sentences that answer the question.
+
+**Rules:**
+- Begin with a short reasoning step explaining how the table supports the answer.
+- Then, write the final answer as a full, grammatical sentence.
+- Do not invent any information not shown in the table.
+- Use proper capitalization and punctuation.
+- Avoid bullet points, lists, or enumeration formatting.
+- Your final answer should read like a sentence in a FeTaQA dataset — concise, factual, and natural.
+
+---
+
+**Examples:**
+
+Table_title: Shagun Sharma  
+SQL: select title, role, year from T where year = 2019  
+
+title | role | year  
+Laal Ishq | Pernia | 2019  
+Vikram Betaal Ki Rahasya Gatha | Rukmani/Kashi | 2019  
+Shaadi Ke Siyape | Dua | 2019  
+
+Question: What TV shows was Shagun Sharma seen in 2019?  
+Reasoning: The table shows all entries for 2019, listing three TV shows where Shagun Sharma played different roles.  
+Final Answer: In 2019, Shagun Sharma appeared in *Laal Ishq* as Pernia, *Vikram Betaal Ki Rahasya Gatha* as Rukmani/Kashi, and *Shaadi Ke Siyape* as Dua.
+
+---
+
+Table_title: German submarine U-438  
+SQL: select name, tonnage, fate from T where fate like '%sunk%' or fate like '%damaged%'  
+
+name | tonnage | fate  
+Condylis | 4,439 | Sunk  
+Oregon | 6,008 | Sunk  
+Trolla | 1,598 | Sunk  
+Hartington | 5,496 | Damaged  
+
+Question: How much overall damage did the German submarine U-438 cause?  
+Reasoning: The submarine sank three ships totaling 12,045 GRT and damaged one ship with a tonnage of 5,496 GRT.  
+Final Answer: The German submarine U-438 sank three ships totaling 12,045 gross register tons and damaged one ship of 5,496 tons.
+
+---
+
+Table_title: LVL IV  
+SQL: select chart, peak_position, year from T where chart = 'billboard 200' or chart = 'top heatseekers';  
+
+chart | peak_position | year  
+Billboard 200 | 153 | 2004  
+Top Heatseekers | 4 | 2004  
+
+Question: How did LVL IV do in Billboard 200 and Top Heatseekers?  
+Reasoning: The table lists two chart performances for LVL IV in 2004.  
+Final Answer: LVL IV peaked at number 153 on the Billboard 200 and reached number 4 on the Top Heatseekers chart.
+
+Table_title: Holly Dunn
+SQL: SELECT "Single" FROM T WHERE CAST("Year" AS INTEGER) = 1988 AND "Album" LIKE '%Across the Rio Grande%';
+
+SQL Execution Result:
+Single
+"That's What Your Love Does to Me"
+"(It's Always Gonna Be) Someday"
+
+Question: What singles were Included in Across the Rio Grande in 1988?
+A: To find the answer to this question, let’s think step by step.
+Prediction: the table provides information about singles from holly dunn's album *across the rio grande* released in 1988. the singles listed are "that's what your love does to me" and "(it's always gonna be) someday." in 1988, the singles included in holly dunn's album *across the rio grande* were "that's what your love does to me" and "(it's always gonna be) someday."
+[Gold Answer] across the rio grande in 1988 included the singles "that's what your love does to me" and "(it's always gonna be) someday".
+

@@ -187,7 +187,7 @@ def tabsqlify_fetaqa(T, title, tab_col, question, full_table, summary,
 # ---------------------- 메인 실행 ----------------------
 if __name__ == "__main__":
     path = 'datasets/fetaQA-v1_test.jsonl'
-    start = 234
+    start = 0
     end = 2000  # 처리 범위 조정
 
     base_output = "outputs_fetaqa"
@@ -272,11 +272,11 @@ if __name__ == "__main__":
             # === 6) 저장 ===
             tmp = {
                 'idx': i,
+                'feta_id': feta_id,
                 'prediction': output_ans,
                 'answer': answer,
                 'question': question,
-                'response': response,
-                'table_id': feta_id,
+                'full_response': response,
             }
             fw.write(json.dumps(tmp) + '\n')
 

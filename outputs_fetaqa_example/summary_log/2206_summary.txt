@@ -1,0 +1,24 @@
+**Column Analysis:**
+
+1. Column 0:
+   - Data type: Numeric (Year)
+   - 4 representative example values: 2015, 2016, 2017, 2019
+   - Role of the column: Identifier (represents the year in which the TV show aired)
+
+2. Column 1:
+   - Data type: Categorical (Title)
+   - 4 representative example values: Kuch Toh Hai Tere Mere Darmiyaan, Kuch Rang Pyar Ke Aise Bhi, Gangaa, Iss Pyaar Ko Kya Naam Doon 3
+   - Role of the column: Descriptor (provides the title of the TV show)
+
+3. Column 2:
+   - Data type: Categorical (Role)
+   - 4 representative example values: Sanjana Kapoor, Khushi, Aashi Jhaa, Meghna Narayan Vashishth
+   - Role of the column: Descriptor (describes the role played by the actor/actress)
+
+4. Column 3:
+   - Data type: Categorical (Channel)
+   - 4 representative example values: Star Plus, Sony TV, &TV, Colors TV
+   - Role of the column: Descriptor (indicates the channel on which the TV show aired)
+
+**Outlier Row Analysis:**
+- No outlier rows were identified in the provided table.

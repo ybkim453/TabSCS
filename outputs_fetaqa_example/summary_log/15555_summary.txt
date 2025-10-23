@@ -1,0 +1,22 @@
+**Column 0: Party**
+- Data type: Categorical
+- 4 representative example values: Vietnamese Fatherland Front, Invalid/blank votes
+- Role of the column: Identifier for the political party associated with the votes and seats
+
+**Column 1: Votes**
+- Data type: Numeric
+- 4 representative example values: 10,561,314, 105,807
+- Role of the column: Measure of the total number of votes received by each party
+
+**Column 2: %**
+- Data type: Numeric
+- 4 representative example values: 100
+- Role of the column: Measure of the percentage of votes received by each party
+
+**Column 3: Seats**
+- Data type: Numeric
+- 4 representative example values: 424
+- Role of the column: Measure of the total number of seats won by each party
+
+**Outlier Row Analysis:**
+- There are no outlier rows identified in the provided table.

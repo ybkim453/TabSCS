@@ -1,0 +1,30 @@
+### Column Analysis:
+
+1. **Year:**
+   - Data type: Numeric
+   - 4 representative example values: 1985, 1986, 1987, 1988
+   - Role: Identifier for the year the single was released
+
+2. **Single:**
+   - Data type: Categorical
+   - 4 representative example values: Playing for Keeps, Daddy's Hands, Love Someone Like Me, Are You Ever Gonna Love Me
+   - Role: Descriptor for the title of the single
+
+3. **Peak chart positions (US Country):**
+   - Data type: Numeric
+   - 4 representative example values: 62, 7, 2, 1
+   - Role: Measure indicating the peak position on the US Country chart
+
+4. **Peak chart positions (CAN Country):**
+   - Data type: Numeric
+   - 4 representative example values: —, —, 2, 6
+   - Role: Measure indicating the peak position on the Canadian Country chart
+
+5. **Album:**
+   - Data type: Categorical
+   - 4 representative example values: nan, Holly Dunn, Cornerstone, The Blue Rose of Texas
+   - Role: Descriptor for the album the single belongs to
+
+### Outlier Row Analysis:
+
+No outlier rows were identified in the provided table.
