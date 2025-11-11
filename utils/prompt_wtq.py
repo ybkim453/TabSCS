@@ -7,9 +7,9 @@ import tiktoken
 from dotenv import load_dotenv
 load_dotenv()
 
-# 프롬프트 파일 로더 함수
+# Prompt file loader function
 def load_prompt(filename):
-    """prompt 폴더에서 프롬프트 파일을 로드"""
+    """Load prompt file from prompt folder"""
     prompt_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "prompt")
     file_path = os.path.join(prompt_dir, filename)
     try:
@@ -23,41 +23,41 @@ client = OpenAI(
   api_key=os.getenv("OPENAI_API_KEY", None),  # this is also the default, it can be omitted
 )
 
-# 프롬프트들을 파일에서 로드
-p_wtq_full = None  # 런타임에 로드됨
+# Load prompts from files
+p_wtq_full = None  # Loaded at runtime
 
-p_sql_answer_wtq = None  # 런타임에 로드됨
+p_sql_answer_wtq = None  # Loaded at runtime
 
-p_sql_wtq_with_ss = None  # 런타임에 로드됨
+p_sql_wtq_with_ss = None  # Loaded at runtime
 
-# 프롬프트 초기화 함수
+# Initialize prompts function
 def initialize_prompts():
-    """프롬프트 파일들을 로드하여 전역 변수에 할당"""
+    """Load prompt files into global variables"""
     global p_wtq_full, p_sql_answer_wtq, p_sql_wtq_with_ss
     
-    # SQL_Reasoning.txt에서 프롬프트들 로드
+    # Load prompts from SQL_Reasoning.txt
     sql_reasoning_content = load_prompt("SQL_Reasoning.txt")
     
     if sql_reasoning_content:
-        # p_sql_wtq_with_ss 추출
+        # Extract p_sql_wtq_with_ss
         if 'p_sql_wtq_with_ss = """' in sql_reasoning_content:
             start = sql_reasoning_content.find('p_sql_wtq_with_ss = """') + len('p_sql_wtq_with_ss = """')
             end = sql_reasoning_content.find('"""', start)
             p_sql_wtq_with_ss = sql_reasoning_content[start:end].strip()
         
-        # p_wtq_full 추출
+        # Extract p_wtq_full
         if 'p_wtq_full = """' in sql_reasoning_content:
             start = sql_reasoning_content.find('p_wtq_full = """') + len('p_wtq_full = """')
             end = sql_reasoning_content.find('"""', start)
             p_wtq_full = sql_reasoning_content[start:end].strip()
         
-        # p_sql_answer_wtq 추출
+        # Extract p_sql_answer_wtq
         if 'p_sql_answer_wtq = """' in sql_reasoning_content:
             start = sql_reasoning_content.find('p_sql_answer_wtq = """') + len('p_sql_answer_wtq = """')
             end = sql_reasoning_content.find('"""', start)
             p_sql_answer_wtq = sql_reasoning_content[start:end].strip()
     
-    # Fallback: 파일 로드 실패 시 기본값 사용
+    # Fallback: Use default values if file loading fails
     if not p_sql_wtq_with_ss:
         p_sql_wtq_with_ss = "You will receive the **full table, the question, and the SS**. Generate SQL with a detailed explanation and the final query."
     if not p_wtq_full:
@@ -65,7 +65,7 @@ def initialize_prompts():
     if not p_sql_answer_wtq:
         p_sql_answer_wtq = "You are a strict SQL reasoning assistant. Your task is to return the final answer **directly from the SQL result table**."
 
-# 프롬프트 초기화 실행
+# Initialize prompts execution
 initialize_prompts()
 
 # ---------------------------------------------------------------
@@ -104,11 +104,11 @@ def gen_table_decom_prompt(title, tab_col, question, full_table, summary=None):
     prompt += "\nSQLite table properties:\n\n"
     prompt += "Table: " + title + " (" + str(tab_col) + ")" + "\n\n"
 
-    # ✅ Full Table Preview 추가
+    # Add Full Table Preview
     prompt += "Full Table Preview:\n"
     prompt += truncate_tokens(full_table, max_length=15000) + "\n\n"
 
-    if summary:  # ✅ SS가 있으면 반드시 포함
+    if summary:  # If SS is provided, it must be included
         prompt += "SS (Structured Specification):\n" + summary + "\n\n"
 
     prompt += "Q: " + question + "\n"
@@ -120,7 +120,7 @@ def generate_sql_answer_prompt(title, sql, result_table, question):
     prompt = p_sql_answer_wtq
     prompt += "\nTable_title: " + title
     prompt += "\nSQL: " + sql
-    # ✅ SQL 실행 결과 테이블 제공
+    # Provide the SQL execution result table
     prompt += "\n\nSQL Execution Result:\n" + result_table + "\n"
     prompt += "\nQuestion: " + question
     prompt += "\nA: To find the answer to this question, let’s think step by step."

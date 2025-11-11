@@ -1,8 +1,3 @@
-"""
-SS Row Analysis Evaluator - 직접 LLM 평가를 통한 SS 평가 모듈
-TabBridge에서 사용할 SS 평가 시스템 (방식 1: 직접 평가)
-"""
-
 import os
 import re
 import json
@@ -10,13 +5,13 @@ from openai import OpenAI
 
 class SSRowAnalysisEvaluator:
     def __init__(self, model_name="gpt-3.5-turbo"):
-        """SS 직접 평가기 초기화"""
+        """Initialize SS direct evaluator"""
         self.client = OpenAI()
         self.model_name = model_name
         self.prompt_dir = "prompt"
     
     def load_prompt(self, filename):
-        """프롬프트 파일 로드"""
+        """Load prompt file"""
         file_path = os.path.join(self.prompt_dir, filename)
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -26,8 +21,8 @@ class SSRowAnalysisEvaluator:
             return ""
     
     def extract_row_analysis_from_ss(self, ss_content):
-        """SS에서 Row Analysis 부분 추출"""
-        # Row Analysis 또는 Outlier Row Analysis 섹션 찾기
+        """Extract Row Analysis from SS"""
+        # Find Row Analysis or Outlier Row Analysis section
         patterns = [
             r'\*\*Row Analysis:\*\*\n(.*?)(?=\n\*\*|\Z)',
             r'\*\*Outlier Row Analysis:\*\*\n(.*?)(?=\n\*\*|\Z)',
@@ -43,7 +38,7 @@ class SSRowAnalysisEvaluator:
         return None
     
     def extract_column_analysis_from_ss(self, ss_content):
-        """SS에서 Column Analysis 부분 추출"""
+        """Extract Column Analysis from SS"""
         patterns = [
             r'\*\*Column Analysis:\*\*\n(.*?)(?=\n\*\*|\Z)',
             r'Column Analysis:\n(.*?)(?=\n[A-Z]|\Z)',
@@ -58,7 +53,7 @@ class SSRowAnalysisEvaluator:
         return None
     
     def evaluate_ss_row_analysis(self, subtable_markdown, outlier_candidates, ss_content, log_file_path=None):
-        """SS의 Row Analysis를 직접 평가"""
+        """Evaluate SS Row Analysis directly"""
         
         def log(msg):
             print(msg)
@@ -68,7 +63,7 @@ class SSRowAnalysisEvaluator:
         
         log("=== SS Row Analysis Direct Evaluation ===")
         
-        # SS에서 Row Analysis 추출
+        # Extract Row Analysis from SS
         row_analysis = self.extract_row_analysis_from_ss(ss_content)
         if not row_analysis:
             log("No row analysis found in SS - treating as 'no outliers' case")
@@ -90,7 +85,7 @@ class SSRowAnalysisEvaluator:
         
         log(f"Extracted row analysis: {row_analysis}")
         
-        # 평가 프롬프트 로드
+        # Load evaluation prompt
         evaluation_prompt_path = os.path.join(self.prompt_dir, "SS_row_analysis_evaluation.txt")
         try:
             with open(evaluation_prompt_path, 'r', encoding='utf-8') as f:
@@ -99,7 +94,7 @@ class SSRowAnalysisEvaluator:
             log(f"Failed to load evaluation prompt at {evaluation_prompt_path}")
             return None
         
-        # 프롬프트 포맷팅 - 프롬프트 템플릿의 변수명과 일치시킴
+        # Format prompt - match variable names in prompt template
         # 프롬프트에서 사용하는 변수명: evidence_sub_table, row_analysis, row_analysis_analysis
         prompt = prompt_template.replace(
             "{evidence_sub_table}", subtable_markdown
@@ -126,12 +121,12 @@ class SSRowAnalysisEvaluator:
             response_text = response.choices[0].message.content
             log(f"LLM Response: {response_text}")
             
-            # JSON 추출
+            # Extract JSON
             json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
             if json_match:
                 evaluation_result = json.loads(json_match.group())
                 
-                # all_criteria_passed 계산 (두 기준 모두 통과해야 함)
+                # Calculate all_criteria_passed (both criteria must pass)
                 row_discrimination = evaluation_result.get('row_analysis_discrimination', {}).get('result', 'no')
                 accuracy_classification = evaluation_result.get('accuracy_of_classification', {}).get('result', 'no')
                 
@@ -154,7 +149,7 @@ class SSRowAnalysisEvaluator:
             return None
     
     def evaluate_ss_column_analysis(self, subtable_markdown, ss_content, log_file_path=None):
-        """SS의 Column Analysis를 직접 평가 (확장 가능)"""
+        """Evaluate SS Column Analysis directly (extendable)"""
         
         def log(msg):
             print(msg)
@@ -164,7 +159,7 @@ class SSRowAnalysisEvaluator:
         
         log("=== SS Column Analysis Direct Evaluation ===")
         
-        # SS에서 Column Analysis 추출
+        # Extract Column Analysis from SS
         column_analysis = self.extract_column_analysis_from_ss(ss_content)
         if not column_analysis:
             log("No column analysis found in SS")
@@ -172,16 +167,16 @@ class SSRowAnalysisEvaluator:
         
         log(f"Extracted column analysis: {column_analysis}")
         
-        # 간단한 컬럼 분석 평가 (확장 가능)
-        # 현재는 기본적인 구조 검증만 수행
+        # Simple column analysis evaluation (extendable)
+        # Currently only perform basic structure validation
         
-        # 컬럼 개수 확인
+        # Check column count
         table_lines = subtable_markdown.strip().split('\n')
         if len(table_lines) >= 2:
             header_line = table_lines[0]
             headers = [h.strip() for h in header_line.split('|')[1:-1]]
             
-            # 각 컬럼이 분석에 언급되었는지 확인
+            # Check if each column is mentioned in analysis
             missing_columns = []
             for header in headers:
                 if header.lower() not in column_analysis.lower():
@@ -198,7 +193,7 @@ class SSRowAnalysisEvaluator:
         return None
     
     def evaluate_ss_comprehensive(self, subtable_markdown, outlier_candidates, ss_content, log_file_path=None):
-        """SS 종합 직접 평가"""
+        """Evaluate SS comprehensive directly"""
         
         def log(msg):
             print(msg)
@@ -208,17 +203,17 @@ class SSRowAnalysisEvaluator:
         
         log("=== SS Comprehensive Direct Evaluation ===")
         
-        # Row Analysis 평가
+        # Evaluate Row Analysis
         row_evaluation = self.evaluate_ss_row_analysis(
             subtable_markdown, outlier_candidates, ss_content, log_file_path
         )
         
-        # Column Analysis 평가
+        # Evaluate Column Analysis
         column_evaluation = self.evaluate_ss_column_analysis(
             subtable_markdown, ss_content, log_file_path
         )
         
-        # 종합 결과
+        # Overall result
         overall_passed = False
         if row_evaluation and column_evaluation:
             overall_passed = (

@@ -1,8 +1,3 @@
-"""
-SQL Evaluator - SQL 쿼리 평가 및 피드백 생성 모듈
-TabBridge에서 사용할 SQL 평가 시스템
-"""
-
 import os
 import re
 import json
@@ -10,13 +5,13 @@ from openai import OpenAI
 
 class SQLEvaluator:
     def __init__(self, model_name="gpt-3.5-turbo"):
-        """SQL 평가기 초기화"""
+        """Initialize SQL evaluator"""
         self.client = OpenAI()
         self.model_name = model_name
         self.prompt_dir = "prompt"
     
     def load_prompt(self, filename):
-        """프롬프트 파일 로드"""
+        """Load prompt file"""
         file_path = os.path.join(self.prompt_dir, filename)
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -26,7 +21,7 @@ class SQLEvaluator:
             return ""
     
     def evaluate_sql_query(self, question, table_summary, generated_sql, ss_content, log_file_path=None):
-        """SQL 쿼리를 4가지 기준으로 평가"""
+        """Evaluate SQL query with 4 criteria"""
         
         def log(msg):
             print(msg)
@@ -38,7 +33,7 @@ class SQLEvaluator:
         log(f"Question: {question}")
         log(f"Generated SQL: {generated_sql}")
         
-        # SQL 평가 프롬프트 로드
+        # Load SQL evaluation prompt
         evaluation_prompt_path = os.path.join(self.prompt_dir, "SQL_Evaluation.txt")
         try:
             with open(evaluation_prompt_path, 'r', encoding='utf-8') as f:
@@ -47,7 +42,7 @@ class SQLEvaluator:
             log(f"Failed to load SQL evaluation prompt at {evaluation_prompt_path}")
             return None
         
-        # 프롬프트 포맷팅
+        # Format prompt
         prompt = prompt_template.replace(
             "{question}", question
         ).replace(
@@ -75,12 +70,12 @@ class SQLEvaluator:
             response_text = response.choices[0].message.content
             log(f"LLM Response: {response_text}")
             
-            # JSON 추출
+            # Extract JSON
             json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
             if json_match:
                 evaluation_result = json.loads(json_match.group())
                 
-                # all_criteria_passed 계산 (4개 기준 모두 통과해야 함)
+                # Calculate all_criteria_passed (all 4 criteria must pass)
                 criteria = ['Appropriate Role', 'Well Used Row Analysis', 'Appropriate Data Type', 'Faithfulness']
                 all_passed = all(
                     evaluation_result.get(criterion, {}).get('result', 'no').lower() == 'yes' 
@@ -105,13 +100,13 @@ class SQLEvaluator:
             return None
     
     def generate_sql_feedback(self, question, ss_content, generated_sql, evaluation_result):
-        """SQL 평가 결과를 바탕으로 피드백 생성"""
+        """Generate feedback based on SQL evaluation result"""
         feedbacks = []
         
         if not evaluation_result:
             return ""
         
-        # 각 기준별로 실패한 경우 해당 피드백 생성
+        # Generate feedback for each criterion that failed
         criteria_feedback_mapping = {
             'Appropriate Role': 'appropriate_role.txt',
             'Well Used Row Analysis': 'well_used_row_analysis.txt', 
@@ -122,19 +117,17 @@ class SQLEvaluator:
         for criterion, feedback_file in criteria_feedback_mapping.items():
             criterion_result = evaluation_result.get(criterion, {})
             if criterion_result.get('result', 'no').lower() == 'no':
-                # 해당 기준 실패 시 피드백 생성
+                # Generate feedback for the criterion that failed
                 feedback_prompt_path = os.path.join(self.prompt_dir, "SQL_feedback", feedback_file)
                 try:
                     with open(feedback_prompt_path, 'r', encoding='utf-8') as f:
                         feedback_template = f.read().strip()
                     
-                    # 프롬프트 포맷팅
+                    # Format prompt
                     prompt = feedback_template.replace(
                         "{question}", question
                     ).replace(
                         "{ss}", ss_content
-                    ).replace(
-                        "{scs}", ss_content  # SCS와 SS 둘 다 지원
                     ).replace(
                         "{generated_sql}", generated_sql
                     ).replace(
@@ -157,7 +150,7 @@ class SQLEvaluator:
         return "\n\n".join(feedbacks) if feedbacks else ""
     
     def refine_sql_with_feedback(self, original_sql, feedback, question, ss_content, table_summary):
-        """피드백을 바탕으로 SQL 재생성"""
+        """Refine SQL with feedback"""
         if not feedback:
             return original_sql
         
@@ -193,15 +186,15 @@ Generate only the improved SQL query without any explanation."""
             
             improved_sql = response.choices[0].message.content.strip()
             
-            # SQL만 추출 (설명 제거)
+            # Extract SQL only (remove explanation)
             if "SELECT" in improved_sql.upper():
-                # SQL 부분만 추출
+                # Extract SQL only
                 lines = improved_sql.split('\n')
                 sql_lines = []
                 for line in lines:
                     if any(keyword in line.upper() for keyword in ['SELECT', 'FROM', 'WHERE', 'GROUP', 'ORDER', 'HAVING']):
                         sql_lines.append(line.strip())
-                    elif sql_lines and line.strip():  # SQL 시작 후 연속된 라인
+                    elif sql_lines and line.strip():  # After SQL starts, consecutive lines
                         sql_lines.append(line.strip())
                 
                 if sql_lines:

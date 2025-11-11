@@ -27,7 +27,7 @@ def load_prompt(filename):
         return ""
 
 def generate_ss_feedback(row_eval, recon_eval, preview_table, current_summary, subtable_df, generated_table_text=None):
-    """Generate feedback based on SS evaluation results"""
+    """Generate feedback based on SS evaluation results""" 
     feedbacks = []
     
     if row_eval and not row_eval.get('all_criteria_passed', False):
@@ -186,7 +186,6 @@ def extract_numeric_columns(summary_text: str):
     return numeric_cols
 
 def parse_answer(response: str) -> str:
-    """LLM 응답에서 Answer 부분만 추출"""
     output_ans = response
     try:
         output_ans = response.split("Answer:")[1]
@@ -384,7 +383,7 @@ def tabsqlify_wtq(T, title, tab_col, question, full_table, summary,
 
             return sql_final, result_sql, response, output_ans, linear_table
 
-    log("[Fallback] SQL 결과가 없으므로 Full Table 기반 추론으로 전환")
+    log("[Fallback] No SQL result, switching to full table-based reasoning")
     sql = "select * from T"
     result = T.copy() # copy full table
     linear_table = table_linearization(result, style='pipe')
@@ -615,4 +614,4 @@ if __name__ == "__main__":
                         summary, result.size, T.size]
                 writer.writerow(data)
 
-    print(f"\n✅ Final Accuracy: {correct}/{t_samples} ({correct / (t_samples + 0.0001):.4f})")
+    print(f"\nFinal Accuracy: {correct}/{t_samples} ({correct / (t_samples + 0.0001):.4f})")

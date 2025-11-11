@@ -1,8 +1,3 @@
-"""
-SS Table Evaluator - 테이블 생성 후 비교를 통한 SS 평가 모듈
-TabBridge에서 사용할 SS 평가 시스템 (방식 2: 간접 평가)
-"""
-
 import os
 import re
 import json
@@ -15,14 +10,14 @@ import numpy as np
 
 class SSTableEvaluator:
     def __init__(self, model_name="gpt-4o"):
-        """SS 테이블 평가기 초기화"""
+        """Initialize SS table evaluator"""
         self.client = OpenAI()
         self.model_name = model_name
         self.bert_model = SentenceTransformer('BAAI/bge-large-en')
         self.prompt_dir = "prompt"
     
     def load_prompt(self, filename):
-        """프롬프트 파일 로드"""
+        """Load prompt file"""
         file_path = os.path.join(self.prompt_dir, filename)
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -32,10 +27,10 @@ class SSTableEvaluator:
             return ""
     
     def step1_extract_schema(self, title, ss_content):
-        """Step 1: SS에서 스키마 추출"""
+        """Step 1: Extract schema from SS"""
         prompt_template = self.load_prompt("Table_Generation/Schema_Extraction.txt")
         if not prompt_template:
-            # Fallback 프롬프트
+            # Fallback prompt
             prompt_template = """Extract table schema from the given information.
             
 ***TASK***:
@@ -62,7 +57,7 @@ Extract the table name and column headers from the title and SS content.
             
             response_text = response.choices[0].message.content
             
-            # JSON 추출
+            # Extract JSON
             json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
             if json_match:
                 return json.loads(json_match.group())
@@ -74,10 +69,10 @@ Extract the table name and column headers from the title and SS content.
             return None
     
     def step2_extract_instructions(self, ss_content):
-        """Step 2: SS에서 생성 지침 추출"""
+        """Step 2: Extract generation instructions from SS"""
         prompt_template = self.load_prompt("Table_Generation/Instruction_Extraction.txt")
         if not prompt_template:
-            # Fallback 프롬프트
+            # Fallback prompt
             prompt_template = """Extract detailed instructions for table generation from SS content.
             
 ***TASK***:
@@ -108,7 +103,7 @@ Convert the SS content into detailed instructions for generating realistic table
             
             response_text = response.choices[0].message.content
             
-            # JSON 추출
+            # Extract JSON
             json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
             if json_match:
                 return json.loads(json_match.group())
@@ -120,10 +115,10 @@ Convert the SS content into detailed instructions for generating realistic table
             return None
     
     def step3_generate_table(self, schema, instructions):
-        """Step 3: 스키마와 지침으로 테이블 생성"""
+        """Step 3: Generate table with schema and instructions"""
         prompt_template = self.load_prompt("Table_Generation/Table_Generation.txt")
         if not prompt_template:
-            # Fallback 프롬프트
+            # Fallback prompt
             prompt_template = """Generate a realistic table based on the given schema and instructions.
             
 ***TASK***:
@@ -152,10 +147,10 @@ Return the table in markdown format with proper headers and data rows."""
             return None
     
     def parse_markdown_table(self, markdown_text):
-        """마크다운 테이블을 DataFrame으로 변환"""
+        """Convert markdown table to DataFrame"""
         lines = markdown_text.strip().split('\n')
         
-        # 테이블 부분 찾기
+        # Find table part
         table_lines = []
         in_table = False
         
@@ -170,13 +165,13 @@ Return the table in markdown format with proper headers and data rows."""
         if len(table_lines) < 2:
             return None
         
-        # 헤더 추출
+        # Extract headers
         header_line = table_lines[0]
         headers = [h.strip() for h in header_line.split('|')[1:-1]]
         
-        # 데이터 행 추출 (구분선 제외)
+        # Extract data rows (exclude separator lines)
         data_rows = []
-        for line in table_lines[2:]:  # 헤더와 구분선 제외
+        for line in table_lines[2:]:  # Exclude header and separator lines
             if line.strip() and '|' in line:
                 row = [cell.strip() for cell in line.split('|')[1:-1]]
                 if len(row) == len(headers):
@@ -188,28 +183,28 @@ Return the table in markdown format with proper headers and data rows."""
         return pd.DataFrame(data_rows, columns=headers)
     
     def calculate_header_em(self, original_headers, generated_headers):
-        """Header Exact Match 점수 계산"""
+        """Calculate Header Exact Match score"""
         if not original_headers or not generated_headers:
             return 0.0
         
-        # 정규화 (소문자, 공백 제거)
+        # Normalize (lowercase, remove whitespace)
         orig_normalized = [h.lower().strip() for h in original_headers]
         gen_normalized = [h.lower().strip() for h in generated_headers]
         
-        # 완전 일치 확인
+        # Check for exact match
         if orig_normalized == gen_normalized:
             return 1.0
         
-        # 부분 일치 점수
+        # Calculate partial match score
         matches = sum(1 for h in orig_normalized if h in gen_normalized)
         return matches / max(len(orig_normalized), len(gen_normalized))
     
     def calculate_cell_similarity(self, original_df, generated_df):
-        """Cell Similarity (BERT 기반) 점수 계산"""
+        """Calculate Cell Similarity (BERT-based) score"""
         if original_df is None or generated_df is None:
             return 0.0
         
-        # 공통 컬럼만 비교
+        # Compare only common columns
         common_cols = list(set(original_df.columns) & set(generated_df.columns))
         if not common_cols:
             return 0.0
@@ -220,17 +215,17 @@ Return the table in markdown format with proper headers and data rows."""
             orig_values = original_df[col].astype(str).tolist()
             gen_values = generated_df[col].astype(str).tolist()
             
-            # 최소 길이로 맞춤
+            # Align to minimum length
             min_len = min(len(orig_values), len(gen_values))
             orig_values = orig_values[:min_len]
             gen_values = gen_values[:min_len]
             
             if orig_values and gen_values:
-                # BERT 임베딩
+                # BERT embedding
                 orig_embeddings = self.bert_model.encode(orig_values)
                 gen_embeddings = self.bert_model.encode(gen_values)
                 
-                # 코사인 유사도 계산
+                # Calculate cosine similarity
                 col_similarities = []
                 for i in range(len(orig_values)):
                     sim = cosine_similarity([orig_embeddings[i]], [gen_embeddings[i]])[0][0]
@@ -241,7 +236,7 @@ Return the table in markdown format with proper headers and data rows."""
         return np.mean(similarities) if similarities else 0.0
     
     def evaluate_ss_by_table_generation(self, title, ss_content, subtable_df, log_file_path=None):
-        """SS를 테이블 생성을 통해 평가"""
+        """Evaluate SS by table generation"""
         
         def log(msg):
             print(msg)
@@ -251,7 +246,7 @@ Return the table in markdown format with proper headers and data rows."""
         
         log("=== SS Table Generation Evaluation ===")
         
-        # Step 1: 스키마 추출
+        # Step 1: Extract schema
         log("Step 1: Extracting schema...")
         schema = self.step1_extract_schema(title, ss_content)
         if not schema:
@@ -260,7 +255,7 @@ Return the table in markdown format with proper headers and data rows."""
         
         log(f"Extracted schema: {schema}")
         
-        # Step 2: 지침 추출
+        # Step 2: Extract instructions
         log("Step 2: Extracting instructions...")
         instructions = self.step2_extract_instructions(ss_content)
         if not instructions:
@@ -269,7 +264,7 @@ Return the table in markdown format with proper headers and data rows."""
         
         log(f"Extracted instructions: {instructions}")
         
-        # Step 3: 테이블 생성
+        # Step 3: Generate table
         log("Step 3: Generating table...")
         generated_table_text = self.step3_generate_table(schema, instructions)
         if not generated_table_text:
@@ -278,7 +273,7 @@ Return the table in markdown format with proper headers and data rows."""
         
         log(f"Generated table text:\n{generated_table_text}")
         
-        # 생성된 테이블 파싱
+        # Parse generated table
         generated_df = self.parse_markdown_table(generated_table_text)
         if generated_df is None:
             log("Failed to parse generated table")
@@ -286,14 +281,14 @@ Return the table in markdown format with proper headers and data rows."""
         
         log(f"Parsed generated table: {generated_df.shape}")
         
-        # 평가 지표 계산
+        # Calculate evaluation metrics
         header_em = self.calculate_header_em(subtable_df.columns.tolist(), generated_df.columns.tolist())
         cell_similarity = self.calculate_cell_similarity(subtable_df, generated_df)
         
         log(f"Header EM Score: {header_em:.4f}")
         log(f"Cell Similarity: {cell_similarity:.4f}")
         
-        # 결과 반환
+        # Return result
         return {
             'header_em_score': header_em,
             'cell_similarity_score': cell_similarity,
@@ -301,5 +296,5 @@ Return the table in markdown format with proper headers and data rows."""
             'generated_df': generated_df,
             'schema': schema,
             'instructions': instructions,
-            'evaluation_passed': header_em >= 0.8 and cell_similarity >= 0.65  # 임계값
+            'evaluation_passed': header_em >= 0.8 and cell_similarity >= 0.65  # Threshold
         }

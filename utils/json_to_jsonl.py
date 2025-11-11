@@ -34,11 +34,11 @@ def convert_json_to_jsonl(input_json_path, output_jsonl_path):
                 f.write(json_line + '\n')
                 idx_counter += 1
     
-    print(f"변환 완료: {output_jsonl_path}")
+    print(f"Conversion completed: {output_jsonl_path}")
 
 def main():
-    input_json = "/home/wooo519/tableReasoningFinal/MINE_Final/MyMethod_final_one_last/datasets/wtq.json"
-    output_jsonl = "/home/wooo519/tableReasoningFinal/MINE_Final/MyMethod_final_one_last/datasets/wtq.jsonl"
+    input_json = "../MINE_Final/MyMethod_final_one_last/datasets/wtq.json"
+    output_jsonl = "../MINE_Final/MyMethod_final_one_last/datasets/wtq.jsonl"
     convert_json_to_jsonl(input_json, output_jsonl)
 
 if __name__ == "__main__":
