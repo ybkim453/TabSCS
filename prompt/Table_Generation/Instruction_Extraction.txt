@@ -1,0 +1,97 @@
+You are an expert at converting SS (Structure Specification) into detailed table generation instructions.
+
+***TASK***:
+Given a SS, convert descriptive information into specific instructions for table data generation.
+
+***INSTRUCTIONS***:
+1. Extract data patterns from "### Column Analysis" section
+2. Convert "### Atypical Analysis" into special row instructions
+3. Create realistic data generation rules based on representative values
+
+***REASONING STEPS***:
+
+**Step 1 - Analysis Column Information**:
+- Extract representative values and data types for each column
+- Create data generation patterns based on "### Column Analysis:" section
+
+**Step 2 - Extract Unique Features**:
+- Identify distinctive rows from "### Atypical Analysis"
+- Convert into special handling instructions
+
+**Step 3 - Define Generation Rules**:
+- Create column relationship rules based on roles
+- Establish formatting guidelines from representative values
+- Extract concrete examples for realistic data generation
+
+***OUTPUT FORMAT***:
+{
+    "data_generation_instructions": [
+        "Generate [column] following pattern [examples]",
+        "Generate [column] with [data type] values like [examples]"
+    ],
+    "row_analysis_instructions": [
+        "Include [special characteristic] for distinctive rows"
+    ],
+    "column_relationship_rules": [
+        "[Column A] should relate to [Column B] based on [role]"
+    ],
+    "data_patterns": [
+		    "[Key patterns observed]"
+		]
+}
+
+***EXAMPLE***:
+Input SS containing:
+"### Column Descriptions:
+
+1. **Rank:**
+   - Data type: Numeric
+   - Representative values: 2, 3, 5, 7
+   - Role: Descriptor indicating the ranking of the cyclist in the race.
+
+2. **Cyclist:**
+   - Data type: Categorical
+   - Representative values: Alexandr Kolobnev (RUS), Davide Rebellin (ITA), Franco Pellizotti (ITA), Samuel Sánchez (ESP)
+   - Role: Identifier for the cyclist participating in the race.
+
+3. **Team:**
+   - Data type: Categorical
+   - Representative values: Team CSC Saxo Bank, Gerolsteiner, Liquigas, Euskaltel-Euskadi
+   - Role: Descriptor indicating the team the cyclist belongs to.
+
+### Row Analysis:
+
+1. **Row 0:**
+   - Alexandr Kolobnev from Team CSC Saxo Bank has the highest UCI ProTour Points (30). This row may need special handling due to the outlier points compared to the other cyclists.
+
+2. **Row 6:**
+   - Stéphane Goubert from Ag2r-La Mondiale team has a time difference of +2", which sets it apart from other cyclists who have s.t. (same time)."
+
+Output:
+{
+    "data_generation_instructions": [
+        "Generate Rank as small integers (2-10 range)",
+        "Generate Cyclist names as 'FirstName LastName (COUNTRY)' like Alexandr Kolobnev (RUS)",
+        "Generate Time as 's.t.' or '+ Xs\"' format",
+        "Generate UCI ProTour Points as decreasing values (30, 25, 15, 7)"
+    ],
+    "row_analysis_instructions": [
+        "Include rows with high UCI ProTour Points for standout performers",
+        "Include rows with time differences (+2\") for cyclists behind main group"
+    ],
+    "column_relationship_rules": [
+        "Higher Rank numbers should have lower UCI ProTour Points",
+        "Each Cyclist must have corresponding Team"
+    ],
+    "concrete_examples": {
+        "primary_entities": "Alexandr Kolobnev (RUS), Davide Rebellin (ITA), Team CSC Saxo Bank, Gerolsteiner",
+        "data_patterns": "Cyclist names with country codes, cycling team names, race timing formats"
+    }
+}
+
+***FINAL CHECKLIST***:
+- Column Descriptions processed into data generation instructions
+- Atypical Analysis converted to special row handling
+- Concrete examples extracted for realistic data patterns
+
+Provide the *OUTPUT* in the specified JSON format only.

@@ -1,0 +1,89 @@
+You are an expert at generating realistic tabular data. Your task is to create a complete table using the provided schema and instructions.
+
+***TASK***:
+**Given**:
+*Schema*: JSON object with table name, column headers, and row information
+*Instructions*: Detailed instructions for data generation, relationships, and special requirements
+
+**Your goal**:
+Generate a complete table by systematically filling each cell according to the provided schema and instructions.
+
+***REASONING STEPS***:
+Follow the algorithm step by step:
+
+**ALGORITHM**
+Step 1: Initialize Table Structure
+    Create empty table with column headers from schema
+    Create 6 rows based on schema
+
+Step 2: Generate Data Following Instructions
+    For each data_generation_instruction:
+        Generate realistic values using representative values from Column Analysis
+        Apply column_relationship_rules for consistency
+        
+Step 3: Complete Table and Apply Special Handling
+    Fill any remaining empty cells with consistent data
+    Apply row_analysis_instructions for distinctive rows
+    Ensure all relationship rules are satisfied
+
+**DETAILED PROCESS**:
+
+**Step 1 - Initialize**:
+- Create table with column headers from schema
+- Set up 6 empty rows
+
+**Step 2 - Generate Data & Fill Each Cell**:
+- Follow data_generation_instructions for each column and fill each cell
+- Apply column_relationship_rules
+
+**Step 3 - Finalize**:
+- Complete any empty cells
+- Handle row analysis from row_analysis_instructions
+- Verify consistency
+
+***REQUIREMENTS***:
+1. Generate EXACTLY 6 data rows using representative values from Column Analysis
+2. Follow column_relationship_rules for data consistency
+3. Apply row_analysis_instructions for distinctive rows
+
+***FINAL OUTPUT***:
+Generate EXACTLY 6 data rows following the schema and instructions.
+Use "|" to separate cells and maintain proper markdown table formatting.
+
+Process the table generation step by step, then provide the final table in this format:
+
+### <TABLE NAME>
+| Column 1 | Column 2 | Column 3 | ... |
+|----------|----------|----------|-----|
+| Row 1 Data | Row 1 Data | Row 1 Data | ... |
+| Row 2 Data | Row 2 Data | Row 2 Data | ... |
+| ... (exactly 6 rows) |
+
+
+***EXAMPLE***:
+Input Schema:
+{
+    "table_name": "2008 Clásica de San Sebastián",
+    "column_headers": ["Rank", "Cyclist", "Team", "Time", "UCI ProTour Points"],
+    "row_identifier": "Cyclist"
+}
+
+Input Instructions:
+{
+    "data_generation_instructions": [
+        "Generate Rank as small integers (2-10 range)",
+        "Generate Cyclist names as 'FirstName LastName (COUNTRY)' like Alexandr Kolobnev (RUS)",
+        "Generate Time as 's.t.' or '+ Xs\"' format"
+    ],
+    "row_analysis_instructions_instructions": [
+        "Include rows with high UCI ProTour Points for standout performers"
+    ]
+}
+
+Output:
+### 2008 Clásica de San Sebastián
+| Rank | Cyclist | Team | Time | UCI ProTour Points |
+|------|---------|------|------|-------------------|
+| 2 | Alexandr Kolobnev (RUS) | Team CSC Saxo Bank | s.t. | 30 |
+| 3 | Davide Rebellin (ITA) | Gerolsteiner | s.t. | 25 |
+| ... (6 rows total) |

@@ -1,0 +1,25 @@
+You are an expert data analyst providing constructive feedback to improve table analysis. Your task is to provide specific, actionable feedback.
+
+***TASK***:
+Based on the evaluation results, provide detailed feedback to help improve the analysis.
+
+***INPUT***:
+**Sub Table:** {sub_tab}
+**Generated Table:** {generated_table}
+**EM Score:** {em_score}
+
+***Guidelines:***
+- Compare the original sub table headers with generated table headers
+- Identify specific header discrepancies (missing, extra, or incorrectly named headers)
+- Analyze how different the sub tables header, and generated tables header is.
+- Provide feedback for proper header extraction from table, based on the previous failed case.
+- Focus on what the model should pay attention to for improvement
+- Consider both structural and semantic aspects of tables
+- Remember that not all tables have spsecial row - uniform data is valid
+
+**Output Format:**
+{{
+    "Header FeedBack": "<Detailed feedback on header extraction and matching issues and what the model should focus on>"
+}}
+
+Provide feedback in JSON format using the appropriate output format based on the feedback type needed.

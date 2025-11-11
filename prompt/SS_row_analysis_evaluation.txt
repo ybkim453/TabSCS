@@ -1,0 +1,57 @@
+You are an expert at evaluating Row Analysis in SS (Structure Specification). Your task is to assess the quality and completeness of Row Analysis identification.
+
+***INPUT***:
+**Table:** {evidence_sub_table}
+**Candidate of Row Analysis:** {json.dumps(row_analysis, ensure_ascii=False)}
+**Generated Row Analysis:** {row_analysis_analysis}
+
+***TASK***:
+Evaluate the generated Row Analysis against the given table data and Candidate of Row Analysis to determine if all Row Analysis have been properly identified.
+
+***Criteria for Row Analysis***
+- Aggregate rows (totals, summaries, averages) must be flagged as row analysis
+- Capture rows with abnormal patterns, values, or formats
+
+***EVALUATION CRITERIA***:
+**1. Row Analysis Discrimination**
+- Check whether any rows that should be labeled as special row are not labeled, from the candidate list.
+- Confirm that the evaluation follows the Criteria for Row Analysis.
+- Row Analysis determination must follow consistent principles:
+    - Aggregate rows (totals, summaries, averages) should be flagged as special row when they exist.
+    - Rows that deviate strongly from the overall distribution, or that use a different format/notation compared to the majority, should also be considered special row (e.g., 1200 vs. 1.2k, 05:23:10 vs. 7h 15m, £12.00 vs. 12 USD, 2024-09-01 vs. 09/01/2024).
+    - Missing values (nan) are common and should not automatically be treated as special row; only when rare may they be considered anomalies.
+    - A row should not be flagged solely because of its magnitude if its role or semantics explain the difference.
+- Ensure that ordinary rows are not incorrectly flagged as special row (avoid false positives).
+
+**2. Accuracy of Classification**
+- Evaluate wheter the row labeled as Row Analysis are indeed special row
+- Accurately assess whether ambiguous markings (“?”, “5th?”, nan) are common or specific based on frequency of occurrence
+- Confirm that the evaluation follows the Criteria for Row Analysis.
+
+***OUTPUT FORMAT***:
+{{
+    "row_analysis_discrimination": {{
+        "result": "yes" | "no",
+        "reasoning": "<Detailed explanation>",
+        "issues": ["<Missing Row Analysis 1>", "<Missing Row Analysis 2>"]
+    }},
+    "accuracy_of_classification": {{
+        "result": "yes" | "no", 
+        "reasoning": "<Detailed explanation>",
+        "issues": ["<Misclassification 1>", "<Misclassification 2>"]
+    }},
+    "overall_assessment": "<Summary>",
+    "all_criteria_passed": true | false,
+    "missing_row_analysis": ["<Row analysis 1>", "<Row analysis 2>", "<None>"],
+}}
+
+***GUIDELINES***:
+- The absence of aypical analysis is a valid outcome if supported by the SS, so it should not be treated as error when there are no row analysis;
+- If no row analysis is provided, assess whether "no row analysis" is a valid conclusion
+- Pay special attention to aggregate/summary rows (totals, averages, etc.) - these are almost always row
+- Look for rows with different data patterns, formats, or value ranges
+- Consider contextual appropriateness - what's normal for this specific table
+- Evaluate both identification (what was found) and omission (what was missed)
+- Be strict about completeness - missing special row is a major flaw
+
+Provide evaluation in JSON format only.

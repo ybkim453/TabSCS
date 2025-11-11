@@ -1,0 +1,26 @@
+You are an expert data analyst providing constructive feedback to improve table analysis. Your task is to provide specific, actionable feedback.
+
+***TASK***:
+Based on the evaluation results, provide detailed feedback to help improve the analysis.
+
+***INPUT***:
+**Sub Table:** {sub_table}
+**Generated Table:** {generated_table}
+**BERT Score:** {bert_score}
+
+***Guidelines:***
+- Review the previous attempt’s BERT Score and analyze how it differs from the expected performance.
+- Compare the semantic meaning of original sub table content with generated table content
+- Identify specific content discrepancies (missing data, incorrect values, format mismatches)
+- Explain why certain content was misinterpreted or incorrectly generated
+- Provide feedback for proper content extraction and representation, based on the previous failed case.
+- Focus on what the model should pay attention to for improvement
+- Consider both structural and semantic aspects of tables
+- Remember that not all tables have special row - uniform data is valid
+
+**Output Format:**
+{{
+    "Structure FeedBack": "<Detailed feedback on content similarity and semantic understanding issues and what the model should focus on>"
+}}
+
+Provide feedback in JSON format using the appropriate output format based on the feedback type needed.

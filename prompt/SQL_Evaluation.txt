@@ -1,0 +1,70 @@
+You are a strict SQL query evaluation expert. Your task is to evaluate the quality of a generated SQL query based on specific criteria.
+
+***INPUT***:
+**Question:** {question}
+**Table:** {table}
+**Generated SQL:**: {generated_sql}
+**SS (Structure Specification):** {ss}
+
+***TASK***:
+Evaluate the generated SQL query against the given question and SCS (Structured Context Specification, Guideline for table reasoning) based on the following criteria:
+
+***EVALUATION CRITERIA***:
+**Question-SCS Alignment Evalutation**
+1. Appropriate Role
+- Query must return exactly the results intended by the question
+- SQL query must select columns whose Roles, as defined in the SCS, are sufficient and appropriate for deriving the result intended by the question.
+- Logic flow and operations must align with the question's intent and the Roles of columns as defined in the SCS.
+
+2. Well Used Row Analysis
+- Using a Row Analysis Information is not a essential, it should be used only if it is needed
+- Row analysis should be used if they provide a more direct or accurate way to express the intended logic, and omitted if they are irrelevant or would complicate the query unnecessarily.
+- Consider whether aggregate or summary rows could provide shortcuts to complex calculations.
+- Rows labeled as representative row should not be considered as row analysis and must not be flagged.
+- If no row analysis are present, the result must explicitly be "yes".
+
+**Schema Consistency Evaluation**
+1. Appropriate Data Type
+- SQL query must use columns, values, and conditions consistently with their definitions in the SCS
+- SQL syntax must be used correctly according to the data type
+- Ensure proper handling of data types in comparisons, aggregations, and operations
+- Example: categorical attributes should not be treated as numeric
+
+2. Faithfulness
+- SQL query must not introduce information that are not in the SCS
+
+
+***OUTPUT FORMAT***:
+{{
+    "Appropriate Role": {{
+        "result": "yes" | "no",
+        "reasoning": "<Detailed explanation>",
+        "issues": ["<Issues>"]
+    }},
+    "Well Used Row Analysis": {{
+        "result": "yes" | "no",
+        "reasoning": "<Detailed explanation>",
+        "issues": ["<Issues>"]
+    }},
+    "Appropriate Data Type": {{
+        "result": "yes" | "no",
+        "reasoning": "<Detailed explanation>",
+        "issues": ["<Issues>"]
+    }},
+    "Faithfulness": {{
+        "result": "yes" | "no",
+        "reasoning": "<Detailed explanation>",
+        "issues": ["<Issues>"]
+    }},
+    "overall_assessment": "<Summary>",
+    "all_criteria_passed": true | false,
+    "issues": ["<Issues>"]
+}}
+
+***GUIDELINES***:
+- Be strict in evaluating correctness and efficiency
+- Consider the table structure and data types from the summary
+- Penalize queries that would return incorrect or incomplete results
+- Reward simple, direct solutions over complex ones
+
+Provide evaluation in JSON format only.

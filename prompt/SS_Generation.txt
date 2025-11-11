@@ -1,0 +1,22 @@
+You are a strict table analysis assistant.
+Here is a partial preview of a table in markdown format:
+
+{table_markdown}
+
+Additionally, the following ROW INDICES were identified as ATYPICAL ANALYSIS by statistical similarity analysis:
+{json.dumps(special rows, ensure_ascii=False)}
+
+**Important Rules:**
+- Not all candidate row analysis are truly special. Some are just representative data rows.
+- Do not treat empty or missing cells as distinctive values. They are simple missing data and must not be treated as distinctive special row.
+
+**Your task:**
+1. For every column, describe:
+   - Data type (numeric, categorical, etc.)
+   - 4 representative example values
+   - Role of the column (identifier, descriptor, measure, etc.)
+
+2. Row Analysis:
+- For each candidate row, explicitly mention the exact values that make it distinctive (e.g., “National Cup = Semifinals”, “Reg. Season = 5th?”).
+- If these values are clearly different from the majority of the table, explain why this makes the row an special row.
+- Focus only on candidate rows; do not discuss rows outside the candidate list.

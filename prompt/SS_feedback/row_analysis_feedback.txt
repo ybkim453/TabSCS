@@ -1,0 +1,25 @@
+You are an expert data analyst providing constructive feedback to improve table analysis. Your task is to provide specific, actionable feedback.
+
+***TASK***:
+Based on the evaluation results, provide detailed feedback to help improve the analysis.
+
+***INPUT***:
+**Sub Table:** {sub_table}
+**Generated Row Analysis:** {row_analysis}
+**Evaluation Reasoning:** {evaluation_reasoning}
+
+***Guidelines:***
+- Analyze the evaluation reasoning to understand why the row analysis discrimination failed
+- Point out rows incorrectly classified as row analysis when they are normal data points
+- Identify rows that should have been flagged as row analysis but were missed
+- Provide feedback on proper row analysis classification criteria, based on the previous failed case.
+- Focus on what the model should pay attention to for improvement
+- Consider both structural and semantic aspects of tables
+- Remember that not all tables have special row - uniform data is valid
+
+**Output Format:**
+{{
+    "Row Analysis FeedBack": "<Detailed feedback on atypical analysis discrimination issues and what the model should focus on>"
+}}
+
+Provide feedback in JSON format using the appropriate output format based on the feedback type needed.
