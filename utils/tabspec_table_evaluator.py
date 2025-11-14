@@ -8,9 +8,9 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
-class SSTableEvaluator:
+class TabSpecTableEvaluator:
     def __init__(self, model_name="gpt-4o"):
-        """Initialize SS table evaluator"""
+        """Initialize TabSpec table evaluator"""
         self.client = OpenAI()
         self.model_name = model_name
         self.bert_model = SentenceTransformer('BAAI/bge-large-en')
@@ -26,15 +26,15 @@ class SSTableEvaluator:
             print(f"Warning: Prompt file {filename} not found.")
             return ""
     
-    def step1_extract_schema(self, title, ss_content):
-        """Step 1: Extract schema from SS"""
+    def step1_extract_schema(self, title, tabspec_content):
+        """Step 1: Extract schema from TabSpec"""
         prompt_template = self.load_prompt("Table_Generation/Schema_Extraction.txt")
         if not prompt_template:
             # Fallback prompt
             prompt_template = """Extract table schema from the given information.
             
 ***TASK***:
-Extract the table name and column headers from the title and SS content.
+Extract the table name and column headers from the title and TabSpec content.
 
 ***OUTPUT FORMAT***:
 {
@@ -42,7 +42,7 @@ Extract the table name and column headers from the title and SS content.
     "headers": ["<header1>", "<header2>", ...]
 }"""
         
-        prompt = f"{prompt_template}\n\n***INPUT***:\nTitle: {title}\n\nSS Content:\n{ss_content}\n\nExtract the schema:"
+        prompt = f"{prompt_template}\n\n***INPUT***:\nTitle: {title}\n\nTabSpec Content:\n{tabspec_content}\n\nExtract the schema:"
         
         try:
             response = self.client.chat.completions.create(
@@ -68,15 +68,15 @@ Extract the table name and column headers from the title and SS content.
             print(f"Error in schema extraction: {str(e)}")
             return None
     
-    def step2_extract_instructions(self, ss_content):
-        """Step 2: Extract generation instructions from SS"""
+    def step2_extract_instructions(self, tabspec_content):
+        """Step 2: Extract generation instructions from TabSpec"""
         prompt_template = self.load_prompt("Table_Generation/Instruction_Extraction.txt")
         if not prompt_template:
             # Fallback prompt
-            prompt_template = """Extract detailed instructions for table generation from SS content.
+            prompt_template = """Extract detailed instructions for table generation from TabSpec content.
             
 ***TASK***:
-Convert the SS content into detailed instructions for generating realistic table data.
+Convert the TabSpec content into detailed instructions for generating realistic table data.
 
 ***OUTPUT FORMAT***:
 {
@@ -88,13 +88,13 @@ Convert the SS content into detailed instructions for generating realistic table
     "special_requirements": ["<requirement1>", "<requirement2>"]
 }"""
         
-        prompt = f"{prompt_template}\n\n***SS CONTENT***:\n{ss_content}\n\nExtract the instructions:"
+        prompt = f"{prompt_template}\n\n**TabSpec CONTENT***:\n{tabspec_content}\n\nExtract the instructions:"
         
         try:
             response = self.client.chat.completions.create(
                 model=self.model_name,
                 messages=[
-                    {"role": "system", "content": "You are an expert at converting SS content into generation instructions. Always return valid JSON."},
+                    {"role": "system", "content": "You are an expert at converting TabSpec content into generation instructions. Always return valid JSON."},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.1,
@@ -235,8 +235,8 @@ Return the table in markdown format with proper headers and data rows."""
         
         return np.mean(similarities) if similarities else 0.0
     
-    def evaluate_ss_by_table_generation(self, title, ss_content, subtable_df, log_file_path=None):
-        """Evaluate SS by table generation"""
+    def evaluate_tabspec_by_table_generation(self, title, tabspec_content, subtable_df, log_file_path=None):
+        """Evaluate TabSpec by table generation"""
         
         def log(msg):
             print(msg)
@@ -244,11 +244,11 @@ Return the table in markdown format with proper headers and data rows."""
                 with open(log_file_path, 'a', encoding='utf-8') as f:
                     f.write(msg + "\n")
         
-        log("=== SS Table Generation Evaluation ===")
+        log("=== TabSpec Table Generation Evaluation ===")
         
         # Step 1: Extract schema
         log("Step 1: Extracting schema...")
-        schema = self.step1_extract_schema(title, ss_content)
+        schema = self.step1_extract_schema(title, tabspec_content)
         if not schema:
             log("Failed to extract schema")
             return None
@@ -257,7 +257,7 @@ Return the table in markdown format with proper headers and data rows."""
         
         # Step 2: Extract instructions
         log("Step 2: Extracting instructions...")
-        instructions = self.step2_extract_instructions(ss_content)
+        instructions = self.step2_extract_instructions(tabspec_content)
         if not instructions:
             log("Failed to extract instructions")
             return None

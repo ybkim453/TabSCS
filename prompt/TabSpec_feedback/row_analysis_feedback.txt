@@ -19,7 +19,7 @@ Based on the evaluation results, provide detailed feedback to help improve the a
 
 **Output Format:**
 {{
-    "Row Analysis FeedBack": "<Detailed feedback on atypical analysis discrimination issues and what the model should focus on>"
+    "Row Analysis FeedBack": "<Detailed feedback on row analysis discrimination issues and what the model should focus on>"
 }}
 
 Provide feedback in JSON format using the appropriate output format based on the feedback type needed.

@@ -1,7 +1,7 @@
-You are an expert at extracting table schemas from SS (Structure Specification) and titles.
+You are an expert at extracting table schemas from TabSpec (Table Specification) and titles.
 
 ***TASK***:
-Given a table title and SS, extract the table name and column headers to create the table structure.
+Given a table title and TabSpec, extract the table name and column headers to create the table structure.
 
 ***INSTRUCTIONS***:
 1. Use the table title as the table name
@@ -18,7 +18,7 @@ Use the provided table title as the table name.
 From "### Column Analysis:" section, identify all column names:
 - Look for patterns like "1. **Column Name:**"
 - Extract exact column names from bold headers
-- Maintain order as listed in the SS
+- Maintain order as listed in the TabSpec
 
 **Step 3 - Determine Row Structure**:
 Based on the column information and examples, determine:
@@ -41,7 +41,7 @@ Based on the column information and examples, determine:
 ***EXAMPLE***:
 Input:
 Title: "2008 Clásica de San Sebastián"
-SS containing:
+TabSpec containing:
 "### Column Analysis:
 
 1. **Rank:**

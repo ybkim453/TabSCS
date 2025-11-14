@@ -1,58 +1,69 @@
 # Python 3.9 compatible packages - TabBridge execution
+# Optimized for compatibility and stability
 
-# Data Processing
-pandas>=1.3.0,<2.0.0
-numpy>=1.21.0,<1.25.0
+# Data Processing (core dependencies)
+pandas>=1.3.0,<2.1.0
+numpy>=1.21.0,<1.26.0
 
-# Machine Learning and Embedding
-sentence-transformers>=2.2.0,<3.0.0
+# PyTorch ecosystem (compatible versions for sentence-transformers)
+torch>=2.1.0,<2.2.0
+torchvision>=0.16.0,<0.17.0
+torchaudio>=2.1.0,<2.2.0
+
+# Transformers and NLP (compatible with sentence-transformers 2.2+)
+transformers>=4.30.0,<4.40.0
+sentence-transformers>=2.2.0,<2.4.0
+huggingface-hub>=0.15.0,<0.20.0
+tokenizers>=0.13.0,<0.16.0
+
+# Machine Learning
 scikit-learn>=1.0.0,<1.4.0
 
-# OpenAI API
-openai>=1.0.0,<2.0.0
-tiktoken>=0.5.0,<1.0.0
+# OpenAI API (stable versions)
+openai==1.3.0
+tiktoken>=0.5.0,<0.6.0
+httpx==0.24.1
 
-# Environment variable management
-python-dotenv>=0.19.0,<1.0.0
+# Environment management
+python-dotenv>=0.19.0,<1.1.0
 
-# Text processing and similarity calculation
-transformers>=4.20.0,<5.0.0
-torch>=1.12.0,<2.0.0
+# Table processing
+tabulate>=0.8.9,<0.10.0
 
-# Table processing and markdown
-tabulate>=0.8.9,<1.0.0
+# HTTP and networking (compatible with openai)
+requests>=2.25.0,<2.32.0
+urllib3>=1.26.0,<1.27.0
+certifi>=2021.10.8
 
-# HTTP request (OpenAI API dependency)
-requests>=2.25.0,<3.0.0
-urllib3>=1.26.0,<2.0.0
+# JSON and data formats
+jsonlines>=3.0.0,<4.1.0
 
-# JSON processing enhancement
-jsonlines>=3.0.0,<4.0.0
+# Type checking and validation
+typing-extensions>=4.12.0
 
-# Data validation and type checking
-typing-extensions>=4.0.0,<5.0.0
-
-# Logging and debugging
-tqdm>=4.62.0,<5.0.0
+# Progress and logging
+tqdm>=4.62.0,<4.67.0
 
 # Math and statistics
-scipy>=1.7.0,<1.11.0
+scipy>=1.7.0,<1.12.0
 
 # String processing
-regex>=2022.1.18
+regex>=2022.1.18,<2024.1.1
 
-# Specific embedding model (used in subtable_extractor_euclid.py, ss_reconstruction_based_evaluator.py)
-# BAAI/bge-large-en model download via huggingface_hub
-huggingface-hub>=0.15.0,<1.0.0
+# File I/O and data handling
+charset-normalizer>=2.0.0,<4.0.0
+idna>=2.10,<4.0
 
-# Warning processing (warnings is a standard library)
-# warnings is a standard library
+# Additional dependencies for sentence-transformers
+Pillow>=8.2.0,<11.0.0
+sympy>=1.9.0,<1.13.0
 
-# Environment variable processing enhancement (TOKENIZERS_PARALLELISM etc.)
-# Additional packages for os.environ are not needed
+# Standard library extensions (optional but recommended)
+setuptools>=65.0.0
+wheel>=0.37.0
 
 # Database (SQLite is built-in to Python)
-# sqlite3 is a standard library, so no additional installation is needed
+# sqlite3 is a standard library
 
 # Other standard Python libraries (no installation needed)
-# re, os, csv, json, io, time, sqlite3, warnings
+# re, os, csv, json, io, time, warnings

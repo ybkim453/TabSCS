@@ -5,19 +5,19 @@ Based on the evaluation results of a generated SQL query, provide detailed feedb
 
 ***INPUT***:
 **Question:** {question}
-**SS (Structured Context Specification):** {ss}
+**TabSpec (Table Context Specification):** {tabspec}
 **Generated SQL:** {generated_sql}
 **Evaluation Result:** {evaluation_result}
 
 ***FEEDBACK GUIDELINES***:
 - refer the following guideline
-	- Use only column names explicitly defined in the SS.
+	- Use only column names explicitly defined in the TabSpec.
 	- Stick strictly to the provided schema when forming SQL logic.
 - Provide feedback guiding how to maintain schema consistency and use correct column names. Refer the issues why previous attempt failed.
 
 ***OUTPUT FORMAT***:
 {{
-      "Exact Column Name Feedback": "<Specific instructions on which exact column names from the SS should be used instead>"
+      "Exact Column Name Feedback": "<Specific instructions on which exact column names from the TabSpec should be used instead>"
 }}
 
 ***GUIDELINES***:

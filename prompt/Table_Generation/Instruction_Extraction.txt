@@ -1,7 +1,7 @@
-You are an expert at converting SS (Structure Specification) into detailed table generation instructions.
+You are an expert at converting TabSpec (Table Specification) into detailed table generation instructions.
 
 ***TASK***:
-Given a SS, convert descriptive information into specific instructions for table data generation.
+Given a TabSpec, convert descriptive information into specific instructions for table data generation.
 
 ***INSTRUCTIONS***:
 1. Extract data patterns from "### Column Analysis" section
@@ -41,7 +41,7 @@ Given a SS, convert descriptive information into specific instructions for table
 }
 
 ***EXAMPLE***:
-Input SS containing:
+Input TabSpec containing:
 "### Column Descriptions:
 
 1. **Rank:**
@@ -62,7 +62,7 @@ Input SS containing:
 ### Row Analysis:
 
 1. **Row 0:**
-   - Alexandr Kolobnev from Team CSC Saxo Bank has the highest UCI ProTour Points (30). This row may need special handling due to the outlier points compared to the other cyclists.
+   - Alexandr Kolobnev from Team CSC Saxo Bank has the highest UCI ProTour Points (30). This row may need special handling due to the special row points compared to the other cyclists.
 
 2. **Row 6:**
    - Stéphane Goubert from Ag2r-La Mondiale team has a time difference of +2", which sets it apart from other cyclists who have s.t. (same time)."

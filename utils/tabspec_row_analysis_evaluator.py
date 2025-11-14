@@ -3,9 +3,9 @@ import re
 import json
 from openai import OpenAI
 
-class SSRowAnalysisEvaluator:
+class TabSpecRowAnalysisEvaluator:
     def __init__(self, model_name="gpt-3.5-turbo"):
-        """Initialize SS direct evaluator"""
+        """Initialize TabSpec direct evaluator"""
         self.client = OpenAI()
         self.model_name = model_name
         self.prompt_dir = "prompt"
@@ -20,8 +20,8 @@ class SSRowAnalysisEvaluator:
             print(f"Warning: Prompt file {filename} not found.")
             return ""
     
-    def extract_row_analysis_from_ss(self, ss_content):
-        """Extract Row Analysis from SS"""
+    def extract_row_analysis_from_tabspec(self, tabspec_content):
+        """Extract Row Analysis from TabSpec"""
         # Find Row Analysis or Outlier Row Analysis section
         patterns = [
             r'\*\*Row Analysis:\*\*\n(.*?)(?=\n\*\*|\Z)',
@@ -31,14 +31,14 @@ class SSRowAnalysisEvaluator:
         ]
         
         for pattern in patterns:
-            match = re.search(pattern, ss_content, re.DOTALL)
+            match = re.search(pattern, tabspec_content, re.DOTALL)
             if match:
                 return match.group(1).strip()
         
         return None
     
-    def extract_column_analysis_from_ss(self, ss_content):
-        """Extract Column Analysis from SS"""
+    def extract_column_analysis_from_tabspec(self, tabspec_content):
+        """Extract Column Analysis from TabSpec"""
         patterns = [
             r'\*\*Column Analysis:\*\*\n(.*?)(?=\n\*\*|\Z)',
             r'Column Analysis:\n(.*?)(?=\n[A-Z]|\Z)',
@@ -46,14 +46,14 @@ class SSRowAnalysisEvaluator:
         ]
         
         for pattern in patterns:
-            match = re.search(pattern, ss_content, re.DOTALL)
+            match = re.search(pattern, tabspec_content, re.DOTALL)
             if match:
                 return match.group(1).strip()
         
         return None
     
-    def evaluate_ss_row_analysis(self, subtable_markdown, outlier_candidates, ss_content, log_file_path=None):
-        """Evaluate SS Row Analysis directly"""
+    def evaluate_tabspec_row_analysis(self, subtable_markdown, row_analysis_candidates, tabspec_content, log_file_path=None):
+        """Evaluate TabSpec Row Analysis directly"""
         
         def log(msg):
             print(msg)
@@ -61,24 +61,24 @@ class SSRowAnalysisEvaluator:
                 with open(log_file_path, 'a', encoding='utf-8') as f:
                     f.write(msg + "\n")
         
-        log("=== SS Row Analysis Direct Evaluation ===")
+        log("=== TabSpec Row Analysis Direct Evaluation ===")
         
-        # Extract Row Analysis from SS
-        row_analysis = self.extract_row_analysis_from_ss(ss_content)
+        # Extract Row Analysis from TabSpec
+        row_analysis = self.extract_row_analysis_from_tabspec(tabspec_content)
         if not row_analysis:
-            log("No row analysis found in SS - treating as 'no outliers' case")
+            log("No row analysis found in TabSpec - treating as 'no special rows' case")
             return {
                 'row_analysis_discrimination': {
                     'result': 'yes',
-                    'reasoning': 'No row analysis provided - model determined no outliers exist. This is automatically considered correct.',
+                    'reasoning': 'No row analysis provided - model determined no special rows exist. This is automatically considered correct.',
                     'issues': []
                 },
                 'accuracy_of_classification': {
                     'result': 'yes',
-                    'reasoning': 'No outliers identified, which is valid when no special rows exist.',
+                    'reasoning': 'No row analysis identified, which is valid when no special rows exist.',
                     'issues': []
                 },
-                'overall_assessment': 'Model correctly determined no outliers exist.',
+                'overall_assessment': 'Model correctly determined no special rows exist.',
                 'all_criteria_passed': True,
                 'missing_row_analysis': ['None']
             }
@@ -86,7 +86,7 @@ class SSRowAnalysisEvaluator:
         log(f"Extracted row analysis: {row_analysis}")
         
         # Load evaluation prompt
-        evaluation_prompt_path = os.path.join(self.prompt_dir, "SS_row_analysis_evaluation.txt")
+        evaluation_prompt_path = os.path.join(self.prompt_dir, "TabSpec_row_analysis_evaluation.txt")
         try:
             with open(evaluation_prompt_path, 'r', encoding='utf-8') as f:
                 prompt_template = f.read().strip()
@@ -99,7 +99,7 @@ class SSRowAnalysisEvaluator:
         prompt = prompt_template.replace(
             "{evidence_sub_table}", subtable_markdown
         ).replace(
-            "{json.dumps(row_analysis, ensure_ascii=False)}", json.dumps(outlier_candidates, ensure_ascii=False)
+            "{json.dumps(row_analysis, ensure_ascii=False)}", json.dumps(row_analysis_candidates, ensure_ascii=False)
         ).replace(
             "{row_analysis_analysis}", row_analysis
         )
@@ -110,7 +110,7 @@ class SSRowAnalysisEvaluator:
                 messages=[
                     {
                         "role": "system", 
-                        "content": "You are an expert at evaluating Row Analysis in SS. Always return valid JSON following the exact format specified. Pay special attention to aggregate/summary rows and systematic patterns."
+                        "content": "You are an expert at evaluating Row Analysis in TabSpec. Always return valid JSON following the exact format specified. Pay special attention to aggregate/summary rows and systematic patterns."
                     },
                     {"role": "user", "content": prompt}
                 ],
@@ -148,8 +148,8 @@ class SSRowAnalysisEvaluator:
             log(f"Error in row analysis evaluation: {str(e)}")
             return None
     
-    def evaluate_ss_column_analysis(self, subtable_markdown, ss_content, log_file_path=None):
-        """Evaluate SS Column Analysis directly (extendable)"""
+    def evaluate_tabspec_column_analysis(self, subtable_markdown, tabspec_content, log_file_path=None):
+        """Evaluate TabSpec Column Analysis directly (extendable)"""
         
         def log(msg):
             print(msg)
@@ -157,12 +157,12 @@ class SSRowAnalysisEvaluator:
                 with open(log_file_path, 'a', encoding='utf-8') as f:
                     f.write(msg + "\n")
         
-        log("=== SS Column Analysis Direct Evaluation ===")
+        log("=== TabSpec Column Analysis Direct Evaluation ===")
         
-        # Extract Column Analysis from SS
-        column_analysis = self.extract_column_analysis_from_ss(ss_content)
+        # Extract Column Analysis from TabSpec
+        column_analysis = self.extract_column_analysis_from_tabspec(tabspec_content)
         if not column_analysis:
-            log("No column analysis found in SS")
+            log("No column analysis found in TabSpec")
             return None
         
         log(f"Extracted column analysis: {column_analysis}")
@@ -192,8 +192,8 @@ class SSRowAnalysisEvaluator:
         
         return None
     
-    def evaluate_ss_comprehensive(self, subtable_markdown, outlier_candidates, ss_content, log_file_path=None):
-        """Evaluate SS comprehensive directly"""
+    def evaluate_tabspec_comprehensive(self, subtable_markdown, row_analysis_candidates, tabspec_content, log_file_path=None):
+        """Evaluate TabSpec comprehensive directly"""
         
         def log(msg):
             print(msg)
@@ -201,16 +201,16 @@ class SSRowAnalysisEvaluator:
                 with open(log_file_path, 'a', encoding='utf-8') as f:
                     f.write(msg + "\n")
         
-        log("=== SS Comprehensive Direct Evaluation ===")
+        log("=== TabSpec Comprehensive Direct Evaluation ===")
         
         # Evaluate Row Analysis
-        row_evaluation = self.evaluate_ss_row_analysis(
-            subtable_markdown, outlier_candidates, ss_content, log_file_path
+        row_evaluation = self.evaluate_tabspec_row_analysis(
+            subtable_markdown, row_analysis_candidates, tabspec_content, log_file_path
         )
         
         # Evaluate Column Analysis
-        column_evaluation = self.evaluate_ss_column_analysis(
-            subtable_markdown, ss_content, log_file_path
+        column_evaluation = self.evaluate_tabspec_column_analysis(
+            subtable_markdown, tabspec_content, log_file_path
         )
         
         # Overall result

@@ -11,14 +11,14 @@ Based on the evaluation results of a generated SQL query, provide detailed feedb
 
 ***FEEDBACK GUIDELINES***:
 - refer the following guideline:
-	- Include atypical rows only when they simplify or clarify the query.
+	- Include special rows only when they simplify or clarify the query.
 	- Review whether any aggregate/summary rows can be used logically.
-	- Do not flag representative rows as atypical.
-- Provide feedback guiding how to properly handle atypical information, when to include, exclude, or leverage them. Refer the issues why previous attempt failed.
+	- Do not flag representative rows as special row.
+- Provide feedback guiding how to properly handle special row information, when to include, exclude, or leverage them. Refer the issues why previous attempt failed.
 
 ***OUTPUT FORMAT***:
 {{
-    "Proper Use of Atypical Analysis": "<Specific instructions on how to properly include/exclude/leverage atypical analysis>"
+    "Proper Use of Atypical Analysis": "<Specific instructions on how to properly include/exclude/leverage row analysis>"
 }}
 
 ***GUIDELINES***:

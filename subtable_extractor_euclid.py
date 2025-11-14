@@ -48,7 +48,7 @@ class ColumnSimilarityAnalyzer:
         column_analyses = {}
         
         for col in table_df.columns:
-            log_message = f"  컬럼 '{col}' 분석 중..."
+            log_message = f"  column '{col}' is being analyzed..."
             print(log_message)
             with open(log_file_path, 'a', encoding='utf-8') as log_f:
                 log_f.write(log_message + '\n')
@@ -102,7 +102,7 @@ class ColumnSimilarityAnalyzer:
                 used_columns.add(col_name)
                 anomaly_count += 1
                 outliers.append(int(min_sim_row))
-                log_message = f"  특이값 행 선택: 행 {min_sim_row} (컬럼 '{col_name}', 유사도: {min_sim_value:.4f})"
+                log_message = f"  selected outlier row: row {min_sim_row} (column '{col_name}', similarity: {min_sim_value:.4f})"
                 print(log_message)
                 with open(log_file_path, 'a', encoding='utf-8') as log_f:
                     log_f.write(log_message + '\n')
@@ -125,140 +125,140 @@ class ColumnSimilarityAnalyzer:
             if valid_columns > 0:
                 row_scores[row_idx] = total_score / valid_columns
         
-        # 가장 높은 점수를 가진 행들 선택 (정확히 3개)
+        # select the rows with the highest scores (exactly 3 rows)
         normal_rows = sorted(row_scores.items(), key=lambda x: x[1], reverse=True)
         normal_count = 0
         
         for row_idx, score in normal_rows:
-            if normal_count >= 3:  # Fix: 정상값 행 개수 변경 시 여기 수정 (예: 3개면 >= 3)
+            if normal_count >= 3:  # Fix: change the number of normal rows if needed (e.g., if 3 rows, >= 3)
                 break
             if row_idx not in selected_rows:
                 selected_rows.append(row_idx)
-                log_message = f"  정상값 행 선택: 행 {row_idx} (평균 유사도: {score:.4f})"
+                log_message = f"  selected normal row: row {row_idx} (average similarity: {score:.4f})"
                 print(log_message)
                 with open(log_file_path, 'a', encoding='utf-8') as log_f:
                     log_f.write(log_message + '\n')
                 normal_count += 1
         
-        # 원본 테이블 순서대로 정렬하고 정확히 6개만 선택
-        selected_rows = sorted(list(set(selected_rows)))[:6]  # FIX: 행 총 개수 변경 여기 수정 (예: 3X3이며 6개로 [:6])
-        log_message = f"  최종 선택된 행 (원본 순서): {selected_rows} (총 {len(selected_rows)}개)"
+        # sort the original table order and select exactly 6 rows
+        selected_rows = sorted(list(set(selected_rows)))[:6]  # FIX: change the number of rows if needed (e.g., if 3X3, [:6])
+        log_message = f"  final selected rows (original order): {selected_rows} (total {len(selected_rows)} rows)"
         print(log_message)
         with open(log_file_path, 'a', encoding='utf-8') as log_f:
             log_f.write(log_message + '\n')
         
         return selected_rows, outliers
     
-    # 🔄 두 번째 JSON 형식 (header + rows)으로 수정
+    # second JSON format (header + rows)
     def process_jsonl_record(self, jsonl_path, index, log_file_path):
-        log_message = f"\nJSONL 파일에서 인덱스 {index} 처리 중: {jsonl_path}"
+        log_message = f"\nProcessing index {index} in JSONL file: {jsonl_path}"
         print(log_message)
         with open(log_file_path, 'a', encoding='utf-8') as log_f:
             log_f.write(log_message + '\n')
         
-        # JSONL 파일에서 특정 인덱스 레코드 로드
+        # load the specific index record from the JSONL file
         with open(jsonl_path, 'r', encoding='utf-8') as f:
             for i, line in enumerate(f):
                 if i == index:
                     record = json.loads(line.strip())
                     break
             else:
-                raise IndexError(f"인덱스 {index}를 찾을 수 없습니다.")
+                raise IndexError(f"index {index} not found.")
         
-        # table 데이터 추출 (header + rows 형식)
+        # extract table data (header + rows format)
         table = record['table']
         headers = table['header']
         data_rows = table['rows']
         
-        log_message = f"  테이블 크기: {len(data_rows)}행 {len(headers)}열"
+        log_message = f"  table size: {len(data_rows)} rows {len(headers)} columns"
         print(log_message)
         with open(log_file_path, 'a', encoding='utf-8') as log_f:
             log_f.write(log_message + '\n')
         
-        # DataFrame 생성 (분석용)
+        # create DataFrame (for analysis)
         table_df = pd.DataFrame(data_rows, columns=headers)
         
-        # 컬럼별 유사도 분석
+        # analyze column similarities
         column_analyses = self.analyze_table_columns(table_df, log_file_path)
         
         if not column_analyses:
-            log_message = "  분석 가능한 컬럼이 없습니다."
+            log_message = "  no columns available for analysis."
             print(log_message)
             with open(log_file_path, 'a', encoding='utf-8') as log_f:
                 log_f.write(log_message + '\n')
-            # 상위 6개 데이터 행 선택
+            # select the top 6 data rows
             selected_rows = list(range(min(6, len(data_rows))))
             outliers = []
         else:
-            # 서브테이블용 행 선택
+            # select rows for the subtable
             selected_rows, outliers = self.select_rows_for_subtable(table_df, column_analyses, log_file_path)
         
-        # 선택된 행들로 서브테이블 구성 (헤더 + 선택된 데이터)
+        # construct the subtable with the selected rows (header + selected data)
         result_lines = ['\t'.join(headers)]  # 헤더
         for i in selected_rows:
             result_lines.append('\t'.join(data_rows[i]))
         
-        log_message = f"  서브테이블 크기: {len(result_lines)}줄"
+        log_message = f"  subtable size: {len(result_lines)} lines"
         print(log_message)
         with open(log_file_path, 'a', encoding='utf-8') as log_f:
             log_f.write(log_message + '\n')
         
-        # ✅ process_single_table과 동일하게 반환
+        # return the result_lines, selected_rows, and outliers in the same format as process_single_table
         return result_lines, selected_rows, outliers
 
     def process_single_table(self, file_path, log_file_path):
-        log_message = f"\n테이블 처리 중: {file_path}"
+        log_message = f"\nProcessing table: {file_path}"
         print(log_message)
         with open(log_file_path, 'a', encoding='utf-8') as log_f:
             log_f.write(log_message + '\n')
         
-        # 원본 파일의 모든 줄을 그대로 읽기
+        # read all lines from the original file (keep the original format)
         with open(file_path, 'r', encoding='utf-8') as f:
             all_lines = f.readlines()
         
-        # 헤더와 구분선 (첫 2줄) - 원본 그대로 유지 (strip 하지 않음)
+        # header and separator (first 2 lines) - keep the original format (don't strip)
         header_line = all_lines[0].rstrip('\n\r')
         separator_line = all_lines[1].rstrip('\n\r')
         
-        # 데이터 줄들 (3번째 줄부터)
+        # data lines (from the 3rd line)
         data_lines = [line.strip() for line in all_lines[2:]]
         
-        # 분석을 위해서만 DataFrame 사용 (첫 번째 컬럼을 인덱스로 사용)
+        # use DataFrame only for analysis (use the first column as the index)
         temp_df = pd.read_csv(file_path, sep='\t', header=0, index_col=0, na_values=[''], keep_default_na=False)
-        data_rows = temp_df.iloc[1:]  # 구분선 제외한 데이터만 (헤더는 이미 컬럼명)
+        data_rows = temp_df.iloc[1:]  # data only (header is already the column names)
         
-        # 컬럼별 유사도 분석
+        # analyze column similarities
         column_analyses = self.analyze_table_columns(data_rows, log_file_path)
         
         if not column_analyses:
-            log_message = "  분석 가능한 컬럼이 없습니다."
+            log_message = "  no columns available for analysis."
             print(log_message)
             with open(log_file_path, 'a', encoding='utf-8') as log_f:
                 log_f.write(log_message + '\n')
-            # 상위 6개 데이터 줄 선택
-            selected_data_lines = data_lines[:6]  # FIX: 행 총 개수 변경 여기 수정 (예: 3X3이며 6개로 [:6])
+            # select the top 6 data lines
+            selected_data_lines = data_lines[:6]  # FIX: change the number of rows if needed (e.g., if 3X3, [:6])
         else:
-            # 서브테이블용 행 선택
+            # select rows for the subtable
             selected_rows, outliers = self.select_rows_for_subtable(
             data_rows, column_analyses, log_file_path
         )
             selected_data_lines = [data_lines[i] for i in selected_rows]
         
-        # 결과: 헤더 + 구분선 + 선택된 6개 데이터 줄
+        # result: header + separator + selected 6 data lines
         result_lines = [header_line, separator_line] + selected_data_lines
-        log_message = f"  서브테이블 크기: {len(result_lines)}줄"
+        log_message = f"  subtable size: {len(result_lines)} lines"
         print(log_message)
         with open(log_file_path, 'a', encoding='utf-8') as log_f:
             log_f.write(log_message + '\n')
         
-        # ✅ result_lines + 선택된 인덱스 반환
+        # return result_lines + selected indices
         return result_lines, selected_rows, outliers
 
 
 def main():
-    # JSONL 처리 예시
-    jsonl_path = "datasets/wtq.jsonl"  # ✅ JSONL 파일 경로로 변경
-    index = 0  # 처리할 레코드 인덱스
+    # JSONL processing example
+    jsonl_path = "datasets/wtq.jsonl"  # change the JSONL file path
+    index = 0  # index of the record to process
     output_dir = "subtables"
     
     os.makedirs(output_dir, exist_ok=True)
@@ -266,22 +266,22 @@ def main():
     log_file_path = os.path.join(output_dir, "log.txt")
     
     with open(log_file_path, 'w', encoding='utf-8') as log_f:
-        log_f.write("=== JSONL 레코드 처리 시작 ===\n")
+        log_f.write("=== JSONL record processing started ===\n")
 
     try:
         result_lines, selected_rows = analyzer.process_jsonl_record(jsonl_path, index, log_file_path)
         
-        # 결과 저장
+        # save the result
         output_path = os.path.join(output_dir, f"result_{index}.tsv")
         with open(output_path, 'w', encoding='utf-8') as f:
             for line in result_lines:
                 f.write(line + '\n')
         
-        print(f"✅ 저장 완료: {output_path}")
-        print(f"선택된 행: {selected_rows}")
+        print(f"✅ saved: {output_path}")
+        print(f"selected rows: {selected_rows}")
 
     except Exception as e:
-        print(f"❌ 오류 발생: {str(e)}")
+        print(f"❌ error: {str(e)}")
 
 
 if __name__ == "__main__":

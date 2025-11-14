@@ -20,7 +20,7 @@ class SQLEvaluator:
             print(f"Warning: Prompt file {filename} not found.")
             return ""
     
-    def evaluate_sql_query(self, question, table_summary, generated_sql, ss_content, log_file_path=None):
+    def evaluate_sql_query(self, question, table_summary, generated_sql, tabspec_content, log_file_path=None):
         """Evaluate SQL query with 4 criteria"""
         
         def log(msg):
@@ -50,7 +50,7 @@ class SQLEvaluator:
         ).replace(
             "{generated_sql}", generated_sql
         ).replace(
-            "{ss}", ss_content
+            "{tabspec}", tabspec_content
         )
         
         try:
@@ -99,7 +99,7 @@ class SQLEvaluator:
             log(f"Error in SQL evaluation: {str(e)}")
             return None
     
-    def generate_sql_feedback(self, question, ss_content, generated_sql, evaluation_result):
+    def generate_sql_feedback(self, question, tabspec_content, generated_sql, evaluation_result):
         """Generate feedback based on SQL evaluation result"""
         feedbacks = []
         
@@ -127,7 +127,7 @@ class SQLEvaluator:
                     prompt = feedback_template.replace(
                         "{question}", question
                     ).replace(
-                        "{ss}", ss_content
+                        "{tabspec}", tabspec_content
                     ).replace(
                         "{generated_sql}", generated_sql
                     ).replace(
@@ -149,7 +149,7 @@ class SQLEvaluator:
         
         return "\n\n".join(feedbacks) if feedbacks else ""
     
-    def refine_sql_with_feedback(self, original_sql, feedback, question, ss_content, table_summary):
+    def refine_sql_with_feedback(self, original_sql, feedback, question, tabspec_content, table_summary):
         """Refine SQL with feedback"""
         if not feedback:
             return original_sql
@@ -160,7 +160,7 @@ class SQLEvaluator:
 
 **Table Summary:** {table_summary}
 
-**SS (Structure Specification):** {ss_content}
+**TabSpec (Structure Specification):** {tabspec_content}
 
 **Original SQL:** {original_sql}
 
@@ -169,10 +169,10 @@ class SQLEvaluator:
 **Task:**
 Based on the feedback provided, generate an improved SQL query that addresses all the issues mentioned. 
 Focus on:
-1. Using appropriate column roles as defined in the SS
+1. Using appropriate column roles as defined in the TabSpec
 2. Properly handling row analysis when needed
 3. Using correct data types for operations
-4. Maintaining faithfulness to the SS schema
+4. Maintaining faithfulness to the TabSpec schema
 
 Generate only the improved SQL query without any explanation."""
 

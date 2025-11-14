@@ -28,22 +28,22 @@ p_wtq_full = None  # Loaded at runtime
 
 p_sql_answer_wtq = None  # Loaded at runtime
 
-p_sql_wtq_with_ss = None  # Loaded at runtime
+p_sql_wtq_with_tabspec = None  # Loaded at runtime
 
 # Initialize prompts function
 def initialize_prompts():
     """Load prompt files into global variables"""
-    global p_wtq_full, p_sql_answer_wtq, p_sql_wtq_with_ss
+    global p_wtq_full, p_sql_answer_wtq, p_sql_wtq_with_tabspec
     
     # Load prompts from SQL_Reasoning.txt
     sql_reasoning_content = load_prompt("SQL_Reasoning.txt")
     
     if sql_reasoning_content:
-        # Extract p_sql_wtq_with_ss
-        if 'p_sql_wtq_with_ss = """' in sql_reasoning_content:
-            start = sql_reasoning_content.find('p_sql_wtq_with_ss = """') + len('p_sql_wtq_with_ss = """')
+        # Extract p_sql_wtq_with_tabspec
+        if 'p_sql_wtq_with_tabspec = """' in sql_reasoning_content:
+            start = sql_reasoning_content.find('p_sql_wtq_with_tabspec = """') + len('p_sql_wtq_with_tabspec = """')
             end = sql_reasoning_content.find('"""', start)
-            p_sql_wtq_with_ss = sql_reasoning_content[start:end].strip()
+            p_sql_wtq_with_tabspec = sql_reasoning_content[start:end].strip()
         
         # Extract p_wtq_full
         if 'p_wtq_full = """' in sql_reasoning_content:
@@ -58,10 +58,10 @@ def initialize_prompts():
             p_sql_answer_wtq = sql_reasoning_content[start:end].strip()
     
     # Fallback: Use default values if file loading fails
-    if not p_sql_wtq_with_ss:
-        p_sql_wtq_with_ss = "You will receive the **full table, the question, and the SS**. Generate SQL with a detailed explanation and the final query."
+    if not p_sql_wtq_with_tabspec:
+        p_sql_wtq_with_tabspec = "You will receive the **full table, the question, and the TabSpec**. Generate SQL with a detailed explanation and the final query."
     if not p_wtq_full:
-        p_wtq_full = "The provided SS is the primary structure for interpreting the Full Table."
+        p_wtq_full = "The provided TabSpec is the primary structure for interpreting the Full Table."
     if not p_sql_answer_wtq:
         p_sql_answer_wtq = "You are a strict SQL reasoning assistant. Your task is to return the final answer **directly from the SQL result table**."
 
@@ -99,7 +99,7 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0.2, n=1):
 
 # -------------------------------------------------------------------------
 def gen_table_decom_prompt(title, tab_col, question, full_table, summary=None):
-    prompt = "" + p_sql_wtq_with_ss
+    prompt = "" + p_sql_wtq_with_tabspec
 
     prompt += "\nSQLite table properties:\n\n"
     prompt += "Table: " + title + " (" + str(tab_col) + ")" + "\n\n"
@@ -108,8 +108,8 @@ def gen_table_decom_prompt(title, tab_col, question, full_table, summary=None):
     prompt += "Full Table Preview:\n"
     prompt += truncate_tokens(full_table, max_length=15000) + "\n\n"
 
-    if summary:  # If SS is provided, it must be included
-        prompt += "SS (Structured Specification):\n" + summary + "\n\n"
+    if summary:  # If TabSpec is provided, it must be included
+        prompt += "TabSpec (Structured Specification):\n" + summary + "\n\n"
 
     prompt += "Q: " + question + "\n"
     prompt += "Explanation:"

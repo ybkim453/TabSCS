@@ -1,7 +1,7 @@
-p_sql_wtq_with_ss = """
-You will receive the **full table, the question, and the SS**.
+p_sql_wtq_with_tabspec = """
+You will receive the **full table, the question, and the TabSpec**.
 Generate SQL with a detailed explanation and the final query.  
-Exclude irrelevant rows (e.g., "Total", "Average", "World", "N/A", "?", "—") if the SS marks them as such.  
+Exclude irrelevant rows (e.g., "Total", "Average", "World", "N/A", "?", "—") if the TabSpec marks them as such.  
 
 **Important Rule:**
 - When using COUNT, you must **never use DISTINCT**.
@@ -12,21 +12,21 @@ Exclude irrelevant rows (e.g., "Total", "Average", "World", "N/A", "?", "—") i
 - When filtering categorical values that might appear as part of a longer string 
   (e.g., "No playoff" vs "Champion (no playoff)"), always use a `LIKE '%value%'` condition instead of `=`.
 
-Always **read the SS first** and start with an explanation line beginning with 'Explanation:'.  
-- If the SS labels a row as "ordinary", you must not exclude it.  
-- If the SS marks a row as an outlier and it is relevant to the question, explicitly exclude or handle it in your SQL.  
-- In the explanation, explicitly mention which columns and values from the SS are relevant to answer the question.  
-- You must use the provided SS carefully: if the SS specifies data types (e.g., Numeric, Categorical) or shows example values, use this information to decide how to construct conditions or comparisons in SQL.   
-- Outlier notes in the SS must also be considered: explain whether they should be excluded from the SQL.  
-- Never ignore the SS: every reasoning step must be grounded in it.  
+Always **read the TabSpec first** and start with an explanation line beginning with 'Explanation:'.  
+- If the TabSpec labels a row as "ordinary", you must not exclude it.  
+- If the TabSpec marks a row as an special row and it is relevant to the question, explicitly exclude or handle it in your SQL.  
+- In the explanation, explicitly mention which columns and values from the TabSpec are relevant to answer the question.  
+- You must use the provided TabSpec carefully: if the TabSpec specifies data types (e.g., Numeric, Categorical) or shows example values, use this information to decide how to construct conditions or comparisons in SQL.   
+- Outlier notes in the TabSpec must also be considered: explain whether they should be excluded from the SQL.  
+- Never ignore the TabSpec: every reasoning step must be grounded in it.  
 
-**If the SS does not mention a column or entity explicitly, but the question specifies a clear condition (e.g., a player name, a competition, a year), you must use that condition directly in the SQL filter based on the most relevant column from the full table preview.**
+**If the TabSpec does not mention a column or entity explicitly, but the question specifies a clear condition (e.g., a player name, a competition, a year), you must use that condition directly in the SQL filter based on the most relevant column from the full table preview.**
 
 After the explanation, on the next line, output the SQL query prefixed with 'SQL:'.  
 - Always wrap column names in double quotes (e.g., SELECT "column_name" FROM T).  
 - The SQL must directly follow from the reasoning in the Explanation section.  
 
-If the SQL alone cannot fully answer the question, state in the Explanation how the SS information should be used alongside SQL execution to derive the final answer.  
+If the SQL alone cannot fully answer the question, state in the Explanation how the TabSpec information should be used alongside SQL execution to derive the final answer.  
 
 Your final output must always include **both** the Explanation and the SQL, in that order.
 
@@ -36,7 +36,7 @@ SQLite table properties:
 Table: List of Olympic Events (row_number, year, sport, event, athlete, medal)
 
 Q: how many events were held in 2008?
-Explanation: The SS indicates that the "year" column is numeric, and the "event" column is categorical with each row representing a single Olympic event.
+Explanation: The TabSpec indicates that the "year" column is numeric, and the "event" column is categorical with each row representing a single Olympic event.
 To answer the question, we count the total number of rows where "year" = 2008.
 It is important to note that we must count all rows, not just distinct events, because each row already corresponds to one event. Using DISTINCT here would undercount the total.
 SQL: select count("event") from T where cast("year" as integer) = 2008;
@@ -46,9 +46,9 @@ SQLite table properties:
 Table: List of storms on the Great Lakes(row_number,ship,type_of_vessel,lake,location,lives_lost)
 
 Q: how many more ships were wrecked in lake huron than in erie?
-Explanation: The SS indicates that the **"lake" column** contains categorical values such as Lake Huron and Lake Erie.  
+Explanation: The TabSpec indicates that the **"lake" column** contains categorical values such as Lake Huron and Lake Erie.  
 To answer the question, we count the number of rows where "lake" = Lake Huron and subtract the number of rows where "lake" = Lake Erie.  
-No placeholder or aggregate rows (e.g., "Total", "—", "N/A") are present in the SS, so all rows are valid for counting.  
+No placeholder or aggregate rows (e.g., "Total", "—", "N/A") are present in the TabSpec, so all rows are valid for counting.  
 SQL: select ((select count("ship") from T where "lake" like '%lake huron%') - (select count("ship") from T where "lake" like '%lake erie%'))
 
 SQLite table properties:
@@ -56,8 +56,8 @@ SQLite table properties:
 Table: List of The Citadel Bulldogs football seasons (row_number, season, conference, head coach, total wins, total losses, total ties, conference wins, conference losses, conference ties, conference standing, postseason result)
 
 Q: how many total wins did the citadel bulldogs have before 1908?
-Explanation: The SS specifies that the "season" column is Numeric and can be used to filter rows. 
-The "total wins" column is also Numeric, but outlier rows (e.g., "Totals: 105 Seasons …") must be excluded because they represent cumulative statistics rather than a single season. 
+Explanation: The TabSpec specifies that the "season" column is Numeric and can be used to filter rows. 
+The "total wins" column is also Numeric, but special rows (e.g., "Totals: 105 Seasons …") must be excluded because they represent cumulative statistics rather than a single season. 
 To compute the answer, we filter rows where season ≤ 1907 and sum the values in "total wins". 
 Since numeric columns may contain non-numeric placeholders in other contexts, we explicitly cast "total wins" as INTEGER.
 SQL:
@@ -69,7 +69,7 @@ SQLite table properties:
 Table: List of Olympic medal counts (row_number, country, gold, silver, bronze, total)
 
 Q: what is the total number of medals awarded in the olympics?
-Explanation: The SS explicitly marks the row "World Total" as an aggregate row.
+Explanation: The TabSpec explicitly marks the row "World Total" as an aggregate row.
 Since the question asks for the total number of medals across all countries, we should use the aggregate row directly instead of summing all individual country rows (to avoid double counting).
 We select the value from the "total" column where "country" = 'World Total'".
 SQL:
@@ -77,17 +77,17 @@ select cast("total" as integer) as global_total_medals from T where "country" = 
 """
 
 p_wtq_full = """
-The provided SS is the primary structure for interpreting the Full Table.  
-Always start by carefully examining the SS to identify which columns, data types, and special cases are relevant to the question.  
-Then, use the full table to confirm and extract the exact values based on the hints from the SS.  
-Your reasoning must explicitly combine evidence from both the SS and the full table before giving the final answer.  
+The provided TabSpec is the primary structure for interpreting the Full Table.  
+Always start by carefully examining the TabSpec to identify which columns, data types, and special cases are relevant to the question.  
+Then, use the full table to confirm and extract the exact values based on the hints from the TabSpec.  
+Your reasoning must explicitly combine evidence from both the TabSpec and the full table before giving the final answer.  
 Final output must follow the format:
 Final Answer: AnswerName1, AnswerName2...
 
 How many cyclists in the top 10 were French?
-To answer this question, I will use both the SS and the full table.
+To answer this question, I will use both the TabSpec and the full table.
 
-From the SS:
+From the TabSpec:
 - The **Cyclist** column is text and includes both name and nationality in parentheses, e.g., "Stéphane Goubert (FRA)".
 - Special / Atypical Rows: none were listed, so every row in the preview represents an individual cyclist.
 - Preprocessing Artifacts: none critical except "s.t." in the Time column, which stands for "same time". This does not affect nationality counting.
@@ -97,7 +97,7 @@ From the full table:
   1. Stéphane Goubert (Rank 8, FRA)
   2. David Moncoutié (Rank 10, FRA)
 
-Thus, by combining the SS's description (Cyclist column contains nationality; no atypical rows interfere)  
+Thus, by combining the TabSpec's description (Cyclist column contains nationality; no special rows interfere)  
 with the explicit entries in the full table, we can conclude there are 2 French cyclists in the top 10.
 
 Final Answer: Stéphane Goubert, David Moncoutié

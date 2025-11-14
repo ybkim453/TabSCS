@@ -10,8 +10,8 @@ from openai import OpenAI
 
 from utils.preprocess import *
 from utils.prompt_wtq import *
-from utils.ss_row_analysis_evaluator import SSRowAnalysisEvaluator
-from utils.ss_reconstruction_based_evaluator import SSReconstructionBasedEvaluator
+from utils.tabspec_row_analysis_evaluator import TabSpecRowAnalysisEvaluator
+from utils.tabspec_reconstruction_based_evaluator import TabSpecReconstructionBasedEvaluator
 from utils.sql_evaluator import SQLEvaluator
 from subtable_extractor_euclid import ColumnSimilarityAnalyzer
 
@@ -26,12 +26,12 @@ def load_prompt(filename):
         print(f"Warning: Prompt file {filename} not found. Using fallback.")
         return ""
 
-def generate_ss_feedback(row_eval, recon_eval, preview_table, current_summary, subtable_df, generated_table_text=None):
-    """Generate feedback based on SS evaluation results""" 
+def generate_tabspec_feedback(row_eval, recon_eval, preview_table, current_summary, subtable_df, generated_table_text=None):
+    """Generate feedback based on TabSpec evaluation results""" 
     feedbacks = []
     
     if row_eval and not row_eval.get('all_criteria_passed', False):
-        row_feedback_prompt = load_prompt("SS_feedback/row_analysis_feedback.txt")
+        row_feedback_prompt = load_prompt("TabSpec_feedback/row_analysis_feedback.txt")
         if row_feedback_prompt:
             evaluation_reasoning = ""
             
@@ -60,7 +60,7 @@ def generate_ss_feedback(row_eval, recon_eval, preview_table, current_summary, s
                 print(f"Error generating row analysis feedback: {e}")
     
     if recon_eval and recon_eval.get('header_em_score', 0) < 1.0:
-        header_feedback_prompt = load_prompt("SS_feedback/header_feedback.txt")
+        header_feedback_prompt = load_prompt("TabSpec_feedback/header_feedback.txt")
         if header_feedback_prompt and generated_table_text:
             prompt = header_feedback_prompt.replace(
                 "{sub_tab}", preview_table
@@ -82,7 +82,7 @@ def generate_ss_feedback(row_eval, recon_eval, preview_table, current_summary, s
                 print(f"Error generating header feedback: {e}")
     
     if recon_eval and recon_eval.get('cell_similarity_score', 0) < 0.85:
-        structure_feedback_prompt = load_prompt("SS_feedback/structure_feedback.txt")
+        structure_feedback_prompt = load_prompt("TabSpec_feedback/structure_feedback.txt")
         if structure_feedback_prompt and generated_table_text:
             prompt = structure_feedback_prompt.replace(
                 "{sub_table}", preview_table
@@ -105,15 +105,15 @@ def generate_ss_feedback(row_eval, recon_eval, preview_table, current_summary, s
     
     return "\n\n".join(feedbacks) if feedbacks else ""
 
-def refine_ss_with_feedback(original_ss, feedback, preview_table, outliers):
-    """Refine SS based on feedback"""
+def refine_tabspec_with_feedback(original_tabspec, feedback, preview_table, special_row):
+    """Refine TabSpec based on feedback"""
     if not feedback:
-        return original_ss
+        return original_tabspec
     
     refinement_prompt = f"""You are an expert at improving table analysis based on feedback.
 
-**Original SS:**
-{original_ss}
+**Original TabSpec:**
+{original_tabspec}
 
 **Feedback for Improvement:**
 {feedback}
@@ -122,16 +122,16 @@ def refine_ss_with_feedback(original_ss, feedback, preview_table, outliers):
 {preview_table}
 
 **Outlier Candidates:**
-{json.dumps(outliers, ensure_ascii=False)}
+{json.dumps(special_row, ensure_ascii=False)}
 
 **Task:**
-Based on the feedback provided, generate an improved SS that addresses all the issues mentioned. 
+Based on the feedback provided, generate an improved TabSpec that addresses all the issues mentioned. 
 Focus on:
 1. Correcting any header extraction or naming issues
 2. Improving row analysis discrimination
 3. Enhancing content accuracy and semantic understanding
 
-Generate the improved SS following the same format as the original."""
+Generate the improved TabSpec following the same format as the original."""
 
     try:
         response = client.chat.completions.create(
@@ -142,15 +142,15 @@ Generate the improved SS following the same format as the original."""
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        print(f"Error refining SS with feedback: {e}")
-        return original_ss
+        print(f"Error refining TabSpec with feedback: {e}")
+        return original_tabspec
 
 # OpenAI client
 client = OpenAI()
 analyzer = ColumnSimilarityAnalyzer()
 
-row_evaluator = SSRowAnalysisEvaluator()
-recon_evaluator = SSReconstructionBasedEvaluator()
+row_evaluator = TabSpecRowAnalysisEvaluator()
+recon_evaluator = TabSpecReconstructionBasedEvaluator()
 
 sql_evaluator = SQLEvaluator()
 
@@ -197,11 +197,11 @@ def parse_answer(response: str) -> str:
     return output_ans.strip().lower()
 
 
-def call_gpt_table_summary(table_markdown: str, outliers: list, model: str = "gpt-3.5-turbo") -> str:
-    ss_generation_template = load_prompt("SS_Generation.txt")
+def call_gpt_table_summary(table_markdown: str, special_row: list, model: str = "gpt-3.5-turbo") -> str:
+    tabspec_generation_template = load_prompt("TabSpec_Generation.txt")
     
-    if not ss_generation_template:
-        ss_generation_template = """You are a strict table analysis assistant.
+    if not tabspec_generation_template:
+        tabspec_generation_template = """You are a strict table analysis assistant.
 Here is a partial preview of a table in markdown format:
 
 {table_markdown}
@@ -224,10 +224,11 @@ Additionally, the following ROW INDICES were identified as ATYPICAL ANALYSIS by 
 - If these values are clearly different from the majority of the table, explain why this makes the row an special row.
 - Focus only on candidate rows; do not discuss rows outside the candidate list."""
     
-    prompt = ss_generation_template.format(
-        table_markdown=table_markdown,
-        special_rows=outliers
-    ).replace("{json.dumps(special rows, ensure_ascii=False)}", json.dumps(outliers, ensure_ascii=False))
+    prompt = tabspec_generation_template.replace(
+        "{table_markdown}", table_markdown
+    ).replace(
+        "{json.dumps(special rows, ensure_ascii=False)}", json.dumps(special_row, ensure_ascii=False)
+    )
     response = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": prompt}],
@@ -404,17 +405,17 @@ def tabsqlify_wtq(T, title, tab_col, question, full_table, summary,
 if __name__ == "__main__":
     path = 'datasets/wtq.jsonl'
     start = 0
-    end = 1
+    end = 1 # change the end index if needed
 
     table_ids = list(range(start, end))
     base_output = "outputs"
     subtable_dir = os.path.join(base_output, "subtables")
-    ss_logs_dir = os.path.join(base_output, "ss_logs")
+    tabspec_logs_dir = os.path.join(base_output, "tabspec_logs")
     sql_logs_dir = os.path.join(base_output, "sql_logs")
 
     os.makedirs(base_output, exist_ok=True)
     os.makedirs(subtable_dir, exist_ok=True)
-    os.makedirs(ss_logs_dir, exist_ok=True)
+    os.makedirs(tabspec_logs_dir, exist_ok=True)
     os.makedirs(sql_logs_dir, exist_ok=True)
 
     correct = 0
@@ -441,7 +442,7 @@ if __name__ == "__main__":
                 print(f"\n=== ID: {idx}, Q: {question}, Gold: {answer} ===")
 
                 subtable_path = os.path.join(subtable_dir, f"{table_id.replace('/','_')}.tsv")
-                outliers = []
+                special_row = []
 
                 if os.path.exists(subtable_path):
                     print(f"[Cache Hit] Using cached subtable: {subtable_path}")
@@ -449,7 +450,7 @@ if __name__ == "__main__":
                         result_lines = f.read().splitlines()
                 else:
                     print(f"[Cache Miss] Creating subtable for {table_id}")
-                    result_lines, selected_rows, outliers = analyzer.process_jsonl_record(
+                    result_lines, selected_rows, special_row = analyzer.process_jsonl_record(
                         jsonl_path=path,
                         index=i,
                         log_file_path=os.path.join(subtable_dir, f"{table_id.replace('/','_')}_log.txt")
@@ -462,7 +463,7 @@ if __name__ == "__main__":
                 subtable_df = pd.read_csv(StringIO(csv_content), sep="\t")
                 preview_table = subtable_df.to_markdown(index=False)
 
-                summary_path = os.path.join(ss_logs_dir, f"{i}_summary.txt")
+                summary_path = os.path.join(tabspec_logs_dir, f"{i}_summary.txt")
                 if os.path.exists(summary_path):
                     print(f"[Cache Hit] Using cached summary: {summary_path}")
                     with open(summary_path, "r", encoding="utf-8") as f:
@@ -472,19 +473,19 @@ if __name__ == "__main__":
                     
                     summary = None
                     for attempt in range(3):
-                        print(f"  SS Generation Attempt {attempt+1}/3")
+                        print(f"  TabSpec Generation Attempt {attempt+1}/3")
                         
-                        current_summary = call_gpt_table_summary(preview_table, outliers)
+                        current_summary = call_gpt_table_summary(preview_table, special_row)
                         
-                        print(f"    Evaluating SS quality...")
-                        row_eval = row_evaluator.evaluate_ss_comprehensive(
-                            preview_table, outliers, current_summary,
-                            log_file_path=os.path.join(ss_logs_dir, f"{i}_row_eval_log_{attempt+1}.txt")
+                        print(f"    Evaluating TabSpec quality...")
+                        row_eval = row_evaluator.evaluate_tabspec_comprehensive(
+                            preview_table, special_row, current_summary,
+                            log_file_path=os.path.join(tabspec_logs_dir, f"{i}_row_eval_log_{attempt+1}.txt")
                         )
                         
-                        recon_eval = recon_evaluator.evaluate_ss_by_table_generation(
+                        recon_eval = recon_evaluator.evaluate_tabspec_by_table_generation(
                             title, current_summary, subtable_df,
-                            log_file_path=os.path.join(ss_logs_dir, f"{i}_recon_eval_log_{attempt+1}.txt")
+                            log_file_path=os.path.join(tabspec_logs_dir, f"{i}_recon_eval_log_{attempt+1}.txt")
                         )
                         
                         row_passed = row_eval['all_criteria_passed'] if row_eval else False
@@ -494,27 +495,27 @@ if __name__ == "__main__":
                         if recon_eval:
                             print(f"    Reconstruction: {'PASS' if recon_passed else 'FAIL'} (EM: {recon_eval['header_em_score']:.3f}, Sim: {recon_eval['cell_similarity_score']:.3f})")
                         
-                        eval_summary_path = os.path.join(ss_logs_dir, f"{i}_ss_evaluation_summary_{attempt+1}.txt")
+                        eval_summary_path = os.path.join(tabspec_logs_dir, f"{i}_tabspec_evaluation_summary_{attempt+1}.txt")
                         with open(eval_summary_path, "w", encoding="utf-8") as f:
-                            f.write(f"=== SS Evaluation Summary - Attempt {attempt+1} ===\n\n")
+                            f.write(f"=== TabSpec Evaluation Summary - Attempt {attempt+1} ===\n\n")
                             f.write(f"Row Analysis Passed: {row_passed}\n")
                             f.write(f"Reconstruction Passed: {recon_passed}\n")
                             if recon_eval:
                                 f.write(f"Header EM Score: {recon_eval['header_em_score']:.4f}\n")
                                 f.write(f"Cell Similarity Score: {recon_eval['cell_similarity_score']:.4f}\n")
                             f.write(f"Overall Passed: {row_passed and recon_passed}\n\n")
-                            f.write(f"Generated SS:\n{current_summary}\n")
+                            f.write(f"Generated TabSpec:\n{current_summary}\n")
                         
                         if row_passed and recon_passed:
-                            print(f"  SS evaluation passed - Attempt {attempt+1}/3")
+                            print(f"  TabSpec evaluation passed - Attempt {attempt+1}/3")
                             summary = current_summary
                             break
                         else:
                             if attempt < 2:
-                                print(f"  SS evaluation failed - generating feedback and refinement")
+                                print(f"  TabSpec evaluation failed - generating feedback and refinement")
                                 
                                 generated_table_text = recon_eval.get('generated_table', '') if recon_eval else ''
-                                feedback = generate_ss_feedback(
+                                feedback = generate_tabspec_feedback(
                                     row_eval, recon_eval, preview_table, 
                                     current_summary, subtable_df, generated_table_text
                                 )
@@ -522,27 +523,44 @@ if __name__ == "__main__":
                                 if feedback:
                                     print(f"    Generated feedback: {feedback[:200]}...")
                                     
-                                    feedback_path = os.path.join(ss_logs_dir, f"{i}_ss_feedback_{attempt+1}.txt")
+                                    feedback_path = os.path.join(tabspec_logs_dir, f"{i}_tabspec_feedback_{attempt+1}.txt")
                                     with open(feedback_path, "w", encoding="utf-8") as f:
-                                        f.write(f"=== SS Feedback - Attempt {attempt+1} ===\n\n")
+                                        f.write(f"=== TabSpec Feedback - Attempt {attempt+1} ===\n\n")
                                         f.write(f"Row Evaluation Result:\n{json.dumps(row_eval, indent=2, ensure_ascii=False)}\n\n")
-                                        f.write(f"Reconstruction Evaluation Result:\n{json.dumps(recon_eval, indent=2, ensure_ascii=False)}\n\n")
+                                        # Convert numpy types and DataFrames to native Python types for JSON serialization
+                                        def convert_numpy_types(obj):
+                                            import pandas as pd
+                                            if isinstance(obj, dict):
+                                                return {k: convert_numpy_types(v) for k, v in obj.items()}
+                                            elif isinstance(obj, list):
+                                                return [convert_numpy_types(v) for v in obj]
+                                            elif isinstance(obj, pd.DataFrame):
+                                                return obj.to_dict('records')  # Convert DataFrame to list of dicts
+                                            elif hasattr(obj, 'item'):  # numpy scalar
+                                                return obj.item()
+                                            elif hasattr(obj, 'tolist'):  # numpy array
+                                                return obj.tolist()
+                                            else:
+                                                return obj
+                                        
+                                        recon_eval_serializable = convert_numpy_types(recon_eval)
+                                        f.write(f"Reconstruction Evaluation Result:\n{json.dumps(recon_eval_serializable, indent=2, ensure_ascii=False)}\n\n")
                                         f.write(f"Generated Feedback:\n{feedback}\n\n")
-                                        f.write(f"Original SS:\n{current_summary}\n")
+                                        f.write(f"Original TabSpec:\n{current_summary}\n")
                                     
-                                    current_summary = refine_ss_with_feedback(
-                                        current_summary, feedback, preview_table, outliers
+                                    current_summary = refine_tabspec_with_feedback(
+                                        current_summary, feedback, preview_table, special_row
                                     )
-                                    print(f"    SS refined based on feedback")
+                                    print(f"    TabSpec refined based on feedback")
                                     
-                                    refined_ss_path = os.path.join(ss_logs_dir, f"{i}_ss_refined_{attempt+1}.txt")
-                                    with open(refined_ss_path, "w", encoding="utf-8") as f:
-                                        f.write(f"=== Refined SS - Attempt {attempt+1} ===\n\n")
+                                    refined_tabspec_path = os.path.join(tabspec_logs_dir, f"{i}_tabspec_refined_{attempt+1}.txt")
+                                    with open(refined_tabspec_path, "w", encoding="utf-8") as f:
+                                        f.write(f"=== Refined TabSpec - Attempt {attempt+1} ===\n\n")
                                         f.write(current_summary)
                                 else:
                                     print(f"    No specific feedback generated - using original approach")
                             else:
-                                print(f"  Failed after 3 attempts - using last SS")
+                                print(f"  Failed after 3 attempts - using last TabSpec")
                                 summary = current_summary
                     
                     with open(summary_path, "w", encoding="utf-8") as f:

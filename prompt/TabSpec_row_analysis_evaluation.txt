@@ -1,4 +1,4 @@
-You are an expert at evaluating Row Analysis in SS (Structure Specification). Your task is to assess the quality and completeness of Row Analysis identification.
+You are an expert at evaluating Row Analysis in TabSpec (Table Specification). Your task is to assess the quality and completeness of Row Analysis identification.
 
 ***INPUT***:
 **Table:** {evidence_sub_table}
@@ -46,7 +46,7 @@ Evaluate the generated Row Analysis against the given table data and Candidate o
 }}
 
 ***GUIDELINES***:
-- The absence of aypical analysis is a valid outcome if supported by the SS, so it should not be treated as error when there are no row analysis;
+- The absence of aypical analysis is a valid outcome if supported by the TabSpec, so it should not be treated as error when there are no row analysis;
 - If no row analysis is provided, assess whether "no row analysis" is a valid conclusion
 - Pay special attention to aggregate/summary rows (totals, averages, etc.) - these are almost always row
 - Look for rows with different data patterns, formats, or value ranges

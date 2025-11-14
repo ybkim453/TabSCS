@@ -5,7 +5,7 @@ Based on the evaluation results of a generated SQL query, provide detailed feedb
 
 ***INPUT***:
 **Question:** {question}
-**SS (Structure Specification):** {ss}
+**TabSpec (Table Specification):** {tabspec}
 **Generated SQL:** {generated_sql}
 **Evaluation Result:** {evaluation_result}
 
