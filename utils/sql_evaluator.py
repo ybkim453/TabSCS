@@ -6,7 +6,9 @@ from openai import OpenAI
 class SQLEvaluator:
     def __init__(self, model_name="gpt-3.5-turbo"):
         """Initialize SQL evaluator"""
-        self.client = OpenAI()
+        self.client = OpenAI(
+  api_key=os.getenv("OPENAI_API_KEY", "API_KEY"),  # this is also the default, it can be omitted
+)
         self.model_name = model_name
         self.prompt_dir = "prompt"
     
@@ -59,7 +61,7 @@ class SQLEvaluator:
                 messages=[
                     {
                         "role": "system", 
-                        "content": "You are a strict SQL query evaluation expert. Always return valid JSON following the exact format specified. Evaluate all 4 criteria: Appropriate Role, Well Used Row Analysis, Appropriate Data Type, and Faithfulness."
+                        "content": "You are a strict SQL query evaluation expert. Always return valid JSON following the exact format specified. Evaluate all 4 criteria: Question Alignment and TabSpec Alignment."
                     },
                     {"role": "user", "content": prompt}
                 ],
@@ -76,9 +78,9 @@ class SQLEvaluator:
                 evaluation_result = json.loads(json_match.group())
                 
                 # Calculate all_criteria_passed (all 4 criteria must pass)
-                criteria = ['Appropriate Role', 'Well Used Row Analysis', 'Appropriate Data Type', 'Faithfulness']
+                criteria = ["Question Alignment", "TabSpec Alignment"]
                 all_passed = all(
-                    evaluation_result.get(criterion, {}).get('result', 'no').lower() == 'yes' 
+                    evaluation_result.get(criterion, {}).get('result', 'no').lower() == 'yes'
                     for criterion in criteria
                 )
                 
@@ -108,10 +110,8 @@ class SQLEvaluator:
         
         # Generate feedback for each criterion that failed
         criteria_feedback_mapping = {
-            'Appropriate Role': 'appropriate_role.txt',
-            'Well Used Row Analysis': 'well_used_row_analysis.txt', 
-            'Appropriate Data Type': 'appropriate_data_type.txt',
-            'Faithfulness': 'faithfulness.txt'
+            "Question Alignment": "question_alignment.txt",
+            "TabSpec Alignment": "tabspec_alignment.txt"
         }
         
         for criterion, feedback_file in criteria_feedback_mapping.items():
