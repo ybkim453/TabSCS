@@ -4,7 +4,7 @@ You are a strict SQL query evaluation expert. Your task is to evaluate the quali
 **Question:** {question}
 **Table:** {table}
 **Generated SQL:**: {generated_sql}
-**TabSpec (Structure Specification):** {tabspec}
+**TabSpec (Table Specification):** {tabspec}
 
 ***TASK***:
 Evaluate the generated SQL query against the given question and TabSpec (Table Specification, Guideline for table reasoning) based on the following criteria:
